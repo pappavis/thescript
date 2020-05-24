@@ -21,6 +21,12 @@ printstatus() {
 	echo -e $1 >> $LOGFILE
 }
 
+[ ! -x /usr/bin/lsb_release ] && apt-get $AQUIET -y update > /dev/null 2>&1 && apt-get $AQUIET -y install lsb-release 2>&1 | tee -a $LOGFILE
+DISTRO=$(/usr/bin/lsb_release -rs)
+CHECK64=$(uname -m)
+echo -e DISTRO: $DISTRO >> $LOGFILE
+echo -e CHECK64: $CHECK64 >> $LOGFILE
+
 echo "Installing NodeJS"
 LATESTNODE="v12.16.3"
 if [[ $(uname -m) == *"armv6"* ]]; then

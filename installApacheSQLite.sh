@@ -1,5 +1,7 @@
 OPSYS = "RASPBIAN"
 MYMENU == "hwsupport"
+LOGFILE=$HOME/$0-`date +%Y-%m-%d_%Hh%Mm`.log
+
 printstatus() {
     Obtain_Cpu_Temp
     h=$(($SECONDS/3600));

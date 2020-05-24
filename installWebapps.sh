@@ -1,5 +1,7 @@
 OPSYS = "RASPBIAN"
 MYMENU == "hwsupport"
+LOGFILE=$HOME/$0-`date +%Y-%m-%d_%Hh%Mm`.log
+
 printstatus() {
     Obtain_Cpu_Temp
     h=$(($SECONDS/3600));
@@ -12,7 +14,7 @@ printstatus() {
 }
 
 
-if [[ 1==1 ]]; then
+if [1==1]; then
     printstatus "Installing Webmin at port 10000 (could take some time)"
     #cd
     #mkdir webmin
@@ -34,14 +36,14 @@ fi
 #
 # This works a treat on the NanoPi NEO using H3 and Armbian - should not do any harm on other systems as it's not installed!
 #
-if [[ 1==1 ]]; then
+if [1==1]; then
     printstatus "Installing Armbian Monitor"
     sudo armbianmonitor -r 2>&1 | tee -a $LOGFILE
 fi
 
 
 
-if [[ 1==1 ]]; then
+if [1==1]; then
     printstatus "Installing PHPSysInfo"
     #	sudo apt-get $AQUIET -y install phpsysinfo
     #	sudo ln -s /usr/share/phpsysinfo /var/www/html
@@ -55,7 +57,7 @@ if [[ 1==1 ]]; then
 fi
 
 
-if [[ 1==1 ]]; then
+if [1==1]; then
         printstatus "Installing Grafana and Influxdb"
         cd
         sudo apt-get $AQUIET -y update 2>&1 | tee -a $LOGFILE
