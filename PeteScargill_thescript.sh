@@ -500,6 +500,7 @@ MYMENU=$(whiptail --title "Peter Scargill's 'The Script' Main Menu for Raspberry
     "office" "Remove LibreOffice on PI to save space" OFF 3>&1 1>&2 2>&3)
 
 if [[ $OPSYS == *"RASPBIAN"* ]];then
+    foobar=""
 else
     MYMENU=$(whiptail --title "Peter Scargill's 'The Script' Main Non-Pi Menu" --checklist \
         "\n   Make your selections (SPACE) as required then TAB to OK/Cancel" 29 73 21 \
