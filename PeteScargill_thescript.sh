@@ -1,3 +1,5 @@
+## ref https://bitbucket.org/api/2.0/snippets/scargill/kAR5qG/files/script.sh
+
 ##
 ## "The Script" is the product of years of work by me (Peter scargill) and others, in particular Antonio Fragola (Mr Shark)
 ## Supports Raspberry Pi with Buster full and lite (not tested NOOBS) - also other boards and op systems  see below
@@ -519,8 +521,6 @@ else
         "log2ram" "Install Log2RAM default 40Meg" OFF \
 		"grafana" "Install Grafana and InfluxDB" OFF 3>&1 1>&2 2>&3)
 fi
-
-echo 'MYMENU=' $MYMENU
 
 if [[ $MYMENU != *"quiet"* ]]; then
     AQUIET=""
