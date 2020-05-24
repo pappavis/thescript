@@ -476,29 +476,30 @@ SECONDS=0
 
 echo "NU check foor OPSYS == RASPBIAN --> OPSYS == $OPSYS"
 
+MYMENU=$(whiptail --title "Peter Scargill's 'The Script' Main Menu for Raspberry Pi" --checklist \
+    "\n   Make your selections (SPACE) as required then TAB to OK/Cancel" 29 73 20 \
+    "quiet" "Quiet(er) install - untick for lots of info " ON \
+    "prereq" "Install general pre-requisites " ON \
+    "mosquitto" "Install Mosquitto" ON \
+    "apache" "Install Apache/PHP/SQLITE + PHPLITEADMIN " OFF \
+    "nginx" "Install Nginx/PHP/SQLITE + PHPLITEADMIN " ON \
+    "nodenew" "Install NodeJS and NodeRed (Raspberry Pi)" ON \
+    "webmin" "Install Webmin" OFF \
+    "java" "Update Java" OFF \
+    "hwsupport" "Enable support for Serial, I2C, GPIO, etc" OFF \
+    "wiringpi" "Wiring Pi for the GPIO utility" OFF \
+    "phpsysinfo" "Install PHPSYSYINFO" ON \
+    "modpass" "Mod USER and ADMIN passwords (password123)" ON \
+    "addindex" "Add a basic index page and CSS" ON \
+    "passwords" "Update ROOT and PI user passwords" OFF \
+    "rpiclone" "Install RPI-Clone" ON \
+    "log2ram" "Install Log2RAM default 40 Meg" OFF \
+    "grafana" "Install Grafana and InfluxDB" OFF \
+    "cockpit" "Install Cockpit" ON \		
+    "wolfram" "Remove Wolfram on a PI to save space" OFF \
+    "office" "Remove LibreOffice on PI to save space" OFF 3>&1 1>&2 2>&3)
+
 if [[ $OPSYS == *"RASPBIAN"* ]];then
-    MYMENU=$(whiptail --title "Peter Scargill's 'The Script' Main Menu for Raspberry Pi" --checklist \
-        "\n   Make your selections (SPACE) as required then TAB to OK/Cancel" 29 73 20 \
-        "quiet" "Quiet(er) install - untick for lots of info " ON \
-        "prereq" "Install general pre-requisites " ON \
-        "mosquitto" "Install Mosquitto" ON \
-        "apache" "Install Apache/PHP/SQLITE + PHPLITEADMIN " OFF \
-        "nginx" "Install Nginx/PHP/SQLITE + PHPLITEADMIN " ON \
-        "nodenew" "Install NodeJS and NodeRed (Raspberry Pi)" ON \
-        "webmin" "Install Webmin" OFF \
-        "java" "Update Java" OFF \
-        "hwsupport" "Enable support for Serial, I2C, GPIO, etc" OFF \
-        "wiringpi" "Wiring Pi for the GPIO utility" OFF \
-        "phpsysinfo" "Install PHPSYSYINFO" ON \
-        "modpass" "Mod USER and ADMIN passwords (password123)" ON \
-        "addindex" "Add a basic index page and CSS" ON \
-        "passwords" "Update ROOT and PI user passwords" OFF \
-        "rpiclone" "Install RPI-Clone" ON \
-        "log2ram" "Install Log2RAM default 40 Meg" OFF \
-		"grafana" "Install Grafana and InfluxDB" OFF \
-		"cockpit" "Install Cockpit" ON \		
- 		"wolfram" "Remove Wolfram on a PI to save space" OFF \
-        "office" "Remove LibreOffice on PI to save space" OFF 3>&1 1>&2 2>&3)
 else
     MYMENU=$(whiptail --title "Peter Scargill's 'The Script' Main Non-Pi Menu" --checklist \
         "\n   Make your selections (SPACE) as required then TAB to OK/Cancel" 29 73 21 \
