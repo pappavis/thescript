@@ -1,5 +1,5 @@
 
-printstatus "Welcome to 'The Script'"
+printstatus "Welkom, setup een nieuwe Raspbian of Ubunto omgeving"
 LOGFILE=$HOME/$0-`date +%Y-%m-%d_%Hh%Mm`.log
 
 printl() {
@@ -28,7 +28,7 @@ sudo apt-get update -y && sudo apt-get upgrade
 sudo apt-get install -y p7zip-full mc  sqlite3
 sudo apt-get install -y gedit vsftpd 
 sudo apt-get install -y apache2 php php-mysql
-sudo apt-get install -y nodejs npm
+sudo apt-get install -y nodejs npm  wolfram-engine
 
 echo  alias ls="ls -F --color=auto" >> ~/.profile
 echo  alias l="ls -F --color=auto" >> ~/.profile

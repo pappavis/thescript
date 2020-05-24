@@ -52,6 +52,9 @@ cd && sudo cp /var/log/nodered-install.log . && sudo chown pi.pi ./nodered-insta
 	printstatus "Installing node \"i2c-bus\""
         npm $NQUIET install i2c-bus 2>&1 | tee -a $LOGFILE
 	fi
+
+    npm $NQUIET install i2c-bus 2>&1 | tee -a $LOGFILE
+
 	printstatus "Installing node \"bcryptjs\""
     sudo npm $NQUIET install bcryptjs 2>&1 | tee -a $LOGFILE
 
@@ -71,6 +74,8 @@ cd && sudo cp /var/log/nodered-install.log . && sudo chown pi.pi ./nodered-insta
 		fi
 		sudo sed -i -e 's#exit 0#chmod 777 /dev/ttyS*\nexit 0#g' /etc/rc.local
 	fi
+
+    npm $NQUIET install node-red-contrib-opi-gpio 2>&1 | tee -a $LOGFILE
             
 	cd ~/.node-red/
     npm $NQUIET audit fix
