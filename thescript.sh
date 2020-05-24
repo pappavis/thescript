@@ -520,6 +520,8 @@ else
 		"grafana" "Install Grafana and InfluxDB" OFF 3>&1 1>&2 2>&3)
 fi
 
+echo 'MYMENU=' $MYMENU
+
 if [[ $MYMENU != *"quiet"* ]]; then
     AQUIET=""
     NQUIET=""
