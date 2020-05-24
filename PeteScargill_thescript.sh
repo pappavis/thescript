@@ -495,9 +495,9 @@ MYMENU=$(whiptail --title "Peter Scargill's 'The Script' Main Menu for Raspberry
     "rpiclone" "Install RPI-Clone" ON \
     "log2ram" "Install Log2RAM default 40 Meg" OFF \
     "grafana" "Install Grafana and InfluxDB" OFF \
-    "cockpit" "Install Cockpit" ON \		
-    "wolfram" "Remove Wolfram on a PI to save space" OFF \
-    "office" "Remove LibreOffice on PI to save space" OFF 3>&1 1>&2 2>&3)
+    "wolfram" "Verwijderen wolfram om ruimte te besparen" OFF \
+    "cockpit" "Install Cockpit" ON \
+    "office" "Libreoffice verijderen" OFF)
 
 if [[ $OPSYS == *"RASPBIAN"* ]];then
     foobar=""
