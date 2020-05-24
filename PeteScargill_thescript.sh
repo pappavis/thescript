@@ -473,6 +473,9 @@ newhostname=$(hostname)
 
 SECONDS=0
 
+
+echo "NU check foor OPSYS == RASPBIAN --> OPSYS == $OPSYS"
+
 if [[ $OPSYS == *"RASPBIAN"* ]];then
     MYMENU=$(whiptail --title "Peter Scargill's 'The Script' Main Menu for Raspberry Pi" --checklist \
         "\n   Make your selections (SPACE) as required then TAB to OK/Cancel" 29 73 20 \
@@ -521,6 +524,9 @@ else
         "log2ram" "Install Log2RAM default 40Meg" OFF \
 		"grafana" "Install Grafana and InfluxDB" OFF 3>&1 1>&2 2>&3)
 fi
+
+echo "MYMENU is uitgevoerd: $MYMENU "
+
 
 if [[ $MYMENU != *"quiet"* ]]; then
     AQUIET=""
