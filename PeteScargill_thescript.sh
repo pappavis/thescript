@@ -476,6 +476,9 @@ SECONDS=0
 
 echo "NU check foor OPSYS == RASPBIAN --> OPSYS == $OPSYS"
 
+
+
+if [[ $OPSYS == *"RASPBIAN"* ]];then
 MYMENU=$(whiptail --title "Peter Scargill's 'The Script' Main Menu for Raspberry Pi" --checklist \
     "\n   Make your selections (SPACE) as required then TAB to OK/Cancel" 29 73 20 \
     "quiet" "Quiet(er) install - untick for lots of info " ON \
@@ -498,9 +501,6 @@ MYMENU=$(whiptail --title "Peter Scargill's 'The Script' Main Menu for Raspberry
     "wolfram" "Verwijderen wolfram om ruimte te besparen" OFF \
     "cockpit" "Install Cockpit" ON \
     "office" "Libreoffice verijderen" OFF)
-
-if [[ $OPSYS == *"RASPBIAN"* ]];then
-    foobar=""
 else
     MYMENU=$(whiptail --title "Peter Scargill's 'The Script' Main Non-Pi Menu" --checklist \
         "\n   Make your selections (SPACE) as required then TAB to OK/Cancel" 29 73 21 \
