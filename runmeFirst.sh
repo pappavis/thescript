@@ -59,4 +59,4 @@ sudo usermod -aG i2c michiele
 sudo usermod -aG spi michiele
 sudo usermod -aG tty michiele
 
-bash ./setupNodered.sh
+#bash ./setupNodered.sh
