@@ -4,7 +4,7 @@ Handige Raspberry Pi 2,3,4 script om jouw pi te setup
 # Stappenplan
 Dit vergemakkelijk jouw leven op een Pi
 
-## Stap 1: installeren Pete Scarill tools
+## Stap 1: installeren Pete Scargill script
 Login op jouw Pi als gebruiker pi.  NIET op Pi0 dit duurt te lang!!
 
 ```bash
