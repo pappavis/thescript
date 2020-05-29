@@ -11,6 +11,7 @@ Login op jouw Pi als gebruiker pi.  NIET op Pi0 dit duurt te lang!!
 pi@rpasberrypi: $ git clone https://github.com/pappavis/thescript/
 pi@rpasberrypi: $ cd ./thescript/
 pi@rpasberrypi: $ bash ./PeteScargill_thescript.sh
+pi@rpasberrypi: $ sudo reboot -h now
 ```
 
 ## Stap 2: Python 3 en circuitpython
