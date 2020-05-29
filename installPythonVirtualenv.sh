@@ -1,9 +1,9 @@
 #/usr/bin/sh
 echo "Installeer nieuwe python3 virtuale omgeving"
 sudo usermod -aG gpio pi
-sudo usermod -aG dialout pi sudo usermod -aG i2c pi
-sudo usermod -aG tty pi
 sudo usermod -aG dialout pi
+sudo usermod -aG i2c pi
+sudo usermod -aG tty pi
 
 
 #python3 -m pip install --user pipx
