@@ -25,5 +25,5 @@ pi@rpasberrypi: $ bash ./installPythonCircuitpython.sh
 ```
 
 # origineel
-Zie origineel <a href="wget https://bitbucket.org/api/2.0/snippets/scargill/kAR5qG/master/files/script.sh">hier</a>
+Zie origineel <a href="https://bitbucket.org/api/2.0/snippets/scargill/kAR5qG/master/files/script.sh">hier</a>
 
