@@ -12,6 +12,8 @@ sudo apt install -y python3-pip
 python3 -m pip install virtualenv
 mkdir ~/venv
 ~/.local/bin/virtualenv ~/venv/venv3.7
+source ~/venv/venv3.7/bin/activate
+pip3 install adafruit-blinka RPI.GPIO
 echo "source ~/venv/venv3.7/bin/activate" >> ~/.bashrc
 source ~/.bashrc
 
