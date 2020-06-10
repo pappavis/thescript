@@ -14,7 +14,7 @@ echo "source ~/.bashrc" >> ~/.bash_profile
 #python3 -m pip install virtualenv
 mkdir ~/venv
 cd ~/venv
-pipenv install ~/venv/venv3.7
+~/.local/bin/virtualenv ~/venv/venv3.7
 source ~/venv/venv3.7/bin/activate
 python3 -m pip install adafruit-blinka RPI.GPIO
 echo "source ~/venv/venv3.7/bin/activate" >> ~/.bashrc
