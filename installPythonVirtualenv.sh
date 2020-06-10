@@ -5,8 +5,7 @@ sudo usermod -aG dialout pi
 sudo usermod -aG i2c pi
 sudo usermod -aG tty pi
 
-sudo apt install -y python3-pip
-sudo apt install -y python3-venv
+sudo apt install -y python3-pip python3-venv
 #python3 -m pip install --user pipx
 #python3 -m pipx ensurepath
 
