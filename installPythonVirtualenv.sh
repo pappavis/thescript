@@ -10,9 +10,12 @@ sudo apt install -y python3-pip python3-venv
 #python3 -m pipx ensurepath
 echo "source ~/.bashrc" >> ~/.bash_profile
 
-python3 -m pip install virtualenv
+pip3 install pipenv
+
+#python3 -m pip install virtualenv
 mkdir ~/venv
-python3 -m virtualenv ~/venv/venv3.7
+cd ~/venv
+pipenv install ~/venv/venv3.7
 source ~/venv/venv3.7/bin/activate
 python3 -m pip install adafruit-blinka RPI.GPIO
 echo "source ~/venv/venv3.7/bin/activate" >> ~/.bashrc
