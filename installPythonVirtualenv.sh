@@ -12,7 +12,7 @@ sudo apt install -y python3-pip
 python3 -m pip install virtualenv
 mkdir ~/venv
 ~/.local/bin/virtualenv ~/venv/venv3.7
-echo "source ~/venv/venv3.7" >> ~/.bashrc
+echo "source ~/venv/venv3.7/bin/activate" >> ~/.bashrc
 source ~/.bashrc
 
 pip install openpyxl pyzmail o365 ttn qrcode pillow pyodbc sqlalchemy pymsteams
