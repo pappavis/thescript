@@ -15,7 +15,7 @@ mkdir ~/venv
 echo "source ~/venv/venv3.7/bin/activate" >> ~/.bashrc
 source ~/.bashrc
 
-pip install openpyxl pyzmail o365 ttn qrcode pillow pyodbc sqlalchemy pymsteams
+pip3 install openpyxl pyzmail o365 ttn qrcode pillow pyodbc sqlalchemy pymsteams
 pip3 install picamera opencv-contrib-python libwebp6
 
 sudo apt install -y tesseract-ocr libtesseract-dev libatlas3-base libqtcore4 -y
