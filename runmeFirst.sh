@@ -23,19 +23,22 @@ AQUIET="-qq"
 NQUIET="-s"
 export npm_config_loglevel=silent
 
+echo "alias ls='ls -F --color=auto'" >> ~/.bashrc
+echo "alias l='ls -F --color=auto'" >> ~/.bashrc
+echo "alias ll='ls -lF --color=auto'" >> ~/.bashrc
+echo "alias la='ls -lFa --color=auto'" >> ~/.bashrc
+echo "source ~/venv/venv3.7/bin/activate" >> ~/.bashrc
+source ~/.bashrc
 
-sudo apt-get update -y && sudo apt-get upgrade
-sudo apt-get install -y p7zip-full mc  sqlite3
-sudo apt-get install -y gedit vsftpd 
-sudo apt-get install -y apache2 php php-mysql
-sudo apt-get install -y nodejs npm  wolfram-engine
+#sudo apt-get update -y && sudo apt-get upgrade
+sudo apt-get install -y p7zip-full mc sqlite3
+sudo apt-get install -y gedit 
+#sudo apt-get install -y vsftpd 
+#sudo apt-get install -y apache2 php php-mysql
+#sudo apt-get install -y nodejs npm  wolfram-engine
 
-echo  alias ls="ls -F --color=auto" >> ~/.profile
-echo  alias l="ls -F --color=auto" >> ~/.profile
-echo  alias ll="ls -lF --color=auto" >> ~/.profile
-echo  alias la="ls -lFa --color=auto" >> ~/.profile
-echo   ~/venv/venv3.7/bin/activate >> ~/.profile
 
+sudo apt install -y python3-pip
 python3 -m pip install --user pipx
 python3 -m pipx ensurepath
 mkdir ~/venv
