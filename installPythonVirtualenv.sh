@@ -5,10 +5,11 @@ sudo usermod -aG dialout pi
 sudo usermod -aG i2c pi
 sudo usermod -aG tty pi
 
-
 sudo apt install -y python3-pip
+sudo apt install -y python3-venv
 #python3 -m pip install --user pipx
 #python3 -m pipx ensurepath
+
 python3 -m pip install virtualenv
 mkdir ~/venv
 ~/.local/bin/virtualenv ~/venv/venv3.7
