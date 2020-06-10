@@ -52,12 +52,12 @@ sudo usermod -aG dialout pi
 sudo usermod -aG i2c pi
 sudo usermod -aG tty pi
 
-sudo adduser michiele
-sudo usermod -aG sudo michiele
-sudo usermod -aG gpio michiele
-sudo usermod -aG dialout michiele
-sudo usermod -aG i2c michiele
-sudo usermod -aG spi michiele
-sudo usermod -aG tty michiele
+#sudo adduser michiele
+#sudo usermod -aG sudo michiele
+#sudo usermod -aG gpio michiele
+#sudo usermod -aG dialout michiele
+#sudo usermod -aG i2c michiele
+#sudo usermod -aG spi michiele
+#sudo usermod -aG tty michiele
 
 #bash ./setupNodered.sh
