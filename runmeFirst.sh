@@ -23,13 +23,6 @@ AQUIET="-qq"
 NQUIET="-s"
 export npm_config_loglevel=silent
 
-echo "alias ls='ls -F --color=auto'" >> ~/.bashrc
-echo "alias l='ls -F --color=auto'" >> ~/.bashrc
-echo "alias ll='ls -lF --color=auto'" >> ~/.bashrc
-echo "alias la='ls -lFa --color=auto'" >> ~/.bashrc
-echo "source ~/venv/venv3.7/bin/activate" >> ~/.bashrc
-source ~/.bashrc
-
 #sudo apt-get update -y && sudo apt-get upgrade
 sudo apt-get install -y p7zip-full mc sqlite3
 sudo apt-get install -y gedit 
@@ -39,14 +32,19 @@ sudo apt-get install -y gedit
 
 
 sudo apt install -y python3-pip
-python3 -m pip install --user pipx
-python3 -m pipx ensurepath
-mkdir ~/venv
-source ~/.bashrc
 
-pipx install virtualenv
 mkdir ~/venv
-virtualenv ~/venv/venv3.7
+echo "alias ls='ls -F --color=auto'" >> ~/.bashrc
+echo "alias l='ls -F --color=auto'" >> ~/.bashrc
+echo "alias ll='ls -lF --color=auto'" >> ~/.bashrc
+echo "alias la='ls -lFa --color=auto'" >> ~/.bashrc
+echo "source ~/venv/venv3.7/bin/activate" >> ~/.bashrc
+
+pip3 install virtualenv
+mkdir ~/venv
+~/.local/bin/virtualenv ~/venv/venv3.7
+source ~/venv/venv3.7/bin/activate
+source ~/.bashrc
 
 echo "doen usermod"
 sudo usermod -aG gpio pi
