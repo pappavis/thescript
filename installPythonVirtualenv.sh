@@ -8,6 +8,7 @@ sudo usermod -aG tty pi
 sudo apt install -y python3-pip python3-venv
 #python3 -m pip install --user pipx
 #python3 -m pipx ensurepath
+echo "source ~/.bashrc" >> ~/.bash_profile
 
 python3 -m pip install virtualenv
 mkdir ~/venv
