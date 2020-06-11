@@ -11,6 +11,7 @@ cd Python-3.9.0b3
 ./configure --enable-optimizations
 make -j $(nproc)
 make altinstall
+sudo update-alternatives --install /usr/bin/python3 python3 /usr/local/bin/python3 10
 python3.9 --version
 cd $NOW_DIR
 echo " "
