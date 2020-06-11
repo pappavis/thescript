@@ -22,10 +22,3 @@ source ~/.bashrc
 
 pip3 install openpyxl pyzmail o365 ttn qrcode pillow sqlalchemy pymsteams
 pip3 install picamera opencv-contrib-python
-
-sudo apt install -y tesseract-ocr libtesseract-dev libatlas3-base libqtcore4 -y
-python3 -m pip install pytesseract opencv-contrib-python libwebp6
-tesseract --version
-sudo apt install -y imagemagick
-
-
