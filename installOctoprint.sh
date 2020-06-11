@@ -1,3 +1,4 @@
-python3 -m virtualenv ~/venv/OctoPrint
+~/.local/bin/virtualenv ~/venv/OctoPrint
 source ~/venv/OctoPrint/bin/activate
-python3 -m pip install octoprint
+pip3 install octoprint
+source ~/venv/venv3.7/bin/activate
