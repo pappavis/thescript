@@ -2,7 +2,7 @@
 
 NOW_DIR=$(pwd)
 sudo apt update
-sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget
+sudo apt install -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget
 mkdir ~/python_upgrade
 cd ~/python_upgrade
 curl -O https://www.python.org/ftp/python/3.9.0/Python-3.9.0b3.tgz
