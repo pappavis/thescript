@@ -9,7 +9,6 @@ pip3 install OctoPyClient tentacle ledDriver
 pip3 install ampy micropython-uploader
 pip3  install  Adafruit-GPIO SQLAlchemy adafruit-ads1x15 adafruit-pureio aniso8601 croniter flask-restful flask-sqlalchemy natsort pih2o python-dateutil pytz
 
-
 echo ""
 echo "Je moet opnieuw inloggen, en dan uitvoeren: python3 blinkatest.py"
 echo ""
