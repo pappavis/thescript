@@ -6,7 +6,7 @@ sudo apt install -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev libns
 mkdir ~/python_upgrade
 cd ~/python_upgrade
 curl -O https://www.python.org/ftp/python/3.9.0/Python-3.9.0b3.tgz
-tar -xfz Python-3.9.0b3.tgz
+tar xfz Python-3.9.0b3.tgz
 cd Python-3.9.0b3
 ./configure --enable-optimizations
 make -j $(nproc)
