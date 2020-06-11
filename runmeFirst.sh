@@ -24,11 +24,15 @@ NQUIET="-s"
 export npm_config_loglevel=silent
 
 #sudo apt-get update -y && sudo apt-get upgrade
-sudo apt-get install -y p7zip-full mc sqlite3
-sudo apt-get install -y gedit 
+
+sudo apt-get install -y p7zip-full mc sqlite3  i2c-tools
+sudo apt install -y python3 python3-pip
+sudo apt install -y python-smbus
+sudo apt-get install -y nodejs npm
 #sudo apt-get install -y vsftpd 
 #sudo apt-get install -y apache2 php php-mysql
-#sudo apt-get install -y nodejs npm  wolfram-engine
+sudo apt-get install -y wolfram-engine
+sudo apt-get install -y gedit 
 
 
 sudo apt install -y python3-pip
