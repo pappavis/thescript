@@ -9,7 +9,9 @@ print("hello blinky!")
 ledG = digitalio.DigitalInOut(board.D16)
 ledB = digitalio.DigitalInOut(board.D20)
 ledR = digitalio.DigitalInOut(board.D21)
-led.direction = digitalio.Direction.OUTPUT
+ledR.direction = digitalio.Direction.OUTPUT
+ledG.direction = digitalio.Direction.OUTPUT
+ledB.direction = digitalio.Direction.OUTPUT
 
 if __name__ == "__main__":
     altTel1 = 0
