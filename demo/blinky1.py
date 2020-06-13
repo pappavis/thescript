@@ -12,24 +12,23 @@ ledR = digitalio.DigitalInOut(board.D21)
 led.direction = digitalio.Direction.OUTPUT
 
 if __name__ == "__main__":
- altTel1 = 0
- 
-  while True:
-   
-      ledTeKnipperen = Nothing
-    
-      if(altTel1 = 0):
-        ledTeKnipperen = ledG
-      elif(altTel1 = 1):
-        ledTeKnipperen = ledR
-      else:
-        ledTeKnipperen = ledB
+    altTel1 = 0
 
-      ledTeKnipperen.value = True
-      time.sleep(0.5)
-      ledTeKnipperen.value = False
-      time.sleep(0.2)
-      altTel1 += 1
-      
-      if(altTel1 > 3):
-       altTel1 = 0
+    while True:
+        ledTeKnipperen = Nothing
+
+        if(altTel1 = 0):
+            ledTeKnipperen = ledG
+        elif(altTel1 = 1):
+            ledTeKnipperen = ledR
+        else:
+            ledTeKnipperen = ledB
+
+        ledTeKnipperen.value = True
+        time.sleep(0.5)
+        ledTeKnipperen.value = False
+        time.sleep(0.2)
+        altTel1 += 1
+
+        if(altTel1 > 3):
+            altTel1 = 0
