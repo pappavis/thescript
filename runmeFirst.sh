@@ -23,7 +23,8 @@ AQUIET="-qq"
 NQUIET="-s"
 export npm_config_loglevel=silent
 
-#sudo apt-get update -y && sudo apt-get upgrade
+sudo apt-get update -y
+# sudo apt-get upgrade -y
 
 sudo apt-get install -y p7zip-full mc sqlite3  i2c-tools
 sudo apt install -y python3 python3-pip
