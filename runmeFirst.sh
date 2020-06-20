@@ -1,5 +1,3 @@
-
-printstatus "Welkom, setup een nieuwe Raspbian of Ubunto omgeving"
 LOGFILE=$HOME/$0-`date +%Y-%m-%d_%Hh%Mm`.log
 
 printl() {
@@ -17,6 +15,8 @@ printstatus() {
 	echo -e "############################################################" >> $LOGFILE
 	echo -e $1 >> $LOGFILE
 }
+
+printstatus "Welkom, setup een nieuwe Raspbian of Ubunto omgeving"
 
 
 AQUIET="-qq"
