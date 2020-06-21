@@ -1,3 +1,4 @@
+# origineel --> https://www.raspberrypi.org/forums/viewtopic.php?t=191744
 sudo apt-get install - y git build-essential libffi-dev
 cd ~
 git clone https://github.com/micropython/micropython.git
@@ -15,3 +16,4 @@ micropython  -m upip install micropython-umqtt.robust
 micropython  -m upip install micropython-pwd
 micropython  -m upip install micropython-smtplib
 echo "EINDE micropython module intstall"
+
