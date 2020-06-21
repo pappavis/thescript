@@ -6,6 +6,7 @@ cd ~ && cd micropython/mpy-cross
 make
 cd ~/micropython/ports/unix/
 make clean
+make axtls
 make
 sudo ln -s ~/micropython/ports/unix/micropython /usr/local/bin/micropython
 echo "START module intstall"
