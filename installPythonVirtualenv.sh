@@ -20,5 +20,5 @@ pip3 install adafruit-blinka RPI.GPIO
 echo "source ~/venv/venv3.7/bin/activate" >> ~/.bashrc
 source ~/.bashrc
 
-pip3 install openpyxl pyzmail o365 ttn qrcode pillow sqlalchemy pymsteams
+pip3 install openpyxl pyzmail o365 ttn qrcode pillow sqlalchemy pymsteams esptool adafruit-ampy pyserial
 pip3 install picamera opencv-contrib-python
