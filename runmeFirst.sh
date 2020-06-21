@@ -23,6 +23,7 @@ AQUIET="-qq"
 NQUIET="-s"
 export npm_config_loglevel=silent
 
+sudo apt install -y git
 sudo apt-get update -y
 # sudo apt-get upgrade -y
 
