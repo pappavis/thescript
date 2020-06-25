@@ -15,7 +15,7 @@ if __name__ == "__main__":
     altTel1 = 0
 
     while(True):
-        ledTeKnipperen = Nothing
+        ledTeKnipperen = None
 
         if(altTel1 == 0):
             ledTeKnipperen = ledG
