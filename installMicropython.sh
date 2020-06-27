@@ -10,7 +10,7 @@ make axtls
 make
 sudo ln -s ~/micropython/ports/unix/micropython /usr/local/bin/micropython
 echo "START module intstall"
-micropython  -m upip install micropython-request
+micropython  -m upip install micropython-urequests
 micropython  -m upip install micropython-socket
 micropython  -m upip install micropython-machine
 micropython  -m upip install micropython-os.path
