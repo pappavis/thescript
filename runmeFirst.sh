@@ -49,7 +49,7 @@ echo "source ~/venv/venv3.7/bin/activate" >> ~/.bashrc
 pip3 install virtualenv
 mkdir ~/venv
 ~/.local/bin/virtualenv ~/venv/venv3.7
-source ~/venv/venv3.7/bin/activate
+echo "source ~/venv/venv3.7/bin/activate" >> ~/.bashrc
 source ~/.bashrc
 
 echo "doen usermod"
