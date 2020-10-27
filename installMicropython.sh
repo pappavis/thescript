@@ -1,5 +1,5 @@
 # origineel --> https://www.raspberrypi.org/forums/viewtopic.php?t=191744
-sudo apt-get install - y git build-essential libffi-dev
+sudo apt-get install -y git build-essential libffi-dev
 cd ~
 git clone https://github.com/micropython/micropython.git
 cd ~ && cd micropython/mpy-cross
