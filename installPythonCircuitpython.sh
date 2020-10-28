@@ -1,4 +1,9 @@
 #/usr/bin/sh
+sudo adduser pi gpio
+sudo usermod pi dialout
+sudo usermod pi i2c 
+sudo usermod pi tty 
+
 echo "Installeer nieuwe python3 virtuale omgeving"
 source ~/venv/venv3.7/bin/activate 
 pip3.7 install rpi.gpio adafruit-blinka adafruit-circuitpython-ble-adafruit adafruit-circuitpython-neopixel adafruit-circuitpython-ina219 adafruit-circuitpython-tinylora adafruit-circuitpython-ssd1306  DotStar_Emulator
