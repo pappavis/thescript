@@ -60,6 +60,7 @@ sudo usermod -aG tty pi
 
 #sudo adduser michiele
 #sudo usermod -aG sudo michiele
+#sudo usermod -aG sudo pi
 #sudo usermod -aG gpio michiele
 #sudo usermod -aG dialout michiele
 #sudo usermod -aG i2c michiele
