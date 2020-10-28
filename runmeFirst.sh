@@ -24,7 +24,7 @@ NQUIET="-s"
 export npm_config_loglevel=silent
 
 sudo apt install -y git
-sudo apt-get update -y
+# sudo apt-get update -y
 # sudo apt-get upgrade -y
 
 sudo apt-get install -y p7zip-full mc sqlite3  i2c-tools
