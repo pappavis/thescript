@@ -52,30 +52,30 @@ echo "source ~/venv/venv3.7/bin/activate" >> ~/.bashrc
 source ~/.bashrc
 
 echo "doen usermod"
-sudo usermod -aG gpio pi
-sudo usermod -aG dialout pi
-sudo usermod -aG i2c pi
-sudo usermod -aG tty pi
+sudo usermod -aG gpio pi &
+sudo usermod -aG dialout pi &
+sudo usermod -aG i2c pi &
+sudo usermod -aG tty pi &
 
-sudo adduser pi gpio
-sudo usermod pi dialout
-sudo usermod pi i2c 
-sudo usermod pi tty 
+sudo adduser pi gpio &
+sudo usermod pi dialout &
+sudo usermod pi i2c &
+sudo usermod pi tty &
 
 
 #sudo adduser michiele
-#sudo adduser pi michiele
-#sudo usermod pi michiele
-#sudo usermod pi michiele
-#sudo usermod pi michiele
+sudo adduser pi michiele &
+sudo usermod pi michiele &
+sudo usermod pi michiele &
+sudo usermod pi michiele &
 
-#sudo usermod -aG sudo michiele
-#sudo usermod -aG sudo pi
-#sudo usermod -aG gpio michiele
-#sudo usermod -aG dialout michiele
-#sudo usermod -aG i2c michiele
-#sudo usermod -aG spi michiele
-#sudo usermod -aG tty michiele
+sudo usermod -aG sudo michiele &
+sudo usermod -aG sudo pi &
+sudo usermod -aG gpio michiele &
+sudo usermod -aG dialout michiele &
+sudo usermod -aG i2c michiele &
+sudo usermod -aG spi michiele &
+sudo usermod -aG tty michiele &
 
 
 #bash ./setupNodered.sh
