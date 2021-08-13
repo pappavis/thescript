@@ -9,7 +9,6 @@ Login op jouw Pi als gebruiker pi.  NIET op Pi0 dit duurt te lang!!
 
 ```bash
 pi@rpasberrypi: $ git clone https://github.com/pappavis/thescript/
-pi@rpasberrypi: $ cd ./thescript/
 pi@rpasberrypi: $ cd thescript && wget https://bitbucket.org/api/2.0/snippets/scargill/kAR5qG/master/files/script.sh
 pi@rpasberrypi: $ bash ./script.sh
 pi@rpasberrypi: $ sudo reboot -h now
