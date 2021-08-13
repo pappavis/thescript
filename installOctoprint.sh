@@ -5,8 +5,8 @@ source ~/venv/OctoPrint/bin/activate
 pip3 install octoprint
 
 echo "SETUP: pi toegang naar devices."
-sudo usermod -a -G tty pi
-sudo usermod -a -G dialout pi
+sudo usermod -a -G tty pi &
+sudo usermod -a -G dialout pi &
 
 echo "SETUP: Installeer als service."
 wget https://github.com/foosel/OctoPrint/raw/master/scripts/octoprint.init && sudo mv octoprint.init /etc/init.d/octoprint
