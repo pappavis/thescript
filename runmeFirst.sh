@@ -23,6 +23,11 @@ AQUIET="-qq"
 NQUIET="-s"
 export npm_config_loglevel=silent
 
+echo "alias ls='ls -F --color=auto'" >> ~/.bashrc
+echo "alias ll='ls -lF --color=auto'" >> ~/.bashrc
+echo "alias la='ls -lFa --color=auto'" >> ~/.bashrc
+echo "alias l='ls -F --color=auto'" >> ~/etc/bashrc
+
 sudo apt install -y git
 # sudo apt-get update -y
 # sudo apt-get upgrade -y
@@ -40,12 +45,6 @@ sudo apt-get install -y gedit
 sudo apt install -y python3-pip
 
 mkdir ~/venv
-echo "alias ls='ls -F --color=auto'" >> ~/.bashrc
-echo "alias l='ls -F --color=auto'" >> ~/.bashrc
-echo "alias ll='ls -lF --color=auto'" >> ~/.bashrc
-echo "alias la='ls -lFa --color=auto'" >> ~/.bashrc
-echo "source ~/venv/venv3.7/bin/activate" >> ~/.bashrc
-
 pip3 install virtualenv
 mkdir ~/venv
 ~/.local/bin/virtualenv ~/venv/venv3.7
