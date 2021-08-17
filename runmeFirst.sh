@@ -1,4 +1,4 @@
-LOGFILE=$HOME/$0-`date +%Y-%m-%d_%Hh%Mm`.log
+iLOGFILE=$HOME/$0-`date +%Y-%m-%d_%Hh%Mm`.log
 
 printl() {
 	printf $1
@@ -26,7 +26,7 @@ export npm_config_loglevel=silent
 echo "alias ls='ls -F --color=auto'" >> ~/.bashrc
 echo "alias ll='ls -lF --color=auto'" >> ~/.bashrc
 echo "alias la='ls -lFa --color=auto'" >> ~/.bashrc
-echo "alias l='ls -F --color=auto'" >> ~/etc/bashrc
+echo "alias l='ls -F --color=auto'" >> ~/.bashrc
 
 sudo apt install -y git
 # sudo apt-get update -y
@@ -63,19 +63,19 @@ sudo usermod pi i2c &
 sudo usermod pi tty &
 
 
-#sudo adduser michiele
-sudo adduser pi michiele &
-sudo usermod pi michiele &
-sudo usermod pi michiele &
-sudo usermod pi michiele &
+sudo adduser michiele
+sudo adduser pi michiele
+sudo usermod pi michiele
+sudo usermod pi michiele
+sudo usermod pi michiele
 
-sudo usermod -aG sudo michiele &
-sudo usermod -aG sudo pi &
-sudo usermod -aG gpio michiele &
-sudo usermod -aG dialout michiele &
-sudo usermod -aG i2c michiele &
-sudo usermod -aG spi michiele &
-sudo usermod -aG tty michiele &
+sudo usermod -aG sudo michiele
+sudo usermod -aG sudo pi
+sudo usermod -aG gpio michiele
+sudo usermod -aG dialout michiele
+sudo usermod -aG i2c michiele
+sudo usermod -aG spi michiele
+sudo usermod -aG tty michiele
 
 
 #bash ./setupNodered.sh
