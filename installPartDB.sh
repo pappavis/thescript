@@ -1,6 +1,7 @@
 echo " "
 echo "SETUP: part-db in /var/www/html/"
 echo " "
+sudo mkdir /var/www/html/support
 cd ~/Downloads
 wget -O part-db.tar.gz https://github.com/jbtronics/Part-DB/archive/master.tar.gz
 sudo tar -xzf part-db.tar.gz -C /var/www/html/support
