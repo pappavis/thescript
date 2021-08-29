@@ -22,4 +22,4 @@ source ~/.bashrc
 
 pip3.7 install openpyxl o365 ttn qrcode pillow sqlalchemy pymsteams esptool adafruit-ampy pyserial pyparsing pyzmail
 pip3.7 install picamera opencv-contrib-python
-pip3.7 install  scikit-build pygamer
+pip3.7 install  scikit-build pygame
