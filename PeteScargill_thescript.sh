@@ -1,8 +1,10 @@
 ##
-## "The Script" is the product of years of work by me (Peter scargill) and others, in particular Antonio Fragola (Mr Shark)
-## Supports Raspberry Pi with Buster full and lite (not tested NOOBS) - also other boards and op systems  see below
+## "The Script" is the product of years of work by me (Peter Scargill) and others, in particular Antonio Fragola (Mr Shark)
+## Supports Raspberry Pi with Buster  - also other boards and op systems but since 2021 this
+## script is only tested on Raspberry Pi (2,3,4) (Raspberry Pi OS, formerly Buster) (full or lite, not NOOBS). See below and if you
+##try it on other systems with success, please let mne know.
 ##
-## Includes my own Node-Red nodes such as BigTimer.
+## Makes use of the official Node-Red script (which I DIDN'T write) and my own Node-Red nodes such as BigTimer.
 ##
 ## To use my own exact setup you will also need: 
 ##  	sudo python -m pip install --upgrade pip setuptools wheel
@@ -23,7 +25,7 @@
 ## 		Web-page-based software like mc, micro and phpsysinfo.	
 ##
 ## IMPORTANT:-
-## 1. Run initially ONLY as PI on Raspberry Pi (or ROOT on other hardware). If ROOT, PI user will be checked/created for you as the main
+## 1. Run initially ONLY as user PI on Raspberry Pi (or ROOT on other hardware). If ROOT, PI user will be checked/created for you as the main
 ##    script must be run as pi.
 ##    User PI must be in the SUDO group (automatic on Raspberry Pi). Other groups are added if needed by the script.
 ## 2. When selecting GPIO for non-Raspberry Pi devices note - specific support for ODROID C2 only
@@ -43,6 +45,9 @@
 ##
 ## We cannot answer questions on board/operating system combinations we have not tested. See notes below for tested combos and dates.
 ## 
+## 01/08/2021   It seems for nwo there's an issue of influxdb no longer being available for RPi (32 bit). While we're working on that I  suggest NOT installing Grafana from the script.
+## 20/06/2020 - RPi added more useful NR contrib nodes
+## 08/06/2020 - Changed the version of the Node-Red script as NR have made a change
 ## 24/05/2020 - Fix for extra tabs on PI Cockpit addition - thanks to Dominic
 ## 23/05/2020 - added cockpit as option in RPI
 ## 16/05/2020 - note at this time the "micro" editor still has cut and paste issues - consider grabbing the latest nightly build and overwriting the /home/pi/micro file
@@ -846,9 +851,11 @@ fi
 if [[ $MYMENU == *"nodenew"* ]]; then
     printstatus "Installing NodeJS and NodeRed"
 	
-##  bash <(curl -sL https://raw.githubusercontent.com/node-red/raspbian-deb-package/master/resources/update-nodejs-and-nodered)
-   
-    curl -sL https://raw.githubusercontent.com/node-red/raspbian-deb-package/master/resources/update-nodejs-and-nodered > update-nodejs-and-nodered
+	##  bash <(curl -sL https://raw.githubusercontent.com/node-red/raspbian-deb-package/master/resources/update-nodejs-and-nodered)
+
+    bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
+ 
+   	##  curl -sL https://raw.githubusercontent.com/node-red/raspbian-deb-package/master/resources/update-nodejs-and-nodered > update-nodejs-and-nodered
     echo 143.204.15.127 deb.nodesource.com | sudo tee -a /etc/hosts
     chmod +x update-nodejs-and-nodered
     echo y | ./update-nodejs-and-nodered
@@ -860,8 +867,11 @@ cd && sudo cp /var/log/nodered-install.log . && sudo chown pi.pi ./nodered-insta
 	printstatus "Installing Nodes (could take some time)"
 # TAKEN OUT  node-red-contrib-graphs - I dont use it, most likely defunct - no work done on it in 3 years
 	for addonnodes in moment node-red-contrib-config node-red-contrib-grove node-red-contrib-diode node-red-contrib-bigtimer \
-	node-red-contrib-esplogin node-red-contrib-timeout node-red-node-openweathermap node-red-node-google node-red-contrib-advanced-ping node-red-node-emoncms node-red-node-geofence node-red-contrib-moment node-red-contrib-particle \
+	node-red-contrib-esplogin node-red-contrib-timeout node-red-node-openweathermap node-red-node-google node-red-contrib-advanced-ping node-red-node-emoncms \
+	node-red-node-geofence node-red-contrib-moment node-red-contrib-particle \
 	node-red-contrib-web-worldmap node-red-contrib-ramp-thermostat node-red-contrib-fs-ops node-red-contrib-influxdb \
+	node-red-contrib-home-assistant-websocket node-red-contrib-ibm-watson-iot node-red-contrib-sun-position \
+	node-red-contrib-tuya-local node-red-contrib-ui-led node-red-contrib-yr node-red-contrib-aedes \
 	node-red-contrib-isonline node-red-node-ping node-red-node-random node-red-node-smooth node-red-contrib-npm node-red-node-arduino \
 	node-red-contrib-file-function node-red-contrib-boolean-logic node-red-contrib-blynk-ws node-red-contrib-telegrambot node-red-contrib-dsm node-red-contrib-ftp \
 	node-red-dashboard node-red-contrib-owntracks node-red-contrib-alexa-local node-red-contrib-amazon-echo node-red-contrib-alexa-notifyme node-red-contrib-heater-controller ; do
