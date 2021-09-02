@@ -6,7 +6,7 @@ Dit vergemakkelijk jouw leven op een Pi
 
 # Voorvereisten
 - Je gebruikt RaspberryPiOS, MacOS of Ubuntu/Linux
-- Je hebt Python 3.7 en virtualenv  alreeds geïnstalleerd
+- Je hebt minimaal >=Python 3.7 en virtualenv  alreeds geïnstalleerd
 - Je bent ingelogd als gebruiker pi
 
 ## Stap 1: installeren Pete Scargill script
