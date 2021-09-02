@@ -1,8 +1,9 @@
 echo "SETUP: Skep octoprint virtualenv."
-~/.local/bin/virtualenv ~/venv/OctoPrint
+virtualenv ~/venv/octoprint
 echo "SETUP: Aktiveer virtualenv."
-source ~/venv/OctoPrint/bin/activate
-pip3 install octoprint
+source ~/venv/octoprint/bin/activate
+pip install pip --upgrade
+pip install octoprint
 
 echo "SETUP: pi toegang naar devices."
 sudo usermod -a -G tty pi &
@@ -51,3 +52,6 @@ pip --disable-pip-version-check install https://github.com/rlogiacco/UploadAnyth
 pip --disable-pip-version-check install https://github.com/malnvenshorn/OctoPrint-WebcamTab/archive/master.zip --no-cache-dir
 
 source ~/venv/venv3.7/bin/activate
+printf "\nStart Octoprint service op http://localhost:5000\n"
+sudo service octoprint restart &
+printf "Octoprint install afgerond.\n"
