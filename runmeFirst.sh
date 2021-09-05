@@ -33,12 +33,10 @@ sudo apt install -y git
 # sudo apt-get upgrade -y
 
 sudo apt-get install -y p7zip-full mc sqlite3  i2c-tools
-sudo apt install -y python3 python3-pip python-smbus
+sudo apt install -y python3 python3-pip python-smbus gedit gparted
 sudo apt-get install -y nodejs npm tightvncserver
 #sudo apt-get install -y vsftpd 
 #sudo apt-get install -y apache2 php php-mysql
-sudo apt-get install -y wolfram-engine gedit
-
 
 sudo apt install -y python3-pip
 
@@ -50,15 +48,15 @@ echo "source ~/venv/venv3.7/bin/activate" >> ~/.bashrc
 source ~/.bashrc
 
 echo "doen usermod"
-sudo usermod -aG gpio pi &
-sudo usermod -aG dialout pi &
-sudo usermod -aG i2c pi &
-sudo usermod -aG tty pi &
+sudo usermod -aG gpio pi
+sudo usermod -aG dialout pi
+sudo usermod -aG i2c pi
+sudo usermod -aG tty pi
 
-sudo adduser pi gpio &
-sudo usermod pi dialout &
-sudo usermod pi i2c &
-sudo usermod pi tty &
+sudo adduser pi gpio
+sudo usermod pi dialout
+sudo usermod pi i2c
+sudo usermod pi tty
 
 
 sudo adduser michiele
