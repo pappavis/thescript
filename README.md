@@ -27,7 +27,7 @@ Super handig installeert virtualenvironment voor Python, CircuitPython, tesserac
 pi@rpasberrypi: $ cd ~/Downloads
 pi@rpasberrypi: $ git clone https://github.com/pappavis/thescript/
 pi@rpasberrypi: $ cd ~/Downloads/thescript/
-pi@rpasberrypi: $ bash ./iinstallVerzamelupdates.sh
+pi@rpasberrypi: $ bash ./installVerzamelupdates.sh
 ```
 
 # origineel
