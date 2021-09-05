@@ -17,6 +17,6 @@ pip3.7  install  Adafruit-GPIO SQLAlchemy adafruit-ads1x15 adafruit-pureio aniso
 echo ""
 echo "Je moet opnieuw inloggen, en dan uitvoeren: python3 blinkatest.py"
 echo ""
-python demo/blinkatest.py
-python demo/ina219demo.py
+python demo/blinkatest.py &
+python demo/ina219demo.py &
 # python demo/oatmealDemo.py
