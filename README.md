@@ -13,6 +13,7 @@ Dit vergemakkelijk jouw leven op een Pi
 Login op jouw Pi als gebruiker pi.  NIET op Pi0 dit duurt te lang!!
 
 ```bash
+pi@rpasberrypi: $ sudo apt install -y git
 pi@rpasberrypi: $ git clone https://github.com/pappavis/thescript/
 pi@rpasberrypi: $ cd thescript && wget https://bitbucket.org/api/2.0/snippets/scargill/kAR5qG/master/files/script.sh
 pi@rpasberrypi: $ bash ./script.sh
