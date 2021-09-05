@@ -20,14 +20,13 @@ pi@rpasberrypi: $ sudo reboot -h now
 ```
 
 ## Stap 2: Python 3 en circuitpython
-Super handig
+Super handig installeert virtualenvironment voor Python, CircuitPython, tesseractOCR en Micropython.
 
 ```bash
 pi@rpasberrypi: $ cd ~/Downloads
 pi@rpasberrypi: $ git clone https://github.com/pappavis/thescript/
 pi@rpasberrypi: $ cd ~/Downloads/thescript/
-pi@rpasberrypi: $ bash ./installPythonVirtualenv.sh
-pi@rpasberrypi: $ bash ./installPythonCircuitpython.sh
+pi@rpasberrypi: $ bash ./iinstallVerzamelupdates.sh
 ```
 
 # origineel
