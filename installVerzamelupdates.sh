@@ -9,4 +9,4 @@ bash ./installPythonVirtualenv.sh
 printf "\nPython wordt bijgewerkt\n"
 bash ./installMicropython.sh
 
-printf "\ninstallVerzamelupdates.sh afgerond.\n"
+printf "\nEINDE installVerzamelupdates.sh afgerond.\n"
