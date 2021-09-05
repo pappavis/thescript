@@ -16,10 +16,10 @@ cd ~/venv
 ~/.local/bin/pipx install virtualenv
 ~/.local/bin/virtualenv ~/venv/venv3.7
 source ~/venv/venv3.7/bin/activate
-pip3.7 install adafruit-blinka RPI.GPIO
+pip install adafruit-blinka RPI.GPIO
 echo "source ~/venv/venv3.7/bin/activate" >> ~/.bashrc
 source ~/.bashrc
 
-pip3.7 install openpyxl o365 ttn qrcode pillow sqlalchemy pymsteams esptool adafruit-ampy pyserial pyparsing pyzmail
-pip3.7 install picamera opencv-contrib-python
-pip3.7 install  scikit-build pygame
+pip install openpyxl o365 ttn qrcode pillow sqlalchemy pymsteams esptool adafruit-ampy pyserial pyparsing pyzmail
+pip install picamera opencv-contrib-python
+pip install  scikit-build pygame
