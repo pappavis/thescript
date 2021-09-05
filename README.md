@@ -23,8 +23,9 @@ pi@rpasberrypi: $ sudo reboot -h now
 Super handig
 
 ```bash
+pi@rpasberrypi: $ cd ~/Downloads
 pi@rpasberrypi: $ git clone https://github.com/pappavis/thescript/
-pi@rpasberrypi: $ cd ./thescript/
+pi@rpasberrypi: $ cd ~/Downloads/thescript/
 pi@rpasberrypi: $ bash ./installPythonVirtualenv.sh
 pi@rpasberrypi: $ bash ./installPythonCircuitpython.sh
 ```
