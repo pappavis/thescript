@@ -12,5 +12,7 @@ sudo cp -r -v ./vhusbd* /usr/local/bin
 sudo cp ./vhui* /usr/local/bin
 echo "Start VirtualHerer Raspberry Pi server"
 sudo vhusbdarmpi3 -b
+sudo apt-get install -y phpmyadmin
+sudo ln -s /usr/share/phpmyadmin /var/www/html
 sudo apt install -y raspberrypi-ui-mods
 echo "Je moet 'vhusbdarmpi3 -b' toevoegen aan /etc/rc.local. voor de exit 0 "
