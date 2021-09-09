@@ -1,7 +1,8 @@
 printf "\n** 20210904 Bijwerken Python, Circuitpython, instalaltie Micropython\n**"
 cd ~/Downloads/thescript
 printf "\nInstalleren VirtualHere.com USB via WiFi.\n"
-bash /installExtras.sh
+bash ./installExtras.sh
+bash ./installNFSserver.sh
 printf "\nTesseract OCR wordt bijgewerkt\n"
 bash ./installTessarectOCT.sh
 printf "\nCircuitPython wordt bijgewerkt\n"
