@@ -13,3 +13,4 @@ sudo printf "\n HANDMATIG toevoegen aan /etc/exports/  : \n/mnt/nfsshare *(rw,al
 sudo exportfs -ra
 printf "\nNFS bestanddeling is ingesteld\n -- MacOS verbind aan nfs://$_hn1.local/nfsshare  of nfs://$_ip1/nfsshare \n -- Windows verbind aan //$ip1.local/nfsshare\n\nIP adres $_ip1\n"
 sudo service nfs-server restart
+printf "\nHandmatig uitvoeren:\n  sudo service nfs-server restart\n"
