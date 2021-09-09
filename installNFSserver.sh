@@ -2,7 +2,7 @@ _id1=$(id pi)
 _hn1=$(hostname)
 _ip1=$(hostname -I)
 printf "\nStart instellen van NFS server op \n" $_ip1 ".local\n"
-sudo apt-get install nfs-kernel-server -y
+sudo apt-get install -y nfs-kernel-server nfs-common
 sudo mkdir /mnt/nfsshare
 sudo chown -R pi:pi /mnt/nfsshare
 sudo find /mnt/nfsshare/ -type d -exec chmod 755 {} \;
