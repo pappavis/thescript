@@ -24,6 +24,7 @@ Download <a href="https://www.raspberrypi.org/software/" target="_blank">Raspber
 # Stap 2:
 Na install direct Wifi instellen via Raspi-config
 
+<img src="https://www.raspberrypi.org/documentation/computers/images/raspi-config.png" width="30%" height="30%">
 ```bash
 pi@raspberrypi: $ sudo raspi-config
 pi@raspberrypi: $ reboot
