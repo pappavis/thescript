@@ -25,3 +25,5 @@ sudo locale-gen en_US.utf8
 sudo mysql -u root -p < ~/tmp/partdb.sql
 sudo mysql -u root -p < ~/tmp/create_userPartDb.sql
 echo "PartDB geïnstalleerd bij http://$_hn1.local/support/part-db"
+echo "   Frontend met gebruikersnaam: admin, wachtwoord: admin"
+echo "   Partdb setup aanmelden met gebruikersnaam: partdb, wachtwoord: partdb"
