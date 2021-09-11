@@ -1,3 +1,4 @@
+_hn1=$(hostname)
 cd ~/Downloads
 echo "Download en installeer virtualhere.com Pi 3 server & client"
 curl https://raw.githubusercontent.com/virtualhere/script/main/install_server | sudo sh
@@ -24,6 +25,10 @@ cd ~/Downloads/phpliteadmin
 cp -r -v phpliteadmin.config.sample.php phpliteadmin.config.php 
 sudo mkdir /var/www/html/support
 sudo mv ~/Downloads/phpliteadmin /var/www/html/support
+sudo chown www-data:www-data -R /var/www/html/support/phpliteadmin
+sudo apt install -y php-sqlite3 php-pdo-sqlite php-mbstring openssl
+echo "PHPliteadmin is geïnstaleerd voor http://$_hn1.local/phpalitedmin"
+sudo service apache2 restart
 
 sudo apt-get install -y phpmyadmin
 sudo ln -s /usr/share/phpmyadmin /var/www/html
