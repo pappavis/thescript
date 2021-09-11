@@ -1,3 +1,4 @@
+_hn1=$(hostname)
 echo " "
 echo "SETUP: part-db in /var/www/html/"
 echo " "
@@ -16,7 +17,9 @@ rem sudo php -r "if (hash_file('sha384', 'composer-setup.php') === 'e0012edf3e80
 sudo php composer-setup.php
 sudo php -r "unlink('composer-setup.php');"
 sudo chown -R www-data:www-data /var/www/html/support/part-db
-cd ~/Downloads
+mkdir ~/tmp
+cd ~/tmp
 wget https://raw.githubusercontent.com/pappavis/Part-DB/master/db/partdb.sql
 sudo locale-gen en_US.utf8
-
+mysql -u root -p < ~/tmp/partdb.sql
+echo "PartDB geïnstalleerd bij http://$_hn1.local/support/part-db"
