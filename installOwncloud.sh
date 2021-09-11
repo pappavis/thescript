@@ -1,7 +1,7 @@
 _hn1=$(hostname)
 echo "* Instaleer Owncloud"
 cd ~/Downloads
-sudo apt install -y php-intl
+sudo apt install -y apache2 php php-mysql php-intl
 sudo phpenmod  intl
 wget https://download.owncloud.org/community/owncloud-complete-20210721.zip
 7z x ./owncloud-complete-20210721.zip
