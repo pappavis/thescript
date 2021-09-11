@@ -17,6 +17,6 @@ sudo php composer-setup.php
 sudo php -r "unlink('composer-setup.php');"
 sudo chown -R www-data:www-data /var/www/html/support/part-db
 cd ~/Downloads
-wget https://github.com/pappavis/Part-DB/blob/master/db/partdb.sql
+wget https://raw.githubusercontent.com/pappavis/Part-DB/master/db/partdb.sql
 sudo locale-gen en_US.utf8
 
