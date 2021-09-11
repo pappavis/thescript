@@ -20,6 +20,8 @@ sudo chown -R www-data:www-data /var/www/html/support/part-db
 mkdir ~/tmp
 cd ~/tmp
 wget https://raw.githubusercontent.com/pappavis/Part-DB/master/db/partdb.sql
+wget https://raw.githubusercontent.com/pappavis/Part-DB/master/db/create_userPartDb.sql
 sudo locale-gen en_US.utf8
 mysql -u root -p < ~/tmp/partdb.sql
+mysql -u root -p < ~/tmp/create_userPartDb.sql
 echo "PartDB geïnstalleerd bij http://$_hn1.local/support/part-db"
