@@ -12,8 +12,19 @@ chmod +x ./vhusbdarmpi
 chmod +x ./vhusbdx86_64
 sudo cp -r -v ./vhusbd* /usr/local/bin
 sudo cp ./vhui* /usr/local/bin
-echo "Start VirtualHerer Raspberry Pi server"
+echo "* Start VirtualHerer Raspberry Pi server"
 sudo vhusbdarmpi3 -b
+
+echo "* Installeer phpliteadmin voor sqlite."
+mkdir ~/dbs
+mkdir ~/Downloads/phpliteadmin
+wget https://bitbucket.org/phpliteadmin/public/downloads/phpLiteAdmin_v1-9-8-2.zip
+cd ~/Downloads/phpliteadmin 
+7z x ~/Downloads/phpLiteAdmin_v1-9-8-2.zip
+cp -r -v phpliteadmin.config.sample.php phpliteadmin.config.php 
+sudo mkdir /var/www/html/support
+sudo mv ~/Downloads/phpliteadmin /var/www/html/support
+
 sudo apt-get install -y phpmyadmin
 sudo ln -s /usr/share/phpmyadmin /var/www/html
 sudo apt install -y raspberrypi-ui-mods
