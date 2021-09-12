@@ -20,6 +20,9 @@ pip install adafruit-blinka RPI.GPIO
 echo "source ~/venv/venv3.7/bin/activate" >> ~/.bashrc
 source ~/.bashrc
 
+sudo apt install -y wiringpi 
+sudo apt install -y rpi.gpio
+
 pip install openpyxl o365 ttn qrcode pillow sqlalchemy pymsteams esptool adafruit-ampy pyserial pyparsing pyzmail gpiozero
 pip install picamera opencv-contrib-python
 pip install  scikit-build pygame
