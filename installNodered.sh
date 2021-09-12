@@ -1,7 +1,7 @@
 MYMENU=""
 LOGFILE="/home/pi/logNoderedinstall.log"
-adminpass="rider506"
-userpass="rider506"
+adminpass=""
+userpass=""
 NQUIET=""
 
 
@@ -9,12 +9,12 @@ echo "* Node-red bijwerken"
 bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
 sudo systemctl enable nodered.service
 
-sudo apt-get install -y  yarn
-curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-sudo apt-get install -y nodejs
+#sudo apt-get install -y  yarn
+#curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+#sudo apt-get install -y nodejs
 echo "NodeJS bijgewerkt.  NodeJS versie: $(node -v), npm $(npm -v)"
-rm -rf ~/.node-red/node_modules
-mkdir ~/.node-red
+#rm -rf ~/.node-red/node_modules
+#mkdir ~/.node-red
 cd ~/.node-red
 npm install node-red-contrib-sqlitedb node-red-contrib-ttn geofence
 npm install --unsafe-perm node-red-node-sqlite
@@ -36,7 +36,6 @@ npm  audit fix
 sudo service nodered restart
 cd ~/
 sudo npm  install bcryptjs
-
 
 echo "Nodered install afgerond."
 
