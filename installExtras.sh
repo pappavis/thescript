@@ -23,5 +23,7 @@ sudo apt install -y raspberrypi-ui-mods xinit xserver-xorg xrdp
 sudo adduser xrdp ssl-cert 
 systemctl show -p SubState --value xrdp
 
+curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+
 echo "Virtuahlere draadloos Wifi is geinstalleerd."
 echo "* Install extras is afgerond."
