@@ -7,18 +7,19 @@ NQUIET=""
 
 echo "* Node-red bijwerken"
 sudo npm install -g --unsafe-perm node-red
-bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
-sudo systemctl enable nodered.service
+#bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
 
-#sudo apt-get install -y  yarn
-#curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-#sudo apt-get install -y nodejs
+sudo apt-get install -y  yarn
+curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+sudo apt-get install -y nodejs
 echo "NodeJS bijgewerkt.  NodeJS versie: $(node -v), npm $(npm -v)"
-#rm -rf ~/.node-red/node_modules
-#mkdir ~/.node-red
+rm -rf ~/.node-red/node_modules
+mkdir ~/.node-red
 cd ~/.node-red
 npm install node-red-contrib-sqlitedb node-red-contrib-ttn geofence
 npm install --unsafe-perm node-red-node-sqlite
+
+sudo systemctl enable nodered.service
 
 npm install moment node-red-contrib-config node-red-contrib-grove node-red-contrib-diode node-red-contrib-bigtimer \
 	node-red-contrib-esplogin node-red-contrib-timeout node-red-node-openweathermap node-red-node-google node-red-contrib-advanced-ping node-red-node-emoncms \
@@ -31,12 +32,15 @@ npm install moment node-red-contrib-config node-red-contrib-grove node-red-contr
 	node-red-dashboard node-red-contrib-owntracks node-red-contrib-alexa-local node-red-contrib-amazon-echo node-red-contrib-alexa-notifyme node-red-contrib-heater-controller 
 	node-red-contrib-apple-find-me node-red-contrib-ttn node-red-contrib-lorawan-packet-decrypt-nwkey-appkey node-red-contrib-extract_ttn
 
+sudo systemctl enable nodered.service
+
 npm install i2c-bus
 npm install
 npm  audit fix
 sudo service nodered restart
 cd ~/
 sudo npm  install bcryptjs
+sudo systemctl enable nodered.service
 
 echo "Nodered install afgerond."
 
