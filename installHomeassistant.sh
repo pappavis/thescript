@@ -9,7 +9,4 @@ sudo echo "/home/pi/venv/homeassistant/bin/hass" >> /usr/local/bin/homeassistant
 pip install --upgrade pip homebridge
 sudo echo "/home/pi/venv/homeassistant/bin/hass" >> /usr/local/bin/homeassistant
 sudo echo "source /home/pi/venv/venv3.7/bin/activate"  >> /usr/local/bin/homeassistant
-sudo echo "printf '\nStart homeassitant op http://". $_hn.local:8123\n'" . "  >> /usr/local/bin/homeassistant
-printf "\nStart homeassistant op "
-printf $_hn
-printf "\n\nhomeassistant install afgerond\n"
+printf "\nStart homeassitant op http://$_hn.local:8123\n"
