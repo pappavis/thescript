@@ -33,10 +33,11 @@ sudo apt install -y git
 # sudo apt-get upgrade -y
 
 sudo apt-get install -y p7zip-full mc sqlite3  i2c-tools
+sudo apt install -y mariadb-server mariadb-client
 sudo apt install -y python3 python3-pip python-smbus gedit gparted
-sudo apt-get install -y nodejs npm tightvncserver
-#sudo apt-get install -y vsftpd 
-#sudo apt-get install -y apache2 php php-mysql
+sudo apt-get install -y nodejs npm tightvncserver pure-ftpd
+sudo apt-get install -y  
+sudo apt-get install -y apache2 php php-mysql
 
 sudo apt install -y python3-pip
 
@@ -73,5 +74,6 @@ sudo usermod -aG i2c michiele
 sudo usermod -aG spi michiele
 sudo usermod -aG tty michiele
 
+echo "Je moet nu REBOOT"
 
 #bash ./setupNodered.sh
