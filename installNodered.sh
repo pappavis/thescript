@@ -14,13 +14,27 @@ rm -rf ~/.node-red/node_modules
 mkdir ~/.node-red
 cd ~/.node-red
 npm install node-red-contrib-sqlitedb node-red-contrib-ttn geofence
+npm install --unsafe-perm node-red-node-sqlite
+
+npm install moment node-red-contrib-config node-red-contrib-grove node-red-contrib-diode node-red-contrib-bigtimer \
+	node-red-contrib-esplogin node-red-contrib-timeout node-red-node-openweathermap node-red-node-google node-red-contrib-advanced-ping node-red-node-emoncms \
+	node-red-node-geofence node-red-contrib-moment node-red-contrib-particle \
+	node-red-contrib-web-worldmap node-red-contrib-ramp-thermostat node-red-contrib-fs-ops node-red-contrib-influxdb \
+	node-red-contrib-home-assistant-websocket node-red-contrib-ibm-watson-iot node-red-contrib-sun-position \
+	node-red-contrib-tuya-local node-red-contrib-ui-led node-red-contrib-yr node-red-contrib-aedes \
+	node-red-contrib-isonline node-red-node-ping node-red-node-random node-red-node-smooth node-red-contrib-npm node-red-node-arduino \
+	node-red-contrib-file-function node-red-contrib-boolean-logic node-red-contrib-blynk-ws node-red-contrib-telegrambot node-red-contrib-dsm node-red-contrib-ftp \
+	node-red-dashboard node-red-contrib-owntracks node-red-contrib-alexa-local node-red-contrib-amazon-echo node-red-contrib-alexa-notifyme node-red-contrib-heater-controller 
+	node-red-contrib-apple-find-me node-red-contrib-ttn node-red-contrib-lorawan-packet-decrypt-nwkey-appkey node-red-contrib-extract_ttn
+
+npm install i2c-bus
 npm install
-cd ~/
+npm  audit fix
 sudo service nodered restart
+cd ~/
+sudo npm  install bcryptjs
 
 printstatus "Installing NodeJS and NodeRed"
-	
-	##  bash <(curl -sL https://raw.githubusercontent.com/node-red/raspbian-deb-package/master/resources/update-nodejs-and-nodered)
 
     bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
  
@@ -33,22 +47,8 @@ cd && sudo cp /var/log/nodered-install.log . && sudo chown pi.pi ./nodered-insta
  
 
 
-	printstatus "Installing Nodes (could take some time)"
-# TAKEN OUT  node-red-contrib-graphs - I dont use it, most likely defunct - no work done on it in 3 years
-	for addonnodes in moment node-red-contrib-config node-red-contrib-grove node-red-contrib-diode node-red-contrib-bigtimer \
-	node-red-contrib-esplogin node-red-contrib-timeout node-red-node-openweathermap node-red-node-google node-red-contrib-advanced-ping node-red-node-emoncms \
-	node-red-node-geofence node-red-contrib-moment node-red-contrib-particle \
-	node-red-contrib-web-worldmap node-red-contrib-ramp-thermostat node-red-contrib-fs-ops node-red-contrib-influxdb \
-	node-red-contrib-home-assistant-websocket node-red-contrib-ibm-watson-iot node-red-contrib-sun-position \
-	node-red-contrib-tuya-local node-red-contrib-ui-led node-red-contrib-yr node-red-contrib-aedes \
-	node-red-contrib-isonline node-red-node-ping node-red-node-random node-red-node-smooth node-red-contrib-npm node-red-node-arduino \
-	node-red-contrib-file-function node-red-contrib-boolean-logic node-red-contrib-blynk-ws node-red-contrib-telegrambot node-red-contrib-dsm node-red-contrib-ftp \
-	node-red-dashboard node-red-contrib-owntracks node-red-contrib-alexa-local node-red-contrib-amazon-echo node-red-contrib-alexa-notifyme node-red-contrib-heater-controller ; do
-		printstatus "Installing node \"${addonnodes}\""
-		npm  install --save ${addonnodes} 2>&1 | tee -a $LOGFILE
-	done
 	
-	printstatus "Installing node \"node-red-node-sqlite\""
+	echo "Installing node \"node-red-node-sqlite\""
 	npm  install --unsafe-perm node-red-node-sqlite 2>&1 | tee -a $LOGFILE
 	if [[ $MYMENU == *"hwsupport"* ]]; then
 	printstatus "Installing node \"i2c-bus\""
@@ -57,7 +57,7 @@ cd && sudo cp /var/log/nodered-install.log . && sudo chown pi.pi ./nodered-insta
 	printstatus "Installing node \"bcryptjs\""
     sudo npm  install bcryptjs 2>&1 | tee -a $LOGFILE
 
-	if [[ $MYMENU == *"hwsupport"* ]]; then
+	if [[ 1==1 ]]; then
 		## this last bit of code is to ensure that node-red-contrib-opi-gpio can gain access to port bits!!
 		getent group gpio || sudo groupadd gpio 2>&1 | tee -a $LOGFILE
 		getent group gpio | grep -w -l pi || sudo adduser pi gpio 2>&1 | tee -a $LOGFILE
