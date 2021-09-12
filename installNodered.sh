@@ -4,6 +4,20 @@ adminpass="rider506"
 userpass="rider506"
 NQUIET=""
 
+
+echo "* Node-red bijwerken"
+sudo apt-get install -y  yarn
+curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+sudo apt-get install -y nodejs
+echo "NodeJS bijgewerkt.  NodeJS versie: $(node -v), npm $(npm -v)"
+rm -rf ~/.node-red/node_modules
+mkdir ~/.node-red
+cd ~/.node-red
+npm install node-red-contrib-sqlitedb node-red-contrib-ttn geofence
+npm install
+cd ~/
+sudo service nodered restart
+
 printstatus "Installing NodeJS and NodeRed"
 	
 	##  bash <(curl -sL https://raw.githubusercontent.com/node-red/raspbian-deb-package/master/resources/update-nodejs-and-nodered)
