@@ -18,5 +18,6 @@ echo "* Start VirtualHerer Raspberry Pi server"
 
 sudo apt-get install -y phpmyadmin
 sudo ln -s /usr/share/phpmyadmin /var/www/html
-sudo apt install -y raspberrypi-ui-mods xinit xserver-xorg
+sudo apt update -y
+sudo apt install -y raspberrypi-ui-mods xinit xserver-xorg xrdp
 echo "Je moet 'vhusbdarmpi3 -b' toevoegen aan /etc/rc.local. voor de exit 0 "
