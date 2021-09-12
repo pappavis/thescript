@@ -16,20 +16,6 @@ curl https://raw.githubusercontent.com/virtualhere/script/main/install_server | 
 echo "* Start VirtualHerer Raspberry Pi server"
 #sudo vhusbdarmpi3 -b
 
-echo "* Installeer phpliteadmin voor sqlite."
-mkdir ~/dbs
-mkdir ~/Downloads/phpliteadmin
-wget https://bitbucket.org/phpliteadmin/public/downloads/phpLiteAdmin_v1-9-8-2.zip
-cd ~/Downloads/phpliteadmin 
-7z x ~/Downloads/phpLiteAdmin_v1-9-8-2.zip
-cp -r -v phpliteadmin.config.sample.php phpliteadmin.config.php 
-sudo mkdir /var/www/html/support
-sudo mv ~/Downloads/phpliteadmin /var/www/html/support
-sudo chown www-data:www-data -R /var/www/html/support/phpliteadmin
-sudo apt install -y php-sqlite3 php-pdo-sqlite php-mbstring openssl
-echo "PHPliteadmin is geïnstaleerd voor http://$_hn1.local/phpalitedmin"
-sudo service apache2 restart
-
 sudo apt-get install -y phpmyadmin
 sudo ln -s /usr/share/phpmyadmin /var/www/html
 sudo apt install -y raspberrypi-ui-mods
