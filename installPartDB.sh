@@ -2,6 +2,7 @@ _hn1=$(hostname)
 echo " "
 echo "SETUP: part-db in /var/www/html/"
 echo " "
+sudo apt install -y apache2 php php-mysql php-sqlite3
 sudo mkdir /var/www/html/support
 cd ~/Downloads
 wget -O part-db.tar.gz https://github.com/jbtronics/Part-DB/archive/master.tar.gz
