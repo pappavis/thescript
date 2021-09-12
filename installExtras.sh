@@ -23,15 +23,7 @@ sudo apt install -y raspberrypi-ui-mods xinit xserver-xorg xrdp remmina
 sudo adduser xrdp ssl-cert 
 systemctl show -p SubState --value xrdp
 
-echo "* Node-red bijwerken"
-sudo apt-get install -y  yarn
-curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-sudo apt-get install -y nodejs
-echo "NodeJS bijgewerkt.  NodeJS versie: $(node -v), npm $(npm -v)"
-cd ~/.nodejs
-rm -rf ~/.nodejs/node_modules
-npm install
-npm install node-red-contrib-sqlitedb node-red-contrib-ttn geofence
+bash ./installNodeJS.sh
 
 cd ~/Downloads/thescript
 echo "Virtuahlere draadloos Wifi is geinstalleerd."
