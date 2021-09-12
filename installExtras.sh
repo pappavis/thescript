@@ -20,4 +20,7 @@ sudo apt-get install -y phpmyadmin
 sudo ln -s /usr/share/phpmyadmin /var/www/html
 sudo apt update -y
 sudo apt install -y raspberrypi-ui-mods xinit xserver-xorg xrdp
-echo "Je moet 'vhusbdarmpi3 -b' toevoegen aan /etc/rc.local. voor de exit 0 "
+systemctl show -p SubState --value xrdp
+
+echo "Virtuahlere draadloos Wifi is geinstalleerd."
+echo "* Install extras is afgerond."
