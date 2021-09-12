@@ -19,7 +19,7 @@ echo "* Start VirtualHerer Raspberry Pi server"
 sudo apt-get install -y phpmyadmin
 sudo ln -s /usr/share/phpmyadmin /var/www/html
 sudo apt update -y
-sudo apt install -y raspberrypi-ui-mods xinit xserver-xorg xrdp
+sudo apt install -y raspberrypi-ui-mods xinit xserver-xorg xrdp remina
 sudo adduser xrdp ssl-cert 
 systemctl show -p SubState --value xrdp
 
