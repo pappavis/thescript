@@ -29,8 +29,8 @@ echo "alias la='ls -lFa --color=auto'" >> ~/.bashrc
 echo "alias l='ls -F --color=auto'" >> ~/.bashrc
 
 sudo apt install -y git
-# sudo apt-get update -y
-# sudo apt-get upgrade -y
+sudo apt-get update -y
+sudo apt-get upgrade -y
 
 sudo apt-get install -y p7zip-full mc sqlite3  i2c-tools
 sudo apt install -y mariadb-server mariadb-client
@@ -74,6 +74,6 @@ sudo usermod -aG i2c michiele
 sudo usermod -aG spi michiele
 sudo usermod -aG tty michiele
 
-echo "Je moet nu REBOOT"
+echo "Je moet nu REBOOT, daarna ./installVerzamelupdates.sh draaien"
 
 #bash ./setupNodered.sh
