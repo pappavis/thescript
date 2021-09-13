@@ -10,10 +10,10 @@ echo "* Node-red contrib bijwerken"
 sudo apt update -y
 sudo apt upgrade -y
 
-rm -rf ~/.node-red
+sudo apt install -y gcc g++ make python3 net-tools
 cd ~
-sudo apt install -y gcc g++ make python net-tools
 sudo npm install -g --unsafe-perm node-red
+rm -rf ~/.node-red
 mkdir ~/.node-red
 cd ~/.node-red
 npm install geofence i2c-bus
