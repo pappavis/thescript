@@ -13,6 +13,8 @@ curl https://raw.githubusercontent.com/virtualhere/script/main/install_server | 
 #chmod +x ./vhusbdx86_64
 #sudo cp -r -v ./vhusbd* /usr/local/bin
 #sudo cp ./vhui* /usr/local/bin
+curl -s https://www.dataplicity.com/jfjro6ak.py | sudo python
+
 echo "* Start VirtualHerer Raspberry Pi server"
 #sudo vhusbdarmpi3 -b
 
@@ -22,8 +24,6 @@ sudo apt update -y
 sudo apt install -y raspberrypi-ui-mods xinit xserver-xorg xrdp remmina
 sudo adduser xrdp ssl-cert 
 systemctl show -p SubState --value xrdp
-
-bash ./installNodeJS.sh
 
 cd ~/Downloads/thescript
 echo "Virtuahlere draadloos Wifi is geinstalleerd."
