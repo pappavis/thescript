@@ -10,11 +10,10 @@ echo "* Node-red contrib bijwerken"
 sudo apt update -y
 sudo apt upgrade -y
 
-npm install i2c-bus
-
+rm -rf ~/.node-red
+mkdir ~/.node-red
 cd ~/.node-red
-sudo rm -rf ./node_modules
-npm install geofence
+npm install geofence i2c-bus
 npm $NQUIET install --unsafe-perm node-red-node-sqlite
 npm install moment node-red-contrib-config node-red-contrib-grove node-red-contrib-diode node-red-contrib-bigtimer 
 npm install node-red-contrib-esplogin node-red-contrib-timeout node-red-node-openweathermap node-red-node-google node-red-contrib-advanced-ping node-red-node-emoncms
