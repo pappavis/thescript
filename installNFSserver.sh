@@ -10,7 +10,8 @@ sudo chmod 777 /mnt/nfs/nfsshare/
 sudo cp /etc/exports ~/tmp/exp1.tmp
 sudo exportfs -ra
 sudo service nfs-server restart
-sudo systemctl restart nfs-kernel-server
+sudo service rpcbind restart
+sudo service nfs-kernel-server restart 
 
 sudo firewall-cmd --permanent --zone=public --add-service=nfs
 sudo firewall-cmd --permanent --zone=public --add-service=mountd
