@@ -44,7 +44,7 @@ sudo mount -t auto pivhere:/home /mnt/nfs/pivhere/ &
 sudo mount -t auto pi4:/home /mnt/nfs/pi4/ &
 sudo mount -t auto pilamp:/home /mnt/nfs/pilamp/ &
 sudo mount -t auto spelen02:/home /mnt/nfs/spelen02/ &
-sudo mount -t auto spelen02:/home /mnt/nfs/p1mon/ &
+sudo mount -t auto p1mon:/home /mnt/nfs/p1mon/ &
 
 sudo printf "\n HANDMATIG toevoegen aan /etc/exports/  : \n/mnt/nfsshare *(rw,all_squash,insecure,async,no_subtree_check,anonuid=1000,anongid=1000)\n"
 printf "\nNFS bestanddeling is daarna bereikbaar:\n -- MacOS verbind aan nfs://$_hn1.local/nfsshare  of nfs://$_ip1/nfsshare \n -- Windows verbind aan //$ip1.local/nfsshare\n\nIP adres $_ip1\n"
