@@ -40,6 +40,7 @@ sudo apt install -y python3 python3-pip python-smbus gedit gparted
 sudo apt-get install -y nodejs npm tightvncserver pure-ftpd
 sudo apt-get install -y  
 sudo apt-get install -y apache2 php php-mysql php-sqlite3 php-mbstring openssl
+sudo apt install -y mosquitto
 
 sudo apt install -y python3-pip
 
