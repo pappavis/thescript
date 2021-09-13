@@ -11,10 +11,14 @@ sudo apt update -y
 sudo apt upgrade -y
 
 rm -rf ~/.node-red
+cd ~
+sudo apt install -y gcc g++ make python net-tools
+sudo npm install -g --unsafe-perm node-red
 mkdir ~/.node-red
 cd ~/.node-red
 npm install geofence i2c-bus
-npm $NQUIET install --unsafe-perm node-red-node-sqlite
+npm $NQUIET install node-red-node-sqlite
+#npm $NQUIET install --unsafe-perm node-red-node-sqlite
 npm install moment node-red-contrib-config node-red-contrib-grove node-red-contrib-diode node-red-contrib-bigtimer 
 npm install node-red-contrib-esplogin node-red-contrib-timeout node-red-node-openweathermap node-red-node-google node-red-contrib-advanced-ping node-red-node-emoncms
 npm install 	node-red-node-geofence node-red-contrib-moment node-red-contrib-particle
