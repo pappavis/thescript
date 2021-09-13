@@ -8,13 +8,15 @@ bash ./runmefirst
 printf "\nInstalleren VirtualHere.com USB via WiFi.\n"
 bash ./installExtras.sh
 bash ./installNFSserver.sh
+bash ./installNodeJS.sh
+sudo apt autoclean -y
+sudo apt autoremove -y
 printf "\nTesseract OCR wordt bijgewerkt\n"
 bash ./installTessarectOCT.sh
 printf "\nCircuitPython wordt bijgewerkt\n"
 bash ./installPythonCircuitpython.sh
 printf "\nPython wordt bijgewerkt\n"
 bash ./installPythonVirtualenv.sh
-bash ./installNodeJS.sh
 printf "\Micropython wordt geïnstalleerd\n"
 bash ./installMicropython.sh
 
