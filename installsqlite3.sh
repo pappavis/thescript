@@ -1,4 +1,6 @@
 echo "start SQLite install"
+mkdir ~/tmp
+$LOGFILE="~/tmp"
 
 sudo apt install -y apache2 php php-mysql php-sqlite3 php-mbstring openssl libapache2-mod-php php-sqlite3 php-xml php-mbstring
 
