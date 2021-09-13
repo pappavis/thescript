@@ -2,7 +2,9 @@ echo "start SQLite install"
 mkdir ~/tmp
 $LOGFILE="~/tmp"
 
-sudo apt install -y apache2 php php-mysql php-sqlite3 php-mbstring openssl libapache2-mod-php php-sqlite3 php-xml php-mbstring
+sudo apt update -y
+sudo apt install -y apache2 php php-mysql php-sqlite3 php-mbstring openssl libapache2-mod-php php-xml php-mbstring
+cd ~
 
   # if apache OR nginx installed and /var/www/html exists, go on...
     if [ $webserver -eq 1 ] && [ -d /var/www/html ]; then
@@ -111,3 +113,4 @@ EOF
     fi
 fi
 
+echo "SQLIte3 install afgerond"
