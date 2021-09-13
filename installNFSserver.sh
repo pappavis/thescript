@@ -23,6 +23,16 @@ sudo mkdir -p /mnt/pivhere/
 sudo mkdir -p /mnt/dietpi/
 sudo mkdir -p /mnt/pi4/
 sudo mkdir -p /mnt/pilamp/
+sudo mkdir -p /mnt/spelen02/
+
+sudo chmod 777 /mnt/nfsshare/
+sudo chmod 777 /mnt/acer01/
+sudo chmod 777 /mnt/pi0/
+sudo chmod 777 /mnt/pivhere/
+sudo chmod 777 /mnt/pi4/
+sudo chmod 777 /mnt/pilamp/
+sudo chmod 777 /mnt/spelen02/
+
 
 printf "\nProbeer netwerk share te mount op /mnt\n"
 sudo mount -t auto acer01:/home /mnt/acer01/ &
@@ -30,6 +40,7 @@ sudo mount -t auto acer01:/home /mnt/pi0/ &
 sudo mount -t auto acer01:/home /mnt/pivhere/ &
 sudo mount -t auto acer01:/home /mnt/pi4/ &
 sudo mount -t auto acer01:/home /mnt/pilamp/ &
+sudo mount -t auto acer01:/home /mnt/spelen02/ &
 
 sudo printf "\n HANDMATIG toevoegen aan /etc/exports/  : \n/mnt/nfsshare *(rw,all_squash,insecure,async,no_subtree_check,anonuid=1000,anongid=1000)\n"
 printf "\nNFS bestanddeling is daarna bereikbaar:\n -- MacOS verbind aan nfs://$_hn1.local/nfsshare  of nfs://$_ip1/nfsshare \n -- Windows verbind aan //$ip1.local/nfsshare\n\nIP adres $_ip1\n"
