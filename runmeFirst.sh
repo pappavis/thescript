@@ -78,6 +78,8 @@ sudo usermod -aG i2c michiele
 sudo usermod -aG spi michiele
 sudo usermod -aG tty michiele
 
+sudo mv /var/www/html/index.html /var/www/html/orig_index.html
+
 echo "Je moet nu REBOOT, daarna ./installVerzamelupdates.sh draaien"
 
 #bash ./setupNodered.sh
