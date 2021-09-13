@@ -1,5 +1,7 @@
 echo "start SQLite install"
 
+sudo apt install -y apache2 php php-mysql php-sqlite3 php-mbstring openssl libapache2-mod-php php-sqlite3 php-xml php-mbstring
+
   # if apache OR nginx installed and /var/www/html exists, go on...
     if [ $webserver -eq 1 ] && [ -d /var/www/html ]; then
         cd /var/www/html
