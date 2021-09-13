@@ -5,21 +5,8 @@ userpass=""
 NQUIET=""
 
 
-echo "* Node-red bijwerken"
-sudo npm install -g --unsafe-perm node-red
-#bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
+echo "* Node-red contrib bijwerken"
 
-sudo apt-get install -y  yarn
-curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-sudo apt-get install -y nodejs
-echo "NodeJS bijgewerkt.  NodeJS versie: $(node -v), npm $(npm -v)"
-rm -rf ~/.node-red/node_modules
-mkdir ~/.node-red
-cd ~/.node-red
-npm install node-red-contrib-sqlitedb node-red-contrib-ttn geofence
-npm install --unsafe-perm node-red-node-sqlite
-
-sudo systemctl enable nodered.service
 
 npm install moment node-red-contrib-config node-red-contrib-grove node-red-contrib-diode node-red-contrib-bigtimer \
 	node-red-contrib-esplogin node-red-contrib-timeout node-red-node-openweathermap node-red-node-google node-red-contrib-advanced-ping node-red-node-emoncms \
