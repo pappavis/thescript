@@ -15,6 +15,7 @@ npm install i2c-bus
 cd ~/.node-red
 sudo rm -rf ./node_modules
 npm install geofence
+npm $NQUIET install --unsafe-perm node-red-node-sqlite
 npm install moment node-red-contrib-config node-red-contrib-grove node-red-contrib-diode node-red-contrib-bigtimer 
 npm install node-red-contrib-esplogin node-red-contrib-timeout node-red-node-openweathermap node-red-node-google node-red-contrib-advanced-ping node-red-node-emoncms
 npm install 	node-red-node-geofence node-red-contrib-moment node-red-contrib-particle
