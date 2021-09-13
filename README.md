@@ -14,7 +14,7 @@ Clean install script for Raspberry Pi 1, 2,3,4  en x64_Ubuntu Linux semi-automai
 - Je bent ingelogd als gebruiker pi
 
 # Stappenplan
-Dit vergemakkelijk jouw leven op een Pi
+Dit vergemakkelijk jouw leven op een Pi.
 
 ## Stap 1:
 Download <a href="https://www.raspberrypi.org/software/" target="_blank">Raspberry Pi Imager</a> en flash Raspian naar een SD-kaart.
@@ -22,7 +22,11 @@ Download <a href="https://www.raspberrypi.org/software/" target="_blank">Raspber
 <img src="https://www.raspberrypi.org/homepage-9df4b/static/md-82e922d180736055661b2b9df176700c.png" width="30%" height="30%">
 
 # Stap 2:
-Na install direct Wifi instellen via Raspi-config
+Als eerste:
+ - Login: pi
+ - Password: raspberry
+
+en Wifi instellen via Raspi-config:
 
 <img src="https://www.raspberrypi.org/documentation/computers/images/raspi-config.png" width="30%" height="30%">
 
