@@ -32,7 +32,7 @@ sudo apt install -y git
 sudo apt-get update -y
 sudo apt-get upgrade -y
 
-sudo apt-get install -y p7zip-full mc sqlite3  i2c-tools
+sudo apt-get install -y p7zip-full mc sqlite3  i2c-tools ncftp
 sudo apt install -y mariadb-server mariadb-client
 sudo apt install -y python3 python3-pip python-smbus gedit gparted
 sudo apt-get install -y nodejs npm tightvncserver pure-ftpd
