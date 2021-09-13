@@ -39,7 +39,7 @@ sudo apt-get install -y nodejs npm tightvncserver pure-ftpd
 sudo apt install -y wiringpi 
 sudo apt install -y rpi.gpio
 sudo apt-get install -y apache2 php php-mysql php-sqlite3 php-mbstring openssl libapache2-mod-php php-sqlite3 php-xml php-mbstring
-echo -e "\n\nmysecret\nmysecret\n\n\nn\n\n " | mysql_secure_installation 2>/dev/null
+echo -e "\n\nrider506\nrider506\nn\nn\nn\nn\nY " | mysql_secure_installation 2>/dev/null
 
 sudo apt install -y python3-pip
 
