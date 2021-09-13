@@ -39,7 +39,7 @@ sudo apt install -y mariadb-server mariadb-client
 sudo apt install -y python3 python3-pip python-smbus gedit gparted
 sudo apt-get install -y nodejs npm tightvncserver pure-ftpd
 sudo apt-get install -y  
-sudo apt-get install -y apache2 php php-mysql
+sudo apt-get install -y apache2 php php-mysql php-sqlite3
 
 sudo apt install -y python3-pip
 
