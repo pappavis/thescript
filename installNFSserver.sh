@@ -25,6 +25,7 @@ sudo mkdir -p /mnt/nfs/dietpi/
 sudo mkdir -p /mnt/nfs/pi4/
 sudo mkdir -p /mnt/nfs/pilamp/
 sudo mkdir -p /mnt/nfs/spelen02/
+sudo mkdir -p /mnt/nfs/p1mon/
 
 sudo chmod 777 /mnt/nfs/nfsshare/
 sudo chmod 777 /mnt/nfs/acer01/
@@ -33,15 +34,17 @@ sudo chmod 777 /mnt/nfs/pivhere/
 sudo chmod 777 /mnt/nfs/pi4/
 sudo chmod 777 /mnt/nfs/pilamp/
 sudo chmod 777 /mnt/nfs/spelen02/
+sudo chmod 777 /mnt/nfs/p1mon/
 
 
 printf "\nProbeer netwerk share te mount op /mnt\n"
-sudo mount -t auto acer01:/home /mnt/acer01/ &
-sudo mount -t auto pi0:/home /mnt/pi0/ &
-sudo mount -t auto pivhere:/home /mnt/pivhere/ &
-sudo mount -t auto pi4:/home /mnt/pi4/ &
-sudo mount -t auto pilamp:/home /mnt/pilamp/ &
-sudo mount -t auto spelen02:/home /mnt/spelen02/ &
+sudo mount -t auto acer01:/home /mnt/nfs/acer01/ &
+sudo mount -t auto pi0:/home /mnt/nfs/pi0/ &
+sudo mount -t auto pivhere:/home /mnt/nfs/pivhere/ &
+sudo mount -t auto pi4:/home /mnt/nfs/pi4/ &
+sudo mount -t auto pilamp:/home /mnt/nfs/pilamp/ &
+sudo mount -t auto spelen02:/home /mnt/nfs/spelen02/ &
+sudo mount -t auto spelen02:/home /mnt/nfs/p1mon/ &
 
 sudo printf "\n HANDMATIG toevoegen aan /etc/exports/  : \n/mnt/nfsshare *(rw,all_squash,insecure,async,no_subtree_check,anonuid=1000,anongid=1000)\n"
 printf "\nNFS bestanddeling is daarna bereikbaar:\n -- MacOS verbind aan nfs://$_hn1.local/nfsshare  of nfs://$_ip1/nfsshare \n -- Windows verbind aan //$ip1.local/nfsshare\n\nIP adres $_ip1\n"
