@@ -62,7 +62,8 @@ sudo usermod pi dialout
 sudo usermod pi i2c
 sudo usermod pi tty
 
-sudo apt install -y build-essential cmake rapidjson-dev libgmp-dev libcurl4-gnutls-dev git gcc-8 g++-8 libssl
+sudo apt install -y build-essential cmake rapidjson-dev libgmp-dev libcurl4-gnutls-dev git gcc-8 g++-8
+sudo apt install -y libssl
 
 sudo adduser michiele
 sudo adduser pi michiele
