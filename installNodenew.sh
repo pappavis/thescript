@@ -288,3 +288,8 @@ cd && sudo cp /var/log/nodered-install.log . && sudo chown pi.pi ./nodered-insta
     ## add a nice little command line utility (nrlog) for showing and tailing Node-Red scripts in colour
 	echo "alias nrlog='sudo journalctl -f -n 50 -u nodered -o cat | ccze -A'" | sudo tee -a /etc/bash.bashrc > /dev/null 2>&1
 fi
+
+cd ~/.node-red
+npm audit fix --force
+
+cd ~
