@@ -32,6 +32,8 @@ BIWhite='\e[1;97m'      # White
 skip=0
 other=0
 MYMENU=$"nodenew"
+OPSYS=${ID^^}
+LOGFILE="~/pi_setup.log"
 
 clean_stdin()
 {
@@ -208,6 +210,9 @@ printstatus() {
 	echo -e "############################################################" >> $LOGFILE
 	echo -e $1 >> $LOGFILE
 }
+
+
+
 
 
 if [[ $MYMENU == *"nodenew"* ]]; then
