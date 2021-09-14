@@ -6,7 +6,6 @@ printf "\nStart instellen van NFS server op \n" $_ip1 ".local\n"
 sudo apt-get install -y nfs-kernel-server nfs-common firewalld
 sudo mkdir /mnt/nfs/nfsshare
 sudo chown -R nobody:nogroup /mnt/nfs/nfsshare/
-sudo chmod 777 /mnt/nfs/nfsshare/
 sudo cp /etc/exports ~/tmp/exp1.tmp
 sudo exportfs -ra
 sudo service nfs-server restart
@@ -27,15 +26,7 @@ sudo mkdir -p /mnt/nfs/pilamp/
 sudo mkdir -p /mnt/nfs/spelen02/
 sudo mkdir -p /mnt/nfs/p1mon/
 
-sudo chmod 777 /mnt/nfs/nfsshare/
-sudo chmod 777 /mnt/nfs/acer01/
-sudo chmod 777 /mnt/nfs/pi0/
-sudo chmod 777 /mnt/nfs/pivhere/
-sudo chmod 777 /mnt/nfs/pi4/
-sudo chmod 777 /mnt/nfs/pilamp/
-sudo chmod 777 /mnt/nfs/spelen02/
-sudo chmod 777 /mnt/nfs/p1mon/
-
+sudo chmod 777 -R /mnt/nfs/
 
 printf "\nProbeer netwerk share te mount op /mnt\n"
 sudo mount -t auto acer01:/home /mnt/nfs/acer01/ &
