@@ -1,7 +1,13 @@
 # origineel TheScript door Pete Scargill.
 
-echo "Installeren node-red en modules"
+echo "**Installeren node-red en modules"
 cd ~
+
+echo "Oude nodered verwijderen"
+sudo npm uninstall -g node-red
+echo "Opschonen en legen nodered cache"
+rm -rf ~/.nodered
+echo "Opschonen en legen nodered cache afgerond."
 
 startTime="$(date +%s)"
 columns=$(tput cols)
