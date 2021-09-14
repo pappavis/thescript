@@ -3,7 +3,7 @@ _hn1=$(hostname)
 _ip1=$(hostname -I)
 mkdir ~/tmp
 printf "\nStart instellen van NFS server op \n" $_ip1 ".local\n"
-sudo apt install -y nfs-kernel-server nfs-common firewalld
+sudo apt install -y nfs-kernel-server nfs-common
 sudo mkdir /mnt/nfs
 sudo chown -R nobody:nogroup /mnt/nfs
 sudo cp /etc/exports ~/tmp/exp1.tmp
@@ -11,11 +11,6 @@ sudo exportfs -ra
 sudo service nfs-server restart
 sudo service rpcbind restart
 sudo service nfs-kernel-server restart 
-
-sudo firewall-cmd --permanent --zone=public --add-service=nfs
-sudo firewall-cmd --permanent --zone=public --add-service=mountd
-sudo firewall-cmd --permanent --zone=public --add-service=rpc-bind
-sudo firewall-cmd --reload
 
 sudo mkdir -p /mnt/nfs/acer01/
 sudo mkdir -p /mnt/nfs/pi0/
