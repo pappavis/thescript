@@ -4,8 +4,8 @@ _ip1=$(hostname -I)
 mkdir ~/tmp
 printf "\nStart instellen van NFS server op \n" $_ip1 ".local\n"
 sudo apt-get install -y nfs-kernel-server nfs-common firewalld
-sudo mkdir /mnt/nfs/nfsshare
-sudo chown -R nobody:nogroup /mnt/nfs/nfsshare/
+sudo mkdir /mnt/nfs
+sudo chown -R nobody:nogroup /mnt/nfs
 sudo cp /etc/exports ~/tmp/exp1.tmp
 sudo exportfs -ra
 sudo service nfs-server restart
