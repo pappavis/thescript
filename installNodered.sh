@@ -1,15 +1,4 @@
 # origineel TheScript door Pete Scargill.
-
-echo "**Installeren node-red en modules"
-cd ~
-
-echo "Oude nodered verwijderen"
-sudo service nodered stop
-sudo npm uninstall -g node-red
-echo "Opschonen en legen nodered cache"
-rm -rf ~/.node-red
-echo "Opschonen en legen nodered cache afgerond."
-
 startTime="$(date +%s)"
 columns=$(tput cols)
 user_response=""
@@ -33,6 +22,18 @@ BIWhite='\e[1;97m'      # White
 skip=0
 other=0
 MYMENU=$"nodenew"
+
+
+echo "**Installeren $BIRed node-red en $BIWhite modules"
+cd ~
+
+echo "Oude $BIRed nodered $BIWhite verwijderen"
+sudo service nodered stop
+sudo npm uninstall -g node-red
+echo "Opschonen en legen nodered cache"
+rm -rf ~/.node-red
+echo "Opschonen en legen nodered cache afgerond."
+
 
 clean_stdin()
 {
