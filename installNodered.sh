@@ -18,7 +18,7 @@ BIPurple='\e[1;95m'     # Purple
 BIMagenta='\e[1;95m'    # Purple
 BICyan='\e[1;96m'       # Cyan
 BIWhite='\e[1;97m'      # White
-
+NQUIET=""
 skip=0
 other=0
 MYMENU=$"nodenew"
@@ -217,7 +217,7 @@ if [[ $MYMENU == *"nodenew"* ]]; then
 	
 	##  bash <(curl -sL https://raw.githubusercontent.com/node-red/raspbian-deb-package/master/resources/update-nodejs-and-nodered)
 
-    bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
+    ################ bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
  
    	##  curl -sL https://raw.githubusercontent.com/node-red/raspbian-deb-package/master/resources/update-nodejs-and-nodered > update-nodejs-and-nodered
     echo 143.204.15.127 deb.nodesource.com | sudo tee -a /etc/hosts
@@ -255,6 +255,8 @@ cd && sudo cp /var/log/nodered-install.log . && sudo chown pi.pi ./nodered-insta
 	fi
 	printstatus "Installing node \"bcryptjs\""
     sudo npm $NQUIET install bcryptjs 2>&1 | tee -a $LOGFILE
+
+	MYMENU="hwsupport"
 
 	if [[ $MYMENU == *"hwsupport"* ]]; then
 		## this last bit of code is to ensure that node-red-contrib-opi-gpio can gain access to port bits!!
