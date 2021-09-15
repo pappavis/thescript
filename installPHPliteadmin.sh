@@ -1,3 +1,4 @@
+       LOGFILE="/tmp/sqliteInstall1.log"
         cd /var/www/html
         sudo mkdir phpliteadmin
         cd phpliteadmin
