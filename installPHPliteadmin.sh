@@ -1,9 +1,10 @@
-       LOGFILE=""
+              LOGFILE=""
         cd /var/www/html
-        sudo mkdir phpliteadmin
-        cd phpliteadmin
+        sudo mkdir /var/www/html/phpliteadmin
+        cd /var/www/html/phpliteadmin
+        sudo rm -rf https://www.phpliteadmin.org/phpliteadmin-dev.zip
         #sudo wget --no-check-certificate http://bitbucket.org/phpliteadmin/public/downloads/phpLiteAdmin_v1-9-7-1.zip -a $LOGFILE
-        sudo wget --no-check-certificate https://www.phpliteadmin.org/phpliteadmin-dev.zip -a $LOGFILE
+        sudo wget https://www.phpliteadmin.org/phpliteadmin-dev.zip
         if [ $? -eq 0 ]; then
             sudo unzip phpliteadmin-dev.zip 2>&1 | tee -a $LOGFILE
             sudo mv phpliteadmin.php index.php
