@@ -55,6 +55,7 @@ sudo usermod -aG gpio pi
 sudo usermod -aG dialout pi
 sudo usermod -aG i2c pi
 sudo usermod -aG tty pi
+sudo usermod -aG kmem pi
 
 sudo adduser pi gpio
 sudo usermod pi dialout
@@ -77,6 +78,7 @@ sudo usermod -aG dialout michiele
 sudo usermod -aG i2c michiele
 sudo usermod -aG spi michiele
 sudo usermod -aG tty michiele
+sudo usermod -aG kmem michiele
 
 sudo mv /var/www/html/index.html /var/www/html/orig_index.html
 
