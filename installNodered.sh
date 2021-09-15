@@ -33,6 +33,8 @@ sudo npm uninstall -g node-red
 echo "Opschonen en legen nodered cache"
 rm -rf ~/.node-red
 echo "Opschonen en legen nodered cache afgerond."
+mkdir ~/.node-red
+cd ~/.node-red
 
 
 clean_stdin()
