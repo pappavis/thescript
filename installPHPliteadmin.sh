@@ -20,6 +20,6 @@
             sudo sed -i -e "s#\$subdirectories = false;#\$subdirectories = true;#g" /var/www/html/phpliteadmin/phpliteadmin.config.php
             cd
         else
-            printl "${IRed}!!!! PHPLITEADMIN not installed! ${IWhite}\r\n"
-            cd ; rm -rf /var/www/html/phpliteadmin
+            printf "!!!! PHPLITEADMIN not installed! \r\n"
+            cd ; sudo rm -rf /var/www/html/phpliteadmin
         fi
