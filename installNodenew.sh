@@ -7,7 +7,7 @@ echo "Oude nodered verwijderen"
 sudo service nodered stop
 sudo npm uninstall -g node-red
 echo "Opschonen en legen nodered cache"
-rm -rf ~/.nodered
+rm -rf ~/.node-red
 echo "Opschonen en legen nodered cache afgerond."
 
 startTime="$(date +%s)"
