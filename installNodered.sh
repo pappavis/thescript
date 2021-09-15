@@ -221,7 +221,9 @@ if [[ $MYMENU == *"nodenew"* ]]; then
 
     #bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
  
-   curl -sL https://raw.githubusercontent.com/node-red/raspbian-deb-package/master/resources/update-nodejs-and-nodered > update-nodejs-and-nodered
+   ##curl -sL https://raw.githubusercontent.com/node-red/raspbian-deb-package/master/resources/update-nodejs-and-nodered > update-nodejs-and-nodered
+   sudo npm install -g --unsafe-perm node
+   
     echo 143.204.15.127 deb.nodesource.com | sudo tee -a /etc/hosts
     chmod +x update-nodejs-and-nodered
     echo y | ./update-nodejs-and-nodered
