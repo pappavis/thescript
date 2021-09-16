@@ -235,7 +235,7 @@ cd && sudo cp /var/log/nodered-install.log . && sudo chown pi.pi ./nodered-insta
 	printstatus "Installing Nodes (could take some time)"
 
   printstatus "Installing node \"node-red-node-sqlite\""
-	npm $NQUIET install --unsafe-perm node-red-node-sqlite 2>&1 | tee -a $LOGFILE
+	npm $NQUIET install node-red-node-sqlite 2>&1 | tee -a $LOGFILE
   
   
 # TAKEN OUT  node-red-contrib-graphs - I dont use it, most likely defunct - no work done on it in 3 years
