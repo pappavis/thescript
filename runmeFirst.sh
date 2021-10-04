@@ -35,7 +35,7 @@ sudo apt-get upgrade -y
 sudo apt-get install -y p7zip-full mc sqlite3  i2c-tools ncftp
 sudo apt install -y mariadb-server mariadb-client mosquitto
 sudo apt install -y python3 python3-pip python-smbus gedit gparted
-sudo apt-get install -y nodejs npm tightvncserver pure-ftpd 
+sudo apt-get install -y nodejs npm tightvncserver pure-ftpd neofetch
 sudo apt install -y wiringpi 
 sudo apt install -y rpi.gpio
 sudo apt-get install -y apache2 php php-mysql php-sqlite3 php-mbstring openssl libapache2-mod-php php-sqlite3 php-xml php-mbstring
