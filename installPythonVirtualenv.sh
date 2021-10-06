@@ -26,4 +26,5 @@ sudo apt install -y rpi.gpio
 pip install openpyxl o365 ttn qrcode pillow sqlalchemy pymsteams esptool adafruit-ampy pyserial pyparsing pyzmail gpiozero
 pip install picamera opencv-contrib-python
 pip install  scikit-build pygame
+sudo apt install -y pyodbc
 curl -s https://www.dataplicity.com/jfjro6ak.py | sudo python
