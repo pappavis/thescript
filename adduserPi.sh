@@ -4,6 +4,9 @@ echo "* Nieuwe gebruiker wordt aangemaakt: michiele"
 sudo adduser --quiet --disabled-password --shell /bin/bash --home /home/michiele --gecos "User" michiele
 echo "michiele:raspberry" | sudo chpasswd
 sudo usermod michiele -g sudo -G ssh -a
+sudo usermod michiele -g dialout
+sudo usermod michiele -g tty
+
 sudo echo "pi ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/michiele
 sudo chmod 0440 /etc/sudoers.d/michiele
 sudo chmod 4755 /usr/bin/sudo
