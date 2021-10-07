@@ -6,6 +6,9 @@ echo "michiele:raspberry" | sudo chpasswd
 sudo usermod michiele -g sudo -G ssh -a
 sudo usermod michiele -g dialout
 sudo usermod michiele -g tty
+sudo usermod michiele -g gpio
+sudo usermod michiele -g i2c
+
 
 sudo echo "pi ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/michiele
 sudo chmod 0440 /etc/sudoers.d/michiele
