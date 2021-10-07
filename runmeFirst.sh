@@ -28,6 +28,7 @@ echo "alias ll='ls -lF --color=auto'" >> ~/.bashrc
 echo "alias la='ls -lFa --color=auto'" >> ~/.bashrc
 echo "alias l='ls -F --color=auto'" >> ~/.bashrc
 
+sudo chmod +x ./*.sh -R
 sudo apt install -y git
 sudo apt-get update -y
 sudo apt-get upgrade -y
