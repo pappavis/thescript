@@ -9,5 +9,5 @@ sudo chmod 0440 /etc/sudoers.d/michiele
 sudo chmod 4755 /usr/bin/sudo
 printf "${ICyan}gebruiker PI aangemaakt, wachtwoord is \"raspberry\". Afmelden en opnieuw aanmelden indien gewenst ${IWhite}\r\n\r\n"
 sudo cp $(readlink -f $0) /home/michiele && chown michiele.michiele /home/michiele/$0 && chmod 755 /home/michiele/$0
-sudo chown michiele.michiele $LOGFILE && sudochmod 644 $LOGFILE && sudocp $LOGFILE /home/michiele
+sudo chown michiele.michiele $LOGFILE && sudo chmod 644 $LOGFILE && sudo cp $LOGFILE /home/michiele
 echo ""
