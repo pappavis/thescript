@@ -37,6 +37,15 @@ sudo apt install -y raspberrypi-ui-mods xinit xserver-xorg xrdp remmina
 sudo adduser xrdp ssl-cert 
 systemctl show -p SubState --value xrdp
 
+echo "* Installeer btop"
+cd ~/Downloads/
+wget https://github.com/aristocratos/btop/releases/download/v1.0.13/btop-1.0.13-linux-armhf.tbz
+7z x btop-1.0.13-linux-armhf.tbz
+mkdir ./btop_install
+cd ./btop_install
+7z x ../btop-1.0.13-linux-armhf.tar
+sudo make install
 cd ~/Downloads/thescript
+
 echo "Virtuahlere draadloos Wifi is geinstalleerd."
 echo "* Install extras is afgerond."
