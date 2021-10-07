@@ -64,12 +64,8 @@ sudo usermod pi tty
 sudo apt install -y build-essential cmake rapidjson-dev libgmp-dev libcurl4-gnutls-dev git gcc-8 g++-8 netdiscover sysfsutils tcpdump pure-ftpd wget ssh bash-completion unzip build-essential git python-serial scons libboost-filesystem-dev libboost-program-options-dev libboost-system-dev libsqlite3-dev subversion libcurl4-openssl-dev libusb-dev python-dev cmake curl telnet usbutils gawk jq pv samba samba-common samba-common-bin winbind dosfstools parted gcc python-pip htop python-smbus mc cu mpg123 screen
 sudo apt install -y libssl
 
-sudo adduser michiele
-sudo adduser pi michiele
-sudo usermod pi michiele
-sudo usermod pi michiele
-sudo usermod pi michiele
-
+./adduserPi.sh
+	    
 sudo usermod -aG sudo michiele
 sudo usermod -aG sudo pi
 sudo usermod -aG gpio michiele
