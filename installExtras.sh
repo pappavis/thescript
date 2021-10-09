@@ -46,6 +46,7 @@ cd ./btop_install
 7z x ../btop-1.0.13-linux-armhf.tar
 sudo make install
 cd ~/Downloads/thescript
+sudo nano /etc/samba/smb.conf -y
 
 echo "Virtuahlere draadloos Wifi is geinstalleerd."
 echo "* Install extras is afgerond."
