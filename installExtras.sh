@@ -30,8 +30,14 @@ echo "phpmyadmin phpmyadmin/mysql/app-pass password $APP_DB_PASS" | debconf-set-
 echo "phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2" | debconf-set-selections
 
 apt-get install -y phpmyadmin
-
 sudo ln -s /usr/share/phpmyadmin /var/www/html
+
+cd /var/www/html 
+sudo git clone https://github.com/phpsysinfo/phpsysinfo.git
+sudo cp /var/www/html/phpsysinfo/phpsysinfo.ini.new /var/www/html/phpsysinfo/phpsysinfo.ini
+
+cd ~/Downloads/
+
 sudo apt update -y
 sudo apt install -y raspberrypi-ui-mods xinit xserver-xorg xrdp remmina
 sudo adduser xrdp ssl-cert 
