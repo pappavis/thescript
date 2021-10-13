@@ -19,4 +19,4 @@ pip install adafruit-blinka RPI.GPIO
 echo "source ~/venv/venv3.7/bin/activate" >> ~/.bashrc
 source ~/.bashrc
 
-./installPythonLibs.sh
+bash ./installPythonLibs.sh
