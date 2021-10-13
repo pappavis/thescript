@@ -15,6 +15,7 @@ mkdir ~/venv
 echo "source ~/venv/venv3.11/bin/activate" >> ~/.bashrc
 source ~/.bashrc
 bash ./installPythonLibs.sh
+bash ./installPythonCircuitpython.sh
 
 pythonV=$(python -V)
 printf "* $pythonV upgrade afgerond\n"
