@@ -29,12 +29,20 @@ echo "phpmyadmin phpmyadmin/mysql/admin-pass password $ROOT_PASS" | debconf-set-
 echo "phpmyadmin phpmyadmin/mysql/app-pass password $APP_DB_PASS" | debconf-set-selections
 echo "phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2" | debconf-set-selections
 
-apt-get install -y phpmyadmin
+sudo apt install -y phpmyadmin
 sudo ln -s /usr/share/phpmyadmin /var/www/html
 
 cd /var/www/html 
 sudo git clone https://github.com/phpsysinfo/phpsysinfo.git
 sudo cp /var/www/html/phpsysinfo/phpsysinfo.ini.new /var/www/html/phpsysinfo/phpsysinfo.ini
+
+cd ~/Downloads/
+git clone --depth 1 https://code.videolan.org/videolan/x264
+cd ~/Downloads/x264
+./configure --host=arm-unknown-linux-gnueabi --enable-static --disable-opencl
+make -j4
+sudo make install
+
 
 cd ~/Downloads/
 
