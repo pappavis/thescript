@@ -12,22 +12,11 @@ echo "source ~/.bashrc" >> ~/.bash_profile
 
 #python3 -m pip install virtualenv
 mkdir ~/venv
-cd ~/venv
-~/.local/bin/pipx install virtualenv
+~/.local/bin/pipx install ~/venv/virtualenv
 ~/.local/bin/virtualenv ~/venv/venv3.7
 source ~/venv/venv3.7/bin/activate
 pip install adafruit-blinka RPI.GPIO
 echo "source ~/venv/venv3.7/bin/activate" >> ~/.bashrc
 source ~/.bashrc
 
-sudo apt install -y wiringpi 
-sudo apt install -y rpi.gpio
-
-pip install openpyxl o365 ttn qrcode pillow sqlalchemy pymsteams esptool adafruit-ampy pyserial pyparsing pyzmail gpiozero pytube djitellopy
-pip install picamera opencv-contrib-python
-pip install  scikit-build pygame
-pip install pi.gpio
-python3 -m pip install git+https://github.com/pytube/pytube
-
-sudo apt install -y pyodbc
-curl -s https://www.dataplicity.com/jfjro6ak.py | sudo python
+./installPythonLibs.sh
