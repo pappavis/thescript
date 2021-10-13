@@ -13,8 +13,7 @@ make install
 mkdir ~/venv
 ~/.local/bin/python3.11 -m virtualenv ~/venv/venv3.11
 source ~/venv/venv3.11/bin/activate
-
 bash ./installPythonLibs.sh
-
+echo "source ~/venv/venv3.11/bin/activate >> ~/.bashrc"
 pythonV=$(python -V)
 printf "* $pythonV upgrade afgerond\n"
