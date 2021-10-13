@@ -23,7 +23,7 @@ source ~/.bashrc
 sudo apt install -y wiringpi 
 sudo apt install -y rpi.gpio
 
-pip install openpyxl o365 ttn qrcode pillow sqlalchemy pymsteams esptool adafruit-ampy pyserial pyparsing pyzmail gpiozero
+pip install openpyxl o365 ttn qrcode pillow sqlalchemy pymsteams esptool adafruit-ampy pyserial pyparsing pyzmail gpiozero pytube djitellopy
 pip install picamera opencv-contrib-python
 pip install  scikit-build pygame
 sudo apt install -y pyodbc
