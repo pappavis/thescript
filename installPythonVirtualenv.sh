@@ -27,5 +27,7 @@ pip install openpyxl o365 ttn qrcode pillow sqlalchemy pymsteams esptool adafrui
 pip install picamera opencv-contrib-python
 pip install  scikit-build pygame
 pip install pi.gpio
+python3 -m pip install git+https://github.com/pytube/pytube
+
 sudo apt install -y pyodbc
 curl -s https://www.dataplicity.com/jfjro6ak.py | sudo python
