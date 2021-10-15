@@ -1,13 +1,18 @@
 echo "** Installeer pythonlibs. je moet eerst een virtualenv activeer!!"
 
+
+source ~/venv/venv3.7/bin/activate
+source ~/venv/venv3.11/bin/activate
+
 sudo apt install -y wiringpi 
 sudo apt install -y rpi.gpio
 
-python3 -m ensurepip
-pip install openpyxl o365 ttn qrcode pillow sqlalchemy pymsteams esptool adafruit-ampy pyserial pyparsing pyzmail gpiozero pytube djitellopy pipx serial
+python -m ensurepip
+pip install openpyxl o365 ttn qrcode pillow sqlalchemy pymsteams esptool adafruit-ampy pyserial pyparsing pyzmail gpiozero pytube djitellopy pipx serial 
 pip install picamera opencv-contrib-python
 pip install  scikit-build pygame
 pip install pi.gpio
+pip install matplotlib numpy
 python3 -m pip install git+https://github.com/pytube/pytube
 
 sudo apt install -y pyodbc
