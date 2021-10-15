@@ -2,7 +2,6 @@ echo "** Installeer pythonlibs. je moet eerst een virtualenv activeer!!"
 
 
 source ~/venv/venv3.7/bin/activate
-source ~/venv/venv3.11/bin/activate
 
 sudo apt install -y wiringpi 
 sudo apt install -y rpi.gpio
