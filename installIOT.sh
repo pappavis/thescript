@@ -3,7 +3,8 @@ sudo apt install -y sqlite3
 
 cd ~
 mkdir dbs
-		sqlite3 /home/pi/dbs/iot.db << EOF
+
+		sqlite3 /home/pi/dbs/iot.db << EOF		
 		CREATE TABLE IF NOT EXISTS \`pinDescription\` (
 		 \`pinID\` INTEGER PRIMARY KEY NOT NULL,
 		 \`pinNumber\` varchar(2) NOT NULL,
@@ -73,3 +74,9 @@ mkdir dbs
 		 \`timestamp\` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP , FOREIGN KEY(DataID, DeviceID ) REFERENCES DeviceData(DAtaID, DeviceID )
 		);
     
+
+
+cd
+chmod 777 /home/pi/dbs
+chmod 666 /home/pi/dbs/iot.db
+cd
