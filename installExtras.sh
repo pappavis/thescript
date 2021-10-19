@@ -49,8 +49,9 @@ cd ~/Downloads/
 sudo apt update -y
 echo "** installeer minimale Raspbian desktop."
 sudo apt install -y raspberrypi-ui-mods xinit xserver-xorg xrdp  
-sudo apt install -y remmina
-sudo apt install -y barrier
+
+echo "** installeer barrier KVM."
+sudo apt install -y remmina barrier
 
 sudo adduser xrdp ssl-cert 
 systemctl show -p SubState --value xrdp
