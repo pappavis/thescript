@@ -47,7 +47,10 @@ sudo make install
 cd ~/Downloads/
 
 sudo apt update -y
-sudo apt install -y raspberrypi-ui-mods xinit xserver-xorg xrdp remmina
+sudo apt install -y raspberrypi-ui-mods xinit xserver-xorg xrdp  
+sudo apt install -y remmina
+sudo apt install -y barrier
+
 sudo adduser xrdp ssl-cert 
 systemctl show -p SubState --value xrdp
 
