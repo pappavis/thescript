@@ -47,6 +47,7 @@ sudo make install
 cd ~/Downloads/
 
 sudo apt update -y
+echo "** installeer minimale Raspbian desktop."
 sudo apt install -y raspberrypi-ui-mods xinit xserver-xorg xrdp  
 sudo apt install -y remmina
 sudo apt install -y barrier
@@ -54,7 +55,7 @@ sudo apt install -y barrier
 sudo adduser xrdp ssl-cert 
 systemctl show -p SubState --value xrdp
 
-echo "* Installeer btop"
+echo "* Installeer btop proceslijst"
 cd ~/Downloads/
 wget https://github.com/aristocratos/btop/releases/download/v1.0.13/btop-1.0.13-linux-armhf.tbz
 7z x btop-1.0.13-linux-armhf.tbz
