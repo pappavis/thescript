@@ -96,5 +96,7 @@ cd ~/Downloads
 cd /var/www/html
 sudo wget -a $LOGFILE $AQUIET https://www.scargill.net/iot/reset.css -O /var/www/html/reset.css
 
+cd ~/Downloads
+
 echo "Virtuahlere draadloos Wifi is geinstalleerd."
 echo "* Install extras is afgerond."
