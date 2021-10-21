@@ -1,4 +1,6 @@
 _hn1=$(hostname)
+LOGFILE=~/installExtrasLog.log
+AQUIET=""
 cd ~/Downloads
 echo "Download en installeer virtualhere.com Pi 3 server & client"
 curl https://raw.githubusercontent.com/virtualhere/script/main/install_server | sudo sh
@@ -66,6 +68,33 @@ cd ./btop_install
 sudo make install
 cd ~/Downloads/thescript
 sudo nano /etc/samba/smb.conf -y
+
+cd ~/Downloads
+wget -a $LOGFILE http://www.webmin.com/jcameron-key.asc -O - | sudo apt-key add -
+echo "deb http://download.webmin.com/download/repository sarge contrib" | sudo tee /etc/apt/sources.list.d/webmin.list > /dev/null
+sudo apt-get $AQUIET -y update 2>&1 | tee -a $LOGFILE
+sudo apt-get $AQUIET -y install webmin 2>&1 | tee -a $LOGFILE
+sudo sed -i -e 's#ssl=1#ssl=0#g' /etc/webmin/miniserv.conf
+
+
+echo "Installeren RPI-Clone"
+cd ~/Downloads
+sudo git clone https://github.com/billw2/rpi-clone.git
+cd rpi-clone
+sudo cp rpi-clone /usr/local/sbin
+cd ~/Downloads
+sudo rm -r rpi-clone
+
+echo "Installeren log2ram"
+cd ~/Downloads
+git clone https://github.com/azlux/log2ram.git 2>&1 | tee -a $LOGFILE
+cd log2ram
+chmod +x install.sh
+sudo ./install.sh 2>&1 | tee -a $LOGFILE
+cd ~/Downloads
+
+cd /var/www/html
+sudo wget -a $LOGFILE $AQUIET https://www.scargill.net/iot/reset.css -O /var/www/html/reset.css
 
 echo "Virtuahlere draadloos Wifi is geinstalleerd."
 echo "* Install extras is afgerond."
