@@ -1,4 +1,4 @@
-echo "** Installeer pythonlibs. je moet eerst een virtualenv activeer!!"
+echo '** Installeer pythonlibs. je moet eerst een virtualenv activeer!!' 
 
 
 source ~/venv/venv3.7/bin/activate
