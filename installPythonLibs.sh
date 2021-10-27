@@ -7,7 +7,7 @@ sudo apt install -y wiringpi
 sudo apt install -y rpi.gpio
 
 python -m ensurepip 
-pip install --upgrade openpyxl o365 ttn qrcode pillow sqlalchemy pymsteams esptool adafruit-ampy pyserial pyparsing pyzmail gpiozero pytube djitellopy pipx serial jinja2 esptool mpfshell
+pip install --upgrade openpyxl o365 ttn qrcode pillow sqlalchemy pymsteams esptool adafruit-ampy pyserial pyparsing pyzmail gpiozero pytube djitellopy pipx serial jinja2 esptool mpfshell virtualenv
 pip install --upgrade picamera opencv-contrib-python
 pip install --upgrade scikit-build pygame
 pip install --upgrade pi.gpio
