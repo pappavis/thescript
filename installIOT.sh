@@ -4,9 +4,10 @@ sudo apt install -y sqlite3
 cd ~
 mkdir dbs
 
-cd
-chmod 777 /home/pi/dbs
-chmod 666 /home/pi/dbs/iot.db
+cd /home/pi/dbs
+sudo wget https://github.com/pappavis/ESP8266_MQQT_Weerstation/blob/master/dbs/iot.db
+sudo chmod 777 /home/pi/dbs
+sudo chmod 666 /home/pi/dbs/iot.db
 cd
 
 		sqlite3 /home/pi/dbs/iot.db << EOF		
