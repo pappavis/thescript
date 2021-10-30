@@ -19,7 +19,7 @@ Dit vergemakkelijk jouw leven op een Pi.
 ## Stap 1:
 Download <a href="https://www.raspberrypi.org/software/" target="_blank">Raspberry Pi Imager</a> en flash Raspian naar een SD-kaart.
 
-<img src="https://www.raspberrypi.org/homepage-9df4b/static/md-82e922d180736055661b2b9df176700c.png" width="30%" height="30%">
+<img src="https://assets.raspberrypi.com/static/md-bfd602be71b2c1099b91877aed3b41f0.png" width="30%" height="30%">
 
 # Stap 2:
 Als eerste:
