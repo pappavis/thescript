@@ -1,6 +1,7 @@
 _hn1=$(hostname)
 LOGFILE=~/installExtrasLog.log
 AQUIET=""
+git pull
 cd ~/Downloads
 echo "Download en installeer virtualhere.com Pi 3 server & client"
 curl https://raw.githubusercontent.com/virtualhere/script/main/install_server | sudo sh
