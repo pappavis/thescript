@@ -42,6 +42,12 @@ sudo apt install -y rpi.gpio
 sudo apt-get install -y apache2 php php-mysql php-sqlite3 php-mbstring openssl libapache2-mod-php php-sqlite3 php-xml php-mbstring sysbench
 sudo apt install -y python3-pip
 
+mkdir ~/Downloads
+cd ~
+wget https://raw.githubusercontent.com/pappavis/thescript/master/index_apps.php
+sudo mv index_apps.php /var/www/html
+cd ~/Downloads
+
 mkdir ~/venv
 pip3 install virtualenv
 mkdir ~/venv
