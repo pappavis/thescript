@@ -4,6 +4,11 @@ sudo apt install -y sqlite3
 cd ~
 mkdir dbs
 
+cd
+chmod 777 /home/pi/dbs
+chmod 666 /home/pi/dbs/iot.db
+cd
+
 		sqlite3 /home/pi/dbs/iot.db << EOF		
 		CREATE TABLE IF NOT EXISTS \`pinDescription\` (
 		 \`pinID\` INTEGER PRIMARY KEY NOT NULL,
