@@ -1,4 +1,4 @@
-iLOGFILE=$HOME/$0-`date +%Y-%m-%d_%Hh%Mm`.log
+LOGFILE=$HOME/$0-`date +%Y-%m-%d_%Hh%Mm`.log
 
 printl() {
 	printf $1
@@ -31,7 +31,6 @@ echo "alias l='ls -F --color=auto'" >> ~/.bashrc
 sudo chmod +x ./*.sh -R
 sudo apt install -y git
 sudo apt-get update -y
-sudo apt-get upgrade -y
 
 sudo apt-get install -y p7zip-full mc sqlite3  i2c-tools ncftp
 sudo apt install -y mariadb-server mariadb-client mosquitto
@@ -84,7 +83,8 @@ sudo usermod -aG tty michiele
 sudo usermod -aG kmem michiele
 
 sudo mv /var/www/html/index.html /var/www/html/orig_index.html
-
+sudo apt-get upgrade -y
+echo ""
 echo "Je moet nu REBOOT, daarna ./installVerzamelupdates.sh draaien"
 
 #bash ./setupNodered.sh
