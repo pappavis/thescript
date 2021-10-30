@@ -5,7 +5,7 @@ cd ~
 mkdir dbs
 
 cd /home/pi/dbs
-sudo wget https://github.com/pappavis/ESP8266_MQQT_Weerstation/blob/master/dbs/iot.db
+wget https://github.com/pappavis/ESP8266_MQQT_Weerstation/blob/master/dbs/iot.db
 chmod 777 /home/pi/dbs -R
 chmod 666 /home/pi/dbs/iot.db
 cd
