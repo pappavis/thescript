@@ -19,6 +19,10 @@ printf "\nPython wordt bijgewerkt\n"
 bash ./installPythonVirtualenv.sh
 printf "\Micropython wordt geïnstalleerd\n"
 bash ./installMicropython.sh
+bash ./installPHPliteadmin.sh
+bash ./installOwncloud.sh
+bash ./installIOT.sh
+bash ./installPythonLibs.sh
 
 printf "Let op!!  Apple Homebridge & Homeassistant niet op Pi 3 model A  installeren, hij heeft te weinig geheugen!!\n"
 printf "\nEINDE installVerzamelupdates.sh afgerond.\n"
