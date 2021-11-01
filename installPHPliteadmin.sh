@@ -1,7 +1,7 @@
 LOGFILE="/tmp/installPHPliteadmin.log"
 cd /var/www/html
-sudo mkdir /var/www/html/phpliteadmin
-cd /var/www/html/phpliteadmin
+sudo mkdir /var/www/html/support/phpliteadmin
+cd /var/www/html/support/phpliteadmin
 sudo rm -rf https://www.phpliteadmin.org/phpliteadmin-dev.zip
 sudo wget https://www.phpliteadmin.org/phpliteadmin-dev.zip
 if [ $? -eq 0 ]; then
