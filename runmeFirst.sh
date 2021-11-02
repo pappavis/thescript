@@ -42,7 +42,7 @@ sudo apt install -y python3-pip
 sudo apt install -y python3-opencv
 
 ehco "Swapfile vergroot van 100mb naar 2Gb"
-sudo sed -i -e '/CONF_SWAPSIZE=100/s/1024/2048/' /etc/dphys-swapfile
+sudo sed -i -e '/CONF_SWAPSIZE=100/s/100/2048/' /etc/dphys-swapfile
 sudo /etc/init.d/dphys-swapfile restart
 
 mkdir ~/Downloads
