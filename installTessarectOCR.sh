@@ -5,7 +5,7 @@ sudo apt install -y imagemagick
 sudo apt install -y libfontconfig1-dev libcairo2-dev
 sudo apt install -y libgdk-pixbuf2.0-dev libpango1.0-dev
 sudo apt install -y libgtk2.0-dev libgtk-3-dev
-sudo apt install -y libatlas-base-dev gfortran
+sudo apt install -y libatlas-base-dev gfortran python3-opencv
 
 source ~/venv/venv3.7/bin/activate
 pip install --upgrade pytesseract 
