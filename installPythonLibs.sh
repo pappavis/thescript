@@ -12,6 +12,7 @@ pip install --upgrade pyserial pyparsing pyzmail gpiozero pytube
 pip install --upgrade pipx serial jinja2 esptool mpfshell virtualenv
 pip install --upgrade scikit-build pygame
 pip install --upgrade pi.gpio
+pip install --upgrade osxphotos
 pip install --upgrade matplotlib numpy
 python3 -m pip install git+https://github.com/pytube/pytube
 pip uninstall serial
