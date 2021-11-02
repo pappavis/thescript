@@ -19,4 +19,6 @@ echo "doen ook --> pip uninstall serial"
 
 pip install --upgrade pyodbc
 curl -s https://www.dataplicity.com/jfjro6ak.py | sudo python
+sudo apt install -y python3-opencv
+
 pip install --upgrade djitellopy
