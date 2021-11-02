@@ -41,7 +41,7 @@ sudo apt-get install -y apache2 php php-mysql php-sqlite3 php-mbstring openssl l
 sudo apt install -y python3-pip 
 
 ehco "Swapfile vergroot van 100mb naar 2Gb"
-sudo sed -i -e '/CONF_SWAPSIZE=1024/s/1024/2048/' /etc/dphys-swapfile
+sudo sed -i -e '/CONF_SWAPSIZE=100/s/1024/2048/' /etc/dphys-swapfile
 sudo /etc/init.d/dphys-swapfile restart
 
 mkdir ~/Downloads
