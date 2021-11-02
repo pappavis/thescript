@@ -12,3 +12,4 @@ printf "installUpdates.sh afgerond.\n"
 printf "Werkt die NodeJS installatie?\n"
 curl -fsSL https://deb.nodesource.com/test | bash -
 printf "NodeJS test install afgerond.\n"
+sudo apt full-upgrade -y
