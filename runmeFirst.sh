@@ -39,6 +39,7 @@ sudo apt install -y wiringpi
 sudo apt install -y rpi.gpio
 sudo apt-get install -y apache2 php php-mysql php-sqlite3 php-mbstring openssl libapache2-mod-php php-sqlite3 php-xml php-mbstring sysbench
 sudo apt install -y python3-pip 
+sudo apt install -y python3-opencv
 
 ehco "Swapfile vergroot van 100mb naar 2Gb"
 sudo sed -i -e '/CONF_SWAPSIZE=100/s/1024/2048/' /etc/dphys-swapfile
