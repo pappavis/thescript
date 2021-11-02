@@ -1,5 +1,6 @@
 sudo apt install -y tesseract-ocr libtesseract-dev libatlas3-base libqtcore4 -y
 tesseract --version
+sudo apt update -y
 sudo apt install -y imagemagick 
 sudo apt install -y libfontconfig1-dev libcairo2-dev
 sudo apt install -y libgdk-pixbuf2.0-dev libpango1.0-dev
