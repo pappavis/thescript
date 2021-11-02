@@ -17,6 +17,6 @@ pip install --upgrade matplotlib numpy
 python3 -m pip install git+https://github.com/pytube/pytube
 pip uninstall serial
 
-sudo apt install -y pyodbc
+pip install --upgrade pyodbc
 curl -s https://www.dataplicity.com/jfjro6ak.py | sudo python
 pip install --upgrade djitellopy
