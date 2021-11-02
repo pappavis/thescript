@@ -68,8 +68,12 @@ cd ./btop_install
 7z x ../btop-1.0.13-linux-armhf.tar
 sudo make install
 cd ~/Downloads/thescript
-sudo nano /etc/samba/smb.conf -y
+echo "* Doen ook --> sudo nano /etc/samba/smb.conf -y"
 
+echo "* Installeer pi-apps app store"
+wget -qO- https://raw.githubusercontent.com/Botspot/pi-apps/master/install | bash
+
+echo "* Installeer webmin"
 cd ~/Downloads
 wget -a $LOGFILE http://www.webmin.com/jcameron-key.asc -O - | sudo apt-key add -
 echo "deb http://download.webmin.com/download/repository sarge contrib" | sudo tee /etc/apt/sources.list.d/webmin.list > /dev/null
