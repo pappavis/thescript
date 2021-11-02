@@ -32,7 +32,7 @@ sudo apt install -y git
 sudo apt-get update -y
 
 sudo apt-get install -y p7zip-full mc sqlite3  i2c-tools ncftp
-sudo apt install -y mariadb-server mariadb-client mosquitto
+sudo apt install -y mariadb-server mariadb-client mosquitto mosquitto-clients
 sudo apt install -y python3 python3-pip python-smbus gedit gparted
 sudo apt-get install -y nodejs npm tightvncserver pure-ftpd neofetch
 sudo apt install -y wiringpi 
