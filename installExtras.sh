@@ -81,6 +81,12 @@ sudo apt-get $AQUIET -y update 2>&1 | tee -a $LOGFILE
 sudo apt-get $AQUIET -y install webmin 2>&1 | tee -a $LOGFILE
 sudo sed -i -e 's#ssl=1#ssl=0#g' /etc/webmin/miniserv.conf
 
+echo "Installeren Grafana"
+wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
+echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
+sudo apt-get update -y
+sudo apt-get install -y grafana
+sudo /bin/systemctl start grafana-server
 
 echo "Installeren RPI-Clone"
 cd ~/Downloads
