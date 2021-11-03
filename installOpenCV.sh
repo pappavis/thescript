@@ -68,3 +68,4 @@ make -j$(nproc)
 make install
 
 echo " OpenCV build van bronkode afgerond."
+pip install --upgrade opencv-contrib-python opencv-python roundface
