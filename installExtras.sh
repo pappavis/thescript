@@ -52,6 +52,11 @@ cd ~/Downloads/
 sudo apt update -y
 echo "** installeer minimale Raspbian desktop."
 sudo apt install -y raspberrypi-ui-mods xinit xserver-xorg xrdp
+sudo mkdir /home/pi/.local
+sudo mkdir /home/pi/.local/share
+sudo mkdir /home/pi/.local/share/lxsession
+sudo mkdir /home/pi/.local/share/lxterminal
+
 
 echo "** installeer barrier KVM."
 sudo apt install -y remmina barrier thonny kodi
