@@ -1,4 +1,4 @@
-echo "Installeer OpenCV Python"
+echo "** OPTIONEEL!! Installeer OpenCV Python van broncode."
 echo "sudo apt-get -y remove x264 libx264-dev"
 
 echo "## Install dependencies"
@@ -70,4 +70,4 @@ make install
 
 echo " OpenCV build van bronkode afgerond."
 pip install --upgrade pip setuptools wheel
-pip install --upgrade opencv-contrib-python opencv-python roundface
+pip install --upgrade opencv-contrib-python opencv-python-headless==4.4.0.44 roundface
