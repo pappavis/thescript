@@ -11,6 +11,7 @@ sudo apt install -y python3-opencv
 python ./demo/opencv_pip_fix.py
 
 source ~/venv/venv3.7/bin/activate
+pip install --upgrade pip setuptools wheel
 pip install --upgrade pytesseract 
 pip install --upgrade opencv-contrib-python 
 pip install --upgrade libwebp6
