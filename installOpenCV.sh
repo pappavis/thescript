@@ -3,6 +3,7 @@ echo "sudo apt-get -y remove x264 libx264-dev"
 
 echo "## Install dependencies"
 source ~/venv/venv3.7/bin/activate
+python ./demo/opencv_pip_fix.py
 sudo apt-get -y install build-essential checkinstall cmake pkg-config yasm
 sudo apt-get -y install git gfortran
 sudo apt-get -y install libjpeg8-dev libjasper-dev libpng12-dev
