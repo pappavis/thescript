@@ -8,7 +8,10 @@ sudo apt install -y libgtk2.0-dev libgtk-3-dev
 sudo apt install -y libatlas-base-dev gfortran python3-opencv
 sudo apt install -y python3-opencv
 
+python ./demo/opencv_pip_fix.py
+
 source ~/venv/venv3.7/bin/activate
 pip install --upgrade pytesseract 
 pip install --upgrade opencv-contrib-python 
 pip install --upgrade libwebp6
+python ./demo/opencv_pip_fix.py
