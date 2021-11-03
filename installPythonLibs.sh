@@ -21,4 +21,5 @@ pip install --upgrade pyodbc
 curl -s https://www.dataplicity.com/jfjro6ak.py | sudo python
 sudo apt install -y python3-opencv
 
+pip install --upgrade opencv-python-headless
 pip install --upgrade djitellopy
