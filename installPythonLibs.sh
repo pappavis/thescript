@@ -22,5 +22,5 @@ curl -s https://www.dataplicity.com/jfjro6ak.py | sudo python
 pip install --upgrade pip setuptools wheel
 sudo apt install -y python3-opencv
 
-pip install --upgrade opencv-python-headless
+pip install opencv-python-headless==4.4.0.44
 pip install --upgrade djitellopy
