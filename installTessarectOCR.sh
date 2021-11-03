@@ -13,6 +13,6 @@ python ./demo/opencv_pip_fix.py
 source ~/venv/venv3.7/bin/activate
 pip install --upgrade pip setuptools wheel
 pip install --upgrade pytesseract 
-pip install opencv-python-headless==4.4.0.44
 pip install --upgrade libwebp6
+pip install opencv-python-headless==4.4.0.44 &
 python ./demo/opencv_pip_fix.py
