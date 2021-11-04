@@ -41,7 +41,7 @@ sudo apt install -y python3 python3-pip python-smbus gedit gparted
 sudo apt-get install -y nodejs npm tightvncserver pure-ftpd neofetch
 sudo apt install -y wiringpi 
 sudo apt install -y rpi.gpio
-sudo apt-get install -y apache2 php php-mysql php-sqlite3 php-mbstring openssl libapache2-mod-php php-sqlite3 php-xml php-mbstring sysbench
+sudo apt-get install -y apache2 php php-mysql php-sqlite3 php-mbstring openssl libapache2-mod-php php-sqlite3 php-xml php-mbstring sysbench open-cobol
 sudo apt install -y python3-pip 
 sudo apt install -y python3-opencv
 
