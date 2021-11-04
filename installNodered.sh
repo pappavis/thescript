@@ -22,7 +22,7 @@ NQUIET=""
 skip=0
 other=0
 MYMENU=$"nodenew"
-
+LOGFILE=~/install.log
 
 echo "**Installeren $BIRed node-red en $BIWhite modules"
 cd ~
