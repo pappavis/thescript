@@ -29,6 +29,10 @@ echo "alias la='ls -lFa --color=auto'" >> ~/.bashrc
 echo "alias l='ls -F --color=auto'" >> ~/.bashrc
 
 sudo apt install -y git
+mkdir /home/pi/Downloads
+cd /home/pi/Downloads
+git clone https://github.com/pappavis/thescript/
+cd /home/pi/Downloads/thescript
 sudo apt-get update -y
 
 sudo apt-get install -y p7zip-full mc sqlite3  i2c-tools ncftp
@@ -92,7 +96,11 @@ sudo usermod -aG kmem michiele
 
 sudo mv /var/www/html/index.html /var/www/html/orig_index.html
 sudo apt-get upgrade -y
+source /home/pi/venv3.7/bin/activate
+
 echo ""
-echo "Je moet nu REBOOT, daarna ./installVerzamelupdates.sh draaien"
+echo "Je kunt nu REBOOT, daarna ./installVerzamelupdates.sh draaien"
+
+bash ./installVerzamelupdates.sh
 
 #bash ./setupNodered.sh
