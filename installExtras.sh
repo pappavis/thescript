@@ -121,6 +121,16 @@ pip install -r requirements.txt
 ehco "je kunt nu: python ./cli.py"
 
 cd ~/Downloads
+echo "Installeren Grafana" 
+wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
+echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
+sudo apt update -y
+sudo apt-get install -y grafana
+sudo /bin/systemctl enable grafana-server
+sudo /bin/systemctl start grafana-server
+echo "grafana-server is geïnstalleerd"
+
+cd ~/Downloads
 echo "Motorola 68000 emulatie in C, voor de lol."
 git clone https://github.com/kstenerud/Musashi
 cd Musashi
