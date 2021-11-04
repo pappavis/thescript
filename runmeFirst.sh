@@ -50,7 +50,7 @@ sudo sed -i -e '/CONF_SWAPSIZE=100/s/100/2048/' /etc/dphys-swapfile
 sudo /etc/init.d/dphys-swapfile restart
 
 echo "Bluetooth, wijzigen naar DicoverableTimeout=0"
-sudo sed -i -e '/Timeout = 1/s/1/0/' /etc/bluetooth/main.conf
+sudo sed -i -e '/#DiscoverableTimeout = 0/s/#Discoverable/Discoverable/' /etc/bluetooth/main.conf
 sudo service bluetooth restart
 
 mkdir ~/Downloads
