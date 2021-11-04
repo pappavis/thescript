@@ -10,7 +10,7 @@ python -m ensurepip
 pip install --upgrade openpyxl o365 ttn qrcode pillow sqlalchemy pymsteams esptool adafruit-ampy 
 pip install --upgrade pyserial pyparsing pyzmail gpiozero pytube 
 pip install --upgrade pipx serial jinja2 esptool mpfshell virtualenv
-pip install --upgrade scikit-build pygame
+pip install --upgrade scikit-build pygame pymongo
 pip install --upgrade pi.gpio
 pip install --upgrade osxphotos
 pip install --upgrade matplotlib numpy
