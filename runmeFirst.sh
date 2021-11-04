@@ -96,7 +96,8 @@ sudo usermod -aG kmem michiele
 
 sudo mv /var/www/html/index.html /var/www/html/orig_index.html
 sudo apt-get upgrade -y
-source /home/pi/venv3.7/bin/activate
+sudo apt autoclean -y
+sudo apt autoremove -y
 
 echo ""
 echo "Je kunt nu REBOOT, daarna ./installVerzamelupdates.sh draaien"
