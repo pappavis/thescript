@@ -1,4 +1,5 @@
 _hn1=$(hostname)
+_pwd=$(pwd)
 LOGFILE=~/installExtrasLog.log
 AQUIET=""
 git pull
@@ -113,6 +114,14 @@ cd /var/www/html
 sudo wget -a $LOGFILE $AQUIET https://www.scargill.net/iot/reset.css -O /var/www/html/reset.css
 
 cd ~/Downloads
+git clone https://github.com/Chris-Johnston/Easier68k
+
+echo "Motorola 68000 emulatie in C, voor de lol."
+git clone https://github.com/kstenerud/Musashi
+cd Musashi
+make
+
+cd $_pwd
 
 echo "Virtuahlere draadloos Wifi is geinstalleerd."
 echo "* Install extras is afgerond."
