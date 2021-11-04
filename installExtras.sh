@@ -118,7 +118,7 @@ echo "Motorola 68000 emulatie in Python, voor de lol."
 git clone https://github.com/Chris-Johnston/Easier68k
 cd Easier68k
 pip install -r requirements.txt
-python ./cli.py
+ehco "je kunt nu: python ./cli.py"
 
 cd ~/Downloads
 echo "Motorola 68000 emulatie in C, voor de lol."
