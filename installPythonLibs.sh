@@ -23,4 +23,4 @@ pip install --upgrade pip setuptools wheel
 sudo apt install -y python3-opencv
 
 echo "pip install opencv-python-headless==4.4.0.44"
-pip install --upgrade djitellopy
+echo "pip install --upgrade djitellopy"
