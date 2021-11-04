@@ -1,0 +1,22 @@
+*>  test2.cbl - get user input, and do output
+*>     
+IDENTIFICATION DIVISION.
+PROGRAM-ID. HELLO.
+ 
+DATA DIVISION.
+   WORKING-STORAGE SECTION.
+   01 WS-ID PIC 9(3) VALUE 101.
+   01 WS-STUDENT-NAME PIC X(25).
+   01 WS-DEPT PIC X(25) VALUE 'Engineering'.
+   01 WS-DATE PIC X(10).
+ 
+PROCEDURE DIVISION.
+   DISPLAY "Enter Your Name:".
+   ACCEPT WS-STUDENT-NAME.
+   ACCEPT WS-DATE FROM DATE.
+   DISPLAY " ".
+   DISPLAY "Name :  " WS-STUDENT-NAME " ID: " WS-ID.
+   DISPLAY "Dept :  " WS-DEPT.
+   DISPLAY "Date :  " WS-DATE.
+ 
+STOP RUN.
