@@ -12,7 +12,6 @@ pip install --upgrade pyserial pyparsing pyzmail gpiozero pytube
 pip install --upgrade pipx serial jinja2 esptool mpfshell virtualenv
 pip install --upgrade scikit-build pygame pymongo psycopg2-binary mysql-connector-python guizero
 pip install --upgrade pi.gpio
-pip install --upgrade osxphotos
 pip install --upgrade matplotlib numpy
 python3 -m pip install git+https://github.com/pytube/pytube
 echo "doen ook --> pip uninstall serial"
@@ -24,3 +23,4 @@ sudo apt install -y python3-opencv
 
 echo "pip install opencv-python-headless==4.4.0.44"
 echo "pip install --upgrade djitellopy"
+ehco "pip install --upgrade osxphotos"
