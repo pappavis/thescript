@@ -5,7 +5,6 @@ cd ~/Downloads
 git clone https://github.com/pappavis/thescript
 cd ~/Downloads/thescript
 git pull
-bash ./runmefirst
 printf "\nInstalleren VirtualHere.com USB via WiFi.\n"
 bash ./installExtras.sh
 bash ./installNFSserver.sh
