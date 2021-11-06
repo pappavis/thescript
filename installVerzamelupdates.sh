@@ -29,7 +29,6 @@ bash ./installNodeJS.sh
 bash ./installNodered.sh
 bash ./installOctoprint.sh
 bash ./installTessarectOCR.sh
-bash ./installPythonCircuitpython.sh
 
 printf "Let op!!  Apple Homebridge & Homeassistant niet op Pi 3 model A  installeren, hij heeft te weinig geheugen!!\n"
 printf "\nEINDE installVerzamelupdates.sh afgerond.\n"
