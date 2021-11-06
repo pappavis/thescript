@@ -1,7 +1,7 @@
 # ref https://stackoverflow.com/questions/58185322/python3-7-no-module-named-pip
 
 NOW_DIR=$(pwd)
-sudo apt update
+sudo apt update -y
 sudo apt install -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget
 mkdir ~/python_upgrade
 cd ~/python_upgrade
