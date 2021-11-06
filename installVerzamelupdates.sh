@@ -1,4 +1,5 @@
 printf "\n** 20210904 Bijwerken Python, Circuitpython, instalaltie Micropython\n**"
+sudo apt update -y
 mkdir ~/Downloads
 cd ~/Downloads
 git clone https://github.com/pappavis/thescript
