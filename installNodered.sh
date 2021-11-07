@@ -39,7 +39,7 @@ cd /home/pi/.node-red
 
 
 echo "Node-red weer installeren"
-sudo npm install -g node-red --unsafe-perm
+bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
 sudo npm install -g tar
 npm audit fix
 
@@ -51,112 +51,11 @@ clean_stdin()
     done
 }
 
-# Permanent loop until both passwords are the same..
-function user_input {
-    local VARIABLE_NAME=${1}
-    local VARIABLE_NAME_1="A"
-    local VARIABLE_NAME_2="B"
-    while true; do
-        printf "${BICyan}$2: ${BIWhite}";
-        if [ "$3" = "hide" ] ; then
-            stty -echo;
-        fi
-        read VARIABLE_NAME_1;
-        stty echo;
-        if [ "$3" = "hide" ] ; then
-            printf "\n${BICyan}$2 (again) : ${BIWhite}";
-            stty -echo;
-            read VARIABLE_NAME_2;
-            stty echo;
-        else
-            VARIABLE_NAME_2=$VARIABLE_NAME_1;
-        fi
-        if [ $VARIABLE_NAME_1 != $VARIABLE_NAME_2 ] ; then
-            printf "\n${BIRed}Sorry, did not match!${BIWhite}\n";
-        else
-            break;
-        fi
-    done
-    readonly ${VARIABLE_NAME}=$VARIABLE_NAME_1;
-    if [ "$3" == "hide" ] ; then
-        printf "\n";
-    fi
-}
-
 stopit=0
 other=0
 yes=0
 nohelp=0
 hideother=0
-
-timecount(){
-    sec=30
-    while [ $sec -ge 0 ]; do
-        if [ $nohelp -eq 1 ]; then
-            
-            if [ $hideother -eq 1 ]; then
-                printf "${BIPurple}Continue ${BIWhite}y${BIPurple}(es)/${BIWhite}n${BIPurple}(o)/${BIWhite}a${BIPurple}(ll)/${BIWhite}e${BIPurple}(nd)-  ${BIGreen}00:0$min:$sec${BIPurple} remaining\033[0K\r${BIWhite}"
-            else
-                printf "${BIPurple}Continue ${BIWhite}y${BIPurple}(es)/${BIWhite}o${BIPurple}(ther)/${BIWhite}e${BIPurple}(nd)-  ${BIGreen}00:0$min:$sec${BIPurple} remaining\033[0K\r${BIWhite}"
-            fi
-        else
-            printf "${BIPurple}Continue ${BIWhite}y${BIPurple}(es)/${BIWhite}h${BIPurple}(elp)-  ${BIGreen}00:0$min:$sec${BIPurple} remaining\033[0K\r${BIWhite}"
-        fi
-        sec=$((sec-1))
-        trap '' 2
-        stty -echo
-        read -t 1 -n 1 user_response
-        stty echo
-        trap - 2
-        if [ -n  "$user_response" ]; then
-            break
-        fi
-    done
-}
-
-
-task_start(){
-    printf "\r\n"
-    printf "${BIGreen}%*s\n" $columns | tr ' ' -
-    printf "$1"
-    clean_stdin
-    skip=0
-    printf "\n${BIGreen}%*s${BIWhite}\n" $columns | tr ' ' -
-    elapsedTime="$(($(date +%s)-startTime))"
-    printf "Elapsed: %02d hrs %02d mins %02d secs\n" "$((elapsedTime/3600%24))" "$((elapsedTime/60%60))" "$((elapsedTime%60))"
-    clean_stdin
-    if [ "$user_response" != "a" ]; then
-        timecount
-    fi
-    echo -e "                                                                        \033[0K\r"
-    if  [ "$user_response" = "e" ]; then
-        printf "${BIWhite}"
-        exit 1
-    fi
-    if  [ "$user_response" = "n" ]; then
-        skip=1
-    fi
-    if  [ "$user_response" = "o" ]; then
-        other=1
-    fi
-    if  [ "$user_response" = "h" ]; then
-        stopit=1
-    fi
-    if  [ "$user_response" = "y" ]; then
-        yes=1
-    fi
-    if [ -n  "$2" ]; then
-        if [ $skip -eq 0 ]; then
-            printf "${BIYellow}$2${BIWhite}\n"
-        else
-            printf "${BICyan}%*s${BIWhite}\n" $columns '[SKIPPED]'
-        fi
-    fi
-}
-
-task_end(){
-    printf "${BICyan}%*s${BIWhite}\n" $columns '[OK]'
-}
 
 
 CPU_TEMP_CURRENT='Unknown'
@@ -270,7 +169,7 @@ if [[ $MYMENU == *"nodenew"* ]]; then
 		npm $NQUIET install --save ${addonnodes} 2>&1 | tee -a $LOGFILE
 	done
 	
-	for addonnodes in momentnode-red-contrib-home-assistant-websocket node-red-contrib-ibm-watson-iot node-red-contrib-sun-position ; do
+	for addonnodes in moment node-red-contrib-home-assistant-websocket node-red-contrib-ibm-watson-iot node-red-contrib-sun-position ; do
 		printstatus "Installing node \"${addonnodes}\""
 		npm $NQUIET install --save ${addonnodes} 2>&1 | tee -a $LOGFILE
 	done
@@ -285,7 +184,7 @@ if [[ $MYMENU == *"nodenew"* ]]; then
 		npm $NQUIET install --save ${addonnodes} 2>&1 | tee -a $LOGFILE
 	done
 	
-	for addonnodes in momentnode-red-contrib-file-function node-red-contrib-boolean-logic node-red-contrib-blynk-ws node-red-contrib-telegrambot node-red-contrib-dsm node-red-contrib-ftp ; do
+	for addonnodes in moment node-red-contrib-file-function node-red-contrib-boolean-logic node-red-contrib-blynk-ws node-red-contrib-telegrambot node-red-contrib-dsm node-red-contrib-ftp ; do
 		printstatus "Installing node \"${addonnodes}\""
 		npm $NQUIET install --save ${addonnodes} 2>&1 | tee -a $LOGFILE
 	done
@@ -331,22 +230,8 @@ if [[ $MYMENU == *"nodenew"* ]]; then
     npm $NQUIET audit fix
 	sudo wget -a $LOGFILE $AQUIET https://tech.scargill.net/iot/settings.txt -O settings.js
 
-	echo " "
-	bcryptadminpass=$(node -e "console.log(require('bcryptjs').hashSync(process.argv[1], 8));" $adminpass)
-	bcryptuserpass=$(node -e "console.log(require('bcryptjs').hashSync(process.argv[1], 8));" $userpass)
-	# echo Encrypted password: $bcryptpass
-	cp settings.js settings.js.bak-pre-crypt
-
-	sed -i -e "s#\/\/adminAuth#adminAuth#" /home/pi/.node-red/settings.js
-	sed -i -e "s#\/\/httpNodeAuth#httpNodeAuth#" /home/pi/.node-red/settings.js
-	sed -i -e "s#NRUSERNAMEA#$adminname#" /home/pi/.node-red/settings.js
-	sed -i -e "s#NRPASSWORDA#$bcryptadminpass#" /home/pi/.node-red/settings.js
-	sed -i -e "s#NRUSERNAMEU#$username#" /home/pi/.node-red/settings.js
-	sed -i -e "s#NRPASSWORDU#$bcryptuserpass#" /home/pi/.node-red/settings.js
-	if [[ $MYMENU == *"hwsupport"* ]]; then
-	    sed -i -e "s#\/\/var i2c#var i2c#" /home/pi/.node-red/settings.js
-	    sed -i -e "s#\/\/i2c#i2c#" /home/pi/.node-red/settings.js
-	fi
+    sed -i -e "s#\/\/var i2c#var i2c#" /home/pi/.node-red/settings.js
+    sed -i -e "s#\/\/i2c#i2c#" /home/pi/.node-red/settings.js
     sudo systemctl enable nodered.service 2>&1 | tee -a $LOGFILE
     ## add a nice little command line utility (nrlog) for showing and tailing Node-Red scripts in colour
 	echo "alias nrlog='sudo journalctl -f -n 50 -u nodered -o cat | ccze -A'" | sudo tee -a /etc/bash.bashrc > /dev/null 2>&1
