@@ -29,7 +29,7 @@ cd ~
 
 echo "Oude $BIRed nodered $BIWhite verwijderen"
 sudo service nodered stop
-sudo npm uninstall -g node-red
+echo "sudo npm uninstall -g node-red"
 echo "Opschonen en legen nodered cache"
 rm -rf ~/.node-red
 echo "Opschonen en legen nodered cache afgerond."
