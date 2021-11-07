@@ -226,22 +226,24 @@ if [[ $MYMENU == *"nodenew"* ]]; then
 	##  bash <(curl -sL https://raw.githubusercontent.com/node-red/raspbian-deb-package/master/resources/update-nodejs-and-nodered)
 
     #bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
- 
-   ##curl -sL https://raw.githubusercontent.com/node-red/raspbian-deb-package/master/resources/update-nodejs-and-nodered > update-nodejs-and-nodered
-   sudo npm install -g --unsafe-perm node
-   sudo npm install -g --unsafe-perm node-red
-   
-    echo 143.204.15.127 deb.nodesource.com | sudo tee -a /etc/hosts
-    chmod +x update-nodejs-and-nodered
-    echo y | ./update-nodejs-and-nodered
- 
-cd && sudo cp /var/log/nodered-install.log . && sudo chown pi.pi ./nodered-install.log && cd ~/.node-red/
- 
+
+	echo 143.204.15.127 deb.nodesource.com | sudo tee -a /etc/hosts
+	chmod +x update-nodejs-and-nodered
+	echo y | ./update-nodejs-and-nodered
+
+	##curl -sL https://raw.githubusercontent.com/node-red/raspbian-deb-package/master/resources/update-nodejs-and-nodered > update-nodejs-and-nodered
+	sudo npm install -g --unsafe-perm node
+	sudo npm install -g --unsafe-perm node-red
+    
+	cd && sudo cp /var/log/nodered-install.log . && sudo chown pi.pi ./nodered-install.log && cd ~/.node-red/
+
+	 cd /home/pi/.node-red
+	 wget https://raw.githubusercontent.com/pappavis/thescript/master/settings.js
 
 
 	printstatus "Installing Nodes (could take some time)"
 
-  printstatus "Installing node \"node-red-node-sqlite\""
+	printstatus "Installing node \"node-red-node-sqlite\""
 	npm $NQUIET install node-red-node-sqlite 2>&1 | tee -a $LOGFILE
   
   
