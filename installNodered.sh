@@ -36,6 +36,9 @@ echo "Opschonen en legen nodered cache afgerond."
 mkdir ~/.node-red
 cd ~/.node-red
 
+sudo npm install -g tar
+npm audit fix
+
 echo "Node-red weer installeren"
 sudo npm install -g node-red
 
