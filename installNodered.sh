@@ -239,6 +239,7 @@ if [[ $MYMENU == *"nodenew"* ]]; then
 
 	 cd /home/pi/.node-red
 	 wget https://raw.githubusercontent.com/pappavis/thescript/master/settings.js
+	 wget https://raw.githubusercontent.com/pappavis/thescript/master/flows.js
 
 
 	printstatus "Installing Nodes (could take some time)"
