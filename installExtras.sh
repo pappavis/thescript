@@ -92,7 +92,24 @@ wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
 echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
 sudo apt-get update -y
 sudo apt-get install -y grafana
-sudo /bin/systemctl start grafana-server
+sudo systemctl unmask grafana-server.service
+sudo systemctl start grafana-server
+sudo systemctl enable grafana-server.service
+
+echo "Installeren influxdb"
+wget -qO- https://repos.influxdata.com/influxdb.key | sudo apt-key add -
+source /etc/os-release
+echo "deb https://repos.influxdata.com/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
+sudo apt update -y
+sudo apt install -y influxdb
+sudo systemctl unmask influxdb.service
+sudo systemctl start influxdb
+sudo systemctl enable influxdb.service
+
+cd ~/Downloads/
+wget https://dl.influxdata.com/telegraf/releases/telegraf-1.20.3_linux_armhf.tar.gz
+tar xf telegraf-1.20.3_linux_armhf.tar.gz
+
 
 echo "Installeren RPI-Clone"
 cd ~/Downloads
