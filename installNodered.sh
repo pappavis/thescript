@@ -33,14 +33,15 @@ echo "sudo npm uninstall -g node-red"
 echo "Opschonen en legen nodered cache"
 rm -rf ~/.node-red
 echo "Opschonen en legen nodered cache afgerond."
-mkdir ~/.node-red
-cd ~/.node-red
+echo "mkdir ~/.node-red"
+mkdir /home/pi/.node-red
+cd /home/pi/.node-red
 
-sudo npm install -g tar
-npm audit fix
 
 echo "Node-red weer installeren"
-sudo npm install -g node-red
+sudo npm install -g node-red --unsafe-perm
+sudo npm install -g tar
+npm audit fix
 
 
 clean_stdin()
