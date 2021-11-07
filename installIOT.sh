@@ -6,8 +6,8 @@ mkdir dbs
 
 cd /home/pi/dbs
 wget https://github.com/pappavis/ESP8266_MQQT_Weerstation/blob/master/dbs/iot.db
-chmod 777 /home/pi/dbs -R
-chmod 666 /home/pi/dbs/iot.db
+sudo chmod 777 /home/pi/dbs -R
+sudo chmod 666 /home/pi/dbs/iot.db
 cd
 
 		sqlite3 /home/pi/dbs/iot.db << EOF		
@@ -83,6 +83,6 @@ cd
 
 
 cd
-chmod 777 /home/pi/dbs
-chmod 666 /home/pi/dbs/iot.db
+sudo chmod 777 /home/pi/dbs
+sudo chmod 666 /home/pi/dbs/iot.db
 cd
