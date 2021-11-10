@@ -31,7 +31,7 @@ mkdir /home/pi/.node-red
 cd /home/pi/.node-red
 
 
-echo "Node-red weer installeren"
+echo "NodeJS installeren"
 echo "\ny" | bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
 sudo npm install -g tar
 npm audit fix
@@ -130,6 +130,16 @@ printstatus() {
 	 wget https://raw.githubusercontent.com/pappavis/thescript/master/flows.js
 	sed -i -e "s#\/\/var i2c#var i2c#" /home/pi/.node-red/settings.js
 	sed -i -e "s#\/\/i2c#i2c#" /home/pi/.node-red/settings.js
+
+	mkdir ~/Downloads
+	cd ~/Downloads	
+	echo "Nodered service installeren"
+	wget https://raw.githubusercontent.com/pappavis/thescript/master/nodered.service
+	sudo mv ./nodered.service /etc/systemd/system
+	sudo systemctl enable nodered.service
+	echo "Nodered service starten"
+	sudo service nodered restart
+
 	sudo systemctl enable nodered.service 2>&1 | tee -a $LOGFILE
 
 	cd && sudo cp /var/log/nodered-install.log . && sudo chown pi.pi ./nodered-install.log && cd ~/.node-red/
@@ -137,6 +147,7 @@ printstatus() {
 
 	cd /home/pi/
 	bash ./installNoderedNodes.sh
+	sudo service nodered restart
 
         npm $NQUIET install i2c-bus 2>&1 | tee -a $LOGFILE
 	printstatus "Installing node \"bcryptjs\""
