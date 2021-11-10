@@ -1,5 +1,6 @@
 LOGFILE="/tmp/installPHPliteadmin.log"
 adminpass="admin"
+HOSTNAME=$(hostname)
 
 echo "PHPliteadmin wordt geïnstalleerd"
 cd /var/www/html
@@ -21,4 +22,4 @@ sudo sed -i -e 's#\$directory = \x27.\x27;#\$directory = \x27/home/pi/dbs/\x27;#
 sudo sed -i -e "s#\$password = \x27admin\x27;#\$password = \x27$adminpass\x27;#g" /var/www/html/phpliteadmin/phpliteadmin.config.php
 sudo sed -i -e "s#\$subdirectories = false;#\$subdirectories = true;#g" /var/www/html/phpliteadmin/phpliteadmin.config.php
 cd
-echo "PHPliteadmin install afgerond."
+echo "PHPliteadmin bereikbaar op http://$HOSTNAME.local/support/phpliteadmin"
