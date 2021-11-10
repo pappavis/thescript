@@ -125,9 +125,12 @@ printstatus() {
 
 	##curl -sL https://raw.githubusercontent.com/node-red/raspbian-deb-package/master/resources/update-nodejs-and-nodered > update-nodejs-and-nodered
 	sudo npm install -g --unsafe-perm node-red
-	 cd /home/pi/.node-red
+	mkdir /home/pi/Downloads
+	 cd /home/pi/Downloads
 	 wget https://raw.githubusercontent.com/pappavis/thescript/master/settings.js
 	 wget https://raw.githubusercontent.com/pappavis/thescript/master/flows.js
+	 mv ./settings.js /home/pi/.node-red/
+	 mv ./flows.js /home/pi/.node-red/
 	sed -i -e "s#\/\/var i2c#var i2c#" /home/pi/.node-red/settings.js
 	sed -i -e "s#\/\/i2c#i2c#" /home/pi/.node-red/settings.js
 
