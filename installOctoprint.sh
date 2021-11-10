@@ -2,17 +2,21 @@ echo "SETUP: Skep octoprint virtualenv."
 virtualenv ~/venv/octoprint
 echo "SETUP: Aktiveer virtualenv."
 source ~/venv/octoprint/bin/activate
-pip install pip --upgrade
-pip install octoprint
+pip install -- upgrade pip
+pip install -- upgrade octoprint
 
 echo "SETUP: pi toegang naar devices."
 sudo usermod -a -G tty pi &
 sudo usermod -a -G dialout pi &
 
 echo "SETUP: Installeer als service."
-wget https://github.com/foosel/OctoPrint/raw/master/scripts/octoprint.init && sudo mv octoprint.init /etc/init.d/octoprint
-wget https://github.com/foosel/OctoPrint/raw/master/scripts/octoprint.default && sudo mv octoprint.default /etc/default/octoprint
-sudo chmod +x /etc/init.d/octoprint
+mkdir ~/Downloads
+cd ~/Downloads
+wget https://raw.githubusercontent.com/pappavis/thescript/master/octoprint.service
+sudo mv ./octoprint.service /etc/systemd/system
+sudo systemctl enable octoprint.service
+sudo service octoprint restart
+
 
 echo "DAEMON=/home/pi/venv/OctoPrint/venv/bin/octoprint" >> /etc/default/octoprint
 sudo update-rc.d octoprint defaults
