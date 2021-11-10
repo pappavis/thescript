@@ -1,5 +1,5 @@
 _hn="http://"$(hostname).local":8123"
-ehco "Installeren Homeassistant"
+echo "Installeren Homeassistant"
 virtualenv ~/venv/homeassistant
 source ~/venv/homeassistant/bin/activate
 pip3 install homeassistant
