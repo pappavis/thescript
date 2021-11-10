@@ -11,23 +11,16 @@ ICyan='\e[0;96m'        # Cyan
 IWhite='\e[0;97m'       # White
 
 # Bold High Intensity
-BIRed='\e[1;91m'        # Red
-BIGreen='\e[1;92m'      # Green
-BIYellow='\e[1;93m'     # Yellow
-BIPurple='\e[1;95m'     # Purple
-BIMagenta='\e[1;95m'    # Purple
-BICyan='\e[1;96m'       # Cyan
-BIWhite='\e[1;97m'      # White
 NQUIET=""
 skip=0
 other=0
 MYMENU=$"nodenew"
 LOGFILE=~/install.log
 
-echo "**Installeren $BIRed node-red en $BIWhite modules"
+echo "**Installerennode-red en modules"
 cd ~
 
-echo "Oude $BIRed nodered $BIWhite verwijderen"
+echo "Oude  nodered  verwijderen"
 sudo service nodered stop
 echo "sudo npm uninstall -g node-red"
 echo "Opschonen en legen nodered cache"
@@ -120,7 +113,6 @@ printstatus() {
 }
 
 
-if [[ $MYMENU == *"nodenew"* ]]; then
     printstatus "Installing NodeJS and NodeRed"
 	
 	##  bash <(curl -sL https://raw.githubusercontent.com/node-red/raspbian-deb-package/master/resources/update-nodejs-and-nodered)
@@ -132,22 +124,23 @@ if [[ $MYMENU == *"nodenew"* ]]; then
 	echo y | ./update-nodejs-and-nodered
 
 	##curl -sL https://raw.githubusercontent.com/node-red/raspbian-deb-package/master/resources/update-nodejs-and-nodered > update-nodejs-and-nodered
-	sudo npm install -g --unsafe-perm node
 	sudo npm install -g --unsafe-perm node-red
-    
-	cd && sudo cp /var/log/nodered-install.log . && sudo chown pi.pi ./nodered-install.log && cd ~/.node-red/
-
 	 cd /home/pi/.node-red
 	 wget https://raw.githubusercontent.com/pappavis/thescript/master/settings.js
 	 wget https://raw.githubusercontent.com/pappavis/thescript/master/flows.js
+	sed -i -e "s#\/\/var i2c#var i2c#" /home/pi/.node-red/settings.js
+	sed -i -e "s#\/\/i2c#i2c#" /home/pi/.node-red/settings.js
+	sudo systemctl enable nodered.service 2>&1 | tee -a $LOGFILE
+
+	cd && sudo cp /var/log/nodered-install.log . && sudo chown pi.pi ./nodered-install.log && cd ~/.node-red/
 
 
-	if [[ $MYMENU == *"hwsupport"* ]]; then
-	printstatus "Installing node \"i2c-bus\""
+	cd /home/pi/
+	bash ./installNoderedNodes.sh
+
         npm $NQUIET install i2c-bus 2>&1 | tee -a $LOGFILE
-	fi
 	printstatus "Installing node \"bcryptjs\""
-    sudo npm $NQUIET install bcryptjs 2>&1 | tee -a $LOGFILE
+	sudo npm $NQUIET install bcryptjs 2>&1 | tee -a $LOGFILE
 
 	MYMENU="hwsupport"
 
@@ -172,12 +165,8 @@ if [[ $MYMENU == *"nodenew"* ]]; then
     npm $NQUIET audit fix
 	sudo wget -a $LOGFILE $AQUIET https://tech.scargill.net/iot/settings.txt -O settings.js
 
-    sed -i -e "s#\/\/var i2c#var i2c#" /home/pi/.node-red/settings.js
-    sed -i -e "s#\/\/i2c#i2c#" /home/pi/.node-red/settings.js
-    sudo systemctl enable nodered.service 2>&1 | tee -a $LOGFILE
     ## add a nice little command line utility (nrlog) for showing and tailing Node-Red scripts in colour
 	echo "alias nrlog='sudo journalctl -f -n 50 -u nodered -o cat | ccze -A'" | sudo tee -a /etc/bash.bashrc > /dev/null 2>&1
-fi
 
 cd ~/.node-red
 npm audit fix --force
