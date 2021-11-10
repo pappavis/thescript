@@ -1,3 +1,5 @@
+LOGFILE=$HOME/$0-`date +%Y-%m-%d_%Hh%Mm`.log
+
 printf "** Python upgrade installeren\n"
 sudo apt install -y libffi-dev libbz2-dev liblzma-dev libsqlite3-dev 
 sudo apt install -y libncurses5-dev libgdbm-dev zlib1g-dev libreadline-dev libssl-dev tk-dev build-essential
