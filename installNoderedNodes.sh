@@ -1,6 +1,17 @@
 NQUIET=''
 LOGFILE=/home/pi/installNoderedNodes_logs.txt
 
+printstatus() {
+    Obtain_Cpu_Temp
+    h=$(($SECONDS/3600));
+    m=$((($SECONDS/60)%60));
+    s=$(($SECONDS%60));
+    printf "\r\n${BIGreen}==\r\n== ${BIYellow}$1"
+    printf "\r\n${BIGreen}== ${IBlue}Total: %02dh:%02dm:%02ds Cores: $ACTIVECORES Temperature: $CPU_TEMP_PRINT \r\n${BIGreen}==${IWhite}\r\n\r\n"  $h $m $s;
+	echo -e "############################################################" >> $LOGFILE
+	echo -e $1 >> $LOGFILE
+}
+
 echo "Installing Nodes (could take some time)"
 
 	echo "Installing node \"node-red-node-sqlite\""
