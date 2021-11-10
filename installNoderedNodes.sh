@@ -1,4 +1,5 @@
 NQUIET=''
+startTime="$(date +%s)"
 LOGFILE=/home/pi/installNoderedNodes_logs.txt
 
 printstatus() {
