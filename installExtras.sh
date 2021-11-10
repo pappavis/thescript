@@ -61,6 +61,7 @@ sudo mkdir /home/pi/.local/share/lxterminal
 
 echo "** installeer barrier KVM."
 sudo apt install -y remmina barrier thonny kodi chromium
+sudo apt install -y libsdl2-ttf-dev libsdl2-image-dev amiberry
 
 sudo adduser xrdp ssl-cert 
 systemctl show -p SubState --value xrdp
