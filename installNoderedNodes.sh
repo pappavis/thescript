@@ -3,7 +3,7 @@ LOGFILE=/home/pi/installNoderedNodes_logs.txt
 
 echo "Installing Nodes (could take some time)"
 
-	echos "Installing node \"node-red-node-sqlite\""
+	echo "Installing node \"node-red-node-sqlite\""
 	npm $NQUIET install node-red-node-sqlite 2>&1 | tee -a $LOGFILE
   
   
