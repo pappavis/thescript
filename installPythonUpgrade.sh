@@ -13,6 +13,7 @@ make install
 mkdir ~/venv
 ~/.local/bin/python3.11 -m virtualenv ~/venv/venv3.11
 echo "source ~/venv/venv3.11/bin/activate" >> ~/.bashrc
+source ~/venv/venv3.11/bin/activate
 source ~/.bashrc
 bash ./installPythonLibs.sh
 bash ./installPythonCircuitpython.sh
