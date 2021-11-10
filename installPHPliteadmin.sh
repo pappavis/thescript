@@ -4,6 +4,7 @@ adminpass="admin"
 cd /var/www/html
 sudo mkdir /var/www/html/support/phpliteadmin
 cd /var/www/html/support/phpliteadmin
+sudo rm -rf ./phpliteadmin-dev*
 sudo wget https://www.phpliteadmin.org/phpliteadmin-dev.zip
 
 sudo 7z x phpliteadmin-dev.zip 2>&1 | tee -a $LOGFILE
