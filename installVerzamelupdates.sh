@@ -1,3 +1,5 @@
+LOGFILE=$HOME/$0-`date +%Y-%m-%d_%Hh%Mm`.log
+
 printf "\n** 20210904 Bijwerken Python, Circuitpython, instalaltie Micropython\n**"
 sudo apt update -y
 mkdir ~/Downloads
