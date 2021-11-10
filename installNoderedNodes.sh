@@ -70,4 +70,5 @@ echo "Installing Nodes (could take some time)"
 		npm $NQUIET install --save ${addonnodes} 2>&1 | tee -a $LOGFILE
 	done
 
+	sudo service nodered restart
 echo "Nodes installatie afgerond"
