@@ -7,7 +7,7 @@ cd /home/pi/dbs
 wget https://github.com/pappavis/ESP8266_MQQT_Weerstation/blob/master/dbs/iot.db
 sudo chmod 777 /home/pi/dbs -R
 sudo chmod 666 /home/pi/dbs/iot.db
-sudo chmod -R u=rwx,g=rx,o=rx /home/pi/dbs
+echo "sudo chmod -R u=rwx,g=rx,o=rx /home/pi/dbs"
 cd
 
 		sqlite3 /home/pi/dbs/iot.db << EOF		
