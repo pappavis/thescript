@@ -7,7 +7,7 @@ sudo mkdir /var/www/html/support/partdb
 cd ~/Downloads
 wget -O part-db.tar.gz https://github.com/jbtronics/Part-DB/archive/master.tar.gz
 sudo tar -xzf part-db.tar.gz -C /var/www/html/support/partdb
-sudo mv /var/www/html/support/Part-DB-master /var/www/html/support/partdb
+sudo mv /var/www/html/support/partdb/Part-DB-master/* /var/www/html/support/partdb
 #sudo chown www-root:www-root /var/www/html/support/part-db -R
 wget https://github.com/jbtronics/Part-DB/blob/gh-pages/vendor.zip?raw=true
 7z x 'vendor.zip?raw=true'
