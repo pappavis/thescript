@@ -1,4 +1,4 @@
-LOGFILE=$HOME/$0-`date +%Y-%m-%d_%Hh%Mm`.log
+LOGFILE=/home/pi/PythonUpgradefile-`date +%Y-%m-%d_%Hh%Mm`.log
 
 echo "** Python upgrade installeren\n"
 sudo apt install -y libffi-dev libbz2-dev liblzma-dev libsqlite3-dev  2>&1 | tee -a $LOGFILE
