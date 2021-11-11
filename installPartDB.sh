@@ -1,4 +1,5 @@
 _hn1=$(hostname)
+_pwd=$(pwd)
 echo " "
 echo "SETUP: part-db in /var/www/html/"
 echo " "
@@ -28,3 +29,4 @@ sudo mysql -u root -p < ~/tmp/create_userPartDb.sql
 echo "PartDB geïnstalleerd bij http://$_hn1.local/support/part-db"
 echo "   Frontend met gebruikersnaam: admin, wachtwoord: admin"
 echo "   Partdb setup aanmelden met gebruikersnaam: partdb, wachtwoord: partdb"
+cd $_pwd
