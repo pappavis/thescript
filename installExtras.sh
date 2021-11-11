@@ -61,7 +61,6 @@ sudo mkdir /home/pi/.local/share/lxterminal
 
 echo "** installeer barrier KVM."
 sudo apt install -y remmina barrier thonny kodi chromium
-sudo apt install -y libsdl2-ttf-dev libsdl2-image-dev amiberry
 
 sudo adduser xrdp ssl-cert 
 systemctl show -p SubState --value xrdp
@@ -87,6 +86,15 @@ echo "deb http://download.webmin.com/download/repository sarge contrib" | sudo t
 sudo apt-get $AQUIET -y update 2>&1 | tee -a $LOGFILE
 sudo apt-get $AQUIET -y install webmin 2>&1 | tee -a $LOGFILE
 sudo sed -i -e 's#ssl=1#ssl=0#g' /etc/webmin/miniserv.conf
+
+echo "* Installeer amiberry"
+cd ~/Downloads
+sudo apt install -y libsdl2-ttf-dev libsdl2-image-dev
+wget https://github.com/midwan/amiberry/releases/download/v4.1.6/amiberry-v4.1.6-rpi3-sdl2-32bit-rpios.zip
+7z x ./amiberry-v4.1.6-rpi3-sdl2-32bit-rpios.zip
+rm ./amiberry-v4.1.6-rpi3-sdl2-32bit-rpios.zip
+sudo mv ./amiberry-rpi3-sdl2-32bit /usr/local/games
+sudo ln -s /usr/local/games/amiberry-rpi3-sdl2-32bit/amiberry /usr/local/bin/amiberry
 
 echo "Installeren Grafana"
 wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
