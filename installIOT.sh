@@ -2,8 +2,7 @@ echo "* Stat iot.db setup in sqlite3."
 sudo apt install -y sqlite3
 
 cd ~
-mkdir dbs
-
+mkdir /home/pi/dbs
 cd /home/pi/dbs
 wget https://github.com/pappavis/ESP8266_MQQT_Weerstation/blob/master/dbs/iot.db
 sudo chmod 777 /home/pi/dbs -R
