@@ -1,7 +1,7 @@
 _hn1=$(hostname)
 _pwd=$(pwd)
 echo " "
-echo "SETUP: part-db in /var/www/html/"
+echo "SETUP: part-db in /var/www/html/support"
 echo " "
 sudo apt install -y apache2 php php-mysql php-sqlite3
 sudo mkdir /var/www/html/support/partdb
