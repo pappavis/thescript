@@ -148,7 +148,7 @@ printstatus() {
 	cd && sudo cp /var/log/nodered-install.log . && sudo chown pi.pi ./nodered-install.log && cd ~/.node-red/
 
 
-	cd /home/pi/
+	sudo service nodered restart
 	bash ./installNoderedNodes.sh
 	sudo service nodered restart
 
