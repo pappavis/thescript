@@ -29,6 +29,7 @@ echo "alias la='ls -lFa --color=auto'" >> ~/.bashrc
 echo "alias l='ls -F --color=auto'" >> ~/.bashrc
 
 sudo apt install -y git
+git config pull.rebase false
 mkdir /home/pi/Downloads
 cd /home/pi/Downloads
 git clone https://github.com/pappavis/thescript/
