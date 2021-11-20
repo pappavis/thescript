@@ -1,3 +1,4 @@
+_pwd=$(pwd)
 echo "SETUP: Skep octoprint virtualenv."
 virtualenv ~/venv/octoprint
 echo "SETUP: Aktiveer virtualenv."
@@ -18,10 +19,9 @@ sudo systemctl enable octoprint.service
 sudo service octoprint restart
 
 
-echo "DAEMON=/home/pi/venv/OctoPrint/venv/bin/octoprint" >> /etc/default/octoprint
-sudo update-rc.d octoprint defaults
-echo "SETUP: Start octoprint service."
-sudo service octoprint restart
+##echo "DAEMON=/home/pi/venv/OctoPrint/venv/bin/octoprint" >> /etc/default/octoprint
+##sudo update-rc.d octoprint defaults
+##echo "SETUP: Start octoprint service."
 
 echo "Installeer extenties."
 pip --disable-pip-version-check install https://github.com/RomainOdeval/OctoPrint-CrealityTemperature/releases/latest/download/master.zip --no-cache-dir
@@ -59,3 +59,4 @@ source ~/venv/venv3.7/bin/activate
 printf "\nStart Octoprint service op http://localhost:5000\n"
 sudo service octoprint restart &
 printf "Octoprint install afgerond.\n"
+cd $_pwd
