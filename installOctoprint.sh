@@ -4,7 +4,7 @@ virtualenv ~/venv/octoprint
 echo "SETUP: Aktiveer virtualenv."
 source ~/venv/octoprint/bin/activate
 pip install -- upgrade pip
-pip install -- upgrade octoprint
+pip install -- upgrade octoprint ffmpeg
 
 echo "SETUP: pi toegang naar devices."
 sudo usermod -a -G tty pi &
