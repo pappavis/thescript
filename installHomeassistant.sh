@@ -3,7 +3,8 @@ _pwd=$(pwd)
 echo "Installeren Homeassistant"
 virtualenv ~/venv/homeassistant
 source ~/venv/homeassistant/bin/activate
-pip3 install homeassistant
+pip install --upgrade pip
+pip install --upgrade homeassistant ffmpeg
 sudo echo "source /home/pi/venv/homeassistant/bin/activate" >> /usr/local/bin/homeassistant
 sudo chmod +x /usr/local/bin/homeassistant
 sudo echo "/home/pi/venv/homeassistant/bin/hass" >> /usr/local/bin/homeassistant
