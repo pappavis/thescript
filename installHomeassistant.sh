@@ -8,7 +8,8 @@ pip install --upgrade homeassistant ffmpeg
 sudo echo "source /home/pi/venv/homeassistant/bin/activate" >> /usr/local/bin/homeassistant
 sudo chmod +x /usr/local/bin/homeassistant
 sudo echo "/home/pi/venv/homeassistant/bin/hass" >> /usr/local/bin/homeassistant
-recho "pip install --upgrade pip homebridge"
+echo "pip install --upgrade pip homebridge"
+sudo apt install -y ffmpeg
 
 mkdir ~/Downloads
 cd ~/Downloads
