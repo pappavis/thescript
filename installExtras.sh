@@ -7,6 +7,13 @@ cd ~/Downloads
 echo "Download en installeer virtualhere.com Pi 3 server & client"
 curl https://raw.githubusercontent.com/virtualhere/script/main/install_server | sudo sh
 
+cd ~/Downloads
+wget https://github.com/pappavis/thescript/blame/master/index_apps.php
+sudo cp index_apps.php /var/www/html
+sudo rm -rf /var/www/html/index.html
+sudo rm -rf /var/www/html/index.php
+
+
 #wget https://www.virtualhere.com/sites/default/files/usbserver/vhusbdarmpi3
 #wget https://www.virtualhere.com/sites/default/files/usbclient/vhuitarm7
 #wget https://virtualhere.com/sites/default/files/usbserver/vhusbdarmpi
