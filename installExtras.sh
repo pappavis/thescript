@@ -9,7 +9,7 @@ curl https://raw.githubusercontent.com/virtualhere/script/main/install_server | 
 
 cd ~/Downloads
 wget https://raw.githubusercontent.com/pappavis/thescript/master/index_apps.php
-sudo cp index_apps.php /var/www/html
+sudo mv index_apps.php /var/www/html
 sudo rm -rf /var/www/html/index.html
 sudo rm -rf /var/www/html/index.php
 
