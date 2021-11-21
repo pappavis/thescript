@@ -32,3 +32,6 @@ RestartSec=20
 # Tag things in the log
 SyslogIdentifier=Node-RED
 #StandardOutput=syslog
+
+[Install]
+WantedBy=multi-user.target
