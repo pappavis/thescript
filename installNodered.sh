@@ -130,7 +130,7 @@ printstatus() {
 	 wget https://raw.githubusercontent.com/pappavis/thescript/master/settings.js
 	 wget https://raw.githubusercontent.com/pappavis/thescript/master/flows.json
 	 mv ./settings.js /home/pi/.node-red/
-	 mv ./flows.js /home/pi/.node-red/
+	 mv ./flows.json /home/pi/.node-red/
 	sed -i -e "s#\/\/var i2c#var i2c#" /home/pi/.node-red/settings.js
 	sed -i -e "s#\/\/i2c#i2c#" /home/pi/.node-red/settings.js
 
