@@ -24,10 +24,13 @@ sudo sed -i -e "s#\$password = \x27admin\x27;#\$password = \x27$adminpass\x27;#g
 sudo sed -i -e "s#\$subdirectories = false;#\$subdirectories = true;#g" /var/www/html/phpliteadmin/phpliteadmin.config.php
 sudo rm -rf ./phpliteadmin-dev*
 
-cd $_pwd
-wget https://github.com/pappavis/thescript/blame/master/index_apps.php
-sudo cp index_apps.php /var/www/html
+cd ~/Downloads
+wget https://raw.githubusercontent.com/pappavis/thescript/master/index_apps.php
+sudo mv index_apps.php /var/www/html
 sudo rm -rf /var/www/html/index.html
 sudo rm -rf /var/www/html/index.php
+
+cd $_pwd
+
 
 echo "PHPliteadmin bereikbaar op http://$HOSTNAME.local/support/phpliteadmin"
