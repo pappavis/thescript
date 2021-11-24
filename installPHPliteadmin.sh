@@ -11,8 +11,8 @@ sudo rm -rf ./phpliteadmin-dev*
 sudo wget https://www.phpliteadmin.org/phpliteadmin-dev.zip
 
 sudo 7z x phpliteadmin-dev.zip 2>&1 | tee -a $LOGFILE
-sudo mv phpliteadmin.php ./support/phplite/adminindex.php
-sudo mv phpliteadmin.config.sample.php ./support/phpliteadmin/phpliteadmin.config.php
+sudo mv ./phpliteadmin.php ./index.php
+sudo mv ./phpliteadmin.config.sample.php ./phpliteadmin.config.php
 sudo rm *.zip
 sudo mkdir themes
 #cd themes
