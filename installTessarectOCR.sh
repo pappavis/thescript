@@ -21,4 +21,7 @@ pip install --upgrade pytesseract
 pip install --upgrade libwebp6
 pip install opencv-python-headless==4.4.0.44 &
 python ./demo/opencv_pip_fix.py
+sudo apt autoclean -y
+sudo apt autoremove -y
+
 echo "Tessarect $_tv  en OpenCV is installatie afgerond."
