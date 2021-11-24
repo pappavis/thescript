@@ -1,5 +1,5 @@
 LOGFILE=$HOME/$0-`date +%Y-%m-%d_%Hh%Mm`.log
-
+_pwd=$(pwd)
 printl() {
 	printf $1
 	echo -e $1 >> $LOGFILE
@@ -105,6 +105,7 @@ sudo apt autoremove -y
 echo ""
 echo "Je kunt nu REBOOT, daarna ./installVerzamelupdates.sh draaien"
 
+cd $_pwd
 bash ./installVerzamelupdates.sh
 
 #bash ./setupNodered.sh
