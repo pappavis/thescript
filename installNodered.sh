@@ -32,7 +32,7 @@ cd /home/pi/.node-red
 
 
 echo "NodeJS installeren"
-echo "\ny" | bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
+echo "y\n" | bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
 sudo npm install -g tar
 npm audit fix
 
