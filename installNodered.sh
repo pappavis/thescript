@@ -114,7 +114,8 @@ echo "NodeJS installeren"
 echo "y\n" | bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
 ##node-red admin init
 npm audit fix
-npm install qrcode johnny-five
+sudo npm install -g qrcode 
+npm install johnny-five
 sudo apt-get install -y  yarn
 
 
