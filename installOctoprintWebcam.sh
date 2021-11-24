@@ -8,7 +8,7 @@ git clone https://github.com/jacksonliam/mjpg-streamer.git
 cd ~/Downloads/mjpg-streamer/mjpg-streamer-experimental
 export LD_LIBRARY_PATH=.
 make
-echo "\nOctprint webcam install gereed\n"
-echo "\nOctprint webcam streaming op http://$_hostname:8080/?action=stream\n"
+echo "Octprint webcam install gereed."
+echo "Octprint webcam streaming op http://$_hostname:8080/?action=stream"
 ./mjpg_streamer -i "./input_uvc.so -y" -o "./output_http.so" 
 sudo service octoprint restart
