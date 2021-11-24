@@ -2,7 +2,7 @@ ehco "* Installeren Tessarect OCR"
 sudo apt update -y
 sudo apt install -y tesseract-ocr 
 sudo apt install -y libtesseract-dev libatlas3-base
-sudo apt update -y libqtcore
+sudo apt update -y qtchooser
 sudo apt install -y imagemagick 
 sudo apt install -y libfontconfig1-dev libcairo2-dev
 sudo apt install -y libgdk-pixbuf2.0-dev libpango1.0-dev
