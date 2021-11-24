@@ -17,26 +17,6 @@ other=0
 MYMENU=$"nodenew"
 LOGFILE=~/install.log
 
-echo "**Installerennode-red en modules"
-cd ~
-
-echo "Oude  nodered  verwijderen"
-sudo service nodered stop
-echo "sudo npm uninstall -g node-red"
-echo "Opschonen en legen nodered cache"
-rm -rf ~/.node-red
-echo "Opschonen en legen nodered cache afgerond."
-echo "mkdir ~/.node-red"
-mkdir /home/pi/.node-red
-cd /home/pi/.node-red
-
-
-echo "NodeJS installeren"
-echo "y\n" | bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
-##node-red admin init
-npm audit fix
-npm install qrcode johnny-five
-
 clean_stdin()
 {
     while read -r -t 0; do
@@ -114,6 +94,29 @@ printstatus() {
 
 
     printstatus "Installing NodeJS and NodeRed"
+
+
+echo "**Installerennode-red en modules"
+cd ~
+
+echo "Oude  nodered  verwijderen"
+sudo service nodered stop
+echo "sudo npm uninstall -g node-red"
+echo "Opschonen en legen nodered cache"
+rm -rf ~/.node-red
+echo "Opschonen en legen nodered cache afgerond."
+echo "mkdir ~/.node-red"
+mkdir /home/pi/.node-red
+cd /home/pi/.node-red
+
+
+echo "NodeJS installeren"
+echo "y\n" | bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
+##node-red admin init
+npm audit fix
+npm install qrcode johnny-five
+sudo apt-get install -y  yarn
+
 
 	## echo 143.204.15.127 deb.nodesource.com | sudo tee -a /etc/hosts
 	## curl -sL https://raw.githubusercontent.com/node-red/raspbian-deb-package/master/resources/update-nodejs-and-nodered > update-nodejs-and-nodered
