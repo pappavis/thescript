@@ -2,7 +2,7 @@
 startTime="$(date +%s)"
 columns=$(tput cols)
 user_response=""
-
+_pwd=$(pwd)
 # High Intensity
 IGreen='\e[0;92m'       # Green
 IYellow='\e[0;93m'      # Yellow
@@ -33,10 +33,9 @@ cd /home/pi/.node-red
 
 echo "NodeJS installeren"
 echo "y\n" | bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
-ode-red admin init
-##sudo npm install -g tar
+##node-red admin init
 npm audit fix
-
+npm install qrcode johnny-five
 
 clean_stdin()
 {
@@ -115,10 +114,6 @@ printstatus() {
 
 
     printstatus "Installing NodeJS and NodeRed"
-	
-	##  bash <(curl -sL https://raw.githubusercontent.com/node-red/raspbian-deb-package/master/resources/update-nodejs-and-nodered)
-
-    	bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
 
 	## echo 143.204.15.127 deb.nodesource.com | sudo tee -a /etc/hosts
 	## curl -sL https://raw.githubusercontent.com/node-red/raspbian-deb-package/master/resources/update-nodejs-and-nodered > update-nodejs-and-nodered
@@ -140,16 +135,14 @@ printstatus() {
 	echo "Nodered service installeren"
 	wget https://raw.githubusercontent.com/pappavis/thescript/master/nodered.service
 	sudo mv ./nodered.service /etc/systemd/system
-	sudo systemctl enable nodered.service
+	sudo systemctl enable nodered.service 2>&1 | tee -a $LOGFILE
+
 	echo "Nodered service starten"
 	sudo service nodered restart
 
-	sudo systemctl enable nodered.service 2>&1 | tee -a $LOGFILE
-
 	cd && sudo cp /var/log/nodered-install.log . && sudo chown pi.pi ./nodered-install.log && cd ~/.node-red/
 
-
-	sudo service nodered restart
+	cd $_pwd
 	bash ./installNoderedNodes.sh
 	sudo service nodered restart
 
