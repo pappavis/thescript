@@ -1,54 +1,55 @@
-/**
- * Originale latest version: https://raw.githubusercontent.com/node-red/node-red/master/settings.js
- **/
-
-var fs = require("fs");
-//var i2c = require("i2c-bus");
-var mySettings;
-try {
-	mySettings = require("/home/pi/.node-red/redvars.js");
-} catch(err) {
-	mySettings = {};
-}
-
 module.exports = {
-    uiPort: process.env.PORT || 1880,
-    mqttReconnectTime: 15000,
-    serialReconnectTime: 15000,
-    debugMaxLength: 1000,
-    flowFile: 'flows.json',
+
+    /** The file containing the flows. If not set, defaults to flows_<hostname>.json **/
+    flowFile: "flows.json",
+    credentialSecret: false,
     flowFilePretty: true,
-    httpStatic: '/home/pi/.node-red/public',
-    functionGlobalContext: {
-        os:require('os'),
-        moment:require('moment'),
-        fs:require('fs'),
-		//i2c:require('i2c-bus'),
-        mySettings:mySettings
-    },
-    logging: {
-        console: {
-            level: "info",
-            metrics: false,
-            audit: false
+    //userDir: '/home/pi/.node-red/',
+    //nodesDir: '/home/nol/.node-red/nodes',
+
+    /** the tcp port that the Node-RED web server is listening on */
+    uiPort: process.env.PORT || 1880,
+     /** Configure the logging output */
+     logging: {
+         /** Only console logging is currently supported */
+         console: {
+             level: "info",
+             /** Whether or not to include metric events in the log output */
+             metrics: false,
+             /** Whether or not to include audit events in the log output */
+             audit: false
+         }
+     },
+
+     exportGlobalContextKeys: false,
+
+     externalModules: {
+          autoInstall: false,   /** Whether the runtime will attempt to automatically install missing modules */
+     },
+
+    editorTheme: {
+        palette: {
+        },
+        projects: {
+            enabled: false,
+            workflow: {
+                mode: "manual"
+            }
+        },
+        codeEditor: {
+            lib: "monaco",
+            options: {
+                theme: "vs",
+            }
         }
     },
-    //adminAuth: { type: "credentials", users: [{ username: "", password: "", permissions: "*" }] },
-    //httpNodeAuth: {user:"", pass:""},
-    editorTheme: { projects: { enabled: false }
-    }
 
-    // By default, credentials are encrypted in storage using a generated key. To
-    // specify your own secret, set the following property.
-    // If you want to disable encryption of credentials, set this property to false.
-    // Note: once you set this property, do not change it - doing so will prevent
-    // node-red from being able to decrypt your existing credentials and they will be
-    // lost.
-    //credentialSecret: "a-secret-key",
+    functionExternalModules: true,
+    functionGlobalContext: {
+        // os:require('os'),
+    },
 
-    //https: {
-    //    key: fs.readFileSync('privatekey.pem'),
-    //    cert: fs.readFileSync('certificate.pem')
-    //},
-    //requireHttps: true
+    debugMaxLength: 1000,
+    mqttReconnectTime: 15000,
+    serialReconnectTime: 15000,
 }
