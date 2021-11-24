@@ -33,7 +33,8 @@ cd /home/pi/.node-red
 
 echo "NodeJS installeren"
 echo "y\n" | bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
-sudo npm install -g tar
+ode-red admin init
+##sudo npm install -g tar
 npm audit fix
 
 
@@ -124,7 +125,7 @@ printstatus() {
 	## chmod +x update-nodejs-and-nodered
 	## echo y | ./update-nodejs-and-nodered
 
-	sudo npm install -g --unsafe-perm node-red
+	##sudo npm install -g --unsafe-perm node-red
 	mkdir /home/pi/Downloads
 	 cd /home/pi/Downloads
 	 wget https://raw.githubusercontent.com/pappavis/thescript/master/settings.js
