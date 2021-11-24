@@ -9,6 +9,6 @@ cd ~/Downloads/mjpg-streamer/mjpg-streamer-experimental
 export LD_LIBRARY_PATH=.
 make
 echo "Octprint webcam install gereed."
-echo "Octprint webcam streaming op http://$_hostname:8080/?action=stream"
+echo "Octprint webcam streaming op http://$_hostname.local:8080/?action=stream"
 ./mjpg_streamer -i "./input_uvc.so -y" -o "./output_http.so" 
 sudo service octoprint restart
