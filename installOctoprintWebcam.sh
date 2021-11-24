@@ -8,3 +8,4 @@ make
 echo "\nOctprint webcam install gereed\n"
 echo "\nOctprint webcam streaming op http://pivhere:8080/?action=stream\n"
 ./mjpg_streamer -i "./input_uvc.so -y" -o "./output_http.so" 
+sudo service octoprint restart
