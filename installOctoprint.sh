@@ -1,6 +1,6 @@
 _pwd=$(pwd)
 echo "SETUP: Skep octoprint virtualenv."
-virtualenv ~/venv/octoprint
+~/.local/bin/virtualenv ~/venv/octoprint
 echo "SETUP: Aktiveer virtualenv."
 source ~/venv/octoprint/bin/activate
 pip install --upgrade pip
