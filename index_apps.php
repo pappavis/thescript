@@ -53,15 +53,10 @@ p, .author {
      document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':1880' +  '/ui" >Node Red UI Desktop</a><br/>' );
      document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':3000' +  '" >Grafana - if installed</a><br/>' );
 	 document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':8888' +  '" >Chronograf - if installed</a><br/>' );
+	document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':8123' +  '/ui" >Home assistant</a><br/>' );
+	document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':4000' +  '/ui" >Octoprint</a><br/>' );
+	document.write('Apple <a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':8123' +  '/ui" >Homebridge</a><br/> integratie' );
 	 </script>
-	<a target="_blank" href="/phpliteadmin">SQLite Administrator</a><br/>
-	<a target="_blank" href="/phpsysinfo">System Information</a><br/>
-	<a target="_blank" href="https://bitbucket.org/scargill/esp-go/raw/517278aa44ae184d37a1e331e419b9f9c40f71b9/Hackitt-and-Bodgitt-ESP.doc">Download the ESP-GO Doc File</a><br/>	
-	<a target="_blank" href="https://tech.scargill.net">tech.scargill.net blog</a><br/>
-	<a target="_blank" href="./support">PartDB</a><br/>
-	<a href="http://pi0.local:8123" target="_blank">Home assistant</a><br>
-	<a href="http://pi0.local" target="_blank">Octoprint</a> lokaal<br>
-	Apple <a href="http://pi0.local:8581" target="_blank">Homebridge </a> integratie
 	</p><br/>
   </article>
 </div>
