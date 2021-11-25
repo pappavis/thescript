@@ -47,7 +47,7 @@ sudo service bluetooth restart
 sudo apt-get install -y p7zip-full mc sqlite3  i2c-tools ncftp
 sudo apt install -y mariadb-server mariadb-client mosquitto mosquitto-clients
 sudo apt install -y python3 python3-pip python-smbus gedit gparted
-sudo apt-get install -y tightvncserver pure-ftpd neofetch
+sudo apt-get install -y pure-ftpd neofetch
 sudo apt-get install -y nodejs npm
 sudo apt install -y wiringpi 
 sudo apt install -y rpi.gpio
