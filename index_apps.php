@@ -54,7 +54,7 @@ p, .author {
      document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':3000' +  '" >Grafana - if installed</a><br/>' );
 	 document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':8888' +  '" >Chronograf - if installed</a><br/>' );
 	document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':8123' +  '/" >Home assistant</a><br/>' );
-	document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':4000' +  '/" >Octoprint</a><br/>' );
+	document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':5000' +  '/" >Octoprint</a><br/>' );
 	document.write('Apple <a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':8123' +  '/" >Homebridge</a><br/> integratie' );
 	 </script>
 	</p><br/>
