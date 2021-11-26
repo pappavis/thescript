@@ -18,29 +18,27 @@ echo "**Installing Nodes (could take some time)"
 cd /home/pi/.node-red
 
 printstatus "bepalen laatste versies van globale NPM packages"
-npm outdated -g --depth=0
+sudo npm outdated -g
 sudo npm update -g
 for addonnodes in npm@latest
 	printstatus "Bijwerken globale node \"${addonnodes}\""
 	sudo npm $NQUIET update -g ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
+printstatus "bepalen laatste versies van lokale NPM packages in /home/pi/.node-red/"
 npm outdated
-npm uninstall --save node-uuid 2>&1 | tee -a $LOGFILE
-npm install --save uuid@latest 2>&1 | tee -a $LOGFILE
-npm uninstall --save node-tar 2>&1 | tee -a $LOGFILE
-npm install node-tar@latest 2>&1 | tee -a $LOGFILE
-npm install --save tar@latest 2>&1 | tee -a $LOGFILE
-npm uninstall --save uuid 2>&1 | tee -a $LOGFILE
-npm upgrade uuid@latest 2>&1 | tee -a $LOGFILE
+for addonnodes in node-uuid@latest uuid@latest node-tar tar@latest
+	printstatus "Bijwerken lokale node \"${addonnodes}\""
+	sudo npm $NQUIET update ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
+
 npm install -g npm-check-updates 2>&1 | tee -a $LOGFILE
 ncu -u 2>&1 | tee -a $LOGFILE
 npm update 2>&1 | tee -a $LOGFILE
 
 printstatus "\nInstalling node \"node-red-node-sqlite\"\n"
-npm $NQUIET install node-red-node-sqlite 2>&1 | tee -a $LOGFILE
+npm $NQUIET install --save node-red-node-sqlite 2>&1 | tee -a $LOGFILE
 npm audit fix --force
-
 		
 # TAKEN OUT  node-red-contrib-graphs - I dont use it, most likely defunct - no work done on it in 3 years
 for addonnodes in moment node-red-contrib-config node-red-contrib-grove node-red-contrib-diode node-red-contrib-bigtimer ; do
