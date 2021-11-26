@@ -1,6 +1,7 @@
 NQUIET=''
 startTime="$(date +%s)"
 LOGFILE=/home/pi/installNoderedNodes_logs.txt
+_pwd=$(pwd)
 
 printstatus() {
     Obtain_Cpu_Temp
@@ -72,3 +73,5 @@ echo "Installing Nodes (could take some time)"
 
 	sudo service nodered restart
 echo "Nodes installatie afgerond"
+cd $_pwd
+
