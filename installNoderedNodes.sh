@@ -86,7 +86,7 @@ for addonnodes in moment node-red-dashboard node-red-contrib-owntracks node-red-
 	npm $NQUIET install --save ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
-for addonnodes in moment node-red-contrib-find-my-iphone node-red-contrib-ttn node-red-contrib-apple-find-me node-red-contrib-msnodesql node-red-contrib-homekit-bridged node-red-contrib-homebridge-automation write-excel-file ; do 
+for addonnodes in moment node-red-contrib-find-my-iphone node-red-contrib-ttn node-red-contrib-apple-find-me node-red-contrib-msnodesql node-red-contrib-homekit-bridged node-red-contrib-homebridge-automation write-excel-file node-red-contrib-web-worldmap ; do 
 	printstatus "Installing node \"${addonnodes}\""
 	npm $NQUIET install --save ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
