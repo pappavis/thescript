@@ -27,7 +27,7 @@ done
 
 printstatus "bepalen laatste versies van lokale NPM packages in /home/pi/.node-red/"
 npm outdated
-for addonnodes in node-uuid@latest uuid@latest node-tar tar@latest
+for addonnodes in node-uuid@latest uuid@latest node-tar tar@latest	
 	printstatus "Bijwerken lokale node \"${addonnodes}\""
 	sudo npm $NQUIET update ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
