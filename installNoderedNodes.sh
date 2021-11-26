@@ -15,7 +15,7 @@ printstatus() {
 
 echo "Installing Nodes (could take some time)"
 
-	echo "Installing node \"node-red-node-sqlite\""
+	printstatus "\nInstalling node \"node-red-node-sqlite\"\n"
 	npm $NQUIET install node-red-node-sqlite 2>&1 | tee -a $LOGFILE
   
   
