@@ -71,6 +71,22 @@
         "label": "urbanlink.nl"
     },
     {
+        "id": "c10edcb88cf529eb",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "a9c62398303cd12b",
+        "type": "tab",
+        "label": "ESp32 sensore",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "fb508433.7560a8",
         "type": "ui_group",
         "name": "p1mon",
@@ -117,13 +133,6 @@
         "order": 9,
         "disabled": false,
         "hidden": false
-    },
-    {
-        "id": "e57c1143.ae121",
-        "type": "ttn app",
-        "appId": "384976234897",
-        "accessKey": "ttn-account-v2.PNVnl3M3kMF0LKgqgfHv3IIVn-UVJfmBvdWF4gDaZB4",
-        "discovery": "discovery.thethingsnetwork.org:1900"
     },
     {
         "id": "8bbab171.219ac",
@@ -564,6 +573,84 @@
         "willPayload": ""
     },
     {
+        "id": "e57c1143.ae121",
+        "type": "ttn app",
+        "appId": "384976234897",
+        "accessKey": "ttn-account-v2.PNVnl3M3kMF0LKgqgfHv3IIVn-UVJfmBvdWF4gDaZB4",
+        "discovery": "discovery.thethingsnetwork.org:1900"
+    },
+    {
+        "id": "e20e344371a2a87b",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.1.3",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "3535c8c83f0da586",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "eaae7c5232f2860e",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "373fa459.54e07c",
+        "type": "influxdb",
+        "hostname": "127.0.0.1",
+        "port": "8086",
+        "protocol": "http",
+        "database": "weatherdata",
+        "name": "Weather",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "1.x",
+        "url": "",
+        "rejectUnauthorized": false
+    },
+    {
+        "id": "5c9d6bcb2d0f88c0",
+        "type": "influxdb",
+        "hostname": "127.0.0.1",
+        "port": "8086",
+        "protocol": "http",
+        "database": "weatherdata",
+        "name": "InfluxDB",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "1.x",
+        "url": "http://localhost:8086",
+        "rejectUnauthorized": true
+    },
+    {
+        "id": "eaae7c5232f2860e",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
         "id": "9c5b957f.fdcba8",
         "type": "mqtt in",
         "z": "69238f4c.8e23f",
@@ -575,6 +662,7 @@
         "nl": false,
         "rap": false,
         "rh": "0",
+        "inputs": 0,
         "x": 180,
         "y": 40,
         "wires": [
@@ -607,6 +695,7 @@
         "nl": false,
         "rap": false,
         "rh": "0",
+        "inputs": 0,
         "x": 170,
         "y": 360,
         "wires": [
@@ -685,6 +774,7 @@
         "nl": false,
         "rap": false,
         "rh": "0",
+        "inputs": 0,
         "x": 217.83331680297852,
         "y": 537.6667137145996,
         "wires": [
@@ -774,6 +864,7 @@
         "nl": false,
         "rap": false,
         "rh": "0",
+        "inputs": 0,
         "x": 135.83331298828125,
         "y": 435.6666793823242,
         "wires": [
@@ -794,6 +885,7 @@
         "nl": false,
         "rap": false,
         "rh": "0",
+        "inputs": 0,
         "x": 211,
         "y": 752,
         "wires": [
@@ -859,6 +951,7 @@
         "nl": false,
         "rap": false,
         "rh": "0",
+        "inputs": 0,
         "x": 149.00001525878906,
         "y": 949.9999990463257,
         "wires": [
@@ -913,6 +1006,7 @@
         "nl": false,
         "rap": false,
         "rh": "0",
+        "inputs": 0,
         "x": 200,
         "y": 1080,
         "wires": [
@@ -1205,6 +1299,7 @@
         "nl": false,
         "rap": false,
         "rh": "0",
+        "inputs": 0,
         "x": 170,
         "y": 1420,
         "wires": [
@@ -1246,6 +1341,140 @@
         "x": 387.99999618530273,
         "y": 848.3333225250244,
         "wires": []
+    },
+    {
+        "id": "3129bae7.9f02a6",
+        "type": "mqtt out",
+        "z": "69238f4c.8e23f",
+        "name": "",
+        "topic": "dietpi/lijstweer",
+        "qos": "",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "5c5d1421.257f6c",
+        "x": 500,
+        "y": 1180,
+        "wires": []
+    },
+    {
+        "id": "41901133.14a2d",
+        "type": "mqtt in",
+        "z": "69238f4c.8e23f",
+        "name": "",
+        "topic": "dietpi/getweer",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "7003ac79.485954",
+        "nl": false,
+        "rap": false,
+        "rh": "0",
+        "inputs": 0,
+        "x": 148,
+        "y": 1163.3331146240234,
+        "wires": [
+            [
+                "6bb7f00d.b6b06"
+            ]
+        ]
+    },
+    {
+        "id": "104131d1.05643e",
+        "type": "mqtt out",
+        "z": "69238f4c.8e23f",
+        "name": "",
+        "topic": "weatherStation/deepSleepIntervalSekonden/waarde",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "7003ac79.485954",
+        "x": 931.8333129882812,
+        "y": 278.999981880188,
+        "wires": []
+    },
+    {
+        "id": "e1eef909.58c3c8",
+        "type": "mqtt in",
+        "z": "43f95fa6.1e9ed",
+        "name": "",
+        "topic": "json_test/hello",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "7003ac79.485954",
+        "nl": false,
+        "rap": false,
+        "rh": "0",
+        "inputs": 0,
+        "x": 130,
+        "y": 120,
+        "wires": [
+            [
+                "b8145a34.4f46f8"
+            ]
+        ]
+    },
+    {
+        "id": "b8145a34.4f46f8",
+        "type": "json",
+        "z": "43f95fa6.1e9ed",
+        "name": "",
+        "x": 336.0000228881836,
+        "y": 83.66665840148926,
+        "wires": [
+            [
+                "a7544bfd.b633d8"
+            ]
+        ]
+    },
+    {
+        "id": "a7544bfd.b633d8",
+        "type": "debug",
+        "z": "43f95fa6.1e9ed",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 512.0000152587891,
+        "y": 139.3333282470703,
+        "wires": []
+    },
+    {
+        "id": "4cb76ea8.a22a5",
+        "type": "find-my-iphone",
+        "z": "43f95fa6.1e9ed",
+        "x": 338.0000228881836,
+        "y": 252.3333511352539,
+        "wires": [
+            [
+                "a7544bfd.b633d8"
+            ]
+        ]
+    },
+    {
+        "id": "217d6796.1af0e8",
+        "type": "inject",
+        "z": "43f95fa6.1e9ed",
+        "name": "",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130.99999618530273,
+        "y": 247.99999618530273,
+        "wires": [
+            [
+                "4cb76ea8.a22a5"
+            ]
+        ]
     },
     {
         "id": "e6f61d9b.d76cf",
@@ -1325,134 +1554,6 @@
         ]
     },
     {
-        "id": "9d0096c9.3e80b8",
-        "type": "mqtt in",
-        "z": "855b7076.01ac4",
-        "name": "",
-        "topic": "octoPrint/",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "7003ac79.485954",
-        "nl": false,
-        "rap": false,
-        "rh": "0",
-        "x": 120,
-        "y": 60,
-        "wires": [
-            [
-                "6b843a66.0bdf14"
-            ]
-        ]
-    },
-    {
-        "id": "6b843a66.0bdf14",
-        "type": "debug",
-        "z": "855b7076.01ac4",
-        "name": "",
-        "active": true,
-        "console": "false",
-        "complete": "false",
-        "x": 730,
-        "y": 40,
-        "wires": []
-    },
-    {
-        "id": "8d5f9cf8.29366",
-        "type": "mqtt in",
-        "z": "855b7076.01ac4",
-        "name": "",
-        "topic": "octoPrint/event/",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "7003ac79.485954",
-        "nl": false,
-        "rap": false,
-        "rh": "0",
-        "x": 134,
-        "y": 181,
-        "wires": [
-            [
-                "6b843a66.0bdf14"
-            ]
-        ]
-    },
-    {
-        "id": "e1eef909.58c3c8",
-        "type": "mqtt in",
-        "z": "43f95fa6.1e9ed",
-        "name": "",
-        "topic": "json_test/hello",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "7003ac79.485954",
-        "nl": false,
-        "rap": false,
-        "rh": "0",
-        "x": 130,
-        "y": 120,
-        "wires": [
-            [
-                "b8145a34.4f46f8"
-            ]
-        ]
-    },
-    {
-        "id": "b8145a34.4f46f8",
-        "type": "json",
-        "z": "43f95fa6.1e9ed",
-        "name": "",
-        "x": 336.0000228881836,
-        "y": 83.66665840148926,
-        "wires": [
-            [
-                "a7544bfd.b633d8"
-            ]
-        ]
-    },
-    {
-        "id": "a7544bfd.b633d8",
-        "type": "debug",
-        "z": "43f95fa6.1e9ed",
-        "name": "",
-        "active": true,
-        "console": "false",
-        "complete": "false",
-        "x": 512.0000152587891,
-        "y": 139.3333282470703,
-        "wires": []
-    },
-    {
-        "id": "4cb76ea8.a22a5",
-        "type": "find-my-iphone",
-        "z": "43f95fa6.1e9ed",
-        "x": 338.0000228881836,
-        "y": 252.3333511352539,
-        "wires": [
-            [
-                "a7544bfd.b633d8"
-            ]
-        ]
-    },
-    {
-        "id": "217d6796.1af0e8",
-        "type": "inject",
-        "z": "43f95fa6.1e9ed",
-        "name": "",
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 130.99999618530273,
-        "y": 247.99999618530273,
-        "wires": [
-            [
-                "4cb76ea8.a22a5"
-            ]
-        ]
-    },
-    {
         "id": "352eed92.0a2882",
         "type": "mqtt in",
         "z": "a64e0c32.c396f",
@@ -1464,6 +1565,7 @@
         "nl": false,
         "rap": false,
         "rh": "0",
+        "inputs": 0,
         "x": 90,
         "y": 360,
         "wires": [
@@ -1503,6 +1605,7 @@
         "nl": false,
         "rap": false,
         "rh": "0",
+        "inputs": 0,
         "x": 126,
         "y": 289.9999809265137,
         "wires": [
@@ -1676,6 +1779,123 @@
         ]
     },
     {
+        "id": "9d0096c9.3e80b8",
+        "type": "mqtt in",
+        "z": "855b7076.01ac4",
+        "name": "",
+        "topic": "octoPrint/",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "7003ac79.485954",
+        "nl": false,
+        "rap": false,
+        "rh": "0",
+        "inputs": 0,
+        "x": 120,
+        "y": 60,
+        "wires": [
+            [
+                "6b843a66.0bdf14"
+            ]
+        ]
+    },
+    {
+        "id": "6b843a66.0bdf14",
+        "type": "debug",
+        "z": "855b7076.01ac4",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 730,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "8d5f9cf8.29366",
+        "type": "mqtt in",
+        "z": "855b7076.01ac4",
+        "name": "",
+        "topic": "octoPrint/event/",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "7003ac79.485954",
+        "nl": false,
+        "rap": false,
+        "rh": "0",
+        "inputs": 0,
+        "x": 134,
+        "y": 181,
+        "wires": [
+            [
+                "6b843a66.0bdf14"
+            ]
+        ]
+    },
+    {
+        "id": "49e0a796.e405a8",
+        "type": "mqtt in",
+        "z": "855b7076.01ac4",
+        "name": "",
+        "topic": "homeassistant/switch/octoprint_PSUControl_switch/set",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "7003ac79.485954",
+        "nl": false,
+        "rap": false,
+        "rh": "0",
+        "inputs": 0,
+        "x": 240,
+        "y": 260,
+        "wires": [
+            [
+                "6b843a66.0bdf14"
+            ]
+        ]
+    },
+    {
+        "id": "784d4782.239258",
+        "type": "mqtt in",
+        "z": "855b7076.01ac4",
+        "name": "",
+        "topic": "homeassistant/switch/octoprint_PSUControl_switch/state",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "7003ac79.485954",
+        "nl": false,
+        "rap": false,
+        "rh": "0",
+        "inputs": 0,
+        "x": 250,
+        "y": 340,
+        "wires": [
+            [
+                "6b843a66.0bdf14"
+            ]
+        ]
+    },
+    {
+        "id": "fa08b4da.102618",
+        "type": "mqtt in",
+        "z": "855b7076.01ac4",
+        "name": "",
+        "topic": "homeassistant/switch/octoprint_PSUControl_switch/availability",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "7003ac79.485954",
+        "nl": false,
+        "rap": false,
+        "rh": "0",
+        "inputs": 0,
+        "x": 260,
+        "y": 420,
+        "wires": [
+            [
+                "6b843a66.0bdf14"
+            ]
+        ]
+    },
+    {
         "id": "eb0fa79d.86c0f8",
         "type": "mqtt in",
         "z": "95a267b0.dfbf78",
@@ -1687,6 +1907,7 @@
         "nl": false,
         "rap": false,
         "rh": "0",
+        "inputs": 0,
         "x": 170,
         "y": 160,
         "wires": [
@@ -1726,44 +1947,6 @@
         "wires": []
     },
     {
-        "id": "3129bae7.9f02a6",
-        "type": "mqtt out",
-        "z": "69238f4c.8e23f",
-        "name": "",
-        "topic": "dietpi/lijstweer",
-        "qos": "",
-        "retain": "true",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "5c5d1421.257f6c",
-        "x": 500,
-        "y": 1180,
-        "wires": []
-    },
-    {
-        "id": "41901133.14a2d",
-        "type": "mqtt in",
-        "z": "69238f4c.8e23f",
-        "name": "",
-        "topic": "dietpi/getweer",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "7003ac79.485954",
-        "nl": false,
-        "rap": false,
-        "rh": "0",
-        "x": 148,
-        "y": 1163.3331146240234,
-        "wires": [
-            [
-                "6bb7f00d.b6b06"
-            ]
-        ]
-    },
-    {
         "id": "8ac88b07.cc4ad8",
         "type": "mqtt in",
         "z": "95a267b0.dfbf78",
@@ -1775,6 +1958,7 @@
         "nl": false,
         "rap": false,
         "rh": "0",
+        "inputs": 0,
         "x": 200,
         "y": 380,
         "wires": [
@@ -1793,6 +1977,7 @@
         "nl": false,
         "rap": false,
         "rh": "0",
+        "inputs": 0,
         "x": 180,
         "y": 280,
         "wires": [
@@ -1830,6 +2015,27 @@
         "wires": []
     },
     {
+        "id": "ba7520f3.d26278",
+        "type": "mqtt in",
+        "z": "95a267b0.dfbf78",
+        "name": "p1monitor/smartmeter/timestamp_local",
+        "topic": "p1monitor/smartmeter/timestamp_local",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "7003ac79.485954",
+        "nl": false,
+        "rap": false,
+        "rh": "0",
+        "inputs": 0,
+        "x": 230,
+        "y": 60,
+        "wires": [
+            [
+                "7b117f5c.ba908"
+            ]
+        ]
+    },
+    {
         "id": "fcbbfad.1e64e08",
         "type": "mqtt in",
         "z": "a7951a73.242a18",
@@ -1841,6 +2047,7 @@
         "nl": false,
         "rap": false,
         "rh": "0",
+        "inputs": 0,
         "x": 170,
         "y": 100,
         "wires": [
@@ -1872,6 +2079,7 @@
         "qos": "2",
         "datatype": "auto",
         "broker": "5c5d1421.257f6c",
+        "inputs": 0,
         "x": 180,
         "y": 200,
         "wires": [
@@ -1889,6 +2097,7 @@
         "qos": "2",
         "datatype": "auto",
         "broker": "5c5d1421.257f6c",
+        "inputs": 0,
         "x": 170,
         "y": 340,
         "wires": [
@@ -1909,6 +2118,7 @@
         "nl": false,
         "rap": false,
         "rh": "0",
+        "inputs": 0,
         "x": 260,
         "y": 100,
         "wires": [
@@ -1943,6 +2153,7 @@
         "nl": false,
         "rap": false,
         "rh": "0",
+        "inputs": 0,
         "x": 290,
         "y": 220,
         "wires": [
@@ -1963,91 +2174,12 @@
         "nl": false,
         "rap": false,
         "rh": "0",
+        "inputs": 0,
         "x": 280,
         "y": 320,
         "wires": [
             [
                 "f7353cc8.73fb18"
-            ]
-        ]
-    },
-    {
-        "id": "49e0a796.e405a8",
-        "type": "mqtt in",
-        "z": "855b7076.01ac4",
-        "name": "",
-        "topic": "homeassistant/switch/octoprint_PSUControl_switch/set",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "7003ac79.485954",
-        "nl": false,
-        "rap": false,
-        "rh": "0",
-        "x": 240,
-        "y": 260,
-        "wires": [
-            [
-                "6b843a66.0bdf14"
-            ]
-        ]
-    },
-    {
-        "id": "784d4782.239258",
-        "type": "mqtt in",
-        "z": "855b7076.01ac4",
-        "name": "",
-        "topic": "homeassistant/switch/octoprint_PSUControl_switch/state",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "7003ac79.485954",
-        "nl": false,
-        "rap": false,
-        "rh": "0",
-        "x": 250,
-        "y": 340,
-        "wires": [
-            [
-                "6b843a66.0bdf14"
-            ]
-        ]
-    },
-    {
-        "id": "fa08b4da.102618",
-        "type": "mqtt in",
-        "z": "855b7076.01ac4",
-        "name": "",
-        "topic": "homeassistant/switch/octoprint_PSUControl_switch/availability",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "7003ac79.485954",
-        "nl": false,
-        "rap": false,
-        "rh": "0",
-        "x": 260,
-        "y": 420,
-        "wires": [
-            [
-                "6b843a66.0bdf14"
-            ]
-        ]
-    },
-    {
-        "id": "ba7520f3.d26278",
-        "type": "mqtt in",
-        "z": "95a267b0.dfbf78",
-        "name": "p1monitor/smartmeter/timestamp_local",
-        "topic": "p1monitor/smartmeter/timestamp_local",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "7003ac79.485954",
-        "nl": false,
-        "rap": false,
-        "rh": "0",
-        "x": 230,
-        "y": 60,
-        "wires": [
-            [
-                "7b117f5c.ba908"
             ]
         ]
     },
@@ -2059,6 +2191,7 @@
         "topic": "deepsleep_hallo_wereld_20190123/hallo",
         "qos": "2",
         "broker": "a6a3041b.8ef2e8",
+        "inputs": 0,
         "x": 247.16668701171875,
         "y": 77.3333511352539,
         "wires": [
@@ -2087,6 +2220,7 @@
         "topic": "deepsleep_hallo_wereld_20190123/reboot/setup",
         "qos": "0",
         "broker": "a6a3041b.8ef2e8",
+        "inputs": 0,
         "x": 124,
         "y": 407.0000009536743,
         "wires": [
@@ -2164,6 +2298,7 @@
         "topic": "halloWereld",
         "qos": "2",
         "broker": "a6a3041b.8ef2e8",
+        "inputs": 0,
         "x": 205,
         "y": 537.0000486373901,
         "wires": [
@@ -2243,6 +2378,7 @@
         "topic": "weatherStation/DHT/humidity",
         "qos": "2",
         "broker": "a6a3041b.8ef2e8",
+        "inputs": 0,
         "x": 178,
         "y": 98.33334350585938,
         "wires": [
@@ -2304,6 +2440,7 @@
         "topic": "weatherStation/DHT/temperature",
         "qos": "2",
         "broker": "a6a3041b.8ef2e8",
+        "inputs": 0,
         "x": 116.00001525878906,
         "y": 296.33334255218506,
         "wires": [
@@ -2367,6 +2504,7 @@
         "topic": "weatherStation/DHT/luchtdruk",
         "qos": "2",
         "broker": "a6a3041b.8ef2e8",
+        "inputs": 0,
         "x": 179,
         "y": 439.00005531311035,
         "wires": [
@@ -2623,6 +2761,7 @@
         "topic": "Topic 1",
         "qos": "2",
         "broker": "299035ac.954eca",
+        "inputs": 0,
         "x": 625.1667022705078,
         "y": 139.33334064483643,
         "wires": [
@@ -2644,21 +2783,611 @@
         "wires": []
     },
     {
-        "id": "104131d1.05643e",
-        "type": "mqtt out",
-        "z": "69238f4c.8e23f",
+        "id": "f94e1e580016f484",
+        "type": "mqtt in",
+        "z": "a9c62398303cd12b",
         "name": "",
-        "topic": "weatherStation/deepSleepIntervalSekonden/waarde",
-        "qos": "2",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "7003ac79.485954",
-        "x": 931.8333129882812,
-        "y": 278.999981880188,
+        "topic": "esp32/pressure",
+        "qos": "0",
+        "datatype": "utf8",
+        "broker": "e20e344371a2a87b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 80,
+        "y": 100,
+        "wires": [
+            [
+                "75c59d295b8be657",
+                "df620ef6ef404fd5"
+            ]
+        ]
+    },
+    {
+        "id": "d113bfc3ef25c258",
+        "type": "debug",
+        "z": "a9c62398303cd12b",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 140,
         "wires": []
+    },
+    {
+        "id": "75c59d295b8be657",
+        "type": "ui_chart",
+        "z": "a9c62398303cd12b",
+        "name": "Pressure",
+        "group": "3535c8c83f0da586",
+        "order": 0,
+        "width": "0",
+        "height": "0",
+        "label": "Pressure",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "940",
+        "ymax": "1050",
+        "removeOlder": "4",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 400,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9a84d6b2ef0d884d",
+        "type": "influxdb out",
+        "z": "a9c62398303cd12b",
+        "influxdb": "373fa459.54e07c",
+        "name": "",
+        "measurement": "Pressure",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "organisation",
+        "bucket": "bucket",
+        "x": 730,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "5360981e4b2fee05",
+        "type": "mqtt in",
+        "z": "a9c62398303cd12b",
+        "name": "",
+        "topic": "$SYS/broker/uptime",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "e20e344371a2a87b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 90,
+        "y": 20,
+        "wires": [
+            [
+                "1ae12d806ff60117"
+            ]
+        ]
+    },
+    {
+        "id": "6c085f51b755fe6e",
+        "type": "debug",
+        "z": "a9c62398303cd12b",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "3c2650fa26c7835c",
+        "type": "mqtt in",
+        "z": "a9c62398303cd12b",
+        "name": "",
+        "topic": "esp32/temperature",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "e20e344371a2a87b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 90,
+        "y": 260,
+        "wires": [
+            [
+                "313480cd1ea2881d",
+                "8a053cb01826a971",
+                "9e63e13b885572a0"
+            ]
+        ]
+    },
+    {
+        "id": "cf99c6ff7f5e15fa",
+        "type": "mqtt in",
+        "z": "a9c62398303cd12b",
+        "name": "",
+        "topic": "esp32/Dht_temp",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "e20e344371a2a87b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 80,
+        "y": 360,
+        "wires": [
+            [
+                "c7b5089852b28d76",
+                "f8f046159dad41d2"
+            ]
+        ]
+    },
+    {
+        "id": "10b2880e95e5c15a",
+        "type": "mqtt in",
+        "z": "a9c62398303cd12b",
+        "name": "",
+        "topic": "esp32/humidity",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "e20e344371a2a87b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 80,
+        "y": 180,
+        "wires": [
+            [
+                "5954409401903b2b",
+                "ce23f3cc3d2abf81",
+                "36516026d741b968"
+            ]
+        ]
+    },
+    {
+        "id": "94bc9ec39815bf7d",
+        "type": "influxdb out",
+        "z": "a9c62398303cd12b",
+        "influxdb": "373fa459.54e07c",
+        "name": "",
+        "measurement": "humidity",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "organisation",
+        "bucket": "bucket",
+        "x": 730,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "cdf68acde839d573",
+        "type": "influxdb out",
+        "z": "a9c62398303cd12b",
+        "influxdb": "373fa459.54e07c",
+        "name": "",
+        "measurement": "Temperature0",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "organisation",
+        "bucket": "bucket",
+        "x": 740,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "f0f48ab2de3d98a4",
+        "type": "influxdb out",
+        "z": "a9c62398303cd12b",
+        "influxdb": "373fa459.54e07c",
+        "name": "",
+        "measurement": "Temperature1",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "organisation",
+        "bucket": "bucket",
+        "x": 740,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "5954409401903b2b",
+        "type": "ui_chart",
+        "z": "a9c62398303cd12b",
+        "name": "Humidity",
+        "group": "3535c8c83f0da586",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Humidity",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 400,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "313480cd1ea2881d",
+        "type": "ui_chart",
+        "z": "a9c62398303cd12b",
+        "name": "temperature",
+        "group": "3535c8c83f0da586",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "Temperature",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "60",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "86400",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 410,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c7b5089852b28d76",
+        "type": "ui_chart",
+        "z": "a9c62398303cd12b",
+        "name": "Temperature",
+        "group": "3535c8c83f0da586",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "label": "Temperature",
+        "chartType": "bar",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "60",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 410,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "35aa0e7ff9bcab3a",
+        "type": "debug",
+        "z": "a9c62398303cd12b",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "93f391ca76a5beba",
+        "type": "debug",
+        "z": "a9c62398303cd12b",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "63bfa05f88d89f38",
+        "type": "debug",
+        "z": "a9c62398303cd12b",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "eac46804f3ab8ba6",
+        "type": "influxdb out",
+        "z": "a9c62398303cd12b",
+        "influxdb": "5c9d6bcb2d0f88c0",
+        "name": "",
+        "measurement": "UP_Time",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "organisation",
+        "bucket": "bucket",
+        "x": 730,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "8a053cb01826a971",
+        "type": "ui_gauge",
+        "z": "a9c62398303cd12b",
+        "name": "Temperature",
+        "group": "3535c8c83f0da586",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperature",
+        "label": "C",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "60",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 410,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "ce23f3cc3d2abf81",
+        "type": "ui_gauge",
+        "z": "a9c62398303cd12b",
+        "name": "Humidity",
+        "group": "3535c8c83f0da586",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Humindity",
+        "label": "%RH",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 400,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "df620ef6ef404fd5",
+        "type": "function",
+        "z": "a9c62398303cd12b",
+        "name": "",
+        "func": "//var stringValue = msg.payload;\n\n//convert string to float to 2 decimal places\nvar floatValue = parseFloat(msg.payload);\n\n//set and return payload\nmsg.payload = floatValue;\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 60,
+        "wires": [
+            [
+                "9a84d6b2ef0d884d",
+                "d113bfc3ef25c258"
+            ]
+        ]
+    },
+    {
+        "id": "36516026d741b968",
+        "type": "function",
+        "z": "a9c62398303cd12b",
+        "name": "",
+        "func": "//var stringValue = msg.payload;\n\n//convert string to float to 2 decimal places\nvar floatValue = parseFloat(msg.payload);\n\n//set and return payload\nmsg.payload = floatValue;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 140,
+        "wires": [
+            [
+                "35aa0e7ff9bcab3a",
+                "94bc9ec39815bf7d"
+            ]
+        ]
+    },
+    {
+        "id": "f8f046159dad41d2",
+        "type": "function",
+        "z": "a9c62398303cd12b",
+        "name": "",
+        "func": "//var stringValue = msg.payload;\n\n//convert string to float to 2 decimal places\nvar floatValue = parseFloat(msg.payload);\n\n//set and return payload\nmsg.payload = floatValue;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 400,
+        "wires": [
+            [
+                "f0f48ab2de3d98a4",
+                "63bfa05f88d89f38"
+            ]
+        ]
+    },
+    {
+        "id": "9e63e13b885572a0",
+        "type": "function",
+        "z": "a9c62398303cd12b",
+        "name": "",
+        "func": "//var stringValue = msg.payload;\n\n//convert string to float to 2 decimal places\nvar floatValue = parseFloat(msg.payload);\n\n//set and return payload\nmsg.payload = floatValue;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 280,
+        "wires": [
+            [
+                "cdf68acde839d573",
+                "93f391ca76a5beba"
+            ]
+        ]
+    },
+    {
+        "id": "1ae12d806ff60117",
+        "type": "function",
+        "z": "a9c62398303cd12b",
+        "name": "",
+        "func": "//var stringValue = msg.payload;\n\n//convert string to float to 2 decimal places\nvar floatValue = parseFloat(msg.payload);\n\n//set and return payload\nmsg.payload = floatValue;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 20,
+        "wires": [
+            [
+                "6c085f51b755fe6e",
+                "eac46804f3ab8ba6"
+            ]
+        ]
     }
 ]
