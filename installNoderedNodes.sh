@@ -14,7 +14,7 @@ printstatus() {
 }
 
 echo "Installing Nodes (could take some time)"
-
+	cd ~/.node-red
 	printstatus "\nInstalling node \"node-red-node-sqlite\"\n"
 	npm $NQUIET install node-red-node-sqlite 2>&1 | tee -a $LOGFILE
   
