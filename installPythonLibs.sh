@@ -11,8 +11,8 @@ pip install --upgrade openpyxl o365 ttn qrcode pillow sqlalchemy pymsteams espto
 pip install --upgrade pyserial pyparsing pyzmail gpiozero pytube 
 pip install --upgrade pipx serial jinja2 esptool mpfshell virtualenv ffmpeg
 pip install --upgrade scikit-build pygame pymongo psycopg2-binary mysql-connector-python guizero
-pip install --upgrade pi.gpio
-pip install --upgrade matplotlib numpy
+pip install --upgrade rpi.gpio
+pip install --upgrade matplotlib numpy imutils
 python3 -m pip install git+https://github.com/pytube/pytube
 echo "doen ook --> pip uninstall serial"
 
