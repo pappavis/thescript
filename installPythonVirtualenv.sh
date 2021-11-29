@@ -15,7 +15,7 @@ mkdir ~/venv
 ~/.local/bin/pipx install ~/venv/virtualenv
 ~/.local/bin/virtualenv ~/venv/venv3.7
 source ~/venv/venv3.7/bin/activate
-pip install adafruit-blinka RPI.GPIO
+pip install --upgrade adafruit-blinka RPI.GPIO
 echo "source ~/venv/venv3.7/bin/activate" >> ~/.bashrc
 source ~/.bashrc
 
