@@ -68,6 +68,7 @@ mkdir ~/venv
 ~/.local/bin/virtualenv ~/venv/venv3.7
 echo "source ~/venv/venv3.7/bin/activate" >> ~/.bashrc
 source ~/.bashrc
+echo "PATH=$PATH:~/.local/bin" >> ~/.bashrc
 
 echo "doen usermod"
 sudo usermod -aG gpio pi
