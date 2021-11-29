@@ -1,5 +1,6 @@
 _hn="http://"$(hostname).local":8123"
 _pwd=$(pwd)
+source /home/pi/.bashrc
 echo "Installeren Homeassistant"
 virtualenv /home/pi/venv/homeassistant
 source /home/pi/venv/homeassistant/bin/activate
