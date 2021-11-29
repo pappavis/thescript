@@ -22,5 +22,5 @@ python demo/blinkatest.py &
 python demo/ina219demo.py &
 # python demo/oatmealDemo.py
 echo ""
-echo "Circuuitpython install afgerond.  Test met: python3 ./demo/blinkatest.py"
+echo "Circuitpython install afgerond.  Test met: python3 ./demo/blinkatest.py"
 echo ""
