@@ -17,3 +17,4 @@ sudo service homeassistant restart
 cd $_pwd
 
 printf "\nStart homeassitant op http://$_hn.local:8123\n"
+source ~/.bashrc
