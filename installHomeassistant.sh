@@ -2,6 +2,9 @@ _hn="http://"$(hostname).local":8123"
 _pwd=$(pwd)
 source /home/pi/.bashrc
 echo "Installeren Homeassistant"
+python3 -m ensurepip
+python3 -m pip install --upgrade pip
+python3 -m pip install --upgrade virtualenv
 python3 -m virtualenv /home/pi/venv/homeassistant
 source /home/pi/venv/homeassistant/bin/activate
 pip install --upgrade pip
