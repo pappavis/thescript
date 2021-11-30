@@ -1,4 +1,4 @@
-_hn="http://"$(hostname).local":8123"
+_hn=$(hostname)
 _pwd=$(pwd)
 source /home/pi/.bashrc
 echo "Installeren Homeassistant"
