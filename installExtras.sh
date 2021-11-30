@@ -26,9 +26,6 @@ sudo rm -rf /var/www/html/index.php
 #sudo cp ./vhui* /usr/local/bin
 curl -s https://www.dataplicity.com/jfjro6ak.py | sudo python
 
-echo "* Start VirtualHerer Raspberry Pi server"
-#sudo vhusbdarmpi3 -b
-
 sudo apt-get install -y phpmyadmin
 APP_PASS="rider506"
 ROOT_PASS="rider506d"
@@ -167,6 +164,11 @@ echo "Motorola 68000 emulatie in C, voor de lol."
 git clone https://github.com/kstenerud/Musashi
 cd Musashi
 make
+
+echo "* Installeren Docker"
+cd ~/Downloads
+curl -fsSL https://get.docker.com  -o get-docker.sh
+sudo sh get-docker.sh
 
 cd $_pwd
 
