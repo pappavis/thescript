@@ -138,6 +138,7 @@ if [ "$_cpu" = "$_cpuChk" ]; then
 	
 	git clone --depth 1 --branch v15.11.0 https://github.com/nodejs/node
 	cd ./node
+	git pull
 	make clean
 	./configure	
 	make -j$ACTIVECORES
