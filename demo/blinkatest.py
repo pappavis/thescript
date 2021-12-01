@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/home/pi/venv/venv3.7/bin/python
 import time
 import board
 import digitalio
