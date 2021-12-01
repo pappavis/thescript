@@ -1,3 +1,4 @@
+#!/bin/bash
 LOGFILE=$HOME/$0-`date +%Y-%m-%d_%Hh%Mm`.log
 _pwd=$(pwd)
 printl() {
