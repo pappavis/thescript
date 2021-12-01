@@ -125,13 +125,22 @@ if [ "$_cpu" = "$_cpuChk" ]; then
 	##bash ./node-red-pi-install.sh
 	##bash ./node-red-deb-pack.sh
 	##rm -rf ./linux-installers
-	wget https://nodejs.org/dist/v17.2.0/node-v17.2.0.tar.gz
-	tar xzf ./node-v17.2.0.tar.gz
-	cd ./node-v17.2.0.tar.gz
-	make clean
+	
+	
+	##wget https://nodejs.org/dist/v17.2.0/node-v17.2.0.tar.gz
+	##tar xzf ./node-v17.2.0.tar.gz
+	##cd ./node-v17.2.0.tar.gz
+	##make clean
+	##./configure
+	##make -j2
+	##sudo make install	
+	
+	git clone --depth 1 --branch v15.11.0 https://github.com/nodejs/node
 	./configure
-	make
-	sudo make install	
+	make -j$ACTIVECORES
+	sudo make install
+
+	echo "NodeJS build en install afgerond."
 else
 	cd /home/pi/.node-red
 	echo "y\n" | bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
