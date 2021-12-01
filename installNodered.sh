@@ -117,14 +117,21 @@ echo "Installeren build-essentials"
 sudo apt install build-essential
 
 echo "NodeJS installeren"
-cd ~/Downloads
 
 if [ "$_cpu" = "$_cpuChk" ]; then
-	git clone https://github.com/node-red/linux-installers.git
-	cd linux-installers/pibuild
-	bash ./node-red-pi-install.sh
-	bash ./node-red-deb-pack.sh
-	rm -rf ./linux-installers
+	cd ~/Downloads
+	##git clone https://github.com/node-red/linux-installers.git
+	##cd linux-installers/pibuild
+	##bash ./node-red-pi-install.sh
+	##bash ./node-red-deb-pack.sh
+	##rm -rf ./linux-installers
+	wget https://nodejs.org/dist/v17.2.0/node-v17.2.0.tar.gz
+	tar xzf ./node-v17.2.0.tar.gz
+	cd ./node-v17.2.0.tar.gz
+	make clean
+	./configure
+	make
+	sudo make install	
 else
 	cd /home/pi/.node-red
 	echo "y\n" | bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
