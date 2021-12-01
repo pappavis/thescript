@@ -3,6 +3,7 @@ startTime="$(date +%s)"
 columns=$(tput cols)
 user_response=""
 _pwd=$(pwd)
+_cpu=$(cat /proc/cpuinfo | grep ARM)
 # High Intensity
 IGreen='\e[0;92m'       # Green
 IYellow='\e[0;93m'      # Yellow
