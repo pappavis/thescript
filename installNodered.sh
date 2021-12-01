@@ -113,6 +113,13 @@ echo "Installeren build-essentials"
 sudo apt install build-essential
 
 echo "NodeJS installeren"
+cd ~/Downloads
+
+git clone https://github.com/node-red/linux-installers.git
+cd linux-installers/pibuild
+bash ./node-red-pi-install.sh
+bash ./node-red-deb-pack.sh
+
 echo "y\n" | bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
 ##node-red admin init
 npm audit fix
