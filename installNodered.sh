@@ -1,3 +1,4 @@
+#!/bin/bash
 # origineel TheScript door Pete Scargill.
 startTime="$(date +%s)"
 columns=$(tput cols)
