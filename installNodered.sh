@@ -120,7 +120,7 @@ cd linux-installers/pibuild
 bash ./node-red-pi-install.sh
 bash ./node-red-deb-pack.sh
 
-cd ~
+cd /home/pi/.node-red
 echo "y\n" | bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
 ##node-red admin init
 npm audit fix
