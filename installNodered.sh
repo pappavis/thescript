@@ -100,7 +100,8 @@ printstatus() {
     printstatus "Installing NodeJS and NodeRed"
 
 
-echo "**Installerennode-red en modules"
+echo "**Installer en node-red en modules"
+mkdir /home/pi/Downloads
 cd ~
 
 echo "Oude  nodered  verwijderen"
@@ -136,9 +137,14 @@ if [ "$_cpu" = "$_cpuChk" ]; then
 	##sudo make install	
 	
 	git clone --depth 1 --branch v15.11.0 https://github.com/nodejs/node
-	./configure
+	cd ./node
+	make clean
+	./configure	
 	make -j$ACTIVECORES
 	sudo make install
+	cd ..
+	rm -rf node
+	cd /home/pi/.node-red
 
 	echo "NodeJS build en install afgerond."
 else
@@ -160,7 +166,6 @@ sudo apt-get install -y  yarn
 ## echo y | ./update-nodejs-and-nodered
 
 ##sudo npm install -g --unsafe-perm node-red
-mkdir /home/pi/Downloads
 cd /home/pi/Downloads
 wget https://raw.githubusercontent.com/pappavis/thescript/master/settings.js
 wget https://raw.githubusercontent.com/pappavis/thescript/master/flows.json
