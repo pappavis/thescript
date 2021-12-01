@@ -1,3 +1,4 @@
+#!/bin/bash
 import time
 import board
 import digitalio
