@@ -4,7 +4,9 @@ startTime="$(date +%s)"
 columns=$(tput cols)
 user_response=""
 _pwd=$(pwd)
-_cpu=$(cat /proc/cpuinfo | grep ARM)
+_cpu=$(uname -m)
+_cpuChk="armv6l"
+
 # High Intensity
 IGreen='\e[0;92m'       # Green
 IYellow='\e[0;93m'      # Yellow
@@ -117,13 +119,18 @@ sudo apt install build-essential
 echo "NodeJS installeren"
 cd ~/Downloads
 
-git clone https://github.com/node-red/linux-installers.git
-cd linux-installers/pibuild
-bash ./node-red-pi-install.sh
-bash ./node-red-deb-pack.sh
+if [ "$_cpu61" = "$_cpuChk" ]; then
+	git clone https://github.com/node-red/linux-installers.git
+	cd linux-installers/pibuild
+	bash ./node-red-pi-install.sh
+	bash ./node-red-deb-pack.sh
+	rm -rf ./linux-installers
+else
+	cd /home/pi/.node-red
+	echo "y\n" | bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
+fi
 
-cd /home/pi/.node-red
-echo "y\n" | bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
+
 ##node-red admin init
 npm audit fix
 sudo npm install -g qrcode 
