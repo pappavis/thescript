@@ -119,7 +119,7 @@ sudo apt install build-essential
 echo "NodeJS installeren"
 cd ~/Downloads
 
-if [ "$_cpu61" = "$_cpuChk" ]; then
+if [ "$_cpu" = "$_cpuChk" ]; then
 	git clone https://github.com/node-red/linux-installers.git
 	cd linux-installers/pibuild
 	bash ./node-red-pi-install.sh
