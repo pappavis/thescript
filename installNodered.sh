@@ -109,6 +109,8 @@ echo "mkdir ~/.node-red"
 mkdir /home/pi/.node-red
 cd /home/pi/.node-red
 
+echo "Installeren build-essentials"
+sudo apt install build-essential
 
 echo "NodeJS installeren"
 echo "y\n" | bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
