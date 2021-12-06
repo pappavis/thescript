@@ -99,6 +99,7 @@ printstatus() {
 
     printstatus "Installing NodeJS and NodeRed"
 
+sudo apt --fix-broken install -y
 
 echo "**Installer en node-red en modules"
 mkdir /home/pi/Downloads
