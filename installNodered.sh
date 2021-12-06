@@ -121,6 +121,7 @@ sudo apt install build-essential
 echo "NodeJS installeren"
 
 if [ "$_cpu" = "$_cpuChk" ]; then
+	ehco "Installeren van NodeJS op een PiZeroW"
 	cd ~/Downloads
 	##git clone https://github.com/node-red/linux-installers.git
 	##cd linux-installers/pibuild
