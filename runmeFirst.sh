@@ -109,6 +109,6 @@ echo ""
 echo "Je kunt nu REBOOT, daarna ./installVerzamelupdates.sh draaien"
 
 cd $_pwd
-bash ./installVerzamelupdates.sh
+## bash ./installVerzamelupdates.sh
 
 #bash ./setupNodered.sh
