@@ -97,11 +97,11 @@ printstatus() {
 }
 
 
-    printstatus "Installing NodeJS and NodeRed"
+printstatus "Installing NodeJS and NodeRed"
 
 sudo apt --fix-broken install -y
 
-echo "**Installer en node-red en modules"
+printstatus  "**Installer en node-red en modules"
 mkdir /home/pi/Downloads
 cd ~
 
@@ -121,7 +121,7 @@ sudo apt install build-essential
 echo "NodeJS installeren"
 
 if [ "$_cpu" = "$_cpuChk" ]; then
-	ehco "Installeren van NodeJS op een PiZeroW"
+	printstatus "Installeren van NodeJS op een PiZeroW"
 	cd ~/Downloads
 	##git clone https://github.com/node-red/linux-installers.git
 	##cd linux-installers/pibuild
@@ -149,7 +149,7 @@ if [ "$_cpu" = "$_cpuChk" ]; then
 	rm -rf node
 	cd /home/pi/.node-red
 
-	echo "NodeJS build en install afgerond."
+	printstatus  "NodeJS build en install afgerond."
 else
 	cd /home/pi/.node-red
 	echo "y\n" | bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
