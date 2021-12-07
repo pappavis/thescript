@@ -1,5 +1,6 @@
 # INTRO
 Clean install script for Raspberry Pi 1, 2,3,4  en x64_Ubuntu Linux semi-automtaing installing useful tools.
+ - Uitgebreide swapfile naar 2Gb
  - Python 3.9 virtual environment
  - Micropython, Circuitpython
  - LAMP-stack (mySQL, sqlite, PHP)
