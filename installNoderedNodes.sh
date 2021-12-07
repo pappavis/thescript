@@ -58,7 +58,12 @@ cd /home/pi/.node-red
 
 printstatus "bepalen laatste versies van lokale NPM packages in /home/pi/.node-red/"
 npm outdated
-sudo npm $NQUIET update node-uuid uuid tar
+
+for addonnodes in  node-uuid uuid tar ; do
+	printstatus "Updating node \"${addonnodes}\""
+	npm $NQUIET update --save ${addonnodes} 2>&1 | tee -a $LOGFILE
+	npm $NQUIET install --save ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
 
 ##sudo npm install -g npm-check-updates 2>&1 | tee -a $LOGFILE
 ##sudo ncu -u 2>&1 | tee -a $LOGFILE
@@ -66,7 +71,11 @@ sudo npm $NQUIET update node-uuid uuid tar
 
 printstatus "\nInstalling node \"node-red-node-sqlite\"\n"
 npm $NQUIET install --save node-red-node-sqlite 2>&1 | tee -a $LOGFILE
-npm $NQUIET install node-red-node-serialport i2c-bus 2>&1 | tee -a $LOGFILE
+
+for addonnodes in node-red-node-serialport i2c-bus ; do
+	printstatus "Installing node \"${addonnodes}\""
+	npm $NQUIET install --save ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
 npm audit fix --force
 
 mv /home/pi/.node-red/node_modules/decamelize /home/pi/.node-red/node_modules/.cliui-vZao9zi8
