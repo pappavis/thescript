@@ -4,7 +4,7 @@ Clean install script for Raspberry Pi 1, 2,3,4  en x64_Ubuntu Linux semi-automta
  - Python 3.9 virtual environment
  - Micropython, Circuitpython
  - LAMP-stack (mySQL, sqlite, PHP)
- - Homeassistant, Apple Homebridge
+ - Homeassistant, Apple <a href="https://www.npmjs.com/package/homebridge" target="_blank">Homebridge</a>
  - Grafana
  - Node-red + veel uitbreidingen
  - <a href="virtualhere.com" target="blank">Virtualhere</a> USB apparaten aansluiten via WiFi
