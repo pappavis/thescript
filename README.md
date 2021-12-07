@@ -1,10 +1,11 @@
 # INTRO
-Clean install script for Raspberry Pi 1, 2,3,4  en x64_Ubuntu Linux semi-automaing installing useful tools.
- - Python 3.7 virtual environment
- - Micropython
- - Circuitpython
- - Mariadb-server SQL database
- - Apache2 php-mysql phpmyadmin
+Clean install script for Raspberry Pi 1, 2,3,4  en x64_Ubuntu Linux semi-automtaing installing useful tools.
+ - Python 3.9 virtual environment
+ - Micropython, Circuitpython
+ - LAMP-stack (mySQL, sqlite, PHP)
+ - Homeassistant, Apple Homebridge
+ - Grafana
+ - Node-red + veel uitbreidingen
  - <a href="virtualhere.com" target="blank">Virtualhere</a> USB apparaten aansluiten via WiFi
 
 # Voorvereisten
