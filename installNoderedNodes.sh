@@ -48,11 +48,6 @@ printstatus() {
 echo "**Installing Nodes (could take some time)"
 cd /home/pi/.node-red
 
-printstatus "bepalen laatste versies van globale NPM packages"
-sudo npm outdated -g
-sudo npm update -g
-sudo npm $NQUIET update -g npm@latest 2>&1 | tee -a $LOGFILE
-
 printstatus "bepalen laatste versies van lokale NPM packages in /home/pi/.node-red/"
 npm outdated
 for addonnodes in node-uuid@latest uuid@latest node-tar tar@latest	
