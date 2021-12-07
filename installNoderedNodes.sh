@@ -20,10 +20,7 @@ cd /home/pi/.node-red
 printstatus "bepalen laatste versies van globale NPM packages"
 sudo npm outdated -g
 sudo npm update -g
-for addonnodes in npm@latest
-	printstatus "Bijwerken globale node \"${addonnodes}\""
-	sudo npm $NQUIET update -g ${addonnodes} 2>&1 | tee -a $LOGFILE
-done
+sudo npm $NQUIET update -g npm@latest 2>&1 | tee -a $LOGFILE
 
 printstatus "bepalen laatste versies van lokale NPM packages in /home/pi/.node-red/"
 npm outdated
