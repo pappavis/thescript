@@ -78,6 +78,7 @@ pi@raspberrypi: $ cd ~/Downloads
 pi@raspberrypi: $ git clone https://github.com/pappavis/thescript/
 pi@raspberrypi: $ cd ~/Downloads/thescript/
 pi@raspberrypi: $ bash ./installVerzamelupdates.sh
+pi@raspberrypi: $ bash ./installExtras.sh
 ```
 
 
