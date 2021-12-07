@@ -85,7 +85,7 @@ pi@raspberrypi: $ sudo reboot
 ```
 
 
-## Optioneel stap 6: installeren <a href="https://tech.scargill.net/the-script/" target="_blank">Pete Scargill</a> script
+### Optioneel: installeren <a href="https://tech.scargill.net/the-script/" target="_blank">Pete Scargill</a> script
 Let op.
  - In deze script moet je nginix/apache NIET aanvinken want dat zijn al geïnstalleerd!!
  - Op een pi zero duurt het install >=2 uren.
