@@ -108,6 +108,12 @@ sudo systemctl unmask grafana-server.service
 sudo systemctl start grafana-server
 sudo systemctl enable grafana-server.service
 
+
+echo "Installeren chronograf"
+sudo apt-get install -y chronograf 
+sudo systemctl enable chronograf 2>&1 | tee -a $LOGFILE
+sudo systemctl start chronograf 2>&1 | tee -a $LOGFILE
+
 echo "Installeren influxdb"
 wget -qO- https://repos.influxdata.com/influxdb.key | sudo apt-key add -
 source /etc/os-release
