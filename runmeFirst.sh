@@ -29,6 +29,9 @@ echo "alias ll='ls -lF --color=auto'" >> ~/.bashrc
 echo "alias la='ls -lFa --color=auto'" >> ~/.bashrc
 echo "alias l='ls -F --color=auto'" >> ~/.bashrc
 
+# install sudo on devices without it
+[ ! -x /usr/bin/sudo ] && apt-get $AQUIET -y update > /dev/null 2>&1 && apt-get $AQUIET -y install sudo 2>&1 | tee -a $LOGFILE
+
 sudo apt install -y git
 git config pull.rebase false
 mkdir /home/pi/Downloads
@@ -71,6 +74,28 @@ echo "source ~/venv/venv3.7/bin/activate" >> ~/.bashrc
 source ~/.bashrc
 echo "PATH=$PATH:~/.local/bin" >> ~/.bashrc
 
+
+printstatus "Toestaan remote root login en sneller SSH"
+sudo sed -i -e 's/#PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config
+sudo sed -i -e 's/#PermitRootLogin without-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
+sudo sed -i -e 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
+sudo sed -i -e 's/PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config
+sudo sed -i -e 's/PermitRootLogin without-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
+sudo sed -i -e 's/PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
+sudo sed -i -e 's/TCPKeepAlive yes/TCPKeepAlive no/g' /etc/ssh/sshd_config
+sudo sed -i '$ a UseDNS no' /etc/ssh/sshd_config
+sudo sed -i '$ a ClientAliveInterval 30' /etc/ssh/sshd_config
+sudo sed -i '$ a ClientAliveCountMax 100' /etc/ssh/sshd_config
+sudo /etc/init.d/ssh restart 2>&1 | tee -a $LOGFILE
+
+sudo update-alternatives --set newt-palette /etc/newt/palette.original 2>&1 | tee -a $LOGFILE
+
+printstatus "Adding user Pi permissions"
+for additionalgroup in cdrom games users i2c adm gpio input sudo netdev audio video dialout plugdev bluetooth ; do
+	getent group ${additionalgroup} | grep -w -l pi || sudo adduser pi ${additionalgroup} 2>&1 | tee -a $LOGFILE
+done
+
+
 echo "doen usermod"
 sudo usermod -aG gpio pi
 sudo usermod -aG dialout pi
@@ -88,6 +113,7 @@ sudo apt install -y libssl
 sudo apt install -y libcurl4-gnutls-dev libcurl4-openssl-dev
 sudo apt install -y libcurl4-openssl-dev 
 sudo apt install -y libsdl2-ttf-dev libsdl2-image-dev
+sudo apt install -y ccze net-tools
 
 ./adduserPi.sh
 	    
@@ -104,6 +130,7 @@ sudo mv /var/www/html/index.html /var/www/html/orig_index.html
 sudo apt-get upgrade -y
 sudo apt autoclean -y
 sudo apt autoremove -y
+
 
 echo ""
 echo "Je kunt nu REBOOT, daarna ./installVerzamelupdates.sh draaien"
