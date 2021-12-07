@@ -1,6 +1,6 @@
 NQUIET=''
 startTime="$(date +%s)"
-LOGFILE=/home/pi/installNoderedNodes_logs.txt
+LOGFILE=$HOME/$0-`date +%Y-%m-%d_%Hh%Mm`_installNoderedNodes_logs.log
 _pwd=$(pwd)
 
 #Array to store possible locations for temp read.
