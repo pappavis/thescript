@@ -61,8 +61,9 @@ done
 
 printstatus "\nInstalling node \"node-red-node-sqlite\"\n"
 npm $NQUIET install --save node-red-node-sqlite 2>&1 | tee -a $LOGFILE
+npm $NQUIET install node-red-node-serialport i2c-bus 2>&1 | tee -a $LOGFILE
 npm audit fix --force
-		
+
 mv /home/pi/.node-red/node_modules/decamelize /home/pi/.node-red/node_modules/.cliui-vZao9zi8
 
 # TAKEN OUT  node-red-contrib-graphs - I dont use it, most likely defunct - no work done on it in 3 years
