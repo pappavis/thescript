@@ -2,7 +2,7 @@
 Clean install script for Raspberry Pi 1, 2,3,4  en x64_Ubuntu Linux semi-automtaing installing useful tools.
  - Uitgebreide swapfile naar 2Gb
  - Python 3.9 virtual environment
- - Micropython, Circuitpython
+ - <a href="https://micropython.org/" target="blank">Micro</a>python, <a href="https://circuitpython.org">Circuit</a>python
  - LAMP-stack (mySQL, sqlite, PHP)
  - Homeassistant, Apple <a href="https://www.npmjs.com/package/homebridge" target="_blank">Homebridge</a>
  - Grafana
@@ -10,7 +10,7 @@ Clean install script for Raspberry Pi 1, 2,3,4  en x64_Ubuntu Linux semi-automta
  - <a href="virtualhere.com" target="blank">Virtualhere</a> USB apparaten aansluiten via WiFi
 
 # Voorvereisten
-- Je gebruikt RaspberryPiOS, MacOS of Ubuntu/Linux
+- Je gebruikt RaspberryPi OS, MacOS of Ubuntu/Linux
 - SD Card van minimaal 32Gb
 - Je hebt minimaal >=Python 3.7 en virtualenv  alreeds geïnstalleerd
 - Je bent ingelogd als gebruiker pi
