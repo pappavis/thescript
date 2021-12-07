@@ -3,6 +3,14 @@ startTime="$(date +%s)"
 LOGFILE=/home/pi/installNoderedNodes_logs.txt
 _pwd=$(pwd)
 
+#Array to store possible locations for temp read.
+aFP_TEMPERATURE=(
+    '/sys/class/thermal/thermal_zone0/temp'
+    '/sys/devices/virtual/thermal/thermal_zone1/temp'
+    '/sys/devices/platform/sunxi-i2c.0/i2c-0/0-0034/temp1_input'
+    '/sys/class/hwmon/hwmon0/device/temp_label'
+)
+
 Obtain_Cpu_Temp(){
     for ((i=0; i<${#aFP_TEMPERATURE[@]}; i++))
     do
