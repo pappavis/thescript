@@ -81,6 +81,7 @@ pi@raspberrypi: $ git clone https://github.com/pappavis/thescript/
 pi@raspberrypi: $ cd ~/Downloads/thescript/
 pi@raspberrypi: $ bash ./installVerzamelupdates.sh
 pi@raspberrypi: $ bash ./installExtras.sh
+pi@raspberrypi: $ sudo reboot
 ```
 
 
@@ -95,7 +96,7 @@ pi@raspberrypi: $ cd ~/Downloads
 pi@raspberrypi: $ git clone https://github.com/pappavis/thescript/
 pi@raspberrypi: $ cd thescript && wget https://bitbucket.org/api/2.0/snippets/scargill/kAR5qG/master/files/script.sh
 pi@raspberrypi: $ bash ./script.sh
-pi@raspberrypi: $ sudo reboot -h now
+pi@raspberrypi: $ sudo reboot
 ```
 
 # origineel
