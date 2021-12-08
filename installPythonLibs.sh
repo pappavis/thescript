@@ -15,10 +15,10 @@ for addonnodes in penpyxl o365 ttn qrcode pillow sqlalchemy pymsteams esptool ad
                   pyserial pyparsing pyzmail gpiozero pytube pipx serial jinja2 esptool mpfshell virtualenv ffmpeg \
                   scikit-build pygame pymongo psycopg2-binary mysql-connector-python guizero \
                   scikit-build pygame pymongo psycopg2-binary mysql-connector-python guizero
-                  echo "Installeren Python bieb \"${addonnodes}\""
-                  pip install --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
   do;
-done
+    echo "Installeren Python bieb \"${addonnodes}\""
+    pip install --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
+  done
 
 ##pip install --upgrade openpyxl o365 ttn qrcode pillow sqlalchemy pymsteams esptool adafruit-ampy firebirdsql 
 ##pip install --upgrade pyserial pyparsing pyzmail gpiozero pytube 
