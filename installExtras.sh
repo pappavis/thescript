@@ -44,6 +44,9 @@ cd /var/www/html
 sudo git clone https://github.com/phpsysinfo/phpsysinfo.git
 sudo cp /var/www/html/phpsysinfo/phpsysinfo.ini.new /var/www/html/phpsysinfo/phpsysinfo.ini
 
+echo "admin\n"| sudo apt install -y firebird-server
+echo "admin\n"| sudo apt install -y firebird-client
+
 cd ~/Downloads/
 git clone --depth 1 https://code.videolan.org/videolan/x264
 cd ~/Downloads/x264
