@@ -66,7 +66,7 @@ python -m ensurepip
 for addonnodes in openpyxl o365 ttn qrcode pillow sqlalchemy pymsteams esptool adafruit-ampy firebirdsql \
                   pyserial pyparsing pyzmail gpiozero pytube pipx serial jinja2 esptool mpfshell virtualenv ffmpeg \
                   scikit-build pygame pymongo psycopg2-binary mysql-connector-python guizero \
-                  scikit-build pygame pymongo psycopg2-binary mysql-connector-python guizero ;
+                  msteamsconnector matplotlib numpy imutils pyodbc pip setuptools wheel ;
   do
     printstatus "Installeren python lib \"${addonnodes}\""
     pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
@@ -76,9 +76,9 @@ for addonnodes in openpyxl o365 ttn qrcode pillow sqlalchemy pymsteams esptool a
 ##pip install --upgrade pyserial pyparsing pyzmail gpiozero pytube 
 ##pip install --upgrade pipx serial jinja2 esptool mpfshell virtualenv ffmpeg
 ##pip install --upgrade scikit-build pygame pymongo psycopg2-binary mysql-connector-python guizero
-##pip install --upgrade rpi.gpio
 ##pip install --upgrade matplotlib numpy imutils
-##python3 -m pip install git+https://github.com/pytube/pytube
+pip install --upgrade rpi.gpio
+python3 -m pip install git+https://github.com/pytube/pytube
 echo "doen ook --> pip uninstall serial"
 
 pip install --upgrade pyodbc
