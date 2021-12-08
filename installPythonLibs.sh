@@ -63,13 +63,13 @@ sudo apt install -y rpi.gpio
 
 python -m ensurepip 
 
-for addonnodes in penpyxl o365 ttn qrcode pillow sqlalchemy pymsteams esptool adafruit-ampy firebirdsql \
+for addonnodes in openpyxl o365 ttn qrcode pillow sqlalchemy pymsteams esptool adafruit-ampy firebirdsql \
                   pyserial pyparsing pyzmail gpiozero pytube pipx serial jinja2 esptool mpfshell virtualenv ffmpeg \
                   scikit-build pygame pymongo psycopg2-binary mysql-connector-python guizero \
-                  scikit-build pygame pymongo psycopg2-binary mysql-connector-python guizero
-  do;
-    echo "Installeren Python bieb \"${addonnodes}\""
-    pip install --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
+                  scikit-build pygame pymongo psycopg2-binary mysql-connector-python guizero ;
+  do
+    printstatus "Installeren python lib \"${addonnodes}\""
+    pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
   done
 
 ##pip install --upgrade openpyxl o365 ttn qrcode pillow sqlalchemy pymsteams esptool adafruit-ampy firebirdsql 
