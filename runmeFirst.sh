@@ -39,11 +39,11 @@ cd /home/pi/Downloads
 git clone https://github.com/pappavis/thescript/
 cd /home/pi/Downloads/thescript
 
-echo "Swapfile vergroot van 100mb naar 2Gb"
+printstatus  "Swapfile vergroot van 100mb naar 2Gb"
 sudo sed -i -e '/CONF_SWAPSIZE=100/s/100/2048/' /etc/dphys-swapfile
 sudo /etc/init.d/dphys-swapfile restart
 
-echo "Bluetooth, wijzigen naar DicoverableTimeout=0"
+printstatus  "Bluetooth, wijzigen naar DicoverableTimeout=0"
 sudo sed -i -e '/#DiscoverableTimeout = 0/s/#Discoverable/Discoverable/' /etc/bluetooth/main.conf
 sudo service bluetooth restart
 
@@ -97,7 +97,7 @@ for additionalgroup in cdrom games users i2c adm gpio input sudo netdev audio vi
 done
 
 
-echo "doen usermod"
+printstatus  "doen usermod"
 sudo usermod -aG gpio pi
 sudo usermod -aG dialout pi
 sudo usermod -aG i2c pi
