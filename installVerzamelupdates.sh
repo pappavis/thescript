@@ -32,6 +32,9 @@ bash ./installUpdates.sh
 bash ./installNodeJS.sh
 bash ./installNodered.sh
 bash ./installOctoprint.sh
+bash ./installOctoprintWebcam.sh
+bash ./installHomeassistant.sh
+bash ./installHomebridgeApple.sh
 bash ./installTessarectOCR.sh
 
 printf "Let op!!  Apple Homebridge & Homeassistant niet op Pi 3 model A  installeren, hij heeft te weinig geheugen!!\n"
