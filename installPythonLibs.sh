@@ -66,8 +66,7 @@ python -m ensurepip
 for addonnodes in openpyxl o365 ttn qrcode pillow sqlalchemy pymsteams esptool adafruit-ampy firebirdsql \
                   pyserial pyparsing pyzmail gpiozero pytube pipx serial jinja2 esptool mpfshell virtualenv ffmpeg \
                   scikit-build pygame pymongo psycopg2-binary mysql-connector-python guizero \
-                  msteamsconnector matplotlib numpy imutils pyodbc pip setuptools wheel ;
-  do
+                  msteamsconnector matplotlib numpy imutils pyodbc pip setuptools wheel opencv-python-headless ; do
     printstatus "Installeren python lib \"${addonnodes}\""
     pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
   done
