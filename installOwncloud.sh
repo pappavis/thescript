@@ -1,4 +1,5 @@
 _hn1=$(hostname)
+_pwd=$(pwd)
 echo "* Instaleer Owncloud"
 cd ~/Downloads
 sudo apt update -y
