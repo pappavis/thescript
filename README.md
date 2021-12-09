@@ -84,20 +84,9 @@ pi@raspberrypi: $ bash ./installExtras.sh
 pi@raspberrypi: $ sudo reboot
 ```
 
+## Stap 6: Test website
+Surf naar http://<<jouwRasprryPi>>/
 
-### Optioneel: installeren <a href="https://tech.scargill.net/the-script/" target="_blank">Pete Scargill</a> script
-Let op.
- - In deze script moet je nginix/apache NIET aanvinken want dat zijn al geïnstalleerd!!
- - Op een pi zero duurt het install >=2 uren.
-
-```bash
-pi@raspberrypi: $ sudo apt install -y git
-pi@raspberrypi: $ cd ~/Downloads
-pi@raspberrypi: $ git clone https://github.com/pappavis/thescript/
-pi@raspberrypi: $ cd thescript && wget https://bitbucket.org/api/2.0/snippets/scargill/kAR5qG/master/files/script.sh
-pi@raspberrypi: $ bash ./script.sh
-pi@raspberrypi: $ sudo reboot
-```
 
 # origineel
 Zie origineel <a href="https://bitbucket.org/api/2.0/snippets/scargill/kAR5qG/master/files/script.sh">hier</a>
