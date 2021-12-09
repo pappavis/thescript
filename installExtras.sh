@@ -82,7 +82,7 @@ wget https://github.com/aristocratos/btop/releases/download/v1.1.2/btop-1.1.2-ar
 wget https://github.com/aristocratos/btop/releases/download/v1.1.2/btop-1.1.2-armv7l-linux-musleabihf.tbz
 7z x ./btop-1.1.2-armv7l-linux-musleabihf.tbz
 7z x ./btop-1.1.2-armv7l-linux-musleabihf.tar
-make
+sudo make
 
 cd $_pwd
 echo "* Doen ook --> sudo nano /etc/samba/smb.conf -y"
