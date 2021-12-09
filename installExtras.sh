@@ -80,8 +80,8 @@ mkdir ./btop_install
 cd ./btop_install
 wget https://github.com/aristocratos/btop/releases/download/v1.1.2/btop-1.1.2-armv5l-linux-musleabi.tbz
 wget https://github.com/aristocratos/btop/releases/download/v1.1.2/btop-1.1.2-armv7l-linux-musleabihf.tbz
-7z x ./btop-1.1.2-armv7l-linux-musleabihf.tbz
-7z x ./btop-1.1.2-armv7l-linux-musleabihf.tar
+7z x ./btop-1.1.2-armv5l-linux-musleabi.tbz
+7z x ./btop-1.1.2-armv5l-linux-musleabi.tar
 sudo make
 
 cd $_pwd
