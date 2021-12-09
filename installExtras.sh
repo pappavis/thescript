@@ -68,12 +68,14 @@ sudo mkdir /home/pi/.local/share/lxterminal
 
 echo "** installeer barrier KVM."
 sudo apt install -y remmina barrier thonny kodi chromium code
+sudo apt install -y code
 sudo apt install -y tightvncserver
 sudo adduser xrdp ssl-cert 
 systemctl show -p SubState --value xrdp
 
 echo "* Installeer btop proceslijst"
 cd ~/Downloads/
+sudo rm -rf ./btop*
 wget https://github.com/aristocratos/btop/releases/download/v1.0.13/btop-1.0.13-linux-armhf.tbz
 7z x btop-1.0.13-linux-armhf.tbz
 mkdir ./btop_install
@@ -184,4 +186,4 @@ sudo usermod -aG docker $USER
 cd $_pwd
 
 echo "Virtuahlere draadloos Wifi is geinstalleerd."
-echo "* Install extras is afgerond."
+echo "* Install extras is afgerond. Je kunt nu herstarten."
