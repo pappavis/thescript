@@ -64,7 +64,7 @@ mkdir ~/Downloads
 cd ~
 wget https://raw.githubusercontent.com/pappavis/thescript/master/index_apps.php
 sudo mv index_apps.php /var/www/html
-cd ~/Downloads
+cd $_pwd
 
 mkdir ~/venv
 pip3 install virtualenv
