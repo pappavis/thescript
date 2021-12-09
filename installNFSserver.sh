@@ -23,7 +23,7 @@ sudo mkdir -p /mnt/nfs/spelen02/
 sudo mkdir -p /mnt/nfs/p1mon/
 sudo mkdir -p /mnt/nfs/retropie/
 sudo mkdir -p /mnt/nfs/pi07/
-sudo mkdir -p /mnt/nfs/pi07/
+sudo mkdir -p /mnt/nfs/pi08/
 
 sudo chmod 777 -R /mnt/nfs/
 
