@@ -47,7 +47,7 @@ echo "Bluetooth, wijzigen naar DicoverableTimeout=0"
 sudo sed -i -e '/#DiscoverableTimeout = 0/s/#Discoverable/Discoverable/' /etc/bluetooth/main.conf
 sudo service bluetooth restart
 
-
+sudo apt update -y
 sudo apt-get install -y p7zip-full mc sqlite3  i2c-tools ncftp
 sudo apt install -y mariadb-server mariadb-client mosquitto mosquitto-clients
 sudo apt install -y python3 python3-pip python-smbus gedit gparted
