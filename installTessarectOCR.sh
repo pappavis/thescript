@@ -18,10 +18,15 @@ python ./demo/opencv_pip_fix.py
 echo "Tessarect $_tv is geïnstalleerd."
 
 source ~/venv/venv3.7/bin/activate
-pip install --upgrade pip setuptools wheel
-pip install --upgrade pytesseract 
-pip install --upgrade libwebp6
-pip install opencv-python-headless==4.4.0.44 &
+
+for addonnodes in pip setuptools wheel pytesseract libwebp6 opencv-python-headless ; do
+  echo " "
+  echo " "
+  echo "Installeren Python bieb: ${addonnodes}"
+  echo " "
+  pip install --upgrade  ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
+
 python ./demo/opencv_pip_fix.py
 sudo apt autoclean -y
 sudo apt autoremove -y
