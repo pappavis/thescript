@@ -83,7 +83,8 @@ sudo apt update -y
 sudo apt update --fix-missing -y
 sudo apt-get install -y p7zip-full mc sqlite3  i2c-tools ncftp
 sudo apt install -y mariadb-server mariadb-client mosquitto mosquitto-clients
-sudo apt install -y python3 python3-pip python-smbus gedit gparted
+sudo apt install -y python3 python3-pip  gedit gparted
+sudo apt install -y python-smbus
 sudo apt-get install -y pure-ftpd neofetch
 sudo apt-get install -y nodejs npm
 sudo apt install -y wiringpi 
