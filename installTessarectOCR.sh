@@ -4,7 +4,10 @@ echo "* Installeren Tessarect OCR"
 sudo apt update -y
 
 for addonnodes in tesseract-ocr libtesseract-dev libatlas3-base qtchooser imagemagick libfontconfig1-dev libcairo2-dev libgdk-pixbuf2.0-dev libpango1.0-dev libgtk2.0-dev libgtk-3-dev libatlas-base-dev gfortran python3-opencv  ; do
+  echo " "
+  echo " "
   echo "Installeren ${addonnodes}"
+  echo " "
   sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
