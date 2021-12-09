@@ -97,6 +97,7 @@ mkdir ~/Downloads
 cd ~
 wget https://raw.githubusercontent.com/pappavis/thescript/master/index_apps.php
 sudo mv index_apps.php /var/www/html
+sudo mv /var/www/html/index.html /var/www/html/index_orgig.php
 cd $_pwd
 
 mkdir ~/venv
