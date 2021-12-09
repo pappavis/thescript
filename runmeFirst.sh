@@ -81,18 +81,16 @@ sudo service bluetooth restart
 
 sudo apt update -y
 sudo apt update --fix-missing -y
-sudo apt-get install -y p7zip-full mc sqlite3  i2c-tools ncftp
-sudo apt install -y mariadb-server mariadb-client mosquitto mosquitto-clients
-sudo apt install -y python3 python3-pip  gedit gparted
-sudo apt install -y python-smbus
-sudo apt-get install -y pure-ftpd neofetch
-sudo apt-get install -y nodejs npm
-sudo apt install -y wiringpi 
-sudo apt install -y rpi.gpio
-sudo apt install -y apache2 php php-mysql php-sqlite3 php-mbstring openssl libapache2-mod-php php-sqlite3 php-xml php-mbstring sysbench open-cobol ffmpeg
-sudo apt install -y python3-pip 
-sudo apt install -y python3-opencv
-sudo apt install -y libsdl2-image	
+
+for addonnodes in p7zip-full mc sqlite3  i2c-tools ncftp mariadb-server mariadb-client mosquitto mosquitto-clients \
+		python3 python3-pip  python3-opencv libsdl2-image gedit gparted  python-smbus pure-ftpd neofetch nodejs npm \
+		apache2 php php-mysql php-sqlite3 php-mbstring openssl libapache2-mod-php php-sqlite3 php-xml php-mbstring \
+		sysbench open-cobol ffmpeg \		
+		wiringpi rpi.gpio \ ; 
+	do
+		printstatus "Installing node \"${addonnodes}\""
+		sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
+	done
 
 mkdir ~/Downloads
 cd ~
