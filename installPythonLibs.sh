@@ -68,7 +68,7 @@ done
 python -m ensurepip 
 
 for addonnodes in pip setuptools wheel openpyxl o365 ttn qrcode pillow sqlalchemy pymsteams esptool adafruit-ampy firebirdsql \
-                  pyserial pyparsing pyzmail gpiozero pytube pipx serial jinja2 esptool mpfshell virtualenv ffmpeg \
+                  pyserial pyparsing pyzmail gpiozero pytube pipx serial jinja2 esptool mpfshell virtualenv ffmpeg conda \
                   scikit-build pygame pymongo psycopg2-binary mysql-connector-python guizero \
                   msteamsconnector matplotlib numpy imutils pyodbc opencv-python-headless ; do
     printstatus "Installeren python lib: \"${addonnodes}\""
