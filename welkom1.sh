@@ -109,7 +109,7 @@ function retropie_welcome() {
                 out+="Temperature........: CPU: ${cpuTempC}°C/${cpuTempF}°F GPU: ${gpuTempC}°C/${gpuTempF}°F"
                 ;;
             10)
-                out+="${fgwht}The RetroPie Project, https://retropie.org.uk"
+                out+="${fgwht}Raspberry Pi TheScript, https://github.com/pappavis/thescript"
                 ;;
         esac
         out+="${rst}\n"
