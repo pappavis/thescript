@@ -142,7 +142,13 @@ sudo usermod pi dialout
 sudo usermod pi i2c
 sudo usermod pi tty
 
-sudo apt install -y build-essential cmake rapidjson-dev libgmp-dev git gcc-8 g++-8 netdiscover sysfsutils tcpdump pure-ftpd wget ssh bash-completion unzip build-essential git python-serial scons libboost-filesystem-dev libboost-program-options-dev libboost-system-dev libsqlite3-dev subversion libusb-dev python-dev cmake curl telnet usbutils gawk jq pv samba samba-common samba-common-bin winbind dosfstools parted gcc python3-pip htop python-smbus mc cu mpg123 screen ffmpeg
+
+for addonnodes in build-essential cmake rapidjson-dev libgmp-dev git gcc-8 g++-8 netdiscover sysfsutils tcpdump pure-ftpd wget ssh bash-completion unzip build-essential git python-serial scons libboost-filesystem-dev libboost-program-options-dev libboost-system-dev libsqlite3-dev subversion libusb-dev python-dev cmake curl telnet usbutils gawk jq pv samba samba-common samba-common-bin winbind dosfstools parted gcc python3-pip htop python-smbus mc cu mpg123 screen ffmpeg ; do
+	printstatus "Instelleren \"${addonnodes}\""
+	sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
+
+
 sudo apt install -y libssl
 sudo apt install -y libcurl4-gnutls-dev libcurl4-openssl-dev
 sudo apt install -y libcurl4-openssl-dev 
