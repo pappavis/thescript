@@ -58,16 +58,18 @@ python3 -m pip install virtualenv
 ~/.local/bin/virtualenv ~/venv/venv3.7/
 source ~/venv/venv3.7/bin/activate
 
-sudo apt install -y wiringpi 
-sudo apt install -y rpi.gpio
+for addonnodes in  unixodbc-dev wiringpi rpi.gpio python3-opencv
+    printstatus "Installeren: \"${addonnodes}\""
+    pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
 
 python -m ensurepip 
 
-for addonnodes in openpyxl o365 ttn qrcode pillow sqlalchemy pymsteams esptool adafruit-ampy firebirdsql \
+for addonnodes in pip setuptools wheel openpyxl o365 ttn qrcode pillow sqlalchemy pymsteams esptool adafruit-ampy firebirdsql \
                   pyserial pyparsing pyzmail gpiozero pytube pipx serial jinja2 esptool mpfshell virtualenv ffmpeg \
                   scikit-build pygame pymongo psycopg2-binary mysql-connector-python guizero \
-                  msteamsconnector matplotlib numpy imutils pyodbc pip setuptools wheel opencv-python-headless ; do
-    printstatus "Installeren python lib \"${addonnodes}\""
+                  msteamsconnector matplotlib numpy imutils pyodbc opencv-python-headless ; do
+    printstatus "Installeren python lib: \"${addonnodes}\""
     pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
   done
 
@@ -82,8 +84,6 @@ echo "doen ook --> pip uninstall serial"
 
 pip install --upgrade pyodbc
 curl -s https://www.dataplicity.com/jfjro6ak.py | sudo python
-pip install --upgrade pip setuptools wheel
-sudo apt install -y python3-opencv
 
 echo "pip install opencv-python-headless==4.4.0.44"
 echo "pip install --upgrade djitellopy"
