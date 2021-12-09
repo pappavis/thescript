@@ -1,14 +1,13 @@
-ehco "* Installeren Tessarect OCR"
+LOGFILE=$HOME/$0-`date +%Y-%m-%d_%Hh%Mm`.log
+
+echo "* Installeren Tessarect OCR"
 sudo apt update -y
-sudo apt install -y tesseract-ocr 
-sudo apt install -y libtesseract-dev libatlas3-base
-sudo apt update -y qtchooser
-sudo apt install -y imagemagick 
-sudo apt install -y libfontconfig1-dev libcairo2-dev
-sudo apt install -y libgdk-pixbuf2.0-dev libpango1.0-dev
-sudo apt install -y libgtk2.0-dev libgtk-3-dev
-sudo apt install -y libatlas-base-dev gfortran python3-opencv
-sudo apt install -y python3-opencv
+
+for addonnodes in tesseract-ocr libtesseract-dev libatlas3-base qtchooser imagemagick libfontconfig1-dev libcairo2-dev libgdk-pixbuf2.0-dev libpango1.0-dev libgtk2.0-dev libgtk-3-dev libatlas-base-dev gfortran python3-opencv  ; do
+  echo "Installeren ${addonnodes}"
+  sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
+
 _tv=$(tesseract --version)
 
 python ./demo/opencv_pip_fix.py
