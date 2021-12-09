@@ -55,7 +55,7 @@ sudo apt-get install -y pure-ftpd neofetch
 sudo apt-get install -y nodejs npm
 sudo apt install -y wiringpi 
 sudo apt install -y rpi.gpio
-sudo apt install -y apache2 php php-mysql php-sqlite3 php-mbstring openssl libapache2-mod-php php-sqlite3 php-xml php-mbstring sysbench open-cobol sudo apt install -y ffmpeg
+sudo apt install -y apache2 php php-mysql php-sqlite3 php-mbstring openssl libapache2-mod-php php-sqlite3 php-xml php-mbstring sysbench open-cobol ffmpeg
 sudo apt install -y python3-pip 
 sudo apt install -y python3-opencv
 sudo apt install -y libsdl2-image	
