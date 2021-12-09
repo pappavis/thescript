@@ -82,7 +82,7 @@ sudo service bluetooth restart
 sudo apt update -y
 sudo apt update --fix-missing -y
 
-for addonnodes in p7zip-full mc sqlite3  i2c-tools ncftp mariadb-server mariadb-client mosquitto mosquitto-clients python3 python3-pip  python3-opencv libsdl2-image gedit gparted  python-smbus pure-ftpd neofetch nodejs npm 		apache2 php php-mysql php-sqlite3 php-mbstring openssl libapache2-mod-php php-sqlite3 php-xml php-mbstring sysbench open-cobol ffmpeg wiringpi rpi.gpio  ; do
+for addonnodes in p7zip-full mc sqlite3  i2c-tools ncftp mariadb-server mariadb-client mosquitto mosquitto-clients python3 python3-pip  python3-opencv libsdl2-image gedit gparted  python-smbus pure-ftpd neofetch nodejs npm 		apache2 php php-mysql php-sqlite3 php-mbstring openssl libapache2-mod-php php-sqlite3 php-xml php-mbstring sysbench open-cobol ffmpeg wiringpi rpi.gpio  unixodbc-dev  ; do 
 		printstatus "Installing  \"${addonnodes}\""
 		sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 	done
