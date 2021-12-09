@@ -76,12 +76,13 @@ systemctl show -p SubState --value xrdp
 echo "* Installeer btop proceslijst"
 cd ~/Downloads/
 sudo rm -rf ./btop*
-wget https://github.com/aristocratos/btop/releases/download/v1.0.13/btop-1.0.13-linux-armhf.tbz
-7z x btop-1.0.13-linux-armhf.tbz
 mkdir ./btop_install
 cd ./btop_install
-7z x ../btop-1.0.13-linux-armhf.tar
-sudo make install
+wget https://github.com/aristocratos/btop/releases/download/v1.1.2/btop-1.1.2-armv5l-linux-musleabi.tbz
+wget https://github.com/aristocratos/btop/releases/download/v1.1.2/btop-1.1.2-armv7l-linux-musleabihf.tbz
+7z x ./btop-1.1.2-armv7l-linux-musleabihf.tbz
+7z x ./btop-1.1.2-armv5l-linux-musleabi.tar
+sudo mv ./bin/usr/local
 cd ~/Downloads/thescript
 echo "* Doen ook --> sudo nano /etc/samba/smb.conf -y"
 
