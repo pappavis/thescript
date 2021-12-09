@@ -39,7 +39,7 @@ sudo mount -t auto retropie:/home /mnt/nfs/retropie/ &
 sudo mount -t auto pi07:/home /mnt/nfs/pi07/ &
 sudo mount -t auto pi08:/home /mnt/nfs/pi08/ &
 
-echo "\n/home *(rw,all_squash,insecure,async,no_subtree_check)\n" | sudo tee -a /etc/exports
+echo "/home *(rw,all_squash,insecure,async,no_subtree_check)" | sudo tee -a /etc/exports
 
 sudo printf "\n HANDMATIG toevoegen aan /etc/exports/  : \n/home *(rw,all_squash,insecure,async,no_subtree_check)\n"
 printf "\nNFS bestanddeling is daarna bereikbaar:\n -- MacOS verbind aan nfs://$_hn1.local/nfsshare  of nfs://$_ip1/nfsshare \n -- Windows verbind aan //$ip1.local/nfsshare\n\nIP adres $_ip1\n"
