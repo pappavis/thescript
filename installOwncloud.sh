@@ -12,3 +12,4 @@ sudo mv ~/Downloads/owncloud /var/www/html/support
 sudo chown -R www-data:www-data /var/www/html/support/owncloud
 sudo service apache2 restart
 echo "Owncloud beschikbaar op http://$_hn1.local/support/owncloud"
+cd $_pwd
