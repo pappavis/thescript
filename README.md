@@ -85,7 +85,7 @@ pi@raspberrypi: $ sudo reboot
 ```
 
 ## Stap 6: Test website
-Surf naar http://jouwRasprryPi.local/
+Surf naar http://jouwRaspberryPi.local/
 
 
 # origineel
