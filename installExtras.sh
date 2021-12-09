@@ -60,16 +60,28 @@ cd ~/Downloads/
 
 sudo apt update -y
 echo "** installeer minimale Raspbian desktop."
-sudo apt install -y raspberrypi-ui-mods xinit xserver-xorg xrdp 
+for addonnodes in raspberrypi-ui-mods xinit xserver-xorg xrdp   ; do
+  echo " "
+  echo " "
+  echo "Installeren: ${addonnodes}"
+  echo " "
+  sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
+
 sudo mkdir /home/pi/.local
 sudo mkdir /home/pi/.local/share
 sudo mkdir /home/pi/.local/share/lxsession
 sudo mkdir /home/pi/.local/share/lxterminal
 
-echo "** installeer barrier KVM."
-sudo apt install -y remmina barrier thonny kodi chromium code
-sudo apt install -y code
-sudo apt install -y tightvncserver
+echo "** installeer X-Apps zoals KVM."
+for addonnodes in raspberrypi-ui-mods xinit xserver-xorg xrdp  remmina barrier thonny kodi chromium code tightvncserver audacity  ; do
+  echo " "
+  echo " "
+  echo "Installeren ${addonnodes}"
+  echo " "
+  sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
+
 sudo adduser xrdp ssl-cert 
 systemctl show -p SubState --value xrdp
 
