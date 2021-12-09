@@ -2,6 +2,7 @@ _hn1=$(hostname)
 _pwd=$(pwd)
 LOGFILE=~/installExtrasLog.log
 AQUIET=""
+
 git pull
 cd ~/Downloads
 echo "Download en installeer virtualhere.com Pi 3 server & client"
@@ -66,7 +67,7 @@ sudo mkdir /home/pi/.local/share/lxsession
 sudo mkdir /home/pi/.local/share/lxterminal
 
 echo "** installeer barrier KVM."
-sudo apt install -y remmina barrier thonny kodi chromium 
+sudo apt install -y remmina barrier thonny kodi chromium code
 sudo apt install -y tightvncserver
 sudo adduser xrdp ssl-cert 
 systemctl show -p SubState --value xrdp
