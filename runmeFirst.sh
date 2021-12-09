@@ -128,7 +128,8 @@ sudo usermod -aG tty michiele
 sudo usermod -aG kmem michiele
 
 sudo mv /var/www/html/index.html /var/www/html/orig_index.html
-sudo apt-get upgrade -y
+sudo apt upgrade -y
+sudo apt full-upgrade -y
 sudo apt autoclean -y
 sudo apt autoremove -y
 
