@@ -1,6 +1,6 @@
 _hn1=$(hostname)
 _pwd=$(pwd)
-LOGFILE=~/installExtrasLog.log
+LOGFILE=$HOME/$0-`date +%Y-%m-%d_%Hh%Mm`.log
 AQUIET=""
 
 git pull
@@ -81,9 +81,10 @@ cd ./btop_install
 wget https://github.com/aristocratos/btop/releases/download/v1.1.2/btop-1.1.2-armv5l-linux-musleabi.tbz
 wget https://github.com/aristocratos/btop/releases/download/v1.1.2/btop-1.1.2-armv7l-linux-musleabihf.tbz
 7z x ./btop-1.1.2-armv7l-linux-musleabihf.tbz
-7z x ./btop-1.1.2-armv5l-linux-musleabi.tar
-sudo mv ./bin/usr/local
-cd ~/Downloads/thescript
+7z x ./btop-1.1.2-armv7l-linux-musleabihf.tar
+make
+
+cd $_pwd
 echo "* Doen ook --> sudo nano /etc/samba/smb.conf -y"
 
 echo "* Installeer pi-apps app store"
