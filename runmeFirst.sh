@@ -171,6 +171,10 @@ sudo apt full-upgrade -y
 sudo apt autoclean -y
 sudo apt autoremove -y
 
+cd ~/Downloads
+wget https://raw.githubusercontent.com/pappavis/thescript/master/welkom1.sh
+chmod +x ./welkom1.sh
+sudo mv ./welkom1.sh /usr/local/bin
 
 echo ""
 echo "Je kunt nu REBOOT, daarna ./installVerzamelupdates.sh draaien"
