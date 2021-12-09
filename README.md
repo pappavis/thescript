@@ -89,5 +89,5 @@ Surf naar http://jouwRaspberryPi.local/
 
 
 # origineel
-Zie origineel <a href="https://bitbucket.org/api/2.0/snippets/scargill/kAR5qG/master/files/script.sh">hier</a>
+Zie origineel <a href="https://bitbucket.org/api/2.0/snippets/scargill/kAR5qG/master/files/script.sh">hier</a> door Pete Scargill.
 
