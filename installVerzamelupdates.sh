@@ -16,8 +16,7 @@ bash ./installNFSserver.sh
 bash ./installNodeJS.sh
 sudo apt autoclean -y
 sudo apt autoremove -y
-printf "\nTesseract OCR wordt bijgewerkt\n"
-bash ./installTessarectOCT.sh
+
 printf "\nCircuitPython wordt bijgewerkt\n"
 bash ./installPythonCircuitpython.sh
 printf "\nPython wordt bijgewerkt\n"
@@ -35,7 +34,8 @@ bash ./installOctoprint.sh
 bash ./installOctoprintWebcam.sh
 bash ./installHomeassistant.sh
 bash ./installHomebridgeApple.sh
-bash ./installTessarectOCR.sh
+printf "\nTesseract OCR wordt bijgewerkt\n"
+bash ./installTessarectOCT.sh &
 
-printf "Let op!!  Apple Homebridge & Homeassistant niet op Pi 3 model A  installeren, hij heeft te weinig geheugen!!\n"
+printf "Let op!!  Apple Homebridge & Homeassistantop Pi 3 model A installeren, dan swapfile uitbreiden naar 1Gb!!\n"
 printf "\nEINDE installVerzamelupdates.sh afgerond.\n"
