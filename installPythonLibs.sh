@@ -70,7 +70,7 @@ python -m ensurepip
 for addonnodes in pip setuptools wheel openpyxl o365 ttn qrcode pillow sqlalchemy pymsteams esptool adafruit-ampy firebirdsql \
                   pyserial pyparsing pyzmail gpiozero pytube pipx serial jinja2 esptool mpfshell virtualenv ffmpeg conda \
                   scikit-build pygame pymongo psycopg2-binary mysql-connector-python guizero \
-                  msteamsconnector matplotlib numpy imutils pyodbc RPi.GPIO ; do
+                  msteamsconnector matplotlib numpy imutils pyodbc  ; do
     printstatus "Installeren python lib: \"${addonnodes}\""
     pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
   done
@@ -80,12 +80,12 @@ for addonnodes in pip setuptools wheel openpyxl o365 ttn qrcode pillow sqlalchem
 ##pip install --upgrade pipx serial jinja2 esptool mpfshell virtualenv ffmpeg
 ##pip install --upgrade scikit-build pygame pymongo psycopg2-binary mysql-connector-python guizero
 ##pip install --upgrade matplotlib numpy imutils
-pip install --upgrade rpi.gpio
 python3 -m pip install git+https://github.com/pytube/pytube
 echo "doen ook --> pip uninstall serial"
 
-pip install --upgrade pyodbc
 curl -s https://www.dataplicity.com/jfjro6ak.py | sudo python
+
+pip install --upgrade RPi.GPIO &
 
 echo "pip install opencv-python-headless==4.4.0.44"
 echo "pip install --upgrade djitellopy"
