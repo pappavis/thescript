@@ -66,6 +66,7 @@ echo "alias l='ls -F --color=auto'" >> ~/.bashrc
 
 sudo apt install -y git
 sudo apt install -y python3-pip
+pip install ensurepip
 
 git config pull.rebase false
 mkdir /home/pi/Downloads
