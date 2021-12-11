@@ -176,7 +176,7 @@ sudo mv ./welkom1.sh /usr/local/bin
 echo ""
 echo "Je kunt nu REBOOT, daarna ./installVerzamelupdates.sh draaien"
 
-welkom1
+neofetch
 cd $_pwd
 ## bash ./installVerzamelupdates.sh
 
