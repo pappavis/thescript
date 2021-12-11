@@ -65,6 +65,8 @@ echo "alias l='ls -F --color=auto'" >> ~/.bashrc
 [ ! -x /usr/bin/sudo ] && apt-get $AQUIET -y update > /dev/null 2>&1 && apt-get $AQUIET -y install sudo 2>&1 | tee -a $LOGFILE
 
 sudo apt install -y git
+sudo apt install -y python3-pip
+
 git config pull.rebase false
 mkdir /home/pi/Downloads
 cd /home/pi/Downloads
