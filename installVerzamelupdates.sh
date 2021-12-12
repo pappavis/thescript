@@ -35,7 +35,7 @@ bash ./installOctoprintWebcam.sh
 bash ./installHomeassistant.sh
 bash ./installHomebridgeApple.sh
 printf "\nTesseract OCR wordt bijgewerkt\n"
-bash ./installTessarectOCT.sh &
+bash ./installTessarectOCR.sh &
 
 printf "Let op!!  Apple Homebridge & Homeassistantop Pi 3 model A installeren, dan swapfile uitbreiden naar 1Gb!!\n"
 printf "\nEINDE installVerzamelupdates.sh afgerond.\n"
