@@ -1,7 +1,7 @@
 _hn1=$(hostname -I)
 printf "Start installatie homebridge voor Apple homekit.\n"
 printf "Zie ook https://github.com/homebridge/homebridge/wiki/Install-Homebridge-on-Raspbian\n"
-sudo apt install -y nodejs gcc g++ make python net-tools
+sudo apt install -y gcc g++ make python net-tools
 printf "NodeJS versie: "
 node -v
 printf "\nApple homekit wordt geïnstalleerd.\n"
