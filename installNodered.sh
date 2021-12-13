@@ -118,6 +118,8 @@ sudo apt install build-essential libnode72 -y
 
 sudo apt --fix-broken install -y
 sudo apt -fix-broken build-essential libnode72 -y
+sudo apt autoremove -y
+sudo apt autoclean -y
 
 echo "NodeJS installeren"
 
