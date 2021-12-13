@@ -25,14 +25,13 @@ bash ./installOwncloud.sh
 bash ./installIOT.sh
 bash ./installPythonLibs.sh
 bash ./installUpdates.sh
-bash ./installNodeJS.sh
-bash ./installNodeJS.sh
 sudo apt autoclean -y
 sudo apt autoremove -y
 bash ./installOctoprint.sh
 bash ./installOctoprintWebcam.sh
 bash ./installHomeassistant.sh
 bash ./installHomebridgeApple.sh
+bash ./installNodered.sh
 printf "\nTesseract OCR wordt bijgewerkt\n"
 bash ./installTessarectOCR.sh &
 sudo apt autoclean -y
