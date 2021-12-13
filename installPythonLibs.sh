@@ -67,7 +67,7 @@ done
 
 python -m ensurepip 
 
-for addonnodes in  libcblas-dev libhdf5-dev libhdf5-serial-dev libjasper-dev libatlas-base-dev libjasper-dev  libqtgui4 libqt4-test libilmbase-dev libopenexr-dev libgstreamer1.0-dev libavcodec-dev libavformat-dev libswscale-dev libwebp-dev   ; do
+for addonnodes in  libatlas-base-dev libwebp-dev   ; do
     printstatus "Installeren lib: \"${addonnodes}\""
     sudo apt install $NQUIET -y ${addonnodes} 2>&1 | tee -a $LOGFILE
   done
