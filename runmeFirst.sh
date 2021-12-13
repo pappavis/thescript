@@ -168,6 +168,9 @@ sudo apt full-upgrade -y
 sudo apt autoclean -y
 sudo apt autoremove -y
 
+sudo sed -i "s/# nl_NL.utf8/nl_NL.utf8/g" /etc/locale.gen
+sudo locale-gen
+
 cd ~/Downloads
 wget https://raw.githubusercontent.com/pappavis/thescript/master/welkom1.sh
 chmod +x ./welkom1.sh
