@@ -74,7 +74,7 @@ sudo mkdir /home/pi/.local/share/lxsession
 sudo mkdir /home/pi/.local/share/lxterminal
 
 echo "** installeer X-Apps zoals KVM."
-for addonnodes in raspberrypi-ui-mods xinit xserver-xorg xrdp  remmina barrier thonny kodi chromium code tightvncserver audacity rpi-imager  ; do
+for addonnodes in raspberrypi-ui-mods xinit xserver-xorg xrdp  remmina barrier thonny kodi chromium code tightvncserver audacity rpi-imager piclone  ; do
   echo " "
   echo " "
   echo "Installeren ${addonnodes}"
@@ -196,6 +196,15 @@ cd ~/Downloads
 curl -fsSL https://get.docker.com  -o get-docker.sh
 sudo sh get-docker.sh
 sudo usermod -aG docker $USER
+
+echo "* Installeren rpi-clone"
+cd ~/Downloads
+sudo apt install -y git
+wget https://github.com/billw2/rpi-clone/archive/master.zip
+unzip master.zip && mv rpi-clone-master rpi-clone
+sudo cp rpi-clone/rpi-clone* /usr/local/sbin
+rm -rf rpi-clone master.zip
+
 
 cd $_pwd
 
