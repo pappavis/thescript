@@ -74,7 +74,7 @@ sudo mkdir /home/pi/.local/share/lxsession
 sudo mkdir /home/pi/.local/share/lxterminal
 
 echo "** installeer X-Apps zoals KVM."
-for addonnodes in raspberrypi-ui-mods xinit xserver-xorg xrdp  remmina barrier thonny kodi chromium code tightvncserver audacity  ; do
+for addonnodes in raspberrypi-ui-mods xinit xserver-xorg xrdp  remmina barrier thonny kodi chromium code tightvncserver audacity rpi-imager  ; do
   echo " "
   echo " "
   echo "Installeren ${addonnodes}"
