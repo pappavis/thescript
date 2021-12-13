@@ -178,6 +178,7 @@ echo ""
 echo "Je kunt nu REBOOT, daarna ./installVerzamelupdates.sh draaien"
 
 neofetch
+lsblk
 cd $_pwd
 ## bash ./installVerzamelupdates.sh
 
