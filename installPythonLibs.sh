@@ -67,10 +67,15 @@ done
 
 python -m ensurepip 
 
+for addonnodes in  libcblas-dev libhdf5-dev libhdf5-serial-dev libjasper-dev libatlas-base-dev libjasper-dev  libqtgui4 libqt4-test libilmbase-dev libopenexr-dev libgstreamer1.0-dev libavcodec-dev libavformat-dev libswscale-dev libwebp-dev   ; do
+    printstatus "Installeren lib: \"${addonnodes}\""
+    sydo apt install $NQUIET -y ${addonnodes} 2>&1 | tee -a $LOGFILE
+  done
+
 for addonnodes in pip setuptools wheel openpyxl o365 ttn qrcode pillow sqlalchemy pymsteams esptool adafruit-ampy firebirdsql \
                   pyserial pyparsing pyzmail gpiozero pytube pipx serial jinja2 esptool mpfshell virtualenv ffmpeg conda \
                   scikit-build pygame pymongo psycopg2-binary mysql-connector-python guizero \
-                  msteamsconnector matplotlib numpy imutils pyodbc pysmb  ; do
+                  msteamsconnector matplotlib numpy imutils pyodbc pysmb  opencv-contrib-python ; do
     printstatus "Installeren python lib: \"${addonnodes}\""
     pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
   done
@@ -87,6 +92,7 @@ curl -s https://www.dataplicity.com/jfjro6ak.py | sudo python
 
 pip install --upgrade RPi.GPIO &
 
-echo "pip install opencv-python-headless==4.4.0.44"
+echo "pip install 
+-python-headless==4.4.0.44"
 echo "pip install --upgrade djitellopy"
 ehco "pip install --upgrade osxphotos"
