@@ -3,7 +3,8 @@ LOGFILE=$HOME/$0-`date +%Y-%m-%d_%Hh%Mm`.log
 echo "* Installeren Tessarect OCR"
 sudo apt update -y
 
-for addonnodes in tesseract-ocr libtesseract-dev libatlas3-base qtchooser imagemagick libfontconfig1-dev libcairo2-dev libgdk-pixbuf2.0-dev libpango1.0-dev libgtk2.0-dev libgtk-3-dev libatlas-base-dev gfortran  ; do
+
+for addonnodes in tesseract-ocr libtesseract-dev   ; do
   echo " "
   echo " "
   echo "Installeren ${addonnodes}"
