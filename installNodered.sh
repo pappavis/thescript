@@ -99,8 +99,6 @@ printstatus() {
 
 printstatus "Installing NodeJS and NodeRed"
 
-sudo apt --fix-broken install -y
-
 printstatus  "**Installer en node-red en modules"
 mkdir /home/pi/Downloads
 cd ~
@@ -116,7 +114,10 @@ mkdir /home/pi/.node-red
 cd /home/pi/.node-red
 
 echo "Installeren build-essentials"
-sudo apt install build-essential
+sudo apt install build-essential libnode72 -y
+
+sudo apt --fix-broken install -y
+sudo apt -fix-broken build-essential libnode72 -y
 
 echo "NodeJS installeren"
 
