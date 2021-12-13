@@ -145,12 +145,10 @@ for addonnodes in build-essential cmake rapidjson-dev libgmp-dev git gcc-8 g++-8
 	sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
-
-sudo apt install -y libssl
-sudo apt install -y libcurl4-gnutls-dev libcurl4-openssl-dev
-sudo apt install -y libcurl4-openssl-dev 
-sudo apt install -y libsdl2-ttf-dev libsdl2-image-dev
-sudo apt install -y ccze net-tools
+for addonnodes in libatlas3-base qtchooser imagemagick libfontconfig1-dev libcairo2-dev libgdk-pixbuf2.0-dev libpango1.0-dev libgtk2.0-dev libgtk-3-dev libatlas-base-dev gfortran libssl libcurl4-gnutls-dev libcurl4-openssl-dev libcurl4-openssl-dev  libsdl2-ttf-dev libsdl2-image-dev ccze net-tools  ; do 
+		printstatus "Installing  \"${addonnodes}\""
+		sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
 
 ./adduserPi.sh
 	    
