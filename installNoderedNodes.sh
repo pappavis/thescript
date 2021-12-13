@@ -136,7 +136,13 @@ done
 
 npm audit fix --force
 
-printstatus "Bijwerken loakel nodes"
+echo "Installeren global nodes"
+for addonnodes in qrcode johnny-five ; do
+	printstatus "Installeren global node \"${addonnodes}\""
+	sudo npm $NQUIET install --save ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
+
+printstatus "Bijwerken lokale nodes"
 npm $NQUIET update 2>&1 | tee -a $LOGFILE
 
 sudo service nodered restart
