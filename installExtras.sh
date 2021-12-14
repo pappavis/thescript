@@ -211,7 +211,7 @@ wget https://raw.githubusercontent.com/pappavis/thescript/master/autoupdate.sh
 chmod +x ./autoupdate.sh
 mkdir ~/logs
 touch ~/logs/cronlog
-crontab -e
+echo "0 0 * * SAT sh /home/pi/update.sh 2>/home/pi/logs/cronlog" | sudo tee -a /etc/crontab
 
 cd $_pwd
 
