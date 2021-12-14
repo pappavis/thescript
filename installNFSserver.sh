@@ -24,6 +24,7 @@ sudo mkdir -p /mnt/nfs/p1mon/
 sudo mkdir -p /mnt/nfs/retropie/
 sudo mkdir -p /mnt/nfs/pi07/
 sudo mkdir -p /mnt/nfs/pi08/
+sudo mkdir -p /mnt/nfs/pi09/
 
 sudo chmod 777 -R /mnt/nfs/
 
@@ -38,6 +39,7 @@ sudo mount -t auto p1mon:/home /mnt/nfs/p1mon/ &
 sudo mount -t auto retropie:/home /mnt/nfs/retropie/ &
 sudo mount -t auto pi07:/home /mnt/nfs/pi07/ &
 sudo mount -t auto pi08:/home /mnt/nfs/pi08/ &
+sudo mount -t auto pi08:/home /mnt/nfs/pi09/ &
 
 echo "/home *(rw,all_squash,insecure,async,no_subtree_check)" | sudo tee -a /etc/exports
 
