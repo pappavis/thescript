@@ -210,8 +210,8 @@ cd ~/Downloads
 wget https://raw.githubusercontent.com/pappavis/thescript/master/autoupdate.sh
 chmod +x ./autoupdate.sh
 mkdir ~/logs
-touch ~/logs/cronlog
-echo "0 0 * * SAT sh /home/pi/update.sh 2>/home/pi/logs/cronlog" | sudo tee -a /etc/crontab
+touch ~/logs/cronlog.txt
+echo "0 0 * * SAT sh /home/pi/update.sh 2>/home/pi/logs/cronlog.txt" | sudo tee -a /etc/crontab
 
 cd $_pwd
 
