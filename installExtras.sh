@@ -205,6 +205,7 @@ unzip master.zip && mv rpi-clone-master rpi-clone
 sudo cp rpi-clone/rpi-clone* /usr/local/sbin
 rm -rf rpi-clone master.zip
 
+echo "* Installeer auto update als crontab taak"
 cd ~/Downloads
 wget https://raw.githubusercontent.com/pappavis/thescript/master/autoupdate.sh
 chmod +x ./autoupdate.sh
