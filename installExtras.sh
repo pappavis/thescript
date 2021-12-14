@@ -209,6 +209,9 @@ echo "* Installeer auto update als crontab taak"
 cd ~/Downloads
 wget https://raw.githubusercontent.com/pappavis/thescript/master/autoupdate.sh
 chmod +x ./autoupdate.sh
+mkdir ~/logs
+touch ~/logs/cronlog
+crontab -e
 
 cd $_pwd
 
