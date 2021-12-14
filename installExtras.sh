@@ -205,6 +205,9 @@ unzip master.zip && mv rpi-clone-master rpi-clone
 sudo cp rpi-clone/rpi-clone* /usr/local/sbin
 rm -rf rpi-clone master.zip
 
+cd ~/Downloads
+wget https://raw.githubusercontent.com/pappavis/thescript/master/autoupdate.sh
+chmod +x ./autoupdate.sh
 
 cd $_pwd
 
