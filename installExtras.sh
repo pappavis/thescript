@@ -214,6 +214,7 @@ touch ~/logs/cronlog.txt
 echo "0 0 * * SAT sh /home/pi/update.sh 2>/home/pi/logs/cronlog.txt" | sudo tee -a /etc/crontab
 
 echo "* installeren Wireguard VPN"
+cd ~/Downloads
 sudo apt install wireguard raspberrypi-kernel-headers -y
 echo "deb http://deb.debian.org/debian/ unstable main" | sudo tee --append /etc/apt/sources.list.d/unstable.list
 sudo apt update -y
