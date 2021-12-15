@@ -30,7 +30,7 @@ curl -s https://www.dataplicity.com/jfjro6ak.py | sudo python
 
 sudo apt-get install -y phpmyadmin
 APP_PASS="rider506"
-ROOT_PASS="rider506d"
+ROOT_PASS="rider506"
 APP_DB_PASS="rider506"
 
 echo "phpmyadmin phpmyadmin/dbconfig-install boolean true" | sudo debconf-set-selections
