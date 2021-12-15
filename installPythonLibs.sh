@@ -76,7 +76,7 @@ for addonnodes in  libatlas-base-dev libwebp-dev   ; do
 for addonnodes in pip setuptools wheel openpyxl o365 ttn qrcode pillow sqlalchemy pymsteams esptool adafruit-ampy firebirdsql \
                   pyserial pyparsing pyzmail gpiozero pytube pipx serial jinja2 esptool mpfshell virtualenv ffmpeg conda \
                   scikit-build pygame pymongo psycopg2-binary mysql-connector-python guizero \
-                  msteamsconnector matplotlib numpy imutils pyodbc pysmb  opencv-contrib-python git+https://github.com/pytube/pytube ; do
+                  msteamsconnector matplotlib numpy imutils pyodbc pysmb  opencv-contrib-python git+https://github.com/pytube/pytube djitellopy osxphotos ; do
     printstatus "Installeren python lib: \"${addonnodes}\""
     pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
   done
@@ -95,8 +95,4 @@ cd $_pwd
 
 pip install --upgrade RPi.GPIO &
 
-echo "pip install 
--python-headless==4.4.0.44"
-echo "pip install --upgrade djitellopy"
-ehco "pip install --upgrade osxphotos"
 cd $_pwd
