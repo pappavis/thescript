@@ -8,7 +8,7 @@ Environment="LC_ALL=NL.UTF-8"
 Environment="LANG=NL.UTF-8"
 Type=exec
 User=pi
-ExecStart=/usr/local/ts3server
+ExecStart=/usr/local/share/teamspeak3-server_linux_x86/ts3server
 
 [Install]
 WantedBy=multi-user.target
