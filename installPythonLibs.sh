@@ -1,6 +1,7 @@
 echo '** Installeer pythonlibs. je moet eerst een virtualenv activeer!!' 
-LOGFILE=$HOME/$0-`date +%Y-%m-%d_%Hh%Mm`.log
-
+LOGFILE=$HOME/logs/$0-`date +%Y-%m-%d_%Hh%Mm`.log
+_pwd=$(pwd)
+mkdir $HOME/logs
 
 #Array to store possible locations for temp read.
 aFP_TEMPERATURE=(
@@ -80,15 +81,15 @@ for addonnodes in pip setuptools wheel openpyxl o365 ttn qrcode pillow sqlalchem
     pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
   done
 
-##pip install --upgrade openpyxl o365 ttn qrcode pillow sqlalchemy pymsteams esptool adafruit-ampy firebirdsql 
-##pip install --upgrade pyserial pyparsing pyzmail gpiozero pytube 
-##pip install --upgrade pipx serial jinja2 esptool mpfshell virtualenv ffmpeg
-##pip install --upgrade scikit-build pygame pymongo psycopg2-binary mysql-connector-python guizero
-##pip install --upgrade matplotlib numpy imutils
+
 python3 -m pip install git+https://github.com/pytube/pytube
 echo "doen ook --> pip uninstall serial"
 
 curl -s https://www.dataplicity.com/jfjro6ak.py | sudo python
+
+cd /usr/local/bin
+sudo wget https://raw.githubusercontent.com/pappavis/thescript/master/demo/herstartmelding.py
+sudo chmod +x /usr/local/bin/herstartmelding.py
 
 pip install --upgrade RPi.GPIO &
 
@@ -96,3 +97,4 @@ echo "pip install
 -python-headless==4.4.0.44"
 echo "pip install --upgrade djitellopy"
 ehco "pip install --upgrade osxphotos"
+cd $_pwd
