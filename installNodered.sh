@@ -19,7 +19,9 @@ NQUIET=""
 skip=0
 other=0
 MYMENU=$"nodenew"
-LOGFILE=~/install.log
+LOGFILE=$HOME/logs/$0-`date +%Y-%m-%d_%Hh%Mm`.log
+
+mkdir ~/logs
 
 clean_stdin()
 {
@@ -77,8 +79,6 @@ Obtain_Cpu_Temp(){
         fi
     done
 }
-
-LOGFILE=$HOME/$0-`date +%Y-%m-%d_%Hh%Mm`.log
 
 printl() {
 	printf $1
