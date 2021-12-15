@@ -212,6 +212,7 @@ chmod +x ./autoupdate.sh
 mkdir ~/logs
 touch ~/logs/cronlog.txt
 echo "0 0 * * SAT sh /home/pi/update.sh 2>/home/pi/logs/cronlog.txt" | sudo tee -a /etc/crontab
+sudo service cron restart
 
 echo "* installeren Wireguard VPN"
 cd ~/Downloads
