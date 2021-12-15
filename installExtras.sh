@@ -227,6 +227,32 @@ sudo apt update -y
 sudo apt install wireguard -y
 sudo systemctl enable wg-quick@wg0
 
+
+cd ~/Downloads
+printstatus "Installeren box86 emulatie ref--> https://pimylifeup.com/raspberry-pi-x86/"
+for addonnodes in gcc-arm-linux-gnueabihf libc6:armhf libncurses5:armhf libstdc++6:armhf  ; do
+  echo " "
+  echo " "
+  echo "Installeren box86 vereisten: ${addonnodes}"
+  echo " "
+  sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
+git clone https://github.com/ptitSeb/box86
+cd ./box86
+mkdir build
+cd build
+cmake .. -DRPI2=1 -DCMAKE_BUILD_TYPE=RelWithDebInfo
+make -j$(nproc)
+sudo make install
+sudo systemctl restart systemd-binfmt
+cd ~/Downloads
+printstatus "box86 voorbeeld. Start Teamspeak"
+wget https://files.teamspeak-services.com/releases/server/3.13.3/teamspeak3-server_linux_x86-3.13.3.tar.bz2
+tar -xvpf teamspeak3-server_linux_x86-3.13.3.tar.bz2
+cd teamspeak3-server_linux_x86
+touch .ts3server_license_accepted
+./ts3server &
+
 cd $_pwd
 
 echo "Virtuahlere draadloos Wifi is geinstalleerd."
