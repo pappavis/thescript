@@ -93,6 +93,11 @@ for addonnodes in p7zip-full mc sqlite3  i2c-tools ncftp mariadb-server mariadb-
 		sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 	done
 
+printstatus  "Bijwerken vsftpd anonymous"
+sudo sed -i -e '/anonymous_enable=NO/s/NO/YES/' /etc/vsftpd.conf
+sudo sed -i -e '/#utf8_filesystem/s/#utf8/utf8/' /etc/vsftpd.conf
+sudo service vsftpd restart
+
 mkdir ~/Downloads
 cd ~
 wget https://raw.githubusercontent.com/pappavis/thescript/master/index_apps.php
