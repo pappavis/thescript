@@ -251,7 +251,7 @@ sudo systemctl enable wg-quick@wg0
 
 cd ~/Downloads
 printstatus "Installeren box86 emulatie ref--> https://pimylifeup.com/raspberry-pi-x86/"
-for addonnodes in gcc-arm-linux-gnueabihf libc6:armhf libncurses5:armhf libstdc++6:armhf  ; do
+for addonnodes in gcc-arm-linux-gnueabihf libc6:armhf libncurses5:armhf libstdc++6:armhf cmake ; do
   echo " "
   echo " "
   echo "Installeren box86 vereisten: ${addonnodes}"
