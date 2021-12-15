@@ -274,10 +274,10 @@ sudo systemctl enable teamspeak.service
 printstatus "box86 voorbeeld. Start Teamspeak"
 wget https://files.teamspeak-services.com/releases/server/3.13.3/teamspeak3-server_linux_x86-3.13.3.tar.bz2  2>&1 | tee -a $LOGFILE
 tar -xvpf teamspeak3-server_linux_x86-3.13.3.tar.bz2
-cd teamspeak3-server_linux_x86
-touch .ts3server_license_accepted
+cd ./teamspeak3-server_linux_x86
 cd ~/Downloads
-mv ./teamspeak3-server_linux_x86 /usr/local/share
+sudo mv ./teamspeak3-server_linux_x86 /usr/local/share
+sudo touch /usr/local/share/teamspeak3-server_linux_x86/.ts3server_license_accepted
 sudo service teamspeak restart
 ## ./ts3server  2>&1 & | tee -a $LOGFILE
 
