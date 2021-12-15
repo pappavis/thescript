@@ -262,8 +262,8 @@ git clone https://github.com/ptitSeb/box86
 cd ./box86
 mkdir build
 cd build
-cmake .. -DRPI2=1 -DCMAKE_BUILD_TYPE=RelWithDebInfo
-make -j$(nproc)
+cmake .. -DRPI2=1 -DCMAKE_BUILD_TYPE=RelWithDebInfo  2>&1 | tee -a $LOGFILE
+make -j$(nproc)  2>&1 | tee -a $LOGFILE
 sudo make install
 sudo systemctl restart systemd-binfmt
 sudo rm -rf ~/Downloads/box86
@@ -273,7 +273,7 @@ sudo mv ./teamspeak.service /etc/systemd/system
 sudo systemctl enable teamspeak.service
 printstatus "box86 voorbeeld. Start Teamspeak"
 wget https://files.teamspeak-services.com/releases/server/3.13.3/teamspeak3-server_linux_x86-3.13.3.tar.bz2  2>&1 | tee -a $LOGFILE
-tar -xvpf teamspeak3-server_linux_x86-3.13.3.tar.bz2
+tar -xvpf teamspeak3-server_linux_x86-3.13.3.tar.bz2  2>&1 | tee -a $LOGFILE
 cd ./teamspeak3-server_linux_x86
 cd ~/Downloads
 sudo mv ./teamspeak3-server_linux_x86 /usr/local/share
