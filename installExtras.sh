@@ -264,7 +264,7 @@ mkdir build
 cd build
 cmake .. -DRPI2=1 -DCMAKE_BUILD_TYPE=RelWithDebInfo  2>&1 | tee -a $LOGFILE
 make -j$(nproc)  2>&1 | tee -a $LOGFILE
-sudo make install
+sudo make install   2>&1 | tee -a $LOGFILE
 sudo systemctl restart systemd-binfmt
 sudo rm -rf ~/Downloads/box86
 cd ~/Downloads
