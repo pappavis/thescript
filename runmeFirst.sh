@@ -1,6 +1,9 @@
 #!/bin/bash
-LOGFILE=$HOME/$0-`date +%Y-%m-%d_%Hh%Mm`.log
+LOGFILE=$HOME/logs/$0-`date +%Y-%m-%d_%Hh%Mm`.log
 _pwd=$(pwd)
+
+mkdir $HOME/logs
+
 printl() {
 	printf $1
 	echo -e $1 >> $LOGFILE
@@ -83,7 +86,7 @@ sudo sed -i -e '/#DiscoverableTimeout = 0/s/#Discoverable/Discoverable/' /etc/bl
 sudo service bluetooth restart
 
 sudo apt update -y
-sudo apt update --fix-missing -y
+sudo apt update --fix-missing -y  2>&1 | tee -a $LOGFILE
 
 for addonnodes in p7zip-full mc sqlite3  i2c-tools ncftp mariadb-server mariadb-client mosquitto mosquitto-clients python3 python3-pip  python3-opencv libsdl2-image gedit gparted  python-smbus pure-ftpd neofetch nodejs npm 		apache2 php php-mysql php-sqlite3 php-mbstring openssl libapache2-mod-php php-sqlite3 php-xml php-mbstring sysbench open-cobol ffmpeg wiringpi rpi.gpio  unixodbc-dev  ; do 
 		printstatus "Installing  \"${addonnodes}\""
@@ -98,7 +101,7 @@ sudo mv /var/www/html/index.html /var/www/html/index_orgig.php
 cd $_pwd
 
 mkdir ~/venv
-pip3 install virtualenv
+pip3 install virtualenv  2>&1 | tee -a $LOGFILE
 mkdir ~/venv
 ~/.local/bin/virtualenv ~/venv/venv3.7
 echo "source ~/venv/venv3.7/bin/activate" >> ~/.bashrc
@@ -127,7 +130,7 @@ for additionalgroup in cdrom games users i2c adm gpio input sudo netdev audio vi
 done
 
 
-printstatus  "doen usermod"
+printstatus  "doen usermod"  2>&1 | tee -a $LOGFILE
 sudo usermod -aG gpio pi
 sudo usermod -aG dialout pi
 sudo usermod -aG i2c pi
@@ -162,9 +165,9 @@ sudo usermod -aG tty michiele
 sudo usermod -aG kmem michiele
 
 sudo mv /var/www/html/index.html /var/www/html/orig_index.html
-sudo apt full-upgrade -y
-sudo apt autoclean -y
-sudo apt autoremove -y
+sudo apt full-upgrade -y 2>&1 | tee -a $LOGFILE
+sudo apt autoclean -y  2>&1 | tee -a $LOGFILE
+sudo apt autoremove -y 2>&1 | tee -a $LOGFILE
 
 sudo sed -i "s/# nl_NL.utf8/nl_NL.utf8/g" /etc/locale.gen
 sudo locale-gen
@@ -173,13 +176,14 @@ cd ~/Downloads
 wget https://raw.githubusercontent.com/pappavis/thescript/master/welkom1.sh
 chmod +x ./welkom1.sh
 sudo mv ./welkom1.sh /usr/local/bin
+welkom1.sh
 
 echo ""
 echo "Je kunt nu REBOOT, daarna ./installVerzamelupdates.sh draaien"
 
-neofetch
+## neofetch
 lsblk
 cd $_pwd
 ## bash ./installVerzamelupdates.sh
 
-#bash ./setupNodered.sh
+##bash ./setupNodered.sh
