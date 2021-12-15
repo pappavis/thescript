@@ -266,6 +266,7 @@ cmake .. -DRPI2=1 -DCMAKE_BUILD_TYPE=RelWithDebInfo
 make -j$(nproc)
 sudo make install
 sudo systemctl restart systemd-binfmt
+sudo rm -rf ~/Downloads/box86
 cd ~/Downloads
 printstatus "box86 voorbeeld. Start Teamspeak"
 wget https://files.teamspeak-services.com/releases/server/3.13.3/teamspeak3-server_linux_x86-3.13.3.tar.bz2  2>&1 | tee -a $LOGFILE
