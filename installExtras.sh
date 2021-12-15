@@ -181,7 +181,14 @@ echo "Installeren Grafana"
 wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
 echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
 sudo apt update -y
-sudo apt-get install -y grafana
+for addonnodes in grafana telegraf ; do
+  echo " "
+  echo " "
+  echo "Installeren box86 vereisten: ${addonnodes}"
+  echo " "
+  sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
+
 sudo /bin/systemctl enable grafana-server
 sudo /bin/systemctl start grafana-server
 echo "grafana-server is geïnstalleerd"
