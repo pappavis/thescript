@@ -209,9 +209,10 @@ echo "* Installeer auto update als crontab taak"
 cd ~/Downloads
 wget https://raw.githubusercontent.com/pappavis/thescript/master/autoupdate.sh
 chmod +x ./autoupdate.sh
+sudo mv ./autoupdate.sh /usr/local/bin
 mkdir ~/logs
 touch ~/logs/cronlog.txt
-echo "0 0 * * SAT sh /home/pi/update.sh 2>/home/pi/logs/cronlog.txt" | sudo tee -a /etc/crontab
+echo "0 0 * * SAT sh /usr/local/bin/autoupdate.sh 2>/home/pi/logs/cronlog.txt" | sudo tee -a /etc/crontab
 sudo service cron restart
 
 echo "* installeren Wireguard VPN"
