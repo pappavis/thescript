@@ -145,10 +145,6 @@ sudo systemctl unmask influxdb.service
 sudo systemctl start influxdb
 sudo systemctl enable influxdb.service
 
-cd ~/Downloads/
-wget https://dl.influxdata.com/telegraf/releases/telegraf-1.20.3_linux_armhf.tar.gz
-tar xf telegraf-1.20.3_linux_armhf.tar.gz
-
 
 echo "Installeren RPI-Clone"
 cd ~/Downloads
@@ -192,6 +188,23 @@ done
 sudo /bin/systemctl enable grafana-server
 sudo /bin/systemctl start grafana-server
 echo "grafana-server is geïnstalleerd"
+
+
+## https://nwmichl.net/2020/07/14/telegraf-influxdb-grafana-on-raspberrypi-from-scratch/
+echo "Setup telegraf database op InfluxDB"  2>&1 | tee -a $LOGFILE
+sudo usermod -a -G video telegraf
+tg_db=$"create database telegraf; use telegraf;  create user telegrafuser with password 'Telegr@f' with all privileges; grant all privileges on telegraf to telegrafuser; create retention policy '4Weeks' on 'telegraf' duration 4w replication 1 default; exit;"
+influx -execute $tg_db   2>&1 | tee -a $LOGFILE
+
+_tg_conf=$('[[outputs.influxdb]] \
+   urls = ["http://127.0.0.1:8086"] \
+   database = "telegraf" \
+   username = "telegrafuser" \
+   password = "Telegr@f" \
+  ')
+echo $_tg_conf >> /etc/telegraf/telegraf.conf
+sudo service telegraf restart
+
 
 cd ~/Downloads
 echo "Motorola 68000 emulatie in C, voor de lol."
