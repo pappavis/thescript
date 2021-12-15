@@ -1,8 +1,9 @@
 _hn1=$(hostname)
 _pwd=$(pwd)
-LOGFILE=$HOME/$0-`date +%Y-%m-%d_%Hh%Mm`.log
+LOGFILE=$HOME/logs/$0-`date +%Y-%m-%d_%Hh%Mm`.log
 AQUIET=""
 
+mkdir ~/logs
 git pull
 cd ~/Downloads
 echo "Download en installeer virtualhere.com Pi 3 server & client"
@@ -247,11 +248,19 @@ sudo make install
 sudo systemctl restart systemd-binfmt
 cd ~/Downloads
 printstatus "box86 voorbeeld. Start Teamspeak"
-wget https://files.teamspeak-services.com/releases/server/3.13.3/teamspeak3-server_linux_x86-3.13.3.tar.bz2
+wget https://files.teamspeak-services.com/releases/server/3.13.3/teamspeak3-server_linux_x86-3.13.3.tar.bz2  2>&1 | tee -a $LOGFILE
 tar -xvpf teamspeak3-server_linux_x86-3.13.3.tar.bz2
 cd teamspeak3-server_linux_x86
 touch .ts3server_license_accepted
-./ts3server &
+./ts3server  2>&1 & | tee -a $LOGFILE
+
+printstatus "Installeren nukkit Minecraft lokale server"
+sudo apt install -y default-jdk
+mkdir ~/nukkit
+cd ~/nukkit
+wget -O nukkit.jar https://go.pimylifeup.com/3xsPQA/nukkit 2>&1 | tee -a $LOGFILE
+java -jar nukkit.jar &
+
 
 cd $_pwd
 
