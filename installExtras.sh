@@ -184,7 +184,7 @@ sudo apt update -y
 for addonnodes in grafana telegraf ; do
   echo " "
   echo " "
-  echo "Installeren box86 vereisten: ${addonnodes}"
+  echo "Installeren TIG Stack: ${addonnodes}"
   echo " "
   sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
