@@ -145,7 +145,7 @@ for addonnodes in build-essential cmake rapidjson-dev libgmp-dev git gcc-8 g++-8
 	sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
-for addonnodes in libatlas3-base qtchooser imagemagick libfontconfig1-dev libcairo2-dev libgdk-pixbuf2.0-dev libpango1.0-dev libgtk2.0-dev libgtk-3-dev libatlas-base-dev gfortran libssl libcurl4-gnutls-dev libcurl4-openssl-dev libcurl4-openssl-dev  libsdl2-ttf-dev libsdl2-image-dev ccze net-tools ntfs-3g ; do 
+for addonnodes in libatlas3-base qtchooser imagemagick libfontconfig1-dev libcairo2-dev libgdk-pixbuf2.0-dev libpango1.0-dev libgtk2.0-dev libgtk-3-dev libatlas-base-dev gfortran libssl libcurl4-gnutls-dev libcurl4-openssl-dev libcurl4-openssl-dev  libsdl2-ttf-dev libsdl2-image-dev ccze net-tools ntfs-3g default-jdk ; do 
 		printstatus "Installing  \"${addonnodes}\""
 		sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
