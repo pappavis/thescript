@@ -69,27 +69,29 @@ done
 python -m ensurepip 
 
 for addonnodes in  libatlas-base-dev libwebp-dev   ; do
-    printstatus "Installeren lib: \"${addonnodes}\""
+    printstatus "Installeren OpenCV vereisten: \"${addonnodes}\""
     sudo apt install $NQUIET -y ${addonnodes} 2>&1 | tee -a $LOGFILE
   done
 
 for addonnodes in pip setuptools wheel openpyxl o365 ttn qrcode pillow sqlalchemy pymsteams esptool adafruit-ampy firebirdsql \
                   pyserial pyparsing pyzmail gpiozero pytube pipx serial jinja2 esptool mpfshell virtualenv ffmpeg conda \
                   scikit-build pygame pymongo psycopg2-binary mysql-connector-python guizero \
-                  msteamsconnector matplotlib numpy imutils pyodbc pysmb  opencv-contrib-python ; do
+                  msteamsconnector matplotlib numpy imutils pyodbc pysmb  opencv-contrib-python git+https://github.com/pytube/pytube ; do
     printstatus "Installeren python lib: \"${addonnodes}\""
     pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
   done
 
-
-python3 -m pip install git+https://github.com/pytube/pytube
 echo "doen ook --> pip uninstall serial"
 
+printstatus  "Installeer Dataplicity.com"
 curl -s https://www.dataplicity.com/jfjro6ak.py | sudo python
 
+printstatus  "Installeer herstartmelding.py"
 cd /usr/local/bin
 sudo wget https://raw.githubusercontent.com/pappavis/thescript/master/demo/herstartmelding.py
 sudo chmod +x /usr/local/bin/herstartmelding.py
+
+sudo sed -i -e '/exit 0/s/exit 0/herstartmelding.py \n exit 0/' /etc/rc.local
 
 pip install --upgrade RPi.GPIO &
 
