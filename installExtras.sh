@@ -268,12 +268,18 @@ sudo make install
 sudo systemctl restart systemd-binfmt
 sudo rm -rf ~/Downloads/box86
 cd ~/Downloads
+wget https://raw.githubusercontent.com/pappavis/thescript/master/teamspeak.service
+sudo mv ./teamspeak.service /etc/systemd/system
+sudo systemctl enable teamspeak.service
 printstatus "box86 voorbeeld. Start Teamspeak"
 wget https://files.teamspeak-services.com/releases/server/3.13.3/teamspeak3-server_linux_x86-3.13.3.tar.bz2  2>&1 | tee -a $LOGFILE
 tar -xvpf teamspeak3-server_linux_x86-3.13.3.tar.bz2
 cd teamspeak3-server_linux_x86
 touch .ts3server_license_accepted
-./ts3server  2>&1 & | tee -a $LOGFILE
+cd ~/Downloads
+mv ./teamspeak3-server_linux_x86 /usr/local/share
+sudo service teamspeak restart
+## ./ts3server  2>&1 & | tee -a $LOGFILE
 
 printstatus "Installeren nukkit Minecraft lokale server"
 sudo apt install -y default-jdk
