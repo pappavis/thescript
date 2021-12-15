@@ -276,8 +276,14 @@ touch .ts3server_license_accepted
 
 printstatus "Installeren nukkit Minecraft lokale server"
 sudo apt install -y default-jdk
+mkdir ~/Downloads
+cd ~/Downloads
+wget https://raw.githubusercontent.com/pappavis/thescript/master/nukkitminecraft.service
+sudo mv ./nukkitminecraft.service /etc/systemd/system
+sudo systemctl enable nukkitminecraft.service
 cd /usr/local/bin
 wget -O nukkit.jar https://go.pimylifeup.com/3xsPQA/nukkit 2>&1 | tee -a $LOGFILE
+sudo service nukkitminecraft restart
 
 ## java -jar nukkit.jar &
 
