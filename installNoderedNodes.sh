@@ -73,6 +73,8 @@ done
 printstatus "\nInstalling node \"node-red-node-sqlite\"\n"
 npm $NQUIET install --save node-red-node-sqlite 2>&1 | tee -a $LOGFILE
 
+sudo service nodered restart
+
 for addonnodes in node-red-node-serialport i2c-bus ; do
 	printstatus "Installing node \"${addonnodes}\""
 	npm $NQUIET install --save ${addonnodes} 2>&1 | tee -a $LOGFILE
@@ -104,6 +106,8 @@ for addonnodes in moment node-red-contrib-web-worldmap node-red-contrib-ramp-the
 	npm $NQUIET install --save ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
+sudo service nodered restart
+
 for addonnodes in moment node-red-contrib-home-assistant-websocket node-red-contrib-ibm-watson-iot node-red-contrib-sun-position ; do
 	printstatus "Installing node \"${addonnodes}\""
 	npm $NQUIET install --save ${addonnodes} 2>&1 | tee -a $LOGFILE
@@ -113,6 +117,8 @@ for addonnodes in moment node-red-contrib-tuya-local node-red-contrib-ui-led nod
 	printstatus "Installing node \"${addonnodes}\""
 	npm $NQUIET install --save ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
+
+sudo service nodered restart
 
 for addonnodes in moment node-red-contrib-config node-red-contrib-grove node-red-contrib-diode node-red-contrib-bigtimer \
 	node-red-contrib-esplogin node-red-contrib-timeout node-red-node-openweathermap node-red-node-google node-red-contrib-advanced-ping node-red-node-emoncms \
@@ -126,6 +132,8 @@ for addonnodes in moment node-red-contrib-config node-red-contrib-grove node-red
 	printstatus "Instelleren node \"${addonnodes}\""
 	npm $NQUIET install --save ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
+
+sudo service nodered restart
 
 for addonnodes in moment node-red-contrib-find-my-iphone node-red-contrib-ttn node-red-contrib-apple-find-me node-red-contrib-msnodesql \ 
 	node-red-contrib-homekit-bridged node-red-contrib-homebridge-automation write-excel-file node-red-contrib-web-worldmap node-red-contrib-oauth2 \ 
