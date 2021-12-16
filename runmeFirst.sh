@@ -139,7 +139,7 @@ done
 
 printstatus  "doen usermod"  2>&1 | tee -a $LOGFILE
 
-for addonnodes in gpio dialout i2c tty kmem ; do
+for addonnodes in gpio dialout i2c tty kmem uinput ; do
 	printstatus "Usermmod pi \"${addonnodes}\""
 	sudo usermod pi -aG ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
