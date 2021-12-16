@@ -6,6 +6,7 @@ user_response=""
 _pwd=$(pwd)
 _cpu=$(uname -m)
 _cpuChk="armv6l"
+ACTIVECORES=$(nproc)
 
 # High Intensity
 IGreen='\e[0;92m'       # Green
@@ -146,7 +147,7 @@ if [ $(nproc) == 1 ]; then
 	git pull
 	make clean
 	./configure	
-	make -j$ACTIVECORES
+	make -j$(nproc)
 	sudo make install
 	cd ..
 	rm -rf node
