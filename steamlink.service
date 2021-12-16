@@ -1,0 +1,14 @@
+[Unit]
+Description=Steamlink voor steampowered.com verbinding
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Environment="LC_ALL=NL.UTF-8"
+Environment="LANG=NL.UTF-8"
+Type=exec
+User=pi
+ExecStart=steamlink
+
+[Install]
+WantedBy=multi-user.target
