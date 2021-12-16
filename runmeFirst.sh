@@ -63,8 +63,6 @@ echo "alias ls='ls -F --color=auto'" >> ~/.bashrc
 echo "alias ll='ls -lF --color=auto'" >> ~/.bashrc
 echo "alias la='ls -lFa --color=auto'" >> ~/.bashrc
 echo "alias l='ls -F --color=auto'" >> ~/.bashrc
-echo "STEAMOS=1" >> ~/.bashrc
-echo "STEAM_RUNTIME=1" >> ~/.bashrc
 
 # install sudo on devices without it
 [ ! -x /usr/bin/sudo ] && apt-get $AQUIET -y update > /dev/null 2>&1 && apt-get $AQUIET -y install sudo 2>&1 | tee -a $LOGFILE
