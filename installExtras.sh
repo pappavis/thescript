@@ -293,6 +293,19 @@ sudo wget -O nukkit.jar https://go.pimylifeup.com/3xsPQA/nukkit 2>&1 | tee -a $L
 sudo service nukkitminecraft restart
 
 ## java -jar nukkit.jar &
+for addonnodes in libappindicator1 libnm0 steamlink steam-devices ; do
+  echo " "
+  echo " "
+  echo "Installeren steampowered vereisten: ${addonnodes}"
+  echo " "
+  sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
+cd ~/Downloads
+wget https://raw.githubusercontent.com/pappavis/thescript/master/steamlink.service
+sudo mv ./steamlink.service /etc/systemd/system
+sudo systemctl enable steamlink.service
+echo "STEAMOS=1" >> /home/pi/.bashrc
+echo "STEAM_RUNTIME=1" >> /home/pi/.bashrc
 
 
 cd $_pwd
