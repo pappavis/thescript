@@ -138,7 +138,7 @@ sudo service nodered restart
 for addonnodes in moment node-red-contrib-find-my-iphone node-red-contrib-ttn node-red-contrib-apple-find-me node-red-contrib-msnodesql \ 
 	node-red-contrib-homekit-bridged node-red-contrib-homebridge-automation write-excel-file node-red-contrib-web-worldmap node-red-contrib-oauth2 \ 
 	node-red-contrib-wled2 node-red-dashboard node-red-node-pi-mcp3008 node-red-contrib-webservices node-red-node-mysql node-red-contrib-car-bmw \ 
-	node-red-contrib-google-sheets node-red-contrib-plate-detection node-red-contrib-norelite-homeassistant node-red-contrib-tasmota node-red-contrib-node-firebird  ; do 
+	node-red-contrib-google-sheets node-red-contrib-plate-detection node-red-contrib-norelite-homeassistant node-red-contrib-tasmota node-red-contrib-node-firebird node-red-contrib-re-postgres  ; do 
 	printstatus "Installing node \"${addonnodes}\""
 	npm $NQUIET install --save ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
