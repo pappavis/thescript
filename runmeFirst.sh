@@ -63,6 +63,8 @@ echo "alias ls='ls -F --color=auto'" >> ~/.bashrc
 echo "alias ll='ls -lF --color=auto'" >> ~/.bashrc
 echo "alias la='ls -lFa --color=auto'" >> ~/.bashrc
 echo "alias l='ls -F --color=auto'" >> ~/.bashrc
+echo "STEAMOS=1" >> ~/.bashrc
+echo "STEAM_RUNTIME=1" >> ~/.bashrc
 
 # install sudo on devices without it
 [ ! -x /usr/bin/sudo ] && apt-get $AQUIET -y update > /dev/null 2>&1 && apt-get $AQUIET -y install sudo 2>&1 | tee -a $LOGFILE
@@ -147,7 +149,7 @@ for addonnodes in build-essential cmake rapidjson-dev libgmp-dev git gcc-8 g++-8
 	sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
-for addonnodes in libatlas3-base qtchooser imagemagick libfontconfig1-dev libcairo2-dev libgdk-pixbuf2.0-dev libpango1.0-dev libgtk2.0-dev libgtk-3-dev libatlas-base-dev gfortran libssl libcurl4-gnutls-dev libcurl4-openssl-dev libcurl4-openssl-dev  libsdl2-ttf-dev libsdl2-image-dev ccze net-tools ntfs-3g default-jdk ; do 
+for addonnodes in libatlas3-base qtchooser imagemagick libfontconfig1-dev libcairo2-dev libgdk-pixbuf2.0-dev libpango1.0-dev libgtk2.0-dev libgtk-3-dev libatlas-base-dev gfortran libssl libcurl4-gnutls-dev libcurl4-openssl-dev libcurl4-openssl-dev  libsdl2-ttf-dev libsdl2-image-dev ccze net-tools ntfs-3g default-jdk libappindicator1 libnm0 steamlink steam-devices ; do 
 		printstatus "Installing  \"${addonnodes}\""
 		sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
