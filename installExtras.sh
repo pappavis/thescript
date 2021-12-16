@@ -294,7 +294,7 @@ sudo service nukkitminecraft restart
 
 echo "* Installeren steampowered.com"
 ## java -jar nukkit.jar &
-for addonnodes in libappindicator1 libnm0 libtcmalloc-minimal4 steamlink ; do
+for addonnodes in libappindicator1 libnm0 libtcmalloc-minimal4 steamlink steam-devices ; do
   echo " "
   echo " "
   echo "Installeren steampowered vereisten: ${addonnodes}"
