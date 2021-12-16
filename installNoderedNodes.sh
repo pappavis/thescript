@@ -1,7 +1,8 @@
 NQUIET=''
 startTime="$(date +%s)"
-LOGFILE=$HOME/$0-`date +%Y-%m-%d_%Hh%Mm`_installNoderedNodes_logs.log
+LOGFILE=$HOME/logs/$0-`date +%Y-%m-%d_%Hh%Mm`_installNoderedNodes_logs.log
 _pwd=$(pwd)
+mkdir $HOME/logs
 
 #Array to store possible locations for temp read.
 aFP_TEMPERATURE=(
