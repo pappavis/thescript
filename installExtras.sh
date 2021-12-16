@@ -305,11 +305,15 @@ cd ~/Downloads
 wget https://raw.githubusercontent.com/pappavis/thescript/master/steamlink.service
 sudo mv ./steamlink.service /etc/systemd/system
 sudo systemctl enable steamlink.service
-sudo echo "export STEAMOS=1" >> /etc/profile.d/steam.sh
+sudo touch /etc/profile.d/steam.sh
+echo "export STEAMOS=1" >> /etc/profile.d/steam.sh
 echo "export STEAM_RUNTIME=1" >> /etc/profile.d/steam.sh
 wget https://steamcdn-a.akamaihd.net/client/installer/steam.deb
 sudo dpkg -i ./steam.deb
 sudo rm -rf ./steam.deb
+sudo touch  /etc/profile.d/steam.sh
+echo 'export STEAMOS=1' | sudo tee -a /etc/profile.d/steam.sh
+echo 'export STEAM_RUNTIME=1' | sudo tee -a /etc/profile.d/steam.sh
 
 cd $_pwd
 
