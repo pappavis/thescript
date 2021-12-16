@@ -301,10 +301,10 @@ for addonnodes in libappindicator1 libnm0 libtcmalloc-minimal4 steamlink steam-d
   echo " "
   sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
-cd ~/Downloads
 echo 'gpu_mem=128' | sudo tee -a /boot/config.txt | tee -a $LOGFILE
 sudo chmod +rw /dev/uinput
 sudo usermod -aG input pi
+cd ~/Downloads
 wget https://raw.githubusercontent.com/pappavis/thescript/master/steamlink.service
 sudo mv ./steamlink.service /etc/systemd/system
 sudo systemctl enable steamlink.service
