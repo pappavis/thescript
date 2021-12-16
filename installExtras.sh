@@ -292,8 +292,9 @@ cd /usr/local/bin
 sudo wget -O nukkit.jar https://go.pimylifeup.com/3xsPQA/nukkit 2>&1 | tee -a $LOGFILE
 sudo service nukkitminecraft restart
 
+echo "* Installeren steampowered.com"
 ## java -jar nukkit.jar &
-for addonnodes in libappindicator1 libnm0 steamlink steam-devices ; do
+for addonnodes in libappindicator1 libnm0 libtcmalloc-minimal4 steamlink ; do
   echo " "
   echo " "
   echo "Installeren steampowered vereisten: ${addonnodes}"
@@ -304,9 +305,11 @@ cd ~/Downloads
 wget https://raw.githubusercontent.com/pappavis/thescript/master/steamlink.service
 sudo mv ./steamlink.service /etc/systemd/system
 sudo systemctl enable steamlink.service
-echo "STEAMOS=1" >> /home/pi/.bashrc
-echo "STEAM_RUNTIME=1" >> /home/pi/.bashrc
-
+sudo echo "export STEAMOS=1" >> /etc/profile.d/steam.sh
+echo "export STEAM_RUNTIME=1" >> /etc/profile.d/steam.sh
+wget https://steamcdn-a.akamaihd.net/client/installer/steam.deb
+sudo dpkg -i ./steam.deb
+sudo rm -rf ./steam.deb
 
 cd $_pwd
 
