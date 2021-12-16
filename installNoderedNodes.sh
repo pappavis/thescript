@@ -1,6 +1,6 @@
 NQUIET=''
 startTime="$(date +%s)"
-LOGFILE=$HOME/logs/$0-`date +%Y-%m-%d_%Hh%Mm`_installNoderedNodes_logs.log
+LOGFILE=$HOME/logs/$0-`date +%Y-%m-%d_%Hh%Mm`.log
 _pwd=$(pwd)
 mkdir $HOME/logs
 
