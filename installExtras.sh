@@ -316,6 +316,20 @@ sudo rm -rf ./steam.deb
 sudo touch  /etc/profile.d/steam.sh
 echo 'export STEAMOS=1' | sudo tee -a /etc/profile.d/steam.sh
 echo 'export STEAM_RUNTIME=1' | sudo tee -a /etc/profile.d/steam.sh
+sudo service steamlink status
+
+echo "* Installeren muble VoIP"
+for addonnodes in mumble-server mumble ; do
+  echo " "
+  echo " "
+  echo "Installeren mumble vereisten: ${addonnodes}"
+  echo " "
+  sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
+sudo mkdir /var/log/mumble-server
+sudo touch /var/log/mumble-server/mumble-server.log
+sudo service mumble-server status
+
 
 cd $_pwd
 
