@@ -88,7 +88,7 @@ sudo service bluetooth restart
 sudo apt update -y
 sudo apt update --fix-missing -y  2>&1 | tee -a $LOGFILE
 
-for addonnodes in p7zip-full mc sqlite3  i2c-tools ncftp mariadb-server mariadb-client mosquitto mosquitto-clients python3 python3-pip  python3-opencv libsdl2-image gedit gparted  python-smbus vsftpd neofetch nodejs npm 		apache2 php php-mysql php-sqlite3 php-mbstring openssl libapache2-mod-php php-sqlite3 php-xml php-mbstring sysbench open-cobol ffmpeg wiringpi rpi.gpio  unixodbc-dev  ; do 
+for addonnodes in p7zip-full mc sqlite3  i2c-tools ncftp mariadb-server mariadb-client mosquitto mosquitto-clients python3 python3-pip  python3-opencv libsdl2-image gedit gparted  python-smbus vsftpd neofetch nodejs npm 		apache2 php php-mysql php-sqlite3 php-mbstring openssl libapache2-mod-php php-sqlite3 php-xml php-mbstring sysbench open-cobol ffmpeg wiringpi rpi.gpio  unixodbc-dev ; do 
 		printstatus "Installing  \"${addonnodes}\""
 		sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 	done
@@ -136,19 +136,13 @@ done
 
 
 printstatus  "doen usermod"  2>&1 | tee -a $LOGFILE
-sudo usermod -aG gpio pi
-sudo usermod -aG dialout pi
-sudo usermod -aG i2c pi
-sudo usermod -aG tty pi
-sudo usermod -aG kmem pi
 
-sudo adduser pi gpio
-sudo usermod pi dialout
-sudo usermod pi i2c
-sudo usermod pi tty
+for addonnodes in gpio dialout i2c tty kmem ; do
+	printstatus "Usermmod pi \"${addonnodes}\""
+	sudo usermod pi -aG ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
 
-
-for addonnodes in build-essential cmake rapidjson-dev libgmp-dev git gcc-8 g++-8 netdiscover sysfsutils tcpdump pure-ftpd wget ssh bash-completion unzip build-essential git python-serial scons libboost-filesystem-dev libboost-program-options-dev libboost-system-dev libsqlite3-dev subversion libusb-dev python-dev cmake curl telnet usbutils gawk jq pv samba samba-common samba-common-bin winbind dosfstools parted gcc python3-pip htop python-smbus mc cu mpg123 screen ffmpeg qemu-system ; do
+for addonnodes in build-essential cmake rapidjson-dev libgmp-dev git gcc-8 g++-8 netdiscover sysfsutils tcpdump pure-ftpd wget ssh bash-completion unzip build-essential git python-serial scons libboost-filesystem-dev libboost-program-options-dev libboost-system-dev libsqlite3-dev subversion libusb-dev python-dev cmake curl telnet usbutils gawk jq pv samba samba-common samba-common-bin winbind dosfstools parted gcc python3-pip htop python-smbus mc cu mpg123 screen ffmpeg qemu-system default-jdk ; do
 	printstatus "Instelleren \"${addonnodes}\""
 	sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
