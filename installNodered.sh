@@ -123,7 +123,7 @@ sudo apt autoclean -y
 
 echo "NodeJS installeren"
 
-if [ "$_cpu" = "$_cpuChk" ]; then
+if [ $(nproc) == 1 ]; then
 	printstatus "Installeren van NodeJS op een PiZeroW"
 	cd ~/Downloads
 	##git clone https://github.com/node-red/linux-installers.git
