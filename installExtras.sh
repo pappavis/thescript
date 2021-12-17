@@ -308,7 +308,6 @@ cd ~/Downloads
 wget https://raw.githubusercontent.com/pappavis/thescript/master/steamlink.service
 sudo mv ./steamlink.service /etc/systemd/system
 sudo systemctl enable steamlink.service
-sudo service steamlink restart
 sudo touch /etc/profile.d/steam.sh
 wget https://steamcdn-a.akamaihd.net/client/installer/steam.deb
 sudo dpkg -i ./steam.deb
