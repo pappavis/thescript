@@ -4,12 +4,14 @@ After=network-online.target
 Wants=network-online.target
 
 [Service]
+Type=simple
 Environment="LC_ALL=NL.UTF-8"
 Environment="LANG=NL.UTF-8"
 WorkingDirectory=/usr/local/share/teamspeak3-server_linux_x86
-Type=exec
 User=pi
 ExecStart=/usr/local/share/teamspeak3-server_linux_x86/ts3server
+Restart=on-failure
+RestartSec=5
 
 [Install]
 WantedBy=multi-user.target
