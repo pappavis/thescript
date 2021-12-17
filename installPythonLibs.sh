@@ -61,7 +61,7 @@ source ~/venv/venv3.7/bin/activate
 
 sudo apt install -y unixodbc-dev
 
-for addonnodes in  unixodbc-dev wiringpi rpi.gpio python3-opencv ; do
+for addonnodes in  unixodbc-dev wiringpi python3-opencv ; do
     printstatus "Installeren: \"${addonnodes}\""
     pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
