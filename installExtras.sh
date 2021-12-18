@@ -74,6 +74,12 @@ sudo mkdir /home/pi/.local/share
 sudo mkdir /home/pi/.local/share/lxsession
 sudo mkdir /home/pi/.local/share/lxterminal
 
+# set de  screensaver uit
+sudo sed -i -e 'xserver-command xserver-command=X -s 0 -p 0 -dpms' /etc/lightdm/lightdm.conf
+xset s 0
+xset -dpms
+
+
 echo "** installeer X-Apps zoals KVM."
 for addonnodes in raspberrypi-ui-mods xinit xserver-xorg xrdp  remmina barrier thonny kodi chromium code tightvncserver audacity rpi-imager piclone guvcview ; do
   echo " "
