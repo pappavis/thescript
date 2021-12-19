@@ -1,4 +1,6 @@
 _hn1=$(hostname -I)
+LOGFILE=$HOME/logs/thescript.log
+
 printf "Start installatie homebridge voor Apple homekit.\n"
 printf "Zie ook https://github.com/homebridge/homebridge/wiki/Install-Homebridge-on-Raspbian\n"
 
