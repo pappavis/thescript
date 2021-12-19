@@ -10,8 +10,12 @@ for addonnodes in build-essential libnode72 npm gcc g++ make python3 net-tools ;
 	sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
-sudo apt --fix-broken install -y
-sudo apt -fix-broken build-essential libnode72 -y
+for addonnodes in build-essential libnode72  ; do
+	echo "Installing lib \"${addonnodes}\""
+	sudo apt --fix-broken install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
+
+sudo apt -fix-broken -y
 sudo apt autoremove -y
 sudo apt autoclean -y
 
