@@ -115,7 +115,10 @@ mkdir /home/pi/.node-red
 cd /home/pi/.node-red
 
 echo "Installeren build-essentials"
-sudo apt install build-essential libnode72 npm -y
+for addonnodes in build-essential libnode72 npm ; do
+	printstatus "Installing lib \"${addonnodes}\""
+	sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
 
 sudo apt --fix-broken install -y
 sudo apt -fix-broken build-essential libnode72 -y
