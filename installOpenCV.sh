@@ -9,6 +9,8 @@ echo "## Install OpenCV dependencies"  2>&1 | tee -a $LOGFILE
 source ~/venv/venv3.7/bin/activate
 python ./demo/opencv_pip_fix.py  2>&1 | tee -a $LOGFILE
 
+sudo apt update -y
+
 for addonnodes in git gfortran build-essential checkinstall cmake pkg-config yasm libjpeg8-dev libjasper-dev libpng12-dev libtiff5-dev libtiff-dev libavcodec-dev libavformat-dev libswscale-dev libdc1394-22-dev libxine2-dev libv4l-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev libgtk2.0-dev libtbb-dev qt5-default libatlas-base-dev libmp3lame-dev libtheora-dev libvorbis-dev libxvidcore-dev libx264-dev libopencore-amrnb-dev libopencore-amrwb-dev libavresample-dev x264 v4l-utils ; do
 	printstatus "Installing OpenCV benodigheden \"${addonnodes}\""
 	sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
