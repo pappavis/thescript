@@ -15,7 +15,7 @@ for addonnodes in build-essential libnode72  ; do
 	sudo apt --fix-broken install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
-sudo apt --fix-broken -y
+sudo apt --fix-broken
 sudo apt autoremove -y
 sudo apt autoclean -y
 
