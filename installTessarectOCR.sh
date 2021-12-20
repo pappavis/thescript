@@ -1,4 +1,4 @@
-LOGFILE=$HOME/$0-`date +%Y-%m-%d_%Hh%Mm`.log
+LOGFILE=$HOME/installTessarectOCR-`date +%Y-%m-%d_%Hh%Mm`.log
 
 echo "* Installeren Tessarect OCR"
 sudo apt update -y
@@ -29,8 +29,8 @@ for addonnodes in pip setuptools wheel pytesseract libwebp6 opencv-python ; do
 done
 
 python ./demo/opencv_pip_fix.py
-sudo apt autoclean -y
-sudo apt autoremove -y
+sudo apt autoclean -y 2>&1 | tee -a $LOGFILE
+sudo apt autoremove -y 2>&1 | tee -a $LOGFILE
 
 pip install opencv-python &
 
