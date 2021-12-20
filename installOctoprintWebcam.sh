@@ -1,9 +1,16 @@
 _pwd=$(pwd)
 _hostname=$(hostname)
+LOGFILE=$HOME/logs/thescript.log
 
-echo "\nStart octprint webcam install\n"
+echo "Installeren octoprint webcam build-essentials"
+for addonnodes in subversion libjpeg62-turbo-dev imagemagick ffmpeg libv4l-dev cmake ; do
+	echo "Installing octoprintWebcam lib: \"${addonnodes}\""
+	sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
+
+
+echo "\nStart octprint webcam install op $_hostname\n"
 cd ~/Downloads
-sudo apt install -y subversion libjpeg62-turbo-dev imagemagick ffmpeg libv4l-dev cmake
 git clone https://github.com/jacksonliam/mjpg-streamer.git
 cd ~/Downloads/mjpg-streamer/mjpg-streamer-experimental
 export LD_LIBRARY_PATH=.
