@@ -1,6 +1,6 @@
 _hn=$(hostname)
 _pwd=$(pwd)
-LOGFILE=$HOME/logs/installNodered-`date +%Y-%m-%d_%Hh%Mm`.log
+LOGFILE=$HOME/logs/installHomeassistant-`date +%Y-%m-%d_%Hh%Mm`.log
 mkdir ~/logs
 
 source /home/pi/.bashrc
