@@ -20,7 +20,7 @@ NQUIET=""
 skip=0
 other=0
 MYMENU=$"nodenew"
-LOGFILE=$HOME/logs/$0-`date +%Y-%m-%d_%Hh%Mm`.log
+LOGFILE=$HOME/logs/installNodered-`date +%Y-%m-%d_%Hh%Mm`.log
 
 mkdir ~/logs
 
