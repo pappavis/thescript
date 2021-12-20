@@ -1,6 +1,6 @@
 _pwd=$(pwd)
 _hostname=$(hostname)
-LOGFILE=$HOME/logs/thescript.log
+LOGFILE=$HOME/logs/installOctoprintWebcam.log
 
 echo "Installeren octoprint webcam build-essentials"
 for addonnodes in subversion libjpeg62-turbo-dev imagemagick ffmpeg libv4l-dev cmake ; do
