@@ -1,10 +1,10 @@
-LOGFILE="/tmp/installPHPliteadmin.log"
+LOGFILE=$HOME/logs/installPHPliteadmin-`date +%Y-%m-%d_%Hh%Mm`.log
 adminpass="admin"
 HOSTNAME=$(hostname)
 _pwd=$(pwd)
+mkdir ~/logs
 
 echo "PHPliteadmin wordt geïnstalleerd"
-cd /var/www/html
 sudo mkdir /var/www/html/support/phpliteadmin
 cd /var/www/html/support/phpliteadmin
 sudo rm -rf ./phpliteadmin-dev*
@@ -13,8 +13,8 @@ sudo wget https://www.phpliteadmin.org/phpliteadmin-dev.zip
 sudo 7z x phpliteadmin-dev.zip 2>&1 | tee -a $LOGFILE
 sudo mv ./phpliteadmin.php ./index.php
 sudo mv ./phpliteadmin.config.sample.php ./phpliteadmin.config.php
-sudo rm *.zip
-sudo mkdir themes
+sudo rm *.zip | tee -a $LOGFILE
+sudo mkdir themes | tee -a $LOGFILE
 #cd themes
 #sudo wget -a http://bitbucket.org/phpliteadmin/public/downloads/phpliteadmin_themes_2016-02-29.zip -a $LOGFILE
 #sudo unzip phpliteadmin_themes_2016-02-29.zip 2>&1 | tee -a $LOGFILE
