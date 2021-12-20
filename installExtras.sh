@@ -1,6 +1,6 @@
 _hn1=$(hostname)
 _pwd=$(pwd)
-LOGFILE=$HOME/logs/$0-`date +%Y-%m-%d_%Hh%Mm`.log
+LOGFILE=$HOME/logs/installExtras-`date +%Y-%m-%d_%Hh%Mm`.log
 AQUIET=""
 
 mkdir ~/logs
@@ -97,30 +97,31 @@ cd ~/Downloads/
 sudo rm -rf ./btop*
 mkdir ./btop_install
 cd ./btop_install
-wget https://github.com/aristocratos/btop/releases/download/v1.1.2/btop-1.1.2-armv5l-linux-musleabi.tbz
-wget https://github.com/aristocratos/btop/releases/download/v1.1.2/btop-1.1.2-armv7l-linux-musleabihf.tbz
-7z x ./btop-1.1.2-armv5l-linux-musleabi.tbz
-7z x ./btop-1.1.2-armv5l-linux-musleabi.tar
+wget https://github.com/aristocratos/btop/releases/download/v1.1.2/btop-1.1.2-armv5l-linux-musleabi.tbz 2>&1 | tee -a $LOGFILE
+wget https://github.com/aristocratos/btop/releases/download/v1.1.2/btop-1.1.2-armv7l-linux-musleabihf.tbz 2>&1 | tee -a $LOGFILE
+7z x ./btop-1.1.2-armv5l-linux-musleabi.tbz  2>&1 | tee -a $LOGFILE
 sudo make
+cd ~/Downloads/
+sudo rm -rf ./btop_install
 
 cd $_pwd
-echo "* Doen ook --> sudo nano /etc/samba/smb.conf -y"
+echo "* Doen ook --> sudo nano /etc/samba/smb.conf -y" 2>&1 | tee -a $LOGFILE
 
-echo "* Installeer pi-apps app store"
-wget -qO- https://raw.githubusercontent.com/Botspot/pi-apps/master/install | bash
+echo "* Installeer pi-apps app store" 2>&1 | tee -a $LOGFILE
+wget -qO- https://raw.githubusercontent.com/Botspot/pi-apps/master/install | bash 2>&1 | tee -a $LOGFILE
 
-echo "* Installeer webmin"
+echo "* Installeer webmin" 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
-wget -a $LOGFILE http://www.webmin.com/jcameron-key.asc -O - | sudo apt-key add -
+wget -a $LOGFILE http://www.webmin.com/jcameron-key.asc -O - | sudo apt-key add - 2>&1 | tee -a $LOGFILE
 echo "deb http://download.webmin.com/download/repository sarge contrib" | sudo tee /etc/apt/sources.list.d/webmin.list > /dev/null
 sudo apt-get $AQUIET -y update 2>&1 | tee -a $LOGFILE
 sudo apt-get $AQUIET -y install webmin 2>&1 | tee -a $LOGFILE
 sudo sed -i -e 's#ssl=1#ssl=0#g' /etc/webmin/miniserv.conf
 
-echo "* Installeer amiberry"
+echo "* Installeer amiberry" 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
 sudo apt install -y libsdl2-ttf-dev libsdl2-image-dev
-wget https://github.com/midwan/amiberry/releases/download/v4.1.6/amiberry-v4.1.6-rpi3-sdl2-32bit-rpios.zip
+wget https://github.com/midwan/amiberry/releases/download/v4.1.6/amiberry-v4.1.6-rpi3-sdl2-32bit-rpios.zip 2>&1 | tee -a $LOGFILE
 7z x ./amiberry-v4.1.6-rpi3-sdl2-32bit-rpios.zip
 rm ./amiberry-v4.1.6-rpi3-sdl2-32bit-rpios.zip
 sudo mv ./amiberry-rpi3-sdl2-32bit /usr/local/games
@@ -128,39 +129,39 @@ sudo ln -s /usr/local/games/amiberry-rpi3-sdl2-32bit/amiberry /usr/local/bin/ami
 
 echo "Installeren Grafana"
 wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
-echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
+echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list 2>&1 | tee -a $LOGFILE
 sudo apt-get update -y
-sudo apt-get install -y grafana
+sudo apt-get install -y grafana 2>&1 | tee -a $LOGFILE
 sudo systemctl unmask grafana-server.service
 sudo systemctl start grafana-server
 sudo systemctl enable grafana-server.service
 
 
-echo "Installeren chronograf"
-sudo apt-get install -y chronograf 
+echo "Installeren chronograf" 2>&1 | tee -a $LOGFILE
+sudo apt-get install -y chronograf  2>&1 | tee -a $LOGFILE
 sudo systemctl enable chronograf 2>&1 | tee -a $LOGFILE
 sudo systemctl start chronograf 2>&1 | tee -a $LOGFILE
 
-echo "Installeren influxdb"
+echo "Installeren influxdb" 2>&1 | tee -a $LOGFILE
 wget -qO- https://repos.influxdata.com/influxdb.key | sudo apt-key add -
 source /etc/os-release
 echo "deb https://repos.influxdata.com/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
 sudo apt update -y
-sudo apt install -y influxdb
+sudo apt install -y influxdb 2>&1 | tee -a $LOGFILE
 sudo systemctl unmask influxdb.service
 sudo systemctl start influxdb
 sudo systemctl enable influxdb.service
 
 
-echo "Installeren RPI-Clone"
+echo "Installeren RPI-Clone" 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
-sudo git clone https://github.com/billw2/rpi-clone.git
+sudo git clone https://github.com/billw2/rpi-clone.git 2>&1 | tee -a $LOGFILE
 cd rpi-clone
 sudo cp rpi-clone /usr/local/sbin
 cd ~/Downloads
 sudo rm -r rpi-clone
 
-echo "Installeren log2ram"
+echo "Installeren log2ram" 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
 git clone https://github.com/azlux/log2ram.git 2>&1 | tee -a $LOGFILE
 cd log2ram
@@ -169,17 +170,17 @@ sudo ./install.sh 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
 
 cd /var/www/html
-sudo wget -a $LOGFILE $AQUIET https://www.scargill.net/iot/reset.css -O /var/www/html/reset.css
+sudo wget -a $LOGFILE $AQUIET https://www.scargill.net/iot/reset.css -O /var/www/html/reset.css 2>&1 | tee -a $LOGFILE
 
 cd ~/Downloads
-echo "Motorola 68000 emulatie in Python, voor de lol."
+echo "Motorola 68000 emulatie in Python, voor de lol." 2>&1 | tee -a $LOGFILE
 git clone https://github.com/Chris-Johnston/Easier68k
 cd Easier68k
 pip install -r requirements.txt
 ehco "je kunt nu: python ./cli.py"
 
 cd ~/Downloads
-echo "Installeren Grafana" 
+echo "Installeren Grafana"  2>&1 | tee -a $LOGFILE
 wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
 echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
 sudo apt update -y
@@ -256,7 +257,7 @@ sudo systemctl enable wg-quick@wg0
 
 
 cd ~/Downloads
-printstatus "Installeren box86 emulatie ref--> https://pimylifeup.com/raspberry-pi-x86/"
+printstatus "Installeren box86 emulatie ref--> https://pimylifeup.com/raspberry-pi-x86/" 2>&1 | tee -a $LOGFILE
 for addonnodes in gcc-arm-linux-gnueabihf libc6:armhf libncurses5:armhf libstdc++6:armhf cmake ; do
   echo " "
   echo " "
@@ -298,7 +299,7 @@ cd /usr/local/bin
 sudo wget -O nukkit.jar https://go.pimylifeup.com/3xsPQA/nukkit 2>&1 | tee -a $LOGFILE
 sudo service nukkitminecraft restart
 
-echo "* Installeren steampowered.com"
+echo "* Installeren steampowered.com" 2>&1 | tee -a $LOGFILE
 ## java -jar nukkit.jar &
 for addonnodes in libappindicator1 libnm0 libtcmalloc-minimal4 steamlink steam-devices ; do
   echo " "
@@ -323,7 +324,7 @@ echo 'export STEAMOS=1' | sudo tee -a /etc/profile.d/steam.sh
 echo 'export STEAM_RUNTIME=1' | sudo tee -a /etc/profile.d/steam.sh
 sudo service steamlink status
 
-echo "* Installeren muble VoIP"
+echo "* Installeren muble VoIP" 2>&1 | tee -a $LOGFILE
 for addonnodes in mumble-server mumble ; do
   echo " "
   echo " "
