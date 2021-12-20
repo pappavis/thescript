@@ -18,7 +18,6 @@ sudo rm -rf /var/www/html/index.php
 
 #wget https://www.virtualhere.com/sites/default/files/usbserver/vhusbdarmpi3
 #wget https://www.virtualhere.com/sites/default/files/usbclient/vhuitarm7
-#wget https://virtualhere.com/sites/default/files/usbserver/vhusbdarmpi
 #wget https://virtualhere.com/sites/default/files/usbserver/vhusbdx86_64
 #chmod +x ./vhusbdarmpi3
 #chmod +x ./vhuitarm7
@@ -55,7 +54,7 @@ cd ~/Downloads/x264
 ./configure --host=arm-unknown-linux-gnueabi --enable-static --disable-opencl
 make -j4
 sudo make install
-
+rm -rf ~/Downloads/x264
 
 cd ~/Downloads/
 
