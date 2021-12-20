@@ -45,15 +45,22 @@ cd /var/www/html
 sudo git clone https://github.com/phpsysinfo/phpsysinfo.git
 sudo cp /var/www/html/phpsysinfo/phpsysinfo.ini.new /var/www/html/phpsysinfo/phpsysinfo.ini
 
-echo "admin\n"| sudo apt install -y firebird-server
-echo "admin\n"| sudo apt install -y postgresql
+
+for addonnodes in firebird-server postgresql  ; do
+  echo " "
+  echo " "
+  echo "Installeren sql database server: ${addonnodes}"
+  echo " "
+  echo "admin\n" | sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
+
 
 cd ~/Downloads/
-git clone --depth 1 https://code.videolan.org/videolan/x264
+git clone --depth 1 https://code.videolan.org/videolan/x264 2>&1 | tee -a $LOGFILE
 cd ~/Downloads/x264
 ./configure --host=arm-unknown-linux-gnueabi --enable-static --disable-opencl
 make -j$(nproc)
-sudo make install
+sudo make install 2>&1 | tee -a $LOGFILE
 rm -rf ~/Downloads/x264
 
 cd ~/Downloads/
