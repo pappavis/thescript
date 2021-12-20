@@ -52,7 +52,7 @@ cd ~/Downloads/
 git clone --depth 1 https://code.videolan.org/videolan/x264
 cd ~/Downloads/x264
 ./configure --host=arm-unknown-linux-gnueabi --enable-static --disable-opencl
-make -j4
+make -j$(nproc)
 sudo make install
 rm -rf ~/Downloads/x264
 
