@@ -1,5 +1,5 @@
 #/usr/bin/sh
-LOGFILE=$HOME/$0-`date +%Y-%m-%d`.log
+LOGFILE=$HOME/installPythonCircuitpython-`date +%Y-%m-%d`.log
 
 #Array to store possible locations for temp read.
 aFP_TEMPERATURE=(
