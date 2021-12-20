@@ -65,6 +65,7 @@ done
 
 source ~/venv/venv3.7/bin/activate | tee -a $LOGFILE
 printf "\nStart Octoprint service op http://$_hn1:5000\n" | tee -a $LOGFILE
-sudo service octoprint restart &
+sudo service octoprint restart
+sudo service octoprint status
 printf "Octoprint install afgerond.\n" | tee -a $LOGFILE
 cd $_pwd
