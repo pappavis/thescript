@@ -26,12 +26,7 @@ sudo mv ./octoprint.service /etc/systemd/system
 sudo systemctl enable octoprint.service | tee -a $LOGFILE
 sudo service octoprint restart
 
-
-##echo "DAEMON=/home/pi/venv/OctoPrint/venv/bin/octoprint" >> /etc/default/octoprint
-##sudo update-rc.d octoprint defaults
-##echo "SETUP: Start octoprint service."
-
-echo "Installeer extenties." | tee -a $LOGFILE
+echo "Installeer Octoprint extenties." | tee -a $LOGFILE
 
 
 for addonnodes in   https://github.com/RomainOdeval/OctoPrint-CrealityTemperature/releases/latest/download/master.zip \
@@ -64,7 +59,7 @@ for addonnodes in   https://github.com/RomainOdeval/OctoPrint-CrealityTemperatur
    https://github.com/jneilliii/Octoprint-STLViewer/archive/master.zip \
    https://github.com/rlogiacco/UploadAnything/archive/master.zip \
    https://github.com/malnvenshorn/OctoPrint-WebcamTab/archive/master.zip  ; do
-	echo "Installeren Octoprint uitbreiding vereisten:  \"${addonnodes}\""
+	echo "Installeren Octoprint uitbreiding:  \"${addonnodes}\""
   	pip install --upgrade --no-cache-dir ${addonnodes}  2>&1 | tee -a $LOGFILE
 done
 
