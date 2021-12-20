@@ -29,6 +29,13 @@ for addonnodes in pip numpy dlib ; do
 	pip install --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
+
+
+exit 0
+
+
+
+
 echo " Download opencv and opencv_contrib" 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
 git clone https://github.com/opencv/opencv.git
