@@ -19,6 +19,6 @@ sudo echo "$gebr ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$gebr
 sudo chmod 0440 /etc/sudoers.d/$gebr
 sudo chmod 4755 /usr/bin/sudo
 printf "${ICyan}gebruiker $gebr aangemaakt, wachtwoord is \"$wachtwoord\". Afmelden en opnieuw aanmelden indien gewenst ${IWhite}\r\n\r\n"
-sudo cp $(readlink -f $0) /home/$gebr && chown $gebr.$gebr /home/$gebr/$0 && chmod 755 /home/$gebr/$0
-sudo chown $gebr.$gebr $LOGFILE && sudo chmod 644 $LOGFILE && sudo cp $LOGFILE /home/$gebr
+sudo cp $(readlink -f) /home/$gebr && chown $gebr.$gebr -R /home/$gebr/ && chmod 755 /home/$gebr/
 echo ""
+echo "Gbeuiker $gebr toevoeging afgeronfd"
