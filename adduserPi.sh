@@ -21,4 +21,4 @@ sudo chmod 4755 /usr/bin/sudo
 printf "${ICyan}gebruiker $gebr aangemaakt, wachtwoord is \"$wachtwoord\". Afmelden en opnieuw aanmelden indien gewenst ${IWhite}\r\n\r\n"
 sudo cp $(readlink -f) /home/$gebr && chown $gebr.$gebr -R /home/$gebr/ && chmod 755 /home/$gebr/
 echo ""
-echo "Gbeuiker $gebr toevoeging afgerond." 2>&1 | tee -a $LOGFILE
+echo "Gebruiker $gebr toevoeging afgerond." 2>&1 | tee -a $LOGFILE
