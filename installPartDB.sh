@@ -1,9 +1,12 @@
+LOGFILE=$HOME/logs/installPartDB-`date +%Y-%m-%d_%Hh%Mm`.log
 _hn1=$(hostname)
 _pwd=$(pwd)
+mkdir $HOME/logs
+
 echo " "
-echo "SETUP: part-db in /var/www/html/support"
+echo "SETUP: part-db in /var/www/html/support" 2>&1 | tee -a $LOGFILE
 echo " "
-sudo apt install -y apache2 php php-mysql php-sqlite3
+sudo apt install -y apache2 php php-mysql php-sqlite3 2>&1 | tee -a $LOGFILE
 sudo mkdir /var/www/html/support/
 sudo mkdir /var/www/html/support/partdb
 cd ~/Downloads
@@ -15,7 +18,7 @@ wget https://github.com/jbtronics/Part-DB/blob/gh-pages/vendor.zip?raw=true
 7z x 'vendor.zip?raw=true'
 sudo mv ./vendor  /var/www/html/support/partdb
 cd  /var/www/html/support/partdb
-sudo php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+sudo php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" 2>&1 | tee -a $LOGFILE
 rem sudo php -r "if (hash_file('sha384', 'composer-setup.php') === 'e0012edf3e80b6978849f5eff0d4b4e4c79ff1609dd1e613307e16318854d24ae64f26d17af3ef0bf7cfb710ca74755a') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
 sudo php composer-setup.php
 sudo php -r "unlink('composer-setup.php');"
@@ -24,10 +27,10 @@ mkdir ~/tmp
 cd ~/tmp
 wget https://raw.githubusercontent.com/pappavis/Part-DB/master/db/partdb.sql
 wget https://raw.githubusercontent.com/pappavis/Part-DB/master/db/create_userPartDb.sql
-sudo locale-gen en_US.utf8
+sudo locale-gen en_US.utf8 2>&1 | tee -a $LOGFILE
 sudo mysql -u root -p < ~/tmp/partdb.sql
 sudo mysql -u root -p < ~/tmp/create_userPartDb.sql
-echo "PartDB geïnstalleerd bij http://$_hn1.local/support/part-db"
+echo "PartDB geïnstalleerd bij http://$_hn1.local/support/part-db" 2>&1 | tee -a $LOGFILE
 echo "   Frontend met gebruikersnaam: admin, wachtwoord: admin"
 echo "   Partdb setup aanmelden met gebruikersnaam: partdb, wachtwoord: partdb"
 cd $_pwd
