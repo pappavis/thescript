@@ -1,43 +1,35 @@
+LOGFILE=$HOME/logs/installOpenCV-`date +%Y-%m-%d_%Hh%Mm`.log
+_hn1=$(hostname)
+_pwd=$(pwd)
+mkdir $HOME/logs
 echo "** OPTIONEEL!! Installeer OpenCV Python van broncode."
 echo "sudo apt-get -y remove x264 libx264-dev"
 
 echo "## Install dependencies"
 source ~/venv/venv3.7/bin/activate
 python ./demo/opencv_pip_fix.py
-sudo apt-get -y install build-essential checkinstall cmake pkg-config yasm
-sudo apt-get -y install git gfortran
-sudo apt-get -y install libjpeg8-dev libjasper-dev libpng12-dev
 
-sudo apt-get -y install libtiff5-dev
+for addonnodes in git gfortran build-essential checkinstall cmake pkg-config yasm libjpeg8-dev libjasper-dev libpng12-dev libtiff5-dev libtiff-dev libavcodec-dev libavformat-dev libswscale-dev libdc1394-22-dev libxine2-dev libv4l-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev libgtk2.0-dev libtbb-dev qt5-default libatlas-base-dev libmp3lame-dev libtheora-dev libvorbis-dev libxvidcore-dev libx264-dev libopencore-amrnb-dev libopencore-amrwb-dev libavresample-dev x264 v4l-utils ; do
+	printstatus "Installing OpenCV benodigheden \"${addonnodes}\""
+	sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
 
-sudo apt-get -y install libtiff-dev
-
-sudo apt-get -y install libavcodec-dev libavformat-dev libswscale-dev libdc1394-22-dev
-sudo apt-get -y install libxine2-dev libv4l-dev
 cd /usr/include/linux
 sudo ln -s -f ../libv4l1-videodev.h videodev.h
 cd $cwd
 
-sudo apt-get -y install libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev
-sudo apt-get -y install libgtk2.0-dev libtbb-dev qt5-default
-sudo apt-get -y install libatlas-base-dev
-sudo apt-get -y install libmp3lame-dev libtheora-dev
-sudo apt-get -y install libvorbis-dev libxvidcore-dev libx264-dev
-sudo apt-get -y install libopencore-amrnb-dev libopencore-amrwb-dev
-sudo apt-get -y install libavresample-dev
-sudo apt-get -y install x264 v4l-utils
+echo " Opencv Optional dependencies" 2>&1 | tee -a $LOGFILE
+for addonnodes in python3-testresources libprotobuf-dev protobuf-compiler libgoogle-glog-dev libgflags-dev libgphoto2-dev libeigen3-dev libhdf5-dev doxygen ; do
+	printstatus "Installing Opencv Optional dependencies \"${addonnodes}\""
+	sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
 
-echo " Opencv Optional dependencies"
-sudo apt-get -y install libprotobuf-dev protobuf-compiler
-sudo apt-get -y install libgoogle-glog-dev libgflags-dev
-sudo apt-get -y install libgphoto2-dev libeigen3-dev libhdf5-dev doxygen
+for addonnodes in pip numpy dlib ; do
+	printstatus "Installing Opencv python hulp \"${addonnodes}\""
+	pip install --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
 
-sudo apt-get -y install python3-testresources
-pip install --upgrade pip numpy dlib
-
-
-
-echo " Download opencv and opencv_contrib"
+echo " Download opencv and opencv_contrib" 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
 git clone https://github.com/opencv/opencv.git
 cd opencv
@@ -50,7 +42,7 @@ git checkout 3.4
 cd .
 
 cd opencv
-mkdir build
+mkdir build 2>&1 | tee -a $LOGFILE
 cd build
 
 cmake -D CMAKE_BUILD_TYPE=RELEASE \
@@ -68,6 +60,11 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
 make -j$(nproc)
 make install
 
-echo " OpenCV build van bronkode afgerond."
-pip install --upgrade pip setuptools wheel
-pip install --upgrade opencv-contrib-python opencv-python-headless==4.4.0.44 roundface
+echo " OpenCV build van bronkode afgerond." 2>&1 | tee -a $LOGFILE
+for addonnodes in pip setuptools wheel opencv-contrib-python roundface ; do
+	printstatus "Installing Opencv python hulp \"${addonnodes}\""
+	pip install --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
+
+python ./demo/opencv_pip_fix.py
+echo " OpenCV install afgerond." 2>&1 | tee -a $LOGFILE
