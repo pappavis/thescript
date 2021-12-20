@@ -1,13 +1,17 @@
-echo "* Stat iot.db setup in sqlite3."
-sudo apt install -y sqlite3
+LOGFILE=$HOME/logs/installIOT-`date +%Y-%m-%d_%Hh%Mm`.log
+mkdir ~/logs
+
+
+echo "* Stat iot.db setup in sqlite3." 2>&1 | tee -a $LOGFILE
+sudo apt install -y sqlite3 2>&1 | tee -a $LOGFILE
 
 cd ~
 mkdir /home/pi/dbs
 cd /home/pi/dbs
-wget https://github.com/pappavis/ESP8266_MQQT_Weerstation/blob/master/dbs/iot.db
+wget https://github.com/pappavis/ESP8266_MQQT_Weerstation/blob/master/dbs/iot.db   2>&1 | tee -a $LOGFILE
 sudo chmod 777 /home/pi/dbs -R
 sudo chmod 666 /home/pi/dbs/iot.db
-echo "sudo chmod -R u=rwx,g=rx,o=rx /home/pi/dbs"
+echo "sudo chmod -R u=rwx,g=rx,o=rx /home/pi/dbs"   2>&1 | tee -a $LOGFILE
 cd
 
 		sqlite3 /home/pi/dbs/iot.db << EOF		
@@ -83,6 +87,6 @@ cd
 
 
 cd
-sudo chmod 777 /home/pi/dbs
-sudo chmod 666 /home/pi/dbs/iot.db
+sudo chmod 777 /home/pi/dbs 2>&1 | tee -a $LOGFILE
+sudo chmod 666 /home/pi/dbs/iot.db 2>&1 | tee -a $LOGFILE
 cd
