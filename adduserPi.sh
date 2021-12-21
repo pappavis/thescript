@@ -15,7 +15,7 @@ for addonnodes in dialout tty gpio i2c ; do
   sudo usermod $gebr -g ${addonnodes}  2>&1 | tee -a $LOGFILE
 done
 
-sudo echo "$gebr ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$gebr
+sed -e "$gebr ALL=(ALL) NOPASSWD: ALL" /etc/sudoers.d/$gebr
 sudo chmod 0440 /etc/sudoers.d/$gebr
 sudo chmod 4755 /usr/bin/sudo
 printf "${ICyan}gebruiker $gebr aangemaakt, wachtwoord is \"$wachtwoord\". Afmelden en opnieuw aanmelden indien gewenst ${IWhite}\r\n\r\n"
