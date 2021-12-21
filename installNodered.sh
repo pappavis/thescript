@@ -164,7 +164,7 @@ else
 	tar xzf ./node-v17.3.0-linux-armv7l.tar.gz
 	sudo cp -R -v ./node-v17.3.0-linux-armv7l/* /usr/local/
 	sudo chown pi:pi -R /usr/local/lib/node_modules/
-	rm -rf ./node-v17.3.0-linux-armv7l/
+	rm -rf ./node-v17.3.0-linux-armv7l*
 	printstatus "Installatie NodeJS: $(node -v) en npm $(npm -v) afgerond." 2>&1 | tee -a $LOGFILE
 	
 	cd /home/pi/.node-red
