@@ -158,6 +158,15 @@ if [ $(nproc) == 1 ]; then
 
 	printstatus  "NodeJS build en install afgerond."
 else
+	printstatus "laatste versie installeren van NodeJS en NPM" 2>&1 | tee -a $LOGFILE
+	cd ~/Downloads
+	wget https://nodejs.org/download/release/latest-v17.x/node-v17.3.0-linux-armv7l.tar.gz 2>&1 | tee -a $LOGFILE
+	tar xzf ./node-v17.3.0-linux-armv7l.tar.gz
+	sudo mv -R -v ./node-v17.3.0-linux-armv7l/* /usr/local/
+	sudo chown pi:pi -R /usr/local/lib/node_modules/
+	rm -rf ./node-v17.3.0-linux-armv7l/
+	printstatus "Installatie NodeJS: $(node -v) en npm $(npm -v) afgerond." 2>&1 | tee -a $LOGFILE
+	
 	cd /home/pi/.node-red
 	echo "y\n" | bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
 fi
