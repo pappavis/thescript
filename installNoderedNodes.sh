@@ -69,6 +69,7 @@ done
 ##sudo npm install -g npm-check-updates 2>&1 | tee -a $LOGFILE
 ##sudo ncu -u 2>&1 | tee -a $LOGFILE
 ##sudo npm update -g 2>&1 | tee -a $LOGFILE
+sudo apt install -y npm
 
 printstatus "\nInstalling node \"node-red-node-sqlite\"\n"
 npm $NQUIET install --save node-red-node-sqlite 2>&1 | tee -a $LOGFILE
