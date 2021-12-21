@@ -20,9 +20,9 @@ sudo apt autoremove -y
 sudo apt autoclean -y
 
 node -v
-printf "\nApple homekit wordt geïnstalleerd.\n"
+printf "\nApple homekit wordt geïnstalleerd.\n" 2>&1 | tee -a $LOGFILE
 sudo npm install -g --unsafe-perm homebridge homebridge-config-ui-x
-printf "Homekit als service gestart\n"
+printf "Homekit als service gestart\n" 2>&1 | tee -a $LOGFILE
 sudo hb-service install --user homebridge
-printf "Homekit op http://$_hn1.local:8581, gebruiker=admin, wachtwoord=admin\n"
+printf "Homekit op http://$_hn1.local:8581, gebruiker=admin, wachtwoord=admin\n" 2>&1 | tee -a $LOGFILE
 
