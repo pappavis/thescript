@@ -186,15 +186,15 @@ sudo apt autoclean -y
 sudo apt autoremove -y
 
 if [ $(nproc) == 1 ]; then
-	printstatus "Bijwerken van NodeJS op een PiZeroW" 2>&1 | tee -a $LOGFILE
+	printstatus "Pi zero WH: bijwerken van NodeJS op een PiZeroW" 2>&1 | tee -a $LOGFILE
 	
 	cd /home/pi/Downloads	
 	wget https://nodejs.org/dist/v17.2.0/node-v17.2.0.tar.gz 2>&1 | tee -a $LOGFILE
 	tar xzf ./node-v17.2.0.tar.gz
-	cd ./node-v17.2.0.tar.gz
+	cd ./node-v17.2.0
 	make clean
 	./configure | tee -a $LOGFILE
-	make -j1 | tee -a $LOGFILE
+	make -j$(nproc) | tee -a $LOGFILE
 	sudo make install | tee -a $LOGFILE
 	
 	cd ..
@@ -203,18 +203,26 @@ if [ $(nproc) == 1 ]; then
 
 	printstatus  "NodeJS build en install afgerond."
 else
-	printstatus "laatste versie installeren van NodeJS en NPM" 2>&1 | tee -a $LOGFILE
-	cd /home/pi/Downloads
-	wget https://nodejs.org/download/release/latest-v17.x/node-v17.3.0-linux-armv7l.tar.gz 2>&1 | tee -a $LOGFILE
-	tar xzf ./node-v17.3.0-linux-armv7l.tar.gz | tee -a $LOGFILE
-	sudo cp -R -v ./node-v17.3.0-linux-armv7l/* /usr/local/
-	sudo chown pi:pi -R /usr/local/lib/node_modules/
-	rm -rf ./node-v17.3.0-linux-armv7l*
-	printstatus "Installatie NodeJS: $(node -v) en npm $(npm -v) afgerond." 2>&1 | tee -a $LOGFILE
-	
-	cd /home/pi/.node-red
-	echo "y\n" | bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
+	if [ $(nproc) >= 4 ]; then
+
+		printstatus "Pi3,4: laatste versie installeren van NodeJS en NPM" 2>&1 | tee -a $LOGFILE
+		cd /home/pi/Downloads
+		wget https://nodejs.org/download/release/latest-v17.x/node-v17.3.0-linux-armv7l.tar.gz 2>&1 | tee -a $LOGFILE
+		tar xzf ./node-v17.3.0-linux-armv7l.tar.gz | tee -a $LOGFILE
+		sudo cp -R -v ./node-v17.3.0-linux-armv7l/* /usr/local/
+		sudo chown pi:pi -R /usr/local/lib/node_modules/
+		rm -rf ./node-v17.3.0-linux-armv7l*
+		printstatus "Installatie NodeJS: $(node -v) en npm $(npm -v) afgerond." 2>&1 | tee -a $LOGFILE
+
+		cd /home/pi/.node-red
+		echo "y\n" | bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
+	fi
 fi
+
+sudo apt remove npm -y 2>&1 | tee -a $LOGFILE
+sudo apt autoclean -y 2>&1 | tee -a $LOGFILE
+sudo apt autoremove -y  2>&1 | tee -a $LOGFILE
+sudo apt install npm -y 2>&1 | tee -a $LOGFILE
 
 
 cd ~/Downloads
