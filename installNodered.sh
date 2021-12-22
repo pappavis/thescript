@@ -113,7 +113,7 @@ printstatus "Opschonen en legen nodered cache afgerond."
 mkdir /home/pi/.node-red
 cd /home/pi/.node-red
 
-for addonnodes in build-essential libnode72 npm ; do
+for addonnodes in build-essential libnode72 npm node ; do
 	printstatus "Installing lib \"${addonnodes}\""
 	sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
