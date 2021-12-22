@@ -5,7 +5,7 @@ printf "Start installatie homebridge voor Apple homekit.\n"
 printf "Zie ook https://github.com/homebridge/homebridge/wiki/Install-Homebridge-on-Raspbian\n"
 
 echo "Installeren build-essentials"
-for addonnodes in build-essential m gcc g++ make python3 net-tools ; do
+for addonnodes in build-essential gcc g++ make python3 net-tools ; do
 	echo "Installing lib \"${addonnodes}\""
 	sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
