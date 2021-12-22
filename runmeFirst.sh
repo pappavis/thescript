@@ -180,6 +180,7 @@ cd /home/pi/Downloads
 git clone https://github.com/node-red/linux-installers 2>&1 | tee -a $LOGFILE
 cd /home/pi/Downloads/linux-installers/pibuild
 bash ./node-red-pi-install.sh 2>&1 | tee -a $LOGFILE
+cd /home/pi/Downloads
 rm -rf  /home/pi/Download/linux-installers
 sudo apt autoclean -y
 sudo apt autoremove -y
