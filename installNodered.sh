@@ -104,7 +104,7 @@ printstatus  "**Installer en node-red en modules"
 mkdir /home/pi/Downloads
 cd ~
 
-printstatus "Oude  nodered  verwijderen"
+printstatus "Oude  nodered  verwijderen"  2>&1 | tee -a $LOGFILE
 sudo service nodered stop
 printstatus "sudo npm uninstall -g node-red"
 printstatus "Opschonen en legen nodered cache"
@@ -216,6 +216,14 @@ else
 fi
 sudo sed -i -e 's#exit 0#chmod 777 /dev/ttyS*\nexit 0#g' /etc/rc.local
 fi
+
+
+cd ~/Downloads
+git clone https://github.com/node-red/linux-installers.git 2>&1 | tee -a $LOGFILE
+cd linux-installers/pibuild
+bash ./node-red-pi-install.sh
+bash ./node-red-deb-pack.sh 2>&1 | tee -a $LOGFILE
+rm -rf ./linux-installers
 
 cd ~/.node-red/
 npm $NQUIET audit fix
