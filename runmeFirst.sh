@@ -88,7 +88,7 @@ sudo service bluetooth restart
 sudo apt update -y
 sudo apt update --fix-missing -y  2>&1 | tee -a $LOGFILE
 
-for addonnodes in p7zip-full mc sqlite3  i2c-tools ncftp mariadb-server mariadb-client mosquitto mosquitto-clients python3 python3-pip  python3-opencv libsdl2-image gedit gparted  python-smbus vsftpd neofetch nodejs npm 		apache2 php php-mysql php-sqlite3 php-mbstring openssl libapache2-mod-php php-sqlite3 php-xml php-mbstring sysbench open-cobol ffmpeg wiringpi rpi.gpio  unixodbc-dev npm node ; do 
+for addonnodes in p7zip-full mc sqlite3  i2c-tools ncftp mariadb-server mariadb-client mosquitto mosquitto-clients python3 python3-pip  python3-opencv libsdl2-image gedit gparted  python-smbus vsftpd neofetch nodejs npm 		apache2 php php-mysql php-sqlite3 php-mbstring openssl libapache2-mod-php php-sqlite3 php-xml php-mbstring sysbench open-cobol ffmpeg wiringpi rpi.gpio  unixodbc-dev npm node python-is-python3 ; do 
 		printstatus "Installing  \"${addonnodes}\""
 		sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 	done
@@ -100,17 +100,20 @@ sudo service vsftpd restart
 
 mkdir ~/Downloads
 cd ~
-wget https://raw.githubusercontent.com/pappavis/thescript/master/index_apps.php
+wget https://raw.githubusercontent.com/pappavis/thescript/master/index_apps.php 2>&1 | tee -a $LOGFILE
 sudo mv index_apps.php /var/www/html
 sudo mv /var/www/html/index.html /var/www/html/index_orgig.php
 cd $_pwd
 
+VENV="venv3.7"
+rm -rf ~/venv/$VENV
 mkdir ~/venv
-pip3 install virtualenv  2>&1 | tee -a $LOGFILE
-mkdir ~/venv
-~/.local/bin/virtualenv ~/venv/venv3.7
-echo "source ~/venv/venv3.7/bin/activate" >> ~/.bashrc
+python3 -m pip install virtualenv
+pip install virtualenv  2>&1 | tee -a $LOGFILE
+~/.local/bin/virtualenv ~/venv/$VENV
+echo "source ~/venv/$VENV/bin/activate" >> ~/.bashrc
 source ~/.bashrc
+echo "Virtualenv versie: $(python -V)"
 echo "PATH=$PATH:~/.local/bin" >> ~/.bashrc
 
 
