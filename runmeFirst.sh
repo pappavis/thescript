@@ -174,6 +174,18 @@ sudo apt autoremove -y 2>&1 | tee -a $LOGFILE
 sudo sed -i "s/# nl_NL.utf8/nl_NL.utf8/g" /etc/locale.gen
 sudo locale-gen 2>&1 | tee -a $LOGFILE
 
+echo "* Installeer btop proceslijst" 2>&1 | tee -a $LOGFILE
+cd ~/Downloads/
+sudo rm -rf ./btop*
+mkdir ./btop_install
+cd ./btop_install
+wget https://github.com/aristocratos/btop/releases/download/v1.1.2/btop-1.1.2-armv5l-linux-musleabi.tbz 2>&1 | tee -a $LOGFILE
+wget https://github.com/aristocratos/btop/releases/download/v1.1.2/btop-1.1.2-armv7l-linux-musleabihf.tbz 2>&1 | tee -a $LOGFILE
+7z x ./btop-1.1.2-armv5l-linux-musleabi.tbz  2>&1 | tee -a $LOGFILE
+sudo make
+cd ~/Downloads/
+sudo rm -rf ./btop_install
+
 printstatus "NodeJS installeren"
 
 cd /home/pi/Downloads
@@ -226,10 +238,10 @@ sudo apt install npm -y 2>&1 | tee -a $LOGFILE
 
 
 cd ~/Downloads
-wget https://raw.githubusercontent.com/pappavis/thescript/master/welkom1.sh
+wget https://raw.githubusercontent.com/pappavis/thescript/master/welkom1.sh 2>&1 | tee -a $LOGFILE
 chmod +x ./welkom1.sh
 sudo mv ./welkom1.sh /usr/local/bin/welkom1
-welkom1
+welkom1 2>&1 | tee -a $LOGFILE
 
 echo ""
 echo "Je kunt nu REBOOT, daarna ./installVerzamelupdates.sh draaien"
