@@ -104,17 +104,15 @@ printstatus  "**Installer en node-red en modules"
 mkdir /home/pi/Downloads
 cd ~
 
-echo "Oude  nodered  verwijderen"
+printstatus "Oude  nodered  verwijderen"
 sudo service nodered stop
-echo "sudo npm uninstall -g node-red"
-echo "Opschonen en legen nodered cache"
+printstatus "sudo npm uninstall -g node-red"
+printstatus "Opschonen en legen nodered cache"
 rm -rf ~/.node-red
-echo "Opschonen en legen nodered cache afgerond."
-echo "mkdir ~/.node-red"
+printstatus "Opschonen en legen nodered cache afgerond."
 mkdir /home/pi/.node-red
 cd /home/pi/.node-red
 
-echo "Installeren build-essentials"
 for addonnodes in build-essential libnode72 npm ; do
 	printstatus "Installing lib \"${addonnodes}\""
 	sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
@@ -125,33 +123,26 @@ sudo apt -fix-broken build-essential libnode72 -y
 sudo apt autoremove -y
 sudo apt autoclean -y
 
-echo "NodeJS installeren"
+printstatus "NodeJS installeren"
 
 if [ $(nproc) == 1 ]; then
 	printstatus "Installeren van NodeJS op een PiZeroW"
 	cd ~/Downloads
-	##git clone https://github.com/node-red/linux-installers.git
-	##cd linux-installers/pibuild
-	##bash ./node-red-pi-install.sh
-	##bash ./node-red-deb-pack.sh
-	##rm -rf ./linux-installers
+	git clone https://github.com/node-red/linux-installers.git 2>&1 | tee -a $LOGFILE
+	cd linux-installers/pibuild
+	bash ./node-red-pi-install.sh
+	bash ./node-red-deb-pack.sh 2>&1 | tee -a $LOGFILE
+	rm -rf ./linux-installers
 	
 	
-	##wget https://nodejs.org/dist/v17.2.0/node-v17.2.0.tar.gz
-	##tar xzf ./node-v17.2.0.tar.gz
-	##cd ./node-v17.2.0.tar.gz
-	##make clean
-	##./configure
-	##make -j2
-	##sudo make install	
-	
-	git clone --depth 1 --branch v15.11.0 https://github.com/nodejs/node
-	cd ./node
-	git pull
+	wget https://nodejs.org/dist/v17.2.0/node-v17.2.0.tar.gz
+	tar xzf ./node-v17.2.0.tar.gz
+	cd ./node-v17.2.0.tar.gz
 	make clean
-	./configure	
-	make -j$(nproc)
-	sudo make install
+	./configure
+	make -j1
+	sudo make install	
+	
 	cd ..
 	rm -rf node
 	cd /home/pi/.node-red
