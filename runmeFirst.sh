@@ -68,8 +68,8 @@ echo "alias l='ls -F --color=auto'" >> ~/.bashrc
 [ ! -x /usr/bin/sudo ] && apt-get $AQUIET -y update > /dev/null 2>&1 && apt-get $AQUIET -y install sudo 2>&1 | tee -a $LOGFILE
 
 sudo apt install -y git
-sudo apt install -y python3-pip
-pip install ensurepip
+sudo apt install -y python3-pip  2>&1 | tee -a $LOGFILE
+pip install ensurepip  2>&1 | tee -a $LOGFILE
 
 git config pull.rebase false
 mkdir /home/pi/Downloads
@@ -88,7 +88,7 @@ sudo service bluetooth restart
 sudo apt update -y
 sudo apt update --fix-missing -y  2>&1 | tee -a $LOGFILE
 
-for addonnodes in p7zip-full mc sqlite3  i2c-tools ncftp mariadb-server mariadb-client mosquitto mosquitto-clients python3 python3-pip  python3-opencv libsdl2-image gedit gparted  python-smbus vsftpd neofetch nodejs npm 		apache2 php php-mysql php-sqlite3 php-mbstring openssl libapache2-mod-php php-sqlite3 php-xml php-mbstring sysbench open-cobol ffmpeg wiringpi rpi.gpio  unixodbc-dev ; do 
+for addonnodes in p7zip-full mc sqlite3  i2c-tools ncftp mariadb-server mariadb-client mosquitto mosquitto-clients python3 python3-pip  python3-opencv libsdl2-image gedit gparted  python-smbus vsftpd neofetch nodejs npm 		apache2 php php-mysql php-sqlite3 php-mbstring openssl libapache2-mod-php php-sqlite3 php-xml php-mbstring sysbench open-cobol ffmpeg wiringpi rpi.gpio  unixodbc-dev npm node ; do 
 		printstatus "Installing  \"${addonnodes}\""
 		sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 	done
@@ -142,7 +142,7 @@ for addonnodes in gpio dialout i2c tty kmem uinput ; do
 	sudo usermod pi -aG ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
-for addonnodes in build-essential cmake rapidjson-dev libgmp-dev git gcc g++ netdiscover sysfsutils tcpdump pure-ftpd wget ssh bash-completion unzip build-essential git python-serial scons libboost-filesystem-dev libboost-program-options-dev libboost-system-dev libsqlite3-dev subversion libusb-dev python-dev cmake curl telnet usbutils gawk jq pv samba samba-common samba-common-bin winbind dosfstools parted gcc python3-pip htop python-smbus mc cu mpg123 screen ffmpeg qemu-system default-jdk ; do
+for addonnodes in build-essential cmake rapidjson-dev libgmp-dev git gcc g++ netdiscover sysfsutils tcpdump vsftpd wget ssh bash-completion unzip build-essential git python-serial scons libboost-filesystem-dev libboost-program-options-dev libboost-system-dev libsqlite3-dev subversion libusb-dev python-dev cmake curl telnet usbutils gawk jq pv samba samba-common samba-common-bin winbind dosfstools parted gcc python3-pip htop python-smbus mc cu mpg123 screen ffmpeg qemu-system default-jdk ; do
 	printstatus "Instelleren \"${addonnodes}\""
 	sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
