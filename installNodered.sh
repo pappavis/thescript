@@ -125,16 +125,10 @@ sudo apt autoclean -y
 
 printstatus "NodeJS installeren"
 
+
 if [ $(nproc) == 1 ]; then
-	printstatus "Installeren van NodeJS op een PiZeroW"
-	cd ~/Downloads
-	git clone https://github.com/node-red/linux-installers.git 2>&1 | tee -a $LOGFILE
-	cd linux-installers/pibuild
-	bash ./node-red-pi-install.sh
-	bash ./node-red-deb-pack.sh 2>&1 | tee -a $LOGFILE
-	rm -rf ./linux-installers
-	
-	
+	printstatus "Bijwerken van NodeJS op een PiZeroW"
+		
 	wget https://nodejs.org/dist/v17.2.0/node-v17.2.0.tar.gz
 	tar xzf ./node-v17.2.0.tar.gz
 	cd ./node-v17.2.0.tar.gz
