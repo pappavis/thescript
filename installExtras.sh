@@ -27,18 +27,22 @@ sudo rm -rf /var/www/html/index.php
 #sudo cp ./vhui* /usr/local/bin
 curl -s https://www.dataplicity.com/jfjro6ak.py | sudo python
 
-sudo apt-get install -y phpmyadmin
 APP_PASS="rider506"
 ROOT_PASS="rider506"
 APP_DB_PASS="rider506"
 
+# https://stackoverflow.com/questions/30741573/debconf-selections-for-phpmyadmin-unattended-installation-with-no-webserver-inst
+sudo debconf-set-selections <<< "phpmyadmin phpmyadmin/internal/skip-preseed boolean true"
+sudo debconf-set-selections <<< "phpmyadmin phpmyadmin/reconfigure-webserver multiselect"
+sudo debconf-set-selections <<< "phpmyadmin phpmyadmin/dbconfig-install boolean false"
 echo "phpmyadmin phpmyadmin/dbconfig-install boolean true" | sudo debconf-set-selections
 echo "phpmyadmin phpmyadmin/app-password-confirm password $APP_PASS" | sudo debconf-set-selections
 echo "phpmyadmin phpmyadmin/mysql/admin-pass password $ROOT_PASS" | sudo debconf-set-selections
 echo "phpmyadmin phpmyadmin/mysql/app-pass password $APP_DB_PASS" | sudo debconf-set-selections
 echo "phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2" | sudo  debconf-set-selections
 
-sudo apt install -y phpmyadmin
+sudo apt-get install -y phpmyadmin
+
 sudo ln -s /usr/share/phpmyadmin /var/www/html
 
 cd /var/www/html 
@@ -46,7 +50,7 @@ sudo git clone https://github.com/phpsysinfo/phpsysinfo.git
 sudo cp /var/www/html/phpsysinfo/phpsysinfo.ini.new /var/www/html/phpsysinfo/phpsysinfo.ini
 
 
-for addonnodes in firebird-server postgresql  ; do
+for addonnodes in  firebird-server postgresql  ; do
   echo " "
   echo " "
   echo "Installeren sql database server: ${addonnodes}"
