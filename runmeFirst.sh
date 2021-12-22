@@ -1,5 +1,5 @@
 #!/bin/bash
-LOGFILE=$HOME/logs/$0-`date +%Y-%m-%d_%Hh%Mm`.log
+LOGFILE=$HOME/logs/runmeFirst-`date +%Y-%m-%d_%Hh%Mm`.log
 _pwd=$(pwd)
 
 mkdir $HOME/logs
@@ -172,14 +172,21 @@ sudo apt autoclean -y  2>&1 | tee -a $LOGFILE
 sudo apt autoremove -y 2>&1 | tee -a $LOGFILE
 
 sudo sed -i "s/# nl_NL.utf8/nl_NL.utf8/g" /etc/locale.gen
-sudo locale-gen
+sudo locale-gen 2>&1 | tee -a $LOGFILE
 
 printstatus "NodeJS installeren"
 
+cd /home/pi/Downloads
+git clone https://github.com/node-red/linux-installers 2>&1 | tee -a $LOGFILE
+cd /home/pi/Downloads/linux-installers/pibuild
+bash ./node-red-pi-install.sh 2>&1 | tee -a $LOGFILE
+rm -rf  /home/pi/Download/linux-installers
+
 if [ $(nproc) == 1 ]; then
-	printstatus "Bijwerken van NodeJS op een PiZeroW" | tee -a $LOGFILE
-		
-	wget https://nodejs.org/dist/v17.2.0/node-v17.2.0.tar.gz | tee -a $LOGFILE
+	printstatus "Bijwerken van NodeJS op een PiZeroW" 2>&1 | tee -a $LOGFILE
+	
+	cd /home/pi/Downloads	
+	wget https://nodejs.org/dist/v17.2.0/node-v17.2.0.tar.gz 2>&1 | tee -a $LOGFILE
 	tar xzf ./node-v17.2.0.tar.gz
 	cd ./node-v17.2.0.tar.gz
 	make clean
@@ -194,7 +201,7 @@ if [ $(nproc) == 1 ]; then
 	printstatus  "NodeJS build en install afgerond."
 else
 	printstatus "laatste versie installeren van NodeJS en NPM" 2>&1 | tee -a $LOGFILE
-	cd ~/Downloads
+	cd /home/pi/Downloads
 	wget https://nodejs.org/download/release/latest-v17.x/node-v17.3.0-linux-armv7l.tar.gz 2>&1 | tee -a $LOGFILE
 	tar xzf ./node-v17.3.0-linux-armv7l.tar.gz | tee -a $LOGFILE
 	sudo cp -R -v ./node-v17.3.0-linux-armv7l/* /usr/local/
