@@ -180,8 +180,9 @@ sudo rm -rf ./btop*
 mkdir ./btop_install
 cd ./btop_install
 wget https://github.com/aristocratos/btop/releases/download/v1.1.2/btop-1.1.2-armv5l-linux-musleabi.tbz 2>&1 | tee -a $LOGFILE
-wget https://github.com/aristocratos/btop/releases/download/v1.1.2/btop-1.1.2-armv7l-linux-musleabihf.tbz 2>&1 | tee -a $LOGFILE
+#wget https://github.com/aristocratos/btop/releases/download/v1.1.2/btop-1.1.2-armv7l-linux-musleabihf.tbz 2>&1 | tee -a $LOGFILE
 7z x ./btop-1.1.2-armv5l-linux-musleabi.tbz  2>&1 | tee -a $LOGFILE
+7z x ./btop-1.1.2-armv5l-linux-musleabi.tar
 sudo make
 cd ~/Downloads/
 sudo rm -rf ./btop_install
