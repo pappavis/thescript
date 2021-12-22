@@ -68,8 +68,12 @@ sudo make install 2>&1 | tee -a $LOGFILE
 rm -rf ~/Downloads/x264
 
 cd ~/Downloads/
-
+curl -sL https://packages.grafana.com/gpg.key | sudo apt-key add -
+curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -
+echo "deb https://repos.influxdata.com/debian dists buster stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
+echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee /etc/apt/sources.list.d/grafana.list
 sudo apt update -y
+
 echo "** installeer minimale Raspbian desktop."
 for addonnodes in raspberrypi-ui-mods xinit xserver-xorg xrdp   ; do
   echo " "
@@ -178,9 +182,8 @@ pip install -r requirements.txt
 ehco "je kunt nu: python ./cli.py"
 
 cd ~/Downloads
-echo "Installeren Grafana"  2>&1 | tee -a $LOGFILE
-wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
-echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
+echo "Installeren Grafana en telegraf"  2>&1 | tee -a $LOGFILE
+
 sudo apt update -y
 for addonnodes in grafana telegraf ; do
   echo " "
@@ -193,6 +196,7 @@ done
 sudo /bin/systemctl enable grafana-server
 sudo /bin/systemctl start grafana-server
 echo "grafana-server is geïnstalleerd"
+sudo usermod -a -G video telegraf
 
 
 ## https://nwmichl.net/2020/07/14/telegraf-influxdb-grafana-on-raspberrypi-from-scratch/
