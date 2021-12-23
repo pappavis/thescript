@@ -68,6 +68,7 @@ sudo make install 2>&1 | tee -a $LOGFILE
 rm -rf ~/Downloads/x264
 
 cd ~/Downloads/
+wget -qO - https://packages.grafana.com/gpg.key |  sudo gpg --no-default-keyring --keyring gnupg-ring:/etc/apt/trusted.gpg.d/example.gpg --import -
 curl -sL https://packages.grafana.com/gpg.key | sudo apt-key add -
 curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -
 echo "deb https://repos.influxdata.com/debian dists buster stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
@@ -82,6 +83,10 @@ for addonnodes in raspberrypi-ui-mods xinit xserver-xorg xrdp   ; do
   echo " "
   sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
+
+sudo systemctl enable influxdb grafana-server telegraf
+sudo systemctl start influxdb grafana-server telegraf
+sudo systemctl status influxdb grafana-server telegraf 2>&1 | tee -a $LOGFILE
 
 sudo mkdir /home/pi/.local
 sudo mkdir /home/pi/.local/share
@@ -164,12 +169,10 @@ cd ~/Downloads
 sudo rm -r rpi-clone
 
 echo "Installeren log2ram" 2>&1 | tee -a $LOGFILE
-cd ~/Downloads
-git clone https://github.com/azlux/log2ram.git 2>&1 | tee -a $LOGFILE
-cd log2ram
-chmod +x install.sh
-sudo ./install.sh 2>&1 | tee -a $LOGFILE
-cd ~/Downloads
+echo "deb http://packages.azlux.fr/debian/ bullseye main" | sudo tee /etc/apt/sources.list.d/azlux.list
+wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
+sudo apt update -y 2>&1 | tee -a $LOGFILE
+sudo apt install log2ram -y 2>&1 | tee -a $LOGFILE
 
 cd /var/www/html
 sudo wget -a $LOGFILE $AQUIET https://www.scargill.net/iot/reset.css -O /var/www/html/reset.css 2>&1 | tee -a $LOGFILE
@@ -177,13 +180,16 @@ sudo wget -a $LOGFILE $AQUIET https://www.scargill.net/iot/reset.css -O /var/www
 cd ~/Downloads
 echo "Motorola 68000 emulatie in Python, voor de lol." 2>&1 | tee -a $LOGFILE
 git clone https://github.com/Chris-Johnston/Easier68k
-cd Easier68k
+cd ./Easier68k
 pip install -r requirements.txt
 ehco "je kunt nu: python ./cli.py"
 
 cd ~/Downloads
 echo "Installeren Grafana en telegraf"  2>&1 | tee -a $LOGFILE
-
+curl -sL https://packages.grafana.com/gpg.key | sudo apt-key add -
+curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -
+echo "deb https://repos.influxdata.com/debian dists buster stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
+echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee /etc/apt/sources.list.d/grafana.list
 sudo apt update -y
 for addonnodes in grafana telegraf ; do
   echo " "
