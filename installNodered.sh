@@ -8,14 +8,6 @@ _cpu=$(uname -m)
 _cpuChk="armv6l"
 ACTIVECORES=$(nproc)
 
-# High Intensity
-IGreen='\e[0;92m'       # Green
-IYellow='\e[0;93m'      # Yellow
-IBlue='\e[0;94m'        # Blue
-ICyan='\e[0;96m'        # Cyan
-IWhite='\e[0;97m'       # White
-
-# Bold High Intensity
 NQUIET=""
 skip=0
 other=0
@@ -97,14 +89,7 @@ printstatus() {
 	echo -e $1 >> $LOGFILE
 }
 
-
-printstatus "Installing NodeJS and NodeRed" 2>&1 | tee -a $LOGFILE
-cd ~/Downloads
-wget https://unofficial-builds.nodejs.org/download/release/v17.3.0/node-v17.3.0-linux-armv6l.tar.gz 2>&1 | tee -a $LOGFILE
-tar xzf node-v17.3.0-linux-armv6l.tar.gz 2>&1 | tee -a $LOGFILE
-sudo cp -R ./node-v17.3.0-linux-armv6l/* /usr/local 2>&1 | tee -a $LOGFILE
-sudo rm /usr/local/README.md
-
+bash ./installNodeJS.sh
 
 printstatus  "**Installer en node-red en modules"
 mkdir /home/pi/Downloads
