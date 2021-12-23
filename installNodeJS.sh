@@ -35,7 +35,12 @@ echo "NodeJS opnieuw installeren." 2>&1 | tee -a $LOGFILE
 
 cd ~/Downloads
 if [ $(nproc) > 0 ]; then
-	echo "NodeJS  installeren op een Pi Zero" 2>&1 | tee -a $LOGFILE
+	tkst1 = "NodeJS  installeren op een " 
+	if [ $(nproc) > 0 ]; then
+		echo "$tkst1 Pi Zero" 2>&1 | tee -a $LOGFILE
+	else
+		echo "$tkst1 Pi 3,4" 2>&1 | tee -a $LOGFILE
+	fi
 	wget https://unofficial-builds.nodejs.org/download/release/v17.3.0/node-v17.3.0-linux-armv6l.tar.gz 2>&1 | tee -a $LOGFILE
 	tar xzf node-v17.3.0-linux-armv6l.tar.gz 2>&1 | tee -a $LOGFILE
 	sudo cp -R ./node-v17.3.0-linux-armv6l/* /usr/local 2>&1 | tee -a $LOGFILE
