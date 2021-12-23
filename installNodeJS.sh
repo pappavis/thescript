@@ -23,7 +23,6 @@ done
 
 sudo apt autoremove -y  2>&1 | tee -a $LOGFILE
 sudo apt autoclean -y  2>&1 | tee -a $LOGFILE
-cd ~/Downloads
 
 echo "Verwijderen oude NodeJS mappen in /usr/local"  2>&1 | tee -a $LOGFILE
 sudo rm -rf /usr/local/bin/npm /usr/local/share/man/man1/node* ~/.npm  2>&1 | tee -a $LOGFILE
@@ -34,11 +33,12 @@ sudo rm -rf /usr/local/include/node*  2>&1 | tee -a $LOGFILE
 
 echo "NodeJS opnieuw installeren." 2>&1 | tee -a $LOGFILE
 
-if [ $(nproc) == 1 ]; then
+cd ~/Downloads
+if [ $(nproc) > 0 ]; then
 	echo "NodeJS  installeren op een Pi Zero" 2>&1 | tee -a $LOGFILE
 	wget https://unofficial-builds.nodejs.org/download/release/v17.3.0/node-v17.3.0-linux-armv6l.tar.gz 2>&1 | tee -a $LOGFILE
 	tar xzf node-v17.3.0-linux-armv6l.tar.gz 2>&1 | tee -a $LOGFILE
-	sudo cp -R ./node-v17.3.0-linux-armv6l /usr/local 2>&1 | tee -a $LOGFILE
+	sudo cp -R ./node-v17.3.0-linux-armv6l/* /usr/local 2>&1 | tee -a $LOGFILE
 else
 	echo "NodeJS  installeren op een Pi3,4" 2>&1 | tee -a $LOGFILE
 	## zie https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-16-04
@@ -47,7 +47,6 @@ else
 	nvm install v17.13.1 2>&1 | tee -a $LOGFILE	
 	nvm use v17.13.1
 fi
-
 
 printstatus "NodeJS $(node -v) en npm $(npm -v) is geïnstalleerd" 2>&1 | tee -a $LOGFILE
 
