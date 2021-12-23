@@ -21,15 +21,16 @@ for addonnodes in npm node nodejs ; do
 	sudo apt purge -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
+sudo apt autoremove -y  2>&1 | tee -a $LOGFILE
+sudo apt autoclean -y  2>&1 | tee -a $LOGFILE
+cd ~/Downloads
+
 echo "Verwijderen oude NodeJS mappen in /usr/local"  2>&1 | tee -a $LOGFILE
 sudo rm -rf /usr/local/bin/npm /usr/local/share/man/man1/node* ~/.npm  2>&1 | tee -a $LOGFILE
 sudo rm -rf /usr/local/lib/node*  2>&1 | tee -a $LOGFILE
 sudo rm -rf /usr/local/bin/node*  2>&1 | tee -a $LOGFILE
 sudo rm -rf /usr/local/include/node*  2>&1 | tee -a $LOGFILE
 
-sudo apt autoremove -y  2>&1 | tee -a $LOGFILE
-sudo apt autoclean -y  2>&1 | tee -a $LOGFILE
-cd ~/Downloads
 
 echo "NodeJS opnieuw installeren." 2>&1 | tee -a $LOGFILE
 
