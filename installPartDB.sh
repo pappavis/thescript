@@ -28,7 +28,9 @@ cd ~/tmp
 wget https://raw.githubusercontent.com/pappavis/Part-DB/master/db/partdb.sql 2>&1 | tee -a $LOGFILE
 wget https://raw.githubusercontent.com/pappavis/Part-DB/master/db/create_userPartDb.sql 2>&1 | tee -a $LOGFILE
 sudo locale-gen en_US.utf8 2>&1 | tee -a $LOGFILE
+echo "Upload partdb.sql naar mySQL" 2>&1 | tee -a $LOGFILE
 sudo mysql -u root -p < ~/tmp/partdb.sql
+echo "Aanmaken gebruikers naar PartDB" 2>&1 | tee -a $LOGFILE
 sudo mysql -u root -p < ~/tmp/create_userPartDb.sql
 echo "PartDB geïnstalleerd bij http://$_hn1.local/support/part-db" 2>&1 | tee -a $LOGFILE
 echo "   Frontend met gebruikersnaam: admin, wachtwoord: admin"
