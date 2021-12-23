@@ -234,7 +234,7 @@ else
 	fi
 fi
 
-./bash ./installNodeJS.sh
+bash ./installNodeJS.sh
 
 cd ~/Downloads
 wget https://raw.githubusercontent.com/pappavis/thescript/master/welkom1.sh 2>&1 | tee -a $LOGFILE
