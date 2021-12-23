@@ -43,7 +43,8 @@ else
 	echo "NodeJS  installeren op een Pi3,4" 2>&1 | tee -a $LOGFILE
 	## zie https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-16-04
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash 2>&1 | tee -a $LOGFILE
-	nvm install v17.13.1 2>&1 | tee -a $LOGFILE
+	source ~/.bashrc
+	nvm install v17.13.1 2>&1 | tee -a $LOGFILE	
 	nvm use v17.13.1
 fi
 
