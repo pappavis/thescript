@@ -98,7 +98,13 @@ printstatus() {
 }
 
 
-printstatus "Installing NodeJS and NodeRed"
+printstatus "Installing NodeJS and NodeRed" 2>&1 | tee -a $LOGFILE
+cd ~/Downloads
+wget https://unofficial-builds.nodejs.org/download/release/v17.3.0/node-v17.3.0-linux-armv6l.tar.gz 2>&1 | tee -a $LOGFILE
+tar xzf node-v17.3.0-linux-armv6l.tar.gz 2>&1 | tee -a $LOGFILE
+sudo cp -R ./node-v17.3.0-linux-armv6l/* /usr/local 2>&1 | tee -a $LOGFILE
+sudo rm /usr/local/README.md
+
 
 printstatus  "**Installer en node-red en modules"
 mkdir /home/pi/Downloads
