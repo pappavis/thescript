@@ -234,7 +234,9 @@ else
 	fi
 fi
 
+echo "Installeer Nodered en NodeJS" 2>&1 | tee -a $LOGFILE
 bash ./installNodeJS.sh
+echo "Installatie NodeJS $(node -v) en NPN $(npm -v) afgerond." 2>&1 | tee -a $LOGFILE
 
 cd ~/Downloads
 wget https://raw.githubusercontent.com/pappavis/thescript/master/welkom1.sh 2>&1 | tee -a $LOGFILE
