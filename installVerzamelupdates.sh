@@ -1,4 +1,4 @@
-LOGFILE=$HOME/$0-`date +%Y-%m-%d_%Hh%Mm`.log
+LOGFILE=$HOME/installVerzamelupdates-`date +%Y-%m-%d_%Hh%Mm`.log
 
 sudo apt autoclean -y
 sudo apt autoremove -y
