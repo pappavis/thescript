@@ -1,4 +1,4 @@
-LOGFILE=$HOME/installVerzamelupdates-`date +%Y-%m-%d_%Hh%Mm`.log
+LOGFILE=$HOME/logs/installVerzamelupdates-`date +%Y-%m-%d_%Hh%Mm`.log
 mkdir ~/logs
 
 sudo apt autoclean -y
