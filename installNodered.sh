@@ -176,13 +176,6 @@ sudo sed -i -e 's#exit 0#chmod 777 /dev/ttyS*\nexit 0#g' /etc/rc.local
 fi
 
 
-cd ~/Downloads
-git clone https://github.com/node-red/linux-installers.git 2>&1 | tee -a $LOGFILE
-cd linux-installers/pibuild
-bash ./node-red-pi-install.sh
-bash ./node-red-deb-pack.sh 2>&1 | tee -a $LOGFILE
-rm -rf ./linux-installers
-
 cd ~/.node-red/
 npm $NQUIET audit fix
 sudo wget -a $LOGFILE $AQUIET https://tech.scargill.net/iot/settings.txt -O settings.js
