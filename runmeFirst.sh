@@ -105,6 +105,8 @@ sudo mv index_apps.php /var/www/html
 sudo mv /var/www/html/index.html /var/www/html/index_orgig.php
 cd $_pwd
 
+sudo apt remove python2 -y
+sudo apt install python-is-python3 -y
 VENV="venv3.7"
 rm -rf ~/venv/$VENV
 mkdir ~/venv
@@ -232,11 +234,15 @@ else
 	fi
 fi
 
-sudo apt remove npm -y 2>&1 | tee -a $LOGFILE
+sudo apt remove node npm -y 2>&1 | tee -a $LOGFILE
 sudo apt autoclean -y 2>&1 | tee -a $LOGFILE
 sudo apt autoremove -y  2>&1 | tee -a $LOGFILE
 sudo apt install npm -y 2>&1 | tee -a $LOGFILE
 
+cd ~/Downloads
+wget https://unofficial-builds.nodejs.org/download/release/v17.3.0/node-v17.3.0-linux-armv6l.tar.gz 2>&1 | tee -a $LOGFILE
+tar xzf node-v17.3.0-linux-armv6l.tar.gz 2>&1 | tee -a $LOGFILE
+sudo cp -R ./node-v17.3.0-linux-armv6l /usr/local
 
 cd ~/Downloads
 wget https://raw.githubusercontent.com/pappavis/thescript/master/welkom1.sh 2>&1 | tee -a $LOGFILE
