@@ -234,10 +234,7 @@ else
 	fi
 fi
 
-sudo apt remove node npm -y 2>&1 | tee -a $LOGFILE
-sudo apt autoclean -y 2>&1 | tee -a $LOGFILE
-sudo apt autoremove -y  2>&1 | tee -a $LOGFILE
-sudo apt install npm -y 2>&1 | tee -a $LOGFILE
+./bash ./installNodeJS.sh
 
 cd ~/Downloads
 wget https://raw.githubusercontent.com/pappavis/thescript/master/welkom1.sh 2>&1 | tee -a $LOGFILE
