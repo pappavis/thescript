@@ -219,7 +219,7 @@ _tg_conf=$('[[outputs.influxdb]] \
   ')
 echo $_tg_conf >> /etc/telegraf/telegraf.conf
 sudo service telegraf restart
-
+sudo service telegraf status 2>&1 | tee -a $LOGFILE
 
 cd ~/Downloads
 echo "Motorola 68000 emulatie in C, voor de lol."
@@ -229,8 +229,8 @@ make
 
 echo "* Installeren Docker"
 cd ~/Downloads
-curl -fsSL https://get.docker.com  -o get-docker.sh
-sudo sh get-docker.sh
+curl -fsSL https://get.docker.com  -o get-docker.sh 2>&1 | tee -a $LOGFILE
+sudo sh get-docker.sh 2>&1 | tee -a $LOGFILE
 sudo usermod -aG docker $USER
 
 echo "* Installeren rpi-clone"
@@ -241,9 +241,9 @@ unzip master.zip && mv rpi-clone-master rpi-clone
 sudo cp rpi-clone/rpi-clone* /usr/local/sbin
 rm -rf rpi-clone master.zip
 
-echo "* Installeer auto update als crontab taak"
+echo "* Installeer auto update als crontab taak" 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
-wget https://raw.githubusercontent.com/pappavis/thescript/master/autoupdate.sh
+wget https://raw.githubusercontent.com/pappavis/thescript/master/autoupdate.sh 2>&1 | tee -a $LOGFILE
 chmod +x ./autoupdate.sh
 sudo mv ./autoupdate.sh /usr/local/bin
 mkdir ~/logs
@@ -251,16 +251,16 @@ touch ~/logs/cronlog.txt
 echo "0 0 * * SAT sh /usr/local/bin/autoupdate.sh 2>/home/pi/logs/cronlog.txt" | sudo tee -a /etc/crontab
 sudo service cron restart
 
-echo "* installeren Wireguard VPN"
+echo "* installeren Wireguard VPN" 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
-sudo apt install wireguard raspberrypi-kernel-headers -y
+sudo apt install wireguard raspberrypi-kernel-headers -y 2>&1 | tee -a $LOGFILE
 echo "deb http://deb.debian.org/debian/ unstable main" | sudo tee --append /etc/apt/sources.list.d/unstable.list
 sudo apt update -y
 sudo apt install dirmngr -y
 wget -O - https://ftp-master.debian.org/keys/archive-key-$(lsb_release -sr).asc | sudo apt-key add -
 printf 'Package: *\nPin: release a=unstable\nPin-Priority: 150\n' | sudo tee --append /etc/apt/preferences.d/limit-unstable
 sudo apt update -y
-sudo apt install wireguard -y
+sudo apt install wireguard -y 2>&1 | tee -a $LOGFILE
 sudo systemctl enable wg-quick@wg0
 
 
@@ -296,8 +296,8 @@ sudo touch /usr/local/share/teamspeak3-server_linux_x86/.ts3server_license_accep
 sudo service teamspeak restart
 ## ./ts3server  2>&1 & | tee -a $LOGFILE
 
-printstatus "Installeren nukkit Minecraft lokale server"
-sudo apt install -y default-jdk
+printstatus "Installeren nukkit Minecraft lokale server" 2>&1 | tee -a $LOGFILE
+sudo apt install -y default-jdk 2>&1 | tee -a $LOGFILE
 mkdir ~/Downloads
 cd ~/Downloads
 wget https://raw.githubusercontent.com/pappavis/thescript/master/nukkitminecraft.service
@@ -320,15 +320,15 @@ done
 sudo chmod +rw /dev/uinput
 sudo usermod -aG input pi
 cd ~/Downloads
-wget https://raw.githubusercontent.com/pappavis/thescript/master/steamlink.service
+wget https://raw.githubusercontent.com/pappavis/thescript/master/steamlink.service 2>&1 | tee -a $LOGFILE
 sudo mv ./steamlink.service /etc/systemd/system
 sudo systemctl enable steamlink.service
 sudo touch /etc/profile.d/steam.sh
-wget https://steamcdn-a.akamaihd.net/client/installer/steam.deb
+wget https://steamcdn-a.akamaihd.net/client/installer/steam.deb 2>&1 | tee -a $LOGFILE
 sudo dpkg -i ./steam.deb
 sudo rm -rf ./steam.deb
 sudo touch  /etc/profile.d/steam.sh
-echo 'export STEAMOS=1' | sudo tee -a /etc/profile.d/steam.sh
+echo 'export STEAMOS=1' | sudo tee -a /etc/profile.d/steam.sh 2>&1 | tee -a $LOGFILE
 echo 'export STEAM_RUNTIME=1' | sudo tee -a /etc/profile.d/steam.sh
 sudo service steamlink status
 
