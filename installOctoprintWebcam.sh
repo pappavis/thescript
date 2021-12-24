@@ -9,13 +9,12 @@ for addonnodes in subversion libjpeg62-turbo-dev imagemagick ffmpeg libv4l-dev c
 done
 
 
-echo "\nStart octprint webcam install op $_hostname\n"
+echo "\nStart octprint webcam install op $_hostname\n" 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
-git clone https://github.com/jacksonliam/mjpg-streamer.git
+git clone https://github.com/jacksonliam/mjpg-streamer.git 2>&1 | tee -a $LOGFILE
 cd ~/Downloads/mjpg-streamer/mjpg-streamer-experimental
 export LD_LIBRARY_PATH=.
-make
-echo "Octprint webcam install gereed."
-echo "Octprint webcam streaming op http://$_hostname.local:8080/?action=stream"
+make 2>&1 | tee -a $LOGFILE
+echo "Octprint webcam streaming op http://$_hostname.local:8080/?action=stream" 2>&1 | tee -a $LOGFILE
 ./mjpg_streamer -i "./input_uvc.so -y" -o "./output_http.so" 
 sudo service octoprint restart
