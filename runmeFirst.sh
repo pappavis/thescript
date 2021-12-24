@@ -244,12 +244,17 @@ chmod +x ./welkom1.sh
 sudo mv ./welkom1.sh /usr/local/bin/welkom1
 welkom1 2>&1 | tee -a $LOGFILE
 
+sudo mkdir /usr/local/share/ssh_welkom
+sudo touch /usr/local/share/ssh_welkom/ssh_welkom.txt
+sudo sed -i -e '/#Banner none/s/none/\/usr/local/share/ssh_welkom/ssh_welkom.txt/' /etc/ssh/sshd_config
+sudo service ssh restart
+
 echo ""
-echo "Je kunt nu REBOOT, daarna ./installVerzamelupdates.sh draaien"
+echo "Je kunt nu HERSTART, daarna ./installVerzamelupdates.sh draaien" 2>&1 | tee -a $LOGFILE
 
 ## neofetch
-lsblk
-cd $_pwd
+lsblk 2>&1 | tee -a $LOGFILE
+cd $_pwd 2>&1 | tee -a $LOGFILE
 ## bash ./installVerzamelupdates.sh
 
 ##bash ./setupNodered.sh
