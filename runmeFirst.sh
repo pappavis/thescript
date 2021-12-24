@@ -59,10 +59,11 @@ AQUIET="-qq"
 NQUIET="-s"
 export npm_config_loglevel=silent
 
-echo "alias ls='ls -F --color=auto'" >> ~/.bashrc
-echo "alias ll='ls -lF --color=auto'" >> ~/.bashrc
-echo "alias la='ls -lFa --color=auto'" >> ~/.bashrc
-echo "alias l='ls -F --color=auto'" >> ~/.bashrc
+echo "Instellen alias voor 'ls'"   2>&1 | tee -a $LOGFILE
+echo "alias ls='ls -F --color=auto'" 2>&1 | sudo tee -a /etc/bash.bashrc
+echo "alias ll='ls -lF --color=auto'"  2>&1 | sudo tee -a /etc/bash.bashrc
+echo "alias la='ls -lFa --color=auto'"  2>&1 | sudo tee -a /etc/bash.bashrc
+echo "alias l='ls -F --color=auto'"  2>&1 | sudo tee -a /etc/bash.bashrc
 
 # install sudo on devices without it
 [ ! -x /usr/bin/sudo ] && apt-get $AQUIET -y update > /dev/null 2>&1 && apt-get $AQUIET -y install sudo 2>&1 | tee -a $LOGFILE
@@ -242,7 +243,7 @@ cd ~/Downloads
 wget https://raw.githubusercontent.com/pappavis/thescript/master/welkom1.sh 2>&1 | tee -a $LOGFILE
 chmod +x ./welkom1.sh
 sudo mv ./welkom1.sh /usr/local/bin/welkom1
-welkom1 2>&1 | tee -a $LOGFILE
+echo "welkom1" 2>&1 | sudo tee -a /etc/bash.bashrc
 
 sudo mkdir /usr/local/share/ssh_welkom
 sudo touch /usr/local/share/ssh_welkom/ssh_welkom.txt
