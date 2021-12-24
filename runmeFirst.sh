@@ -190,50 +190,8 @@ sudo make
 cd ~/Downloads/
 sudo rm -rf ./btop_install
 
-printstatus "NodeJS installeren"
-
-cd /home/pi/Downloads
-git clone https://github.com/node-red/linux-installers 2>&1 | tee -a $LOGFILE
-cd /home/pi/Downloads/linux-installers/pibuild
-bash ./node-red-pi-install.sh 2>&1 | tee -a $LOGFILE
-cd /home/pi/Downloads
-rm -rf  /home/pi/Download/linux-installers
-sudo apt autoclean -y
-sudo apt autoremove -y
-
-if [ $(nproc) == 1 ]; then
-	printstatus "Pi zero WH: bijwerken van NodeJS op een PiZeroW" 2>&1 | tee -a $LOGFILE
-	
-	cd /home/pi/Downloads	
-	wget https://nodejs.org/dist/v17.2.0/node-v17.2.0.tar.gz 2>&1 | tee -a $LOGFILE
-	tar xzf ./node-v17.2.0.tar.gz
-	cd ./node-v17.2.0
-	make clean
-	./configure | tee -a $LOGFILE
-	make -j$(nproc) | tee -a $LOGFILE
-	sudo make install | tee -a $LOGFILE
-	
-	cd ..
-	rm -rf node
-	cd /home/pi/.node-red
-
-	printstatus  "NodeJS build en install afgerond."
-else
-	if [ $(nproc) >= 4 ]; then
-
-		printstatus "Pi3,4: laatste versie installeren van NodeJS en NPM" 2>&1 | tee -a $LOGFILE
-		cd /home/pi/Downloads
-		wget https://nodejs.org/download/release/latest-v17.x/node-v17.3.0-linux-armv7l.tar.gz 2>&1 | tee -a $LOGFILE
-		tar xzf ./node-v17.3.0-linux-armv7l.tar.gz | tee -a $LOGFILE
-		sudo cp -R -v ./node-v17.3.0-linux-armv7l/* /usr/local/
-		sudo chown pi:pi -R /usr/local/lib/node_modules/
-		rm -rf ./node-v17.3.0-linux-armv7l*
-		printstatus "Installatie NodeJS: $(node -v) en npm $(npm -v) afgerond." 2>&1 | tee -a $LOGFILE
-
-		cd /home/pi/.node-red
-		echo "y\n" | bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
-	fi
-fi
+printstatus "NodeJS installeren" 2>&1 | tee -a $LOGFILE
+sudo bash ./installNodeJS.sh 2>&1 | tee -a $LOGFILE
 
 echo "Installeer Nodered en NodeJS" 2>&1 | tee -a $LOGFILE
 bash ./installNodeJS.sh
