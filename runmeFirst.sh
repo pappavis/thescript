@@ -214,7 +214,7 @@ echo "Logmap aangemaakt $logdir1" 2>&1 | tee -a $LOGFILE
 
 cd $_pwd
 echo "toevoegen printstatus() aan /etc/bash.bashrc" 2>&1 | tee -a $LOGFILE
-echo ./installNutsfuncties.sh | sudo tee -a /etc/bash.bashrc 2>&1 | tee -a $LOGFILE
+cat ./installNutsfuncties.sh | sudo tee -a /etc/bash.bashrc 2>&1 | tee -a $LOGFILE
 
 ## neofetch
 lsblk 2>&1 | tee -a $LOGFILE
