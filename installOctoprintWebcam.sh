@@ -24,6 +24,11 @@ rm -rf ~/Downloads/mjpg-streamer 2>&1 | tee -a $LOGFILE
 mkdir /tmp/mjpg_stream 2>&1 | tee -a $LOGFILE
 sudo usermod -aG video pi 2>&1 | tee -a $LOGFILE
 
+webcamInfo=$(vcgencmd get_camera)
+
+sudo raspi-gpio get 2>&1 | tee -a $LOGFILE 
+
+echo "Webcam info: $webcamInfo" 2>&1 | tee -a $LOGFILE
 echo "MJPG stream versie: $(mjpg_streamer -v)" 2>&1 | tee -a $LOGFILE
 
 MJPGtestBestand="/temp/mjpg_stream/test_mjpg_streamer-`date +%Y-%m-%d_%Hh%Mm`.jpg"
