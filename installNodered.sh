@@ -16,8 +16,6 @@ LOGFILE=$HOME/logs/installNodered-`date +%Y-%m-%d_%Hh%Mm`.log
 
 mkdir ~/logs
 
-bash ./installNodeJS.sh
-
 printstatus  "**Installer en node-red en modules"
 mkdir /home/pi/Downloads
 cd ~
