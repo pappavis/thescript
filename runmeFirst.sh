@@ -194,7 +194,7 @@ printstatus "NodeJS installeren" 2>&1 | tee -a $LOGFILE
 sudo bash ./installNodeJS.sh 2>&1 | tee -a $LOGFILE
 
 echo "Installeer Nodered en NodeJS" 2>&1 | tee -a $LOGFILE
-bash ./installNodeJS.sh
+bash ./installNodeJS.sh 2>&1 | tee -a $LOGFILE
 echo "Installatie NodeJS $(node -v) en NPN $(npm -v) afgerond." 2>&1 | tee -a $LOGFILE
 
 cd ~/Downloads
@@ -211,6 +211,7 @@ sudo service ssh restart
 logdir1=/home/pi/logs
 (mkdir $logdir1)
 echo "Logmap aangemaakt $logdir1" 2>&1 | tee -a $LOGFILE
+
 
 cd $_pwd
 echo "toevoegen printstatus() aan /etc/bash.bashrc" 2>&1 | tee -a $LOGFILE
