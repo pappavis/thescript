@@ -35,7 +35,7 @@ echo "NodeJS opnieuw installeren." 2>&1 | tee -a $LOGFILE
 
 cd ~/Downloads
 if [ $(nproc) > 0 ]; then
-	tkst1 = "NodeJS  installeren op een " 
+	tkst1="NodeJS  installeren op een " 
 	if [ $(nproc) > 0 ]; then
 		echo "$tkst1 Pi Zero" 2>&1 | tee -a $LOGFILE
 	else
