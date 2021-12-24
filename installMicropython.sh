@@ -1,8 +1,15 @@
-LOGFILE=$HOME/logs/installPartDB-`date +%Y-%m-%d_%Hh%Mm`.log
+LOGFILE=$HOME/logs/installMicropython-`date +%Y-%m-%d_%Hh%Mm`.log
 
 echo "Start Micropython installatie"  2>&1 | tee -a $LOGFILE
 # origineel --> https://www.raspberrypi.org/forums/viewtopic.php?t=191744
-sudo apt-get install -y git build-essential libffi-dev
+for addonnodes in git build-essential libffi-dev ; do
+  echo " "
+  echo " "
+  echo "Installeren micropython benodigheden: ${addonnodes}"
+  echo " "
+  sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
+
 cd ~
 git clone https://github.com/micropython/micropython.git 2>&1 | tee -a $LOGFILE
 cd ~ && cd micropython/mpy-cross
