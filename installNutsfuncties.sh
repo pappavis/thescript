@@ -1,3 +1,22 @@
+clean_stdin()
+{
+    while read -r -t 0; do
+        read -n 256 -r -s
+    done
+}
+
+stopit=0
+other=0
+yes=0
+nohelp=0
+hideother=0
+
+
+CPU_TEMP_CURRENT='Unknown'
+CPU_TEMP_PRINT='Unknown'
+ACTIVECORES=$(grep -c processor /proc/cpuinfo)
+
+#Array to store possible locations for temp read.
 aFP_TEMPERATURE=(
     '/sys/class/thermal/thermal_zone0/temp'
     '/sys/devices/virtual/thermal/thermal_zone1/temp'
@@ -34,6 +53,11 @@ Obtain_Cpu_Temp(){
             break
         fi
     done
+}
+
+printl() {
+	printf $1
+	echo -e $1 >> $LOGFILE
 }
 
 printstatus() {
