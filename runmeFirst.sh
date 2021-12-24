@@ -249,6 +249,10 @@ sudo touch /usr/local/share/ssh_welkom/ssh_welkom.txt
 sudo sed -i -e '/#Banner none/s/none/\/usr/local/share/ssh_welkom/ssh_welkom.txt/' /etc/ssh/sshd_config
 sudo service ssh restart
 
+logdir1=/home/pi/logs
+(mkdir $logdir1)
+echo "Logmap aangemaakt $logdir1" 2>&1 | tee -a $LOGFILE
+
 echo ""
 echo "Je kunt nu HERSTART, daarna ./installVerzamelupdates.sh draaien" 2>&1 | tee -a $LOGFILE
 
