@@ -21,11 +21,12 @@ sudo cp ./mjpg_streamer /usr/local/bin 2>&1 | tee -a $LOGFILE
 sudo cp ./output_http.so input_file.so /usr/local/lib/ 2>&1 | tee -a $LOGFILE
 sudo cp -R ./www /usr/local/www 2>&1 | tee -a $LOGFILE
 rm -rf ~/Downloads/mjpg-streamer 2>&1 | tee -a $LOGFILE
-mkdir /tmp/mjpg_stream
+mkdir /tmp/mjpg_stream 2>&1 | tee -a $LOGFILE
+sudo usermod -aG video pi 2>&1 | tee -a $LOGFILE
 
-MJPGtestBestand="/temp/mjpg_stream/test_mjpg_streamer-`date +%Y-%m-%d_%Hh%Mm`.log"
+MJPGtestBestand="/temp/mjpg_stream/test_mjpg_streamer-`date +%Y-%m-%d_%Hh%Mm`.jpg"
 echo "MJPG voorbeeld foto maken in  $MJPGtestBestand" 2>&1 | tee -a $LOGFILE
-raspistill --nopreview -w 640 -h 480 -q 5 -o $MJPGtestBestand -tl 100 -t 9999999 -th 0:0:0 & & 2>&1 | tee -a $LOGFILE
+raspistill --nopreview -w 640 -h 480 -q 5 -o $MJPGtestBestand -tl 100 -t 9999999 -th 0:0:0 2>&1 | tee -a $LOGFILE &
 
 echo "Octprint webcam streaming instellen: http://$_hostname.local:8080/?action=stream" 2>&1 | tee -a $LOGFILE
 sudo service octoprint restart
