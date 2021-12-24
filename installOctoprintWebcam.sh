@@ -29,4 +29,4 @@ echo "MJPG voorbeeld foto maken in  $MJPGtestBestand" 2>&1 | tee -a $LOGFILE
 raspistill --nopreview -w 640 -h 480 -q 5 -o $MJPGtestBestand -tl 100 -t 9999999 -th 0:0:0 2>&1 | tee -a $LOGFILE &
 
 echo "Octprint webcam streaming instellen: http://$_hostname.local:8080/?action=stream" 2>&1 | tee -a $LOGFILE
-sudo service octoprint restart
+sudo service octoprint restart 2>&1 | tee -a $LOGFILE
