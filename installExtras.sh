@@ -76,7 +76,7 @@ echo "deb https://repos.influxdata.com/debian dists buster stable" | sudo tee /e
 echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee /etc/apt/sources.list.d/grafana.list
 sudo apt update -y 2>&1 | tee -a $LOGFILE
 
-echo "** installeer minimale Raspbian desktop."
+echo "** installeer minimale Raspbian desktop." 2>&1 | tee -a $LOGFILE
 for addonnodes in raspberrypi-ui-mods xinit xserver-xorg xrdp   ; do
   echo " "
   echo " "
@@ -100,7 +100,7 @@ xset s 0
 xset -dpms
 
 
-echo "** installeer X-Apps zoals KVM."
+echo "** installeer X-Apps zoals KVM." 2>&1 | tee -a $LOGFILE
 for addonnodes in raspberrypi-ui-mods xinit xserver-xorg xrdp  remmina barrier thonny kodi chromium code tightvncserver audacity rpi-imager piclone guvcview ; do
   echo " "
   echo " "
@@ -135,7 +135,7 @@ rm ./amiberry-v4.1.6-rpi3-sdl2-32bit-rpios.zip
 sudo mv ./amiberry-rpi3-sdl2-32bit /usr/local/games
 sudo ln -s /usr/local/games/amiberry-rpi3-sdl2-32bit/amiberry /usr/local/bin/amiberry
 
-echo "Installeren Grafana"
+echo "Installeren Grafana" 2>&1 | tee -a $LOGFILE
 wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
 echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list 2>&1 | tee -a $LOGFILE
 sudo apt-get update -y
@@ -264,7 +264,7 @@ for addonnodes in gcc-arm-linux-gnueabihf libc6:armhf libncurses5:armhf libstdc+
   echo " "
   sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
-git clone https://github.com/ptitSeb/box86
+git clone https://github.com/ptitSeb/box86 2>&1 | tee -a $LOGFILE
 cd ./box86
 mkdir build
 cd build
@@ -291,7 +291,7 @@ printstatus "Installeren nukkit Minecraft lokale server" 2>&1 | tee -a $LOGFILE
 sudo apt install -y default-jdk 2>&1 | tee -a $LOGFILE
 mkdir ~/Downloads
 cd ~/Downloads
-wget https://raw.githubusercontent.com/pappavis/thescript/master/nukkitminecraft.service
+wget https://raw.githubusercontent.com/pappavis/thescript/master/nukkitminecraft.service 2>&1 | tee -a $LOGFILE
 sudo mv ./nukkitminecraft.service /etc/systemd/system
 sudo systemctl enable nukkitminecraft.service
 cd /usr/local/bin
@@ -309,19 +309,19 @@ for addonnodes in libappindicator1 libnm0 libtcmalloc-minimal4 steamlink steam-d
 done
 #echo 'gpu_mem=128' | sudo tee -a /boot/config.txt | tee -a $LOGFILE
 sudo chmod +rw /dev/uinput
-sudo usermod -aG input pi
+sudo usermod -aG input pi 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
 wget https://raw.githubusercontent.com/pappavis/thescript/master/steamlink.service 2>&1 | tee -a $LOGFILE
 sudo mv ./steamlink.service /etc/systemd/system
 sudo systemctl enable steamlink.service
 sudo touch /etc/profile.d/steam.sh
 wget https://steamcdn-a.akamaihd.net/client/installer/steam.deb 2>&1 | tee -a $LOGFILE
-sudo dpkg -i ./steam.deb
+sudo dpkg -i ./steam.deb 2>&1 | tee -a $LOGFILE
 sudo rm -rf ./steam.deb
 sudo touch  /etc/profile.d/steam.sh
 echo 'export STEAMOS=1' | sudo tee -a /etc/profile.d/steam.sh 2>&1 | tee -a $LOGFILE
 echo 'export STEAM_RUNTIME=1' | sudo tee -a /etc/profile.d/steam.sh
-sudo service steamlink status
+sudo service steamlink status 2>&1 | tee -a $LOGFILE
 
 echo "* Installeren muble VoIP" 2>&1 | tee -a $LOGFILE
 for addonnodes in mumble-server mumble ; do
@@ -333,7 +333,7 @@ for addonnodes in mumble-server mumble ; do
 done
 sudo mkdir /var/log/mumble-server
 sudo touch /var/log/mumble-server/mumble-server.log
-sudo service mumble-server status
+sudo service mumble-server status 2>&1 | tee -a $LOGFILE
 
 echo "Instellen wekelijks systeem bijgewerkt" 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
