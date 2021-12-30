@@ -217,6 +217,14 @@ cd $_pwd
 echo "toevoegen printstatus() aan /etc/bash.bashrc" 2>&1 | tee -a $LOGFILE
 cat ./installNutsfuncties.sh | sudo tee -a /etc/bash.bashrc
 
+cd ~/Downloads
+wget https://raw.githubusercontent.com/pappavis/thescript/master/crontab.default 2>&1 | tee -a $LOGFILE
+sudo mv ./crontab.default /etc/crontab 2>&1 | tee -a $LOGFILE
+sudo mkdir /etc/cron.daily
+sudo mkdir /etc/cron.weekly
+sudo mkdir /etc/cron.monthly
+sudo service cron restart
+
 ## neofetch
 lsblk 2>&1 | tee -a $LOGFILE
 cd $_pwd 2>&1 | tee -a $LOGFILE
