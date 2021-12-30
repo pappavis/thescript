@@ -91,6 +91,9 @@ cd /usr/local/bin
 sudo wget https://raw.githubusercontent.com/pappavis/thescript/master/demo/herstartmelding.py
 sudo chmod +x /usr/local/bin/herstartmelding.py
 sudo sed -i -e '/exit 0/s/exit 0/herstartmelding.py \n exit 0/' /etc/rc.local
+cd /etc/cron.daily
+sudo ln -s ./herstartmelding.py /usr/local/bin/herstartmelding.py 
+
 cd $_pwd
 
 pip install --upgrade RPi.GPIO &
