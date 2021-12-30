@@ -94,5 +94,6 @@ sudo sed -i -e '/exit 0/s/exit 0/herstartmelding.py \n exit 0/' /etc/rc.local
 cd $_pwd
 
 pip install --upgrade RPi.GPIO &
+pip uninstall --no-input serial
 
 cd $_pwd
