@@ -1,3 +1,4 @@
+#!/bin/bash
 echo '** Installeer pythonlibs. je moet eerst een virtualenv activeer!!' 
 LOGFILE=$HOME/logs/$0-`date +%Y-%m-%d_%Hh%Mm`.log
 _pwd=$(pwd)
@@ -54,19 +55,19 @@ printstatus() {
 }
 
 
-python3 -m ensurepip
-python3 -m pip install virtualenv
+python3 -m ensurepip 2>&1 | tee -a $LOGFILE
+python3 -m pip install virtualenv 2>&1 | tee -a $LOGFILE
 ~/.local/bin/virtualenv ~/venv/venv3.7/
 source ~/venv/venv3.7/bin/activate
 
-sudo apt install -y unixodbc-dev
+sudo apt install -y unixodbc-dev 2>&1 | tee -a $LOGFILE
 
 for addonnodes in  unixodbc-dev wiringpi python3-opencv ; do
     printstatus "Installeren: \"${addonnodes}\""
     pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
-python -m ensurepip 
+python -m ensurepip  2>&1 | tee -a $LOGFILE
 
 for addonnodes in  libatlas-base-dev libwebp-dev   ; do
     printstatus "Installeren OpenCV vereisten: \"${addonnodes}\""
@@ -81,14 +82,14 @@ for addonnodes in pip setuptools wheel openpyxl o365 ttn qrcode pillow sqlalchem
     pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
   done
 
-echo "doen ook --> pip uninstall serial"
+echo "doen ook --> pip uninstall serial" 2>&1 | tee -a $LOGFILE
 
-printstatus  "Installeer Dataplicity.com"
-curl -s https://www.dataplicity.com/jfjro6ak.py | sudo python
+printstatus  "Installeer Dataplicity.com" 2>&1 | tee -a $LOGFILE
+curl -s https://www.dataplicity.com/jfjro6ak.py | sudo python 2>&1 | tee -a $LOGFILE
 
-printstatus  "Installeer herstartmelding.py"
+printstatus  "Installeer herstartmelding.py" 2>&1 | tee -a $LOGFILE
 cd /usr/local/bin
-sudo wget https://raw.githubusercontent.com/pappavis/thescript/master/demo/herstartmelding.py
+sudo wget https://raw.githubusercontent.com/pappavis/thescript/master/demo/herstartmelding.py 2>&1 | tee -a $LOGFILE
 sudo chmod +x /usr/local/bin/herstartmelding.py
 sudo sed -i -e '/exit 0/s/exit 0/herstartmelding.py \n exit 0/' /etc/rc.local
 cd /etc/cron.daily
@@ -96,7 +97,7 @@ sudo ln -s ./herstartmelding.py /usr/local/bin/herstartmelding.py
 
 cd $_pwd
 
-pip install --upgrade RPi.GPIO &
-pip uninstall --no-input serial
+pip install --upgrade RPi.GPIO  2>&1 | tee -a $LOGFILE &
+pip uninstall --no-input serial  2>&1 | tee -a $LOGFILE
 
-cd $_pwd
+printstatus "installPythonLibs.sh is afgerond"  2>&1 | tee -a $LOGFILE
