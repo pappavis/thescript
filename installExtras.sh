@@ -1,3 +1,4 @@
+#!/bin/bash
 _hn1=$(hostname)
 _pwd=$(pwd)
 LOGFILE=$HOME/logs/installExtras-`date +%Y-%m-%d_%Hh%Mm`.log
@@ -41,13 +42,13 @@ echo "phpmyadmin phpmyadmin/mysql/admin-pass password $ROOT_PASS" | sudo debconf
 echo "phpmyadmin phpmyadmin/mysql/app-pass password $APP_DB_PASS" | sudo debconf-set-selections
 echo "phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2" | sudo  debconf-set-selections
 
-sudo apt-get install -y phpmyadmin
+sudo apt-get install -y phpmyadmin 2>&1 | tee -a $LOGFILE
 
 sudo ln -s /usr/share/phpmyadmin /var/www/html
 
 cd /var/www/html 
-sudo git clone https://github.com/phpsysinfo/phpsysinfo.git
-sudo cp /var/www/html/phpsysinfo/phpsysinfo.ini.new /var/www/html/phpsysinfo/phpsysinfo.ini
+sudo git clone https://github.com/phpsysinfo/phpsysinfo.git 2>&1 | tee -a $LOGFILE
+sudo cp /var/www/html/phpsysinfo/phpsysinfo.ini.new /var/www/html/phpsysinfo/phpsysinfo.ini 2>&1 | tee -a $LOGFILE
 
 
 for addonnodes in  firebird-server postgresql  ; do
@@ -62,7 +63,7 @@ done
 cd ~/Downloads/
 git clone --depth 1 https://code.videolan.org/videolan/x264 2>&1 | tee -a $LOGFILE
 cd ~/Downloads/x264
-./configure --host=arm-unknown-linux-gnueabi --enable-static --disable-opencl
+./configure --host=arm-unknown-linux-gnueabi --enable-static --disable-opencl 2>&1 | tee -a $LOGFILE
 make -j$(nproc)
 sudo make install 2>&1 | tee -a $LOGFILE
 rm -rf ~/Downloads/x264
@@ -73,7 +74,7 @@ curl -sL https://packages.grafana.com/gpg.key | sudo apt-key add -
 curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -
 echo "deb https://repos.influxdata.com/debian dists buster stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
 echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee /etc/apt/sources.list.d/grafana.list
-sudo apt update -y
+sudo apt update -y 2>&1 | tee -a $LOGFILE
 
 echo "** installeer minimale Raspbian desktop."
 for addonnodes in raspberrypi-ui-mods xinit xserver-xorg xrdp   ; do
@@ -108,8 +109,8 @@ for addonnodes in raspberrypi-ui-mods xinit xserver-xorg xrdp  remmina barrier t
   sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
-sudo adduser xrdp ssl-cert 
-systemctl show -p SubState --value xrdp
+sudo adduser xrdp ssl-cert  2>&1 | tee -a $LOGFILE
+systemctl show -p SubState --value xrdp 2>&1 | tee -a $LOGFILE
 
 cd $_pwd
 echo "* Doen ook --> sudo nano /etc/samba/smb.conf -y" 2>&1 | tee -a $LOGFILE
@@ -179,9 +180,9 @@ sudo wget -a $LOGFILE $AQUIET https://www.scargill.net/iot/reset.css -O /var/www
 
 cd ~/Downloads
 echo "Motorola 68000 emulatie in Python, voor de lol." 2>&1 | tee -a $LOGFILE
-git clone https://github.com/Chris-Johnston/Easier68k
+git clone https://github.com/Chris-Johnston/Easier68k 2>&1 | tee -a $LOGFILE
 cd ./Easier68k
-pip install -r requirements.txt
+pip install -r requirements.txt 2>&1 | tee -a $LOGFILE
 ehco "je kunt nu: python ./cli.py"
 
 cd ~/Downloads
@@ -201,7 +202,7 @@ done
 
 sudo /bin/systemctl enable grafana-server
 sudo /bin/systemctl start grafana-server
-echo "grafana-server is geïnstalleerd"
+echo "grafana-server is geïnstalleerd" 2>&1 | tee -a $LOGFILE
 sudo usermod -a -G video telegraf
 
 
@@ -217,39 +218,29 @@ _tg_conf=$('[[outputs.influxdb]] \
    username = "telegrafuser" \
    password = "Telegr@f" \
   ')
-echo $_tg_conf >> /etc/telegraf/telegraf.conf
+echo $_tg_conf >> /etc/telegraf/telegraf.conf 2>&1 | tee -a $LOGFILE
 sudo service telegraf restart
 sudo service telegraf status 2>&1 | tee -a $LOGFILE
 
 cd ~/Downloads
-echo "Motorola 68000 emulatie in C, voor de lol."
-git clone https://github.com/kstenerud/Musashi
+echo "Motorola 68000 emulatie in C, voor de lol." 2>&1 | tee -a $LOGFILE
+git clone https://github.com/kstenerud/Musashi 2>&1 | tee -a $LOGFILE
 cd Musashi
-make
+make 2>&1 | tee -a $LOGFILE
 
-echo "* Installeren Docker"
+echo "* Installeren Docker" 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
 curl -fsSL https://get.docker.com  -o get-docker.sh 2>&1 | tee -a $LOGFILE
 sudo sh get-docker.sh 2>&1 | tee -a $LOGFILE
 sudo usermod -aG docker $USER
 
-echo "* Installeren rpi-clone"
+echo "* Installeren rpi-clone" 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
-sudo apt install -y git
-wget https://github.com/billw2/rpi-clone/archive/master.zip
-unzip master.zip && mv rpi-clone-master rpi-clone
+sudo apt install -y git 2>&1 | tee -a $LOGFILE
+wget https://github.com/billw2/rpi-clone/archive/master.zip 2>&1 | tee -a $LOGFILE
+unzip master.zip && mv rpi-clone-master rpi-clone 2>&1 | tee -a $LOGFILE
 sudo cp rpi-clone/rpi-clone* /usr/local/sbin
 rm -rf rpi-clone master.zip
-
-echo "* Installeer auto update als crontab taak" 2>&1 | tee -a $LOGFILE
-cd ~/Downloads
-wget https://raw.githubusercontent.com/pappavis/thescript/master/autoupdate.sh 2>&1 | tee -a $LOGFILE
-chmod +x ./autoupdate.sh
-sudo mv ./autoupdate.sh /usr/local/bin
-mkdir ~/logs
-touch ~/logs/cronlog.txt
-echo "0 0 * * SAT sh /usr/local/bin/autoupdate.sh 2>/home/pi/logs/cronlog.txt" | sudo tee -a /etc/crontab
-sudo service cron restart
 
 echo "* installeren Wireguard VPN" 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
@@ -344,8 +335,19 @@ sudo mkdir /var/log/mumble-server
 sudo touch /var/log/mumble-server/mumble-server.log
 sudo service mumble-server status
 
+echo "Instellen wekelijks systeem bijgewerkt" 2>&1 | tee -a $LOGFILE
+cd ~/Downloads
+wget https://raw.githubusercontent.com/pappavis/thescript/master/autoupdate.sh  2>&1 | tee -a $LOGFILE
+chmod +x ./autoupdate.sh
+sudo mv ./autoupdate.sh /etc/cron.weekly
+sudo service cron restart
+
+#echo "* Installeer auto update als crontab taak" 2>&1 | tee -a $LOGFILE
+#touch ~/logs/cronlog.txt
+#echo "0 0 * * SAT sh /usr/local/bin/autoupdate.sh 2>/home/pi/logs/cronlog.txt" | sudo tee -a /etc/crontab
+#sudo service cron restart
 
 cd $_pwd
 
-echo "Virtuahlere draadloos Wifi is geinstalleerd."
-echo "* Install extras is afgerond. Je kunt nu herstarten."
+echo "Virtualhere draadloos Wifi is geinstalleerd." 2>&1 | tee -a $LOGFILE
+echo "* Install extras is afgerond. Je kunt nu herstarten." 2>&1 | tee -a $LOGFILE
