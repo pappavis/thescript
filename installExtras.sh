@@ -343,12 +343,7 @@ sudo mkdir /var/log/mumble-server
 sudo touch /var/log/mumble-server/mumble-server.log
 sudo service mumble-server status 2>&1 | tee -a $LOGFILE
 
-echo "Instellen Retropie" 2>&1 | tee -a $LOGFILE
-cd ~/Downloads
-git clone --depth=1 https://github.com/RetroPie/RetroPie-Setup.git 2>&1 | tee -a $LOGFILE
-cd ./RetroPie-Setup
-sudo ./retropie_setup.sh 2>&1 | tee -a $LOGFILE
-
+cd $_pwd
 
 echo "Instellen wekelijks systeem bijgewerkt" 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
@@ -361,6 +356,13 @@ sudo service cron restart
 #touch ~/logs/cronlog.txt
 #echo "0 0 * * SAT sh /usr/local/bin/autoupdate.sh 2>/home/pi/logs/cronlog.txt" | sudo tee -a /etc/crontab
 #sudo service cron restart
+
+
+echo "Instellen Retropie" 2>&1 | tee -a $LOGFILE
+cd ~/Downloads
+git clone --depth=1 https://github.com/RetroPie/RetroPie-Setup.git 2>&1 | tee -a $LOGFILE
+cd ./RetroPie-Setup
+echo "\n\n\I\n" | sudo ./retropie_setup.sh 2>&1 | tee -a $LOGFILE
 
 cd $_pwd
 
