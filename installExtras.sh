@@ -207,9 +207,9 @@ sudo usermod -a -G video telegraf
 
 echo "Installeren CommanderPi"  2>&1 | tee -a $LOGFILE
 cd ~/Downloads
-wget https://github.com/jack477/CommanderPi 2>&1 | tee -a $LOGFILE
+git clone https://github.com/jack477/CommanderPi 2>&1 | tee -a $LOGFILE
 cd ./CommanderPi
-bash ./install.sh 2>&1 | tee -a $LOGFILE
+echo "Y\n" | bash ./install.sh 2>&1 | tee -a $LOGFILE
 
 ## https://nwmichl.net/2020/07/14/telegraf-influxdb-grafana-on-raspberrypi-from-scratch/
 echo "Setup telegraf database op InfluxDB"  2>&1 | tee -a $LOGFILE
