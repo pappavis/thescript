@@ -329,6 +329,8 @@ echo 'export STEAMOS=1' | sudo tee -a /etc/profile.d/steam.sh 2>&1 | tee -a $LOG
 echo 'export STEAM_RUNTIME=1' | sudo tee -a /etc/profile.d/steam.sh
 sudo service steamlink status 2>&1 | tee -a $LOGFILE
 
+cd $_pwd
+
 echo "* Installeren muble VoIP" 2>&1 | tee -a $LOGFILE
 for addonnodes in mumble-server mumble ; do
   echo " "
@@ -340,6 +342,13 @@ done
 sudo mkdir /var/log/mumble-server
 sudo touch /var/log/mumble-server/mumble-server.log
 sudo service mumble-server status 2>&1 | tee -a $LOGFILE
+
+echo "Instellen Retropie" 2>&1 | tee -a $LOGFILE
+cd ~/Downloads
+git clone --depth=1 https://github.com/RetroPie/RetroPie-Setup.git 2>&1 | tee -a $LOGFILE
+cd ./RetroPie-Setup
+sudo ./retropie_setup.sh 2>&1 | tee -a $LOGFILE
+
 
 echo "Instellen wekelijks systeem bijgewerkt" 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
