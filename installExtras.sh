@@ -210,6 +210,7 @@ cd ~/Downloads
 git clone https://github.com/jack477/CommanderPi 2>&1 | tee -a $LOGFILE
 cd ./CommanderPi
 echo "Y\n" | bash ./install.sh 2>&1 | tee -a $LOGFILE
+rm -rf ./CommanderPi
 
 ## https://nwmichl.net/2020/07/14/telegraf-influxdb-grafana-on-raspberrypi-from-scratch/
 echo "Setup telegraf database op InfluxDB"  2>&1 | tee -a $LOGFILE
