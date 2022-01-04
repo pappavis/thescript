@@ -318,9 +318,9 @@ done
 sudo chmod +rw /dev/uinput
 sudo usermod -aG input pi 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
-wget https://raw.githubusercontent.com/pappavis/thescript/master/steamlink.service 2>&1 | tee -a $LOGFILE
-sudo mv ./steamlink.service /etc/systemd/system
-sudo systemctl enable steamlink.service
+#wget https://raw.githubusercontent.com/pappavis/thescript/master/steamlink.service 2>&1 | tee -a $LOGFILE
+#sudo mv ./steamlink.service /etc/systemd/system
+#sudo systemctl enable steamlink.service
 sudo touch /etc/profile.d/steam.sh
 wget https://steamcdn-a.akamaihd.net/client/installer/steam.deb 2>&1 | tee -a $LOGFILE
 sudo dpkg -i ./steam.deb 2>&1 | tee -a $LOGFILE
@@ -332,7 +332,7 @@ sudo service steamlink status 2>&1 | tee -a $LOGFILE
 
 cd $_pwd
 
-echo "* Installeren muble VoIP" 2>&1 | tee -a $LOGFILE
+echo "* Installeren mumble VoIP" 2>&1 | tee -a $LOGFILE
 for addonnodes in mumble-server mumble ; do
   echo " "
   echo " "
