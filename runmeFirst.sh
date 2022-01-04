@@ -228,7 +228,7 @@ sudo service cron restart
 echo "" 2>&1 | tee -a $LOGFILE
 echo "Instellen herstartmelding" 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
-wget https://raw.githubusercontent.com/pappavis/thescript/master/demo/herstartmelding.py
+wget https://raw.githubusercontent.com/pappavis/thescript/master/demo/herstartmelding.py 2>&1 | tee -a $LOGFILE
 chmod +x ./herstartmelding.py
 sudo mv ./herstartmelding.py /usr/local/bin
 sudo sed -i -e '/exit 0/s/exit 0/herstartmelding.py \&/' /etc/rc.local
