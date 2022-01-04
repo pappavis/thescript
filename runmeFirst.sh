@@ -231,7 +231,9 @@ cd ~/Downloads
 wget https://raw.githubusercontent.com/pappavis/thescript/master/demo/herstartmelding.py
 chmod +x ./herstartmelding.py
 sudo mv ./herstartmelding.py /usr/local/bin
-sudo sed -i -e '/exit 0/s/exit/herstartmelding.py\nexit/' /etc/rc.local
+sudo sed -i -e '/exit 0/s/exit 0/herstartmelding.py \&/' /etc/rc.local
+# !!Je MOET onderataand exit 0 uitvoeren!!
+echo "exit 0" 2>&1 | sudo tee -a /etc/rc.local
 
 ## neofetch
 lsblk 2>&1 | tee -a $LOGFILE
