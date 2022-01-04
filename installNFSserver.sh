@@ -36,7 +36,7 @@ sudo mkdir -p /mnt/nfs/pi07/
 sudo mkdir -p /mnt/nfs/pi08/
 sudo mkdir -p /mnt/nfs/pi09/
 
-sudo chmod 777 -R /mnt/nfs/
+#sudo chmod 777 -R /mnt/nfs/
 
 printf "\nProbeer netwerk share te mount op /mnt\n" 2>&1 | tee -a $LOGFILE
 sudo mount -t auto acer01:/home /mnt/nfs/acer01/  2>&1 | tee -a $LOGFILE &
