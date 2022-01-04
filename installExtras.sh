@@ -305,9 +305,10 @@ cd /usr/local/bin
 sudo wget -O nukkit.jar https://go.pimylifeup.com/3xsPQA/nukkit 2>&1 | tee -a $LOGFILE
 sudo service nukkitminecraft restart
 
-echo "* Installeren steampowered.com" 2>&1 | tee -a $LOGFILE
+echo "* Installeren steampowered.com zie https://pimylifeup.com/raspberry-pi-steam-client/" 2>&1 | tee -a $LOGFILE
 ## java -jar nukkit.jar &
-for addonnodes in libappindicator1 libnm0 libtcmalloc-minimal4 steamlink steam-devices ; do
+sudo apt remove -y steam-devices -y 2>&1 | tee -a $LOGFILE
+for addonnodes in libappindicator1 libnm0 libtcmalloc-minimal4 steamlink ; do
   echo " "
   echo " "
   echo "Installeren steampowered vereisten: ${addonnodes}"
@@ -318,13 +319,13 @@ done
 sudo chmod +rw /dev/uinput
 sudo usermod -aG input pi 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
-#wget https://raw.githubusercontent.com/pappavis/thescript/master/steamlink.service 2>&1 | tee -a $LOGFILE
-#sudo mv ./steamlink.service /etc/systemd/system
-#sudo systemctl enable steamlink.service
-sudo touch /etc/profile.d/steam.sh
+wget https://raw.githubusercontent.com/pappavis/thescript/master/steamlink.service 2>&1 | tee -a $LOGFILE
+sudo mv ./steamlink.service /etc/systemd/system
+sudo systemctl enable steamlink.service 2>&1 | tee -a $LOGFILE
+sudo systemctl disable steamlink.service 2>&1 | tee -a $LOGFILE
 wget https://steamcdn-a.akamaihd.net/client/installer/steam.deb 2>&1 | tee -a $LOGFILE
 sudo dpkg -i ./steam.deb 2>&1 | tee -a $LOGFILE
-sudo rm -rf ./steam.deb
+sudo rm -rf ./steam.deb 2>&1 | tee -a $LOGFILE
 sudo touch  /etc/profile.d/steam.sh
 echo 'export STEAMOS=1' | sudo tee -a /etc/profile.d/steam.sh 2>&1 | tee -a $LOGFILE
 echo 'export STEAM_RUNTIME=1' | sudo tee -a /etc/profile.d/steam.sh
