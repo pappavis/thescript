@@ -1,3 +1,4 @@
+#!/bin/bash
 _id1=$(id pi)
 _hn1=$(hostname)
 _ip1=$(hostname -I)
