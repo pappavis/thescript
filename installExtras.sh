@@ -361,9 +361,9 @@ sudo service cron restart
 cd $_pwd
 
 echo "Instellen nutsfunctie printstatus()" 2>&1 | tee -a $LOGFILE
-sudo sed -i -e '/exit 0/s/exit/##exit/' /etc/rc.local
-cat ./installNutsfuncties.sh  2>&1 | sudo  tee -a  /etc/rc.local
-echo "exit 0"  2>&1 | sudo tee -a  /etc/rc.local
+sudo sed -i -e '/exit 0/s/exit/##exit/' /etc/bash.bashrc
+cat ./installNutsfuncties.sh  2>&1 | sudo  tee -a  /etc/bash.bashrc
+echo "#exit 0"  2>&1 | sudo tee -a  /etc/bash.bashrc
 
 echo "Instellen Retropie" 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
