@@ -360,6 +360,24 @@ chmod +x ./installNFSserver.sh
 sudo mv ./installNFSserver.sh /etc/cron.daily/mountNFSservers.sh
 sudo service cron restart
 
+cd ~/Downloads
+touch ./pythonBijwerken.sh
+echo "#/bin/bash"  2>&1 | sudo tee -a ./pythonBijwerken.sh
+echo "LOGFILE=/home/pi/logs/pythonBijwerken.log"  2>&1 | sudo tee -a ./pythonBijwerken.sh
+echo "echo '' | tee -a \$LOGFILE &"  2>&1 | sudo tee -a ./pythonBijwerken.sh
+echo "echo 'Python bijwerken gestart' | tee -a \$LOGFILE &"  2>&1 | sudo tee -a ./pythonBijwerken.sh
+echo "source /home/pi/.bashrc | tee -a \$LOGFILE"  2>&1 | sudo tee -a ./pythonBijwerken.sh
+echo "mkdir /home/pi/Downloads | tee -a \$LOGFILE"  2>&1 | sudo tee -a ./pythonBijwerken.sh
+echo "git clone https://github.com/pappavis/thescript | tee -a \$LOGFILE" 2>&1 | sudo tee -a ./pythonBijwerken.sh
+echo "cd /home/pi/Downloads/thescript | tee -a \$LOGFILE"  2>&1 | sudo tee -a ./pythonBijwerken.sh
+echo "git pull | tee -a \$LOGFILE"  2>&1 | sudo tee -a ./pythonBijwerken.sh
+echo "bash /home/pi/Downloads/thescript/installPythonLibs.sh | tee -a \$LOGFILE &"  2>&1 | sudo tee -a ./pythonBijwerken.sh
+echo "bash /home/pi/Downloads/thescript/installPythonCircuitpython.sh  | tee -a \$LOGFILE &"  2>&1 | sudo tee -a ./pythonBijwerken.sh
+echo "echo '' | tee -a \$LOGFILE &"  2>&1 | sudo tee -a ./pythonBijwerken.sh
+chmod +x ./pythonBijwerken.sh
+sudo mv ./pythonBijwerken.sh /etc/cron.monthly/pythonBijwerken.sh
+sudo service cron restart
+
 #echo "* Installeer auto update als crontab taak" 2>&1 | tee -a $LOGFILE
 #touch ~/logs/cronlog.txt
 #echo "0 0 * * SAT sh /usr/local/bin/autoupdate.sh 2>/home/pi/logs/cronlog.txt" | sudo tee -a /etc/crontab
