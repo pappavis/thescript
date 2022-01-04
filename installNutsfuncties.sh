@@ -72,4 +72,4 @@ printstatus() {
 }
 
 sudo mkdir /home/pi/logs
-LOGFILE=/home/pi/logs/installExtras-`date +%Y-%m-%d_%Hh%Mm`.log
+LOGFILE=/home/pi/logs/LogPrintstatus-`date +%Y-%m-%d_%Hh%Mm`.log
