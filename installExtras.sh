@@ -353,6 +353,13 @@ chmod +x ./autoupdate.sh
 sudo mv ./autoupdate.sh /etc/cron.weekly
 sudo service cron restart
 
+echo "Instellen dagelijks NFS server mounts" 2>&1 | tee -a $LOGFILE
+cd ~/Downloads
+wget https://raw.githubusercontent.com/pappavis/thescript/master/installNFSserver.sh 2>&1 | tee -a $LOGFILE
+chmod +x ./installNFSserver.sh
+sudo mv ./installNFSserver.sh /etc/cron.daily/mountNFSservers.sh
+sudo service cron restart
+
 #echo "* Installeer auto update als crontab taak" 2>&1 | tee -a $LOGFILE
 #touch ~/logs/cronlog.txt
 #echo "0 0 * * SAT sh /usr/local/bin/autoupdate.sh 2>/home/pi/logs/cronlog.txt" | sudo tee -a /etc/crontab
