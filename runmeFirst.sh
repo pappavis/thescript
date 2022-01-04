@@ -225,6 +225,14 @@ sudo mkdir /etc/cron.weekly
 sudo mkdir /etc/cron.monthly
 sudo service cron restart
 
+echo "" 2>&1 | tee -a $LOGFILE
+echo "Instellen herstartmelding" 2>&1 | tee -a $LOGFILE
+cd ~/Downloads
+wget https://raw.githubusercontent.com/pappavis/thescript/master/demo/herstartmelding.py
+chmod +x ./herstartmelding.py
+sudo mv ./herstartmelding.py /usr/local/bin
+sudo sed -i -e '/exit 0/s/exit/herstartmelding.py\nexit/' /etc/rc.local
+
 ## neofetch
 lsblk 2>&1 | tee -a $LOGFILE
 cd $_pwd 2>&1 | tee -a $LOGFILE
