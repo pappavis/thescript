@@ -368,7 +368,7 @@ echo "chmod +x ./autoupdate.sh | tee -a \$LOGFILE"  2>&1 | sudo tee -a ./refresh
 echo "sudo mv ./autoupdate.sh /etc/cron.weekly | tee -a \$LOGFILE"  2>&1 | sudo tee -a ./refresh.sh
 echo "sudo service cron restart | tee -a \$LOGFILE"  2>&1 | sudo tee -a ./refresh.sh
 chmod +x ./refresh.sh 
-sudo mv ./refresh.sh /etc/cron.daily
+sudo mv ./refresh.sh /etc/cron.daily/refresh.sh
 sudo service cron restart
 
 cd ~/Downloads
