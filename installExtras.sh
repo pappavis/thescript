@@ -9,6 +9,7 @@ git pull
 cd ~/Downloads
 echo "Download en installeer virtualhere.com Pi 3 server & client"
 curl https://raw.githubusercontent.com/virtualhere/script/main/install_server | sudo sh
+echo "Virtualhere draadloos Wifi is geinstalleerd." 2>&1 | tee -a $LOGFILE
 
 cd ~/Downloads
 wget https://raw.githubusercontent.com/pappavis/thescript/master/index_apps.php
@@ -357,6 +358,12 @@ sudo service cron restart
 #echo "0 0 * * SAT sh /usr/local/bin/autoupdate.sh 2>/home/pi/logs/cronlog.txt" | sudo tee -a /etc/crontab
 #sudo service cron restart
 
+cd $_pwd
+
+echo "Instellen nutsfunctie printstatus()" 2>&1 | tee -a $LOGFILE
+sudo sed -i -e '/exit 0/s/exit/##exit/' /etc/rc.local
+cat ./installNutsfuncties.sh  2>&1 | sudo  tee -a  /etc/rc.local
+echo "exit 0"  2>&1 | sudo tee -a  /etc/rc.local
 
 echo "Instellen Retropie" 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
@@ -364,7 +371,5 @@ git clone --depth=1 https://github.com/RetroPie/RetroPie-Setup.git 2>&1 | tee -a
 cd ./RetroPie-Setup
 echo "\n\n\I\n" | sudo ./retropie_setup.sh 2>&1 | tee -a $LOGFILE
 
-cd $_pwd
 
-echo "Virtualhere draadloos Wifi is geinstalleerd." 2>&1 | tee -a $LOGFILE
 echo "* Install extras is afgerond. Je kunt nu herstarten." 2>&1 | tee -a $LOGFILE
