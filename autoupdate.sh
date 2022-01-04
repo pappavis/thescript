@@ -1,5 +1,5 @@
 #!/bin/bash
-# je kunt deze autoupdate.sh kopieeren naar /etc/cron.weekly
+# 20220104 je kunt deze autoupdate.sh kopieeren naar /etc/cron.weekly
 _cd=$(pwd)
 mkdir /home/pi/logs
 LOGFILE=$HOME/logs/autoupdate-`date +%Y-%m-%d_%Hh%Mm`.log
