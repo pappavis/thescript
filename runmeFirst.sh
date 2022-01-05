@@ -123,7 +123,7 @@ printstatus "SSH keygen voor bij github chekcouts" 2>&1 | tee -a $LOGFILE
 #ssh-keygen -t rsa -f /home/pi/.ssh/github_rsa -q -P ""
 sudo rm -rf /home/pi/.ssh/github_rsa*
 echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC53hBwC8gtq1BljXyOyb3OWBvhhMsEm4Ng2223wrGtE6v0gbNGyiaAIjynQNXURrOH7O0Kek1rVWEqGVxeEtlI0/YwwM9VQ/dLEszcVOv/dSvkQPjvYXZHRLt4BGpfk+UEevX+QhZ92ASNCT5eq3oUlrPeDCqadwiDK+vczovJInsBumNPB0hG8jSuIsKj6ALii2zet+xu7/zyJVqgHGVMyaKPjdbTIi5WIW1qfpLwT5g9tK7+2v2Ryn0EHQE8uIV789VYA7S4KL8PSamHd91VFKVoTu2MjicxGixwsogLod+ICg4NcLmU8HFMCBVdog9sculGApamHM2+jDzxJ3El pi@pi04" | tee /home/pi/.ssh/github_rsa.pub
-echo "eval $(ssh-agent -s)" | tee -a /etc/rc.local
+echo "eval \$(ssh-agent -s)" | tee -a /etc/rc.local
 sudo sed -i -e '/exit 0/s/exit 0/\$(ssh-agent -s)/' /etc/rc.local
 echo "exit 0" 2>&1 | sudo tee -a /etc/rc.local
 ssh-add /home/pi/.ssh/github_rsa 2>&1 | tee -a $LOGFILE
