@@ -68,21 +68,21 @@ echo "alias l='ls -F --color=auto'"  2>&1 | sudo tee -a /etc/bash.bashrc
 # install sudo on devices without it
 [ ! -x /usr/bin/sudo ] && apt-get $AQUIET -y update > /dev/null 2>&1 && apt-get $AQUIET -y install sudo 2>&1 | tee -a $LOGFILE
 
-sudo apt install -y git
+sudo apt install -y git  2>&1 | tee -a $LOGFILE
 sudo apt install -y python3-pip  2>&1 | tee -a $LOGFILE
 pip install ensurepip  2>&1 | tee -a $LOGFILE
 
-git config pull.rebase false
+git config pull.rebase false  2>&1 | tee -a $LOGFILE
 mkdir /home/pi/Downloads
 cd /home/pi/Downloads
-git clone https://github.com/pappavis/thescript/
+git clone https://github.com/pappavis/thescript/  2>&1 | tee -a $LOGFILE
 cd /home/pi/Downloads/thescript
 
-printstatus  "Swapfile vergroot van 100mb naar 2Gb"
+printstatus  "Swapfile vergroot van 100mb naar 2Gb"  2>&1 | tee -a $LOGFILE
 sudo sed -i -e '/CONF_SWAPSIZE=100/s/100/2048/' /etc/dphys-swapfile
 sudo /etc/init.d/dphys-swapfile restart
 
-printstatus  "Bluetooth, wijzigen naar DicoverableTimeout=0"
+printstatus  "Bluetooth, wijzigen naar DicoverableTimeout=0"  2>&1 | tee -a $LOGFILE
 sudo sed -i -e '/#DiscoverableTimeout = 0/s/#Discoverable/Discoverable/' /etc/bluetooth/main.conf
 sudo service bluetooth restart
 
@@ -106,8 +106,8 @@ sudo mv index_apps.php /var/www/html
 sudo mv /var/www/html/index.html /var/www/html/index_orgig.php
 cd $_pwd
 
-sudo apt remove python2 -y
-sudo apt install python-is-python3 -y
+sudo apt remove python2 -y  2>&1 | tee -a $LOGFILE
+sudo apt install python-is-python3 -y  2>&1 | tee -a $LOGFILE
 VENV="venv3.7"
 rm -rf ~/venv/$VENV
 mkdir ~/venv
@@ -120,8 +120,10 @@ echo "Virtualenv versie: $(python -V)"
 echo "PATH=$PATH:~/.local/bin" >> ~/.bashrc
 
 printstatus "SSH keygen voor bij github chekcouts" 2>&1 | tee -a $LOGFILE
-ssh-keygen -t rsa -f /home/pi/.ssh/github_rsa -q -P ""
-echp eval "$(ssh-agent -s)" | tee -a /etc/rc.local
+#ssh-keygen -t rsa -f /home/pi/.ssh/github_rsa -q -P ""
+sudo rm -rf /home/pi/.ssh/github_rsa*
+echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC53hBwC8gtq1BljXyOyb3OWBvhhMsEm4Ng2223wrGtE6v0gbNGyiaAIjynQNXURrOH7O0Kek1rVWEqGVxeEtlI0/YwwM9VQ/dLEszcVOv/dSvkQPjvYXZHRLt4BGpfk+UEevX+QhZ92ASNCT5eq3oUlrPeDCqadwiDK+vczovJInsBumNPB0hG8jSuIsKj6ALii2zet+xu7/zyJVqgHGVMyaKPjdbTIi5WIW1qfpLwT5g9tK7+2v2Ryn0EHQE8uIV789VYA7S4KL8PSamHd91VFKVoTu2MjicxGixwsogLod+ICg4NcLmU8HFMCBVdog9sculGApamHM2+jDzxJ3El pi@pi04" | tee /home/pi/.ssh/github_rsa.pub
+echo "eval $(ssh-agent -s)" | tee -a /etc/rc.local
 sudo sed -i -e '/exit 0/s/exit 0/\$(ssh-agent -s)/' /etc/rc.local
 echo "exit 0" 2>&1 | sudo tee -a /etc/rc.local
 ssh-add /home/pi/.ssh/github_rsa 2>&1 | tee -a $LOGFILE
@@ -141,7 +143,7 @@ sudo /etc/init.d/ssh restart 2>&1 | tee -a $LOGFILE
 
 sudo update-alternatives --set newt-palette /etc/newt/palette.original 2>&1 | tee -a $LOGFILE
 
-printstatus "Adding user Pi permissions"
+printstatus "Adding user Pi permissions"  2>&1 | tee -a $LOGFILE
 for additionalgroup in cdrom games users i2c adm gpio input sudo netdev audio video dialout plugdev bluetooth ; do
 	getent group ${additionalgroup} | grep -w -l pi || sudo adduser pi ${additionalgroup} 2>&1 | tee -a $LOGFILE
 done
@@ -164,7 +166,7 @@ for addonnodes in libatlas3-base qtchooser imagemagick libfontconfig1-dev libcai
 		sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
-./adduserPi.sh
+./adduserPi.sh  2>&1 | tee -a $LOGFILE
 	    
 sudo usermod -aG sudo michiele
 sudo usermod -aG sudo pi
@@ -192,7 +194,7 @@ wget https://github.com/aristocratos/btop/releases/download/v1.1.2/btop-1.1.2-ar
 #wget https://github.com/aristocratos/btop/releases/download/v1.1.2/btop-1.1.2-armv7l-linux-musleabihf.tbz 2>&1 | tee -a $LOGFILE
 7z x ./btop-1.1.2-armv5l-linux-musleabi.tbz  2>&1 | tee -a $LOGFILE
 7z x ./btop-1.1.2-armv5l-linux-musleabi.tar
-sudo make
+sudo make  2>&1 | tee -a $LOGFILE
 cd ~/Downloads/
 sudo rm -rf ./btop_install
 
