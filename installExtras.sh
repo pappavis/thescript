@@ -424,7 +424,6 @@ echo "" | tee -a ./rp2040micropython.service
 sudo mv ./rp2040js /usr/local/share
 sudo mv ./rp2040micropython.service /etc/systemd/system
 sudo sed -i -e "/# Print/s/#/eval \$(cd \/usr\/local\/share\/rp2040js \&\& npm run start:micropython ) \& \n \#/" /etc/rc.local
-echo "exit 0" 2>&1 | sudo tee -a /etc/rc.local
 
 sudo systemctl enable rp2040micropython.service
 sudo service rp2040micropython restart
