@@ -394,6 +394,15 @@ sudo service cron restart
 #echo "0 0 * * SAT sh /usr/local/bin/autoupdate.sh 2>/home/pi/logs/cronlog.txt" | sudo tee -a /etc/crontab
 #sudo service cron restart
 
+cd ~/Downloads
+echo "Instellen Raspberry PI RP2040 emulatie in Javascript en CircuitPython" 2>&1 | tee -a $LOGFILE
+git clone https://github.com/wokwi/rp2040js 2>&1 | tee -a $LOGFILE
+cd ./rp2040js
+wget https://micropython.org/resources/firmware/rp2-pico-20210902-v1.17.uf2
+npm install
+npm run start:micropython &
+
+
 cd $_pwd
 
 echo "Instellen nutsfunctie printstatus()" 2>&1 | tee -a $LOGFILE
