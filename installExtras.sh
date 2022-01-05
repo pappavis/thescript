@@ -414,7 +414,7 @@ echo "Environment='LC_ALL=NL.UTF-8'" | tee -a ./rp2040micropython.service
 echo "Environment='LANG=NL.UTF-8'" | tee -a ./rp2040micropython.service
 echo "WorkingDirectory=/var/local/share/rp2040js" | tee -a ./rp2040micropython.service
 echo "User=pi" | tee -a ./rp2040micropython.service
-echo "ExecStart=npm run start:micropython " | tee -a ./rp2040micropython.service
+echo "ExecStart=npm run start:micropython" | tee -a ./rp2040micropython.service
 echo "Restart=on-failure" | tee -a ./rp2040micropython.service | tee -a ./rp2040micropython.service
 echo "RestartSec=5" | tee -a ./rp2040micropython.service | tee -a ./rp2040micropython.service
 echo "" | tee -a ./rp2040micropython.service
@@ -423,13 +423,14 @@ echo "WantedBy=multi-user.target" | tee -a ./rp2040micropython.service
 echo "" | tee -a ./rp2040micropython.service
 sudo mv ./rp2040js /usr/local/share
 sudo mv ./rp2040micropython.service /etc/systemd/system
+sudo sed -i -e "/# Print/s/#/eval \$(cd \/usr\/local\/share\/rp2040js \&\& npm run start:micropython ) \& \n \#/" /etc/rc.local
+echo "exit 0" 2>&1 | sudo tee -a /etc/rc.local
+
 sudo systemctl enable rp2040micropython.service
 sudo service rp2040micropython restart
 sudo service rp2040micropython status
-npm run start:micropython  2>&1 | tee -a $LOGFILE &
 
 cd $_pwd
-
 echo "Instellen nutsfunctie printstatus()" 2>&1 | tee -a $LOGFILE
 sudo sed -i -e '/exit 0/s/exit/##exit/' /etc/bash.bashrc
 cat ./installNutsfuncties.sh  2>&1 | sudo  tee -a  /etc/bash.bashrc
