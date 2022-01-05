@@ -120,7 +120,11 @@ echo "Virtualenv versie: $(python -V)"
 echo "PATH=$PATH:~/.local/bin" >> ~/.bashrc
 
 printstatus "SSH keygen voor bij github chekcouts" 2>&1 | tee -a $LOGFILE
-ssh-keygen -t rsa -f /home/pi/.ssh/id_rsa -q -P ""
+ssh-keygen -t rsa -f /home/pi/.ssh/github_rsa -q -P ""
+echp eval "$(ssh-agent -s)" | tee -a /etc/rc.local
+sudo sed -i -e '/exit 0/s/exit 0/\$(ssh-agent -s)/' /etc/rc.local
+echo "exit 0" 2>&1 | sudo tee -a /etc/rc.local
+ssh-add /home/pi/.ssh/github_rsa 2>&1 | tee -a $LOGFILE
 
 printstatus "Toestaan remote root login en sneller SSH" 2>&1 | tee -a $LOGFILE
 sudo sed -i -e 's/#PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config
