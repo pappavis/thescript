@@ -423,9 +423,10 @@ echo "WantedBy=multi-user.target" | tee -a ./rp2040micropython.service
 echo "" | tee -a ./rp2040micropython.service
 sudo mv ./rp2040js /usr/local/share
 sudo mv ./rp2040micropython.service /etc/systemd/system
-sydi systemctl enable rp2040micropython.service
-#npm run start:micropython  2>&1 | tee -a $LOGFILE &
-
+sudo systemctl enable rp2040micropython.service
+sudo service rp2040micropython restart
+sudo service rp2040micropython status
+npm run start:micropython  2>&1 | tee -a $LOGFILE &
 
 cd $_pwd
 
