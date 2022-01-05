@@ -398,9 +398,10 @@ cd ~/Downloads
 echo "Instellen Raspberry PI RP2040 emulatie in Javascript en CircuitPython" 2>&1 | tee -a $LOGFILE
 git clone https://github.com/wokwi/rp2040js 2>&1 | tee -a $LOGFILE
 cd ./rp2040js
-wget https://micropython.org/resources/firmware/rp2-pico-20210902-v1.17.uf2
-npm install
-npm run start:micropython &
+wget https://micropython.org/resources/firmware/rp2-pico-20210902-v1.17.uf2 2>&1 | tee -a $LOGFILE
+wget https://downloads.circuitpython.org/bin/raspberry_pi_pico/nl/adafruit-circuitpython-raspberry_pi_pico-nl-7.1.0.uf2
+npm install 2>&1 | tee -a $LOGFILE
+npm run start:micropython  2>&1 | tee -a $LOGFILE &
 
 
 cd $_pwd
