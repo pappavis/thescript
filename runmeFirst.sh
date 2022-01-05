@@ -119,9 +119,8 @@ source ~/.bashrc
 echo "Virtualenv versie: $(python -V)"
 echo "PATH=$PATH:~/.local/bin" >> ~/.bashrc
 
-printstatus "Genereert github SSH key" 2>&1 | tee -a $LOGFILE
-sudo rm /home/pi/.ssh/id_rsa
-ssh-keygen -t rsa -f /home/pi/.ssh/github_rsa -q -P "" 2>&1 | tee -a $LOGFILE
+printstatus "SSH keygen voor bij github chekcouts" 2>&1 | tee -a $LOGFILE
+ssh-keygen -t rsa -f /home/pi/.ssh/id_rsa -q -P ""
 
 printstatus "Toestaan remote root login en sneller SSH" 2>&1 | tee -a $LOGFILE
 sudo sed -i -e 's/#PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config
@@ -138,7 +137,7 @@ sudo /etc/init.d/ssh restart 2>&1 | tee -a $LOGFILE
 
 sudo update-alternatives --set newt-palette /etc/newt/palette.original 2>&1 | tee -a $LOGFILE
 
-printstatus "Adding user Pi permissions" 2>&1 | tee -a $LOGFILE
+printstatus "Adding user Pi permissions"
 for additionalgroup in cdrom games users i2c adm gpio input sudo netdev audio video dialout plugdev bluetooth ; do
 	getent group ${additionalgroup} | grep -w -l pi || sudo adduser pi ${additionalgroup} 2>&1 | tee -a $LOGFILE
 done
@@ -151,7 +150,7 @@ for addonnodes in gpio dialout i2c tty kmem uinput ; do
 	sudo usermod pi -aG ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
-for addonnodes in build-essential cmake rapidjson-dev libgmp-dev git gcc g++ netdiscover sysfsutils tcpdump vsftpd wget ssh bash-completion unzip build-essential git python-serial scons libboost-filesystem-dev libboost-program-options-dev libboost-system-dev libsqlite3-dev subversion libusb-dev python-dev cmake curl telnet usbutils gawk jq pv samba samba-common samba-common-bin winbind dosfstools parted gcc python3-pip htop python-smbus mc cu mpg123 screen ffmpeg qemu-system default-jdk openvpn lynx ; do
+for addonnodes in build-essential cmake rapidjson-dev libgmp-dev git gcc g++ netdiscover sysfsutils tcpdump vsftpd wget ssh bash-completion unzip build-essential git python-serial scons libboost-filesystem-dev libboost-program-options-dev libboost-system-dev libsqlite3-dev subversion libusb-dev python-dev cmake curl telnet usbutils gawk jq pv samba samba-common samba-common-bin winbind dosfstools parted gcc python3-pip htop python-smbus mc cu mpg123 screen ffmpeg qemu-system default-jdk openvpn lynx clonezilla ; do
 	printstatus "Instelleren \"${addonnodes}\""
 	sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
@@ -161,7 +160,7 @@ for addonnodes in libatlas3-base qtchooser imagemagick libfontconfig1-dev libcai
 		sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
-./adduserPi.sh 2>&1 | tee -a $LOGFILE
+./adduserPi.sh
 	    
 sudo usermod -aG sudo michiele
 sudo usermod -aG sudo pi
@@ -188,7 +187,7 @@ cd ./btop_install
 wget https://github.com/aristocratos/btop/releases/download/v1.1.2/btop-1.1.2-armv5l-linux-musleabi.tbz 2>&1 | tee -a $LOGFILE
 #wget https://github.com/aristocratos/btop/releases/download/v1.1.2/btop-1.1.2-armv7l-linux-musleabihf.tbz 2>&1 | tee -a $LOGFILE
 7z x ./btop-1.1.2-armv5l-linux-musleabi.tbz  2>&1 | tee -a $LOGFILE
-7z x ./btop-1.1.2-armv5l-linux-musleabi.tar 2>&1 | tee -a $LOGFILE
+7z x ./btop-1.1.2-armv5l-linux-musleabi.tar
 sudo make
 cd ~/Downloads/
 sudo rm -rf ./btop_install
@@ -223,7 +222,7 @@ cat ./installNutsfuncties.sh | sudo tee -a /etc/bash.bashrc
 cd ~/Downloads
 wget https://raw.githubusercontent.com/pappavis/thescript/master/crontab.default 2>&1 | tee -a $LOGFILE
 sudo mv ./crontab.default /etc/crontab 2>&1 | tee -a $LOGFILE
-sudo mkdir /etc/cron.daily 2>&1 | tee -a $LOGFILE
+sudo mkdir /etc/cron.daily
 sudo mkdir /etc/cron.weekly
 sudo mkdir /etc/cron.monthly
 sudo service cron restart
