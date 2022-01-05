@@ -401,7 +401,30 @@ cd ./rp2040js
 wget https://micropython.org/resources/firmware/rp2-pico-20210902-v1.17.uf2 2>&1 | tee -a $LOGFILE
 wget https://downloads.circuitpython.org/bin/raspberry_pi_pico/nl/adafruit-circuitpython-raspberry_pi_pico-nl-7.1.0.uf2
 npm install 2>&1 | tee -a $LOGFILE
-npm run start:micropython  2>&1 | tee -a $LOGFILE &
+cd ~/Downloads
+rm -rf ./rp2040micropython.service
+echo "[Unit]" | tee -a ./rp2040micropython.service
+echo "Description=Raspberry Pi Pico RP2040 emulatie" | tee -a ./rp2040micropython.service
+echo "After=network-online.target" | tee -a ./rp2040micropython.service
+echo "Wants=network-online.target" | tee -a ./rp2040micropython.service
+echo "" | tee -a ./rp2040micropython.service
+echo "[Service]" | tee -a ./rp2040micropython.service
+echo "Type=simple" | tee -a ./rp2040micropython.service
+echo "Environment='LC_ALL=NL.UTF-8'" | tee -a ./rp2040micropython.service
+echo "Environment='LANG=NL.UTF-8'" | tee -a ./rp2040micropython.service
+echo "WorkingDirectory=/var/local/share/rp2040js" | tee -a ./rp2040micropython.service
+echo "User=pi" | tee -a ./rp2040micropython.service
+echo "ExecStart=npm run start:micropython " | tee -a ./rp2040micropython.service
+echo "Restart=on-failure" | tee -a ./rp2040micropython.service | tee -a ./rp2040micropython.service
+echo "RestartSec=5" | tee -a ./rp2040micropython.service | tee -a ./rp2040micropython.service
+echo "" | tee -a ./rp2040micropython.service
+echo "[Install]" | tee -a ./rp2040micropython.service
+echo "WantedBy=multi-user.target" | tee -a ./rp2040micropython.service
+echo "" | tee -a ./rp2040micropython.service
+sudo mv ./rp2040js /usr/local/share
+sudo mv ./rp2040micropython.service /etc/systemd/system
+sydi systemctl enable rp2040micropython.service
+#npm run start:micropython  2>&1 | tee -a $LOGFILE &
 
 
 cd $_pwd
