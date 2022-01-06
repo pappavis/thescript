@@ -4,6 +4,7 @@ sudo usermod -aG gpio pi &
 sudo usermod -aG dialout pi  &
 sudo usermod -aG i2c pi &
 sudo usermod -aG tty pi &
+mkdir $HOME/logs/
 
 sudo apt install -y python3-pip python3-venv
 python3 -m pip install --user pipx pipenv
