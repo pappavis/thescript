@@ -1,5 +1,6 @@
 #/usr/bin/sh
-LOGFILE=$HOME/installPythonCircuitpython-`date +%Y-%m-%d`.log
+LOGFILE=$HOME/logs/installPythonCircuitpython-`date +%Y-%m-%d`.log
+mkdir $HOME/logs/
 
 bash ./installNutsfuncties.sh 2>&1 | tee -a $LOGFILE
 
