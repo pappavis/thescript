@@ -254,11 +254,13 @@ sudo mkdir /etc/cron.monthly
 sudo service cron restart
 
 echo "" 2>&1 | tee -a $LOGFILE
+
 echo "Instellen herstartmelding" 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
 wget https://raw.githubusercontent.com/pappavis/thescript/master/demo/herstartmelding.py 2>&1 | tee -a $LOGFILE
 chmod +x ./herstartmelding.py
 sudo mv ./herstartmelding.py /usr/local/bin
+sudo ln -s /etc/cron.weekly/herstartmelding.py /usr/local/bin/herstartmelding.py 
 sudo sed -i -e '/exit 0/s/exit 0/herstartmelding.py \&/' /etc/rc.local
 # !!Je MOET onderataand exit 0 uitvoeren!!
 echo "exit 0" 2>&1 | sudo tee -a /etc/rc.local
