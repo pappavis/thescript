@@ -431,6 +431,8 @@ sudo service rp2040micropython status
 
 cd $_pwd
 echo "Instellen nutsfunctie printstatus()" 2>&1 | tee -a $LOGFILE
+sudo cp -v $_pwd/installNutsfuncties.sh /usr/local/bin 2>&1 | tee -a $LOGFILE
+sudo chmod +x /usr/local/bin/installNutsfuncties.sh
 sudo sed -i -e '/exit 0/s/exit/##exit/' /etc/bash.bashrc
 cat ./installNutsfuncties.sh  2>&1 | sudo  tee -a  /etc/bash.bashrc
 echo "#exit 0"  2>&1 | sudo tee -a  /etc/bash.bashrc
