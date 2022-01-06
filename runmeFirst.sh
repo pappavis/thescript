@@ -70,10 +70,11 @@ echo "alias l='ls -F --color=auto'"  2>&1 | sudo tee -a /etc/bash.bashrc
 
 sudo apt install -y git  2>&1 | tee -a $LOGFILE
 sudo apt install -y python3-pip  2>&1 | tee -a $LOGFILE
-pip install ensurepip  2>&1 | tee -a $LOGFILE
+pip3 install ensurepip  2>&1 | tee -a $LOGFILE
+python3 -m pip install ensurepip 2>&1 | tee -a $LOGFILE
 
 git config pull.rebase false  2>&1 | tee -a $LOGFILE
-mkdir /home/pi/Downloads
+mkdir /home/pi/Downloads 2>&1 | tee -a $LOGFILE
 cd /home/pi/Downloads
 git clone https://github.com/pappavis/thescript/  2>&1 | tee -a $LOGFILE
 cd /home/pi/Downloads/thescript
@@ -81,10 +82,12 @@ cd /home/pi/Downloads/thescript
 printstatus  "Swapfile vergroot van 100mb naar 2Gb"  2>&1 | tee -a $LOGFILE
 sudo sed -i -e '/CONF_SWAPSIZE=100/s/100/2048/' /etc/dphys-swapfile
 sudo /etc/init.d/dphys-swapfile restart
+sudo service dphys-swapfile status 2>&1 | tee -a $LOGFILE
 
 printstatus  "Bluetooth, wijzigen naar DicoverableTimeout=0"  2>&1 | tee -a $LOGFILE
 sudo sed -i -e '/#DiscoverableTimeout = 0/s/#Discoverable/Discoverable/' /etc/bluetooth/main.conf
 sudo service bluetooth restart
+sudo service bluetooth status 2>&1 | tee -a $LOGFILE
 
 sudo apt update -y
 sudo apt update --fix-missing -y  2>&1 | tee -a $LOGFILE
