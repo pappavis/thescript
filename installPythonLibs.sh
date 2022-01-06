@@ -1,6 +1,6 @@
 #!/bin/bash
 echo '** Installeer pythonlibs. je moet eerst een virtualenv activeer!!' 
-LOGFILE=$HOME/logs/$0-`date +%Y-%m-%d_%Hh%Mm`.log
+LOGFILE=$HOME/logs/installPythonLibs-`date +%Y-%m-%d_%Hh%Mm`.log
 _pwd=$(pwd)
 mkdir $HOME/logs
 
