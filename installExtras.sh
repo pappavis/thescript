@@ -357,13 +357,13 @@ echo "Instellen wekelijks systeem bijgewerkt" 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
 touch ./refresh.sh
 echo "#/bin/bash"  2>&1 | sudo tee -a ./refresh.sh
-echo "LOGFILE=/home/pi/logs/refreshBijwerken.log"  2>&1 | sudo tee -a ./refresh.sh
-echo "echo '' | tee -a \$LOGFILE &"  2>&1 | sudo tee -a $LOGFILE
+echo "LOGFILE=/home/pi/logs/refreshBijwerken.log"  2>\&1 | sudo tee -a ./refresh.sh
+echo "echo '' | tee -a \$LOGFILE"  2>&1 | sudo tee -a $LOGFILE 
 echo "echo 'refresh bijwerken gestart' | tee -a \$LOGFILE &"  2>&1 | sudo tee -a $LOGFILE
 echo "mkdir /home/pi/Downloads | tee -a \$LOGFILE"  2>&1 | sudo tee -a ./refresh.sh
-echo "cd /home/pi/Downloads"  2>&1 | sudo tee -a $LOGFILE
-echo "rm ./autoupdate.sh"  2>&1 | sudo tee -a $LOGFILE
-echo "wget https://raw.githubusercontent.com/pappavis/thescript/master/autoupdate.sh  2>&1 | tee -a \$LOGFILE"  2>&1 | sudo tee -a ./refresh.sh
+echo "cd /home/pi/Downloads"  2>&1  | sudo tee -a ./refresh.sh
+echo "rm -rf ./autoupdate.sh"  2>&1 | sudo tee -a ./refresh.sh
+echo "wget https://raw.githubusercontent.com/pappavis/thescript/master/autoupdate.sh  2>&1 | tee -a \$LOGFILE"  | sudo tee -a ./refresh.sh
 echo "chmod +x ./autoupdate.sh | tee -a \$LOGFILE"  2>&1 | sudo tee -a ./refresh.sh
 echo "sudo mv ./autoupdate.sh /etc/cron.weekly | tee -a \$LOGFILE"  2>&1 | sudo tee -a ./refresh.sh
 echo "sudo service cron restart | tee -a \$LOGFILE"  2>&1 | sudo tee -a ./refresh.sh
