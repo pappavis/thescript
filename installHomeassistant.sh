@@ -11,11 +11,14 @@ python3 -m ensurepip
 python3 -m virtualenv /home/pi/venv/homeassistant
 source /home/pi/venv/homeassistant/bin/activate
 
-for addonnodes in  pip virtualenv homeassistant ffmpeg ; do
+for addonnodes in  pip wheel virtualenv homeassistant ffmpeg ; do
 	echo "Installeren Homeassistant vereisten:  \"${addonnodes}\""
   	pip install --upgrade ${addonnodes}  2>&1 | tee -a $LOGFILE
 done
 
+sudo useradd -rm homeassistant -G dialout,gpio,i2c
+sudo mkdir /homw/homeassistant
+sudo chown homeassistant:homeassistant /home/homeassistant
 
 mkdir ~/Downloads
 cd ~/Downloads
