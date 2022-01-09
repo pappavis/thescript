@@ -7,8 +7,17 @@ sudo usermod -aG i2c pi &
 sudo usermod -aG tty pi &
 mkdir $HOME/logs/
 
-sudo apt install -y python3-pip python3-venv  2>&1 | tee -a $LOGFILE
-python3 -m pip install --user pipx pipenv  2>&1 | tee -a $LOGFILE
+for addonnodes in  unixodbc-dev wiringpi python3-opencv ; do
+    echo "Installeren: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
+    sudo apt install -y ${addonnodes}  2>&1 | tee -a $LOGFILE
+done
+
+
+for addonnodes in pipx pipenv wheel ; do
+    echo "Installeren: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
+    pip install --user --upgrade ${addonnodes}  2>&1 | tee -a $LOGFILE
+done
+
 python3 -m pipx ensurepath  2>&1 | tee -a $LOGFILE
 echo "source ~/.bashrc" >> ~/.bash_profile
 
@@ -17,7 +26,10 @@ mkdir ~/venv
 ~/.local/bin/pipx install ~/venv/virtualenv  2>&1 | tee -a $LOGFILE
 ~/.local/bin/virtualenv ~/venv/venv3.7  2>&1 | tee -a $LOGFILE
 source ~/venv/venv3.7/bin/activate  2>&1 | tee -a $LOGFILE
-pip install --upgrade adafruit-blinka RPI.GPIO  2>&1 | tee -a $LOGFILE
+for addonnodes in adafruit-blinka RPI.GPIO  ; do
+    echo "Installeren: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
+    pip install --user --upgrade ${addonnodes}  2>&1 | tee -a $LOGFILE
+done
 echo "source ~/venv/venv3.7/bin/activate" >> ~/.bashrc
 source ~/.bashrc  2>&1 | tee -a $LOGFILE
 
