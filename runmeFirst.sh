@@ -171,15 +171,15 @@ for addonnodes in libatlas3-base qtchooser imagemagick libfontconfig1-dev libcai
 done
 
 ./adduserPi.sh  2>&1 | tee -a $LOGFILE
-	    
-sudo usermod -aG sudo michiele
-sudo usermod -aG sudo pi
-sudo usermod -aG gpio michiele
-sudo usermod -aG dialout michiele
-sudo usermod -aG i2c michiele
-sudo usermod -aG spi michiele
-sudo usermod -aG tty michiele
-sudo usermod -aG kmem michiele
+
+
+
+for addonnodes in sudo gpio dialout i2c spi tty kmem ; do 
+	printstatus "usermod  \"${addonnodes}\""
+	sudo usermod -aG  ${addonnodes} michiele  2>&1 | tee -a $LOGFILE
+	sudo usermod -aG  ${addonnodes} pi  2>&1 | tee -a $LOGFILE
+done
+
 
 sudo mv /var/www/html/index.html /var/www/html/orig_index.html
 sudo apt full-upgrade -y 2>&1 | tee -a $LOGFILE
