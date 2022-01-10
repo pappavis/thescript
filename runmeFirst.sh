@@ -215,9 +215,11 @@ echo "   directory mask = 0700" | sudo tee -a /etc/samba/smb.conf
 sudo service smbd restart
 sudo service nmbd restart
 
+cd $_pwd
 printstatus "NodeJS installeren" 2>&1 | tee -a $LOGFILE
 sudo bash ./installNodeJS.sh 2>&1 | tee -a $LOGFILE
 
+cd $_pwd
 echo "Installeer Nodered en NodeJS" 2>&1 | tee -a $LOGFILE
 bash ./installNodeJS.sh 2>&1 | tee -a $LOGFILE
 echo "Installatie NodeJS $(node -v) en NPN $(npm -v) afgerond." 2>&1 | tee -a $LOGFILE
