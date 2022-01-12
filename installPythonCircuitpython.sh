@@ -4,6 +4,7 @@ mkdir $HOME/logs/
 
 bash ./installNutsfuncties.sh 2>&1 | tee -a $LOGFILE
 
+for addonnodes in gpio dialout
 sudo adduser pi gpio 2>&1 | tee -a $LOGFILE
 sudo usermod pi dialout 2>&1 | tee -a $LOGFILE
 sudo usermod pi i2c  2>&1 | tee -a $LOGFILE
@@ -15,7 +16,7 @@ source ~/venv/venv3.7/bin/activate
 time python -m ensurepip  2>&1 | tee -a $LOGFILE
 
 time wget https://raw.githubusercontent.com/adafruit/Raspberry-Pi-Installer-Scripts/master/raspi-blinka.py 2>&1 | tee -a $LOGFILE
-python3 raspi-blinka.py
+python3 raspi-blinka.py 2>&1 | tee -a $LOGFILE
 
 sudo raspi-config nonint do_i2c 0
 
