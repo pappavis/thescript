@@ -73,6 +73,16 @@ sudo apt install -y python3-pip  2>&1 | tee -a $LOGFILE
 pip3 install ensurepip  2>&1 | tee -a $LOGFILE
 python3 -m pip install ensurepip 2>&1 | tee -a $LOGFILE
 
+
+for addonnodes in  do_i2c  do_spi do_serial do_ssh do_camera disable_raspi_config_at_boot  ; do
+    printstatus "Raspi-config instellingen activeren  : \"${addonnodes}\""
+    sudo raspi-config nonint ${addonnodes} 0 2>&1 | tee -a $LOGFILE
+done
+
+sudo raspi-config nonint do_wifi_country  NL 2>&1 | tee -a $LOGFILE 
+sudo raspi-config nonint do_change_locale nl_NL.UTF-8
+
+
 git config pull.rebase false  2>&1 | tee -a $LOGFILE
 mkdir /home/pi/Downloads 2>&1 | tee -a $LOGFILE
 cd /home/pi/Downloads
@@ -165,7 +175,7 @@ for addonnodes in build-essential cmake rapidjson-dev libgmp-dev git gcc g++ net
 	sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
-for addonnodes in libatlas3-base qtchooser imagemagick libfontconfig1-dev libcairo2-dev libgdk-pixbuf2.0-dev libpango1.0-dev libgtk2.0-dev libgtk-3-dev libatlas-base-dev gfortran libssl libcurl4-gnutls-dev libcurl4-openssl-dev libcurl4-openssl-dev  libsdl2-ttf-dev libsdl2-image-dev ccze net-tools ntfs-3g php-intl ; do 
+for addonnodes in libatlas3-base qtchooser imagemagick libfontconfig1-dev libcairo2-dev libgdk-pixbuf2.0-dev libpango1.0-dev libgtk2.0-dev libgtk-3-dev libatlas-base-dev gfortran libssl libcurl4-gnutls-dev libcurl4-openssl-dev libcurl4-openssl-dev  libsdl2-ttf-dev libsdl2-image-dev ccze net-tools ntfs-3g php-intl i2c-tools ; do 
 		printstatus "Installing  \"${addonnodes}\""
 		sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
