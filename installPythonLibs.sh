@@ -62,23 +62,23 @@ source ~/venv/venv3.7/bin/activate
 
 sudo apt install -y unixodbc-dev 2>&1 | tee -a $LOGFILE
 
-for addonnodes in  unixodbc-dev wiringpi python3-opencv ; do
-    printstatus "Installeren: \"${addonnodes}\""
+for addonnodes in  unixodbc-dev wiringpi i2c-tools; do
+    printstatus "Installeren: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
 python -m ensurepip  2>&1 | tee -a $LOGFILE
 
-for addonnodes in  libatlas-base-dev libwebp-dev   ; do
-    printstatus "Installeren OpenCV vereisten: \"${addonnodes}\""
+for addonnodes in  libatlas-base-dev libwebp-dev  python3-opencv  ; do
+    printstatus "Installeren OpenCV vereisten: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     sudo apt install $NQUIET -y ${addonnodes} 2>&1 | tee -a $LOGFILE
   done
 
 for addonnodes in pip setuptools wheel openpyxl o365 ttn qrcode pillow sqlalchemy pymsteams esptool adafruit-ampy firebirdsql \
                   pyserial pyparsing pyzmail gpiozero pytube pipx serial jinja2 esptool mpfshell virtualenv ffmpeg conda \
                   scikit-build pygame pymongo psycopg2-binary mysql-connector-python guizero \
-                  msteamsconnector matplotlib numpy imutils pyodbc pysmb  opencv-contrib-python git+https://github.com/pytube/pytube djitellopy osxphotos ; do
-    printstatus "Installeren python lib: \"${addonnodes}\""
+                  msteamsconnector matplotlib numpy imutils pyodbc pysmb  opencv-contrib-python git+https://github.com/pytube/pytube djitellopy osxphotos RPi.GPIO ; do
+    printstatus "Installeren python lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
   done
 
