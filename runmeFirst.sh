@@ -73,11 +73,24 @@ sudo apt install -y python3-pip  2>&1 | tee -a $LOGFILE
 pip3 install ensurepip  2>&1 | tee -a $LOGFILE
 python3 -m pip install ensurepip 2>&1 | tee -a $LOGFILE
 
-
 for addonnodes in  do_i2c  do_spi do_serial do_ssh do_camera disable_raspi_config_at_boot  ; do
     printstatus "Raspi-config instellingen activeren  : \"${addonnodes}\""
     sudo raspi-config nonint ${addonnodes} 0 2>&1 | tee -a $LOGFILE
 done
+
+echo "Instellen timezone naar Europe/Amsterdam" 2>&1 | tee -a $LOGFILE
+rm -f /etc/localtime
+echo "Europe/Amsterdam" >/etc/timezone
+dpkg-reconfigure -f noninteractive tzdata 2>&1 | tee -a $LOGFILE
+cat >/etc/default/keyboard <<'KBEOF'
+XKBMODEL="pc105"
+XKBLAYOUT="us"
+XKBVARIANT=""
+XKBOPTIONS=""
+KBEOF
+dpkg-reconfigure -f noninteractive keyboard-configuration 2>&1 | tee -a $LOGFILE
+sudo sed -i 's| systemd.run.*||g' /boot/cmdline.txt 2>&1 | tee -a $LOGFILE
+
 
 sudo raspi-config nonint do_wifi_country  NL 2>&1 | tee -a $LOGFILE 
 sudo raspi-config nonint do_change_locale nl_NL.UTF-8
@@ -289,4 +302,4 @@ cd $_pwd 2>&1 | tee -a $LOGFILE
 
 echo "runmefirst EINDE" 2>&1 | tee -a $LOGFILE
 echo "Je kunt nu HERSTART, daarna ./installVerzamelupdates.sh draaien" 2>&1 | tee -a $LOGFILE
-
+exit 0
