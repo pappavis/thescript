@@ -81,21 +81,20 @@ done
 echo "Instellen timezone naar Europe/Amsterdam" 2>&1 | tee -a $LOGFILE
 rm -f /etc/localtime
 echo "Europe/Amsterdam" >/etc/timezone
-dpkg-reconfigure -f noninteractive tzdata 2>&1 | tee -a $LOGFILE
-cat >/etc/default/keyboard <<'KBEOF'
+sudo dpkg-reconfigure -f noninteractive tzdata 2>&1 | tee -a $LOGFILE
+sudo cat >/etc/default/keyboard <<'KBEOF'
 XKBMODEL="pc105"
 XKBLAYOUT="us"
 XKBVARIANT=""
 XKBOPTIONS=""
 KBEOF
-dpkg-reconfigure -f noninteractive keyboard-configuration 2>&1 | tee -a $LOGFILE
+sudo dpkg-reconfigure -f noninteractive keyboard-configuration 2>&1 | tee -a $LOGFILE
 sudo sed -i 's| systemd.run.*||g' /boot/cmdline.txt 2>&1 | tee -a $LOGFILE
-
 
 sudo raspi-config nonint do_wifi_country  NL 2>&1 | tee -a $LOGFILE 
 sudo raspi-config nonint do_change_locale nl_NL.UTF-8
 
-
+cd $_pwd
 git config pull.rebase false  2>&1 | tee -a $LOGFILE
 mkdir /home/pi/Downloads 2>&1 | tee -a $LOGFILE
 cd /home/pi/Downloads
@@ -129,13 +128,13 @@ mkdir ~/Downloads
 cd ~/Downloads
 wget https://raw.githubusercontent.com/pappavis/thescript/master/index_apps.php 2>&1 | tee -a $LOGFILE
 sudo mv ./index_apps.php /var/www/html
-sudo mv /var/www/html/index.html /var/www/html/index_orgig.php
+sudo rm -rf /var/www/html/index.html
 
 cd $_pwd
 
 sudo apt remove python2 -y  2>&1 | tee -a $LOGFILE
 sudo apt install python-is-python3 -y  2>&1 | tee -a $LOGFILE
-VENV="venv3.7"
+VENV="venv"
 rm -rf ~/venv/$VENV
 mkdir ~/venv
 python3 -m pip install virtualenv
