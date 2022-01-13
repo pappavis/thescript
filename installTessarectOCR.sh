@@ -1,4 +1,4 @@
-LOGFILE=$HOME/installTessarectOCR-`date +%Y-%m-%d_%Hh%Mm`.log
+LOGFILE=$HOME/logs/installTessarectOCR-`date +%Y-%m-%d_%Hh%Mm`.log
 
 echo "* Installeren Tessarect OCR"
 sudo apt update -y
