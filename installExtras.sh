@@ -320,7 +320,7 @@ sudo chmod +rw /dev/uinput
 sudo usermod -aG input pi 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
 wget https://raw.githubusercontent.com/pappavis/thescript/master/steamlink.service 2>&1 | tee -a $LOGFILE
-sudo mv ./steamlink.service /etc/systemd/system
+sudo mv ./services/steamlink.service /etc/systemd/system
 sudo systemctl enable steamlink.service 2>&1 | tee -a $LOGFILE
 sudo systemctl disable steamlink.service 2>&1 | tee -a $LOGFILE
 wget https://steamcdn-a.akamaihd.net/client/installer/steam.deb 2>&1 | tee -a $LOGFILE
