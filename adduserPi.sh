@@ -5,6 +5,15 @@ mkdir ~/logs
 gebr="michiele"
 wachtwoord="raspberry"
 
+sudo usermod pi -g sudo -G ssh -a
+echo "pi ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/pi
+sudo chmod 0440 /etc/sudoers.d/pi
+sudo chmod 4755 /usr/bin/sudo
+printf "${ICyan}user PI created, password is \"password\". Please log-out as root and login as pi, and redo the procedure ${IWhite}\r\n\r\n"
+sudo cp $(readlink -f $0) /home/pi && sudo chown pi.pi /home/pi/$0 && sudo chmod 755 /home/pi/$0
+sudo chown pi.pi $LOGFILE && sudo chmod 644 $LOGFILE && sudo cp $LOGFILE /home/pi
+
+
 echo "* Nieuwe gebruiker wordt aangemaakt: $gebr"  2>&1 | tee -a $LOGFILE
 sudo adduser --quiet --disabled-password --shell /bin/bash --home /home/$gebr --gecos "User" $gebr
 echo "$gebr:$wachtwoord" | sudo chpasswd
