@@ -110,6 +110,8 @@ for addonnodes in raspberrypi-ui-mods xinit xserver-xorg xrdp  remmina barrier t
   sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
+
+
 sudo adduser xrdp ssl-cert  2>&1 | tee -a $LOGFILE
 systemctl show -p SubState --value xrdp 2>&1 | tee -a $LOGFILE
 
@@ -436,6 +438,34 @@ sudo chmod +x /usr/local/bin/installNutsfuncties.sh
 sudo sed -i -e '/exit 0/s/exit/##exit/' /etc/bash.bashrc
 cat ./installNutsfuncties.sh  2>&1 | sudo  tee -a  /etc/bash.bashrc
 echo "#exit 0"  2>&1 | sudo tee -a  /etc/bash.bashrc
+
+
+
+echo "** installeer QEMU virtual machine" 2>&1 | tee -a $LOGFILE
+# https://www.christitus.com/vm-setup-in-linux
+# It should be above 0
+virtualizationActive=$(egrep -c '(vmx|svm)' /proc/cpuinfo)  
+for addonnodes in qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon virt-manager ; do
+  echo " "
+  echo " "
+  echo "Installeren qemu: ${addonnodes}" 2>&1 | tee -a $LOGFILE
+  echo " "
+  sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
+#Verify that Libvirtd service is started
+sudo systemctl status libvirtd.service 2>&1 | tee -a $LOGFILE
+sudo virsh net-start default 2>&1 | tee -a $LOGFILE
+echo "check qmeu netwerk status" 2>&1 | tee -a $LOGFILE
+sudo virsh net-list --all 2>&1 | tee -a $LOGFILE
+for addonnodes in libvirt libvirt-qemu ; do
+  echo " "
+  echo " "
+  echo "Installeren ${addonnodes}" 2>&1 | tee -a $LOGFILE
+  echo " "
+  sudo adduser titus ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
+echo "qemu install afgerond." 2>&1 | tee -a $LOGFILE
+
 
 #echo "Instellen Retropie" 2>&1 | tee -a $LOGFILE
 #cd ~/Downloads
