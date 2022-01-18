@@ -445,7 +445,7 @@ echo "** installeer QEMU virtual machine" 2>&1 | tee -a $LOGFILE
 # https://www.christitus.com/vm-setup-in-linux
 # It should be above 0
 virtualizationActive=$(egrep -c '(vmx|svm)' /proc/cpuinfo)  
-for addonnodes in qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon virt-manager ; do
+for addonnodes in qemu qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon virt-manager ; do
   echo " "
   echo " "
   echo "Installeren qemu: ${addonnodes}" 2>&1 | tee -a $LOGFILE
