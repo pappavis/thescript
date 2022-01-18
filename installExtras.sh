@@ -462,8 +462,12 @@ for addonnodes in libvirt libvirt-qemu ; do
   echo " "
   echo "Installeren ${addonnodes}" 2>&1 | tee -a $LOGFILE
   echo " "
-  sudo adduser titus ${addonnodes} 2>&1 | tee -a $LOGFILE
+  sudo adduser pi ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
+sudo service libvirtd status 2>&1 | tee -a $LOGFILE
+sudo virsh net-start default 2>&1 | tee -a $LOGFILE
+sudo virsh net-autostart default 2>&1 | tee -a $LOGFILE
+sudo virsh net-list --all 2>&1 | tee -a $LOGFILE
 echo "qemu install afgerond." 2>&1 | tee -a $LOGFILE
 
 
