@@ -470,6 +470,30 @@ sudo virsh net-autostart default 2>&1 | tee -a $LOGFILE
 sudo virsh net-list --all 2>&1 | tee -a $LOGFILE
 echo "qemu install afgerond." 2>&1 | tee -a $LOGFILE
 
+echo "** installeer OBS Studio op pi" 2>&1 | tee -a $LOGFILE
+# https://raspberrytips.com/install-obs-studio-raspberry-pi/
+for addonnodes in build-essential checkinstall cmake git libmbedtls-dev libasound2-dev libavcodec-dev libavdevice-dev libavfilter-dev libavformat-dev libavutil-dev libcurl4-openssl-dev libfontconfig1-dev libfreetype6-dev libgl1-mesa-dev libjack-jackd2-dev libjansson-dev libluajit-5.1-dev libpulse-dev libqt5x11extras5-dev libspeexdsp-dev libswresample-dev libswscale-dev libudev-dev libv4l-dev libvlc-dev libx11-dev libx11-xcb1 libx11-xcb-dev libxcb-xinput0 libxcb-xinput-dev libxcb-randr0 libxcb-randr0-dev libxcb-xfixes0 libxcb-xfixes0-dev libx264-dev libxcb-shm0-dev libxcb-xinerama0-dev libxcomposite-dev libxinerama-dev pkg-config python3-dev qtbase5-dev libqt5svg5-dev swig libwayland-dev qtbase5-private-dev ; do
+  echo " "
+  echo " "
+  echo "Installeren OBS STudio vereisten: ${addonnodes}" 2>&1 | tee -a $LOGFILE
+  echo " "
+  sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
+cd~/Downloads
+wget http://ftp.debian.org/debian/pool/non-free/f/fdk-aac/libfdk-aac2_2.0.1-1_armhf.deb 2>&1 | tee -a $LOGFILE
+wget http://ftp.debian.org/debian/pool/non-free/f/fdk-aac/libfdk-aac-dev_2.0.1-1_armhf.deb 2>&1 | tee -a $LOGFILE
+sudo dpkg -i libfdk-aac2_2.0.1-1_armhf.deb 2>&1 | tee -a $LOGFILE
+sudo dpkg -i libfdk-aac-dev_2.0.1-1_armhf.deb 2>&1 | tee -a $LOGFILE
+sudo git clone --recursive https://github.com/obsproject/obs-studio.git
+cd obs-studio
+sudo mkdir build
+cd build
+sudo cmake -DUNIX_STRUCTURE=1 -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_PIPEWIRE=OFF -DBUILD_BROWSER=OFF .. 2>&1 | tee -a $LOGFILE
+sudo make -j1 2>&1 | tee -a $LOGFILE
+sudo make install 2>&1 | tee -a $LOGFILE
+echo MESA_GL_VERSION_OVERRIDE="3.3 obs"| sudo tee -a /etc/bash.bashrc
+echo "**  OBS Studio build afgerond" 2>&1 | tee -a $LOGFILE
+echo "---------" 2>&1 | tee -a $LOGFILE
 
 #echo "Instellen Retropie" 2>&1 | tee -a $LOGFILE
 #cd ~/Downloads
