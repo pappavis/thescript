@@ -3,6 +3,8 @@ LOGFILE=$HOME/logs/runmeFirst-`date +%Y-%m-%d_%Hh%Mm`.log
 _pwd=$(pwd)
 
 mkdir $HOME/logs
+logdir1=/home/pi/logs
+echo "Logmap aangemaakt $logdir1" 2>&1 | tee -a $LOGFILE
 
 printl() {
 	printf $1
@@ -264,11 +266,6 @@ echo "SSH aanmelden op $(hostname)" | sudo tee -a /usr/local/share/ssh_welkom/ss
 sudo sed -i -e '/#Banner none/s/none/\/usr\/local\/share\/ssh_welkom\/ssh_welkom.txt/' /etc/ssh/sshd_config
 sudo sed -i -e '/#Banner/s/#Banner/Banner/' /etc/ssh/sshd_config
 sudo service ssh restart
-
-logdir1=/home/pi/logs
-(mkdir $logdir1)
-echo "Logmap aangemaakt $logdir1" 2>&1 | tee -a $LOGFILE
-
 
 cd $_pwd
 echo "toevoegen printstatus() aan /etc/bash.bashrc" 2>&1 | tee -a $LOGFILE
