@@ -122,6 +122,7 @@ echo "  guest ok = yes" | sudo tee -a  /etc/samba/smb.conf
 echo "  browseable = yes" | sudo tee -a  /etc/samba/smb.conf
 echo "  create mask = 0600" | sudo tee -a  /etc/samba/smb.conf
 echo "  directory mask = 0700" | sudo tee -a  /etc/samba/smb.conf
+echo "rider506\nrider506\n" | sudo smbpasswd -a pi
 sudo service smbd restart
 sudo service smbd status 2>&1 | tee -a $LOGFILE
 
