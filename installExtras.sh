@@ -110,13 +110,20 @@ for addonnodes in raspberrypi-ui-mods xinit xserver-xorg xrdp  remmina barrier t
   sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
-
-
 sudo adduser xrdp ssl-cert  2>&1 | tee -a $LOGFILE
 systemctl show -p SubState --value xrdp 2>&1 | tee -a $LOGFILE
 
 cd $_pwd
 echo "* Doen ook --> sudo nano /etc/samba/smb.conf -y" 2>&1 | tee -a $LOGFILE
+echo "[Downloads]" | sudo tee -a  /etc/samba/smb.conf
+echo "  comment = aflaai map" | sudo tee -a  /etc/samba/smb.conf
+echo "  path = /home/pi/Downloads" | sudo tee -a  /etc/samba/smb.conf
+echo "  guest ok = yes" | sudo tee -a  /etc/samba/smb.conf
+echo "  browseable = yes" | sudo tee -a  /etc/samba/smb.conf
+echo "  create mask = 0600" | sudo tee -a  /etc/samba/smb.conf
+echo "  directory mask = 0700" | sudo tee -a  /etc/samba/smb.conf
+sudo service smbd restart
+sudo service smbd status 2>&1 | tee -a $LOGFILE
 
 echo "* Installeer pi-apps app store" 2>&1 | tee -a $LOGFILE
 wget -qO- https://raw.githubusercontent.com/Botspot/pi-apps/master/install | bash 2>&1 | tee -a $LOGFILE
