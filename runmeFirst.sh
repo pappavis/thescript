@@ -227,15 +227,17 @@ sudo rm -rf ./btop_install
 
 printstatus  "Instellen Samba windows bestanddelen"  2>&1 | tee -a $LOGFILE
 sudo sed -i -e '/workgroup = WORKGROUP/s/WORKGROUP/FRAMBOOS/' /etc/samba/smb.conf
-echo "[Downloads]" | sudo tee -a /etc/samba/smb.conf
-echo "   comment = aflaai map" | sudo tee -a /etc/samba/smb.conf
-echo "   path = /home/pi/Downloads" | sudo tee -a /etc/samba/smb.conf
-echo "   guest ok = yes" | sudo tee -a /etc/samba/smb.conf
-echo "   browseable = yes" | sudo tee -a /etc/samba/smb.conf
-echo "   create mask = 0600" | sudo tee -a /etc/samba/smb.conf
-echo "   directory mask = 0700" | sudo tee -a /etc/samba/smb.conf
+echo "[Downloads]" | sudo tee -a  /etc/samba/smb.conf
+echo "  comment = aflaai map" | sudo tee -a  /etc/samba/smb.conf
+echo "  path = /home/pi/Downloads" | sudo tee -a  /etc/samba/smb.conf
+echo "  guest ok = yes" | sudo tee -a  /etc/samba/smb.conf
+echo "  browseable = yes" | sudo tee -a  /etc/samba/smb.conf
+echo "  create mask = 0600" | sudo tee -a  /etc/samba/smb.conf
+echo "  directory mask = 0700" | sudo tee -a  /etc/samba/smb.conf
+echo "rider506\nrider506\n" | sudo smbpasswd -a pi
 sudo service smbd restart
 sudo service nmbd restart
+sudo service smbd status 2>&1 | tee -a $LOGFILE
 
 cd $_pwd
 printstatus "NodeJS installeren" 2>&1 | tee -a $LOGFILE
