@@ -17,7 +17,7 @@ messageHtml = f"""
         </head>
         <body>
             <h1>~~kennisgeving~~</h1>
-            <p>Raspberru Pi bediener {socket.getfqdn()} is zojuist opnieuw gestart en online</p>
+            <p>Raspberry Pi bediener {socket.getfqdn()} is zojuist opnieuw gestart en online</p>
                 <p>je kunt via SSH aanmelden met <b>pi@{socket.getfqdn()}.local</b><p>
         </body>
         </html>
