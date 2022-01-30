@@ -116,7 +116,7 @@ sudo service bluetooth status 2>&1 | tee -a $LOGFILE
 sudo apt update -y
 sudo apt update --fix-missing -y  2>&1 | tee -a $LOGFILE
 
-for addonnodes in p7zip-full mc sqlite3  i2c-tools ncftp mariadb-server mariadb-client mosquitto mosquitto-clients python3 python3-pip  python3-opencv libsdl2-image gedit gparted  python-smbus vsftpd neofetch apache2 php php-mysql php-sqlite3 php-mbstring openssl libapache2-mod-php php-sqlite3 php-xml php-mbstring sysbench open-cobol ffmpeg wiringpi rpi.gpio  unixodbc-dev npm node python-is-python3 ; do 
+for addonnodes in p7zip-full mc sqlite3  i2c-tools ncftp mariadb-server mariadb-client mosquitto mosquitto-clients python3.11  python3-opencv libsdl2-image gedit gparted  python-smbus vsftpd neofetch apache2 php php-mysql php-sqlite3 php-mbstring openssl libapache2-mod-php php-sqlite3 php-xml php-mbstring sysbench open-cobol ffmpeg wiringpi rpi.gpio  unixodbc-dev npm node python-is-python3 ; do 
 		printstatus "Installing  \"${addonnodes}\""
 		sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 	done
@@ -139,15 +139,17 @@ sudo apt install python-is-python3 -y  2>&1 | tee -a $LOGFILE
 VENV="venv"
 rm -rf ~/venv/$VENV
 mkdir ~/venv
-python3 -m pip install virtualenv
+python3 -m pip install virtualenv 2>&1 | tee -a $LOGFILE
+python3.11 -m pip install virtualenv 2>&1 | tee -a $LOGFILE
 pip install virtualenv  2>&1 | tee -a $LOGFILE
 ~/.local/bin/virtualenv ~/venv/$VENV
+~/.local/bin/virtualenv3.11 ~/venv/venv3.11
 echo "source ~/venv/$VENV/bin/activate" >> ~/.bashrc
 source ~/.bashrc
 echo "Virtualenv versie: $(python -V)"
 echo "PATH=$PATH:~/.local/bin" >> ~/.bashrc
 
-printstatus "SSH keygen voor bij github chekcouts" 2>&1 | tee -a $LOGFILE
+printstatus "SSH keygen voor bij github checkouts" 2>&1 | tee -a $LOGFILE
 #ssh-keygen -t rsa -f /home/pi/.ssh/github_rsa -q -P ""
 sudo rm -rf /home/pi/.ssh/github_rsa*
 echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC53hBwC8gtq1BljXyOyb3OWBvhhMsEm4Ng2223wrGtE6v0gbNGyiaAIjynQNXURrOH7O0Kek1rVWEqGVxeEtlI0/YwwM9VQ/dLEszcVOv/dSvkQPjvYXZHRLt4BGpfk+UEevX+QhZ92ASNCT5eq3oUlrPeDCqadwiDK+vczovJInsBumNPB0hG8jSuIsKj6ALii2zet+xu7/zyJVqgHGVMyaKPjdbTIi5WIW1qfpLwT5g9tK7+2v2Ryn0EHQE8uIV789VYA7S4KL8PSamHd91VFKVoTu2MjicxGixwsogLod+ICg4NcLmU8HFMCBVdog9sculGApamHM2+jDzxJ3El pi@pi04" | tee /home/pi/.ssh/github_rsa.pub
@@ -184,7 +186,7 @@ for addonnodes in gpio dialout i2c tty kmem uinput ; do
 	sudo usermod pi -aG ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
-for addonnodes in build-essential cmake rapidjson-dev libgmp-dev git gcc g++ netdiscover sysfsutils tcpdump vsftpd wget ssh bash-completion unzip build-essential git python-serial scons libboost-filesystem-dev libboost-program-options-dev libboost-system-dev libsqlite3-dev subversion libusb-dev python-dev python3-dev cmake curl telnet usbutils gawk jq pv samba samba-common samba-common-bin winbind dosfstools parted gcc python3-pip htop python-smbus mc cu mpg123 screen ffmpeg qemu-system default-jdk openvpn lynx clonezilla yum telnet lynx ; do
+for addonnodes in python3.11 build-essential cmake rapidjson-dev libgmp-dev git gcc g++ netdiscover sysfsutils tcpdump vsftpd wget ssh bash-completion unzip build-essential git python-serial scons libboost-filesystem-dev libboost-program-options-dev libboost-system-dev libsqlite3-dev subversion libusb-dev python-dev python3-dev cmake curl telnet usbutils gawk jq pv samba samba-common samba-common-bin winbind dosfstools parted gcc python3-pip htop python-smbus mc cu mpg123 screen ffmpeg qemu-system default-jdk openvpn lynx clonezilla yum telnet lynx ; do
 	printstatus "Instelleren \"${addonnodes}\""
 	sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
