@@ -497,5 +497,12 @@ echo "---------" 2>&1 | tee -a $LOGFILE
 #cd ./RetroPie-Setup
 #echo "\n\n\I\n" | sudo ./retropie_setup.sh 2>&1 | tee -a $LOGFILE
 
+echo "" 2>&1 | tee -a $LOGFILE
+echo "Instellen Mega65.org emulatie" 2>&1 | tee -a $LOGFILE
+cd ~/Downloads
+git clone https://github.com/lgblgblgb/xemu.git | tee -a $LOGFILE
+cd ./xemu
+make | tee -a $LOGFILE
+
 
 echo "* Install extras is afgerond. Je kunt nu herstarten." 2>&1 | tee -a $LOGFILE
