@@ -513,8 +513,8 @@ cd ~/Downloads
 git clone https://github.com/lgblgblgb/xemu.git 2>&1 | tee -a $LOGFILE
 cd ./xemu
 make | tee -a $LOGFILE
-sudo cp -r -v ./build/bin /usr/local/share/xemu 2>&1 | tee -a $LOGFILE
-sudo ln -s /usr/local/share/xemu/xc65.native /usr/local/bin/x65 2>&1 | tee -a $LOGFILE
+sudo cp -r -v ./ /usr/local/share/xemu 2>&1 | tee -a $LOGFILE
+sudo ln -s /usr/local/share/xemu/build/bin/xc65.native /usr/local/bin/x65 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
 rm -rf ~/Downloads/xemu 2>&1 | tee -a $LOGFILE
 
