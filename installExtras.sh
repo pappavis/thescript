@@ -499,6 +499,14 @@ echo "---------" 2>&1 | tee -a $LOGFILE
 
 echo "" 2>&1 | tee -a $LOGFILE
 echo "Instellen Mega65.org emulatie" 2>&1 | tee -a $LOGFILE
+for addonnodes in git build-essential libsdl2-dev libgtk-3-dev libreadline-dev ; do
+  echo " "
+  echo " "
+  echo "Installeren Mega65.org vereisten: ${addonnodes}" 2>&1 | tee -a $LOGFILE
+  echo " "
+  sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
+
 cd ~/Downloads
 git clone https://github.com/lgblgblgb/xemu.git | tee -a $LOGFILE
 cd ./xemu
