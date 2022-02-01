@@ -512,7 +512,7 @@ cd ./xemu
 make | tee -a $LOGFILE
 sudo cp -r -v ./build/bin /usr/local/share/xemu 2>&1 | tee -a $LOGFILE
 sudo ln -s /usr/local/share/xemu/xc65.native /usr/local/bin/x65 2>&1 | tee -a $LOGFILE
-rm -rf ~/Downloads/xemu 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
+rm -rf ~/Downloads/xemu 2>&1 | tee -a $LOGFILE
 
 echo "* Install extras is afgerond. Je kunt nu herstarten." 2>&1 | tee -a $LOGFILE
