@@ -66,6 +66,7 @@ echo "alias ls='ls -F --color=auto'" 2>&1 | sudo tee -a /etc/bash.bashrc
 echo "alias ll='ls -lF --color=auto'"  2>&1 | sudo tee -a /etc/bash.bashrc
 echo "alias la='ls -lFa --color=auto'"  2>&1 | sudo tee -a /etc/bash.bashrc
 echo "alias l='ls -F --color=auto'"  2>&1 | sudo tee -a /etc/bash.bashrc
+echo "LOGFILE=/home/pi/logs/logAlgemeen.txt"  2>&1 | sudo tee -a /etc/bash.bashrc
 
 # install sudo on devices without it
 [ ! -x /usr/bin/sudo ] && apt-get $AQUIET -y update > /dev/null 2>&1 && apt-get $AQUIET -y install sudo 2>&1 | tee -a $LOGFILE
