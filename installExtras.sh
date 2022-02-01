@@ -506,11 +506,13 @@ for addonnodes in git build-essential libsdl2-dev libgtk-3-dev libreadline-dev ;
   echo " "
   sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
-
 cd ~/Downloads
-git clone https://github.com/lgblgblgb/xemu.git | tee -a $LOGFILE
+git clone https://github.com/lgblgblgb/xemu.git 2>&1 | tee -a $LOGFILE
 cd ./xemu
 make | tee -a $LOGFILE
-
+sudo cp -r -v ./build/bin /usr/local/share/xemu 2>&1 | tee -a $LOGFILE
+sudo ln -s /usr/local/share/xemu/xc65.native /usr/local/bin/x65 2>&1 | tee -a $LOGFILE
+rm -rf ~/Downloads/xemu 2>&1 | tee -a $LOGFILE
+cd ~/Downloads
 
 echo "* Install extras is afgerond. Je kunt nu herstarten." 2>&1 | tee -a $LOGFILE
