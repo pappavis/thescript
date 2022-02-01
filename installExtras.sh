@@ -95,10 +95,13 @@ sudo mkdir /home/pi/.local/share
 sudo mkdir /home/pi/.local/share/lxsession
 sudo mkdir /home/pi/.local/share/lxterminal
 
-# set de  screensaver uit
+echo  "Set de  screensaver uit"  2>&1 | tee -a $LOGFILE
 sudo sed -i -e 'xserver-command xserver-command=X -s 0 -p 0 -dpms' /etc/lightdm/lightdm.conf
-xset s 0
+sed -i -e '/timeout:\t0:10:00/s/:10:/:2048:/' /home/pi/.xscreensaver
+sed -i -e '/cycle:\t0:10:00/s/:10:/:1021:/' /home/pi/.xscreensaver
+#xset s 0
 xset -dpms
+
 
 
 echo "** installeer X-Apps zoals KVM." 2>&1 | tee -a $LOGFILE
