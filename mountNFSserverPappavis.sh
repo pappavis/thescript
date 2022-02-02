@@ -1,3 +1,4 @@
+#!/bin/bash
 printf "\nProbeer netwerk share te mount op /mnt\n" 2>&1 | tee -a $LOGFILE
 sudo mount -t auto acer01:/home /mnt/nfs/acer01/  2>&1 | tee -a $LOGFILE &
 sudo mount -t auto pi0:/home /mnt/nfs/pi0/ &
