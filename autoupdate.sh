@@ -7,6 +7,11 @@ datum=(`date +%Y-%m-%d_%Hh%Mm`)
 
 echo "" 2>&1 | tee -a $LOGFILE
 echo "$datum Start autoupdate" 2>&1 | tee -a $LOGFILE
+
+cd /home/pi/Downloads/thescript
+git pull 2>&1 | tee -a $LOGFILE
+cd $_cd
+
 if [ -f /home/pi/pi-apps ]; then
     echo "$datum Start pi-apps update" 2>&1 | tee -a $LOGFILE
     cd /home/pi/pi-apps
