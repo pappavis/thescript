@@ -522,4 +522,26 @@ wget https://github.com/MEGA65/open-roms/raw/master/bin/mega65.rom 2>&1 | tee -a
 sudo mv ./mega65.rom /home/pi/.local/share/xemu-lgb/c65/default-files/c65-system.rom 2>&1 | tee -a $LOGFILE
 rm -rf ~/Downloads/xemu 2>&1 | tee -a $LOGFILE
 
+
+cd ~/Downloads
+echo "" 2>&1 | tee -a $LOGFILE
+echo "Instellen sqliteBrowser" 2>&1 | tee -a $LOGFILE
+for addonnodes in build-essential git-core cmake libsqlite3-dev qt5-default qttools5-dev-tools libsqlcipher-dev qtbase5-dev libqt5scintilla2-dev libqcustomplot-dev qttools5-dev ; do
+  echo " "
+  echo " "
+  echo "Installeren sqliteBrowser.org vereisten: ${addonnodes}" 2>&1 | tee -a $LOGFILE
+  echo " "
+  sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
+git clone https://github.com/sqlitebrowser/sqlitebrowser 2>&1 | tee -a $LOGFILE
+cd sqlitebrowser
+mkdir build
+cd build
+cmake -Dsqlcipher=1 -Wno-dev .. 2>&1 | tee -a $LOGFILE
+make 2>&1 | tee -a $LOGFILE
+sudo make install 2>&1 | tee -a $LOGFILE
+cd ~/Downloads
+rm -rf ./sqlitebrowser
+echo "" 2>&1 | tee -a $LOGFILE
+
 echo "* Install extras is afgerond. Je kunt nu herstarten." 2>&1 | tee -a $LOGFILE
