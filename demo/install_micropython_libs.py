@@ -7,28 +7,13 @@ import os
 print("root dir:", os.listdir("lib"))
 print("START module intstall")
 
-try:
-    upip.install("micropython-base64")
-    upip.install("micropython-email.encoders")
-    upip.install("micropython-email.message")
-    upip.install("micropython-email.utils")
-    upip.install("micropython-machine")
-    upip.install("micropython-os.path")
-    upip.install("micropython-pathlib")
-    upip.install("micropython-pystone")
-    upip.install("micropython-runpy")
-    upip.install("micropython-types")
-    upip.install("micropython-zipfile")
-    upip.install("micropython-umqtt.simple")
-    upip.install("micropython-umqtt.robust")
-    upip.install("micropython-pwd")
-    upip.install("micropython-runpy")
-    upip.install("micropython-smtplib")
-    upip.install("micropython-bmp180")
-    upip.install("micropython-ffilib")
-    #upip.install("micropython-sqlite3")
-except Exception as ex1:
-    print("fout:", ex1)
-    
+libLijst = ["micropython-base64", "micropython-email.encoders", "micropython-email.message", "micropython-email.utils", "micropython-machine", "micropython-pathlib", "micropython-umqtt.simple", "micropython-smtplib", "micropython-usqlite", "micropython-ffilib", "micropython-bmp180"]
+
+for lib in libLijst:
+    try:
+        upip.install(lib)
+    except Exception as ex1:
+        print(ex1)
+
 print("", os.listdir("lib"))
 print("EIND module intstall")
