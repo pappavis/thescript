@@ -24,18 +24,18 @@ make submodules 2>&1 | tee -a $LOGFILE
 make clean 2>&1 | tee -a $LOGFILE
 make axtls 2>&1 | tee -a $LOGFILE
 make USER_C_MODULES=~/Downloads/modules 2>&1 | tee -a $LOGFILE
-make
+make   2>&1 | tee -a $LOGFILE
 #sudo ln -s ~/Downloads/micropython/ports/unix/micropython /usr/local/bin/micropython
 sudo cp -v ~/Downloads/micropython/ports/unix/micropython /usr/local/bin/micropython 2>&1 | tee -a $LOGFILE
 
 echo "START micropython module intstall" 2>&1 | tee -a $LOGFILE
-micropython  -m upip install micropython-urequests 2>&1 | tee -a $LOGFILE
-micropython  -m upip install micropython-socket 2>&1 | tee -a $LOGFILE
-micropython  -m upip install micropython-machine 2>&1 | tee -a $LOGFILE
-micropython  -m upip install micropython-os.path 2>&1 | tee -a $LOGFILE
-micropython  -m upip install micropython-umqtt.robust 2>&1 | tee -a $LOGFILE
-micropython  -m upip install micropython-pwd 2>&1 | tee -a $LOGFIL 2>&1 | tee -a $LOGFILEE
-micropython  -m upip install micropython-smtplib
+for addonnodes in micropython-urequests micropython-socket micropython-machine micropython-os.path micropython-umqtt.robust micropython-pwd micropython-smtplib ; do
+  echo " "
+  echo " "
+  echo "Installeren micropython bibliotheek: ${addonnodes}"
+  echo " "
+  micropython -m upip install ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
 
 cd ~/Downloads/micropython/ports/windows
 make CROSS_COMPILE=i686-w64-mingw32- 2>&1 | tee -a $LOGFILE
