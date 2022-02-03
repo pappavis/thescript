@@ -18,11 +18,13 @@ cd modules
 git clone https://github.com/spatialdude/usqlite.git 2>&1 | tee -a $LOGFILE
 cd ~/Downloads && cd micropython/mpy-cross
 make 2>&1 | tee -a $LOGFILE
+
 cd  ~/Downloads/micropython/ports/unix/
+make submodules 2>&1 | tee -a $LOGFILE
 make clean 2>&1 | tee -a $LOGFILE
 make axtls 2>&1 | tee -a $LOGFILE
-make 2>&1 | tee -a $LOGFILE
-sudo ln -s ~/micropython/ports/unix/micropython /usr/local/bin/micropython
+make USER_C_MODULES=~/Downloads/modules 2>&1 | tee -a $LOGFILE
+sudo ln -s ~/Downloads/micropython/ports/unix/micropython /usr/local/bin/micropython
 echo "START micropython module intstall" 2>&1 | tee -a $LOGFILE
 micropython  -m upip install micropython-urequests 2>&1 | tee -a $LOGFILE
 micropython  -m upip install micropython-socket 2>&1 | tee -a $LOGFILE
