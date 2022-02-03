@@ -56,5 +56,9 @@ cd ~/Downloads/micropython/ports/javascript
 make 2>&1 | tee -a $LOGFILE
 make test 2>&1 | tee -a $LOGFILE
 
+rm -rf ~/Downloads/modules 2>&1 | tee -a $LOGFILE
+rm -rf ~/Downloads/sqlite 2>&1 | tee -a $LOGFILE
+rm -rf ~/Downloads/micropython 2>&1 | tee -a $LOGFILE
+
 echo "EINDE micropython $(micropython -V) module install" 2>&1 | tee -a $LOGFILE
 
