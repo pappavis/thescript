@@ -31,6 +31,8 @@ micropython  -m upip install micropython-os.path 2>&1 | tee -a $LOGFILE
 micropython  -m upip install micropython-umqtt.robust 2>&1 | tee -a $LOGFILE
 micropython  -m upip install micropython-pwd 2>&1 | tee -a $LOGFIL 2>&1 | tee -a $LOGFILEE
 micropython  -m upip install micropython-smtplib
+
+cd ~/Downloads/micropython/ports/windows
 make CROSS_COMPILE=i686-w64-mingw32- 2>&1 | tee -a $LOGFILE
 
 cd ~/Downloads/micropython/ports/esp32
