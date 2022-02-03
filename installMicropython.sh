@@ -39,6 +39,7 @@ micropython  -m upip install micropython-smtplib
 
 cd ~/Downloads/micropython/ports/windows
 make CROSS_COMPILE=i686-w64-mingw32- 2>&1 | tee -a $LOGFILE
+cp -v ./micropython.exe ~/Downloads 2>&1 | tee -a $LOGFILE
 
 cd ~/Downloads/micropython/ports/esp32
 make submodules 2>&1 | tee -a $LOGFILE
