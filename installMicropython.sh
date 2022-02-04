@@ -57,6 +57,10 @@ make 2>&1 | tee -a $LOGFILE
 make erase 2>&1 | tee -a $LOGFILE
 make deploy 2>&1 | tee -a $LOGFILE
 
+cd ~/Downloads/micropython/ports/rp2
+make submodules 2>&1 | tee -a $LOGFILE
+make USER_C_MODULES=~/Downloads/micropython/ports/pico/modules/micropython.cmake  2>&1 | tee -a $LOGFILE
+
 cd ~/Downloads/micropython/ports/javascript
 make submodules 2>&1 | tee -a $LOGFILE
 make 2>&1 | tee -a $LOGFILE
