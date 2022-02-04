@@ -42,7 +42,7 @@ p, .author {
 
 <div align="center">
   <article>
-    <h1 class="bighead">"The Script" Home<br/></h1>
+    <h1 class="bighead">"The Script" Home <script language="JavaScript">  document.write(window.location.hostname)</script><br/></h1>
     <p class="author">by PETER SCARGILL<br/><br/></p>
     <p>
 </div>
