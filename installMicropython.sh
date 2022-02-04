@@ -27,7 +27,7 @@ make submodules 2>&1 | tee -a $LOGFILE
 make clean 2>&1 | tee -a $LOGFILE
 make axtls 2>&1 | tee -a $LOGFILE
 make USER_C_MODULES=~/Downloads/modules 2>&1 | tee -a $LOGFILE
-make   2>&1 | tee -a $LOGFILE
+#make   2>&1 | tee -a $LOGFILE
 #sudo ln -s ~/Downloads/micropython/ports/unix/micropython /usr/local/bin/micropython
 sudo cp -v ~/Downloads/micropython/ports/unix/micropython /usr/local/bin/micropython 2>&1 | tee -a $LOGFILE
 
