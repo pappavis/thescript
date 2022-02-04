@@ -12,11 +12,14 @@ done
 
 cd ~/Downloads
 mkdir modules
-mkdir sqlite
+mkdir ./sqlite
 git clone https://github.com/micropython/micropython.git 2>&1 | tee -a $LOGFILE
-cd modules
+cd ./modules
 git clone https://github.com/spatialdude/usqlite.git 2>&1 | tee -a $LOGFILE
-cd ~/Downloads && cd micropython/mpy-cross
+git pull
+cd ~/Downloads/micropython
+git pull
+cd ./mpy-cross
 make 2>&1 | tee -a $LOGFILE
 
 cd  ~/Downloads/micropython/ports/unix/
@@ -57,9 +60,9 @@ cd ~/Downloads/micropython/ports/javascript
 make 2>&1 | tee -a $LOGFILE
 make test 2>&1 | tee -a $LOGFILE
 
-rm -rf ~/Downloads/modules 2>&1 | tee -a $LOGFILE
-rm -rf ~/Downloads/sqlite 2>&1 | tee -a $LOGFILE
-rm -rf ~/Downloads/micropython 2>&1 | tee -a $LOGFILE
+#rm -rf ~/Downloads/modules 2>&1 | tee -a $LOGFILE
+#rm -rf ~/Downloads/sqlite 2>&1 | tee -a $LOGFILE
+#rm -rf ~/Downloads/micropython 2>&1 | tee -a $LOGFILE
 
 echo "EINDE micropython $(micropython -V) module install" 2>&1 | tee -a $LOGFILE
 
