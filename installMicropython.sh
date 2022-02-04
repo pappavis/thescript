@@ -65,6 +65,7 @@ cd ~/Downloads/micropython/ports/javascript
 make submodules 2>&1 | tee -a $LOGFILE
 make 2>&1 | tee -a $LOGFILE
 make test 2>&1 | tee -a $LOGFILE
+cp ./micropython.js ~/Downloads
 
 #rm -rf ~/Downloads/modules 2>&1 | tee -a $LOGFILE
 #rm -rf ~/Downloads/sqlite 2>&1 | tee -a $LOGFILE
