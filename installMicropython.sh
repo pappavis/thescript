@@ -22,23 +22,6 @@ git pull
 cd ./mpy-cross
 make 2>&1 | tee -a $LOGFILE
 
-#Blinky, A Community Example
-cd /opt/Espressif
-git clone https://github.com/esp8266/source-code-examples.git 2>&1 | tee -a $LOGFILE
-cd source-code-examples/blinky
-make 2>&1 | tee -a $LOGFILE
-
-# The IoT Demo
-cd /opt/Espressif/ESP8266_SDK/IoT_Demo
-make 2>&1 | tee -a $LOGFILE
-
-# Preparing the Firmware Image
-cd .output/eagle/debug/image
-esptool -eo eagle.app.v6.out -bo eagle.app.v6.flash.bin -bs .text -bs .data -bs .rodata -bc -ec
-xtensa-lx106-elf-objcopy --only-section .irom0.text -O binary eagle.app.v6.out eagle.app.v6.irom0text.bin
-cp eagle.app.v6.flash.bin ../../../../../bin/
-cp eagle.app.v6.irom0text.bin ../../../../../bin/
-
 cd  ~/Downloads/micropython/ports/unix/
 make submodules 2>&1 | tee -a $LOGFILE
 make clean 2>&1 | tee -a $LOGFILE
