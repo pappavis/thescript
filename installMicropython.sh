@@ -41,6 +41,7 @@ for addonnodes in micropython-urequests micropython-socket micropython-machine m
 done
 
 cd ~/Downloads/micropython/ports/windows
+make submodules 2>&1 | tee -a $LOGFILE
 make CROSS_COMPILE=i686-w64-mingw32- 2>&1 | tee -a $LOGFILE
 cp -v ./micropython.exe ~/Downloads 2>&1 | tee -a $LOGFILE
 
@@ -57,6 +58,7 @@ make erase 2>&1 | tee -a $LOGFILE
 make deploy 2>&1 | tee -a $LOGFILE
 
 cd ~/Downloads/micropython/ports/javascript
+make submodules 2>&1 | tee -a $LOGFILE
 make 2>&1 | tee -a $LOGFILE
 make test 2>&1 | tee -a $LOGFILE
 
