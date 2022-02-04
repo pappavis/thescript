@@ -11,7 +11,7 @@ for addonnodes in git autoconf build-essential gperf bison flex texinfo libtool 
 done
 
 # https://github.com/esp8266/esp8266-wiki/wiki/Toolchain#install-the-xtensa-crosstool-ng-as-local-user
-mkdir /opt/Espressif
+sudo mkdir /opt/Espressif
 sudo chown $username /opt/Espressif/ 2>&1 | tee -a $LOGFILE
 cd /opt/Espressif
 git clone -b lx106 git://github.com/jcmvbkbc/crosstool-NG.git  2>&1 | tee -a $LOGFILE
