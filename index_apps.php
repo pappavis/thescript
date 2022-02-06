@@ -5,7 +5,7 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
-        <title>< Scargill's Default Web Page op  </title>
+        <title> <script language="JavaScript">  document.write(window.location.hostname)</script> Scargill's Default Web Page op  </title>
         <meta name="description" content="Peter Scargill's default web page installed by THE SCRIPT">
         <meta name="keywords" content="scargill,the script, https://tech.scargill.net">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
