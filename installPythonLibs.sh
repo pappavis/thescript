@@ -25,13 +25,27 @@ for addonnodes in  libatlas-base-dev libwebp-dev  python3-opencv  ; do
   done
 
 for addonnodes in pip setuptools wheel openpyxl py7zr o365 ttn qrcode pillow sqlalchemy pymsteams esptool adafruit-ampy firebirdsql esptool \
-                  pyserial pyparsing pyzmail redmail gpiozero pytube pipx serial jinja2 esptool mpfshell virtualenv ffmpeg conda \
+                  pyserial pyparsing pyzmail redmail gpiozero pytube pipx serial jinja2 esptool mpfshell virtualenv ffmpeg conda jupyter-notebook \
                   scikit-build pygame pymongo psycopg2-binary mysql-connector-python guizero imutils scikit-image numpy bokeh django flask \
                   msteamsconnector matplotlib numpy imutils pyodbc influxdb pysmb  opencv-contrib-python git+https://github.com/pytube/pytube picamera djitellopy \
 		   osxphotos RPi.GPIO tox  ; do
     printstatus "Installeren python lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
+    conda install  ${addonnodes} 2>&1 | tee -a $LOGFILE
   done
+
+echo "Installeren Miniconda" 2>&1 | tee -a $LOGFILE
+cd ~/Downloads
+wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-armv7l.sh 2>&1 | tee -a $LOGFILE
+bash ./Miniconda3-latest-Linux-armv7l.sh 2>&1 | tee -a $LOGFILE
+echo 'export PATH=/home/pi/miniconda3/bin:$PATH' | tee -a ~/.bashrc  2>&1 | tee -a $LOGFILE
+conda install python=3.11
+
+echo "Installeren machine learning onderdelen." 2>&1 | tee -a $LOGFILE
+for addonnodes in  pytorch torchvision torchaudio cudatoolkit pytorch ; do
+    printstatus "Installeren ML python lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
+    pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
 
 echo "doen ook --> pip uninstall serial" 2>&1 | tee -a $LOGFILE
 
@@ -43,5 +57,21 @@ cd $_pwd
 pipx install conda  2>&1 | tee -a $LOGFILE
 pip install --upgrade RPi.GPIO  2>&1 | tee -a $LOGFILE &
 pip uninstall --no-input serial  2>&1 | tee -a $LOGFILE
+
+
+cd ~/Downloads
+echo "Installeren Miniconda" 2>&1 | tee -a $LOGFILE
+for addonnodes in  apt-transport-https ca-certificates software-properties-common ; do 
+    printstatus "Installeren Miniconda docker vereisten: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
+    sudo apt install $NQUIET -y ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
+curl -fsSL get.docker.com -o get-docker.sh && sh get-docker.sh 2>&1 | tee -a $LOGFILE
+sudo usermod -aG docker pi 2>&1 | tee -a $LOGFILE
+sudo curl https://download.docker.com/linux/raspbian/gpg 2>&1 | tee -a $LOGFILE
+sudo service docker restart 2>&1 | tee -a $LOGFILE
+sudo service docker status 2>&1 | tee -a $LOGFILE
+docker info 2>&1 | tee -a $LOGFILE
+docker run hello-world 2>&1 | tee -a $LOGFILE
+
 
 printstatus "installPythonLibs.sh is afgerond"  2>&1 | tee -a $LOGFILE
