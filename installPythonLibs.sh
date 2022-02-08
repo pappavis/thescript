@@ -34,6 +34,8 @@ for addonnodes in pip setuptools wheel openpyxl py7zr o365 ttn qrcode pillow sql
     conda install  ${addonnodes} 2>&1 | tee -a $LOGFILE
   done
 
+shortcut mu-editor
+
 echo "Installeren Miniconda" 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
 wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-armv7l.sh 2>&1 | tee -a $LOGFILE
