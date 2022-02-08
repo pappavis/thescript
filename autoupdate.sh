@@ -16,7 +16,9 @@ if [ -f /home/pi/pi-apps ]; then
     echo "$datum Start pi-apps update" 2>&1 | tee -a $LOGFILE
     cd /home/pi/pi-apps
     git pull 2>&1 | tee -a $LOGFILE
+    /home/pi/pi-apps/updater | tee -a $LOGFILE
 fi
+
 sudo apt-get update -y | tee -a $LOGFILE
 sudo apt-get upgrade -y  2>&1 | tee -a $LOGFILE
 sudo rpi-update -y 2>&1 | tee -a $LOGFILE
