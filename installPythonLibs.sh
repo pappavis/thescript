@@ -24,7 +24,7 @@ for addonnodes in  libatlas-base-dev libwebp-dev  python3-opencv  ; do
     sudo apt install $NQUIET -y ${addonnodes} 2>&1 | tee -a $LOGFILE
   done
 
-for addonnodes in pip setuptools wheel openpyxl py7zr o365 ttn qrcode pillow sqlalchemy pymsteams esptool adafruit-ampy firebirdsql esptool \
+for addonnodes in pip setuptools wheel openpyxl py7zr o365 ttn qrcode pillow sqlalchemy pymsteams esptool adafruit-ampy firebirdsql esptool mu-editor \
                   pyserial pyparsing pyzmail redmail gpiozero pytube pipx serial jinja2 esptool mpfshell virtualenv ffmpeg conda jupyter-notebook \
                   scikit-build pygame pymongo psycopg2-binary mysql-connector-python guizero imutils scikit-image numpy bokeh django flask \
                   msteamsconnector matplotlib numpy imutils pyodbc influxdb pysmb  opencv-contrib-python git+https://github.com/pytube/pytube picamera djitellopy \
