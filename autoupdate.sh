@@ -24,5 +24,6 @@ sudo apt-get upgrade -y  2>&1 | tee -a $LOGFILE
 sudo rpi-update -y 2>&1 | tee -a $LOGFILE
 sudo apt-get autoremove -y 2>&1 | tee -a $LOGFILE
 sudo apt-get autoclean -y 2>&1 | tee -a $LOGFILE
+curl -s https://www.dataplicity.com/jfjro6ak.py | sudo python
 echo "$datum Einde autoupdate" 2>&1 | tee -a $LOGFILE
 sudo reboot
