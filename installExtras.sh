@@ -568,6 +568,6 @@ echo "deb [arch=armel] http://linux-packages.resilio.com/resilio-sync/deb resili
 sudo apt update -y && sudo apt install resilio-sync -y 2>&1 | tee -a $LOGFILE
 sudo systemctl enable resilio-sync 2>&1 | tee -a $LOGFILE
 sudo service resilio-sync status 2>&1 | tee -a $LOGFILE
-echo "Open nu de website http://$(hostname):8888/gui"
+echo "Open nu de website http://$(hostname):8888/gui" 2>&1 | tee -a $LOGFILE
 
 echo "* Install extras is afgerond. Je kunt nu herstarten." 2>&1 | tee -a $LOGFILE
