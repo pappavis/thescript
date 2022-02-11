@@ -556,4 +556,18 @@ sudo apt-get install tailscale -y 2>&1 | tee -a $LOGFILE
 sudo tailscale up 2>&1 | tee -a $LOGFILE
 tailscale ip -4
 
+
+cd ~/Downloads
+echo "" 2>&1 | tee -a $LOGFILE
+echo "Instellen Resilio Sync als Dropbox alternatief" 2>&1 | tee -a $LOGFILE
+echo "resilio sync --> https://www.thedigitalpictureframe.com/how-to-create-a-dropbox-like-file-synchronization-setup-on-the-raspberry-pi-with-resilio/" 2>&1 | tee -a $LOGFILE
+echo "deb http://linux-packages.resilio.com/resilio-sync/deb resilio-sync non-free" | sudo tee /etc/apt/sources.list.d/resilio-sync.list 2>&1 | tee -a $LOGFILE
+wget -qO - https://linux-packages.resilio.com/resilio-sync/key.asc | sudo apt-key add - 2>&1 | tee -a $LOGFILE
+sudo dpkg --add-architecture armel && sudo apt update -y 2>&1 | tee -a $LOGFILE
+echo "deb [arch=armel] http://linux-packages.resilio.com/resilio-sync/deb resilio-sync non-free" | sudo tee /etc/apt/sources.list.d/resilio-sync.list
+sudo apt update -y && sudo apt install resilio-sync -y 2>&1 | tee -a $LOGFILE
+sudo systemctl enable resilio-sync 2>&1 | tee -a $LOGFILE
+sudo service resilio-sync status 2>&1 | tee -a $LOGFILE
+echo "Open nu de website http://$(hostname):8888/gui"
+
 echo "* Install extras is afgerond. Je kunt nu herstarten." 2>&1 | tee -a $LOGFILE
