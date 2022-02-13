@@ -5,11 +5,11 @@ _pwd=$(pwd)
 mkdir $HOME/logs
 
 echo "**Installing Nodes (could take some time)"
-cd /home/pi/.node-red
+cd ~/.node-red
 
 bash ./installNutsfuncties.sh
 
-printstatus "bepalen laatste versies van lokale NPM packages in /home/pi/.node-red/"
+printstatus "bepalen laatste versies van lokale NPM packages in /home/pi/.node-red/" 2>&1 | tee -a $LOGFILE
 npm outdated
 
 for addonnodes in  node-uuid uuid tar ; do
