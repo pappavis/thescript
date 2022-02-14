@@ -573,11 +573,17 @@ echo "Open nu de website http://$(hostname):8888/gui" 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
 echo "" 2>&1 | tee -a $LOGFILE
 echo "Instellen USB over IP   ref--> https://usbip.sourceforge.net" 2>&1 | tee -a $LOGFILE
-sydo apt install -y usbip 2>&1 | tee -a $LOGFILE
+sudo apt install -y usbip 2>&1 | tee -a $LOGFILE
 sudo modprobe usbip-core 2>&1 | tee -a $LOGFILE
 sudo modprobe usbip-host 2>&1 | tee -a $LOGFILE
 sudo usbip -D 2>&1 | tee -a $LOGFILE
 usbip list -l 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
+
+
+cd ~/Downloads
+echo "" 2>&1 | tee -a $LOGFILE
+echo "Instellen OpenVPN ref--> https://youtu.be/gxpX_mubz2A?t=1077" 2>&1 | tee -a $LOGFILE
+wget https://git.io/vpn -O openvpn-install.sh && echo "1\n" | sudo bash openvpn-install.sh 2>&1 | tee -a $LOGFILE
 
 echo "* Install extras is afgerond. Je kunt nu herstarten." 2>&1 | tee -a $LOGFILE
