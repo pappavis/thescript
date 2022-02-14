@@ -570,4 +570,14 @@ sudo systemctl enable resilio-sync 2>&1 | tee -a $LOGFILE
 sudo service resilio-sync status 2>&1 | tee -a $LOGFILE
 echo "Open nu de website http://$(hostname):8888/gui" 2>&1 | tee -a $LOGFILE
 
+cd ~/Downloads
+echo "" 2>&1 | tee -a $LOGFILE
+echo "Instellen USB over IP   ref https://usbip.sourceforge.net" 2>&1 | tee -a $LOGFILE
+sydo apt install -y usbip 2>&1 | tee -a $LOGFILE
+sudo modprobe usbip-core 2>&1 | tee -a $LOGFILE
+sudo modprobe usbip-host 2>&1 | tee -a $LOGFILE
+sudo usbip -D 2>&1 | tee -a $LOGFILE
+usbip list -l 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
+
 echo "* Install extras is afgerond. Je kunt nu herstarten." 2>&1 | tee -a $LOGFILE
