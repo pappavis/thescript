@@ -28,7 +28,7 @@ for addonnodes in pip setuptools wheel openpyxl py7zr o365 ttn qrcode pillow sql
                   pyserial pyparsing pyzmail redmail gpiozero pytube pipx serial jinja2 esptool mpfshell virtualenv ffmpeg conda jupyter-notebook \
                   scikit-build pygame pymongo psycopg2-binary mysql-connector-python guizero imutils scikit-image numpy bokeh django flask \
                   msteamsconnector matplotlib numpy imutils pyodbc influxdb pysmb  opencv-contrib-python git+https://github.com/pytube/pytube picamera djitellopy \
-		   osxphotos RPi.GPIO tox tflite  ; do
+		   osxphotos RPi.GPIO tox tflite tflite-runtime  ; do
     printstatus "Installeren python lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
     conda install  ${addonnodes} 2>&1 | tee -a $LOGFILE
@@ -65,7 +65,7 @@ echo "Installeren Tensorflow lite" 2>&1 | tee -a $LOGFILE
 echo "deb [signed-by=/usr/share/keyrings/coral-edgetpu-archive-keyring.gpg] https://packages.cloud.google.com/apt coral-edgetpu-stable main" | sudo tee /etc/apt/sources.list.d/coral-edgetpu.list
 curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo tee /usr/share/keyrings/coral-edgetpu-archive-keyring.gpg >/dev/null
 sudo apt update -y  2>&1 | tee -a $LOGFILE
-sudo apt install -y python3-tflite-runtime  2>&1 | tee -a $LOGFILE
+# sudo apt install -y python3-tflite-runtime  2>&1 | tee -a $LOGFILE
 echo "Tensorflow lite install afgerond" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
 
