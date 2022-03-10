@@ -28,7 +28,7 @@ for addonnodes in pip setuptools wheel openpyxl py7zr o365 ttn qrcode pillow sql
                   pyserial pyparsing pyzmail redmail gpiozero pytube pipx serial jinja2 esptool mpfshell virtualenv ffmpeg conda jupyter-notebook \
                   scikit-build pygame pymongo psycopg2-binary mysql-connector-python guizero imutils scikit-image numpy bokeh django flask \
                   msteamsconnector matplotlib numpy imutils pyodbc influxdb pysmb  opencv-contrib-python git+https://github.com/pytube/pytube picamera djitellopy \
-		   osxphotos RPi.GPIO tox tflite tflite-runtime  ; do
+		   osxphotos RPi.GPIO tox tflite tflite-runtime tflite_support  ; do
     printstatus "Installeren python lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
     conda install  ${addonnodes} 2>&1 | tee -a $LOGFILE
