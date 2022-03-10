@@ -60,6 +60,14 @@ pipx install conda  2>&1 | tee -a $LOGFILE
 pip install --upgrade RPi.GPIO  2>&1 | tee -a $LOGFILE &
 pip uninstall --no-input serial  2>&1 | tee -a $LOGFILE
 
+cd ~/Downloads
+echo "Installeren Tensorflow lite" 2>&1 | tee -a $LOGFILE
+echo "deb [signed-by=/usr/share/keyrings/coral-edgetpu-archive-keyring.gpg] https://packages.cloud.google.com/apt coral-edgetpu-stable main" | sudo tee /etc/apt/sources.list.d/coral-edgetpu.list
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo tee /usr/share/keyrings/coral-edgetpu-archive-keyring.gpg >/dev/null
+sudo apt update -y  2>&1 | tee -a $LOGFILE
+sudo apt install -y python3-tflite-runtime  2>&1 | tee -a $LOGFILE
+echo "Tensorflow lite install afgerond" 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
 
 cd ~/Downloads
 echo "Installeren Miniconda" 2>&1 | tee -a $LOGFILE
