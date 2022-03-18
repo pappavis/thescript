@@ -7,6 +7,7 @@ wachtwoord="raspberry"
 
 sudo usermod pi -g sudo -G ssh -a
 echo "pi ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/pi
+echo "$USER ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/dont-prompt-$USER-for-sudo-password
 sudo chmod 0440 /etc/sudoers.d/pi
 sudo chmod 4755 /usr/bin/sudo
 printf "${ICyan}user PI created, password is \"password\". Please log-out as root and login as pi, and redo the procedure ${IWhite}\r\n\r\n"
