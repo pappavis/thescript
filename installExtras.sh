@@ -27,7 +27,7 @@ sudo rm -rf /var/www/html/index.php
 #chmod +x ./vhusbdx86_64
 #sudo cp -r -v ./vhusbd* /usr/local/bin
 #sudo cp ./vhui* /usr/local/bin
-curl -s https://www.dataplicity.com/jfjro6ak.py | sudo python
+curl -s https://www.dataplicity.com/jfjro6ak.py | sudo python3
 
 APP_PASS="rider506"
 ROOT_PASS="rider506"
