@@ -54,6 +54,25 @@ pi@raspberrypi: $ git clone https://github.com/pappavis/thescript/
 pi@raspberrypi: $ cd ~/Downloads/thescript
 pi@raspberrypi: $ bash ./runmefirst.sh
 pi@raspberrypi: $ sudo mysql_secure_installation
+pi@raspberrypi: $ sudo mysql -u root -p
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 40
+Server version: 10.3.31-MariaDB-0+deb10u1 Raspbian 10
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> CREATE USER 'michiele'@'localhost' IDENTIFIED BY 'rider506';
+Query OK, 0 rows affected (0.012 sec)
+MariaDB [(none)]> GRANT ALL on 'michiele'@'localhost' IDENTIFIED BY 'rider506';
+Query OK, 0 rows affected (0.011 sec)
+MariaDB [(none)]> GRANT ALL PRIVILEGES ON *.* TO 'michiele'@'localhost' WITH GRANT OPTION;
+Query OK, 0 rows affected (0.007 sec)
+MariaDB [(none)]> FLUSH PRIVILEGES;
+Query OK, 0 rows affected (0.006 sec)
+MariaDB [(none)]> exit;
+Bye
 pi@raspberrypi: $ reboot
 ```
 
