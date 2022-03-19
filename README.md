@@ -63,10 +63,8 @@ Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
 
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-MariaDB [(none)]> CREATE USER 'michiele'@'localhost' IDENTIFIED BY 'rider506';
+MariaDB [(none)]> CREATE USER 'michiele'@'localhost' IDENTIFIED BY 'password';
 Query OK, 0 rows affected (0.012 sec)
-MariaDB [(none)]> GRANT ALL on 'michiele'@'localhost' IDENTIFIED BY 'rider506';
-Query OK, 0 rows affected (0.011 sec)
 MariaDB [(none)]> GRANT ALL PRIVILEGES ON *.* TO 'michiele'@'localhost' WITH GRANT OPTION;
 Query OK, 0 rows affected (0.007 sec)
 MariaDB [(none)]> FLUSH PRIVILEGES;
