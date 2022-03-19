@@ -58,6 +58,9 @@ for addonnodes in   https://github.com/RomainOdeval/OctoPrint-CrealityTemperatur
    https://github.com/OctoPrint/OctoPrint-RequestSpinner/archive/master.zip \
    https://github.com/jneilliii/Octoprint-STLViewer/archive/master.zip \
    https://github.com/rlogiacco/UploadAnything/archive/master.zip \
+   https://github.com/jneilliii/OctoPrint-PrusaSlicerThumbnails/archive/refs/tags/1.0.0.zip \
+   https://github.com/jneilliii/OctoPrint-FloatingNavbar/archive/refs/tags/0.3.7.zip \
+   https://github.com/tpmullan/OctoPrint-DetailedProgress/archive/refs/tags/0.2.7.zip \ 
    https://github.com/malnvenshorn/OctoPrint-WebcamTab/archive/master.zip  ; do
 	echo "Installeren Octoprint uitbreiding:  \"${addonnodes}\""
   	pip install --upgrade --no-cache-dir ${addonnodes}  2>&1 | tee -a $LOGFILE
