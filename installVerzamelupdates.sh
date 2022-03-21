@@ -36,6 +36,7 @@ bash ./installNodered.sh  2>&1 | tee -a $LOGFILE
 printf "\nTesseract OCR wordt bijgewerkt\n"  2>&1 | tee -a $LOGFILE
 bash ./installTessarectOCR.sh 2>&1 | tee -a $LOGFILE &
 bash ./installExtras.sh  2>&1 | tee -a $LOGFILE
+bash ./installDesktop.sh 2>&1 | tee -a $LOGFILE
 sudo apt autoclean -y  2>&1 | tee -a $LOGFILE
 sudo apt autoremove -y  2>&1 | tee -a $LOGFILE
 
