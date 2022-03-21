@@ -77,6 +77,10 @@ echo "deb https://repos.influxdata.com/debian dists buster stable" | sudo tee /e
 echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee /etc/apt/sources.list.d/grafana.list
 sudo apt update -y 2>&1 | tee -a $LOGFILE
 
+sudo systemctl enable influxdb grafana-server telegraf
+sudo systemctl start influxdb grafana-server telegraf
+sudo systemctl status influxdb grafana-server telegraf 2>&1 | tee -a $LOGFILE
+
 echo "** installeer minimale Raspbian desktop." 2>&1 | tee -a $LOGFILE
 for addonnodes in raspberrypi-ui-mods xinit xserver-xorg xrdp   ; do
   echo " "
@@ -85,10 +89,6 @@ for addonnodes in raspberrypi-ui-mods xinit xserver-xorg xrdp   ; do
   echo " "
   sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
-
-sudo systemctl enable influxdb grafana-server telegraf
-sudo systemctl start influxdb grafana-server telegraf
-sudo systemctl status influxdb grafana-server telegraf 2>&1 | tee -a $LOGFILE
 
 sudo mkdir /home/pi/.local
 sudo mkdir /home/pi/.local/share
