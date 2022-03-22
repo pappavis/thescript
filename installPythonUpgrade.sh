@@ -2,7 +2,7 @@ LOGFILE=/home/pi/PythonUpgradefile-`date +%Y-%m-%d_%Hh%Mm`.log
 
 echo "** Python upgrade installeren\n" 2>&1 | tee -a $LOGFILE
 
-wget -qO - https://raw.githubusercontent.com/tvdsluijs/sh-python-installer/main/python.sh | sudo bash -s 3.9.7
+wget -qO - https://raw.githubusercontent.com/tvdsluijs/sh-python-installer/main/python.sh | sudo bash -s 3.9.7 2>&1 | tee -a $LOGFILE
 
 for addonnodes in git wget build-essential checkinstall build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev libbz2-dev  libncursesw5-dev libc6-dev openssl libffi-dev libbz2-dev liblzma-dev libsqlite3-dev libncurses5-dev libgdbm-dev zlib1g-dev libreadline-dev libssl-dev tk-dev build-essential  ; do
     printstatus "CircuitPython activeren  : \"${addonnodes}\""
