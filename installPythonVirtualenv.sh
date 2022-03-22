@@ -24,13 +24,14 @@ echo "source ~/.bashrc" >> ~/.bash_profile
 #python3 -m pip install virtualenv
 mkdir ~/venv
 ~/.local/bin/pipx install ~/venv/virtualenv  2>&1 | tee -a $LOGFILE
-~/.local/bin/virtualenv ~/venv/venv3.7  2>&1 | tee -a $LOGFILE
-source ~/venv/venv3.7/bin/activate  2>&1 | tee -a $LOGFILE
+python3 -m pip install --upgrade virtualenv 
+python3 -m virtualenv ~/venv/venv  2>&1 | tee -a $LOGFILE
+source ~/venv/venv/bin/activate  2>&1 | tee -a $LOGFILE
 for addonnodes in adafruit-blinka RPI.GPIO  ; do
     echo "Installeren: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     pip install --user --upgrade ${addonnodes}  2>&1 | tee -a $LOGFILE
 done
-echo "source ~/venv/venv3.7/bin/activate" >> ~/.bashrc
+echo "source ~/venv/venv/bin/activate" >> ~/.bashrc
 source ~/.bashrc  2>&1 | tee -a $LOGFILE
 
 bash ./installPythonLibs.sh  2>&1 | tee -a $LOGFILE
