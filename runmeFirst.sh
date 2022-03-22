@@ -142,8 +142,7 @@ VENV="venv"
 rm -rf ~/venv/$VENV
 mkdir ~/venv
 python3 -m pip install virtualenv 2>&1 | tee -a $LOGFILE
-python3.11 -m pip install virtualenv 2>&1 | tee -a $LOGFILE
-pip install virtualenv  2>&1 | tee -a $LOGFILE
+/usr/python/python3.11 -m pip install virtualenv 2>&1 | tee -a $LOGFILE
 ~/.local/bin/virtualenv ~/venv/$VENV
 ~/.local/bin/virtualenv3.11 ~/venv/venv3.11
 echo "source ~/venv/$VENV/bin/activate" >> ~/.bashrc
