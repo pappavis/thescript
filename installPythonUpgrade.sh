@@ -1,6 +1,6 @@
 LOGFILE=/home/pi/PythonUpgradefile-`date +%Y-%m-%d_%Hh%Mm`.log
 PVERS="3.9"
-echo "** Python upgrade installeren\n" 2>&1 | tee -a $LOGFILE
+echo "** Python upgrade installeren $PVERS\n" 2>&1 | tee -a $LOGFILE
 
 wget -qO - https://raw.githubusercontent.com/tvdsluijs/sh-python-installer/main/python.sh | sudo bash -s 3.9.7 2>&1 | tee -a $LOGFILE
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.9 1
