@@ -32,6 +32,6 @@ python ./demo/opencv_pip_fix.py
 sudo apt autoclean -y 2>&1 | tee -a $LOGFILE
 sudo apt autoremove -y 2>&1 | tee -a $LOGFILE
 
-pip install opencv-python &
+#pip install opencv-python &
 
 echo "Tessarect $_tv  en OpenCV is installatie afgerond."
