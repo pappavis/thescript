@@ -10,6 +10,7 @@ mkdir $HOME/logs
 #~/.local/bin/virtualenv ~/venv/venv3.7/
 #source ~/venv/venv3.7/bin/activate
 
+sudo apt --fix-broken install -y
 sudo apt install -y unixodbc-dev 2>&1 | tee -a $LOGFILE
 
 for addonnodes in  unixodbc-dev wiringpi i2c-tools; do
