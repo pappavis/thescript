@@ -56,11 +56,22 @@ cd ./opencv-$OPENCVver/ 2>&1 | tee -a $LOGFILE
 pip wheel . --verbose 2>&1 | tee -a $LOGFILE
 mkdir build 2>&1 | tee -a $LOGFILE
 cd build 2>&1 | tee -a $LOGFILE
-ccmake .. 2>&1 | tee -a $LOGFILE
+
+cmake ../  -D CMAKE_BUILD_TYPE=RELEASE \
+            -D INSTALL_C_EXAMPLES=ON \
+            -D INSTALL_PYTHON_EXAMPLES=ON \
+            -D WITH_TBB=ON \
+            -D WITH_V4L=ON \
+        -D WITH_QT=ON \
+        -D WITH_OPENGL=ON \
+        -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules \
+        -D BUILD_EXAMPLES=ON .. 2>&1 | tee -a $LOGFILE
+
+
+#cmake .. 2>&1 | tee -a $LOGFILE
 
 make -j$(nproc)  2>&1 | tee -a $LOGFILE
-sudo make install 2>&1 | tee -a $LOGFILE
-
+sudo make install 2>&1 | tee -a $LOGFILE  
 
 #cmake -D CMAKE_BUILD_TYPE=RELEASE \
 #            -D CMAKE_INSTALL_PREFIX=$cwd/installation/OpenCV-"$cvVersion" \
