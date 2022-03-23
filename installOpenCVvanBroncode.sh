@@ -3,6 +3,7 @@ _hn1=$(hostname)
 _pwd=$(pwd)
 mkdir $HOME/logs
 PyVER=$(python -c "print(__import__('sys').version[:7].rstrip())")
+OPENCVver=$'4.1.2'
 
 echo "**Installeer OpenCV Python van broncode**"  2>&1 | tee -a $LOGFILE
 echo "## Install OpenCV dependencies"  2>&1 | tee -a $LOGFILE
@@ -41,14 +42,17 @@ done
 echo "Download opencv and opencv_contrib" 2>&1 | tee -a $LOGFILE
 cd ~/Downloads/
 
-wget https://github.com/opencv/opencv_contrib/archive/refs/tags/4.1.2.zip 2>&1 | tee -a $LOGFILE
-wget https://github.com/opencv/opencv/archive/refs/tags/4.1.2.zip 2>&1 | tee -a $LOGFILE
-tar -xf opencv-4.1.2.tar.gz 2>&1 | tee -a $LOGFILE
-tar -xf opencv_contrib-4.1.2.tar.gz 2>&1 | tee -a $LOGFILE
+rm -rf opencv-$OPENCVver.zip
+wget https://github.com/opencv/opencv_contrib/archive/refs/tags/$OPENCVver.zip 2>&1 | tee -a $LOGFILE
+mv ./$OPENCVver.zip ./opencv-$OPENCVver.zip
+wget https://github.com/opencv/opencv/archive/refs/tags/$OPENCVver.zip 2>&1 | tee -a $LOGFILE
+mv ./$OPENCVver.zip ./opencv_contrib-$OPENCVver.zip
+tar -xf opencv-$OPENCVver.tar.gz 2>&1 | tee -a $LOGFILE
+tar -xf opencv_contrib-$OPENCVver.tar.gz 2>&1 | tee -a $LOGFILE
 
 pip install numpy
 
-cd opencv-4.1.2/ 2>&1 | tee -a $LOGFILE
+cd ./opencv-$OPENCVver/ 2>&1 | tee -a $LOGFILE
 pip wheel . --verbose
 mkdir build 2>&1 | tee -a $LOGFILE
 cd build 2>&1 | tee -a $LOGFILE
