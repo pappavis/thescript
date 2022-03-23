@@ -7,7 +7,7 @@ sudo update-alternatives --install /usr/bin/python python /usr/bin/python$PVERS 
 /usr/bin/python -m pip install virtualenv 2>&1 | tee -a $LOGFILE
 virtualenv ~/venv/venv$PVERS 2>&1 | tee -a $LOGFILE
 
-for addonnodes in git wget build-essential checkinstall build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev libbz2-dev  libncursesw5-dev libc6-dev openssl libffi-dev libbz2-dev liblzma-dev libsqlite3-dev libncurses5-dev libgdbm-dev zlib1g-dev libreadline-dev libssl-dev tk-dev build-essential  ; do
+for addonnodes in git wget build-essential checkinstall build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev libbz2-dev  libncursesw5-dev libc6-dev openssl libffi-dev libbz2-dev liblzma-dev libsqlite3-dev libncurses5-dev libgdbm-dev zlib1g-dev libreadline-dev libssl-dev tk-dev build-essential libopencv-dev   ; do
     printstatus "CircuitPython activeren  : \"${addonnodes}\""
     sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
