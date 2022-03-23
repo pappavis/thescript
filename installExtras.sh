@@ -548,6 +548,16 @@ echo "" 2>&1 | tee -a $LOGFILE
 
 
 cd ~/Downloads
+curl -fsSL get.docker.com -o get-docker.sh && sh get-docker.sh 2>&1 | tee -a $LOGFILE
+sudo usermod -aG docker pi 2>&1 | tee -a $LOGFILE
+sudo curl https://download.docker.com/linux/raspbian/gpg 2>&1 | tee -a $LOGFILE
+sudo service docker restart 2>&1 | tee -a $LOGFILE
+sudo service docker status 2>&1 | tee -a $LOGFILE
+docker info 2>&1 | tee -a $LOGFILE
+docker run hello-world 2>&1 | tee -a $LOGFILE
+
+
+cd ~/Downloads
 echo "" 2>&1 | tee -a $LOGFILE
 echo "Instellen OpenVPN ref--> https://youtu.be/gxpX_mubz2A?t=1077" 2>&1 | tee -a $LOGFILE
 wget https://git.io/vpn -O openvpn-install.sh && echo "1\n" | sudo bash openvpn-install.sh 2>&1 | tee -a $LOGFILE
