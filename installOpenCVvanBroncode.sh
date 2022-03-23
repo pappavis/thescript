@@ -53,7 +53,7 @@ mv ./$OPENCVver.zip ./opencv_contrib-$OPENCVver.zip
 pip install numpy
 
 cd ./opencv-$OPENCVver/ 2>&1 | tee -a $LOGFILE
-pip wheel . --verbose
+pip wheel . --verbose 2>&1 | tee -a $LOGFILE
 mkdir build 2>&1 | tee -a $LOGFILE
 cd build 2>&1 | tee -a $LOGFILE
 ccmake .. 2>&1 | tee -a $LOGFILE
