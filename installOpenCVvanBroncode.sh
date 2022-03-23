@@ -40,6 +40,7 @@ done
 
 echo "Download opencv and opencv_contrib" 2>&1 | tee -a $LOGFILE
 cd ~/Downloads/
+
 wget https://github.com/opencv/opencv_contrib/archive/refs/tags/4.1.2.zip 2>&1 | tee -a $LOGFILE
 wget https://github.com/opencv/opencv/archive/refs/tags/4.1.2.zip 2>&1 | tee -a $LOGFILE
 tar -xf opencv-4.1.2.tar.gz 2>&1 | tee -a $LOGFILE
@@ -48,6 +49,7 @@ tar -xf opencv_contrib-4.1.2.tar.gz 2>&1 | tee -a $LOGFILE
 pip install numpy
 
 cd opencv-4.1.2/ 2>&1 | tee -a $LOGFILE
+pip wheel . --verbose
 mkdir build 2>&1 | tee -a $LOGFILE
 cd build 2>&1 | tee -a $LOGFILE
 ccmake .. 2>&1 | tee -a $LOGFILE
