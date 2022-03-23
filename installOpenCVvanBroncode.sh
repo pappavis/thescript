@@ -2,6 +2,7 @@ LOGFILE=$HOME/logs/installOpenCVvanBroncode-`date +%Y-%m-%d_%Hh%Mm`.log
 _hn1=$(hostname)
 _pwd=$(pwd)
 mkdir $HOME/logs
+PyVER=$(python -c "print(__import__('sys').version[:7].rstrip())")
 
 echo "**Installeer OpenCV Python van broncode**"  2>&1 | tee -a $LOGFILE
 echo "## Install OpenCV dependencies"  2>&1 | tee -a $LOGFILE
@@ -23,21 +24,33 @@ for addonnodes in python3-testresources libprotobuf-dev protobuf-compiler libgoo
 	sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
-echo "Download opencv and opencv_contrib" 2>&1 | tee -a $LOGFILE
-cd ~/Downloads
-git clone https://github.com/opencv/opencv.git
-cd opencv
-git checkout 3.4
-cd ..
 
-git clone https://github.com/opencv/opencv_contrib.git
-cd opencv_contrib
-git checkout 3.4
-cd .
+for addonnodes in  build-essential checkinstall yasm cmake git gfortran libgtk2.0-dev libgtk-3-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev \
+	libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev jasper libdc1394-22-dev libavcodec-dev libavformat-dev libswscale-dev libv4l-dev \
+	libxvidcore-dev libx264-dev libx265-dev libatlas-base-dev libwebp-dev cmake-curses-gui qtcreator  qt5-default sudo apt-get install \
+	libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav \
+	gstreamer1.0-doc gstreamer1.0-tools gstreamer1.0-x gstreamer1.0-alsa gstreamer1.0-gl gstreamer1.0-gtk3 gstreamer1.0-qt5 gstreamer1.0-pulseaudio \
+	libtiff5-dev libxine2-dev libfaac-dev libmp3lame-dev libtheora-dev libvorbis-dev libopencore-amrnb-dev libopencore-amrwb-dev libavresample-dev \
+	x264 v4l-utils libprotobuf-dev protobuf-compiler libgoogle-glog-dev libgflags-dev libgphoto2-dev libeigen3-dev libhdf5-dev doxygen \
+	libqt5x11extras5-dev qttools5-dev openexr libopenexr-dev libx11-dev libboost-python-dev ; do
+	
+	printstatus "Installeren Opencv afhanklijkheid \"${addonnodes}\""
+	sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
+
+echo "Download opencv and opencv_contrib" 2>&1 | tee -a $LOGFILE
+cd ~/Downloads/
+wget https://github.com/opencv/opencv_contrib/archive/refs/tags/4.1.2.zip 2>&1 | tee -a $LOGFILE
+wget https://github.com/opencv/opencv/archive/refs/tags/4.1.2.zip 2>&1 | tee -a $LOGFILE
+tar -xf opencv-4.1.2.tar.gz 2>&1 | tee -a $LOGFILE
+tar -xf opencv_contrib-4.1.2.tar.gz 2>&1 | tee -a $LOGFILE
+
+pip install numpy
 
 cd opencv
 mkdir build 2>&1 | tee -a $LOGFILE
 cd build
+
 
 cmake -D CMAKE_BUILD_TYPE=RELEASE \
             -D CMAKE_INSTALL_PREFIX=$cwd/installation/OpenCV-"$cvVersion" \
@@ -45,7 +58,7 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
             -D INSTALL_PYTHON_EXAMPLES=ON \
             -D WITH_TBB=ON \
             -D WITH_V4L=ON \
-            -D OPENCV_PYTHON3_INSTALL_PATH=$cwd/OpenCV-$cvVersion-py3/lib/python3.5/site-packages \
+            -D OPENCV_PYTHON3_INSTALL_PATH=$cwd/OpenCV-$cvVersion-py3/lib/python$PyVER/site-packages \
         -D WITH_QT=ON \
         -D WITH_OPENGL=ON \
         -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules \
