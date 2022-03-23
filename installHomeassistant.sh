@@ -11,7 +11,7 @@ python3 -m ensurepip
 python3 -m virtualenv /home/pi/venv/homeassistant
 source /home/pi/venv/homeassistant/bin/activate
 
-for addonnodes in  pip wheel virtualenv homeassistant ffmpeg ; do
+for addonnodes in  pip wheel ffmpeg homeassistant ; do
 	echo "Installeren Homeassistant vereisten:  \"${addonnodes}\""
   	pip install --upgrade ${addonnodes}  2>&1 | tee -a $LOGFILE
 done
