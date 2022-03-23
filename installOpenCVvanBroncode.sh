@@ -10,7 +10,7 @@ echo "## Install OpenCV dependencies"  2>&1 | tee -a $LOGFILE
 
 sudo apt update -y
 
-for addonnodes in git gfortran build-essential checkinstall cmake pkg-config yasm libjpeg8-dev libjasper-dev libpng12-dev libtiff5-dev libtiff-dev libavcodec-dev libavformat-dev libswscale-dev libdc1394-22-dev libxine2-dev libv4l-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev libgtk2.0-dev libtbb-dev qt5-default libatlas-base-dev libmp3lame-dev libtheora-dev libvorbis-dev libxvidcore-dev libx264-dev libopencore-amrnb-dev libopencore-amrwb-dev libavresample-dev x264 v4l-utils ; do
+for addonnodes in git  gfortran build-essential checkinstall cmake pkg-config yasm libjpeg8-dev libjasper-dev libpng12-dev libtiff5-dev libtiff-dev libavcodec-dev libavformat-dev libswscale-dev libdc1394-22-dev libxine2-dev libv4l-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev libgtk2.0-dev libtbb-dev qt5-default libatlas-base-dev libmp3lame-dev libtheora-dev libvorbis-dev libxvidcore-dev libx264-dev libopencore-amrnb-dev libopencore-amrwb-dev libavresample-dev x264 v4l-utils libopencv-dev python3-opencv ; do
 	printstatus "Installing OpenCV benodigheden \"${addonnodes}\""
 	sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
@@ -47,8 +47,8 @@ wget https://github.com/opencv/opencv_contrib/archive/refs/tags/$OPENCVver.zip 2
 mv ./$OPENCVver.zip ./opencv-$OPENCVver.zip
 wget https://github.com/opencv/opencv/archive/refs/tags/$OPENCVver.zip 2>&1 | tee -a $LOGFILE
 mv ./$OPENCVver.zip ./opencv_contrib-$OPENCVver.zip
-tar -xf opencv-$OPENCVver.tar.gz 2>&1 | tee -a $LOGFILE
-tar -xf opencv_contrib-$OPENCVver.tar.gz 2>&1 | tee -a $LOGFILE
+7z x ./opencv-$OPENCVver.zip 2>&1 | tee -a $LOGFILE
+7z x ./opencv_contrib-$OPENCVver.zip 2>&1 | tee -a $LOGFILE
 
 pip install numpy
 
