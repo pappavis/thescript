@@ -14,8 +14,6 @@ done
 
 _tv=$(tesseract --version)
 
-python ./demo/opencv_pip_fix.py
-
 echo "Tessarect $_tv is geïnstalleerd."
 
 source ~/venv/venv3.7/bin/activate
