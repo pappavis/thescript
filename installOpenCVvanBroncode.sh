@@ -42,7 +42,7 @@ done
 echo "Download opencv and opencv_contrib" 2>&1 | tee -a $LOGFILE
 cd ~/Downloads/
 
-rm -rf opencv-$OPENCVver.zip
+rm -rf *$OPENCVver*.zip
 wget https://github.com/opencv/opencv_contrib/archive/refs/tags/$OPENCVver.zip 2>&1 | tee -a $LOGFILE
 mv ./$OPENCVver.zip ./opencv-$OPENCVver.zip
 wget https://github.com/opencv/opencv/archive/refs/tags/$OPENCVver.zip 2>&1 | tee -a $LOGFILE
