@@ -4,7 +4,7 @@ echo "* Installeren Tessarect OCR"
 sudo apt update -y
 
 
-for addonnodes in tesseract-ocr libtesseract-dev   ; do
+for addonnodes in tesseract-ocr libtesseract-dev    ; do
   echo " "
   echo " "
   echo "Installeren ${addonnodes}"
@@ -20,7 +20,7 @@ echo "Tessarect $_tv is geïnstalleerd."
 
 source ~/venv/venv3.7/bin/activate
 
-for addonnodes in pip setuptools wheel pytesseract libwebp6 opencv-python ; do
+for addonnodes in pip setuptools wheel pytesseract libwebp6 libopencv-dev opencv-python ; do
   echo " "
   echo " "
   echo "Installeren Python bieb: ${addonnodes}"
