@@ -6,7 +6,7 @@ echo "** OPTIONEEL!! Installeer OpenCV Python van broncode."
 echo "sudo apt-get -y remove x264 libx264-dev"
 
 echo "## Install OpenCV dependencies"  2>&1 | tee -a $LOGFILE
-source ~/venv/venv3.7/bin/activate
+source ~/venv/venv/bin/activate
 python ./demo/opencv_pip_fix.py  2>&1 | tee -a $LOGFILE
 
 sudo apt update -y
