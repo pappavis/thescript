@@ -47,22 +47,26 @@ tar -xf opencv_contrib-4.1.2.tar.gz 2>&1 | tee -a $LOGFILE
 
 pip install numpy
 
-cd opencv
+cd opencv-4.1.2/ 2>&1 | tee -a $LOGFILE
 mkdir build 2>&1 | tee -a $LOGFILE
-cd build
+cd build 2>&1 | tee -a $LOGFILE
+ccmake .. 2>&1 | tee -a $LOGFILE
+
+make -j$(nproc)  2>&1 | tee -a $LOGFILE
+sudo make install 2>&1 | tee -a $LOGFILE
 
 
-cmake -D CMAKE_BUILD_TYPE=RELEASE \
-            -D CMAKE_INSTALL_PREFIX=$cwd/installation/OpenCV-"$cvVersion" \
-            -D INSTALL_C_EXAMPLES=ON \
-            -D INSTALL_PYTHON_EXAMPLES=ON \
-            -D WITH_TBB=ON \
-            -D WITH_V4L=ON \
-            -D OPENCV_PYTHON3_INSTALL_PATH=$cwd/OpenCV-$cvVersion-py3/lib/python$PyVER/site-packages \
-        -D WITH_QT=ON \
-        -D WITH_OPENGL=ON \
-        -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules \
-        -D BUILD_EXAMPLES=ON .. 2>&1 | tee -a $LOGFILE
+#cmake -D CMAKE_BUILD_TYPE=RELEASE \
+#            -D CMAKE_INSTALL_PREFIX=$cwd/installation/OpenCV-"$cvVersion" \
+#            -D INSTALL_C_EXAMPLES=ON \
+#            -D INSTALL_PYTHON_EXAMPLES=ON \
+#            -D WITH_TBB=ON \
+#            -D WITH_V4L=ON \
+#            -D OPENCV_PYTHON3_INSTALL_PATH=$cwd/OpenCV-$cvVersion-py3/lib/python$PyVER/site-packages \
+#        -D WITH_QT=ON \
+#        -D WITH_OPENGL=ON \
+#        -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules \
+#        -D BUILD_EXAMPLES=ON .. 2>&1 | tee -a $LOGFILE
         
 make -j$(nproc) 2>&1 | tee -a $LOGFILE
 make install 2>&1 | tee -a $LOGFILE
