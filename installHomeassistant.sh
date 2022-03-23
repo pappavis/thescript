@@ -17,7 +17,7 @@ for addonnodes in  pip wheel ffmpeg homeassistant ; do
 done
 
 sudo useradd -rm homeassistant -G dialout,gpio,i2c
-sudo mkdir /homw/homeassistant
+sudo mkdir /home/homeassistant
 sudo chown homeassistant:homeassistant /home/homeassistant
 
 mkdir ~/Downloads
