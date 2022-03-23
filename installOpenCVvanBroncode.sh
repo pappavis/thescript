@@ -76,6 +76,7 @@ sudo make install 2>&1 | tee -a $LOGFILE
         
 make -j$(nproc) 2>&1 | tee -a $LOGFILE
 make install 2>&1 | tee -a $LOGFILE
+python3 -c "import cv2; print(cv2.__version__)" 2>&1 | tee -a $LOGFILE
 
 echo " OpenCV build van bronkode afgerond." 2>&1 | tee -a $LOGFILE
 
