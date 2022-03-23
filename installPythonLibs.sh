@@ -76,13 +76,6 @@ for addonnodes in  apt-transport-https ca-certificates software-properties-commo
     printstatus "Installeren Miniconda docker vereisten: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     sudo apt install $NQUIET -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
-curl -fsSL get.docker.com -o get-docker.sh && sh get-docker.sh 2>&1 | tee -a $LOGFILE
-sudo usermod -aG docker pi 2>&1 | tee -a $LOGFILE
-sudo curl https://download.docker.com/linux/raspbian/gpg 2>&1 | tee -a $LOGFILE
-sudo service docker restart 2>&1 | tee -a $LOGFILE
-sudo service docker status 2>&1 | tee -a $LOGFILE
-docker info 2>&1 | tee -a $LOGFILE
-docker run hello-world 2>&1 | tee -a $LOGFILE
 
 
 printstatus "installPythonLibs.sh is afgerond"  2>&1 | tee -a $LOGFILE
