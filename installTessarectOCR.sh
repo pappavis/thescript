@@ -28,9 +28,11 @@ for addonnodes in pip setuptools wheel pytesseract libwebp6 libopencv-dev opencv
   pip install --upgrade  ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
-python ./demo/opencv_pip_fix.py
 sudo apt autoclean -y 2>&1 | tee -a $LOGFILE
 sudo apt autoremove -y 2>&1 | tee -a $LOGFILE
+
+python3 -c “import cv2; print(cv2.__version__)" 2>&1 | tee -a $LOGFILE
+python ./demo/opencv_pip_fix.py 2>&1 | tee -a $LOGFILE
 
 #pip install opencv-python &
 
