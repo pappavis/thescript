@@ -548,6 +548,7 @@ echo "" 2>&1 | tee -a $LOGFILE
 
 
 cd ~/Downloads
+echo "Instellen docker" 2>&1 | tee -a $LOGFILE
 curl -fsSL get.docker.com -o get-docker.sh && sh get-docker.sh 2>&1 | tee -a $LOGFILE
 sudo usermod -aG docker pi 2>&1 | tee -a $LOGFILE
 sudo curl https://download.docker.com/linux/raspbian/gpg 2>&1 | tee -a $LOGFILE
@@ -556,6 +557,10 @@ sudo service docker status 2>&1 | tee -a $LOGFILE
 docker info 2>&1 | tee -a $LOGFILE
 docker run hello-world 2>&1 | tee -a $LOGFILE
 
+cd ~/Downloads
+echo "Instellen openvpn" 2>&1 | tee -a $LOGFILE
+sudo apt-get install -y openvpn openssl 2>&1 | tee -a $LOGFILE
+sudo cp -r -v /usr/share/easy-rsa /etc/openvpn/easy-rsa 2>&1 | tee -a $LOGFILE
 
 cd ~/Downloads
 echo "" 2>&1 | tee -a $LOGFILE
