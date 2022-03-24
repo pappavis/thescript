@@ -566,7 +566,7 @@ echo "export EASY_RSA=/etc/openvpn/easy-rsa" | tee -a  /etc/openvpn/easy-rsa/var
 
 cd ~/Downloads
 echo "" 2>&1 | tee -a $LOGFILE
-echo "Instellen OpenVPN ref--> https://youtu.be/gxpX_mubz2A?t=1077" 2>&1 | tee -a $LOGFILE
+echo "Instellen OpenVPN ref--> https://youtu.be/gxpX_mubz2A?t=1077  en  https://raspberrytips.nl/pivpn-de-eenvoudige-manier-om-openvpn-te-installeren/" 2>&1 | tee -a $LOGFILE
 curl -L http://install.pivpn.io  | sudo bash 2>&1 | tee -a $LOGFILE
 #wget https://git.io/vpn -O openvpn-install.sh && echo "1\n" 2>&1 | tee -a $LOGFILE
 #sudo bash openvpn-install.sh 2>&1 | tee -a $LOGFILE
