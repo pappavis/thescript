@@ -18,7 +18,7 @@ echo "Tessarect $_tv is geïnstalleerd."
 
 source ~/venv/venv3.7/bin/activate
 
-for addonnodes in pip setuptools wheel pytesseract libwebp6 libopencv-dev opencv-contrib-python==3.4.0.14  ; do
+for addonnodes in pip setuptools wheel pytesseract libwebp6 libopencv-dev opencv-contrib-python==3.4.11.45  ; do
   echo " "
   echo " "
   echo "Installeren Python bieb: ${addonnodes}"
