@@ -13,6 +13,10 @@ mkdir $HOME/logs
 sudo apt --fix-broken install -y
 sudo apt install -y unixodbc-dev 2>&1 | tee -a $LOGFILE
 
+echo "PIP cache leeggooien." 2>&1 | tee -a $LOGFILE
+rm -rf ~/.cache/pip 2>&1 | tee -a $LOGFILE
+
+
 for addonnodes in  unixodbc-dev wiringpi i2c-tools; do
     printstatus "Installeren: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
