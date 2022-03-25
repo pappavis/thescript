@@ -2,6 +2,10 @@ LOGFILE=/home/pi/PythonUpgradefile-`date +%Y-%m-%d_%Hh%Mm`.log
 PVERS="3.10"
 echo "** Python upgrade installeren $PVERS\n" 2>&1 | tee -a $LOGFILE
 
+
+echo "Python cache leeggooien" 2>&1 | tee -a $LOGFILE
+rm -rf ~/.cache/pip 2>&1 | tee -a $LOGFILE
+
 wget -qO - https://raw.githubusercontent.com/tvdsluijs/sh-python-installer/main/python.sh | sudo bash -s 3.10.3 2>&1 | tee -a $LOGFILE
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python$PVERS 1 2>&1 | tee -a $LOGFILE
 /usr/bin/python -m pip install virtualenv 2>&1 | tee -a $LOGFILE
