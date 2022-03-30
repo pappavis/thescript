@@ -118,7 +118,7 @@ sudo service bluetooth status 2>&1 | tee -a $LOGFILE
 sudo apt update -y
 sudo apt update --fix-missing -y  2>&1 | tee -a $LOGFILE
 
-for addonnodes in p7zip-full mc sqlite3 i2c-tools ncftp mariadb-server mariadb-client mosquitto mosquitto-clients python3.11  python3-opencv libsdl2-image gedit gparted  python-smbus vsftpd neofetch apache2 php php-mysql php-sqlite3 php-mbstring openssl libapache2-mod-php php-sqlite3 php-xml php-mbstring sysbench open-cobol ffmpeg wiringpi rpi.gpio  unixodbc-dev npm node python-is-python3 dosbox usbip sendmail libopencv-dev ufw  ; do 
+for addonnodes in p7zip-full mc sqlite3 i2c-tools ncftp mariadb-server mariadb-client mosquitto mosquitto-clients  python3-opencv libsdl2-image gedit gparted  python-smbus vsftpd neofetch apache2 php php-mysql php-sqlite3 php-mbstring openssl libapache2-mod-php php-sqlite3 php-xml php-mbstring sysbench open-cobol ffmpeg wiringpi rpi.gpio  unixodbc-dev npm node python-is-python3 dosbox usbip sendmail libopencv-dev ufw  ; do 
 		printstatus "Installing  \"${addonnodes}\""
 		sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 	done
@@ -137,7 +137,8 @@ sudo rm -rf /var/www/html/index.html
 cd $_pwd
 
 sudo apt remove python2 -y  2>&1 | tee -a $LOGFILE
-sudo apt install python-is-python3 -y  2>&1 | tee -a $LOGFILE
+sudo apt purge python2 -y  2>&1 | tee -a $LOGFILE
+#sudo apt install python-is-python3 -y  2>&1 | tee -a $LOGFILE
 VENV="venv"
 rm -rf ~/venv/$VENV
 mkdir ~/venv
