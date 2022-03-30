@@ -41,4 +41,4 @@ python ./demo/opencv_pip_fix.py 2>&1 | tee -a $LOGFILE
 
 #pip install opencv-python &
 
-echo "Tessarect $_tv  en OpenCV is installatie afgerond."
+echo "Tessarect $_tv  en OpenCV is installatie afgerond." 2>&1 | tee -a $LOGFILE
