@@ -73,7 +73,7 @@ for addonnodes in   https://github.com/RomainOdeval/OctoPrint-CrealityTemperatur
   	pip install --upgrade --no-cache-dir ${addonnodes}  2>&1 | tee -a $LOGFILE
 done
 
-source ~/venv/venv3.7/bin/activate | tee -a $LOGFILE
+source ~/venv/venv/bin/activate | tee -a $LOGFILE
 printf "\nStart Octoprint service op http://$_hn1:5000\n" | tee -a $LOGFILE
 sudo service octoprint restart
 sudo service octoprint status
