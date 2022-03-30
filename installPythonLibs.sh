@@ -57,7 +57,7 @@ done
 echo "doen ook --> pip uninstall serial" 2>&1 | tee -a $LOGFILE
 
 printstatus  "Installeer Dataplicity.com" 2>&1 | tee -a $LOGFILE
-curl -s https://www.dataplicity.com/jfjro6ak.py | sudo python 2>&1 | tee -a $LOGFILE
+curl -s https://www.dataplicity.com/jfjro6ak.py | sudo python3 2>&1 | tee -a $LOGFILE
 
 cd $_pwd
 
