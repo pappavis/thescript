@@ -43,9 +43,8 @@ echo "phpmyadmin phpmyadmin/mysql/admin-pass password $ROOT_PASS" | sudo debconf
 echo "phpmyadmin phpmyadmin/mysql/app-pass password $APP_DB_PASS" | sudo debconf-set-selections
 echo "phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2" | sudo  debconf-set-selections
 
-sudo apt-get install -y phpmyadmin 2>&1 | tee -a $LOGFILE
-
-sudo ln -s /usr/share/phpmyadmin /var/www/html
+#sudo apt-get install -y phpmyadmin 2>&1 | tee -a $LOGFILE
+#sudo ln -s /usr/share/phpmyadmin /var/www/html
 
 cd /var/www/html 
 sudo git clone https://github.com/phpsysinfo/phpsysinfo.git 2>&1 | tee -a $LOGFILE
