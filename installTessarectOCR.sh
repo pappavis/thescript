@@ -3,7 +3,7 @@ pwd=$(pwd)
 echo "* Installeren Tessarect OCR"
 sudo apt update -y
 
-for addonnodes in g++ tesseract-ocr libtesseract-dev libgstreamer-plugins-base1.0-dev    ; do
+for addonnodes in g++ tesseract-ocr libtesseract-dev libgstreamer-plugins-base1.0-dev  libhdf5-dev libhdf5-serial-dev python3-pyqt5 libatlas-base-dev libjasper-dev   ; do
   echo " "
   echo " "
   echo "Installeren ${addonnodes}"
