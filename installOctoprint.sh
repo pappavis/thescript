@@ -37,7 +37,7 @@ for addonnodes in   https://github.com/RomainOdeval/OctoPrint-CrealityTemperatur
    https://github.com/Salandora/OctoPrint-FileManager/archive/master.zip \
    https://github.com/mic159/octoprint-grbl-plugin/archive/master.zip  \
    https://github.com/google/OctoPrint-LEDStripControl/archive/master.zip \
-   https://github.com/OctoPrint/OctoPrint-MQTT/archive/master.zip \ 
+   https://github.com/OctoPrint/OctoPrint-MQTT/archive/master.zip \
    https://github.com/FormerLurker/Octolapse/archive/v0.4.0.zip \
    https://github.com/OllisGit/OctoPrint-DisplayLayerProgress/releases/latest/download/master.zip \
    https://github.com/iFrostizz/OctoPrint-EasyServo/archive/master.zip \
