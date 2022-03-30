@@ -16,6 +16,7 @@ time python -m ensurepip  2>&1 | tee -a $LOGFILE
 cd ~/Downloads
 time wget https://raw.githubusercontent.com/adafruit/Raspberry-Pi-Installer-Scripts/master/raspi-blinka.py 2>&1 | tee -a $LOGFILE
 python3 raspi-blinka.py 2>&1 | tee -a $LOGFILE
+pip3 install adafruit-python-shell
 
 sudo raspi-config nonint do_i2c 0
 
