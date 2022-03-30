@@ -32,8 +32,8 @@ for addonnodes in wiringpi adafruit-python-shell adafruit-blinka adafruit-microp
     pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
-python demo/blinkatest.py  2>&1 | tee -a $LOGFILE &
-python demo/ina219demo.py  2>&1 | tee -a $LOGFILE &
+python ~/Downloads/thescript/demo/blinkatest.py  2>&1 | tee -a $LOGFILE &
+python ~/Downloads/thescript/demo/ina219demo.py  2>&1 | tee -a $LOGFILE &
 # python demo/oatmealDemo.py
 echo "" 2>&1 | tee -a $LOGFILE
 echo "Circuitpython install afgerond.  Test met: python3 ./demo/blinkatest.py" 2>&1 | tee -a $LOGFILE
