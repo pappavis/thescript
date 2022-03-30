@@ -6,9 +6,9 @@ mkdir $HOME/logs
 
 #Array to store possible locations for temp read.
 #python3 -m ensurepip 2>&1 | tee -a $LOGFILE
-#python3 -m pip install virtualenv 2>&1 | tee -a $LOGFILE
-#~/.local/bin/virtualenv ~/venv/venv3.7/
-#source ~/venv/venv3.7/bin/activate
+python3 -m pip install virtualenv 2>&1 | tee -a $LOGFILE
+~/.local/bin/virtualenv ~/venv/venv/
+source ~/venv/venv/bin/activate
 
 sudo apt --fix-broken install -y
 sudo apt install -y unixodbc-dev 2>&1 | tee -a $LOGFILE
