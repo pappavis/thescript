@@ -1,20 +1,19 @@
 #/usr/bin/sh
 LOGFILE=$HOME/logs/installPythonCircuitpython-`date +%Y-%m-%d`.log
 mkdir $HOME/logs/
+pwd=$(pwd)
 
 bash ./installNutsfuncties.sh 2>&1 | tee -a $LOGFILE
 
-for addonnodes in gpio dialout
-sudo adduser pi gpio 2>&1 | tee -a $LOGFILE
-sudo usermod pi dialout 2>&1 | tee -a $LOGFILE
-sudo usermod pi i2c  2>&1 | tee -a $LOGFILE
-sudo usermod pi tty  2>&1 | tee -a $LOGFILE
-
+for addonnodes in gpio dialout i2c tty ; do
+    sudo adduser pi  ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
 
 echo "Installeer nieuwe python3 virtuale omgeving" 2>&1 | tee -a $LOGFILE
-source ~/venv/venv3.7/bin/activate 
+source ~/venv/bin/activate 
 time python -m ensurepip  2>&1 | tee -a $LOGFILE
 
+cd ~/Downloads
 time wget https://raw.githubusercontent.com/adafruit/Raspberry-Pi-Installer-Scripts/master/raspi-blinka.py 2>&1 | tee -a $LOGFILE
 python3 raspi-blinka.py 2>&1 | tee -a $LOGFILE
 
@@ -39,3 +38,4 @@ python demo/ina219demo.py  2>&1 | tee -a $LOGFILE &
 echo "" 2>&1 | tee -a $LOGFILE
 echo "Circuitpython install afgerond.  Test met: python3 ./demo/blinkatest.py" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
+cd $pwd
