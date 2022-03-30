@@ -26,7 +26,7 @@ for addonnodes in python3-testresources libprotobuf-dev protobuf-compiler libgoo
 	sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
-for addonnodes in pip numpy dlib ; do
+for addonnodes in pip setuptools numpy  dlib opencv-python==4.5.3.56 ; do
 	printstatus "Installing Opencv python hulp \"${addonnodes}\""
 	pip install --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
