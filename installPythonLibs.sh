@@ -36,7 +36,7 @@ for addonnodes in pip setuptools wheel openpyxl pylzma py7zr o365 ttn qrcode pil
 		   osxphotos RPi.GPIO tox tflite tflite-runtime tflite_support PySimpleGUI libusb pyusb pdfkit python-dateutil libopencv-dev  ; do
     printstatus "Installeren python lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
-    conda install  ${addonnodes} 2>&1 | tee -a $LOGFILE
+    conda install --upgrade --no-cache-dir  ${addonnodes} 2>&1 | tee -a $LOGFILE
   done
 
 shortcut mu-editor
