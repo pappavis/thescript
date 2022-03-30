@@ -1,10 +1,9 @@
 LOGFILE=$HOME/logs/installTessarectOCR-`date +%Y-%m-%d_%Hh%Mm`.log
-
+pwd=$(pwd)
 echo "* Installeren Tessarect OCR"
 sudo apt update -y
 
-
-for addonnodes in tesseract-ocr libtesseract-dev    ; do
+for addonnodes in g++ tesseract-ocr libtesseract-dev libgstreamer-plugins-base1.0-dev    ; do
   echo " "
   echo " "
   echo "Installeren ${addonnodes}"
@@ -13,12 +12,20 @@ for addonnodes in tesseract-ocr libtesseract-dev    ; do
 done
 
 _tv=$(tesseract --version)
+echo "Tessarect $_tv is geïnstalleerd." 2>&1 | tee -a $LOGFILE
 
-echo "Tessarect $_tv is geïnstalleerd."
+echo "Installeeren pre-built OpenCV... zie --> https://lindevs.com/install-precompiled-opencv-on-raspberry-pi/" 2>&1 | tee -a $LOGFILE
+cd ~/Downloads
+wget https://github.com/prepkg/opencv-raspberrypi/releases/latest/download/opencv.deb 2>&1 | tee -a $LOGFILE
+sudo apt install -y ./opencv.deb
+cv2vers=$(opencv_version)
+echo "Installeeren pre-built OpenCV $cv2vers voltooid." 2>&1 | tee -a $LOGFILE
+rm -rf ./opencv.deb
 
-source ~/venv/venv3.7/bin/activate
+source ~/venv/venv/bin/activate
+cd $pwd
 
-for addonnodes in pip setuptools wheel pytesseract libwebp6 libopencv-dev opencv-contrib-python==3.4.11.45  ; do
+for addonnodes in pip setuptools wheel pytesseract libwebp6 libopencv-dev opencv-contrib-python  ; do
   echo " "
   echo " "
   echo "Installeren Python bieb: ${addonnodes}"
