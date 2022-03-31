@@ -555,8 +555,8 @@ sudo service docker restart 2>&1 | tee -a $LOGFILE
 sudo service docker status 2>&1 | tee -a $LOGFILE
 sudo docker info 2>&1 | tee -a $LOGFILE
 sudo docker run hello-world 2>&1 | tee -a $LOGFILE
-sudo docker pull rust
-
+sudo docker pull grafana/grafana 2>&1 | tee -a $LOGFILE
+sudo docker run -d --name=grafana -p 3000:3000 grafana/grafana 2>&1 | tee -a $LOGFILE
 
 cd ~/Downloads
 echo "Instellen OpenVPN" 2>&1 | tee -a $LOGFILE
