@@ -581,7 +581,7 @@ cd ~/Downloads
 echo "Installeren Bootstrap.js bibliotheek" 2>&1 | tee -a $LOGFILE
 wget https://github.com/twbs/bootstrap/releases/download/v5.1.3/bootstrap-5.1.3-dist.zip 2>&1 | tee -a $LOGFILE
 7z x bootstrap-5.1.3-dist.zip 2>&1 | tee -a $LOGFILE
-sudo mkdir /home/var/www/html/inc 2>&1 | tee -a $LOGFILE
-sudo mv -v bootstrap-5.1.3-dist /home/var/www/html/inc/bootstrap 2>&1 | tee -a $LOGFILE
+sudo mkdir /var/www/html/inc 2>&1 | tee -a $LOGFILE
+sudo mv -v bootstrap-5.1.3-dist /home/var/www/html/inc/ 2>&1 | tee -a $LOGFILE
 
 cd $_pwd
