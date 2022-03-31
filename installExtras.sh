@@ -555,6 +555,8 @@ sudo service docker restart 2>&1 | tee -a $LOGFILE
 sudo service docker status 2>&1 | tee -a $LOGFILE
 sudo docker info 2>&1 | tee -a $LOGFILE
 sudo docker run hello-world 2>&1 | tee -a $LOGFILE
+sudo docker pull rust
+
 
 cd ~/Downloads
 echo "Instellen OpenVPN" 2>&1 | tee -a $LOGFILE
