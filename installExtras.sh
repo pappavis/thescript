@@ -553,8 +553,8 @@ sudo usermod -aG docker pi 2>&1 | tee -a $LOGFILE
 sudo curl https://download.docker.com/linux/raspbian/gpg 2>&1 | tee -a $LOGFILE
 sudo service docker restart 2>&1 | tee -a $LOGFILE
 sudo service docker status 2>&1 | tee -a $LOGFILE
-docker info 2>&1 | tee -a $LOGFILE
-docker run hello-world 2>&1 | tee -a $LOGFILE
+sudo docker info 2>&1 | tee -a $LOGFILE
+sudo docker run hello-world 2>&1 | tee -a $LOGFILE
 
 cd ~/Downloads
 echo "Instellen OpenVPN" 2>&1 | tee -a $LOGFILE
