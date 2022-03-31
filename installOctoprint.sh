@@ -3,9 +3,9 @@ _pwd=$(pwd)
 _hn1=$(hostname)
 mkdir $HOME/logs
 echo "SETUP: Skep octoprint virtualenv." 2>&1 | tee -a $LOGFILE
-~/.local/bin/virtualenv ~/venv/oprint  2>&1 | tee -a $LOGFILE
+~/.local/bin/virtualenv ~/oprint  2>&1 | tee -a $LOGFILE
 echo "SETUP: Aktiveer virtualenv."  2>&1 | tee -a $LOGFILE
-source ~/venv/oprint/bin/activate
+source ~/oprint/bin/activate
 bash $_pwd/installOctoprintPlugins.sh 2>&1 | tee -a $LOGFILE
 
 echo "installeren octoprint Plugins" 2>&1 | tee -a $LOGFILE
