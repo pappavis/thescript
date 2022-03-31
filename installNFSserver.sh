@@ -35,6 +35,7 @@ sudo mkdir -p /mnt/nfs/retropie/
 sudo mkdir -p /mnt/nfs/pi07/
 sudo mkdir -p /mnt/nfs/pi08/
 sudo mkdir -p /mnt/nfs/pi09/
+sudo mkdir -p /mnt/nfs/octopi/
 
 #sudo chmod 777 -R /mnt/nfs/
 ./mountNFSserverPappavis.sh  2>&1 | tee -a $LOGFILE
