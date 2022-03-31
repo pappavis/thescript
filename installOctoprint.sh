@@ -46,6 +46,6 @@ printf "Octoprint install afgerond.\n" 2>&1 | tee -a $LOGFILE
 cd $_pwd
 
 #sudo docker pull octoprint/octoprint:edge 2>&1 | tee -a $LOGFILE
-#sudo docker run octoprint --device /dev/video0:/dev/video0
+#sudo docker run octoprint --device /dev/video0:/dev/video0 -e ENABLE_MJPG_STREAMER=true 
 echo "einde octoprint install." 2>&1 | tee -a $LOGFILE
 
