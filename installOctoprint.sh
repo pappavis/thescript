@@ -45,7 +45,7 @@ sudo service octoprint status
 printf "Octoprint install afgerond.\n" 2>&1 | tee -a $LOGFILE
 cd $_pwd
 
-sudo docker pull octoprint/octoprint:edge 2>&1 | tee -a $LOGFILE
-sudo docker run octoprint --device /dev/video0:/dev/video0
-echo "einde octoprint install." | tee -a logfile
+#sudo docker pull octoprint/octoprint:edge 2>&1 | tee -a $LOGFILE
+#sudo docker run octoprint --device /dev/video0:/dev/video0
+echo "einde octoprint install." 2>&1 | tee -a $LOGFILE
 
