@@ -2,11 +2,11 @@ LOGFILE=$HOME/logs/installOctoprint-`date +%Y-%m-%d_%Hh%Mm`.log
 _pwd=$(pwd)
 _hn1=$(hostname)
 mkdir $HOME/logs
-echo "SETUP: Skep octoprint virtualenv." | tee -a $LOGFILE
-~/.local/bin/virtualenv ~/venv/oprint | tee -a $LOGFILE
-echo "SETUP: Aktiveer virtualenv." | tee -a $LOGFILE
+echo "SETUP: Skep octoprint virtualenv." 2>&1 | tee -a $LOGFILE
+~/.local/bin/virtualenv ~/venv/oprint  2>&1 | tee -a $LOGFILE
+echo "SETUP: Aktiveer virtualenv."  2>&1 | tee -a $LOGFILE
 source ~/venv/oprint/bin/activate
-bash $_pwd/installOctoprintPlugins.sh
+bash $_pwd/installOctoprintPlugins.sh 2>&1 | tee -a $LOGFILE
 
 echo "installeren octoprint Plugins" 2>&1 | tee -a $LOGFILE
 
@@ -27,6 +27,7 @@ wget https://raw.githubusercontent.com/pappavis/thescript/master/octoprint.servi
 sudo mv ./octoprint.service /etc/systemd/system 2>&1 | tee -a $LOGFILE
 sudo systemctl enable octoprint.service 2>&1 | tee -a $LOGFILE
 sudo service octoprint restart 2>&1 | tee -a $LOGFILE
+sudo service octoprint status 2>&1 | tee -a $LOGFILE
 
 echo "Installeer Octoprint extenties." 2>&1 | tee -a $LOGFILE
 
