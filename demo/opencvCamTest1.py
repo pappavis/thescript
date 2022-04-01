@@ -59,7 +59,9 @@ class clsMain:
 
 if __name__ == "__main__":
     print("APP start")
+    print("OpenCV webcam list ports")
     main1 = clsMain()
+    print(main1.list_ports)
     vdev = main1.videoCaptureDevices
     devNr = 0
 
