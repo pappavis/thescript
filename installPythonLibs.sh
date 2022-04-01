@@ -87,6 +87,7 @@ mkdir ~/Programmering/python/micropython
 mkdir ~/Programmering/python/python        
 mkdir ~/Programmering/python/python/uitprobeersels
 mkdir ~/Programmering/python/python/project       
+mkdir ~/Programmering/python/python/voorbeeld
 
 
 printstatus "installPythonLibs.sh is afgerond"  2>&1 | tee -a $LOGFILE
