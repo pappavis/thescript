@@ -31,7 +31,7 @@ for addonnodes in  libatlas-base-dev libwebp-dev  python3-opencv wkhtmltopdf  ; 
 
 for addonnodes in pip setuptools wheel openpyxl pylzma py7zr o365 ttn qrcode pillow sqlalchemy pymsteams esptool adafruit-ampy firebirdsql esptool mu-editor shortcut \
                   pyserial pyparsing pyzmail redmail gpiozero pytube pipx serial jinja2 esptool mpfshell virtualenv ffmpeg conda jupyter-notebook \
-                  scikit-build pygame pymongo psycopg2-binary mysql-connector-python guizero imutils scikit-image numpy bokeh django flask \
+                  scikit-build pygame pymongo psycopg2-binary mysql-connector-python guizero imutils scikit-image numpy bokeh django flask pygrabber \
                   msteamsconnector matplotlib numpy imutils pyodbc influxdb pysmb opencv-python==4.5.3.56  git+https://github.com/pytube/pytube picamera djitellopy \
 		   osxphotos RPi.GPIO tox tflite tflite-runtime tflite_support PySimpleGUI libusb pyusb pdfkit python-dateutil libopencv-dev  ; do
     printstatus "Installeren python lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
