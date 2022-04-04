@@ -23,10 +23,16 @@ for addonnodes in  unixodbc-dev wiringpi i2c-tools; do
 done
 
 python -m ensurepip  2>&1 | tee -a $LOGFILE
+rm -rf ~/.cache/pip 2>&1 | tee -a $LOGFILE
 
 for addonnodes in  libatlas-base-dev libwebp-dev  python3-opencv wkhtmltopdf  ; do
     printstatus "Installeren OpenCV vereisten: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     sudo apt install $NQUIET -y ${addonnodes} 2>&1 | tee -a $LOGFILE
+  done
+
+echo "Installeer voorvereisten van OpenCV" 2>&1 | tee -a $LOGFILE
+for addonnodes in setuptools wheel scikit-build cmake pip numpy  ; do
+    pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
   done
 
 for addonnodes in pip setuptools wheel openpyxl pylzma py7zr o365 ttn qrcode pillow sqlalchemy pymsteams esptool adafruit-ampy firebirdsql esptool mu-editor shortcut \
