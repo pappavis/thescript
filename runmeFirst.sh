@@ -261,7 +261,7 @@ cd ~/Downloads
 wget https://raw.githubusercontent.com/pappavis/thescript/master/welkom1.sh 2>&1 | tee -a $LOGFILE
 chmod +x ./welkom1.sh
 sudo mv ./welkom1.sh /usr/local/bin/welkom1
-echo "welkom1" 2>&1 | sudo tee -a /etc/bash.bashrc
+#echo "welkom1" 2>&1 | sudo tee -a /etc/bash.bashrc
 
 echo "Toevoegen ssh welkomtekstje" 2>&1 | tee -a $LOGFILE
 sudo mkdir /usr/local/share/ssh_welkom
