@@ -24,11 +24,16 @@ xset -dpms
 
 
 echo "** installeer X-Apps zoals KVM." 2>&1 | tee -a $LOGFILE
-for addonnodes in raspberrypi-ui-mods xinit xserver-xorg xrdp  remmina barrier thonny kodi chromium code tightvncserver audacity rpi-imager piclone guvcview ; do
+for addonnodes in raspberrypi-ui-mods xinit xserver-xorg xrdp  ; do
   echo " "
   echo " "
-  echo "Installeren ${addonnodes}"
+  echo "Installeren desktop ${addonnodes}" 2>&1 | tee -a $LOGFILE
   echo " "
+  sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
+
+for addonnodes in remmina barrier thonny kodi chromium code tightvncserver audacity rpi-imager piclone guvcview gparted rpi-imager mozilla-thunderbird kmail; do
+  echo "Installeren desktop app ${addonnodes}" 2>&1 | tee -a $LOGFILE
   sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
