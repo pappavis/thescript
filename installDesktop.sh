@@ -39,3 +39,4 @@ done
 
 sudo adduser xrdp ssl-cert  2>&1 | tee -a $LOGFILE
 systemctl show -p SubState --value xrdp 2>&1 | tee -a $LOGFILE
+echo "minimale Raspbian desktop installatie afgerond" 2>&1 | tee -a $LOGFILE
