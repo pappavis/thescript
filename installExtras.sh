@@ -85,6 +85,7 @@ cd $_pwd
 echo "* Installeer pi-apps app store" 2>&1 | tee -a $LOGFILE
 wget -qO- https://raw.githubusercontent.com/Botspot/pi-apps/master/install | bash 2>&1 | tee -a $LOGFILE
 
+
 echo "* Installeer webmin" 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
 wget -a $LOGFILE http://www.webmin.com/jcameron-key.asc -O - | sudo apt-key add - 2>&1 | tee -a $LOGFILE
@@ -93,7 +94,15 @@ sudo apt-get $AQUIET -y update 2>&1 | tee -a $LOGFILE
 sudo apt-get $AQUIET -y install webmin 2>&1 | tee -a $LOGFILE
 sudo sed -i -e 's#ssl=1#ssl=0#g' /etc/webmin/miniserv.conf
 
+
 echo "* Installeer amiberry" 2>&1 | tee -a $LOGFILE
+for addonnodes in libsdl2-2.0-0 libsdl2-ttf-2.0-0 libsdl2-image-2.0-0 flac mpg123 libmpeg2-4 libsdl2-dev libsdl2-ttf-dev libsdl2-image-dev libflac-dev libmpg123-dev libpng-dev libmpeg2-4-dev libraspberrypi-dev ; do
+  echo " "
+  echo " "
+  echo "Installeren amiberry vereisten: ${addonnodes}"
+  echo " "
+  sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
 cd ~/Downloads
 sudo apt install -y libsdl2-ttf-dev libsdl2-image-dev
 wget https://github.com/midwan/amiberry/releases/download/v4.1.6/amiberry-v4.1.6-rpi3-sdl2-32bit-rpios.zip 2>&1 | tee -a $LOGFILE
@@ -101,7 +110,13 @@ wget https://github.com/midwan/amiberry/releases/download/v4.1.6/amiberry-v4.1.6
 rm ./amiberry-v4.1.6-rpi3-sdl2-32bit-rpios.zip
 sudo mv ./amiberry-rpi3-sdl2-32bit /usr/local/games
 sudo ln -s /usr/local/games/amiberry-rpi3-sdl2-32bit/amiberry /usr/local/bin/amiberry
+git clone https://github.com/midwan/amiberry
+cd amiberry
+make PLATFORM=rpi1
+echo "Amiberry install afgerond" 2>&1 | tee -a $LOGFILE
 
+
+cd ~/Downloads
 echo "Installeren Grafana" 2>&1 | tee -a $LOGFILE
 wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
 echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list 2>&1 | tee -a $LOGFILE
