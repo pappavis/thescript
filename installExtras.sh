@@ -46,6 +46,7 @@ echo "phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2" | sudo  d
 #sudo apt-get install -y phpmyadmin 2>&1 | tee -a $LOGFILE
 #sudo ln -s /usr/share/phpmyadmin /var/www/html
 
+sudo mkdir /var/www/html/support
 cd /var/www/html 
 sudo git clone https://github.com/phpsysinfo/phpsysinfo.git 2>&1 | tee -a $LOGFILE
 sudo cp /var/www/html/phpsysinfo/phpsysinfo.ini.new /var/www/html/phpsysinfo/phpsysinfo.ini 2>&1 | tee -a $LOGFILE
