@@ -304,7 +304,8 @@ cd $_pwd 2>&1 | tee -a $LOGFILE
 ## bash ./installVerzamelupdates.sh
 
 ##bash ./setupNodered.sh
+sudo apt autoclean -y 
+sudo apt autoremove -y 
 
 echo "runmefirst EINDE" 2>&1 | tee -a $LOGFILE
 echo "Je kunt nu HERSTART, daarna ./installVerzamelupdates.sh draaien" 2>&1 | tee -a $LOGFILE
-exit 0
