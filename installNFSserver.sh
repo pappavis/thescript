@@ -43,7 +43,7 @@ sudo mkdir -p /mnt/nfs/octopi/
 echo "/home *(rw,all_squash,insecure,async,no_subtree_check)"  2>&1 | tee -a $LOGFILE
 
 sudo printf "\n HANDMATIG toevoegen aan /etc/exports/  : \n/home *(rw,all_squash,insecure,async,no_subtree_check)\n"  2>&1 | tee -a $LOGFILE
-printf "\nNFS bestanddeling is daarna bereikbaar:\n -- MacOS verbind aan nfs://$_hn1.local/nfsshare  of nfs://$_ip1/nfsshare \n -- Windows verbind aan //$ip1.local/nfsshare\n\nIP adres $_ip1\n"   2>&1 | tee -a $LOGFILE
+printf "\nNFS bestanddeling is daarna bereikbaar:\n -- MacOS verbind aan nfs://$(hostname).local/nfsshare  of nfs://$(hostname -I)/nfsshare \n -- Windows verbind aan //$(hostname).local/nfsshare\n\nIP adres $(hostname -I)\n"   2>&1 | tee -a $LOGFILE
 printf "\nHandmatig uitvoeren:\n  sudo service nfs-server restart\n" 2>&1 | tee -a $LOGFILE
 sudo service nfs-server restart 2>&1 | tee -a $LOGFILE
 
