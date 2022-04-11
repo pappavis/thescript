@@ -130,9 +130,12 @@ sudo service vsftpd restart
 
 mkdir ~/Downloads
 cd ~/Downloads
+sudo /var/www/html/support
+sudo /var/www/html/inc
 wget https://raw.githubusercontent.com/pappavis/thescript/master/index_apps.php 2>&1 | tee -a $LOGFILE
 sudo mv ./index_apps.php /var/www/html
 sudo rm -rf /var/www/html/index.html
+sudo /var/www/html/support
 
 cd $_pwd
 
