@@ -95,5 +95,7 @@ mkdir ~/Programmering/python/python/uitprobeersels
 mkdir ~/Programmering/python/python/project       
 mkdir ~/Programmering/python/python/voorbeeld
 
+#echo "Om OpenCV te gebruiken Deze commando op een pi4.." 2>&1 | tee -a $LOGFILE
+#echo "LD_PRELOAD=/usr/lib/arm-linux-gnueabihf/libatomic.so.1.2.0 python3 Object_detection_picamera.py  --usbcam"  2>&1 | sudo tee -a /home/pi/.bashrc
 
 printstatus "installPythonLibs.sh is afgerond"  2>&1 | tee -a $LOGFILE
