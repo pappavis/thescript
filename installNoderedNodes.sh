@@ -4,13 +4,14 @@ LOGFILE=$HOME/logs/installNoderedNodes-`date +%Y-%m-%d_%Hh%Mm`.log
 _pwd=$(pwd)
 mkdir $HOME/logs
 
-echo "**Installing Nodes (could take some time)"
-cd ~/.node-red
+echo "**Installing Nodes (could take some time)" 2>&1 | tee -a $LOGFILE
+mkdir ~/.node-red 2>&1 | tee -a $LOGFILE
+cd ~/.node-red 2>&1 | tee -a $LOGFILE
 
-bash ./installNutsfuncties.sh
+bash ./installNutsfuncties.sh 2>&1 | tee -a $LOGFILE
 
 printstatus "bepalen laatste versies van lokale NPM packages in /home/pi/.node-red/" 2>&1 | tee -a $LOGFILE
-npm outdated
+npm outdated 2>&1 | tee -a $LOGFILE
 
 for addonnodes in  node-uuid uuid tar ; do
 	printstatus "Updating node \"${addonnodes}\""
@@ -26,13 +27,13 @@ done
 printstatus "\nInstalling node \"node-red-node-sqlite\"\n"
 npm $NQUIET install --save node-red-node-sqlite 2>&1 | tee -a $LOGFILE
 
-sudo service nodered restart
+sudo service nodered restart 2>&1 | tee -a $LOGFILE
 
 for addonnodes in node-red-node-serialport i2c-bus ; do
 	printstatus "Installing node \"${addonnodes}\""
 	npm $NQUIET install --save ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
-npm audit fix --force
+npm audit fix --force 2>&1 | tee -a $LOGFILE
 
 mv /home/pi/.node-red/node_modules/decamelize /home/pi/.node-red/node_modules/.cliui-vZao9zi8
 
@@ -59,7 +60,7 @@ for addonnodes in moment node-red-contrib-web-worldmap node-red-contrib-ramp-the
 	npm $NQUIET install --save ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
-sudo service nodered restart
+sudo service nodered restart 2>&1 | tee -a $LOGFILE
 
 for addonnodes in moment node-red-contrib-home-assistant-websocket node-red-contrib-ibm-watson-iot node-red-contrib-sun-position ; do
 	printstatus "Installing node \"${addonnodes}\""
@@ -71,7 +72,7 @@ for addonnodes in moment node-red-contrib-tuya-local node-red-contrib-ui-led nod
 	npm $NQUIET install --save ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
-sudo service nodered restart
+sudo service nodered restart 2>&1 | tee -a $LOGFILE
 
 for addonnodes in moment node-red-contrib-config node-red-contrib-grove node-red-contrib-diode node-red-contrib-bigtimer \
 	node-red-contrib-esplogin node-red-contrib-timeout node-red-node-openweathermap node-red-node-google node-red-contrib-advanced-ping node-red-node-emoncms \
@@ -96,7 +97,7 @@ for addonnodes in moment node-red-contrib-find-my-iphone node-red-contrib-ttn no
 	npm $NQUIET install --save ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
-npm audit fix --force
+npm audit fix --force 2>&1 | tee -a $LOGFILE
 
 echo "Installeren global nodes"
 for addonnodes in qrcode johnny-five ; do
@@ -104,10 +105,10 @@ for addonnodes in qrcode johnny-five ; do
 	sudo npm $NQUIET install --save ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
-printstatus "Bijwerken lokale nodes"
+printstatus "Bijwerken lokale nodes" 2>&1 | tee -a $LOGFILE
 npm $NQUIET update 2>&1 | tee -a $LOGFILE
 
-sudo service nodered restart
-echo "Nodes installatie afgerond"
+sudo service nodered restart 2>&1 | tee -a $LOGFILE
+echo "Nodes installatie afgerond" 2>&1 | tee -a $LOGFILE
 cd $_pwd
 
