@@ -23,7 +23,7 @@ for addonnodes in dialout tty gpio i2c ; do
   sudo usermod $gebr -g ${addonnodes}  2>&1 | tee -a $LOGFILE
 done
 
-echo "$gebr ALL=(ALL:ALL) NOPASSWD: ALL"  2>&1 | sudo tee /etc/sudoers.d/dont-prompt-$USER-for-sudo-password
+echo "$gebr ALL=(ALL:ALL) NOPASSWD: ALL"  2>&1 | sudo tee /etc/sudoers.d/dont-prompt-$gebr-for-sudo-password
 sed -e "$gebr ALL=(ALL) NOPASSWD: ALL" /etc/sudoers.d/$gebr
 sudo chmod 0440 /etc/sudoers.d/$gebr  2>&1 | tee -a $LOGFILE
 sudo chmod 4755 /usr/bin/sudo  2>&1 | tee -a $LOGFILE
