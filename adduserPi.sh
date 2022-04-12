@@ -7,7 +7,6 @@ wachtwoord="raspberry"
 
 sudo usermod pi -g sudo -G ssh -a
 echo "pi ALL=(ALL) NOPASSWD: ALL"  2>&1 | sudo tee -a /etc/sudoers.d/pi
-echo "$USER ALL=(ALL:ALL) NOPASSWD: ALL"  2>&1 | sudo tee /etc/sudoers.d/dont-prompt-$USER-for-sudo-password
 sudo chmod 0440 /etc/sudoers.d/pi  2>&1 | tee -a $LOGFILE
 sudo chmod 4755 /usr/bin/sudo  2>&1 | tee -a $LOGFILE
 printf "${ICyan}user PI created, password is \"password\". Please log-out as root and login as pi, and redo the procedure ${IWhite}\r\n\r\n"  2>&1 | tee -a $LOGFILE
@@ -19,12 +18,12 @@ echo "* Nieuwe gebruiker wordt aangemaakt: $gebr"  2>&1 | tee -a $LOGFILE
 sudo adduser --quiet --disabled-password --shell /bin/bash --home /home/$gebr --gecos "User" $gebr
 echo "$gebr:$wachtwoord" | sudo chpasswd
 
-
 for addonnodes in dialout tty gpio i2c ; do
   echo "Gebruiker $gebr rechten toewijzen aan groep:  \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
   sudo usermod $gebr -g ${addonnodes}  2>&1 | tee -a $LOGFILE
 done
 
+echo "$gebr ALL=(ALL:ALL) NOPASSWD: ALL"  2>&1 | sudo tee /etc/sudoers.d/dont-prompt-$USER-for-sudo-password
 sed -e "$gebr ALL=(ALL) NOPASSWD: ALL" /etc/sudoers.d/$gebr
 sudo chmod 0440 /etc/sudoers.d/$gebr  2>&1 | tee -a $LOGFILE
 sudo chmod 4755 /usr/bin/sudo  2>&1 | tee -a $LOGFILE
