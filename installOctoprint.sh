@@ -3,7 +3,8 @@ _pwd=$(pwd)
 _hn1=$(hostname)
 mkdir $HOME/logs
 echo "SETUP: Skep octoprint virtualenv." 2>&1 | tee -a $LOGFILE
-~/.local/bin/virtualenv ~/oprint  2>&1 | tee -a $LOGFILE
+python3 -m pip install --upgrade pip virtualenv
+python3 -m virtualenv ~/venv/oprint  2>&1 | tee -a $LOGFILE
 echo "SETUP: Aktiveer virtualenv."  2>&1 | tee -a $LOGFILE
 source ~/oprint/bin/activate
 
