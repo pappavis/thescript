@@ -32,7 +32,7 @@ for addonnodes in  virtualenv python3-virtualenv  ; do
 	echo  "Installing python virtualenv  \"${addonnodes}\""
 	sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
-python3 -m pip install virtualenv 2>&1 | tee -a $LOGFILE
+/usr/bin/python3  -m pip install virtualenv 2>&1 | tee -a $LOGFILE
 virtualenv -p /usr/bin/python3  virtualenv
 #/usr/python/python3.11 -m pip install virtualenv 2>&1 | tee -a $LOGFILE
 #~/.local/bin/virtualenv3.11 ~/venv/venv3.11
