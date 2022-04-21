@@ -1,3 +1,4 @@
+#!/bin/bash
 LOGFILE=$HOME/logs/installMicropython-`date +%Y-%m-%d_%Hh%Mm`.log
 
 echo "Start Micropython installatie"  2>&1 | tee -a $LOGFILE
