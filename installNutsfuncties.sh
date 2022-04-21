@@ -1,3 +1,4 @@
+#!/bin/bash
 clean_stdin()
 {
     while read -r -t 0; do
