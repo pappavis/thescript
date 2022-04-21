@@ -1,3 +1,4 @@
+#!/bin/bash
 _hn1=$(hostname)
 LOGFILE=$HOME/logs/installHomebridgeApple-`date +%Y-%m-%d_%Hh%Mm`.log
 
