@@ -1,8 +1,8 @@
 #!/bin/bash
-echo '** Installeer pythonlibs. je moet eerst een virtualenv activeer!!' 
 LOGFILE=$HOME/logs/installPythonLibs-`date +%Y-%m-%d_%Hh%Mm`.log
 _pwd=$(pwd)
 mkdir $HOME/logs
+echo '** Installeer pythonlibs. je moet eerst een virtualenv activeer!!'  2>&1 | tee -a $LOGFILE
 
 #Array to store possible locations for temp read.
 #python3 -m ensurepip 2>&1 | tee -a $LOGFILE
