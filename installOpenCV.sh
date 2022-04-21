@@ -32,4 +32,7 @@ for addonnodes in pip setuptools numpy  dlib opencv-python==4.5.3.56 ; do
 	pip install --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
+sudo apt autoremove -y 2>&1 | tee -a $LOGFILE
+sudo apt autoclean -y 2>&1 | tee -a $LOGFILE
+
 echo " OpenCV install afgerond." 2>&1 | tee -a $LOGFILE
