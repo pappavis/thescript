@@ -52,7 +52,14 @@ pi@raspberrypi: $ mkdir ~/Downloads
 pi@raspberrypi: $ sudo apt install -y git
 pi@raspberrypi: $ git clone https://github.com/pappavis/thescript/
 pi@raspberrypi: $ cd ~/Downloads/thescript
-pi@raspberrypi: $ bash ./runmefirst.sh
+pi@raspberrypi: $ nohup bash ./runmefirst.sh &
+```
+Dit duurt circa <>45 minuten op een Pi 3.
+
+## Stap 4:
+Bijwerken en gebruikersrechten instellen.
+
+```
 pi@raspberrypi: $ sudo mysql_secure_installation
 pi@raspberrypi: $ sudo mysql -u root -p
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
@@ -74,7 +81,7 @@ Bye
 pi@raspberrypi: $ reboot
 ```
 
-## Stap 4:
+## Stap 5:
 Na reboot. Installeren Virtualhere en minimale Pi desktop
 
 Let op doorlooptijd: 
@@ -85,11 +92,11 @@ Let op doorlooptijd:
 
 ```bash
 pi@raspberrypi: $ cd ~/Downloads/thescript
-pi@raspberrypi: $ bash ./installVerzamelupdates.sh
+pi@raspberrypi: $ nohup bash ./installVerzamelupdates.sh &
 pi@raspberrypi: $ reboot
 ```
 
-## Stap 5: Python 3 en circuitpython bijwerken
+## Stap 6: Python 3 en circuitpython bijwerken
 Super handig installeert virtualenvironment voor Python, CircuitPython, tesseractOCR en Micropython.
 
 ```bash
@@ -97,11 +104,11 @@ pi@raspberrypi: $ cd ~/Downloads
 pi@raspberrypi: $ git clone https://github.com/pappavis/thescript/
 pi@raspberrypi: $ cd ~/Downloads/thescript/
 pi@raspberrypi: $ bash ./installVerzamelupdates.sh
-pi@raspberrypi: $ bash ./installExtras.sh
+pi@raspberrypi: $ nohup bash ./installExtras.sh &
 pi@raspberrypi: $ sudo reboot
 ```
 
-## Stap 6: Test website
+## Stap 7: Test website
 Surf naar http://jouwRaspberryPi.local/
 
 
