@@ -30,7 +30,7 @@ sudo apt update -y
 for addonnodes in raspberrypi-ui-mods xinit xserver-xorg xrdp   ; do
   echo " "
   echo " "
-  echo "Installeren: ${addonnodes}"
+  echo "Installeren desktop: ${addonnodes}" 2>&1 | tee -a $LOGFILE
   echo " "
   sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
@@ -42,12 +42,12 @@ then
   echo
   echo "--- Setting up Pi to boot to desktop" 2>&1 | tee -a $LOGFILE
   echo
-  systemctl set-default graphical.target
+  systemctl set-default graphical.target 2>&1 | tee -a $LOGFILE
 else
   echo
   echo "--- Setting up Pi to not boot to desktop" 2>&1 | tee -a $LOGFILE
   echo
-  systemctl set-default multi-user.target
+  systemctl set-default multi-user.target 2>&1 | tee -a $LOGFILE
 fi
 
 
