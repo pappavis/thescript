@@ -8,7 +8,7 @@ echo "sudo apt-get -y remove x264 libx264-dev"  2>&1 | tee -a $LOGFILE
 
 echo "## Install OpenCV dependencies"  2>&1 | tee -a $LOGFILE
 source ~/venv/venv/bin/activate
-python ./demo/opencv_pip_fix.py  2>&1 | tee -a $LOGFILE
+#python ./demo/opencv_pip_fix.py  2>&1 | tee -a $LOGFILE
 
 sudo apt update -y
 
