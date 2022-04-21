@@ -10,7 +10,7 @@ then
   echo "Draai deze scriptje als gebruikter root" 2>&1
   echo "Aangezien ons 'n paar pakkete moet installeer, sudo" 2>&1
   echo "wordt WEL gebruikt. Dankie :)" 2>&1
-  exit 1
+  #exit 1
 fi
 
 
