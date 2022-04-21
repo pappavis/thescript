@@ -3,8 +3,8 @@ LOGFILE=$HOME/logs/installOpenCV-`date +%Y-%m-%d_%Hh%Mm`.log
 _hn1=$(hostname)
 _pwd=$(pwd)
 mkdir $HOME/logs
-echo "** OPTIONEEL!! Installeer OpenCV Python van broncode."
-echo "sudo apt-get -y remove x264 libx264-dev"
+echo "** OPTIONEEL!! Installeer OpenCV Python van broncode."  2>&1 | tee -a $LOGFILE
+echo "sudo apt-get -y remove x264 libx264-dev"  2>&1 | tee -a $LOGFILE
 
 echo "## Install OpenCV dependencies"  2>&1 | tee -a $LOGFILE
 source ~/venv/venv/bin/activate
