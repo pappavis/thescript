@@ -1,3 +1,4 @@
+#!/bin/bash
 LOGFILE=$HOME/logs/installOpenCV-`date +%Y-%m-%d_%Hh%Mm`.log
 _hn1=$(hostname)
 _pwd=$(pwd)
