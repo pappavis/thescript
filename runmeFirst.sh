@@ -142,18 +142,8 @@ cd $_pwd
 sudo apt remove python2 -y  2>&1 | tee -a $LOGFILE
 sudo apt purge python2 -y  2>&1 | tee -a $LOGFILE
 #sudo apt install python-is-python3 -y  2>&1 | tee -a $LOGFILE
-VENV="venv"
-rm -rf ~/venv/$VENV
-mkdir ~/venv
-for addonnodes in  virtualenv python3-virtualenv  ; do 
-	echo  "Installing python virtualenv  \"${addonnodes}\""
-	sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
-done
-python3 -m pip install virtualenv 2>&1 | tee -a $LOGFILE
-virtualenv -p /usr/bin/python3  virtualenv
-#/usr/python/python3.11 -m pip install virtualenv 2>&1 | tee -a $LOGFILE
-#~/.local/bin/virtualenv3.11 ~/venv/venv3.11
-echo "source ~/venv/$VENV/bin/activate" >> ~/.bashrc
+
+bash ./installPythonVirtualenv.sh
 source ~/.bashrc
 echo "Virtualenv versie: $(python -V)"
 echo "PATH=$PATH:~/.local/bin" >> ~/.bashrc
