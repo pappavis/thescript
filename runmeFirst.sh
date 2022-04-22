@@ -142,8 +142,6 @@ sudo apt purge python2 -y  2>&1 | tee -a $LOGFILE
 
 bash ./installPythonVirtualenv.sh
 source ~/.bashrc
-echo "Virtualenv versie: $(python -V)"
-echo "PATH=$PATH:~/.local/bin" >> ~/.bashrc
 
 printstatus "SSH keygen voor bij github checkouts" 2>&1 | tee -a $LOGFILE
 #ssh-keygen -t rsa -f /home/pi/.ssh/github_rsa -q -P ""
@@ -180,16 +178,6 @@ printstatus  "doen usermod"  2>&1 | tee -a $LOGFILE
 for addonnodes in gpio dialout i2c tty kmem uinput ; do
 	printstatus "Usermmod pi \"${addonnodes}\""
 	sudo usermod pi -aG ${addonnodes} 2>&1 | tee -a $LOGFILE
-done
-
-for addonnodes in build-essential cmake rapidjson-dev libgmp-dev git gcc g++ netdiscover sysfsutils tcpdump vsftpd wget  ssh bash-completion unzip build-essential git python-serial scons libboost-filesystem-dev libboost-program-options-dev libboost-system-dev libsqlite3-dev subversion libusb-dev python-dev python3-dev cmake curl telnet usbutils gawk jq pv samba samba-common samba-common-bin winbind dosfstools parted gcc python3-pip htop python-smbus mc cu mpg123 screen ffmpeg qemu-system default-jdk openvpn lynx clonezilla yum telnet lynx ; do
-	printstatus "Instelleren \"${addonnodes}\""
-	sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
-done
-
-for addonnodes in libatlas3-base qtchooser imagemagick libfontconfig1-dev libcairo2-dev libgdk-pixbuf2.0-dev libpango1.0-dev libgtk2.0-dev libgtk-3-dev libatlas-base-dev gfortran libssl libcurl4-gnutls-dev libcurl4-openssl-dev libcurl4-openssl-dev  libsdl2-ttf-dev libsdl2-image-dev ccze net-tools ntfs-3g php-intl i2c-tools python3-rpi.gpio libgstreamer-plugins-base1.0-dev ; do 
-		printstatus "Installing  \"${addonnodes}\""
-		sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
 ./adduserPi.sh  2>&1 | tee -a $LOGFILE
