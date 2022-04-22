@@ -11,8 +11,9 @@ for addonnodes in git autoconf build-essential gperf bison flex texinfo libtool 
   sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
-export MPDLDIR=~/Downloads/micropython
+MPDLDIR=~/Downloads/micropython
 
+mkdir $MPDLDIR
 cd $MPDLDIR
 mkdir modules
 mkdir ./sqlite
