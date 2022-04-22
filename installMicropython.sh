@@ -34,7 +34,7 @@ make USER_C_MODULES=$MPDLDIR/modules 2>&1 | tee -a $LOGFILE
 #make   2>&1 | tee -a $LOGFILE
 #sudo ln -s $MPDLDIR/ports/unix/micropython /usr/local/bin/micropython
 sudo rm /usr/local/bin/micropython
-sudo cp -v $MPDLDIR/ports/unix/micropython /usr/local/bin/micropython 2>&1 | tee -a $LOGFILE
+sudo cp -v $MPDLDIR/micropython/ports/unix/micropython /usr/local/bin/micropython 2>&1 | tee -a $LOGFILE
 
 echo "START micropython module intstall" 2>&1 | tee -a $LOGFILE
 for addonnodes in micropython-urequests micropython-socket micropython-machine micropython-os.path micropython-umqtt.robust micropython-pwd micropython-smtplib ; do
@@ -45,28 +45,28 @@ for addonnodes in micropython-urequests micropython-socket micropython-machine m
   micropython -m upip install ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
-cd $MPDLDIR/ports/windows
+cd $MPDLDIR/micropython/ports/windows
 make submodules 2>&1 | tee -a $LOGFILE
 make CROSS_COMPILE=i686-w64-mingw32- 2>&1 | tee -a $LOGFILE
 cp -v ./micropython.exe ~/Downloads 2>&1 | tee -a $LOGFILE
 
-cd $MPDLDIR/ports/esp32
+cd $MPDLDIR/micropython/ports/esp32
 make submodules 2>&1 | tee -a $LOGFILE
 make 2>&1 | tee -a $LOGFILE
 make erase 2>&1 | tee -a $LOGFILE
 make deploy 2>&1 | tee -a $LOGFILE
 
-cd $MPDLDIR/ports/esp8266
+cd $MPDLDIR/micropython/ports/esp8266
 make submodules 2>&1 | tee -a $LOGFILE
 make 2>&1 | tee -a $LOGFILE
 make erase 2>&1 | tee -a $LOGFILE
 make deploy 2>&1 | tee -a $LOGFILE
 
-cd $MPDLDIR/ports/rp2
+cd $MPDLDIR/micropython/ports/rp2
 make submodules 2>&1 | tee -a $LOGFILE
 make USER_C_MODULES=$MPDLDIR/ports/pico/modules/micropython.cmake  2>&1 | tee -a $LOGFILE
 
-cd $MPDLDIR/ports/javascript
+cd $MPDLDIR/micropython/ports/javascript
 make submodules 2>&1 | tee -a $LOGFILE
 make 2>&1 | tee -a $LOGFILE
 make test 2>&1 | tee -a $LOGFILE
@@ -76,5 +76,6 @@ cp ./micropython.js ~/Downloads
 #rm -rf ~/Downloads/sqlite 2>&1 | tee -a $LOGFILE
 #rm -rf $MPDLDIR 2>&1 | tee -a $LOGFILE
 
+echo "" 2>&1 | tee -a $LOGFILE
 echo "EINDE micropython $(micropython -V) module install" 2>&1 | tee -a $LOGFILE
-
+echo "" 2>&1 | tee -a $LOGFILE
