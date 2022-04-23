@@ -10,6 +10,7 @@ for addonnodes in  python3-pip python3-virtualenv ; do
   	sudo apt install -y ${addonnodes}  2>&1 | tee -a $LOGFILE
 done
 
+mkdir ~/venv/ 2>&1 | tee -a $LOGFILE
 /usr/bin/python3  -m pip install virtualenv 2>&1 | tee -a $LOGFILE
 /usr/bin/python3  -m virtualenv ~/venv/oprint 2>&1 | tee -a $LOGFILE
 
