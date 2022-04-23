@@ -7,13 +7,9 @@ sudo usermod -aG i2c pi &
 sudo usermod -aG tty pi &
 mkdir $HOME/logs/
 
-
-
-for addonnodes in  unixodbc-dev wiringpi python3-opencv ; do
-    echo "Installeren: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
-    sudo apt install -y ${addonnodes}  2>&1 | tee -a $LOGFILE
-done
-
+echo ""  2>&1 | tee -a $LOGFILE
+echo "Uitvoeren installPythonVirtualenv.sh begint."  2>&1 | tee -a $LOGFILE
+echo ""  2>&1 | tee -a $LOGFILE
 
 for addonnodes in pipx pipenv wheel ; do
     echo "Installeren: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
@@ -33,7 +29,7 @@ for addonnodes in  virtualenv python3-virtualenv python3-pip  ; do
 	sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 /usr/bin/python3  -m pip install virtualenv 2>&1 | tee -a $LOGFILE
-virtualenv -p /usr/bin/python3 ~/venv/venv 2>&1 | tee -a $LOGFILE
+/usr/bin/python3  -m virtualenv -p /usr/bin/python3 ~/venv/venv 2>&1 | tee -a $LOGFILE
 #/usr/python/python3.11 -m pip install virtualenv 2>&1 | tee -a $LOGFILE
 #~/.local/bin/virtualenv3.11 ~/venv/venv3.11
 echo "source ~/venv/$VENV/bin/activate" >> ~/.bashrc
