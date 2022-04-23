@@ -29,11 +29,11 @@ VENV="venv"
 rm -rf ~/venv/$VENV
 mkdir ~/venv
 for addonnodes in  virtualenv python3-virtualenv  ; do 
-	echo  "Installing python virtualenv  \"${addonnodes}\""
+	echo  "Installing python virtualenv  \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
 	sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 /usr/bin/python3  -m pip install virtualenv 2>&1 | tee -a $LOGFILE
-virtualenv -p /usr/bin/python3 ~/venv/venv
+virtualenv -p /usr/bin/python3 ~/venv/venv 2>&1 | tee -a $LOGFILE
 #/usr/python/python3.11 -m pip install virtualenv 2>&1 | tee -a $LOGFILE
 #~/.local/bin/virtualenv3.11 ~/venv/venv3.11
 echo "source ~/venv/$VENV/bin/activate" >> ~/.bashrc
@@ -42,4 +42,12 @@ echo "Virtualenv versie: $(python -V)" 2>&1 | tee -a $LOGFILE
 echo "PATH=$PATH:~/.local/bin" >> ~/.bashrc
 source ~/.bashrc  2>&1 | tee -a $LOGFILE
 
+echo "" 2>&1 | tee -a $LOGFILE
+echo "InstallPythonVirtualenv afgerond." 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
+
 bash ./installPythonLibs.sh  2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
