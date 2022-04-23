@@ -1,6 +1,6 @@
 #/usr/bin/sh
 LOGFILE=$HOME/logs/installPythonVirtualenv-`date +%Y-%m-%d_%Hh%Mm`.log
-echo "Installeer nieuwe python3 virtuale omgeving"
+echo "Installeer nieuwe python3 virtuale omgeving" 2>&1 | tee -a $LOGFILE
 sudo usermod -aG gpio pi &
 sudo usermod -aG dialout pi  &
 sudo usermod -aG i2c pi &
