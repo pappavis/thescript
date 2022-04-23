@@ -12,7 +12,7 @@ done
 
 mkdir ~/venv/ 2>&1 | tee -a $LOGFILE
 /usr/bin/python3  -m pip install virtualenv 2>&1 | tee -a $LOGFILE
-/usr/bin/python3  -m virtualenv ~/venv/oprint 2>&1 | tee -a $LOGFILE
+/usr/bin/python3 -m virtualenv ~/venv/oprint 2>&1 | tee -a $LOGFILE
 
 echo "SETUP: Aktiveer oprint virtualenv."  2>&1 | tee -a $LOGFILE
 source ~/venv/oprint/bin/activate
