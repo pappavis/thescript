@@ -4,8 +4,14 @@ _hn1=$(hostname)
 mkdir $HOME/logs
 echo "SETUP: Skep octoprint virtualenv." 2>&1 | tee -a $LOGFILE
 
+
+for addonnodes in  python3-pip python3-virtualenv ; do
+	echo "Installeren Octoprint python3 vereisten:  \"${addonnodes}\""
+  	sudo apt install -y ${addonnodes}  2>&1 | tee -a $LOGFILE
+done
+
 /usr/bin/python3  -m pip install virtualenv 2>&1 | tee -a $LOGFILE
-virtualenv -p /usr/bin/python3 ~/venv/oprint 2>&1 | tee -a $LOGFILE
+/usr/bin/python3  -m virtualenv ~/venv/oprint 2>&1 | tee -a $LOGFILE
 
 echo "SETUP: Aktiveer oprint virtualenv."  2>&1 | tee -a $LOGFILE
 source ~/venv/oprint/bin/activate
