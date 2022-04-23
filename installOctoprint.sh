@@ -8,7 +8,7 @@ echo "SETUP: Skep octoprint virtualenv." 2>&1 | tee -a $LOGFILE
 virtualenv -p /usr/bin/python3 ~/venv/oprint 2>&1 | tee -a $LOGFILE
 
 echo "SETUP: Aktiveer oprint virtualenv."  2>&1 | tee -a $LOGFILE
-source ~/oprint/bin/activate
+source ~/venv/oprint/bin/activate
 
 for addonnodes in  pip octoprint ffmpeg ; do
 	echo "Installeren Octoprint vereisten:  \"${addonnodes}\""
