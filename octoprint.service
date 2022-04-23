@@ -9,7 +9,7 @@ Environment="LANG=C.UTF-8"
 WorkingDirectory=/home/pi
 Type=exec
 User=pi
-ExecStart=/home/pi/oprint/bin/octoprint
+ExecStart=/home/pi/venv/oprint/bin/octoprint
 
 [Install]
 WantedBy=multi-user.target
