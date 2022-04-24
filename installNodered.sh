@@ -16,20 +16,21 @@ LOGFILE=$HOME/logs/installNodered-`date +%Y-%m-%d_%Hh%Mm`.log
 
 mkdir ~/logs
 
-printstatus  "**Installer en node-red en modules"
+echo ""  2>&1 | tee -a $LOGFILE
+echo  "**Installer en node-red en modules" 2>&1 | tee -a $LOGFILE
 mkdir /home/pi/Downloads
 cd ~
 
 printstatus "Oude  nodered  verwijderen"  2>&1 | tee -a $LOGFILE
 sudo service nodered stop
-printstatus "sudo npm uninstall -g node-red"
-printstatus "Opschonen en legen nodered cache"
+printstatus "sudo npm uninstall -g node-red" 2>&1 | tee -a $LOGFILE
+printstatus "Opschonen en legen nodered cache" 2>&1 | tee -a $LOGFILE
 rm -rf ~/.node-red
-printstatus "Opschonen en legen nodered cache afgerond."
+printstatus "Opschonen en legen nodered cache afgerond." 2>&1 | tee -a $LOGFILE
 mkdir /home/pi/.node-red
 cd /home/pi/.node-red
 
-for addonnodes in build-essential libnode72 yarn ; do
+for addonnodes in build-essential libnode72 yarn nodered ; do
 	printstatus "Installing lib \"${addonnodes}\""
 	sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
@@ -52,22 +53,22 @@ npm install johnny-five 2>&1 | tee -a $LOGFILE
 
 ##sudo npm install -g --unsafe-perm node-red
 cd /home/pi/Downloads
-wget https://raw.githubusercontent.com/pappavis/thescript/master/settings.js
-wget https://raw.githubusercontent.com/pappavis/thescript/master/flows.json
-mv ./settings.js /home/pi/.node-red/
-mv ./flows.json /home/pi/.node-red/
+wget https://raw.githubusercontent.com/pappavis/thescript/master/settings.js 2>&1 | tee -a $LOGFILE
+wget https://raw.githubusercontent.com/pappavis/thescript/master/flows.json 2>&1 | tee -a $LOGFILE
+mv ./settings.js /home/pi/.node-red/ 2>&1 | tee -a $LOGFILE
+mv ./flows.json /home/pi/.node-red/ 2>&1 | tee -a $LOGFILE
 sed -i -e "s#\/\/var i2c#var i2c#" /home/pi/.node-red/settings.js
 sed -i -e "s#\/\/i2c#i2c#" /home/pi/.node-red/settings.js
 
 mkdir ~/Downloads
 cd ~/Downloads	
-echo "Nodered service installeren"
-wget https://raw.githubusercontent.com/pappavis/thescript/master/nodered.service
-sudo mv ./nodered.service /etc/systemd/system
+echo "Nodered service installeren" 2>&1 | tee -a $LOGFILE
+wget https://raw.githubusercontent.com/pappavis/thescript/master/nodered.service 2>&1 | tee -a $LOGFILE
+sudo mv ./nodered.service /etc/systemd/system 2>&1 | tee -a $LOGFILE
 sudo systemctl enable nodered.service 2>&1 | tee -a $LOGFILE
 
-echo "Nodered service starten"
-sudo service nodered restart
+echo "Nodered service starten" 2>&1 | tee -a $LOGFILE
+sudo service nodered restart 2>&1 | tee -a $LOGFILE
 
 cd && sudo cp /var/log/nodered-install.log . && sudo chown pi.pi ./nodered-install.log && cd ~/.node-red/
 
@@ -101,12 +102,12 @@ fi
 
 cd ~/.node-red/
 npm $NQUIET audit fix
-sudo wget -a $LOGFILE $AQUIET https://tech.scargill.net/iot/settings.txt -O settings.js
+sudo wget -a $LOGFILE $AQUIET https://tech.scargill.net/iot/settings.txt -O settings.js 2>&1 | tee -a $LOGFILE
 
 ## add a nice little command line utility (nrlog) for showing and tailing Node-Red scripts in colour
 echo "alias nrlog='sudo journalctl -f -n 50 -u nodered -o cat | ccze -A'" | sudo tee -a /etc/bash.bashrc > /dev/null 2>&1
 
 cd ~/.node-red
-npm audit fix --force
+npm audit fix --force 2>&1 | tee -a $LOGFILE
 
 cd ~
