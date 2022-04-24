@@ -43,8 +43,13 @@ sudo apt autoclean -y 2>&1 | tee -a $LOGFILE
 
 ##node-red admin init
 npm audit fix 2>&1 | tee -a $LOGFILE 2>&1 | tee -a $LOGFILE
-sudo npm install -g qrcode  2>&1 | tee -a $LOGFILE
 npm install johnny-five 2>&1 | tee -a $LOGFILE
+
+
+for addonnodes in qrcode node-red; do
+	printstatus "Installing NODERED: \"${addonnodes}\""
+	sudo npm install -g --unsafe-perm ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
 
 ## echo 143.204.15.127 deb.nodesource.com | sudo tee -a /etc/hosts
 ## curl -sL https://raw.githubusercontent.com/node-red/raspbian-deb-package/master/resources/update-nodejs-and-nodered > update-nodejs-and-nodered
