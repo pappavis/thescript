@@ -63,12 +63,12 @@ done
 sudo service nodered restart 2>&1 | tee -a $LOGFILE
 
 for addonnodes in moment node-red-contrib-home-assistant-websocket node-red-contrib-ibm-watson-iot node-red-contrib-sun-position ; do
-	printstatus "Installing node \"${addonnodes}\""
+	echo "Installing node \"${addonnodes}\""
 	npm $NQUIET install --save ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
 for addonnodes in moment node-red-contrib-tuya-local node-red-contrib-ui-led node-red-contrib-yr node-red-contrib-aedes ; do
-	printstatus "Installing node \"${addonnodes}\""
+	echo "Installing node \"${addonnodes}\""
 	npm $NQUIET install --save ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
@@ -83,7 +83,7 @@ for addonnodes in moment node-red-contrib-config node-red-contrib-grove node-red
 	node-red-contrib-isonline node-red-node-ping node-red-node-random node-red-node-smooth node-red-contrib-npm node-red-node-arduino \
 	node-red-contrib-file-function node-red-contrib-boolean-logic node-red-contrib-blynk-ws node-red-contrib-telegrambot node-red-contrib-dsm node-red-contrib-ftp \
 	node-red-dashboard node-red-contrib-owntracks node-red-contrib-alexa-local node-red-contrib-amazon-echo node-red-contrib-alexa-notifyme node-red-contrib-heater-controller node-red-contrib-oauth2 ; do
-	printstatus "Instelleren node \"${addonnodes}\""
+	echo "Instelleren node \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
 	npm $NQUIET install --save ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
@@ -93,7 +93,7 @@ for addonnodes in moment node-red-contrib-find-my-iphone node-red-contrib-ttn no
 	node-red-contrib-homekit-bridged node-red-contrib-homebridge-automation write-excel-file node-red-contrib-web-worldmap node-red-contrib-oauth2 \ 
 	node-red-contrib-wled2 node-red-dashboard node-red-node-pi-mcp3008 node-red-contrib-webservices node-red-node-mysql node-red-contrib-car-bmw \ 
 	node-red-contrib-google-sheets node-red-contrib-plate-detection node-red-contrib-norelite-homeassistant node-red-contrib-tasmota node-red-contrib-node-firebird node-red-contrib-re-postgres  ; do 
-	printstatus "Installing node \"${addonnodes}\""
+	echo "Installing node \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
 	npm $NQUIET install --save ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
@@ -101,11 +101,11 @@ npm audit fix --force 2>&1 | tee -a $LOGFILE
 
 echo "Installeren global nodes"
 for addonnodes in qrcode johnny-five ; do
-	printstatus "Installeren global node \"${addonnodes}\""
+	echo "Installeren global node \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
 	sudo npm $NQUIET install --save ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
-printstatus "Bijwerken lokale nodes" 2>&1 | tee -a $LOGFILE
+echo "Bijwerken lokale nodes" 2>&1 | tee -a $LOGFILE
 npm $NQUIET update 2>&1 | tee -a $LOGFILE
 
 sudo service nodered restart 2>&1 | tee -a $LOGFILE
