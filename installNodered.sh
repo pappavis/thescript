@@ -29,23 +29,21 @@ printstatus "Opschonen en legen nodered cache afgerond."
 mkdir /home/pi/.node-red
 cd /home/pi/.node-red
 
-for addonnodes in build-essential libnode72; do
+for addonnodes in build-essential libnode72 yarn ; do
 	printstatus "Installing lib \"${addonnodes}\""
 	sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
-sudo apt --fix-broken install -y
-sudo apt -fix-broken build-essential libnode72 -y
-sudo apt autoremove -y
-sudo apt autoclean -y
+sudo apt --fix-broken install -y 2>&1 | tee -a $LOGFILE
+sudo apt -fix-broken build-essential libnode72 -y 2>&1 | tee -a $LOGFILE
+sudo apt autoremove -y 2>&1 | tee -a $LOGFILE
+sudo apt autoclean -y 2>&1 | tee -a $LOGFILE
 
 
 ##node-red admin init
-npm audit fix
-sudo npm install -g qrcode 
-npm install johnny-five
-sudo apt-get install -y  yarn
-
+npm audit fix 2>&1 | tee -a $LOGFILE 2>&1 | tee -a $LOGFILE
+sudo npm install -g qrcode  2>&1 | tee -a $LOGFILE
+npm install johnny-five 2>&1 | tee -a $LOGFILE
 
 ## echo 143.204.15.127 deb.nodesource.com | sudo tee -a /etc/hosts
 ## curl -sL https://raw.githubusercontent.com/node-red/raspbian-deb-package/master/resources/update-nodejs-and-nodered > update-nodejs-and-nodered
