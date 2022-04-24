@@ -74,6 +74,7 @@ sudo systemctl enable nodered.service 2>&1 | tee -a $LOGFILE
 
 echo "Nodered service starten" 2>&1 | tee -a $LOGFILE
 sudo service nodered restart 2>&1 | tee -a $LOGFILE
+sudo service nodered status 2>&1 | tee -a $LOGFILE
 
 cd && sudo cp /var/log/nodered-install.log . && sudo chown pi.pi ./nodered-install.log && cd ~/.node-red/
 
