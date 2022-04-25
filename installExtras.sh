@@ -69,26 +69,6 @@ make -j$(nproc)
 sudo make install 2>&1 | tee -a $LOGFILE
 rm -rf ~/Downloads/x264
 
-cd ~/Downloads/
-wget -qO - https://packages.grafana.com/gpg.key |  sudo gpg --no-default-keyring --keyring gnupg-ring:/etc/apt/trusted.gpg.d/example.gpg --import -
-curl -sL https://packages.grafana.com/gpg.key | sudo apt-key add -
-echo "deb https://repos.influxdata.com/debian bullseye stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
-sudo apt update -y 2>&1 | tee -a $LOGFILE
-sudo apt install telegraf -y
-
-sudo systemctl enable telegraf
-sudo systemctl start telegraf
-sudo systemctl status telegraf 2>&1 | tee -a $LOGFILE
-
-cd ~/Downloads/
-echo "deb [signed-by=/usr/share/keyrings/influxdb-archive-keyring.gpg] https://repos.influxdata.com/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
-sudo apt update -y 2>&1 | tee -a $LOGFILE
-sudo apt install influxdb -y
-sudo systemctl enable influxdb grafana-server
-sudo systemctl start influxdb grafana-server
-sudo systemctl status influxdb grafana-server telegraf 2>&1 | tee -a $LOGFILE
-
-
 cd $_pwd
 echo "* Installeer pi-apps app store" 2>&1 | tee -a $LOGFILE
 wget -qO- https://raw.githubusercontent.com/Botspot/pi-apps/master/install | bash 2>&1 | tee -a $LOGFILE
@@ -124,34 +104,60 @@ make PLATFORM=rpi1
 echo "Amiberry install afgerond" 2>&1 | tee -a $LOGFILE
 
 
-cd ~/Downloads
-echo "Installeren Grafana" 2>&1 | tee -a $LOGFILE
-wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
-echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list 2>&1 | tee -a $LOGFILE
-sudo apt-get update -y
-sudo apt-get install -y grafana 2>&1 | tee -a $LOGFILE
-sudo systemctl unmask grafana-server.service
-sudo systemctl start grafana-server
-sudo systemctl enable grafana-server.service
-
-
 echo "Installeren chronograf" 2>&1 | tee -a $LOGFILE
 sudo apt-get install -y chronograf  2>&1 | tee -a $LOGFILE
 sudo systemctl enable chronograf 2>&1 | tee -a $LOGFILE
 sudo systemctl start chronograf 2>&1 | tee -a $LOGFILE
 
-echo "Installeren influxdb" 2>&1 | tee -a $LOGFILE
-wget -qO- https://repos.influxdata.com/influxdb.key | sudo apt-key add -
-source /etc/os-release
-echo "deb https://repos.influxdata.com/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
-sudo apt update -y
-sudo apt install -y influxdb 2>&1 | tee -a $LOGFILE
-sudo systemctl unmask influxdb.service
+cd ~/Downloads/
+echo "* Installeer telegraf" 2>&1 | tee -a $LOGFILE
+wget -qO - https://packages.grafana.com/gpg.key |  sudo gpg --no-default-keyring --keyring gnupg-ring:/etc/apt/trusted.gpg.d/example.gpg --import -
+curl -sL https://packages.grafana.com/gpg.key | sudo apt-key add -
+echo "deb https://repos.influxdata.com/debian bullseye stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
+sudo apt update -y 2>&1 | tee -a $LOGFILE
+sudo apt install telegraf -y 2>&1 | tee -a $LOGFILE
+sudo systemctl enable telegraf
+sudo systemctl start telegraf
+sudo systemctl status telegraf 2>&1 | tee -a $LOGFILE
+
+## https://nwmichl.net/2020/07/14/telegraf-influxdb-grafana-on-raspberrypi-from-scratch/
+echo "Setup telegraf database op InfluxDB"  2>&1 | tee -a $LOGFILE
+sudo usermod -a -G video telegraf
+tg_db=$"create database telegraf; use telegraf;  create user telegrafuser with password 'Telegr@f' with all privileges; grant all privileges on telegraf to telegrafuser; create retention policy '4Weeks' on 'telegraf' duration 4w replication 1 default; exit;"
+influx -execute $tg_db   2>&1 | tee -a $LOGFILE
+
+_tg_conf=$('[[outputs.influxdb]] \
+   urls = ["http://127.0.0.1:8086"] \
+   database = "telegraf" \
+   username = "telegrafuser" \
+   password = "Telegr@f" \
+  ')
+echo $_tg_conf | sudo tee -a /etc/telegraf/telegraf.conf 2>&1 | tee -a $LOGFILE
+sudo service telegraf restart
+sudo service telegraf status 2>&1 | tee -a $LOGFILE
+
+
+cd ~/Downloads/
+echo "* Installeer influxdb" 2>&1 | tee -a $LOGFILE
+echo "deb [signed-by=/usr/share/keyrings/influxdb-archive-keyring.gpg] https://repos.influxdata.com/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
+sudo apt update -y 2>&1 | tee -a $LOGFILE
+sudo apt install influxdb -y 2>&1 | tee -a $LOGFILE
+sudo systemctl enable influxdb
 sudo systemctl start influxdb
-sudo systemctl enable influxdb.service
+sudo service influxdb status 2>&1 | tee -a $LOGFILE
 
 
-echo "Installeren RPI-Clone" 2>&1 | tee -a $LOGFILE
+cd ~/Downloads/
+echo "* Installeer grafana" 2>&1 | tee -a $LOGFILE
+sudo wget https://dl.grafana.com/oss/release/grafana-rpi_6.6.1_armhf.deb 2>&1 | tee -a $LOGFILE
+sudo dpkg -i ./grafana-rpi_6.6.1_armhf.deb 2>&1 | tee -a $LOGFILE
+sudo systemctl enable grafana-server 2>&1 | tee -a $LOGFILE
+sudo systemctl status grafana-server 2>&1 | tee -a $LOGFILE
+echo "grafana-server is geïnstalleerd op http://$(hostname).local:3000" 2>&1 | tee -a $LOGFILE
+sudo usermod -a -G video telegraf
+
+
+echo " * Installeren RPI-Clone" 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
 sudo git clone https://github.com/billw2/rpi-clone.git 2>&1 | tee -a $LOGFILE
 cd rpi-clone
@@ -159,7 +165,8 @@ sudo cp rpi-clone /usr/local/sbin
 cd ~/Downloads
 sudo rm -r rpi-clone
 
-echo "Installeren log2ram" 2>&1 | tee -a $LOGFILE
+
+echo " * Installeren log2ram" 2>&1 | tee -a $LOGFILE
 echo "deb http://packages.azlux.fr/debian/ bullseye main" | sudo tee /etc/apt/sources.list.d/azlux.list
 wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
 sudo apt update -y 2>&1 | tee -a $LOGFILE
@@ -175,26 +182,6 @@ cd ./Easier68k
 pip install -r requirements.txt 2>&1 | tee -a $LOGFILE
 ehco "je kunt nu: python ./cli.py"
 
-cd ~/Downloads
-echo "Installeren Grafana en telegraf"  2>&1 | tee -a $LOGFILE
-curl -sL https://packages.grafana.com/gpg.key | sudo apt-key add -
-curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -
-echo "deb https://repos.influxdata.com/debian dists buster stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
-echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee /etc/apt/sources.list.d/grafana.list
-sudo apt update -y
-for addonnodes in grafana telegraf ; do
-  echo " "
-  echo " "
-  echo "Installeren TIG Stack: ${addonnodes}"
-  echo " "
-  sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
-done
-
-sudo /bin/systemctl enable grafana-server
-sudo /bin/systemctl start grafana-server
-echo "grafana-server is geïnstalleerd" 2>&1 | tee -a $LOGFILE
-sudo usermod -a -G video telegraf
-
 echo "Installeren CommanderPi"  2>&1 | tee -a $LOGFILE
 cd ~/Downloads
 git clone https://github.com/jack477/CommanderPi 2>&1 | tee -a $LOGFILE
@@ -202,21 +189,6 @@ cd ./CommanderPi
 echo "Y\n" | bash ./install.sh 2>&1 | tee -a $LOGFILE
 rm -rf ./CommanderPi
 
-## https://nwmichl.net/2020/07/14/telegraf-influxdb-grafana-on-raspberrypi-from-scratch/
-echo "Setup telegraf database op InfluxDB"  2>&1 | tee -a $LOGFILE
-sudo usermod -a -G video telegraf
-tg_db=$"create database telegraf; use telegraf;  create user telegrafuser with password 'Telegr@f' with all privileges; grant all privileges on telegraf to telegrafuser; create retention policy '4Weeks' on 'telegraf' duration 4w replication 1 default; exit;"
-influx -execute $tg_db   2>&1 | tee -a $LOGFILE
-
-_tg_conf=$('[[outputs.influxdb]] \
-   urls = ["http://127.0.0.1:8086"] \
-   database = "telegraf" \
-   username = "telegrafuser" \
-   password = "Telegr@f" \
-  ')
-echo $_tg_conf >> /etc/telegraf/telegraf.conf 2>&1 | tee -a $LOGFILE
-sudo service telegraf restart
-sudo service telegraf status 2>&1 | tee -a $LOGFILE
 
 cd ~/Downloads
 echo "Motorola 68000 emulatie in C, voor de lol." 2>&1 | tee -a $LOGFILE
