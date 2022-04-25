@@ -20,6 +20,6 @@ sudo mkdir /var/www/html/support  2>&1 | tee -a $LOGFILE
 sudo mv ~/Downloads/owncloud /var/www/html/support  2>&1 | tee -a $LOGFILE
 sudo chown -R www-data:www-data /var/www/html/support/owncloud  2>&1 | tee -a $LOGFILE
 sudo service apache2 restart  2>&1 | tee -a $LOGFILE
-echo "Owncloud beschikbaar op http://$_hn1.local/support/owncloud"  2>&1 | tee -a $LOGFILE
+echo "Owncloud beschikbaar op http://$(hostname).local/support/owncloud"  2>&1 | tee -a $LOGFILE
 sudo rm -rf ~/Downloads/*owncloud-complete*  2>&1 | tee -a $LOGFILE
 cd $_pwd
