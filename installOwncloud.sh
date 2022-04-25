@@ -18,7 +18,7 @@ echo " mounting dafvs naar /mnt/davfs2/$(hostname)"   2>&1 | tee -a $LOGFILE
 echo "\n" | sudo apt install -y davfs2   2>&1 | tee -a $LOGFILE
 sudo mkdir /mnt/davfs2
 sudo mkdir /mnt/davfs2/$(hostname)
-mount -t auto $(hostname)/owncloud/remote.php/webdav /mnt/davfs2/$(hostname)
+sudo mount -t davfs  $(hostname).local/support/owncloud/remote.php/webdav /mnt/davfs2/$(hostname)  2>&1 | tee -a $LOGFILE &
 echo " dafvs mouting afgerond."   2>&1 | tee -a $LOGFILE
 
 sudo phpenmod  intl  2>&1 | tee -a $LOGFILE
