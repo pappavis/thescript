@@ -564,7 +564,8 @@ echo "" 2>&1 | tee -a $LOGFILE
 
 cd ~/Downloads
 echo "Instellen docker" 2>&1 | tee -a $LOGFILE
-curl -fsSL get.docker.com -o get-docker.sh && sh get-docker.sh 2>&1 | tee -a $LOGFILE
+curl -fsSL get.docker.com -o get-docker.sh 2>&1 | tee -a $LOGFILE
+sudo sh get-docker.sh 2>&1 | tee -a $LOGFILE
 sudo usermod -aG docker pi 2>&1 | tee -a $LOGFILE
 sudo curl https://download.docker.com/linux/raspbian/gpg 2>&1 | tee -a $LOGFILE
 sudo service docker restart 2>&1 | tee -a $LOGFILE
