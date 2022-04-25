@@ -591,15 +591,17 @@ echo "Instellen OpenVPN ref--> https://youtu.be/gxpX_mubz2A?t=1077  en  https://
 cd ~/Downloads
 echo "" 2>&1 | tee -a $LOGFILE
 echo "Instellen OpenMediaVault  ref--> https://www.wundertech.net/turn-a-raspberry-pi-into-a-nas-openmediavault-tutorial/" 2>&1 | tee -a $LOGFILE
-curl -sSL https://github.com/OpenMediaVault-Plugin-Developers/installScript/raw/master/install | sudo bash
-
-echo "* Install extras is afgerond. Je kunt nu herstarten." 2>&1 | tee -a $LOGFILE
+curl -sSL https://github.com/OpenMediaVault-Plugin-Developers/installScript/raw/ma
 
 cd ~/Downloads
 echo "Installeren Bootstrap.js bibliotheek" 2>&1 | tee -a $LOGFILE
 wget https://github.com/twbs/bootstrap/releases/download/v5.1.3/bootstrap-5.1.3-dist.zip 2>&1 | tee -a $LOGFILE
 7z x bootstrap-5.1.3-dist.zip 2>&1 | tee -a $LOGFILE
 sudo mkdir /var/www/html/inc 2>&1 | tee -a $LOGFILE
-sudo mv -v bootstrap-5.1.3-dist /home/var/www/html/inc/ 2>&1 | tee -a $LOGFILE
+sudo mv -v bootstrap-5.1.3-dist /var/www/html/inc/ 2>&1 | tee -a $LOGFILE
+
+ster/install | sudo bash
+
+echo "* Install extras is afgerond. Je kunt nu herstarten." 2>&1 | tee -a $LOGFILE
 
 cd $_pwd
