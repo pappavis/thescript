@@ -120,12 +120,6 @@ sudo systemctl enable telegraf
 sudo systemctl start telegraf
 sudo systemctl status telegraf 2>&1 | tee -a $LOGFILE
 
-## https://nwmichl.net/2020/07/14/telegraf-influxdb-grafana-on-raspberrypi-from-scratch/
-echo "Setup telegraf database op InfluxDB"  2>&1 | tee -a $LOGFILE
-sudo usermod -a -G video telegraf
-tg_db=$"create database telegraf; use telegraf;  create user telegrafuser with password 'Telegr@f' with all privileges; grant all privileges on telegraf to telegrafuser; create retention policy '4Weeks' on 'telegraf' duration 4w replication 1 default; exit;"
-influx -execute $tg_db   2>&1 | tee -a $LOGFILE
-
 _tg_conf=$('[[outputs.influxdb]] \
    urls = ["http://127.0.0.1:8086"] \
    database = "telegraf" \
@@ -145,7 +139,17 @@ sudo apt install influxdb -y 2>&1 | tee -a $LOGFILE
 sudo systemctl enable influxdb
 sudo systemctl start influxdb
 sudo service influxdb status 2>&1 | tee -a $LOGFILE
+## https://nwmichl.net/2020/07/14/telegraf-influxdb-grafana-on-raspberrypi-from-scratch/
+sudo usermod -a -G video telegraf
 
+echo "Setup telegraf database op InfluxDB"  2>&1 | tee -a $LOGFILE
+tg_db=$"create database telegraf; use telegraf;  create user telegrafuser with password 'Telegr@f' with all privileges; grant all privileges on telegraf to telegrafuser; create retention policy '4Weeks' on 'telegraf' duration 4w replication 1 default; exit;"
+influx -execute $tg_db   2>&1 | tee -a $LOGFILE
+echo "create database telegraf;" | influx 2>&1 | tee -a $LOGFILE
+echo "use telegraf" | influx 2>&1 | tee -a $LOGFILE
+echo "create user telegrafuser with password 'Telegr@f' with all privileges; " | influx 2>&1 | tee -a $LOGFILE
+echo "grant all privileges on telegraf to telegrafuser; " | influx
+echo "create retention policy '4Weeks' on 'telegraf' duration 4w replication 1 default; " | influx 2>&1 | tee -a $LOGFILE
 
 cd ~/Downloads/
 echo "* Installeer grafana" 2>&1 | tee -a $LOGFILE
