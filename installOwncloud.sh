@@ -14,12 +14,12 @@ for addonnodes in apache2 php php-mysql php-intl ; do
 done
 
 sudo phpenmod  intl
-wget https://download.owncloud.org/community/owncloud-complete-20210721.zip
-7z x ~/Downloads/owncloud-complete-20210721.zip
-sudo mkdir /var/www/html/support
-sudo mv ~/Downloads/owncloud /var/www/html/support
-sudo chown -R www-data:www-data /var/www/html/support/owncloud
-sudo service apache2 restart
-echo "Owncloud beschikbaar op http://$_hn1.local/support/owncloud"
-sudo rm -rf ~/Downloads/*owncloud-complete*
+wget https://download.owncloud.org/community/owncloud-latest.zip  2>&1 | tee -a $LOGFILE
+7z x ~/Downloads/owncloud-latest.zip  2>&1 | tee -a $LOGFILE
+sudo mkdir /var/www/html/support  2>&1 | tee -a $LOGFILE
+sudo mv ~/Downloads/owncloud /var/www/html/support  2>&1 | tee -a $LOGFILE
+sudo chown -R www-data:www-data /var/www/html/support/owncloud  2>&1 | tee -a $LOGFILE
+sudo service apache2 restart  2>&1 | tee -a $LOGFILE
+echo "Owncloud beschikbaar op http://$_hn1.local/support/owncloud"  2>&1 | tee -a $LOGFILE
+sudo rm -rf ~/Downloads/*owncloud-complete*  2>&1 | tee -a $LOGFILE
 cd $_pwd
