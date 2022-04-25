@@ -14,10 +14,7 @@ source ~/venv/bin/activate
 time python -m ensurepip  2>&1 | tee -a $LOGFILE
 
 cd ~/Downloads
-time wget https://raw.githubusercontent.com/adafruit/Raspberry-Pi-Installer-Scripts/master/raspi-blinka.py 2>&1 | tee -a $LOGFILE
-python3 raspi-blinka.py 2>&1 | tee -a $LOGFILE
-
-sudo raspi-config nonint do_i2c 0
+sudo raspi-config nonint do_i2c 0  2>&1 | tee -a $LOGFILE
 
 for addonnodes in  do_i2c  do_spi do_serial do_ssh do_camera disable_raspi_config_at_boot  ; do
     printstatus "CircuitPython activeren  : \"${addonnodes}\""
