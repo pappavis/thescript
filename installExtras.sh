@@ -72,13 +72,20 @@ rm -rf ~/Downloads/x264
 cd ~/Downloads/
 wget -qO - https://packages.grafana.com/gpg.key |  sudo gpg --no-default-keyring --keyring gnupg-ring:/etc/apt/trusted.gpg.d/example.gpg --import -
 curl -sL https://packages.grafana.com/gpg.key | sudo apt-key add -
-curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -
-echo "deb https://repos.influxdata.com/debian dists buster stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
-echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee /etc/apt/sources.list.d/grafana.list
+echo "deb https://repos.influxdata.com/debian bullseye stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
 sudo apt update -y 2>&1 | tee -a $LOGFILE
+sudo apt install telegraf -y
 
-sudo systemctl enable influxdb grafana-server telegraf
-sudo systemctl start influxdb grafana-server telegraf
+sudo systemctl enable telegraf
+sudo systemctl start telegraf
+sudo systemctl status telegraf 2>&1 | tee -a $LOGFILE
+
+cd ~/Downloads/
+echo "deb [signed-by=/usr/share/keyrings/influxdb-archive-keyring.gpg] https://repos.influxdata.com/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
+sudo apt update -y 2>&1 | tee -a $LOGFILE
+sudo apt install influxdb -y
+sudo systemctl enable influxdb grafana-server
+sudo systemctl start influxdb grafana-server
 sudo systemctl status influxdb grafana-server telegraf 2>&1 | tee -a $LOGFILE
 
 
