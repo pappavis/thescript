@@ -22,6 +22,7 @@ for addonnodes in ict-beheer acer01 pi0 pivhere dietpi pi04 pilamp spelen02 p1mo
   echo " NFS share aangemaakt sql database server: ${addonnodes}"  2>&1 | tee -a $LOGFILE &
   sudo mkdir -p /mnt/nfs/${addonnodes} 2>&1 | tee -a $LOGFILE &
   sudo mkdir -p /mnt/davfs2/${addonnodes} 2>&1 | tee -a $LOGFILE &
+  sudo chmod +rw /mnt/davfs2/${addonnodes} 
   echo "" 2>&1 | tee -a $LOGFILE &
 done
 
@@ -34,7 +35,7 @@ sudo service rpcbind restart
 sudo service nfs-kernel-server restart 
 
 #sudo chmod 777 -R /mnt/nfs/
-./mountNFSserverPappavis.sh  2>&1 | tee -a $LOGFILE
+bash ./mountNFSserverPappavis.sh  2>&1 | tee -a $LOGFILE
 
 echo "/home *(rw,all_squash,insecure,async,no_subtree_check)"  2>&1 | sudo tee -a /etc/exports  2>&1 | tee -a $LOGFILE 
 
