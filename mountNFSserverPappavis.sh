@@ -1,18 +1,14 @@
 #!/bin/bash
-printf "\nProbeer netwerk share te mount op /mnt\n" 2>&1 | tee -a $LOGFILE
-sudo mount -t auto acer01:/home /mnt/nfs/acer01/  2>&1 | tee -a $LOGFILE &
-sudo mount -t auto ict-beheer:/home /mnt/nfs/acer01/  2>&1 | tee -a $LOGFILE &
-sudo mount -t auto pi0:/home /mnt/nfs/pi0/ &
-sudo mount -t auto pi07:/home /mnt/nfs/pi07/ &
-sudo mount -t auto pi08:/home /mnt/nfs/pi08/ &
-sudo mount -t auto pi09:/home /mnt/nfs/pi09/ &
-sudo mount -t auto pivhere:/home /mnt/nfs/pivhere/ &
-sudo mount -t auto pi04:/home /mnt/nfs/pi4/ &
-sudo mount -t auto pilamp:/home /mnt/nfs/pilamp/ &
-sudo mount -t auto spelen02:/home /mnt/nfs/spelen02/ &
-sudo mount -t auto p1mon:/home /mnt/nfs/p1mon/ &
-sudo mount -t auto retropie:/home /mnt/nfs/retropie/ &
-sudo mount -t auto octopi:/home /mnt/nfs/octopi/ &
-sudo mount -t auto octopi.local:/home /mnt/nfs/octopi/ &
-sudo mount -t auto octopi:/home /mnt/nfs/octopi/ &
-sudo mount -t auto dietpi.local:/home /mnt/nfs/dietpi/ &
+
+echo " Start DAVfs en NFS shares mount."  2>&1 | tee -a $LOGFILE
+
+for addonnodes in acer01 pi0 pivhere dietpi pi04 pilamp spelen02 p1mon retropie pi07 pi08 pi09 octopi $(hostname) ; do
+  echo "" 2>&1 | tee -a $LOGFILE &
+  echo "" 2>&1 | tee -a $LOGFILE &
+  echo "Probeer netwerk share te mount op /mnt/nfs/${addonnodes}"  2>&1 | tee -a $LOGFILE
+  sudo mount -t auto ${addonnodes}:/home  /mnt/nfs/${addonnodes} 2>&1 | tee -a $LOGFILE &
+  sudo mount -t davfs ${addonnodes}.local/support/owncloud/remote.php/webdav  /mnt/nfs/${addonnodes} 2>&1 | tee -a $LOGFILE &
+  echo "" 2>&1 | tee -a $LOGFILE &
+done
+
+echo " DAVfs en NFS shares moutn afgerond"  2>&1 | tee -a $LOGFILE
