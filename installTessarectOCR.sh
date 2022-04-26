@@ -25,7 +25,7 @@ rm -rf ./opencv.deb
 source ~/venv/venv/bin/activate
 cd $pwd
 
-for addonnodes in pip setuptools wheel pytesseract libwebp6 libopencv-dev opencv-python==4.5.3.56   ; do
+for addonnodes in pip setuptools wheel pytesseract libwebp6 libopencv-dev opencv-python   ; do
   echo " "
   echo " "
   echo "Installeren Python bieb: ${addonnodes}"
