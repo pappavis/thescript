@@ -24,6 +24,12 @@ for addonnodes in ict-beheer acer01 pi0 pivhere dietpi pi04 pilamp spelen02 p1mo
   sudo mkdir -p /mnt/davfs2/${addonnodes} 2>&1 | tee -a $LOGFILE &
   sudo chmod +rw /mnt/nfs/${addonnodes} 
   sudo chmod +rw /mnt/davfs2/${addonnodes} 
+  sudo chown -R pi:pi /mnt/nfs/${addonnodes} 
+  sudo chown -R pi:pi /mnt/dafvs2/${addonnodes} 
+  
+  sudo find /mnt/nfs/ -type d -exec chmod 755 {} \;
+  sudo find /mnt/nfs/ -type f -exec chmod 644 {} \;
+
   echo "" 2>&1 | tee -a $LOGFILE &
 done
 
@@ -38,10 +44,9 @@ sudo service nfs-kernel-server restart
 #sudo chmod 777 -R /mnt/nfs/
 bash ./mountNFSserverPappavis.sh  2>&1 | tee -a $LOGFILE
 
-echo "/home *(rw,all_squash,insecure,async,no_subtree_check)"  2>&1 | sudo tee -a /etc/exports  2>&1 | tee -a $LOGFILE 
+echo "/mnt/nfs *(rw,all_squash,insecure,async,no_subtree_check,anonuid=1000,anongid=1000)"  2>&1 | sudo tee -a /etc/exports  2>&1 | tee -a $LOGFILE 
 
-sudo printf "\n HANDMATIG toevoegen aan /etc/exports/  : \n/home *(rw,all_squash,insecure,async,no_subtree_check)\n"  2>&1 | tee -a $LOGFILE
-printf "\nNFS bestanddeling is daarna bereikbaar:\n -- MacOS verbind aan nfs://$(hostname).local/nfsshare  of nfs://$(hostname -I)/nfsshare \n -- Windows verbind aan //$(hostname).local/nfsshare\n\nIP adres $(hostname -I)\n"   2>&1 | tee -a $LOGFILE
+printf "\nNFS bestanddeling is daarna bereikbaar:\n -- MacOS verbind aan http://$(hostname).local/mnt/nfs  of nfs://$(hostname -I)/nfsshare \n -- Windows verbind aan //$(hostname).local/nfsshare\n\nIP adres $(hostname -I)\n"   2>&1 | tee -a $LOGFILE
 printf "\nHandmatig uitvoeren:\n  sudo service nfs-server restart\n" 2>&1 | tee -a $LOGFILE
 sudo service nfs-server restart 2>&1 | tee -a $LOGFILE
 
