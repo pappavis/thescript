@@ -22,6 +22,7 @@ for addonnodes in ict-beheer acer01 pi0 pivhere dietpi pi04 pilamp spelen02 p1mo
   echo " NFS share aangemaakt sql database server: ${addonnodes}"  2>&1 | tee -a $LOGFILE &
   sudo mkdir -p /mnt/nfs/${addonnodes} 2>&1 | tee -a $LOGFILE &
   sudo mkdir -p /mnt/davfs2/${addonnodes} 2>&1 | tee -a $LOGFILE &
+  sudo chmod +rw /mnt/nfs/${addonnodes} 
   sudo chmod +rw /mnt/davfs2/${addonnodes} 
   echo "" 2>&1 | tee -a $LOGFILE &
 done
