@@ -11,16 +11,18 @@ for addonnodes in g++ tesseract-ocr libtesseract-dev libgstreamer-plugins-base1.
   sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
+bash ./installOpenCV.sh
+
 _tv=$(tesseract --version)
 echo "Tessarect $_tv is geïnstalleerd." 2>&1 | tee -a $LOGFILE
 
-echo "Installeeren pre-built OpenCV... zie --> https://lindevs.com/install-precompiled-opencv-on-raspberry-pi/" 2>&1 | tee -a $LOGFILE
-cd ~/Downloads
-wget https://github.com/prepkg/opencv-raspberrypi/releases/latest/download/opencv.deb 2>&1 | tee -a $LOGFILE
-sudo apt install -y ./opencv.deb
-cv2vers=$(opencv_version)
-echo "Installeeren pre-built OpenCV $cv2vers voltooid." 2>&1 | tee -a $LOGFILE
-rm -rf ./opencv.deb
+#echo "Installeeren pre-built OpenCV... zie --> https://lindevs.com/install-precompiled-opencv-on-raspberry-pi/" 2>&1 | tee -a $LOGFILE
+#cd ~/Downloads
+#wget https://github.com/prepkg/opencv-raspberrypi/releases/latest/download/opencv.deb 2>&1 | tee -a $LOGFILE
+#sudo apt install -y ./opencv.deb
+#cv2vers=$(opencv_version)
+#echo "Installeeren pre-built OpenCV $cv2vers voltooid." 2>&1 | tee -a $LOGFILE
+#rm -rf ./opencv.deb
 
 source ~/venv/venv/bin/activate
 cd $pwd
@@ -37,7 +39,7 @@ sudo apt autoclean -y 2>&1 | tee -a $LOGFILE
 sudo apt autoremove -y 2>&1 | tee -a $LOGFILE
 
 python3 -c “import cv2; print(cv2.__version__)" 2>&1 | tee -a $LOGFILE
-python ./demo/opencv_pip_fix.py 2>&1 | tee -a $LOGFILE
+#python ./demo/opencv_pip_fix.py 2>&1 | tee -a $LOGFILE
 
 #pip install opencv-python &
 
