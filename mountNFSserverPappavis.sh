@@ -11,4 +11,4 @@ for addonnodes in acer01 pi0 pivhere dietpi pi04 pilamp spelen02 p1mon retropie 
   echo "" 2>&1 | tee -a $LOGFILE &
 done
 
-echo " DAVfs en NFS shares moutn afgerond"  2>&1 | tee -a $LOGFILE
+echo " DAVfs en NFS shares mount afgerond"  2>&1 | tee -a $LOGFILE
