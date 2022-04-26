@@ -36,7 +36,7 @@ done
 echo "Instellen NFSrechten op $_ip1"  2>&1 | tee -a $LOGFILE
 #sudo chown nobody:nogroup /mnt/nfs
 sudo cp /etc/exports ~/tmp/exp1.tmp 2>&1 | tee -a $LOGFILE
-echo "/mnt/nfs *(rw,all_squash,insecure,async,no_subtree_check,anonuid=1000,anongid=1000)"  2>&1 | sudo tee -a /etc/exports  2>&1 | tee -a $LOGFILE 
+echo "/home *(rw,all_squash,insecure,async,no_subtree_check,anonuid=1000,anongid=1000)"  2>&1 | sudo tee -a /etc/exports  2>&1 | tee -a $LOGFILE 
 sudo exportfs -ra   2>&1 | tee -a $LOGFILE
 sudo service nfs-server restart 
 sudo service rpcbind restart
