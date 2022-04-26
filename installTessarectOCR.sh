@@ -1,12 +1,12 @@
 LOGFILE=$HOME/logs/installTessarectOCR-`date +%Y-%m-%d_%Hh%Mm`.log
 pwd=$(pwd)
-echo "* Installeren Tessarect OCR"
+echo "* Installeren Tessarect OCR" 2>&1 | tee -a $LOGFILE
 sudo apt update -y
 
 for addonnodes in g++ tesseract-ocr libtesseract-dev libgstreamer-plugins-base1.0-dev  libhdf5-dev libhdf5-serial-dev python3-pyqt5 libatlas-base-dev libjasper-dev   ; do
   echo " "
   echo " "
-  echo "Installeren ${addonnodes}"
+  echo "Installeren TessarectOCR benodigheid: ${addonnodes}" 2>&1 | tee -a $LOGFILE
   echo " "
   sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
