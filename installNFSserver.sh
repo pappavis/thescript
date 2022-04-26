@@ -34,19 +34,19 @@ for addonnodes in ict-beheer acer01 pi0 pivhere dietpi pi04 pilamp spelen02 p1mo
 done
 
 echo "Instellen NFSrechten op $_ip1"  2>&1 | tee -a $LOGFILE
-sudo chown nobody:nogroup /mnt/nfs
+#sudo chown nobody:nogroup /mnt/nfs
 sudo cp /etc/exports ~/tmp/exp1.tmp 2>&1 | tee -a $LOGFILE
+echo "/mnt/nfs *(rw,all_squash,insecure,async,no_subtree_check,anonuid=1000,anongid=1000)"  2>&1 | sudo tee -a /etc/exports  2>&1 | tee -a $LOGFILE 
 sudo exportfs -ra   2>&1 | tee -a $LOGFILE
 sudo service nfs-server restart 
 sudo service rpcbind restart
 sudo service nfs-kernel-server restart 
+sudo service nfs-server status   2>&1 | tee -a $LOGFILE
 
 #sudo chmod 777 -R /mnt/nfs/
 bash ./mountNFSserverPappavis.sh  2>&1 | tee -a $LOGFILE
 
-echo "/mnt/nfs *(rw,all_squash,insecure,async,no_subtree_check,anonuid=1000,anongid=1000)"  2>&1 | sudo tee -a /etc/exports  2>&1 | tee -a $LOGFILE 
-
-printf "\nNFS bestanddeling is daarna bereikbaar:\n -- MacOS verbind aan http://$(hostname).local/mnt/nfs  of nfs://$(hostname -I)/nfsshare \n -- Windows verbind aan //$(hostname).local/nfsshare\n\nIP adres $(hostname -I)\n"   2>&1 | tee -a $LOGFILE
+printf "\nNFS bestanddeling is daarna bereikbaar:\n -- MacOS verbind aan http://$(hostname).local/nfs  of nfs://$(hostname -I)/nfs \n -- Windows verbind aan //$(hostname).local/nfs\n\nIP adres $(hostname -I)\n"   2>&1 | tee -a $LOGFILE
 printf "\nHandmatig uitvoeren:\n  sudo service nfs-server restart\n" 2>&1 | tee -a $LOGFILE
 sudo service nfs-server restart 2>&1 | tee -a $LOGFILE
 
