@@ -7,7 +7,9 @@ for addonnodes in ict-beheer acer01 pi0 pivhere dietpi pi04 pilamp spelen02 p1mo
   echo "" 2>&1 | tee -a $LOGFILE &
   echo "Probeer netwerk share te mount op /mnt/nfs/${addonnodes}"  2>&1 | tee -a $LOGFILE
   sudo mount -t auto ${addonnodes}:/home  /mnt/nfs/${addonnodes} 2>&1 | tee -a $LOGFILE &
-  sudo mount -t davfs ${addonnodes}.local/support/owncloud/remote.php/webdav  /mnt/nfs/${addonnodes} 2>&1 | tee -a $LOGFILE &
+  sudo mount -t auto ${addonnodes}.local:/home  /mnt/nfs/${addonnodes} 2>&1 | tee -a $LOGFILE &
+  sudo mount -t davfs http://${addonnodes}.local/support/owncloud/remote.php/webdav  /mnt/nfs/${addonnodes} 2>&1 | tee -a $LOGFILE &
+  sudo mount -t davfs http://${addonnodes}/support/owncloud/remote.php/webdav  /mnt/nfs/${addonnodes} 2>&1 | tee -a $LOGFILE &
   echo "" 2>&1 | tee -a $LOGFILE &
 done
 
