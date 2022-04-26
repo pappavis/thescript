@@ -16,7 +16,7 @@ done
 sudo mkdir /mnt/nfs 2>&1 | tee -a $LOGFILE
 sudo mkdir /mnt/davfs2 2>&1 | tee -a $LOGFILE
 
-for addonnodes in acer01 pi0 pivhere dietpi pi04 pilamp spelen02 p1mon retropie pi07 pi08 pi09 octopi $(hostname) ; do
+for addonnodes in ict-beheer acer01 pi0 pivhere dietpi pi04 pilamp spelen02 p1mon retropie pi07 pi08 pi09 octopi $(hostname) ; do
   echo "" 2>&1 | tee -a $LOGFILE &
   echo "" 2>&1 | tee -a $LOGFILE &
   echo " NFS share aangemaakt sql database server: ${addonnodes}"  2>&1 | tee -a $LOGFILE &
