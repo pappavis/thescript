@@ -15,6 +15,11 @@ for addonnodes in apache2 php php-mysql php-intl ; do
   sudo apt install -y ${addonnodes}   2>&1 | tee -a $LOGFILE
 done
 
+# https://robertopozzi.medium.com/have-fun-with-your-raspberry-pi-secure-your-application-with-self-signed-certificates-c8ef455a492f
+#sudo mkdir -p /etc/ssl/mycerts   2>&1 | tee -a $LOGFILE
+#sudo openssl req -new -x509 -days 365 -nodes -out /etc/ssl/mycerts/apache.pem -keyout /etc/ssl/mycerts/apache.key   2>&1 | tee -a $LOGFILE
+#sudo chmod 600 /etc/ssl/mycerts/apache*
+
 # https://superuser.com/questions/835542/how-can-i-access-owncloud-files-by-the-owncloud-server
 echo " mounting dafvs naar /mnt/davfs2/$(hostname)"   2>&1 | tee -a $LOGFILE
 echo "\n" | sudo apt install -y davfs2   2>&1 | tee -a $LOGFILE
