@@ -13,16 +13,8 @@ for addonnodes in nfs-kernel-server nfs-common ; do
 	sudo apt install -y ${addonnodes}   2>&1 | tee -a $LOGFILE
 done
 
-
-echo "Instellen NFSrechten op $_ip1"  2>&1 | tee -a $LOGFILE
-sudo mkdir /mnt/nfs
-sudo mkdir /mnt/davfs2
-sudo chown nobody:nogroup /mnt/nfs
-sudo cp /etc/exports ~/tmp/exp1.tmp 2>&1 | tee -a $LOGFILE
-sudo exportfs -ra   2>&1 | tee -a $LOGFILE
-sudo service nfs-server restart 
-sudo service rpcbind restart
-sudo service nfs-kernel-server restart 
+sudo mkdir /mnt/nfs 2>&1 | tee -a $LOGFILE
+sudo mkdir /mnt/davfs2 2>&1 | tee -a $LOGFILE
 
 for addonnodes in acer01 pi0 pivhere dietpi pi04 pilamp spelen02 p1mon retropie pi07 pi08 pi09 octopi $(hostname) ; do
   echo "" 2>&1 | tee -a $LOGFILE &
@@ -33,6 +25,13 @@ for addonnodes in acer01 pi0 pivhere dietpi pi04 pilamp spelen02 p1mon retropie 
   echo "" 2>&1 | tee -a $LOGFILE &
 done
 
+echo "Instellen NFSrechten op $_ip1"  2>&1 | tee -a $LOGFILE
+sudo chown nobody:nogroup /mnt/nfs
+sudo cp /etc/exports ~/tmp/exp1.tmp 2>&1 | tee -a $LOGFILE
+sudo exportfs -ra   2>&1 | tee -a $LOGFILE
+sudo service nfs-server restart 
+sudo service rpcbind restart
+sudo service nfs-kernel-server restart 
 
 #sudo chmod 777 -R /mnt/nfs/
 ./mountNFSserverPappavis.sh  2>&1 | tee -a $LOGFILE
