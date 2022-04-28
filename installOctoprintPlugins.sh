@@ -16,7 +16,7 @@ for addonnodes in   https://github.com/RomainOdeval/OctoPrint-CrealityTemperatur
 done
 
 
-for addonnodes in https://github.com/platsch/OctoPNP/archive/master.zip
+for addonnodes in https://github.com/platsch/OctoPNP/archive/master.zip ; do
 	echo "Installeren Octoprint uitbreiding:  \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
   	pip install --upgrade --no-cache-dir ${addonnodes}  2>&1 | tee -a $LOGFILE
 done
