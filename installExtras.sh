@@ -577,6 +577,7 @@ echo "" 2>&1 | tee -a $LOGFILE
 echo "Instellen OpenMediaVault  ref--> https://www.wundertech.net/turn-a-raspberry-pi-into-a-nas-openmediavault-tutorial/" 2>&1 | tee -a $LOGFILE
 curl -sSL https://github.com/OpenMediaVault-Plugin-Developers/installScript/raw/ma
 
+
 cd ~/Downloads
 echo "" 2>&1 | tee -a $LOGFILE
 echo "Installeren Bootstrap.js bibliotheek" 2>&1 | tee -a $LOGFILE
@@ -586,9 +587,18 @@ sudo mkdir /var/www/html/inc 2>&1 | tee -a $LOGFILE
 sudo mv -v bootstrap-5.1.3-dist /var/www/html/inc/ 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
 
+
 cd ~/Downloads
+appTxt1="Milkytracker"
 echo "" 2>&1 | tee -a $LOGFILE
-echo "Installeren: Milkytracker" 2>&1 | tee -a $LOGFILE
+echo "Installeren: $appTxt1" 2>&1 | tee -a $LOGFILE
+for addonnodes in libjack-dev liblhasa-dev librtmidi-dev libsdl2-dev libzzip-dev ; do
+  echo " "
+  echo " "
+  echo "Installeren $appTxt1 vereisten: ${addonnodes}" 2>&1 | tee -a $LOGFILE
+  echo " "
+  sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
 git clone https://github.com/milkytracker/MilkyTracker 2>&1 | tee -a $LOGFILE
 cd ./MilkyTracker
 mkdir ./build
@@ -597,6 +607,7 @@ cmake .. 2>&1 | tee -a $LOGFILE
 make 2>&1 | tee -a $LOGFILE
 echo "Einde Milkytracker build install" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
+
 
 echo "* Install extras is afgerond. Je kunt nu herstarten." 2>&1 | tee -a $LOGFILE
 
