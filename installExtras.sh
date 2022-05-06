@@ -578,13 +578,25 @@ echo "Instellen OpenMediaVault  ref--> https://www.wundertech.net/turn-a-raspber
 curl -sSL https://github.com/OpenMediaVault-Plugin-Developers/installScript/raw/ma
 
 cd ~/Downloads
+echo "" 2>&1 | tee -a $LOGFILE
 echo "Installeren Bootstrap.js bibliotheek" 2>&1 | tee -a $LOGFILE
 wget https://github.com/twbs/bootstrap/releases/download/v5.1.3/bootstrap-5.1.3-dist.zip 2>&1 | tee -a $LOGFILE
 7z x bootstrap-5.1.3-dist.zip 2>&1 | tee -a $LOGFILE
 sudo mkdir /var/www/html/inc 2>&1 | tee -a $LOGFILE
 sudo mv -v bootstrap-5.1.3-dist /var/www/html/inc/ 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
 
-ster/install | sudo bash
+cd ~/Downloads
+echo "" 2>&1 | tee -a $LOGFILE
+echo "Installeren: Milkytracker" 2>&1 | tee -a $LOGFILE
+git clone https://github.com/milkytracker/MilkyTracker 2>&1 | tee -a $LOGFILE
+cd ./MilkyTracker
+mkdir ./build
+cd ./build
+cmake .. 2>&1 | tee -a $LOGFILE
+make 2>&1 | tee -a $LOGFILE
+echo "Einde Milkytracker build install" 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
 
 echo "* Install extras is afgerond. Je kunt nu herstarten." 2>&1 | tee -a $LOGFILE
 
