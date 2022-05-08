@@ -67,14 +67,14 @@ conda install python=3.11
 echo "Installeren machine learning onderdelen." 2>&1 | tee -a $LOGFILE
 for addonnodes in  pytorch torchvision torchaudio cudatoolkit pytorch ; do
     echo "" 2>&1 | tee -a $LOGFILE
-    printstatus "Installeren ML python lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
+    echo "Installeren ML python lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
     echo "" 2>&1 | tee -a $LOGFILE
 done
 
 echo "doen ook --> pip uninstall serial" 2>&1 | tee -a $LOGFILE
 
-printstatus  "Installeer Dataplicity.com" 2>&1 | tee -a $LOGFILE
+echo  "Installeer Dataplicity.com" 2>&1 | tee -a $LOGFILE
 curl -s https://www.dataplicity.com/jfjro6ak.py | sudo python3 2>&1 | tee -a $LOGFILE
 
 cd $_pwd
@@ -96,7 +96,7 @@ cd ~/Downloads
 echo "Installeren Miniconda" 2>&1 | tee -a $LOGFILE
 for addonnodes in  apt-transport-https ca-certificates software-properties-common ; do 
     echo "" 2>&1 | tee -a $LOGFILE
-    printstatus "Installeren Miniconda docker vereisten: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
+    echo "Installeren Miniconda docker vereisten: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     sudo apt install $NQUIET -y ${addonnodes} 2>&1 | tee -a $LOGFILE
     echo "" 2>&1 | tee -a $LOGFILE
 done
