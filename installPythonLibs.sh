@@ -18,21 +18,28 @@ rm -rf ~/.cache/pip 2>&1 | tee -a $LOGFILE
 
 
 for addonnodes in  unixodbc-dev wiringpi i2c-tools; do
-    printstatus "Installeren: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
+    echo "" 2>&1 | tee -a $LOGFILE
+    echo "Installeren: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
+    echo "" 2>&1 | tee -a $LOGFILE
 done
 
 python -m ensurepip  2>&1 | tee -a $LOGFILE
 rm -rf ~/.cache/pip 2>&1 | tee -a $LOGFILE
 
 for addonnodes in  libatlas-base-dev libwebp-dev  python3-opencv wkhtmltopdf  ; do
-    printstatus "Installeren OpenCV vereisten: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
+    echo "" 2>&1 | tee -a $LOGFILE
+    echo "Installeren OpenCV vereisten: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     sudo apt install $NQUIET -y ${addonnodes} 2>&1 | tee -a $LOGFILE
+    echo "" 2>&1 | tee -a $LOGFILE
   done
 
 echo "Installeer voorvereisten van OpenCV" 2>&1 | tee -a $LOGFILE
 for addonnodes in setuptools wheel scikit-build cmake pip numpy  ; do
+    echo "" 2>&1 | tee -a $LOGFILE
+    echo "Installeren python lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
+    echo "" 2>&1 | tee -a $LOGFILE
   done
 
 for addonnodes in pip setuptools wheel openpyxl pylzma py7zr o365 ttn qrcode pillow sqlalchemy pymsteams esptool adafruit-ampy firebirdsql esptool mu-editor shortcut \
@@ -40,9 +47,12 @@ for addonnodes in pip setuptools wheel openpyxl pylzma py7zr o365 ttn qrcode pil
                   scikit-build pygame pymongo psycopg2-binary mysql-connector-python guizero imutils scikit-image numpy bokeh django flask pygrabber \
                   msteamsconnector matplotlib numpy imutils pyodbc influxdb pysmb opencv-python==4.5.3.56  git+https://github.com/pytube/pytube picamera djitellopy \
 		   osxphotos RPi.GPIO tox tflite tflite-runtime tflite_support PySimpleGUI libusb pyusb pdfkit python-dateutil libopencv-dev  ; do
-    printstatus "Installeren python lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
+
+    echo "" 2>&1 | tee -a $LOGFILE
+    echo "Installeren python lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
     conda install --upgrade --no-cache-dir  ${addonnodes} 2>&1 | tee -a $LOGFILE
+    echo "" 2>&1 | tee -a $LOGFILE
   done
 
 shortcut mu-editor
@@ -56,8 +66,10 @@ conda install python=3.11
 
 echo "Installeren machine learning onderdelen." 2>&1 | tee -a $LOGFILE
 for addonnodes in  pytorch torchvision torchaudio cudatoolkit pytorch ; do
+    echo "" 2>&1 | tee -a $LOGFILE
     printstatus "Installeren ML python lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
+    echo "" 2>&1 | tee -a $LOGFILE
 done
 
 echo "doen ook --> pip uninstall serial" 2>&1 | tee -a $LOGFILE
@@ -83,8 +95,10 @@ echo "" 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
 echo "Installeren Miniconda" 2>&1 | tee -a $LOGFILE
 for addonnodes in  apt-transport-https ca-certificates software-properties-common ; do 
+    echo "" 2>&1 | tee -a $LOGFILE
     printstatus "Installeren Miniconda docker vereisten: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     sudo apt install $NQUIET -y ${addonnodes} 2>&1 | tee -a $LOGFILE
+    echo "" 2>&1 | tee -a $LOGFILE
 done
 
 mkdir ~/Programmering/
