@@ -49,12 +49,11 @@ sudo chown -R www-data:www-data /var/www/html/support/owncloud  2>&1 | tee -a $L
 sudo service apache2 restart  2>&1 | tee -a $LOGFILE
 sudo cp -v /var/www/html/support/owncloud/config/config.apps.sample.php /var/www/html/support/owncloud/config/config.php  2>&1 | tee -a $LOGFILE
 
-echo "Owncloud beschikbaar op http://$(hostname).local/support/owncloud"  2>&1 | tee -a $LOGFILE
-sudo rm -rf ~/Downloads/*owncloud-complete*  2>&1 | tee -a $LOGFILE
-cd $_pwd
-
 echo " mounting dafvs naar /mnt/davfs2/$(hostname)"   2>&1 | tee -a $LOGFILE
 sudo chmod u+s /usr/sbin/mount.davfs 2>&1 | tee -a $LOGFILE
+echo "Owncloud beschikbaar op http://$(hostname).local/support/owncloud"  2>&1 | tee -a $LOGFILE
+sudo rm -rf ~/Downloads/*owncloud-complete*  2>&1 | tee -a $LOGFILE
 echo "EINDE installOwncloud.sh"   2>&1 | tee -a $LOGFILE
 echo ""   2>&1 | tee -a $LOGFILE
 echo ""   2>&1 | tee -a $LOGFILE
+cd $_pwd
