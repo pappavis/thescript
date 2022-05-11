@@ -65,7 +65,7 @@ echo 'export PATH=/home/pi/miniconda3/bin:$PATH' | tee -a ~/.bashrc  2>&1 | tee 
 conda install python=3.11
 
 echo "Installeren machine learning onderdelen." 2>&1 | tee -a $LOGFILE
-for addonnodes in  pytorch torchvision torchaudio cudatoolkit pytorch ; do
+for addonnodes in  torch torchvision torchaudio cudatoolkit ; do
     echo "" 2>&1 | tee -a $LOGFILE
     echo "Installeren ML python lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
