@@ -7,12 +7,12 @@ AQUIET=""
 mkdir ~/logs
 git pull
 cd ~/Downloads
-echo "Download en installeer virtualhere.com Pi 3 server & client"
-curl https://raw.githubusercontent.com/virtualhere/script/main/install_server | sudo sh
+echo "Download en installeer virtualhere.com Pi 3 server & client" 2>&1 | tee -a $LOGFILE
+curl https://raw.githubusercontent.com/virtualhere/script/main/install_server | sudo sh 2>&1 | tee -a $LOGFILE
 echo "Virtualhere draadloos Wifi is geinstalleerd." 2>&1 | tee -a $LOGFILE
 
 cd ~/Downloads
-wget https://raw.githubusercontent.com/pappavis/thescript/master/index_apps.php
+wget https://raw.githubusercontent.com/pappavis/thescript/master/index_apps.php 2>&1 | tee -a $LOGFILE
 sudo mv index_apps.php /var/www/html
 sudo rm -rf /var/www/html/index.html
 sudo rm -rf /var/www/html/index.php
@@ -94,13 +94,13 @@ done
 cd ~/Downloads
 sudo apt install -y libsdl2-ttf-dev libsdl2-image-dev
 wget https://github.com/midwan/amiberry/releases/download/v4.1.6/amiberry-v4.1.6-rpi3-sdl2-32bit-rpios.zip 2>&1 | tee -a $LOGFILE
-7z x ./amiberry-v4.1.6-rpi3-sdl2-32bit-rpios.zip
+7z x ./amiberry-v4.1.6-rpi3-sdl2-32bit-rpios.zip 2>&1 | tee -a $LOGFILE
 rm ./amiberry-v4.1.6-rpi3-sdl2-32bit-rpios.zip
 sudo mv ./amiberry-rpi3-sdl2-32bit /usr/local/games
 sudo ln -s /usr/local/games/amiberry-rpi3-sdl2-32bit/amiberry /usr/local/bin/amiberry
-git clone https://github.com/midwan/amiberry
+git clone https://github.com/midwan/amiberry 2>&1 | tee -a $LOGFILE
 cd amiberry
-make PLATFORM=rpi1
+make PLATFORM=rpi1 2>&1 | tee -a $LOGFILE
 echo "Amiberry install afgerond" 2>&1 | tee -a $LOGFILE
 
 
