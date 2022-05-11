@@ -11,7 +11,7 @@ for addonnodes in g++ tesseract-ocr libtesseract-dev libgstreamer-plugins-base1.
   sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
-bash ./installOpenCV.sh
+bash ./installOpenCV.sh 2>&1 | tee -a $LOGFILE
 
 _tv=$(tesseract --version)
 echo "Tessarect $_tv is geïnstalleerd." 2>&1 | tee -a $LOGFILE
