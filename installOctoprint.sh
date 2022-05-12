@@ -17,9 +17,12 @@ mkdir ~/venv/ 2>&1 | tee -a $LOGFILE
 echo "SETUP: Aktiveer oprint virtualenv."  2>&1 | tee -a $LOGFILE
 source ~/venv/oprint/bin/activate
 
+pip install --upgrade pip pipx
+pipx ensurepip
+
 for addonnodes in  pip octoprint ffmpeg ; do
 	echo "Installeren Octoprint vereisten:  \"${addonnodes}\""
-  	pip install --upgrade ${addonnodes}  2>&1 | tee -a $LOGFILE
+  	pipx install --upgrade ${addonnodes}  2>&1 | tee -a $LOGFILE
 done
 
 
