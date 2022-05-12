@@ -17,7 +17,7 @@ VENV="venv"
 rm -rf ~/venv/$VENV
 mkdir ~/venv
 for addonnodes in  virtualenv python3-virtualenv python3-pip python3-wheel python3-setuptools ; do 
-	echo  "Installing python virtualenv  \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
+	echo  "Installing python virtualenv systeem benodigheden  \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
 	sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 /usr/bin/python3  -m pip install virtualenv 2>&1 | tee -a $LOGFILE
