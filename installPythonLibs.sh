@@ -7,7 +7,7 @@ echo '** Installeer pythonlibs. je moet eerst een virtualenv activeer!!'  2>&1 |
 #Array to store possible locations for temp read.
 #python3 -m ensurepip 2>&1 | tee -a $LOGFILE
 python3 -m pip install virtualenv 2>&1 | tee -a $LOGFILE
-virtualenv -p /usr/bin/python3 ~/venv/venv
+python3 -m virtualenv ~/venv/venv
 source ~/venv/venv/bin/activate
 
 sudo apt --fix-broken install -y
