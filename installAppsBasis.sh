@@ -29,6 +29,11 @@ for addonnodes in libatlas3-base qtchooser imagemagick libfontconfig1-dev libcai
 	sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
+echo ""  2>&1 | tee -a $LOGFILE
+echo  "vsftpd, wijzigen write_enable"  2>&1 | tee -a $LOGFILE
+sudo sed -i -e '/#write_enable/s/#write_enable/write_enable/' /etc/vsftpd.conf
+sudo service vsftpd restart
+sudo service vsftpd status 2>&1 | tee -a $LOGFILE
 
 sudo apt update -y 2>&1 | tee -a $LOGFILE
 sudo apt upgrade -y 2>&1 | tee -a $LOGFILE
