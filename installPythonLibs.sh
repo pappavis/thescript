@@ -29,7 +29,7 @@ for addonnodes in  libatlas-base-dev libwebp-dev  python3-opencv wkhtmltopdf uni
   done
 
 echo "Installeer voorvereisten van OpenCV" 2>&1 | tee -a $LOGFILE
-for addonnodes in cmake pytesseract numpy  ; do
+for addonnodes in pytesseract numpy  ; do
     echo "" 2>&1 | tee -a $LOGFILE
     echo "Installeren python pipx lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     pipx install $NQUIET ${addonnodes} 2>&1 | tee -a $LOGFILE
@@ -37,10 +37,10 @@ for addonnodes in cmake pytesseract numpy  ; do
   done
 
 
-for addonnodes in setuptools wheel scikit-build pip  mu-editor shortcut esptool numpy ; do
+for addonnodes in setuptools wheel scikit-build pip ; do
     echo "" 2>&1 | tee -a $LOGFILE
-    echo "PIPX.. alleen voor python apps: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
-    pipx install $NQUIET ${addonnodes} 2>&1 | tee -a $LOGFILE
+    echo "Installeren python build tools python apps: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
+    pip install --upgrade $NQUIET ${addonnodes} 2>&1 | tee -a $LOGFILE
     echo "" 2>&1 | tee -a $LOGFILE
   done
 
@@ -57,8 +57,14 @@ for addonnodes in pip setuptools wheel openpyxl pylzma py7zr o365 ttn qrcode pil
     echo "" 2>&1 | tee -a $LOGFILE
   done
 
-shortcut mu-editor
+for addonnodes in setuptools wheel scikit-build cmake mu-editor shortcut esptool numpy ; do
+    echo "" 2>&1 | tee -a $LOGFILE
+    echo "PIPX.. alleen voor python apps: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
+    pipx install $NQUIET ${addonnodes} 2>&1 | tee -a $LOGFILE
+    echo "" 2>&1 | tee -a $LOGFILE
+  done
 
+  
 echo "Installeren Miniconda" 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
 wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-armv7l.sh 2>&1 | tee -a $LOGFILE
