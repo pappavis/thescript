@@ -112,6 +112,7 @@ sudo service dphys-swapfile status 2>&1 | tee -a $LOGFILE
 
 printstatus  "Bluetooth, wijzigen naar DicoverableTimeout=0"  2>&1 | tee -a $LOGFILE
 sudo sed -i -e '/#DiscoverableTimeout = 0/s/#Discoverable/Discoverable/' /etc/bluetooth/main.conf
+sudo sed -i -e '/#PairableTimeout = 0/s/#PairableTimeout/PairableTimeout/' /etc/bluetooth/main.conf
 sudo service bluetooth restart
 sudo service bluetooth status 2>&1 | tee -a $LOGFILE
 
