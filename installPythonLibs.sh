@@ -16,18 +16,12 @@ sudo apt install -y unixodbc-dev 2>&1 | tee -a $LOGFILE
 echo "PIP cache leeggooien." 2>&1 | tee -a $LOGFILE
 rm -rf ~/.cache/pip 2>&1 | tee -a $LOGFILE
 
-
-for addonnodes in  unixodbc-dev wiringpi i2c-tools; do
-    echo "" 2>&1 | tee -a $LOGFILE
-    echo "Installeren: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
-    pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
-    echo "" 2>&1 | tee -a $LOGFILE
-done
+python3 -m pip install pipx 2>&1 | tee -a $LOGFILE
 
 python -m ensurepip  2>&1 | tee -a $LOGFILE
 rm -rf ~/.cache/pip 2>&1 | tee -a $LOGFILE
 
-for addonnodes in  libatlas-base-dev libwebp-dev  python3-opencv wkhtmltopdf  ; do
+for addonnodes in  libatlas-base-dev libwebp-dev  python3-opencv wkhtmltopdf unixodbc-dev wiringpi i2c-tools ; do
     echo "" 2>&1 | tee -a $LOGFILE
     echo "Installeren OpenCV vereisten: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     sudo apt install $NQUIET -y ${addonnodes} 2>&1 | tee -a $LOGFILE
@@ -35,18 +29,26 @@ for addonnodes in  libatlas-base-dev libwebp-dev  python3-opencv wkhtmltopdf  ; 
   done
 
 echo "Installeer voorvereisten van OpenCV" 2>&1 | tee -a $LOGFILE
-for addonnodes in setuptools wheel scikit-build cmake pip numpy  ; do
+for addonnodes in cmake pytesseract numpy  ; do
     echo "" 2>&1 | tee -a $LOGFILE
-    echo "Installeren python lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
-    pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
+    echo "Installeren python pipx lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
+    pipx install $NQUIET ${addonnodes} 2>&1 | tee -a $LOGFILE
     echo "" 2>&1 | tee -a $LOGFILE
   done
 
-for addonnodes in pip setuptools wheel openpyxl pylzma py7zr o365 ttn qrcode pillow sqlalchemy pymsteams qscintilla esptool adafruit-ampy firebirdsql esptool mu-editor shortcut \
+
+for addonnodes in setuptools wheel scikit-build pip  mu-editor shortcut esptool numpy ; do
+    echo "" 2>&1 | tee -a $LOGFILE
+    echo "PIPX.. alleen voor python apps: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
+    pipx install $NQUIET ${addonnodes} 2>&1 | tee -a $LOGFILE
+    echo "" 2>&1 | tee -a $LOGFILE
+  done
+
+for addonnodes in pip setuptools wheel openpyxl pylzma py7zr o365 ttn qrcode pillow sqlalchemy pymsteams qscintilla esptool adafruit-ampy firebirdsql   \
                   pyserial pyparsing pyzmail redmail gpiozero pytube pipx serial jinja2 esptool mpfshell virtualenv ffmpeg conda jupyter-notebook \
-                  scikit-build pygame pymongo psycopg2-binary mysql-connector-python guizero imutils scikit-image numpy bokeh django flask pygrabber \
-                  msteamsconnector matplotlib numpy imutils pyodbc influxdb pysmb opencv-contrib-python  git+https://github.com/pytube/pytube picamera djitellopy \
-		   osxphotos RPi.GPIO tox tflite tflite-runtime tflite_support PySimpleGUI libusb pyusb pdfkit python-dateutil libopencv-dev  ; do
+                  scikit-build pygame pymongo psycopg2-binary mysql-connector-python guizero imutils scikit-image bokeh django flask pygrabber \
+                  msteamsconnector matplotlib numpy imutils pyodbc influxdb pysmb libopencv-dev opencv-contrib-python  git+https://github.com/pytube/pytube picamera djitellopy \
+		   osxphotos RPi.GPIO tox tflite tflite-runtime tflite_support PySimpleGUI libusb pyusb pdfkit python-dateutil   ; do
 
     echo "" 2>&1 | tee -a $LOGFILE
     echo "Installeren python lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
