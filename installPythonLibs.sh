@@ -68,9 +68,10 @@ for addonnodes in setuptools wheel scikit-build cmake mu-editor shortcut esptool
 echo "Installeren Miniconda" 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
 wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-armv7l.sh 2>&1 | tee -a $LOGFILE
-bash ./Miniconda3-latest-Linux-armv7l.sh 2>&1 | tee -a $LOGFILE
+sudo bash ./Miniconda3-latest-Linux-armv7l.sh 2>&1 | tee -a $LOGFILE
 echo 'export PATH=/home/pi/miniconda3/bin:$PATH' | tee -a ~/.bashrc  2>&1 | tee -a $LOGFILE
 conda install python=3.11
+rm -rf ~/Downloads/Miniconda3*
 
 echo "Installeren machine learning onderdelen." 2>&1 | tee -a $LOGFILE
 for addonnodes in  torch torchvision torchaudio cudatoolkit ; do
