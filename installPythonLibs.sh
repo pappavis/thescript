@@ -47,7 +47,7 @@ for addonnodes in pip setuptools wheel scikit-build numpy ; do
 for addonnodes in pip setuptools wheel openpyxl pylzma py7zr o365 ttn qrcode pillow sqlalchemy pymsteams qscintilla esptool adafruit-ampy firebirdsql   \
                   pyserial pyparsing pyzmail redmail gpiozero pytube pipx serial jinja2 esptool mpfshell virtualenv ffmpeg conda jupyter-notebook \
                   scikit-build pygame pymongo psycopg2-binary mysql-connector-python guizero imutils scikit-image bokeh django flask pygrabber \
-                  msteamsconnector matplotlib numpy imutils pyodbc influxdb pysmb libopencv-dev opencv-contrib-python  git+https://github.com/pytube/pytube picamera djitellopy \
+                  msteamsconnector matplotlib numpy imutils pyodbc influxdb pysmb libopencv-dev opencv-python  git+https://github.com/pytube/pytube picamera djitellopy \
 		   osxphotos RPi.GPIO tox tflite tflite-runtime tflite_support PySimpleGUI libusb pyusb pdfkit python-dateutil   ; do
 
     echo "" 2>&1 | tee -a $LOGFILE
