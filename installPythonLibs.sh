@@ -37,7 +37,7 @@ for addonnodes in pytesseract numpy  ; do
   done
 
 
-for addonnodes in setuptools wheel scikit-build pip ; do
+for addonnodes in pip setuptools wheel scikit-build numpy ; do
     echo "" 2>&1 | tee -a $LOGFILE
     echo "Installeren python build tools python apps: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     pip install --upgrade $NQUIET ${addonnodes} 2>&1 | tee -a $LOGFILE
