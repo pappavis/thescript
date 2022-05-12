@@ -295,5 +295,7 @@ echo "" 2>&1 | tee -a $LOGFILE
 nmap -sP 192.168.3.0/24 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
 
+sudo apt install -y python-is-python3 2>&1 | tee -a $LOGFILE
+
 echo "runmefirst EINDE" 2>&1 | tee -a $LOGFILE
 echo "Je kunt nu HERSTART, daarna ./installVerzamelupdates.sh draaien" 2>&1 | tee -a $LOGFILE
