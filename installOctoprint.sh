@@ -22,7 +22,7 @@ pipx ensurepip 2>&1 | tee -a $LOGFILE
 
 for addonnodes in  pip octoprint ffmpeg ; do
 	echo "Installeren Octoprint vereisten:  \"${addonnodes}\""
-  	pipx install --upgrade ${addonnodes}  2>&1 | tee -a $LOGFILE
+  	pipx install ${addonnodes}  2>&1 | tee -a $LOGFILE
 done
 
 
