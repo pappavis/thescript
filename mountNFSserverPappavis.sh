@@ -15,8 +15,10 @@ for addonnodes in ict-beheer acer01 pi0 pivhere dietpi pi04 pilamp spelen02 p1mo
   sudo mkdir /mnt/nfs/${addonnodes}
   sudo mkdir /mnt/cifs/${addonnodes}
   sudo mount -t auto -o rw ${addonnodes}:/home  /mnt/nfs/${addonnodes} 2>&1 | tee -a $LOGFILE &
-  sudo mount -t davfs -o,username=michiele rw http://${addonnodes}.local/support/owncloud/remote.php/webdav  /mnt/nfs/${addonnodes} 2>&1 | tee -a $LOGFILE &
+  sudo mount -t davfs -o rw,username=michiele http://${addonnodes}.local/support/owncloud/remote.php/webdav  /mnt/nfs/${addonnodes} 2>&1 | tee -a $LOGFILE &
   sudo mount -t cifs -o rw,username=pi /mnt/nfs/${addonnodes} 2>&1 | tee -a $LOGFILE &
+  echo "" 2>&1 | tee -a $LOGFILE &
+  smbclient -L ${addonnodes} 2>&1 | tee -a $LOGFILE &
   echo "" 2>&1 | tee -a $LOGFILE &
 done
 
