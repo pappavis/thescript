@@ -105,7 +105,7 @@ cd /home/pi/Downloads
 git clone https://github.com/pappavis/thescript/  2>&1 | tee -a $LOGFILE
 cd /home/pi/Downloads/thescript
 
-printstatus  "Swapfile vergroot van 100mb naar 2Gb"  2>&1 | tee -a $LOGFILE
+echo  "Swapfile vergroot van 100mb naar 2Gb"  2>&1 | tee -a $LOGFILE
 sudo sed -i -e '/CONF_SWAPSIZE=100/s/100/2048/' /etc/dphys-swapfile
 sudo /etc/init.d/dphys-swapfile restart
 sudo service dphys-swapfile status 2>&1 | tee -a $LOGFILE
