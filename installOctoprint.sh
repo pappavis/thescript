@@ -17,8 +17,8 @@ mkdir ~/venv/ 2>&1 | tee -a $LOGFILE
 echo "SETUP: Aktiveer oprint virtualenv."  2>&1 | tee -a $LOGFILE
 source ~/venv/oprint/bin/activate
 
-pip install --upgrade pip pipx
-pipx ensurepip
+pip install --upgrade pip pipx 2>&1 | tee -a $LOGFILE
+pipx ensurepip 2>&1 | tee -a $LOGFILE
 
 for addonnodes in  pip octoprint ffmpeg ; do
 	echo "Installeren Octoprint vereisten:  \"${addonnodes}\""
@@ -26,11 +26,11 @@ for addonnodes in  pip octoprint ffmpeg ; do
 done
 
 
-echo "SETUP: pi toegang naar devices." | tee -a $LOGFILE
+echo "SETUP: pi toegang naar devices."  2>&1 | tee -a $LOGFILE
 sudo usermod -a -G tty pi &
 sudo usermod -a -G dialout pi &
 
-echo "SETUP: Installeer Octoprint als service." | tee -a $LOGFILE
+echo "SETUP: Installeer Octoprint als service."  2>&1 | tee -a $LOGFILE
 mkdir ~/Downloads
 cd ~/Downloads
 wget https://raw.githubusercontent.com/pappavis/thescript/master/octoprint.service | tee -a $LOGFILE
@@ -44,8 +44,8 @@ bash $_pwd/installOctoprintPlugins.sh 2>&1 | tee -a $LOGFILE
 
 printf "\nStart Octoprint service op http://$_hn1:5000\n" 2>&1 | tee -a $LOGFILE
 sudo service octoprint restart
-sudo service octoprint status
-printf "Octoprint install afgerond.\n" 2>&1 | tee -a $LOGFILE
+sudo service octoprint status 2>&1 | tee -a $LOGFILE
+echo "Octoprint install afgerond.\n" 2>&1 | tee -a $LOGFILE
 cd $_pwd
 
 #sudo docker pull octoprint/octoprint:edge 2>&1 | tee -a $LOGFILE
