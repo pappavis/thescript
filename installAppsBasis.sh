@@ -10,7 +10,7 @@ for addonnodes in p7zip-full mc sqlite3 i2c-tools ncftp mariadb-server mariadb-c
 	sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
-for addonnodes in build-essential cmake rapidjson-dev libgmp-dev git gcc g++ netdiscover sysfsutils tcpdump vsftpd wget  ssh bash-completion unzip build-essential git python-serial scons libboost-filesystem-dev libboost-program-options-dev libboost-system-dev libsqlite3-dev subversion libusb-dev python-dev python3-dev cmake curl telnet usbutils gawk jq pv samba samba-common samba-common-bin winbind dosfstools parted gcc python3-pip htop python-smbus mc cu mpg123 screen ffmpeg qemu-system default-jdk openvpn lynx clonezilla yum telnet lynx docker dnsutils ; do
+for addonnodes in build-essential cmake rapidjson-dev libgmp-dev git gcc g++ netdiscover sysfsutils tcpdump vsftpd wget  ssh bash-completion unzip build-essential git python-serial scons libboost-filesystem-dev libboost-program-options-dev libboost-system-dev libsqlite3-dev subversion libusb-dev python-dev python3-dev cmake curl telnet usbutils gawk jq pv samba samba-common samba-common-bin smbclient winbind dosfstools parted gcc python3-pip htop python-smbus mc cu mpg123 screen ffmpeg qemu-system default-jdk openvpn lynx clonezilla yum telnet lynx docker dnsutils ; do
 	echo ""  2>&1 | tee -a $LOGFILE
 	echo "--Installeren  \"${addonnodes}\""  2>&1 | tee -a $LOGFILE
 	sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
