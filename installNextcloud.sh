@@ -19,6 +19,7 @@ mkdir ~/Downloads
 cd ~/Downloads
 sudo mkdir /var/www/html/support
 
+rm -rf ./nextcloud*  2>&1 | tee -a $LOGFILE
 wget https://download.nextcloud.com/server/releases/nextcloud-21.0.1.zip   2>&1 | tee -a $LOGFILE
 7z x ./nextcloud-21.0.1.zip  2>&1 | tee -a $LOGFILE
 sudo mv ./nextcloud /var/www/html/support  2>&1 | tee -a $LOGFILE
