@@ -5,7 +5,7 @@ echo ""  2>&1 | tee -a $LOGFILE
 echo "Start installNextcloud.sh"  2>&1 | tee -a $LOGFILE
 echo ""  2>&1 | tee -a $LOGFILE
 
-for addonnodes in imagemagick php-imagick libapache2-mod-php7.4 php-common php-mysql php-fpm php-gd php-json php-curl php-zip php-xml php-mbstring php--bz2 php-intl php-bcmath php-gmp certbot python3-certbot-apache ; do
+for addonnodes in imagemagick php-imagick libapache2-mod-php7.4 php-common php-mysql php-fpm php-gd php-json php-curl php-zip php-xml php-mbstring php--bz2 php-intl php-bcmath php-gmp certbot python3-certbot-apache redis-server php-redis ; do
   echo " "
   echo " "
   echo "Installeren Nextcloud vereisten: ${addonnodes}"
