@@ -35,6 +35,8 @@ sudo sed -i -e '/#write_enable/s/#write_enable/write_enable/' /etc/vsftpd.conf
 sudo service vsftpd restart
 sudo service vsftpd status 2>&1 | tee -a $LOGFILE
 
+sudo sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 999M/g' /etc/php/7.4/apache2/php.ini 2>&1 | tee -a $LOGFILE
+
 sudo apt update -y 2>&1 | tee -a $LOGFILE
 sudo apt upgrade -y 2>&1 | tee -a $LOGFILE
 sudo apt autoremove  -y 2>&1 | tee -a $LOGFILE
