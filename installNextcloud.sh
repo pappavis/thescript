@@ -30,7 +30,10 @@ sudo certbot --apache --agree-tos --redirect --staple-ocsp --email you@example.c
 sudo -u www-data php /var/www/support/nextcloud/occ user:resetpassword nextcloud_username 2>&1 | tee -a $LOGFILE
 sudo -u www-data php /var/www/support/nextcloud/occ 2>&1 | tee -a $LOGFILE
 
-sudo mysql -u root -p echo "create database nextcloud\n"
+sudo mysql -u root -p echo "create database nextcloud\n" 2>&1 | tee -a $LOGFILE
+sudo sed -i 's/memory_limit = 128M/memory_limit = 512M/g' /etc/php/7.4/apache2/php.ini 2>&1 | tee -a $LOGFILE
+sudo sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 999M/g' /etc/php/7.4/apache2/php.ini 2>&1 | tee -a $LOGFILE
+sudo service apache2 restart
 
 echo "Einde installNextcloud.sh"  2>&1 | tee -a $LOGFILE
 echo ""  2>&1 | tee -a $LOGFILE
