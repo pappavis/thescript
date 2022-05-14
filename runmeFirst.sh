@@ -281,6 +281,8 @@ sudo sed -i -e '/exit 0/s/exit 0/nohup herstartmelding.py \&/' /etc/rc.local
 # !!Je MOET onderataand exit 0 uitvoeren!!
 echo "exit 0" 2>&1 | sudo tee -a /etc/rc.local
 
+sudo usermod -aG davfs2 
+
 ## neofetch
 lsblk 2>&1 | tee -a $LOGFILE
 cd $_pwd 2>&1 | tee -a $LOGFILE
