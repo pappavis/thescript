@@ -52,6 +52,8 @@ for addonnodes in moment node-red-contrib-esplogin node-red-contrib-timeout node
 	echo "" 2>&1 | tee -a $LOGFILE
 done
 
+sudo service nodered restart
+
 for addonnodes in moment node-red-node-geofence node-red-contrib-moment node-red-contrib-particle ; do
 	echo "" 2>&1 | tee -a $LOGFILE
 	echo "Installing node \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
@@ -86,9 +88,9 @@ done
 
 sudo service nodered restart 2>&1 | tee -a $LOGFILE
 
-for addonnodes in moment node-red-contrib-config node-red-contrib-grove node-red-contrib-diode node-red-contrib-bigtimer \
+for addonnodes in moment node-red-dashboard node-red-contrib-config node-red-contrib-grove node-red-contrib-diode node-red-contrib-bigtimer \
 	node-red-contrib-esplogin node-red-contrib-timeout node-red-node-openweathermap node-red-node-google node-red-contrib-advanced-ping node-red-node-emoncms \
-	node-red-node-geofence node-red-contrib-moment node-red-contrib-particle \
+	node-red-node-geofence node-red-contrib-moment node-red-contrib-particle node-red-contrib-find-my-iphone node-red-contrib-influxdb  \
 	node-red-contrib-web-worldmap node-red-contrib-ramp-thermostat node-red-contrib-fs-ops node-red-contrib-influxdb \
 	node-red-contrib-home-assistant-websocket node-red-contrib-ibm-watson-iot node-red-contrib-sun-position \
 	node-red-contrib-tuya-local node-red-contrib-ui-led node-red-contrib-yr node-red-contrib-aedes \
