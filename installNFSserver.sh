@@ -45,14 +45,14 @@ for addonnodes in ict-beheer acer01 pi0 pivhere dietpi pi04 pilamp spelen02 p1mo
   echo "Wants=network-online.target" |  sudo tee -a /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
   echo "" |  sudo tee -a /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
   echo "[Mount]" |  sudo tee -a /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
-  echo "What=http(s)://${addonnodes}.local/support/owncloud" |  sudo tee -a /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
+  echo "What=http://${addonnodes}.local/support/owncloud/remote.php/webdav/" |  sudo tee -a /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
   echo "Where=/mnt/davfs2/service/${addonnodes}" |  sudo tee -a  /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
-  echo "Options=uid=1000,file_mode=0664,dir_mode=2775,grpid" |  sudo tee -a /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
+  echo "Options=rw,noauto,user,uid=pi,gid=pi" |  sudo tee -a /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
   echo "Type=davfs" |  sudo tee -a /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
   echo "TimeoutSec=15" |  sudo tee -a /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
   echo "" |  sudo tee -a /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
   echo "[Install]" |  sudo tee -a /etc/systemd/system/mnt-webdav-service${addonnodes}.mount 
-  echo "WantedBy=multi-user.target" |  sudo tee -a /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
+  echo "WantedBy=remote-fs.target" |  sudo tee -a /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
   sudo sysctl enable mnt-webdav-service${addonnodes}
   sudo service mnt-webdav-service${addonnodes} restart
   sudo service mnt-webdav-service${addonnodes} status  2>&1 | tee -a $LOGFILE
