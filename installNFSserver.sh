@@ -35,7 +35,7 @@ for addonnodes in ict-beheer acer01 pi0 pivhere dietpi pi04 pilamp spelen02 p1mo
   openssl s_client -showcerts -connect ${WEBDAV_SERVER_FQDN}:443  < /dev/null 2> /dev/null |    openssl x509 -outform PEM |  sudo tee /etc/davfs2/certs/${WEBDAV_SERVER_FQDN}.pem
   echo "trust_server_cert ${addonnodes}" |  sudo tee -a /etc/davfs2/davfs2.conf  2>&1 | tee -a $LOGFILE
 
-  echo "Instellen certificate voor $addonnodes" 2>&1 | tee -a $LOGFILE
+  echo "Instellen automount service voor $addonnodes" 2>&1 | tee -a $LOGFILE
   sudo rm -rf /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
   echo "[Unit]" |  sudo tee -a /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
   echo "Description=Mount WebDAV Service ${addonnodes}" |  sudo tee -a /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
@@ -51,11 +51,19 @@ for addonnodes in ict-beheer acer01 pi0 pivhere dietpi pi04 pilamp spelen02 p1mo
   echo "" |  sudo tee -a /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
   echo "[Install]" |  sudo tee -a /etc/systemd/system/mnt-webdav-service${addonnodes}.mount 
   echo "WantedBy=multi-user.target" |  sudo tee -a /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
+  sudo sysctl enable mnt-webdav-service${addonnodes}
+  sudo service mnt-webdav-service${addonnodes} restart
+  sudo service mnt-webdav-service${addonnodes} status  2>&1 | tee -a $LOGFILE
 
+  echo "http://${addonnodes}.local/support/owncloud pi raspberry" | sudo tee -a /etc/davfs2/secrets
+  sudo chmod 600 /etc/davfs2/secrets
+  chown root:root /etc/davfs2/secrets
+  chmod 600 ~/.davfs2/secrets
 
   sudo find /mnt/nfs/ -type d -exec chmod 755 {} \;
   sudo find /mnt/nfs/ -type f -exec chmod 644 {} \;
 
+  echo "" 2>&1 | tee -a $LOGFILE &
   echo "" 2>&1 | tee -a $LOGFILE &
 done
 
