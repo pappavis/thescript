@@ -68,8 +68,11 @@ sed -i -e '/cycle:\t0:10:00/s/:10:/:1021:/' /home/pi/.xscreensaver
 xset -dpms
 
 echo "** installeer X-Apps zoals KVM." 2>&1 | tee -a $LOGFILE
-for addonnodes in remmina barrier thonny kodi chromium code tightvncserver audacity rpi-imager piclone guvcview gparted rpi-imager mozilla-thunderbird kmail; do
+for addonnodes in remmina barrier thonny kodi chromium code tightvncserver audacity rpi-imager piclone guvcview gparted rpi-imager mozilla-thunderbird kmail firefox-esr ; do
+  echo "" 2>&1 | tee -a $LOGFILE
+  echo "" 2>&1 | tee -a $LOGFILE
   echo "Installeren desktop app ${addonnodes}" 2>&1 | tee -a $LOGFILE
+  echo "" 2>&1 | tee -a $LOGFILE
   sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
