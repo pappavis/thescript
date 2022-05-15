@@ -22,6 +22,8 @@ for addonnodes in ict-beheer acer01 pi0 pivhere dietpi pi04 pilamp spelen02 p1mo
   echo " NFS share aangemaakt sql database server: ${addonnodes}"  2>&1 | tee -a $LOGFILE &
   sudo mkdir -p /mnt/nfs/${addonnodes} 
   sudo mkdir -p /mnt/davfs2/${addonnodes}
+  sudo mkdir /mnt/davfs2/service/
+  sudo mkdir /mnt/davfs2/service/${addonnodes}
   sudo chmod +rw /mnt/nfs/${addonnodes} 
   sudo chmod +rw /mnt/davfs2/${addonnodes} 
   sudo chown -R pi:pi /mnt/nfs/${addonnodes} 
@@ -44,7 +46,7 @@ for addonnodes in ict-beheer acer01 pi0 pivhere dietpi pi04 pilamp spelen02 p1mo
   echo "" |  sudo tee -a /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
   echo "[Mount]" |  sudo tee -a /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
   echo "What=http(s)://${addonnodes}.local/support/owncloud" |  sudo tee -a /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
-  echo "Where=/mnt/webdav/service" |  sudo tee -a  /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
+  echo "Where=/mnt/davfs2/service/${addonnodes}" |  sudo tee -a  /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
   echo "Options=uid=1000,file_mode=0664,dir_mode=2775,grpid" |  sudo tee -a /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
   echo "Type=davfs" |  sudo tee -a /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
   echo "TimeoutSec=15" |  sudo tee -a /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
