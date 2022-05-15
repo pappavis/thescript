@@ -20,13 +20,39 @@ for addonnodes in ict-beheer acer01 pi0 pivhere dietpi pi04 pilamp spelen02 p1mo
   echo "" 2>&1 | tee -a $LOGFILE &
   echo "" 2>&1 | tee -a $LOGFILE &
   echo " NFS share aangemaakt sql database server: ${addonnodes}"  2>&1 | tee -a $LOGFILE &
-  sudo mkdir -p /mnt/nfs/${addonnodes} 2>&1 | tee -a $LOGFILE &
-  sudo mkdir -p /mnt/davfs2/${addonnodes} 2>&1 | tee -a $LOGFILE &
+  sudo mkdir -p /mnt/nfs/${addonnodes} 
+  sudo mkdir -p /mnt/davfs2/${addonnodes}
   sudo chmod +rw /mnt/nfs/${addonnodes} 
   sudo chmod +rw /mnt/davfs2/${addonnodes} 
   sudo chown -R pi:pi /mnt/nfs/${addonnodes} 
   sudo chown -R pi:pi /mnt/dafvs2/${addonnodes} 
-  
+
+
+  echo "Instellen certificate voor $addonnodes" 2>&1 | tee -a $LOGFILE
+  echo "${addonnodes} ${pi} ${raspberry}" | sudo tee -a /etc/davfs2/secrets
+  sudo chmod 600 /etc/davfs2/secrets  
+    
+  openssl s_client -showcerts -connect ${WEBDAV_SERVER_FQDN}:443  < /dev/null 2> /dev/null |    openssl x509 -outform PEM |  sudo tee /etc/davfs2/certs/${WEBDAV_SERVER_FQDN}.pem
+  echo "trust_server_cert ${addonnodes}" |  sudo tee -a /etc/davfs2/davfs2.conf  2>&1 | tee -a $LOGFILE
+
+  echo "Instellen certificate voor $addonnodes" 2>&1 | tee -a $LOGFILE
+  sudo rm -rf /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
+  echo "[Unit]" |  sudo tee -a /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
+  echo "Description=Mount WebDAV Service ${addonnodes}" |  sudo tee -a /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
+  echo "After=network-online.target" |  sudo tee -a /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
+  echo "Wants=network-online.target" |  sudo tee -a /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
+  echo "" |  sudo tee -a /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
+  echo "[Mount]" |  sudo tee -a /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
+  echo "What=http(s)://${addonnodes}.local/support/owncloud" |  sudo tee -a /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
+  echo "Where=/mnt/webdav/service" |  sudo tee -a  /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
+  echo "Options=uid=1000,file_mode=0664,dir_mode=2775,grpid" |  sudo tee -a /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
+  echo "Type=davfs" |  sudo tee -a /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
+  echo "TimeoutSec=15" |  sudo tee -a /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
+  echo "" |  sudo tee -a /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
+  echo "[Install]" |  sudo tee -a /etc/systemd/system/mnt-webdav-service${addonnodes}.mount 
+  echo "WantedBy=multi-user.target" |  sudo tee -a /etc/systemd/system/mnt-webdav-service${addonnodes}.mount
+
+
   sudo find /mnt/nfs/ -type d -exec chmod 755 {} \;
   sudo find /mnt/nfs/ -type f -exec chmod 644 {} \;
 
