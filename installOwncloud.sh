@@ -11,9 +11,13 @@ cd ~/Downloads
 sudo apt update -y
 
 for addonnodes in apache2 php php-mysql php-intl php-zip php-GD php-gd php-curl ; do
+	echo ""   2>&1 | tee -a $LOGFILE
+	echo ""   2>&1 | tee -a $LOGFILE
 	echo "Installeren Owncloud vereisten:  \"${addonnodes}\""
-  sudo apt install -y ${addonnodes}   2>&1 | tee -a $LOGFILE
+  	sudo apt install -y ${addonnodes}   2>&1 | tee -a $LOGFILE
 done
+
+echo ""   2>&1 | tee -a $LOGFILE
 
 # https://robertopozzi.medium.com/have-fun-with-your-raspberry-pi-secure-your-application-with-self-signed-certificates-c8ef455a492f
 #sudo mkdir -p /etc/ssl/mycerts   2>&1 | tee -a $LOGFILE
