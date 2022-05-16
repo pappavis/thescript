@@ -588,6 +588,21 @@ sudo mkdir /var/www/html/inc 2>&1 | tee -a $LOGFILE
 sudo mv -v bootstrap-5.1.3-dist /var/www/html/inc/ 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
 
+
+cd ~/Downloads
+sudp rm -rf ./emscripten-core
+echo "" 2>&1 | tee -a $LOGFILE
+echo "EMscripten installeren" 2>&1 | tee -a $LOGFILE
+git clone https://github.com/emscripten-core/emsdk.git 2>&1 | tee -a $LOGFILE
+cd ./emsdk
+git pull 2>&1 | tee -a $LOGFILE
+./emsdk install latest 2>&1 | tee -a $LOGFILE
+./emsdk activate latest 2>&1 | tee -a $LOGFILE
+source ./emsdk_env.sh
+./emsdk install 2>&1 | tee -a $LOGFILE
+
+source ~/.bashrc
+
 cd ~/Downloads
 sudp rm -rf ./x16-emulator
 echo "" 2>&1 | tee -a $LOGFILE
@@ -596,6 +611,8 @@ wget https://github.com/commanderx16/x16-emulator 2>&1 | tee -a $LOGFILE
 cd ./x16-emulator
 make  2>&1 | tee -a $LOGFILE
 sudo cp -r -v ./x16emu /usr/local/bin 2>&1 | tee -a $LOGFILE
+sudo cp -r -v ./webassembly/ /var/www/html/ 2>&1 | tee -a $LOGFILE
+sudo mv /var/www/html/webassembly /var/www/html/commander16
 echo "" 2>&1 | tee -a $LOGFILE
 echo "Commander X-16 emulatie installeren afgerond." 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
