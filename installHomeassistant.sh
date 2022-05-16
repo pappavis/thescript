@@ -22,7 +22,7 @@ sudo chown homeassistant:homeassistant /home/homeassistant
 
 mkdir ~/Downloads
 cd ~/Downloads
-wget https://raw.githubusercontent.com/pappavis/thescript/master/homeassistant.service
+wget https://raw.githubusercontent.com/pappavis/thescript/master/services/homeassistant.service
 sudo mv ./homeassistant.service /etc/systemd/system
 sudo systemctl enable homeassistant.service
 sudo service homeassistant restart
