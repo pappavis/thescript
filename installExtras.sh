@@ -246,7 +246,7 @@ sudo make install   2>&1 | tee -a $LOGFILE
 sudo systemctl restart systemd-binfmt
 sudo rm -rf ~/Downloads/box86
 cd ~/Downloads
-wget https://raw.githubusercontent.com/pappavis/thescript/master/teamspeak.service
+wget https://raw.githubusercontent.com/pappavis/thescript/master/services/teamspeak.service
 sudo mv ./teamspeak.service /etc/systemd/system
 sudo systemctl enable teamspeak.service
 printstatus "box86 voorbeeld. Start Teamspeak"
