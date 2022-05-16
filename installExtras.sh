@@ -588,6 +588,17 @@ sudo mkdir /var/www/html/inc 2>&1 | tee -a $LOGFILE
 sudo mv -v bootstrap-5.1.3-dist /var/www/html/inc/ 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
 
+cd ~/Downloads
+sudp rm -rf ./x16-emulator
+echo "" 2>&1 | tee -a $LOGFILE
+echo "Commander X-16 emulatie installeren" 2>&1 | tee -a $LOGFILE
+wget https://github.com/commanderx16/x16-emulator 2>&1 | tee -a $LOGFILE
+cd ./x16-emulator
+make  2>&1 | tee -a $LOGFILE
+sudo cp -r -v ./x16emu /usr/local/bin 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
+echo "Commander X-16 emulatie installeren afgerond." 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
 
 cd ~/Downloads
 appTxt1="Milkytracker"
