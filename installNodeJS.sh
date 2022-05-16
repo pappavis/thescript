@@ -34,7 +34,7 @@ sudo rm -rf /usr/local/include/node*  2>&1 | tee -a $LOGFILE
 echo "NodeJS opnieuw installeren." 2>&1 | tee -a $LOGFILE
 
 cd ~/Downloads
-if [ $(nproc) > 0 ]; then
+if [ $(arch) == 'armv6l' ]; then
 	tkst1="NodeJS  installeren op een " 
 	if [ $(nproc) > 0 ]; then
 		echo "$tkst1 Pi Zero" 2>&1 | tee -a $LOGFILE
