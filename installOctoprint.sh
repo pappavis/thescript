@@ -33,7 +33,7 @@ sudo usermod -a -G dialout pi &
 echo "SETUP: Installeer Octoprint als service."  2>&1 | tee -a $LOGFILE
 mkdir ~/Downloads
 cd ~/Downloads
-wget https://raw.githubusercontent.com/pappavis/thescript/master/octoprint.service | tee -a $LOGFILE
+wget https://raw.githubusercontent.com/pappavis/thescript/master/services/octoprint.service  2>&1 | tee -a $LOGFILE
 sudo mv ./octoprint.service /etc/systemd/system 2>&1 | tee -a $LOGFILE
 sudo systemctl enable octoprint.service 2>&1 | tee -a $LOGFILE
 sudo service octoprint restart 2>&1 | tee -a $LOGFILE
