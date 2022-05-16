@@ -68,7 +68,7 @@ sed -i -e "s#\/\/i2c#i2c#" /home/pi/.node-red/settings.js
 mkdir ~/Downloads
 cd ~/Downloads	
 echo "Nodered service installeren" 2>&1 | tee -a $LOGFILE
-wget https://raw.githubusercontent.com/pappavis/thescript/master/nodered.service 2>&1 | tee -a $LOGFILE
+wget https://github.com/pappavis/thescript/raw/master/services/nodered.service 2>&1 | tee -a $LOGFILE
 sudo mv ./nodered.service /etc/systemd/system 2>&1 | tee -a $LOGFILE
 sudo systemctl enable nodered.service 2>&1 | tee -a $LOGFILE
 
