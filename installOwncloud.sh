@@ -10,7 +10,7 @@ echo "* Instaleer Owncloud"   2>&1 | tee -a $LOGFILE
 cd ~/Downloads
 sudo apt update -y
 
-for addonnodes in apache2 php php-mysql php-intl ; do
+for addonnodes in apache2 php php-mysql php-intl php-zip php-GD php-gd php-curl ; do
 	echo "Installeren Owncloud vereisten:  \"${addonnodes}\""
   sudo apt install -y ${addonnodes}   2>&1 | tee -a $LOGFILE
 done
