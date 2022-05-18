@@ -42,33 +42,49 @@
 
 	<body>
 		<div class="container-lg">
-			<div align="center">
-			  <article>
-				<span class="badge bg-secondary">
-					<h1 class="bighead"><a href="https://github.com/pappavis/thescript">"The Script"</a> Home <script language="JavaScript">  document.write(window.location.hostname)</script><br/></h1>
-				</span>
-				<p class="author">geïnspireerd door PETER SCARGILL<br/><br/></p>
-				<p>
-			</div>
-			<div class="padded table">
-				<button type="button" class="btn btn-primary">
-					<script language="JavaScript">
-						document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':10000' +  '" >Webmin Adminstrator - if installed</a><br/><br/>' );
-					 </script>
-				</button>
-					<script language="JavaScript">
-						document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':1880' +  '" >Node Red Control Panel</a><br/>' );
-						document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':1880' +  '/ui" >Node Red UI Desktop</a><br/>' );
-						document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':3000' +  '" >Grafana - if installed</a><br/>' );
-						document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':8888' +  '" >Chronograf - if installed</a><br/>' );
-						document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':8123' +  '/" >Home assistant</a><br/>' );
-						document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':5000' +  '/" >Octoprint</a><br/>' );
-						document.write('Apple <a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':8581' +  '/" >Homebridge</a>integratie<br/' );				
-						document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + '/support/owncloud" >owncloud</a><br/' );				
-				 </script>
-				</p><br/>
-			  </article>
-			</div>
+			<table class="table">
+				<thead>
+					<th>
+						<div align="center">
+							  <article>
+								<nav class="navbar navbar-light bg-light">
+									<h1 class="bighead"><a href="https://github.com/pappavis/thescript">"The Script"</a> Home <script language="JavaScript">  document.write(window.location.hostname)</script><br/></h1>
+								</nav>
+								<p class="author">geïnspireerd door PETER SCARGILL<br/><br/></p>
+							  </article>
+						</div>
+					</th>
+				</thead>
+				<tbdody>
+					<tr>
+						<td>
+							<div class="padded table">
+								<span class="badge bg-info  text-dark">
+									<script language="JavaScript">
+										document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':10000' +  '" >Webmin Adminstrator - if installed</a><br/><br/>' );
+									 </script>
+								</span>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<div class="padded table">
+							
+								<script language="JavaScript">
+									document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':1880' +  '" >Node Red Control Panel</a><br/>' );
+									document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':1880' +  '/ui" >Node Red UI Desktop</a><br/>' );
+									document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':3000' +  '" >Grafana - if installed</a><br/>' );
+									document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':8888' +  '" >Chronograf - if installed</a><br/>' );
+									document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':8123' +  '/" >Home assistant</a><br/>' );
+									document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':5000' +  '/" >Octoprint</a><br/>' );
+									document.write('Apple <a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':8581' +  '/" >Homebridge</a>integratie<br/' );				
+									document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + '/support/owncloud" >owncloud</a><br/' );				
+							 </script>
+							</p><br/>
+						</div>
+					</tr>
+				</tbdody>
+			</table>
 			<div align="center" class-"author">Diverse utils en tekst bewerkings zijn geinstalleerd.</div>
 		</div>
 	</body>
