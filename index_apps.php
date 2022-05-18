@@ -53,7 +53,7 @@
 			<div class="padded table">
 				<button type="button" class="btn btn-primary">
 					<script language="JavaScript">
-						document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':10000' +  '" >Webmin Adminstrator - if installed</a><br/>' );
+						document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':10000' +  '" >Webmin Adminstrator - if installed</a><br/><br/>' );
 					 </script>
 				</button>
 					<script language="JavaScript">
