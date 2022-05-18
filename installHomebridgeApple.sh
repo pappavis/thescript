@@ -17,7 +17,7 @@ done
 
 echo ""  2>&1 | tee -a $LOGFILE
 
-for addonnodes in homebridge-octoprint@latest  homebridge-camera-ffmpeg  @jappyjan/homebridge-wled  homebridge-domoticz-selector-switch  @credding/homebridge-sonos  homebridge-smarthome  homebridge-apple-tv homebridge-nest-google homebridge-camera-ui  @oscar_penelo/homebridge-camera-ffmpeg-2way  homebridge-doorbell-telegram-photo   ; do 
+for addonnodes in homebridge-octoprint@latest  homebridge-camera-ffmpeg  @jappyjan/homebridge-wled  homebridge-domoticz-selector-switch  @credding/homebridge-sonos  homebridge-smarthome  homebridge-apple-tv homebridge-nest-google homebridge-camera-ui  @oscar_penelo/homebridge-camera-ffmpeg-2way  homebridge-doorbell-telegram-photo  homebridge-website-to-camera ; do 
 	echo ""  2>&1 | tee -a $LOGFILE
 	echo ""  2>&1 | tee -a $LOGFILE
 	echo "--Installeren homekit addon: \"${addonnodes}\""  2>&1 | tee -a $LOGFILE
