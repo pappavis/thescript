@@ -104,12 +104,8 @@ make PLATFORM=rpi1 2>&1 | tee -a $LOGFILE
 echo "Amiberry install afgerond" 2>&1 | tee -a $LOGFILE
 
 
-sudo apt-get install -y chronograf  2>&1 | tee -a $LOGFILE
-sudo systemctl enable chronograf 2>&1 | tee -a $LOGFILE
-sudo systemctl start chronograf 2>&1 | tee -a $LOGFILE
-
 cd ~/Downloads/
-echo "Installeren chronograf" 2>&1 | tee -a $LOGFILE
+echo "* Installeren chronograf" 2>&1 | tee -a $LOGFILE
 wget wget  https://dl.influxdata.com/chronograf/releases/chronograf-1.9.4_linux_armhf.tar.gz  2>&1 | tee -a $LOGFILE
 tar xf ./chronograf-1.9.4_linux_armhf.tar.gz
 sudo cp -R ./chronograf-1.9.4-1/* /  2>&1 | tee -a $LOGFILE
@@ -118,6 +114,7 @@ sudo mv ./chronograf.service /etc/systemd/system 2>&1 | tee -a $LOGFILE
 sudo systemctl enable chronograf
 sudo systemctl start chronograf
 sudo systemctl status chronograf 2>&1 | tee -a $LOGFILE
+sudo docker pull chronograf:1.9  2>&1 | tee -a $LOGFILE
 rm -rf ./chronograf-1.9.4*
 
 
