@@ -84,23 +84,31 @@ sudo sed -i -e 's#ssl=1#ssl=0#g' /etc/webmin/miniserv.conf
 
 
 echo "* Installeer amiberry" 2>&1 | tee -a $LOGFILE
-for addonnodes in libsdl2-2.0-0 libsdl2-ttf-2.0-0 libsdl2-image-2.0-0 flac mpg123 libmpeg2-4 libsdl2-dev libsdl2-ttf-dev libsdl2-image-dev libflac-dev libmpg123-dev libpng-dev libmpeg2-4-dev libraspberrypi-dev ; do
+cd ~/Downloads
+for addonnodes in libsdl2-2.0-0 libsdl2-ttf-2.0-0 libsdl2-image-2.0-0 flac mpg123 libmpeg2-4 libsdl2-dev libsdl2-ttf-dev libsdl2-image-dev libflac-dev libmpg123-dev libpng-dev libmpeg2-4-dev libraspberrypi-dev libsdl2-ttf-dev libsdl2-image-dev ; do
   echo " "
   echo " "
   echo "Installeren amiberry vereisten: ${addonnodes}"
   echo " "
   sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
-cd ~/Downloads
-sudo apt install -y libsdl2-ttf-dev libsdl2-image-dev
-wget https://github.com/midwan/amiberry/releases/download/v4.1.6/amiberry-v4.1.6-rpi3-sdl2-32bit-rpios.zip 2>&1 | tee -a $LOGFILE
-7z x ./amiberry-v4.1.6-rpi3-sdl2-32bit-rpios.zip 2>&1 | tee -a $LOGFILE
-rm ./amiberry-v4.1.6-rpi3-sdl2-32bit-rpios.zip
-sudo mv ./amiberry-rpi3-sdl2-32bit /usr/local/games
-sudo ln -s /usr/local/games/amiberry-rpi3-sdl2-32bit/amiberry /usr/local/bin/amiberry
-git clone https://github.com/midwan/amiberry 2>&1 | tee -a $LOGFILE
-cd amiberry
-make PLATFORM=rpi1 2>&1 | tee -a $LOGFILE
+
+if [[ $(arch) -eq 'armv6l' ]] 
+ then
+	echo "Amiberry op PiZero wordt gemaakt" 2>&1 | tee -a $LOGFILE
+	git clone https://github.com/midwan/amiberry 2>&1 | tee -a $LOGFILE
+	cd amiberry
+	make PLATFORM=rpi1 2>&1 | tee -a $LOGFILE
+	sudo make install
+  else
+	echo "Amiberry op Pi3, Pi4 gedownload" 2>&1 | tee -a $LOGFILE
+	wget https://github.com/midwan/amiberry/releases/download/v4.1.6/amiberry-v4.1.6-rpi3-sdl2-32bit-rpios.zip 2>&1 | tee -a $LOGFILE
+	7z x ./amiberry-v4.1.6-rpi3-sdl2-32bit-rpios.zip 2>&1 | tee -a $LOGFILE
+	rm ./amiberry-v4.1.6-rpi3-sdl2-32bit-rpios.zip
+	sudo mv ./amiberry-rpi3-sdl2-32bit /usr/local/games
+	sudo ln -s /usr/local/games/amiberry-rpi3-sdl2-32bit/amiberry /usr/local/bin/amiberry
+ fi
+rm -rf ./amiberry
 echo "Amiberry install afgerond" 2>&1 | tee -a $LOGFILE
 
 
