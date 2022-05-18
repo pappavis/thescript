@@ -41,7 +41,7 @@
     </head>
 
 	<body>
-		<div class="container">
+		<div class="container-lg">
 			<div align="center">
 			  <article>
 				<h1 class="bighead"><a href="https://github.com/pappavis/thescript">"The Script"</a> Home <script language="JavaScript">  document.write(window.location.hostname)</script><br/></h1>
