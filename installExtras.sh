@@ -591,6 +591,30 @@ echo "" 2>&1 | tee -a $LOGFILE
 
 
 cd ~/Downloads
+sudo rm -rf ./x16-emulator
+echo "" 2>&1 | tee -a $LOGFILE
+echo "Commander X-16 emulatie installeren" 2>&1 | tee -a $LOGFILE
+wget https://github.com/commanderx16/x16-emulator.git 2>&1 | tee -a $LOGFILE
+cd ./x16-emulator
+make  2>&1 | tee -a $LOGFILE
+sudo cp -r -v ./x16emu /usr/local/bin 2>&1 | tee -a $LOGFILE
+sudo cp -r -v ./webassembly/ /var/www/html/ 2>&1 | tee -a $LOGFILE
+sudo mv /var/www/html/webassembly /var/www/html/commander16
+sudo mkdir /var/www/html/commander16/webassembly
+cd /var/www/html/commander16
+sudo mv -v ./* ./webassembly 2>&1 | tee -a $LOGFILE
+sudo wget https://sebastianvog.github.io/x16-emulator/x16emu.html 2>&1 | tee -a $LOGFILE
+sudo wget https://sebastianvog.github.io/x16-emulator/x16emu.data 2>&1 | tee -a $LOGFILE
+sudo wget https://sebastianvog.github.io/x16-emulator/x16emu.js 2>&1 | tee -a $LOGFILE
+sudo wget https://sebastianvog.github.io/x16-emulator/x16emu.wasm 2>&1 | tee -a $LOGFILE
+sudo chown www-data:www-data -R /var/www/html/commander16/
+cd ~/Downloads
+sudo rm -rf ./x16-emulator
+echo "" 2>&1 | tee -a $LOGFILE
+echo "Commander X-16 emulatie installeren afgerond." 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
+
+cd ~/Downloads
 appTxt1="Milkytracker"
 echo "" 2>&1 | tee -a $LOGFILE
 echo "Installeren: $appTxt1" 2>&1 | tee -a $LOGFILE
