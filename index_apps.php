@@ -57,19 +57,19 @@
 				</thead>
 				<tbdody>
 					<tr>
-						<td>
-							<div class="padded table rounded">
-								<span class="badge text-dark">
-									<script language="JavaScript">
-										document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':10000' +  '" >Webmin Adminstrator - if installed</a><br/><br/>' );
-									 </script>
-								</span>
-							</div>
-						</td>
-					</tr>
-					<tr>
 						<table class="table table-striped nowrap">
 							<tbody>
+								<tr>
+									<td>
+										<div class="padded table rounded">
+											<span class="badge text-dark">
+												<script language="JavaScript">
+													document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':10000' +  '" >Webmin Adminstrator - if installed</a><br/><br/>' );
+												 </script>
+											</span>
+										</div>
+									</td>
+								</tr>
 								<tr>
 									<td>
 										<script language="JavaScript">
