@@ -48,7 +48,7 @@
 						<div align="center">
 							  <article>
 								<nav class="navbar navbar-light bg-light">
-									<h1 class="bighead"><a href="https://github.com/pappavis/thescript">"The Script"</a> Home <script language="JavaScript">  document.write(window.location.hostname)</script><br/></h1>
+									<h1 class="text-dark"><a href="https://github.com/pappavis/thescript">"The Script"</a> Home <script language="JavaScript">  document.write(window.location.hostname)</script><br/></h1>
 								</nav>
 								<p class="author">geïnspireerd door PETER SCARGILL<br/><br/></p>
 							  </article>
