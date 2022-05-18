@@ -127,11 +127,11 @@ sudo sed -i -e '/#utf8_filesystem/s/#utf8/utf8/' /etc/vsftpd.conf
 sudo service vsftpd restart
 
 mkdir ~/Downloads
-cd ~/Downloads
 sudo mkdir /var/www/html/support
 sudo mkdir /var/www/html/inc
-wget https://raw.githubusercontent.com/pappavis/thescript/master/index_apps.php 2>&1 | tee -a $LOGFILE
-sudo mv ./index_apps.php /var/www/html
+sudo rm -rf /var/www/html/index_apps.php
+cd /var/www/html/
+sudo wget https://raw.githubusercontent.com/pappavis/thescript/master/index_apps.php 2>&1 | tee -a $LOGFILE
 sudo rm -rf /var/www/html/index.html
 sudo /var/www/html/support
 
