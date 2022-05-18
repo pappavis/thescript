@@ -64,7 +64,7 @@
 						document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':8123' +  '/" >Home assistant</a><br/>' );
 						document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':5000' +  '/" >Octoprint</a><br/>' );
 						document.write('Apple <a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':8581' +  '/" >Homebridge</a>integratie<br/' );				
-						document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + '/support/owncloud' +  '/" >Owncloud</a> persoonlijk opslag<br/' );				
+						document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + '/support/owncloud" >owncloud</a><br/' );				
 				 </script>
 				</p><br/>
 			  </article>
