@@ -102,11 +102,13 @@ if [[ $(arch) -eq 'armv6l' ]]
 	sudo make install
   else
 	echo "Amiberry op Pi3, Pi4 gedownload" 2>&1 | tee -a $LOGFILE
-	wget https://github.com/midwan/amiberry/releases/download/v4.1.6/amiberry-v4.1.6-rpi3-sdl2-32bit-rpios.zip 2>&1 | tee -a $LOGFILE
-	7z x ./amiberry-v4.1.6-rpi3-sdl2-32bit-rpios.zip 2>&1 | tee -a $LOGFILE
-	rm ./amiberry-v4.1.6-rpi3-sdl2-32bit-rpios.zip
-	sudo mv ./amiberry-rpi3-sdl2-32bit /usr/local/games
-	sudo ln -s /usr/local/games/amiberry-rpi3-sdl2-32bit/amiberry /usr/local/bin/amiberry
+	wget https://github.com/midwan/amiberry/releases/download/v5.1/amiberry-v5.1-rpi3-sdl2-32bit-rpios.zip 2>&1 | tee -a $LOGFILE
+	7z x ./amiberry-v5.1-rpi3-sdl2-32bit-rpios.zip 2>&1 | tee -a $LOGFILE
+	rm ./amiberry-v5.1-rpi3-sdl2-32bit-rpios.zip	
+	sudo rm -rf /usr/local/games/amiberry-rpi3-sdl2-32bit
+	sudo mv ./amiberry-rpi3-sdl2-32bit/ /usr/local/games/
+	sudo ln -s /usr/local/games/amiberry-rpi3-sdl2-32bit/amiberry  /usr/local/bin/amiberry
+	sudo rm -rf ./amiberry-rpi3-sdl2-32bit
  fi
 rm -rf ./amiberry
 echo "Amiberry install afgerond" 2>&1 | tee -a $LOGFILE
