@@ -111,14 +111,15 @@ sudo systemctl start chronograf 2>&1 | tee -a $LOGFILE
 
 cd ~/Downloads/
 echo "* Installeer telegraf" 2>&1 | tee -a $LOGFILE
-wget -qO - https://packages.grafana.com/gpg.key |  sudo gpg --no-default-keyring --keyring gnupg-ring:/etc/apt/trusted.gpg.d/example.gpg --import -
-curl -sL https://packages.grafana.com/gpg.key | sudo apt-key add -
-echo "deb https://repos.influxdata.com/debian bullseye stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
-sudo apt update -y 2>&1 | tee -a $LOGFILE
-sudo apt install telegraf -y 2>&1 | tee -a $LOGFILE
+wget wget https://dl.influxdata.com/telegraf/releases/telegraf-1.22.4_linux_armhf.tar.gz  2>&1 | tee -a $LOGFILE
+tar xf ./telegraf-1.22.4_linux_armhf.tar.gz
+sudo cp -R -v ./telegraf-1.22.4/* /  2>&1 | tee -a $LOGFILE
+wget https://raw.githubusercontent.com/pappavis/thescript/master/services/telegraf.service 2>&1 | tee -a $LOGFILE
+sudo mv ./telegraf.service /etc/systemd/system 2>&1 | tee -a $LOGFILE
 sudo systemctl enable telegraf
 sudo systemctl start telegraf
 sudo systemctl status telegraf 2>&1 | tee -a $LOGFILE
+rm -rf ./telegraf-1.22.4/
 
 _tg_conf=$('[[outputs.influxdb]] \
    urls = ["http://127.0.0.1:8086"] \
