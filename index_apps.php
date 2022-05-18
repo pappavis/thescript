@@ -58,7 +58,7 @@
 				<tbdody>
 					<tr>
 						<td>
-							<div class="padded table">
+							<div class="padded table rounded">
 								<span class="badge bg-info  text-dark">
 									<script language="JavaScript">
 										document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':10000' +  '" >Webmin Adminstrator - if installed</a><br/><br/>' );
@@ -80,12 +80,16 @@
 									document.write('Apple <a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':8581' +  '/" >Homebridge</a>integratie<br/' );				
 									document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + '/support/owncloud" >owncloud</a><br/' );				
 							 </script>
-							</p><br/>
+							<br/>
 						</div>
+					</tr>
+					<tr>
+						<td>
+							<div align="center" class-"author">Diverse utils en tekst bewerkings zijn geinstalleerd.</div>						
+						</td>
 					</tr>
 				</tbdody>
 			</table>
-			<div align="center" class-"author">Diverse utils en tekst bewerkings zijn geinstalleerd.</div>
 		</div>
 	</body>
 </html>
