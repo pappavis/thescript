@@ -586,6 +586,7 @@ wget https://github.com/twbs/bootstrap/releases/download/v5.1.3/bootstrap-5.1.3-
 sudo mkdir /var/www/html/support 2>&1 | tee -a $LOGFILE
 sudo mkdir /var/www/html/inc 2>&1 | tee -a $LOGFILE
 sudo mv -v bootstrap-5.1.3-dist /var/www/html/inc/ 2>&1 | tee -a $LOGFILE
+sudo mv -v /var/www/html/inc/bootstrap-5.1.3-dist /var/www/html/inc/bootstrap 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
 
 
