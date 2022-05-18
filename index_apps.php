@@ -41,7 +41,7 @@
     </head>
 
 	<body>
-		<div class="container-sm">
+		<div class="container">
 			<div align="center">
 			  <article>
 				<h1 class="bighead"><a href="https://github.com/pappavis/thescript">"The Script"</a> Home <script language="JavaScript">  document.write(window.location.hostname)</script><br/></h1>
@@ -58,6 +58,7 @@
 				document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':8123' +  '/" >Home assistant</a><br/>' );
 				document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':5000' +  '/" >Octoprint</a><br/>' );
 				document.write('Apple <a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':8581' +  '/" >Homebridge</a><br/> integratie' );				
+				document.write('Apple <a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + '/support/owncloud' +  '/" >Owncloud</a><br/> persoonlijk opslag' );				
 				 </script>
 				</p><br/>
 			  </article>
