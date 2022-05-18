@@ -94,26 +94,44 @@
 								<tr>
 									<td>
 										<script language="JavaScript">
-											document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':3000' +  '" >Grafana - if installed</a><br/>' );
+											document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':3000' +  '" >Grafana</a> indien geïnstalleerd<br/>' );
+										</script>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<script language="JavaScript">
+											document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':8888' +  '" >Chronograf - if installed</a><br/>' );
+										</script>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<script language="JavaScript">
+											document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':8123' +  '/" >Home assistant</a><br/>' );
+										</script>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<script language="JavaScript">
+											document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':5000' +  '/" >Octoprint</a><br/>' );
+										</script>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<script language="JavaScript">
+											document.write('Apple <a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':8581' +  '/" >Homebridge</a>integratie<br/' );				
 										</script>
 									</td>
 								</tr>
 							</tbody>
-						</table>
-						
-						<div class="padded table">							
-								<script language="JavaScript">
-									document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':8888' +  '" >Chronograf - if installed</a><br/>' );
-									document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':8123' +  '/" >Home assistant</a><br/>' );
-									document.write('<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':5000' +  '/" >Octoprint</a><br/>' );
-									document.write('Apple <a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':8581' +  '/" >Homebridge</a>integratie<br/' );				
-							 </script>
-							<br/>
-						</div>
+						</table>						
 					</tr>
 					<tr>
 						<td>
-							<div align="center" class-"author">Diverse utils en tekst bewerkings zijn geinstalleerd.</div>						
+							<div align="center" class-"author container-sm">Diverse utils en tekst bewerkings zijn geinstalleerd.</div>						
 						</td>
 					</tr>
 				</tbdody>
