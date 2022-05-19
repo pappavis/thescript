@@ -639,10 +639,10 @@ appTxt1="Milkytracker"
 echo "" 2>&1 | tee -a $LOGFILE
 echo "Installeren: $appTxt1" 2>&1 | tee -a $LOGFILE
 for addonnodes in libjack-dev liblhasa-dev librtmidi-dev libsdl2-dev libzzip-dev ; do
-  echo " "
-  echo " "
+  echo " " 2>&1 | tee -a $LOGFILE
+  echo " " 2>&1 | tee -a $LOGFILE
   echo "Installeren $appTxt1 vereisten: ${addonnodes}" 2>&1 | tee -a $LOGFILE
-  echo " "
+  echo " " 2>&1 | tee -a $LOGFILE
   sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 git clone https://github.com/milkytracker/MilkyTracker 2>&1 | tee -a $LOGFILE
@@ -654,6 +654,15 @@ make 2>&1 | tee -a $LOGFILE
 echo "Einde Milkytracker build install" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
 
+echo " " 2>&1 | tee -a $LOGFILE
+echo "Installeren nodeJS speelgoed: ${addonnodes}" 2>&1 | tee -a $LOGFILE
+for addonnodes in phaser johnny-five ; do
+  echo " " 2>&1 | tee -a $LOGFILE
+  echo " " 2>&1 | tee -a $LOGFILE
+  echo "Installeren nodeJS bilbiotheek: ${addonnodes}" 2>&1 | tee -a $LOGFILE
+  echo " " 2>&1 | tee -a $LOGFILE
+  npm install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
 
 echo "* Install extras is afgerond. Je kunt nu herstarten." 2>&1 | tee -a $LOGFILE
 
