@@ -1,6 +1,7 @@
 #!/bin/bash
 LOGFILE=$HOME/logs/installAppsBasis-`date +%Y-%m-%d_%Hh%Mm`.log
 
+sudo apt-add-repository "deb http://ppa.launchpad.net/ubuntu-mozilla-security/ppa/ubuntu focal main" 2>&1 | tee -a $LOGFILE
 sudo apt update -y 2>&1 | tee -a $LOGFILE
 sudo apt update --fix-missing -y  2>&1 | tee -a $LOGFILE
 
