@@ -135,6 +135,7 @@ sudo wget https://raw.githubusercontent.com/pappavis/thescript/master/index_apps
 sudo rm -rf /var/www/html/index.html
 cd /var/www/html/inc
 sudo wget https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css 2>&1 | tee -a $LOGFILE
+sudo chown www-data:www-data /var/www/html/ -R &
 
 cd $_pwd
 
