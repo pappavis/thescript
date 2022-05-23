@@ -32,3 +32,4 @@ for addonnodes in  firebird-server postgresql  ; do
 done
 
 sudo mysql_secureinstallation
+sudo apt install -y phpmyadmin
