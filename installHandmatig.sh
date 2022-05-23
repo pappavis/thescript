@@ -31,3 +31,4 @@ for addonnodes in  firebird-server postgresql  ; do
   echo "admin\n" | sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
+sudo mysql_secureinstallation

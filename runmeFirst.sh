@@ -133,7 +133,8 @@ sudo rm -rf /var/www/html/index_apps.php
 cd /var/www/html/
 sudo wget https://raw.githubusercontent.com/pappavis/thescript/master/index_apps.php 2>&1 | tee -a $LOGFILE
 sudo rm -rf /var/www/html/index.html
-sudo /var/www/html/support
+cd /var/www/html/inc
+sudo wget https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css 2>&1 | tee -a $LOGFILE
 
 cd $_pwd
 

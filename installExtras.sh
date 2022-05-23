@@ -29,19 +29,6 @@ sudo rm -rf /var/www/html/index.php
 #sudo cp ./vhui* /usr/local/bin
 curl -s https://www.dataplicity.com/jfjro6ak.py | sudo python3
 
-APP_PASS="rider506"
-ROOT_PASS="rider506"
-APP_DB_PASS="rider506"
-
-# https://stackoverflow.com/questions/30741573/debconf-selections-for-phpmyadmin-unattended-installation-with-no-webserver-inst
-sudo debconf-set-selections <<< "phpmyadmin phpmyadmin/internal/skip-preseed boolean true"
-sudo debconf-set-selections <<< "phpmyadmin phpmyadmin/reconfigure-webserver multiselect"
-sudo debconf-set-selections <<< "phpmyadmin phpmyadmin/dbconfig-install boolean false"
-echo "phpmyadmin phpmyadmin/dbconfig-install boolean true" | sudo debconf-set-selections
-echo "phpmyadmin phpmyadmin/app-password-confirm password $APP_PASS" | sudo debconf-set-selections
-echo "phpmyadmin phpmyadmin/mysql/admin-pass password $ROOT_PASS" | sudo debconf-set-selections
-echo "phpmyadmin phpmyadmin/mysql/app-pass password $APP_DB_PASS" | sudo debconf-set-selections
-echo "phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2" | sudo  debconf-set-selections
 
 #sudo apt-get install -y phpmyadmin 2>&1 | tee -a $LOGFILE
 #sudo ln -s /usr/share/phpmyadmin /var/www/html
@@ -50,15 +37,6 @@ sudo mkdir /var/www/html/support
 cd /var/www/html 
 sudo git clone https://github.com/phpsysinfo/phpsysinfo.git 2>&1 | tee -a $LOGFILE
 sudo cp /var/www/html/phpsysinfo/phpsysinfo.ini.new /var/www/html/phpsysinfo/phpsysinfo.ini 2>&1 | tee -a $LOGFILE
-
-
-for addonnodes in  firebird-server postgresql  ; do
-  echo " "
-  echo " "
-  echo "Installeren sql database server: ${addonnodes}"
-  echo " "
-  echo "admin\n" | sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
-done
 
 
 cd ~/Downloads/
@@ -639,10 +617,10 @@ appTxt1="Milkytracker"
 echo "" 2>&1 | tee -a $LOGFILE
 echo "Installeren: $appTxt1" 2>&1 | tee -a $LOGFILE
 for addonnodes in libjack-dev liblhasa-dev librtmidi-dev libsdl2-dev libzzip-dev ; do
-  echo " " 2>&1 | tee -a $LOGFILE
-  echo " " 2>&1 | tee -a $LOGFILE
+  echo " "
+  echo " "
   echo "Installeren $appTxt1 vereisten: ${addonnodes}" 2>&1 | tee -a $LOGFILE
-  echo " " 2>&1 | tee -a $LOGFILE
+  echo " "
   sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 git clone https://github.com/milkytracker/MilkyTracker 2>&1 | tee -a $LOGFILE
@@ -654,15 +632,6 @@ make 2>&1 | tee -a $LOGFILE
 echo "Einde Milkytracker build install" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
 
-echo " " 2>&1 | tee -a $LOGFILE
-echo "Installeren nodeJS speelgoed: ${addonnodes}" 2>&1 | tee -a $LOGFILE
-for addonnodes in phaser johnny-five ; do
-  echo " " 2>&1 | tee -a $LOGFILE
-  echo " " 2>&1 | tee -a $LOGFILE
-  echo "Installeren nodeJS bilbiotheek: ${addonnodes}" 2>&1 | tee -a $LOGFILE
-  echo " " 2>&1 | tee -a $LOGFILE
-  npm install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
-done
 
 echo "* Install extras is afgerond. Je kunt nu herstarten." 2>&1 | tee -a $LOGFILE
 
