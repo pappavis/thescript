@@ -9,9 +9,23 @@
         <title> Scargill's Default Web Page op  </title>
         <meta name="description" content="Peter Scargill's default web page installed by THE SCRIPT">
         <meta name="keywords" content="scargill,the script, https://tech.scargill.net">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">    
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         <link rel="stylesheet" type="text/css" href="reset.css" media="all">
-		<link rel="stylesheet" type="text/css" href="/inc/bootstrap/css/bootstrap.css" media="all">		
+		<link rel="stylesheet" type="text/css" href="/inc/bootstrap/css/bootstrap.min.css" media="all">		
+		<link rel="apple-touch-icon" href="https://getbootstrap.com/docs/4.5/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+		<link rel="icon" href="https://getbootstrap.com/docs/4.5/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+		<link rel="icon" href="https://getbootstrap.com/docs/4.5/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+		<link rel="manifest" href="https://getbootstrap.com/docs/4.5/assets/img/favicons/manifest.json">
+		<link rel="mask-icon" href="https://getbootstrap.com/docs/4.5/assets/img/favicons/safari-pinned-tab.svg" color="#563d7c">
+		<link rel="icon" href="https://getbootstrap.com/docs/4.5/assets/img/favicons/favicon.ico">
+		<meta name="msapplication-config" content="https://getbootstrap.com/docs/4.5/assets/img/favicons/browserconfig.xml">
+		<meta name="theme-color" content="#563d7c">
+		<script src="https://unpkg.com/bootstrap-table@1.20.1/dist/extensions/toolbar/bootstrap-table-toolbar.min.js"></script>
+		<script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+		<script src="https://raw.githubusercontent.com/eligrey/FileSaver.js/master/dist/FileSaver.js"></script>
+		<script src="https://raw.githubusercontent.com/hhurz/tableExport.jquery.plugin/master/tableExport.min.js"></script>
 		<style>
 		.bighead {
 		  background-color: #2094f3;
