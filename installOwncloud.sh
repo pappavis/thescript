@@ -49,6 +49,9 @@ wget https://download.owncloud.org/community/owncloud-latest.zip  2>&1 | tee -a 
 7z x ~/Downloads/owncloud-latest.zip  2>&1 | tee -a $LOGFILE
 sudo mkdir /var/www/html/support  2>&1 | tee -a $LOGFILE
 sudo mv ~/Downloads/owncloud /var/www/html/support  2>&1 | tee -a $LOGFILE
+wget https://raw.githubusercontent.com/pappavis/thescript/master/owncloud_config.php  2>&1 | tee -a $LOGFILE
+rm -rf ./owncloud_config.php 
+sudo mv ./owncloud_config.php /var/www/html/support/owncloud/config/config.php
 sudo chown -R www-data:www-data /var/www/html/support/owncloud  2>&1 | tee -a $LOGFILE
 sudo service apache2 restart  2>&1 | tee -a $LOGFILE
 sudo cp -v /var/www/html/support/owncloud/config/config.apps.sample.php /var/www/html/support/owncloud/config/config.php  2>&1 | tee -a $LOGFILE
