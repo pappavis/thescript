@@ -39,7 +39,8 @@ openssl x509 -in server.crt -out ~/Downloads/server.pem -outform PEM
 mv ~/Downloads/server.pem ~/.dav2fs/secrets 
 echo "servercert	server.pem" | tee -a ~/.davfs2/davfs2.conf
 
-echo "https://$(hostname).local/support/owncloud/remote.php/webdav admin  admin" | tee -a /home/user/.dav2fs/secret  2>&1 | tee -a $LOGFILE &
+mkdir ~/.dav2fs
+echo "https://$(hostname).local/support/owncloud/remote.php/webdav admin  admin" | tee -a ~/.dav2fs/secret  2>&1 | tee -a $LOGFILE &
 
 sudo mount -t davfs  $(hostname).local/support/owncloud/remote.php/webdav /mnt/davfs2/$(hostname)  2>&1 | tee -a $LOGFILE &
 echo " dafvs mouting afgerond."   2>&1 | tee -a $LOGFILE
