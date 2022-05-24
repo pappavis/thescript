@@ -24,7 +24,10 @@ wget https://download.nextcloud.com/server/releases/nextcloud-21.0.1.zip   2>&1 
 7z x ./nextcloud-21.0.1.zip  2>&1 | tee -a $LOGFILE
 sudo mv ./nextcloud /var/www/html/support  2>&1 | tee -a $LOGFILE
 sudo mkdir /var/www/nextcloud/nextcloud-data
-sudo chown www-data:www-data -R /var/www/html/support/owncloud  2>&1 | tee -a $LOGFILE
+wget https://raw.githubusercontent.com/pappavis/thescript/master/owncloud_config.php  2>&1 | tee -a $LOGFILE
+rm -rf ./owncloud_config.php 
+sudo mv ./owncloud_config.php /var/www/html/support/nextcloud/config/config.php
+sudo chown www-data:www-data -R /var/www/html/support/nextcloud  2>&1 | tee -a $LOGFILE
 sudo iptables -I INPUT -p tcp --dport 80 -j ACCEPT 2>&1 | tee -a $LOGFILE
 sudo certbot --apache --agree-tos --redirect --staple-ocsp --email you@example.com -d nextcloud.example.com 2>&1 | tee -a $LOGFILE
 sudo -u www-data php /var/www/support/nextcloud/occ user:resetpassword nextcloud_username 2>&1 | tee -a $LOGFILE
