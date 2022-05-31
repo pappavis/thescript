@@ -481,7 +481,10 @@ sudo cp -r -v ./rom/* /home/pi/.local/share/xemu-lgb/c65/default-files/ 2>&1 | t
 sudo ln -s /usr/local/share/xemu/xc65.native /usr/local/bin/x65 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
 wget https://github.com/MEGA65/open-roms/raw/master/bin/mega65.rom 2>&1 | tee -a $LOGFILE
+wget http://www.zimmers.net/anonftp/pub/cbm/firmware/computers/c65/911001.bin 2>&1 | tee -a $LOGFILE
 sudo mv ./mega65.rom /home/pi/.local/share/xemu-lgb/c65/default-files/c65-system.rom 2>&1 | tee -a $LOGFILE
+sudo mv ./911001.bin /home/pi/.local/share/xemu-lgb/c65/default-files/mega65.bin 2>&1 | tee -a $LOGFILE
+
 rm -rf ~/Downloads/xemu 2>&1 | tee -a $LOGFILE
 
 
