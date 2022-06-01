@@ -464,7 +464,7 @@ echo "---------" 2>&1 | tee -a $LOGFILE
 
 echo "" 2>&1 | tee -a $LOGFILE
 echo "Instellen Mega65.org emulatie" 2>&1 | tee -a $LOGFILE
-for addonnodes in git build-essential libsdl2-dev libgtk-3-dev libreadline-dev ; do
+for addonnodes in git build-essential libsdl2-dev libgtk-3-dev libreadline-dev libncurses5-dev libncursesw5-dev ; do
   echo " "
   echo " "
   echo "Installeren Mega65.org vereisten: ${addonnodes}" 2>&1 | tee -a $LOGFILE
