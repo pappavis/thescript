@@ -183,7 +183,7 @@ for addonnodes in gpio dialout i2c tty kmem uinput ; do
 	sudo usermod pi -aG ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
-./adduserPi.sh  2>&1 | tee -a $LOGFILE
+#./adduserPi.sh  2>&1 | tee -a $LOGFILE
 
 # ref https://doc.owncloud.com/server/next/user_manual/files/access_webdav.html
 sudo apt install -y davfs
