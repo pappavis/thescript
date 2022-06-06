@@ -637,9 +637,21 @@ mkdir ./build
 cd ./build
 cmake .. 2>&1 | tee -a $LOGFILE
 make 2>&1 | tee -a $LOGFILE
-echo "Einde Milkytracker build install" 2>&1 | tee -a $LOGFILE
+echo "Einde $appTxt1 build install" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
 
+
+cd ~/Downloads
+appTxt1="FlatCam PCB router"
+echo "" 2>&1 | tee -a $LOGFILE
+echo "Installeren: $appTxt1" 2>&1 | tee -a $LOGFILE
+git clone https://bitbucket.org/jpcgt/flatcam.git 2>&1 | tee -a $LOGFILE
+sudo mkdir /usr/local/share/applications/ 2>&1 | tee -a $LOGFILE
+sudo mv -f ./flatcam /usr/local/applications
+echo "" 2>&1 | tee -a $LOGFILE
+echo "Einde $appTxt1 build install" 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
 
 echo "* Install extras is afgerond. Je kunt nu herstarten." 2>&1 | tee -a $LOGFILE
 
