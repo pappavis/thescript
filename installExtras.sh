@@ -646,7 +646,7 @@ appTxt1="FlatCam PCB router"
 echo "" 2>&1 | tee -a $LOGFILE
 echo "Installeren: $appTxt1" 2>&1 | tee -a $LOGFILE
 
-for addonnodes in PyQt6  geos  spatialindex ; do
+for addonnodes in pyqt6  geos  spatialindex ; do
   echo " "
   echo " "
   echo "Installeren $appTxt1 vereisten: ${addonnodes}" 2>&1 | tee -a $LOGFILE
