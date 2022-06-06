@@ -458,11 +458,14 @@ rm -rf ,.libfdk-aac-dev_2.0.1-1_armhf.deb
 echo "**  OBS Studio build afgerond" 2>&1 | tee -a $LOGFILE
 echo "---------" 2>&1 | tee -a $LOGFILE
 
-#echo "Instellen Retropie" 2>&1 | tee -a $LOGFILE
-#cd ~/Downloads
-#git clone --depth=1 https://github.com/RetroPie/RetroPie-Setup.git 2>&1 | tee -a $LOGFILE
-#cd ./RetroPie-Setup
-#echo "\n\n\I\n" | sudo ./retropie_setup.sh 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
+echo "Instellen Retropie" 2>&1 | tee -a $LOGFILE
+cd ~/Downloads
+git clone --depth=1 https://github.com/RetroPie/RetroPie-Setup.git 2>&1 | tee -a $LOGFILE
+cd ./RetroPie-Setup
+echo "\n\n\I\n" | sudo ./retropie_setup.sh 2>&1 | tee -a $LOGFILE
+echo "Einde Retropie install" 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
 
 echo "" 2>&1 | tee -a $LOGFILE
 echo "Instellen Mega65.org emulatie" 2>&1 | tee -a $LOGFILE
