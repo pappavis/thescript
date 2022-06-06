@@ -109,7 +109,7 @@ done
 
 sudo service nodered restart
 
-for addonnodes in moment node-red-contrib-find-my-iphone node-red-contrib-ttn node-red-contrib-apple-find-me node-red-contrib-msnodesql   ; do 
+for addonnodes in moment node-red-contrib-find-my-iphone node-red-contrib-apple-find-me node-red-contrib-msnodesql   ; do 
 	echo "" 2>&1 | tee -a $LOGFILE
 	echo "Installing node \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
 	npm $NQUIET install --save ${addonnodes} 2>&1 | tee -a $LOGFILE
