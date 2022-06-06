@@ -647,7 +647,7 @@ echo "" 2>&1 | tee -a $LOGFILE
 echo "Installeren: $appTxt1" 2>&1 | tee -a $LOGFILE
 git clone https://bitbucket.org/jpcgt/flatcam.git 2>&1 | tee -a $LOGFILE
 sudo mkdir /usr/local/share/applications/ 2>&1 | tee -a $LOGFILE
-sudo mv -f ./flatcam /usr/local/applications
+sudo mv ./flatcam /usr/local/applications
 echo "" 2>&1 | tee -a $LOGFILE
 echo "Einde $appTxt1 build install" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
