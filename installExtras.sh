@@ -642,10 +642,9 @@ echo "" 2>&1 | tee -a $LOGFILE
 
 
 cd ~/Downloads
-appTxt1="FlatCam PCB router"
+appTxt1="FlatCam PCB router voor KiCAD"
 echo "" 2>&1 | tee -a $LOGFILE
 echo "Installeren: $appTxt1" 2>&1 | tee -a $LOGFILE
-
 for addonnodes in pyqt6  geos  spatialindex ; do
   echo " "
   echo " "
