@@ -645,9 +645,19 @@ cd ~/Downloads
 appTxt1="FlatCam PCB router"
 echo "" 2>&1 | tee -a $LOGFILE
 echo "Installeren: $appTxt1" 2>&1 | tee -a $LOGFILE
+
+for addonnodes in PyQt6  geos  spatialindex ; do
+  echo " "
+  echo " "
+  echo "Installeren $appTxt1 vereisten: ${addonnodes}" 2>&1 | tee -a $LOGFILE
+  pip install --upgrade  2>&1 | tee -a $LOGFILE
+  echo " "
+done
+
 git clone https://bitbucket.org/jpcgt/flatcam.git 2>&1 | tee -a $LOGFILE
 sudo mkdir /usr/local/share/applications/ 2>&1 | tee -a $LOGFILE
 sudo mv ./flatcam /usr/local/applications
+sudo ln -s /usr/local/applications/flatcam/flatcam /usr/local/bin/flatcam
 echo "" 2>&1 | tee -a $LOGFILE
 echo "Einde $appTxt1 build install" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
