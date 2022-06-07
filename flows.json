@@ -96,6 +96,28 @@
         "env": []
     },
     {
+        "id": "ef560dfa9aa5a337",
+        "type": "tab",
+        "label": "Telegram motivational quote",
+        "disabled": false,
+        "info": "ref --> https://flows.nodered.org/flow/642ee1a708d9cebeee964c7006e23020/in/RV7rLt9tjepZ\r\n",
+        "env": []
+    },
+    {
+        "id": "9cf3a6d.1104258",
+        "type": "tab",
+        "label": "Raspberry monitoring",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "9eb1d4a0df15e20d",
+        "type": "tab",
+        "label": "Raspberry monitoring",
+        "disabled": false,
+        "info": ""
+    },
+    {
         "id": "fb508433.7560a8",
         "type": "ui_group",
         "name": "p1mon",
@@ -689,6 +711,109 @@
         "type": "ui_tab",
         "name": "Home",
         "icon": "dashboard"
+    },
+    {
+        "id": "cbe50c39.f38f1",
+        "type": "ui_group",
+        "name": "Quote",
+        "tab": "27a5131.81170ec",
+        "order": 2,
+        "disp": true,
+        "width": 6,
+        "collapse": false
+    },
+    {
+        "id": "27a5131.81170ec",
+        "type": "ui_tab",
+        "name": "Motivation",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "662164b904dfacb5",
+        "type": "telegram bot",
+        "botname": "motivational quote",
+        "usernames": "",
+        "chatids": "",
+        "baseapiurl": "",
+        "updatemode": "polling",
+        "pollinterval": "300",
+        "usesocks": false,
+        "sockshost": "",
+        "socksport": "6667",
+        "socksusername": "anonymous",
+        "sockspassword": "",
+        "bothost": "",
+        "botpath": "",
+        "localbotport": "8443",
+        "publicbotport": "8443",
+        "privatekey": "",
+        "certificate": "",
+        "useselfsignedcertificate": false,
+        "sslterminated": false,
+        "verboselogging": false
+    },
+    {
+        "id": "ad4a1223.94ae8",
+        "type": "ui_tab",
+        "z": "9cf3a6d.1104258",
+        "name": "Raspbery PI (Control Panel)",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "9cb4bc4d.96552",
+        "type": "ui_group",
+        "name": "System",
+        "tab": "ad4a1223.94ae8",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "dd70abe0.14cb38",
+        "type": "ui_group",
+        "name": "OS",
+        "tab": "ad4a1223.94ae8",
+        "order": 5,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "14bc5267.4d798e",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "test.mosquitto.org",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "raspberry_do_gama_alive",
+        "birthQos": "0",
+        "birthRetain": "true",
+        "birthPayload": "Raspberry ativo",
+        "closeTopic": "",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "bc82ef1c680d36bd",
+        "type": "ui_tab",
+        "z": "9eb1d4a0df15e20d",
+        "name": "Raspbery PI (Control Panel)",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
     },
     {
         "id": "9c5b957f.fdcba8",
@@ -2138,7 +2263,7 @@
         "y": 220,
         "wires": [
             [
-                "f7353cc8.73fb18"
+                "fdd55aeacfc7809b"
             ]
         ]
     },
@@ -2161,6 +2286,56 @@
             [
                 "f7353cc8.73fb18"
             ]
+        ]
+    },
+    {
+        "id": "fdd55aeacfc7809b",
+        "type": "homekit-service",
+        "z": "eab7e4b1.f833c",
+        "isParent": "false",
+        "hostType": 0,
+        "bridge": "",
+        "accessoryId": "",
+        "parentService": "",
+        "name": "",
+        "serviceName": "",
+        "topic": "",
+        "filter": false,
+        "manufacturer": "NRCHKB",
+        "model": "1.4.3",
+        "serialNo": "Default Serial Number",
+        "firmwareRev": "1.4.3",
+        "hardwareRev": "1.4.3",
+        "softwareRev": "1.4.3",
+        "cameraConfigVideoProcessor": "ffmpeg",
+        "cameraConfigMaxStreams": 2,
+        "cameraConfigMaxWidth": 1280,
+        "cameraConfigMaxHeight": 720,
+        "cameraConfigMaxFPS": 10,
+        "cameraConfigMaxBitrate": 300,
+        "cameraConfigVideoCodec": "libx264",
+        "cameraConfigAudioCodec": "libfdk_aac",
+        "cameraConfigAudio": false,
+        "cameraConfigPacketSize": 1316,
+        "cameraConfigVerticalFlip": false,
+        "cameraConfigHorizontalFlip": false,
+        "cameraConfigMapVideo": "0:0",
+        "cameraConfigMapAudio": "0:1",
+        "cameraConfigVideoFilter": "scale=1280:720",
+        "cameraConfigAdditionalCommandLine": "-tune zerolatency",
+        "cameraConfigDebug": false,
+        "cameraConfigSnapshotOutput": "disabled",
+        "cameraConfigInterfaceName": "",
+        "characteristicProperties": "{}",
+        "waitForSetupMsg": false,
+        "outputs": 2,
+        "x": 540,
+        "y": 300,
+        "wires": [
+            [
+                "f7353cc8.73fb18"
+            ],
+            []
         ]
     },
     {
@@ -4116,6 +4291,1127 @@
         "outputs": 0,
         "x": 980,
         "y": 800,
+        "wires": []
+    },
+    {
+        "id": "877abdbd.80d6e",
+        "type": "comment",
+        "z": "ef560dfa9aa5a337",
+        "name": "Use an API to disply a motivational quote to the motivation tab",
+        "info": "",
+        "x": 300,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "f04fd779.cea4c8",
+        "type": "inject",
+        "z": "ef560dfa9aa5a337",
+        "name": "At 11:00am",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "00 11 * * *",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 120,
+        "wires": [
+            [
+                "b031a18e.59b03"
+            ]
+        ]
+    },
+    {
+        "id": "b031a18e.59b03",
+        "type": "http request",
+        "z": "ef560dfa9aa5a337",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://type.fit/api/quotes",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 310,
+        "y": 120,
+        "wires": [
+            [
+                "e6a4d14d.ce6a8"
+            ]
+        ]
+    },
+    {
+        "id": "e6a4d14d.ce6a8",
+        "type": "function",
+        "z": "ef560dfa9aa5a337",
+        "name": "",
+        "func": "msg.payload = msg.payload[getRndInteger(0,1642)];\nreturn msg;\n\n// this code gets a random interger\nfunction getRndInteger(min, max) {\n    return Math.floor(Math.random() * (max - min + 1) ) + min;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 460,
+        "y": 120,
+        "wires": [
+            [
+                "94bfd95f.2c89a8",
+                "88378938.731448",
+                "9c32d9e13266b55e"
+            ]
+        ]
+    },
+    {
+        "id": "94bfd95f.2c89a8",
+        "type": "ui_text",
+        "z": "ef560dfa9aa5a337",
+        "group": "cbe50c39.f38f1",
+        "order": 1,
+        "width": 6,
+        "height": 3,
+        "name": "Daily Quote from https://type.fit/api/quotes",
+        "label": "text",
+        "format": "{{msg.payload.text}}",
+        "layout": "col-center",
+        "x": 720,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "88378938.731448",
+        "type": "change",
+        "z": "ef560dfa9aa5a337",
+        "name": "set",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "_msgid",
+                "pt": "msg"
+            },
+            {
+                "t": "move",
+                "p": "payload.text",
+                "pt": "msg",
+                "to": "payload.content",
+                "tot": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "payload.author",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "topic",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "statusCode",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "headers",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "responseUrl",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "redirectList",
+                "pt": "msg"
+            },
+            {
+                "t": "delete",
+                "p": "responseCookies",
+                "pt": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload.chatId",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload.type",
+                "pt": "msg",
+                "to": "message",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 630,
+        "y": 80,
+        "wires": [
+            [
+                "fdd86dc2.a28f2"
+            ]
+        ]
+    },
+    {
+        "id": "fdd86dc2.a28f2",
+        "type": "telegram sender",
+        "z": "ef560dfa9aa5a337",
+        "name": "",
+        "bot": "662164b904dfacb5",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 790,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9c32d9e13266b55e",
+        "type": "debug",
+        "z": "ef560dfa9aa5a337",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "d4feb199.b898b",
+        "type": "ui_gauge",
+        "z": "9cf3a6d.1104258",
+        "name": "",
+        "group": "9cb4bc4d.96552",
+        "order": 1,
+        "width": "3",
+        "height": "3",
+        "gtype": "gage",
+        "title": "CPU Temperature",
+        "label": "C",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "35",
+        "seg2": "60",
+        "x": 683,
+        "y": 33,
+        "wires": []
+    },
+    {
+        "id": "c0682e5c.a4fc",
+        "type": "exec",
+        "z": "9cf3a6d.1104258",
+        "command": "vcgencmd measure_temp",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "",
+        "timer": "",
+        "name": "RPi Temp.",
+        "x": 325.2221908569336,
+        "y": 46.33333683013916,
+        "wires": [
+            [
+                "95ae4c48.9f606"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "2be04c82.d0af74",
+        "type": "inject",
+        "z": "9cf3a6d.1104258",
+        "name": "",
+        "repeat": "3",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 107.49996185302734,
+        "y": 46.805556297302246,
+        "wires": [
+            [
+                "c0682e5c.a4fc",
+                "92285ea6.f97a7",
+                "c0ffe68.afd6e18"
+            ]
+        ]
+    },
+    {
+        "id": "95ae4c48.9f606",
+        "type": "function",
+        "z": "9cf3a6d.1104258",
+        "name": "",
+        "func": "str = msg.payload\nmsg.payload = str.substring(5,9);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 471.888858795166,
+        "y": 33.00000190734863,
+        "wires": [
+            [
+                "d4feb199.b898b",
+                "4bae8072.e81c2"
+            ]
+        ]
+    },
+    {
+        "id": "f4592b30.2f0528",
+        "type": "ui_button",
+        "z": "9cf3a6d.1104258",
+        "name": "",
+        "group": "dd70abe0.14cb38",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Reboot",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 114.66669464111328,
+        "y": 330.0000696182251,
+        "wires": [
+            [
+                "cf3854e6.653878"
+            ]
+        ]
+    },
+    {
+        "id": "cf3854e6.653878",
+        "type": "exec",
+        "z": "9cf3a6d.1104258",
+        "command": "sudo reboot",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "",
+        "timer": "",
+        "name": "Reboot",
+        "x": 314.888916015625,
+        "y": 330.0000457763672,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "4b4a0861.092b28",
+        "type": "ui_button",
+        "z": "9cf3a6d.1104258",
+        "name": "",
+        "group": "dd70abe0.14cb38",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Shutdown",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "red",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 104.27777099609375,
+        "y": 386.47229862213135,
+        "wires": [
+            [
+                "4de9dba1.ed7854"
+            ]
+        ]
+    },
+    {
+        "id": "4de9dba1.ed7854",
+        "type": "exec",
+        "z": "9cf3a6d.1104258",
+        "command": "sudo shutdown -h now",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "",
+        "timer": "",
+        "name": "Shutdown",
+        "x": 324.1666564941406,
+        "y": 386.6944923400879,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "4bae8072.e81c2",
+        "type": "ui_chart",
+        "z": "9cf3a6d.1104258",
+        "name": "",
+        "group": "9cb4bc4d.96552",
+        "order": 5,
+        "width": "6",
+        "height": "4",
+        "label": "CPU Temperature",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "24",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "x": 683.9999389648438,
+        "y": 72.66667175292969,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "92285ea6.f97a7",
+        "type": "exec",
+        "z": "9cf3a6d.1104258",
+        "command": "top -d 0.5 -b -n2 | grep \"Cpu(s)\"|tail -n 1 | awk '{print $2 + $4}'",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "",
+        "timer": "",
+        "name": "CPU Load",
+        "x": 325.2221908569336,
+        "y": 126.33333683013916,
+        "wires": [
+            [
+                "404f06.1e77b0fc"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "c0ffe68.afd6e18",
+        "type": "exec",
+        "z": "9cf3a6d.1104258",
+        "command": "free | grep Mem | awk '{print 100*($4+$6+$7)/$2}'",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "",
+        "timer": "",
+        "name": "Free Memory",
+        "x": 325.2222099304199,
+        "y": 190.55557250976562,
+        "wires": [
+            [
+                "8cf70ed5.e49ec"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "404f06.1e77b0fc",
+        "type": "ui_gauge",
+        "z": "9cf3a6d.1104258",
+        "name": "",
+        "group": "9cb4bc4d.96552",
+        "order": 4,
+        "width": "3",
+        "height": "3",
+        "gtype": "gage",
+        "title": "CPU",
+        "label": "CPU",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 630,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "8cf70ed5.e49ec",
+        "type": "ui_gauge",
+        "z": "9cf3a6d.1104258",
+        "name": "",
+        "group": "9cb4bc4d.96552",
+        "order": 2,
+        "width": "3",
+        "height": "3",
+        "gtype": "gage",
+        "title": "Memory free",
+        "label": "%",
+        "format": "{{parseInt(value)}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 663.3333320617676,
+        "y": 176.55556392669678,
+        "wires": []
+    },
+    {
+        "id": "a508a5b7.89a128",
+        "type": "exec",
+        "z": "9cf3a6d.1104258",
+        "command": "df -h",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "",
+        "timer": "",
+        "name": "Disk Usage",
+        "x": 322.88884353637695,
+        "y": 258.2222442626953,
+        "wires": [
+            [
+                "a8dc2f34.5e32b"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "ad4498e0.e7c278",
+        "type": "ui_gauge",
+        "z": "9cf3a6d.1104258",
+        "name": "",
+        "group": "9cb4bc4d.96552",
+        "order": 3,
+        "width": "3",
+        "height": "3",
+        "gtype": "gage",
+        "title": "Disk Space",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 661.1110496520996,
+        "y": 244.88890743255615,
+        "wires": []
+    },
+    {
+        "id": "a8dc2f34.5e32b",
+        "type": "function",
+        "z": "9cf3a6d.1104258",
+        "name": "",
+        "func": "var re = /([0-9]{2})%/\nvar idx = msg.payload.search(re);\nvar str = msg.payload;\nif (idx >=0) {\n    str = msg.payload.substring(idx, idx + 2);\n}\nmsg.payload = str;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 470.66661071777344,
+        "y": 244.88890171051025,
+        "wires": [
+            [
+                "ad4498e0.e7c278"
+            ]
+        ]
+    },
+    {
+        "id": "5e6e69bb.0e1d38",
+        "type": "inject",
+        "z": "9cf3a6d.1104258",
+        "name": "",
+        "repeat": "60",
+        "crontab": "",
+        "once": true,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 122.88884353637695,
+        "y": 258.2222442626953,
+        "wires": [
+            [
+                "a508a5b7.89a128"
+            ]
+        ]
+    },
+    {
+        "id": "620c2ccf.7c7584",
+        "type": "ui_text",
+        "z": "9cf3a6d.1104258",
+        "group": "dd70abe0.14cb38",
+        "order": 2,
+        "width": "6",
+        "height": "2",
+        "name": "",
+        "label": "IP Address",
+        "format": "{{value.substring(0, value.indexOf(\" \"))}}",
+        "layout": "col-center",
+        "x": 661.555591583252,
+        "y": 430.8889102935791,
+        "wires": []
+    },
+    {
+        "id": "19fadb42.3d0c25",
+        "type": "inject",
+        "z": "9cf3a6d.1104258",
+        "name": "",
+        "repeat": "10",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 118.90821075439453,
+        "y": 445.567081451416,
+        "wires": [
+            [
+                "9cce8e0f.766f7"
+            ]
+        ]
+    },
+    {
+        "id": "9cce8e0f.766f7",
+        "type": "exec",
+        "z": "9cf3a6d.1104258",
+        "command": "hostname",
+        "addpay": false,
+        "append": "-I",
+        "useSpawn": "",
+        "timer": "",
+        "name": "Get Local IP",
+        "x": 323.4637641906738,
+        "y": 446.06709480285645,
+        "wires": [
+            [
+                "b1e5e669.f1fd48",
+                "620c2ccf.7c7584"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "b1e5e669.f1fd48",
+        "type": "mqtt out",
+        "z": "9cf3a6d.1104258",
+        "name": "Send IP thru MQTT",
+        "topic": "raspberrypi3_ip_gama",
+        "qos": "0",
+        "retain": "true",
+        "broker": "14bc5267.4d798e",
+        "x": 680.6859703063965,
+        "y": 380.34489250183105,
+        "wires": []
+    },
+    {
+        "id": "9d8decfc975f40d3",
+        "type": "ui_gauge",
+        "z": "9eb1d4a0df15e20d",
+        "name": "",
+        "group": "9cb4bc4d.96552",
+        "order": 1,
+        "width": "3",
+        "height": "3",
+        "gtype": "gage",
+        "title": "CPU Temperature",
+        "label": "C",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "35",
+        "seg2": "60",
+        "x": 683,
+        "y": 33,
+        "wires": []
+    },
+    {
+        "id": "dec2f42ccd879ada",
+        "type": "exec",
+        "z": "9eb1d4a0df15e20d",
+        "command": "vcgencmd measure_temp",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "",
+        "timer": "",
+        "name": "RPi Temp.",
+        "x": 325.2221908569336,
+        "y": 46.33333683013916,
+        "wires": [
+            [
+                "f66cabe687b4a773"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "702dae7d167bd43d",
+        "type": "inject",
+        "z": "9eb1d4a0df15e20d",
+        "name": "",
+        "repeat": "3",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 107.49996185302734,
+        "y": 46.805556297302246,
+        "wires": [
+            [
+                "dec2f42ccd879ada",
+                "9ab9eef39415453f",
+                "b4277c2083770fb8"
+            ]
+        ]
+    },
+    {
+        "id": "f66cabe687b4a773",
+        "type": "function",
+        "z": "9eb1d4a0df15e20d",
+        "name": "",
+        "func": "str = msg.payload\nmsg.payload = str.substring(5,9);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 471.888858795166,
+        "y": 33.00000190734863,
+        "wires": [
+            [
+                "9d8decfc975f40d3",
+                "bb0d2b49dc02f74f"
+            ]
+        ]
+    },
+    {
+        "id": "fc43b67c67e6ca84",
+        "type": "ui_button",
+        "z": "9eb1d4a0df15e20d",
+        "name": "",
+        "group": "dd70abe0.14cb38",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Reboot",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 114.66669464111328,
+        "y": 330.0000696182251,
+        "wires": [
+            [
+                "b006f5d3001a9d5a"
+            ]
+        ]
+    },
+    {
+        "id": "b006f5d3001a9d5a",
+        "type": "exec",
+        "z": "9eb1d4a0df15e20d",
+        "command": "sudo reboot",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "",
+        "timer": "",
+        "name": "Reboot",
+        "x": 314.888916015625,
+        "y": 330.0000457763672,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "e881d5fdd5a7287b",
+        "type": "ui_button",
+        "z": "9eb1d4a0df15e20d",
+        "name": "",
+        "group": "dd70abe0.14cb38",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Shutdown",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "red",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 104.27777099609375,
+        "y": 386.47229862213135,
+        "wires": [
+            [
+                "42ee785c50cef492"
+            ]
+        ]
+    },
+    {
+        "id": "42ee785c50cef492",
+        "type": "exec",
+        "z": "9eb1d4a0df15e20d",
+        "command": "sudo shutdown -h now",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "",
+        "timer": "",
+        "name": "Shutdown",
+        "x": 324.1666564941406,
+        "y": 386.6944923400879,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "bb0d2b49dc02f74f",
+        "type": "ui_chart",
+        "z": "9eb1d4a0df15e20d",
+        "name": "",
+        "group": "9cb4bc4d.96552",
+        "order": 5,
+        "width": "6",
+        "height": "4",
+        "label": "CPU Temperature",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "24",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "x": 683.9999389648438,
+        "y": 72.66667175292969,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9ab9eef39415453f",
+        "type": "exec",
+        "z": "9eb1d4a0df15e20d",
+        "command": "top -d 0.5 -b -n2 | grep \"Cpu(s)\"|tail -n 1 | awk '{print $2 + $4}'",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "",
+        "timer": "",
+        "name": "CPU Load",
+        "x": 325.2221908569336,
+        "y": 126.33333683013916,
+        "wires": [
+            [
+                "fff8c9af4019d147"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "b4277c2083770fb8",
+        "type": "exec",
+        "z": "9eb1d4a0df15e20d",
+        "command": "free | grep Mem | awk '{print 100*($4+$6+$7)/$2}'",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "",
+        "timer": "",
+        "name": "Free Memory",
+        "x": 325.2222099304199,
+        "y": 190.55557250976562,
+        "wires": [
+            [
+                "0d8c7f3d4ba800ad"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "fff8c9af4019d147",
+        "type": "ui_gauge",
+        "z": "9eb1d4a0df15e20d",
+        "name": "",
+        "group": "9cb4bc4d.96552",
+        "order": 4,
+        "width": "3",
+        "height": "3",
+        "gtype": "gage",
+        "title": "CPU",
+        "label": "CPU",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 645.111083984375,
+        "y": 114.11111450195312,
+        "wires": []
+    },
+    {
+        "id": "0d8c7f3d4ba800ad",
+        "type": "ui_gauge",
+        "z": "9eb1d4a0df15e20d",
+        "name": "",
+        "group": "9cb4bc4d.96552",
+        "order": 2,
+        "width": "3",
+        "height": "3",
+        "gtype": "gage",
+        "title": "Memory free",
+        "label": "%",
+        "format": "{{parseInt(value)}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 663.3333320617676,
+        "y": 176.55556392669678,
+        "wires": []
+    },
+    {
+        "id": "ef618325442d4dec",
+        "type": "exec",
+        "z": "9eb1d4a0df15e20d",
+        "command": "df -h",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "",
+        "timer": "",
+        "name": "Disk Usage",
+        "x": 322.88884353637695,
+        "y": 258.2222442626953,
+        "wires": [
+            [
+                "0a5614a7e1757b2d"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "1877d515f2de5677",
+        "type": "ui_gauge",
+        "z": "9eb1d4a0df15e20d",
+        "name": "",
+        "group": "9cb4bc4d.96552",
+        "order": 3,
+        "width": "3",
+        "height": "3",
+        "gtype": "gage",
+        "title": "Disk Space",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 661.1110496520996,
+        "y": 244.88890743255615,
+        "wires": []
+    },
+    {
+        "id": "0a5614a7e1757b2d",
+        "type": "function",
+        "z": "9eb1d4a0df15e20d",
+        "name": "",
+        "func": "var re = /([0-9]{2})%/\nvar idx = msg.payload.search(re);\nvar str = msg.payload;\nif (idx >=0) {\n    str = msg.payload.substring(idx, idx + 2);\n}\nmsg.payload = str;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 470.66661071777344,
+        "y": 244.88890171051025,
+        "wires": [
+            [
+                "1877d515f2de5677"
+            ]
+        ]
+    },
+    {
+        "id": "76414d795f31f08d",
+        "type": "inject",
+        "z": "9eb1d4a0df15e20d",
+        "name": "",
+        "repeat": "60",
+        "crontab": "",
+        "once": true,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 122.88884353637695,
+        "y": 258.2222442626953,
+        "wires": [
+            [
+                "ef618325442d4dec"
+            ]
+        ]
+    },
+    {
+        "id": "db6930dd87364bf0",
+        "type": "ui_text",
+        "z": "9eb1d4a0df15e20d",
+        "group": "dd70abe0.14cb38",
+        "order": 2,
+        "width": "6",
+        "height": "2",
+        "name": "",
+        "label": "IP Address",
+        "format": "{{value.substring(0, value.indexOf(\" \"))}}",
+        "layout": "col-center",
+        "x": 661.555591583252,
+        "y": 430.8889102935791,
+        "wires": []
+    },
+    {
+        "id": "cc43fc3102a7bfa3",
+        "type": "inject",
+        "z": "9eb1d4a0df15e20d",
+        "name": "",
+        "repeat": "10",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 118.90821075439453,
+        "y": 445.567081451416,
+        "wires": [
+            [
+                "81b45daa0523c462"
+            ]
+        ]
+    },
+    {
+        "id": "81b45daa0523c462",
+        "type": "exec",
+        "z": "9eb1d4a0df15e20d",
+        "command": "hostname",
+        "addpay": false,
+        "append": "-I",
+        "useSpawn": "",
+        "timer": "",
+        "name": "Get Local IP",
+        "x": 323.4637641906738,
+        "y": 446.06709480285645,
+        "wires": [
+            [
+                "2e21d2639001bdad",
+                "db6930dd87364bf0"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "2e21d2639001bdad",
+        "type": "mqtt out",
+        "z": "9eb1d4a0df15e20d",
+        "name": "Send IP thru MQTT",
+        "topic": "raspberrypi3_ip_gama",
+        "qos": "0",
+        "retain": "true",
+        "broker": "14bc5267.4d798e",
+        "x": 680.6859703063965,
+        "y": 380.34489250183105,
         "wires": []
     }
 ]
