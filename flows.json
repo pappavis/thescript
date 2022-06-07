@@ -14,13 +14,6 @@
         "info": ""
     },
     {
-        "id": "a64e0c32.c396f",
-        "type": "tab",
-        "label": "TTN_test",
-        "disabled": false,
-        "info": ""
-    },
-    {
         "id": "5ba46c1d.b961a4",
         "type": "tab",
         "label": "MaxInt_lichtkrant",
@@ -573,13 +566,6 @@
         "willPayload": ""
     },
     {
-        "id": "e57c1143.ae121",
-        "type": "ttn app",
-        "appId": "384976234897",
-        "accessKey": "ttn-account-v2.PNVnl3M3kMF0LKgqgfHv3IIVn-UVJfmBvdWF4gDaZB4",
-        "discovery": "discovery.thethingsnetwork.org:1900"
-    },
-    {
         "id": "e20e344371a2a87b",
         "type": "mqtt-broker",
         "name": "",
@@ -649,6 +635,20 @@
         "icon": "dashboard",
         "disabled": false,
         "hidden": false
+    },
+    {
+        "id": "c3394acacac5db6e",
+        "type": "firebird-database",
+        "host": "127.0.0.1",
+        "port": "3050",
+        "db": ""
+    },
+    {
+        "id": "e57c1143.ae121",
+        "type": "ttn app",
+        "appId": "384976234897",
+        "accessKey": "ttn-account-v2.PNVnl3M3kMF0LKgqgfHv3IIVn-UVJfmBvdWF4gDaZB4",
+        "discovery": "discovery.thethingsnetwork.org:1900"
     },
     {
         "id": "9c5b957f.fdcba8",
@@ -1473,105 +1473,6 @@
         "wires": [
             [
                 "4cb76ea8.a22a5"
-            ]
-        ]
-    },
-    {
-        "id": "e6f61d9b.d76cf",
-        "type": "ttn event",
-        "z": "a64e0c32.c396f",
-        "name": "",
-        "app": "e57c1143.ae121",
-        "dev_id": "m50_pro_mini_node1",
-        "event": "#",
-        "x": 140,
-        "y": 60,
-        "wires": [
-            [
-                "e2de1e80.3fa9e"
-            ]
-        ]
-    },
-    {
-        "id": "4439166a.2db398",
-        "type": "ttn uplink",
-        "z": "a64e0c32.c396f",
-        "name": "vogeldev2736452736",
-        "app": "e57c1143.ae121",
-        "dev_id": "vogeldev2736452736",
-        "field": "",
-        "x": 184.8333282470703,
-        "y": 143.66666412353516,
-        "wires": [
-            [
-                "e2de1e80.3fa9e"
-            ]
-        ]
-    },
-    {
-        "id": "e2de1e80.3fa9e",
-        "type": "debug",
-        "z": "a64e0c32.c396f",
-        "name": "",
-        "active": true,
-        "console": "false",
-        "complete": "false",
-        "x": 400.8333282470703,
-        "y": 58.666664123535156,
-        "wires": []
-    },
-    {
-        "id": "fb6542bb.08ccf",
-        "type": "ttn downlink",
-        "z": "a64e0c32.c396f",
-        "name": "vogeldev348976394876iuysoiudfy",
-        "app": "e57c1143.ae121",
-        "dev_id": "m50_pro_mini_node1",
-        "port": "",
-        "confirmed": false,
-        "schedule": "replace",
-        "x": 448.8333282470703,
-        "y": 320.66666412353516,
-        "wires": []
-    },
-    {
-        "id": "da519387.fb352",
-        "type": "inject",
-        "z": "a64e0c32.c396f",
-        "name": "",
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 117.83332824707031,
-        "y": 288.66666412353516,
-        "wires": [
-            [
-                "fb6542bb.08ccf"
-            ]
-        ]
-    },
-    {
-        "id": "352eed92.0a2882",
-        "type": "mqtt in",
-        "z": "a64e0c32.c396f",
-        "name": "",
-        "topic": "ttn/hallo",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "7003ac79.485954",
-        "nl": false,
-        "rap": false,
-        "rh": "0",
-        "inputs": 0,
-        "x": 90,
-        "y": 360,
-        "wires": [
-            [
-                "fb6542bb.08ccf",
-                "e2de1e80.3fa9e"
             ]
         ]
     },
