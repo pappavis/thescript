@@ -48,7 +48,7 @@ for addonnodes in pip setuptools wheel openpyxl pylzma py7zr o365 ttn qrcode pil
                   pyserial pyparsing pyzmail redmail gpiozero pytube pipx serial jinja2 esptool mpfshell virtualenv ffmpeg conda jupyter-notebook \
                   scikit-build pygame pymongo psycopg2-binary mysql-connector-python guizero imutils scikit-image bokeh django flask pygrabber \
                   msteamsconnector matplotlib numpy imutils pyodbc influxdb pysmb libopencv-dev opencv-python  git+https://github.com/pytube/pytube picamera djitellopy \
-		   osxphotos RPi.GPIO tox tflite tflite-runtime tflite_support PySimpleGUI libusb pyusb pdfkit python-dateutil pymysql python-vkontakte easyocr pygrabber imutils psycopg2 postgres firebirdsql ; do
+		   osxphotos RPi.GPIO tox tflite tflite-runtime tflite_support PySimpleGUI libusb pyusb pdfkit python-dateutil pymysql python-vkontakte easyocr pygrabber imutils psycopg2 postgres firebirdsql html2pdf ; do
 
     echo "" 2>&1 | tee -a $LOGFILE
     echo "Installeren python lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
@@ -64,6 +64,14 @@ for addonnodes in setuptools wheel scikit-build cmake mu-editor shortcut esptool
     echo "" 2>&1 | tee -a $LOGFILE
   done
 
+echo "Installeer voorvereisten van html2pdf" 2>&1 | tee -a $LOGFILE
+for addonnodes in xvfb xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic wkhtmltopdf ; do
+    echo "" 2>&1 | tee -a $LOGFILE
+    echo "Installeren html2pdf lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
+    sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
+    echo "" 2>&1 | tee -a $LOGFILE
+  done
+pip install html2pdf
 
 echo "Installeren Miniconda" 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
