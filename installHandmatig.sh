@@ -9,6 +9,7 @@ APP_DB_PASS="rider506"
 
 echo " " 2>&1 | tee -a $LOGFILE
 echo " " 2>&1 | tee -a $LOGFILE
+echo "installHandmatig.sh start" 2>&1 | tee -a $LOGFILE
 echo "Deze script moet je handmatig uitvoeren, gen backgroud taak.. dus niet: pizero$ nohup <<scriptnaam>.sh &  "
 echo " " 2>&1 | tee -a $LOGFILE
 
@@ -32,4 +33,9 @@ for addonnodes in  firebird-server postgresql  ; do
 done
 
 sudo mysql_secureinstallation
-sudo apt install -y phpmyadmin
+sudo apt-get install -y phpmyadmin 2>&1 | tee -a $LOGFILE
+sudo ln -s /usr/share/phpmyadmin /var/www/html
+
+echo " " 2>&1 | tee -a $LOGFILE
+echo " " 2>&1 | tee -a $LOGFILE
+echo "installHandmatig.sh afgerond" 2>&1 | tee -a $LOGFILE
