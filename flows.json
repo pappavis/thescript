@@ -80,6 +80,22 @@
         "env": []
     },
     {
+        "id": "95126d70a8834898",
+        "type": "tab",
+        "label": "Pi Camera Stills to Dashboard",
+        "disabled": false,
+        "info": "ref--> https://flows.nodered.org/flow/2b6c2f0d7a316f1a6831782d33a0d40c\r\n",
+        "env": []
+    },
+    {
+        "id": "d7baa1bd346d78d0",
+        "type": "tab",
+        "label": "node-red-contrib-image-output",
+        "disabled": false,
+        "info": "ref --> https://flows.nodered.org/node/node-red-contrib-image-output\r\n",
+        "env": []
+    },
+    {
         "id": "fb508433.7560a8",
         "type": "ui_group",
         "name": "p1mon",
@@ -350,21 +366,29 @@
     {
         "id": "a6a3041b.8ef2e8",
         "type": "mqtt-broker",
+        "name": "",
         "broker": "localhost",
         "port": "1883",
         "clientid": "admin@localhost",
+        "autoConnect": true,
         "usetls": false,
-        "compatmode": true,
+        "protocolVersion": "4",
         "keepalive": "60",
         "cleansession": true,
         "birthTopic": "",
         "birthQos": "0",
         "birthRetain": "false",
         "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closePayload": "",
+        "closeMsg": {},
         "willTopic": "",
         "willQos": "0",
         "willRetain": "false",
-        "willPayload": ""
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
     },
     {
         "id": "5b1e81cd.80a68",
@@ -649,6 +673,22 @@
         "appId": "384976234897",
         "accessKey": "ttn-account-v2.PNVnl3M3kMF0LKgqgfHv3IIVn-UVJfmBvdWF4gDaZB4",
         "discovery": "discovery.thethingsnetwork.org:1900"
+    },
+    {
+        "id": "c7a43587.2944e8",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "fbd536a.22bf9c8",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "fbd536a.22bf9c8",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard"
     },
     {
         "id": "9c5b957f.fdcba8",
@@ -1425,6 +1465,9 @@
         "type": "json",
         "z": "43f95fa6.1e9ed",
         "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
         "x": 336.0000228881836,
         "y": 83.66665840148926,
         "wires": [
@@ -1473,6 +1516,42 @@
         "wires": [
             [
                 "4cb76ea8.a22a5"
+            ]
+        ]
+    },
+    {
+        "id": "08b6083d52fc1775",
+        "type": "base64",
+        "z": "43f95fa6.1e9ed",
+        "name": "",
+        "action": "",
+        "property": "payload",
+        "x": 260,
+        "y": 40,
+        "wires": [
+            [
+                "b8145a34.4f46f8"
+            ]
+        ]
+    },
+    {
+        "id": "fbf7b6848b5989d3",
+        "type": "mqtt in",
+        "z": "43f95fa6.1e9ed",
+        "name": "",
+        "topic": "base64plaatje",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "a6a3041b.8ef2e8",
+        "nl": false,
+        "rap": false,
+        "rh": "0",
+        "inputs": 0,
+        "x": 90,
+        "y": 60,
+        "wires": [
+            [
+                "08b6083d52fc1775"
             ]
         ]
     },
@@ -3290,5 +3369,753 @@
                 "eac46804f3ab8ba6"
             ]
         ]
+    },
+    {
+        "id": "d0641d87c118146f",
+        "type": "inject",
+        "z": "95126d70a8834898",
+        "name": "picamera",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 140,
+        "y": 120,
+        "wires": [
+            [
+                "28bef92a0654a485"
+            ]
+        ]
+    },
+    {
+        "id": "28bef92a0654a485",
+        "type": "exec",
+        "z": "95126d70a8834898",
+        "command": "raspistill",
+        "addpay": false,
+        "append": "-w 320 -h 240 -o -",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 340,
+        "y": 120,
+        "wires": [
+            [
+                "9ef749d12b17fa5f"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "9ef749d12b17fa5f",
+        "type": "base64",
+        "z": "95126d70a8834898",
+        "name": "",
+        "action": "str",
+        "property": "payload",
+        "x": 560,
+        "y": 120,
+        "wires": [
+            [
+                "a6571dd1361c2c86"
+            ]
+        ]
+    },
+    {
+        "id": "a6571dd1361c2c86",
+        "type": "template",
+        "z": "95126d70a8834898",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<img width=\"320px\" height=\"240px\" src=\"data:image/jpg;base64,{{{payload}}}\">",
+        "output": "str",
+        "x": 760,
+        "y": 120,
+        "wires": [
+            [
+                "ae6dbd702b9c129c"
+            ]
+        ]
+    },
+    {
+        "id": "ae6dbd702b9c129c",
+        "type": "ui_template",
+        "z": "95126d70a8834898",
+        "group": "c7a43587.2944e8",
+        "name": "",
+        "order": 0,
+        "width": "6",
+        "height": "5",
+        "format": "<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "x": 940,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "46ffc819.b736f8",
+        "type": "http request",
+        "z": "d7baa1bd346d78d0",
+        "name": "",
+        "method": "GET",
+        "ret": "bin",
+        "paytoqs": false,
+        "url": "https://dummyimage.com/200x150/000/fff&text={{{payload}}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 570,
+        "y": 100,
+        "wires": [
+            [
+                "d603e881.2fa1c8"
+            ]
+        ]
+    },
+    {
+        "id": "25d928c1.708098",
+        "type": "inject",
+        "z": "d7baa1bd346d78d0",
+        "name": "bufferdIn",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 100,
+        "wires": [
+            [
+                "878f8ec1.effe4"
+            ]
+        ]
+    },
+    {
+        "id": "878f8ec1.effe4",
+        "type": "function",
+        "z": "d7baa1bd346d78d0",
+        "name": "image counter",
+        "func": "var count = flow.get(\"count\")||0;\n\ncount++;\n\nnode.status({fill:\"blue\",shape:\"ring\",text:\"Image \" + count});\n\n// Save the new value back to context so it will be available next time\nflow.set('count',count);\n\n// Update the message payload and return - no need to create a new msg\nmsg.payload = \"Image \" + count;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 380,
+        "y": 100,
+        "wires": [
+            [
+                "46ffc819.b736f8"
+            ]
+        ]
+    },
+    {
+        "id": "f26c9f732e043006",
+        "type": "http request",
+        "z": "d7baa1bd346d78d0",
+        "name": "",
+        "method": "GET",
+        "ret": "bin",
+        "paytoqs": false,
+        "url": "https://dummyimage.com/200x150/000/fff&text={{{payload}}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 570,
+        "y": 200,
+        "wires": [
+            [
+                "de6776af4c548661"
+            ]
+        ]
+    },
+    {
+        "id": "18d79a1dd3df8582",
+        "type": "inject",
+        "z": "d7baa1bd346d78d0",
+        "name": "Base64 input image",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 200,
+        "wires": [
+            [
+                "922d0cbcaddf5ea4"
+            ]
+        ]
+    },
+    {
+        "id": "922d0cbcaddf5ea4",
+        "type": "function",
+        "z": "d7baa1bd346d78d0",
+        "name": "image counter",
+        "func": "var count = flow.get(\"count\")||0;\n\ncount++;\n\nnode.status({fill:\"blue\",shape:\"ring\",text:\"Image \" + count});\n\n// Save the new value back to context so it will be available next time\nflow.set('count',count);\n\n// Update the message payload and return - no need to create a new msg\nmsg.payload = \"Image \" + count;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 380,
+        "y": 200,
+        "wires": [
+            [
+                "f26c9f732e043006"
+            ]
+        ]
+    },
+    {
+        "id": "de6776af4c548661",
+        "type": "base64",
+        "z": "d7baa1bd346d78d0",
+        "name": "",
+        "action": "str",
+        "property": "payload",
+        "x": 740,
+        "y": 200,
+        "wires": [
+            [
+                "17cc90f4fef90724"
+            ]
+        ]
+    },
+    {
+        "id": "d603e881.2fa1c8",
+        "type": "image",
+        "z": "d7baa1bd346d78d0",
+        "name": "",
+        "width": 160,
+        "data": "payload",
+        "dataType": "msg",
+        "thumbnail": true,
+        "active": true,
+        "outputs": 0,
+        "x": 760,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "17cc90f4fef90724",
+        "type": "image",
+        "z": "d7baa1bd346d78d0",
+        "name": "",
+        "width": 160,
+        "data": "payload",
+        "dataType": "msg",
+        "thumbnail": true,
+        "active": true,
+        "outputs": 0,
+        "x": 920,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "acae4788.db10e8",
+        "type": "http request",
+        "z": "d7baa1bd346d78d0",
+        "name": "",
+        "method": "GET",
+        "ret": "bin",
+        "paytoqs": false,
+        "url": "https://dummyimage.com/200x150/000/fff&text={{{payload}}}.jpg",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 610,
+        "y": 520,
+        "wires": [
+            [
+                "b548876a.e2f8b8"
+            ]
+        ]
+    },
+    {
+        "id": "8ff5f74b.d2efb8",
+        "type": "inject",
+        "z": "d7baa1bd346d78d0",
+        "name": "HideImage",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 520,
+        "wires": [
+            [
+                "ea222193.08df9"
+            ]
+        ]
+    },
+    {
+        "id": "ea222193.08df9",
+        "type": "function",
+        "z": "d7baa1bd346d78d0",
+        "name": "image counter",
+        "func": "var count = flow.get(\"count\")||0;\n\ncount++;\n\nnode.status({fill:\"blue\",shape:\"ring\",text:\"Image \" + count});\n\n// Save the new value back to context so it will be available next time\nflow.set('count',count);\n\n// Update the message payload and return - no need to create a new msg\nmsg.payload = \"Image \" + count;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 440,
+        "y": 520,
+        "wires": [
+            [
+                "acae4788.db10e8"
+            ]
+        ]
+    },
+    {
+        "id": "670b37d4.e67658",
+        "type": "inject",
+        "z": "d7baa1bd346d78d0",
+        "name": "Msg without payload",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 510,
+        "y": 420,
+        "wires": [
+            [
+                "6d9c5aa.2d5e6a4"
+            ]
+        ]
+    },
+    {
+        "id": "b548876a.e2f8b8",
+        "type": "base64",
+        "z": "d7baa1bd346d78d0",
+        "name": "",
+        "action": "",
+        "property": "payload",
+        "x": 760,
+        "y": 520,
+        "wires": [
+            [
+                "f8d56b3b.3bb1f8"
+            ]
+        ]
+    },
+    {
+        "id": "6d9c5aa.2d5e6a4",
+        "type": "change",
+        "z": "d7baa1bd346d78d0",
+        "name": "",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 730,
+        "y": 420,
+        "wires": [
+            [
+                "f8d56b3b.3bb1f8"
+            ]
+        ]
+    },
+    {
+        "id": "636d9da2.959fb4",
+        "type": "inject",
+        "z": "d7baa1bd346d78d0",
+        "name": "Msg with empty string",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 500,
+        "y": 460,
+        "wires": [
+            [
+                "6dce2d91.6158f4"
+            ]
+        ]
+    },
+    {
+        "id": "c6c47147.1972a",
+        "type": "inject",
+        "z": "d7baa1bd346d78d0",
+        "name": "Msg with null value",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 510,
+        "y": 380,
+        "wires": [
+            [
+                "d21096f2.632ed8"
+            ]
+        ]
+    },
+    {
+        "id": "6dce2d91.6158f4",
+        "type": "change",
+        "z": "d7baa1bd346d78d0",
+        "name": "msg.payload = \"\"",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 730,
+        "y": 460,
+        "wires": [
+            [
+                "f8d56b3b.3bb1f8"
+            ]
+        ]
+    },
+    {
+        "id": "d21096f2.632ed8",
+        "type": "function",
+        "z": "d7baa1bd346d78d0",
+        "name": "msg.payload = null",
+        "func": "msg.payload = null;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 730,
+        "y": 380,
+        "wires": [
+            [
+                "f8d56b3b.3bb1f8"
+            ]
+        ]
+    },
+    {
+        "id": "b99d140c.ce4448",
+        "type": "comment",
+        "z": "d7baa1bd346d78d0",
+        "name": "Multiple ways to hide the preview image:",
+        "info": "",
+        "x": 560,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "f8d56b3b.3bb1f8",
+        "type": "image",
+        "z": "d7baa1bd346d78d0",
+        "name": "",
+        "width": 160,
+        "data": "payload",
+        "dataType": "msg",
+        "thumbnail": false,
+        "active": true,
+        "outputs": 0,
+        "x": 960,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "bcbc1662d375b6b3",
+        "type": "http request",
+        "z": "d7baa1bd346d78d0",
+        "name": "",
+        "method": "GET",
+        "ret": "bin",
+        "paytoqs": false,
+        "url": "https://dummyimage.com/200x150/000/fff&text={{{payload}}}.jpg",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 630,
+        "y": 800,
+        "wires": [
+            [
+                "47cd870a5eee7456"
+            ]
+        ]
+    },
+    {
+        "id": "0c5f75f8cedb9017",
+        "type": "inject",
+        "z": "d7baa1bd346d78d0",
+        "name": "JIMP image preview",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 250,
+        "y": 800,
+        "wires": [
+            [
+                "6d00fd5cf8ab6bfd"
+            ]
+        ]
+    },
+    {
+        "id": "6d00fd5cf8ab6bfd",
+        "type": "function",
+        "z": "d7baa1bd346d78d0",
+        "name": "image counter",
+        "func": "var count = flow.get(\"count\")||0;\n\ncount++;\n\nnode.status({fill:\"blue\",shape:\"ring\",text:\"Image \" + count});\n\n// Save the new value back to context so it will be available next time\nflow.set('count',count);\n\n// Update the message payload and return - no need to create a new msg\nmsg.payload = \"Image \" + count;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 460,
+        "y": 800,
+        "wires": [
+            [
+                "bcbc1662d375b6b3"
+            ]
+        ]
+    },
+    {
+        "id": "93efcd3e9b832ef6",
+        "type": "inject",
+        "z": "d7baa1bd346d78d0",
+        "name": "Msg without payload",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 530,
+        "y": 700,
+        "wires": [
+            [
+                "5c27d01044ce32e1"
+            ]
+        ]
+    },
+    {
+        "id": "47cd870a5eee7456",
+        "type": "base64",
+        "z": "d7baa1bd346d78d0",
+        "name": "",
+        "action": "",
+        "property": "payload",
+        "x": 780,
+        "y": 800,
+        "wires": [
+            [
+                "3a25e24de74df20b"
+            ]
+        ]
+    },
+    {
+        "id": "5c27d01044ce32e1",
+        "type": "change",
+        "z": "d7baa1bd346d78d0",
+        "name": "",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 750,
+        "y": 700,
+        "wires": [
+            [
+                "3a25e24de74df20b"
+            ]
+        ]
+    },
+    {
+        "id": "4693ff4b6974f10f",
+        "type": "inject",
+        "z": "d7baa1bd346d78d0",
+        "name": "Msg with empty string",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 520,
+        "y": 740,
+        "wires": [
+            [
+                "0166304e74e018ef"
+            ]
+        ]
+    },
+    {
+        "id": "32d321605244fc89",
+        "type": "inject",
+        "z": "d7baa1bd346d78d0",
+        "name": "Msg with null value",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 530,
+        "y": 660,
+        "wires": [
+            [
+                "f3e6a785590e41e4"
+            ]
+        ]
+    },
+    {
+        "id": "0166304e74e018ef",
+        "type": "change",
+        "z": "d7baa1bd346d78d0",
+        "name": "msg.payload = \"\"",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 750,
+        "y": 740,
+        "wires": [
+            [
+                "3a25e24de74df20b"
+            ]
+        ]
+    },
+    {
+        "id": "f3e6a785590e41e4",
+        "type": "function",
+        "z": "d7baa1bd346d78d0",
+        "name": "msg.payload = null",
+        "func": "msg.payload = null;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 750,
+        "y": 660,
+        "wires": [
+            [
+                "3a25e24de74df20b"
+            ]
+        ]
+    },
+    {
+        "id": "0319c0048627f29e",
+        "type": "comment",
+        "z": "d7baa1bd346d78d0",
+        "name": "Multiple ways to hide the preview image:",
+        "info": "",
+        "x": 580,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "3a25e24de74df20b",
+        "type": "image",
+        "z": "d7baa1bd346d78d0",
+        "name": "",
+        "width": 160,
+        "data": "payload",
+        "dataType": "msg",
+        "thumbnail": false,
+        "active": true,
+        "outputs": 0,
+        "x": 980,
+        "y": 800,
+        "wires": []
     }
 ]
