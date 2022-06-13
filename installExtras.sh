@@ -256,6 +256,7 @@ sudo mv ./teamspeak3-server_linux_x86 /usr/local/share
 sudo touch /usr/local/share/teamspeak3-server_linux_x86/.ts3server_license_accepted
 sudo service teamspeak restart
 ## ./ts3server  2>&1 & | tee -a $LOGFILE
+sudo rm -rf ./teamspeak3-server_linux_x86-3.13.3.tar.bz2
 
 printstatus "Installeren nukkit Minecraft lokale server" 2>&1 | tee -a $LOGFILE
 sudo apt install -y default-jdk 2>&1 | tee -a $LOGFILE
@@ -637,6 +638,23 @@ mkdir ./build
 cd ./build
 cmake .. 2>&1 | tee -a $LOGFILE
 make 2>&1 | tee -a $LOGFILE
+echo "Einde $appTxt1 build install" 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
+
+cd ~/Downloads
+appTxt1="wordpress"
+echo "" 2>&1 | tee -a $LOGFILE
+echo "Installeren: $appTxt1" 2>&1 | tee -a $LOGFILE
+sudo mkdir /var/www/html/sites
+wget https://nl.wordpress.org/latest-nl_NL.zip 2>&1 | tee -a $LOGFILE
+7z x ./latest-nl_NL.zip
+sudo mkdir /var/www/html/sites
+sudo mkdir /var/www/html/sites/wordpress_test
+sudo mv ./wordpress/* /var/www/html/sites/wordpress_test
+sudo mv /var/www/html/sites/wordpress /var/www/html/sites/wordpress_test
+sudo chown www-data:www-data -R /var/www/html/sites
+rm -rf ./wordpress*
+rm -rf ./latest-nl_NL.zip
 echo "Einde $appTxt1 build install" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
 
