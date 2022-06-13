@@ -1,4 +1,4 @@
-#!/home/pi/venv/venv3.7/bin/python
+#!/home/pi/venv/venv/bin/python
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText

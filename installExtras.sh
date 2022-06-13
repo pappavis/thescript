@@ -261,7 +261,7 @@ printstatus "Installeren nukkit Minecraft lokale server" 2>&1 | tee -a $LOGFILE
 sudo apt install -y default-jdk 2>&1 | tee -a $LOGFILE
 mkdir ~/Downloads
 cd ~/Downloads
-wget https://raw.githubusercontent.com/pappavis/thescript/master/nukkitminecraft.service 2>&1 | tee -a $LOGFILE
+wget https://raw.githubusercontent.com/pappavis/thescript/master/services/nukkitminecraft.service 2>&1 | tee -a $LOGFILE
 sudo mv ./nukkitminecraft.service /etc/systemd/system
 sudo systemctl enable nukkitminecraft.service
 cd /usr/local/bin
