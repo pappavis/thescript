@@ -12,11 +12,8 @@ for addonnodes in git autoconf build-essential gperf bison flex texinfo libtool 
 done
 
 MPDLDIR=~/Downloads/micropython
+cd ~/Downloads
 
-mkdir $MPDLDIR
-cd $MPDLDIR
-mkdir modules
-mkdir ./sqlite
 git clone https://github.com/micropython/micropython.git 2>&1 | tee -a $LOGFILE
 cd ./modules
 git clone https://github.com/spatialdude/usqlite.git 2>&1 | tee -a $LOGFILE
@@ -25,6 +22,11 @@ cd $MPDLDIR
 git pull
 cd ./mpy-cross
 make 2>&1 | tee -a $LOGFILE
+
+mkdir $MPDLDIR
+cd $MPDLDIR
+mkdir modules
+mkdir ./sqlite
 
 cd  $MPDLDIR/micropython/ports/unix/
 make submodules 2>&1 | tee -a $LOGFILE
