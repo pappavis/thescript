@@ -28,7 +28,7 @@ cd $MPDLDIR
 mkdir modules
 mkdir ./sqlite
 
-cd  $MPDLDIR/micropython/ports/unix/
+cd  $MPDLDIR/ports/unix/
 make submodules 2>&1 | tee -a $LOGFILE
 make clean 2>&1 | tee -a $LOGFILE
 make axtls 2>&1 | tee -a $LOGFILE
