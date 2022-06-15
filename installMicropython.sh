@@ -118,9 +118,12 @@ echo "" 2>&1 | tee -a $LOGFILE
 mkdir ~/.node-red 2>&1 | tee -a $LOGFILE
 cd ~/.node-red
 npm install --save micropython 2>&1 | tee -a $LOGFILE
+sudo mkdir /var/www/html/apps
 sudo mkdir /var/www/html/static
 sudo mkdir /var/www/html/static/js
-sudo cp -v ./node_modules/micropython/lib/firmware.wasm /var/www/html/static/js
+sudo cp -v ./node_modules/micropython/lib/firmware.wasm /var/www/html/static/js 2>&1 | tee -a $LOGFILE
+sudo cp -v ~/Downloads/thescript/demo/micropython_in_browser.php /var/www/html/apps 2>&1 | tee -a $LOGFILE
+sudo chown www-data:www-data -R /var/www/html/ 2>&1 | tee -a $LOGFILE
 
 #rm -rf ~/Downloads/modules 2>&1 | tee -a $LOGFILE
 #rm -rf ~/Downloads/sqlite 2>&1 | tee -a $LOGFILE
