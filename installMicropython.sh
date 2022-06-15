@@ -80,6 +80,14 @@ make deploy 2>&1 | tee -a $LOGFILE
 echo "micropython esp8266 versie compile afgerond" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
 
+
+echo "Micropython bouwen port: stm32" 2>&1 | tee -a $LOGFILE
+cd $MPDLDIR/ports/stm32
+make submodules 2>&1 | tee -a $LOGFILE
+make deploy 2>&1 | tee -a $LOGFILE
+echo "micropython stm32 versie compile afgerond" 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
+
 echo "Micropython bouwen port: qemu-arm" 2>&1 | tee -a $LOGFILE
 cd $MPDLDIR/ports/qemu-arm
 make submodules 2>&1 | tee -a $LOGFILE
@@ -107,12 +115,21 @@ cp ./micropython.js ~/Downloads
 echo "micropython javascript versie compile afgerond" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
 
+mkdir ~/.node-red 2>&1 | tee -a $LOGFILE
+cd ~/.node-red
+npm install --save micropython 2>&1 | tee -a $LOGFILE
+sudo mkdir /var/www/html/static
+sudo mkdir /var/www/html/static/js
+sudo cp -v ./node_modules/micropython/lib/firmware.wasm /var/www/html/static/js
+
 #rm -rf ~/Downloads/modules 2>&1 | tee -a $LOGFILE
 #rm -rf ~/Downloads/sqlite 2>&1 | tee -a $LOGFILE
 #rm -rf $MPDLDIR 2>&1 | tee -a $LOGFILE
 
 rm -rf $MPDLDIR 2>&1 | tee -a $LOGFILE
 
+
 echo "" 2>&1 | tee -a $LOGFILE
 echo "EINDE micropython $(micropython -V) module install $(date)" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
+cd ~/Downloads
