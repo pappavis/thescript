@@ -48,41 +48,41 @@ for addonnodes in micropython-urequests micropython-socket micropython-machine m
 done
 
 echo "Micropython bouwen port: windows" 2>&1 | tee -a $LOGFILE
-cd $MPDLDIR/micropython/ports/windows
+cd $MPDLDIR/ports/windows
 make -C ../../mpy-cross 2>&1 | tee -a $LOGFILE
 make CROSS_COMPILE=i686-w64-mingw32- 2>&1 | tee -a $LOGFILE
 cp -v ./micropython.exe ~/Downloads 2>&1 | tee -a $LOGFILE
 
 echo "Micropython bouwen port: esp32" 2>&1 | tee -a $LOGFILE
-cd $MPDLDIR/micropython/ports/esp32
+cd $MPDLDIR/ports/esp32
 make submodules 2>&1 | tee -a $LOGFILE
 make 2>&1 | tee -a $LOGFILE
 make erase 2>&1 | tee -a $LOGFILE
 make deploy 2>&1 | tee -a $LOGFILE
 
 echo "Micropython bouwen port: esp8266" 2>&1 | tee -a $LOGFILE
-cd $MPDLDIR/micropython/ports/esp8266
+cd $MPDLDIR/ports/esp8266
 make submodules 2>&1 | tee -a $LOGFILE
 make 2>&1 | tee -a $LOGFILE
 make erase 2>&1 | tee -a $LOGFILE
 make deploy 2>&1 | tee -a $LOGFILE
 
 echo "Micropython bouwen port: qemu-arm" 2>&1 | tee -a $LOGFILE
-cd $MPDLDIR/micropython/ports/qemu-arm
+cd $MPDLDIR/ports/qemu-arm
 make submodules 2>&1 | tee -a $LOGFILE
 make -f Makefile.test test 2>&1 | tee -a $LOGFILE
 make erase 2>&1 | tee -a $LOGFILE
 make deploy 2>&1 | tee -a $LOGFILE
 
 echo "Micropython bouwen port: rp2" 2>&1 | tee -a $LOGFILE
-cd $MPDLDIR/micropython/ports/rp2
+cd $MPDLDIR/ports/rp2
 make submodules 2>&1 | tee -a $LOGFILE
 make clean  2>&1 | tee -a $LOGFILE
 make  2>&1 | tee -a $LOGFILE
 #make USER_C_MODULES=$MPDLDIR/ports/pico/modules/micropython.cmake  2>&1 | tee -a $LOGFILE
 
 echo "Micropython bouwen port: Javascript" 2>&1 | tee -a $LOGFILE
-cd $MPDLDIR/micropython/ports/javascript
+cd $MPDLDIR/ports/javascript
 make submodules 2>&1 | tee -a $LOGFILE
 make 2>&1 | tee -a $LOGFILE
 make test 2>&1 | tee -a $LOGFILE
