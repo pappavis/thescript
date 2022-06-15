@@ -29,10 +29,11 @@ mkdir modules
 mkdir ./sqlite
 
 cd  $MPDLDIR/ports/unix/
-make submodules 2>&1 | tee -a $LOGFILE
 make clean 2>&1 | tee -a $LOGFILE
+make submodules 2>&1 | tee -a $LOGFILE
 make axtls 2>&1 | tee -a $LOGFILE
 make USER_C_MODULES=$MPDLDIR/modules 2>&1 | tee -a $LOGFILE
+make 2>&1 | tee -a $LOGFILE
 #make   2>&1 | tee -a $LOGFILE
 #sudo ln -s $MPDLDIR/ports/unix/micropython /usr/local/bin/micropython
 sudo rm /usr/local/bin/micropython
