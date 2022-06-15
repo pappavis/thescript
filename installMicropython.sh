@@ -38,8 +38,14 @@ make 2>&1 | tee -a $LOGFILE
 #sudo ln -s $MPDLDIR/ports/unix/micropython /usr/local/bin/micropython
 sudo rm /usr/local/bin/micropython
 sudo cp -v $MPDLDIR/ports/unix/micropython /usr/local/bin/micropython 2>&1 | tee -a $LOGFILE
+make test 2>&1 | tee -a $LOGFILE
+micropython -m upip install micropython-pystone 2>&1 | tee -a $LOGFILE
+micropython -m pystone 2>&1 | tee -a $LOGFILE
+echo "micropython UNIX versie compile afgerond" 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
 
-echo "START micropython module intstall" 2>&1 | tee -a $LOGFILE
+echo "START micropython module install" 2>&1 | tee -a $LOGFILE
 for addonnodes in micropython-urequests micropython-socket micropython-machine micropython-os.path micropython-umqtt.robust micropython-pwd micropython-smtplib ; do
   echo " "
   echo " "
@@ -60,6 +66,9 @@ make submodules 2>&1 | tee -a $LOGFILE
 make 2>&1 | tee -a $LOGFILE
 make erase 2>&1 | tee -a $LOGFILE
 make deploy 2>&1 | tee -a $LOGFILE
+echo "micropython esp32 versie compile afgerond" 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
 
 echo "Micropython bouwen port: esp8266" 2>&1 | tee -a $LOGFILE
 cd $MPDLDIR/ports/esp8266
@@ -67,6 +76,8 @@ make submodules 2>&1 | tee -a $LOGFILE
 make 2>&1 | tee -a $LOGFILE
 make erase 2>&1 | tee -a $LOGFILE
 make deploy 2>&1 | tee -a $LOGFILE
+echo "micropython esp8266 versie compile afgerond" 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
 
 echo "Micropython bouwen port: qemu-arm" 2>&1 | tee -a $LOGFILE
 cd $MPDLDIR/ports/qemu-arm
@@ -74,6 +85,8 @@ make submodules 2>&1 | tee -a $LOGFILE
 make -f Makefile.test test 2>&1 | tee -a $LOGFILE
 make erase 2>&1 | tee -a $LOGFILE
 make deploy 2>&1 | tee -a $LOGFILE
+echo "micropython qemu-arm versie compile afgerond" 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
 
 echo "Micropython bouwen port: rp2" 2>&1 | tee -a $LOGFILE
 cd $MPDLDIR/ports/rp2
@@ -81,6 +94,8 @@ make submodules 2>&1 | tee -a $LOGFILE
 make clean  2>&1 | tee -a $LOGFILE
 make  2>&1 | tee -a $LOGFILE
 #make USER_C_MODULES=$MPDLDIR/ports/pico/modules/micropython.cmake  2>&1 | tee -a $LOGFILE
+echo "micropython rp2 versie compile afgerond" 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
 
 echo "Micropython bouwen port: Javascript" 2>&1 | tee -a $LOGFILE
 cd $MPDLDIR/ports/javascript
@@ -88,6 +103,8 @@ make submodules 2>&1 | tee -a $LOGFILE
 make 2>&1 | tee -a $LOGFILE
 make test 2>&1 | tee -a $LOGFILE
 cp ./micropython.js ~/Downloads
+echo "micropython javascript versie compile afgerond" 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
 
 #rm -rf ~/Downloads/modules 2>&1 | tee -a $LOGFILE
 #rm -rf ~/Downloads/sqlite 2>&1 | tee -a $LOGFILE
