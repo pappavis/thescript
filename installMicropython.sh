@@ -32,6 +32,7 @@ cd  $MPDLDIR/ports/unix/
 make clean 2>&1 | tee -a $LOGFILE
 make submodules 2>&1 | tee -a $LOGFILE
 make axtls 2>&1 | tee -a $LOGFILE
+make deplibs
 make USER_C_MODULES=$MPDLDIR/modules 2>&1 | tee -a $LOGFILE
 make 2>&1 | tee -a $LOGFILE
 #make   2>&1 | tee -a $LOGFILE
