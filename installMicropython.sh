@@ -110,6 +110,8 @@ echo "" 2>&1 | tee -a $LOGFILE
 #rm -rf ~/Downloads/sqlite 2>&1 | tee -a $LOGFILE
 #rm -rf $MPDLDIR 2>&1 | tee -a $LOGFILE
 
+rm -rf $MPDLDIR 2>&1 | tee -a $LOGFILE
+
 echo "" 2>&1 | tee -a $LOGFILE
-echo "EINDE micropython $(micropython -V) module install" 2>&1 | tee -a $LOGFILE
+echo "EINDE micropython $(micropython -V) module install $(date)" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
