@@ -36,7 +36,7 @@ make USER_C_MODULES=$MPDLDIR/modules 2>&1 | tee -a $LOGFILE
 #make   2>&1 | tee -a $LOGFILE
 #sudo ln -s $MPDLDIR/ports/unix/micropython /usr/local/bin/micropython
 sudo rm /usr/local/bin/micropython
-sudo cp -v $MPDLDIR/micropython/ports/unix/micropython /usr/local/bin/micropython 2>&1 | tee -a $LOGFILE
+sudo cp -v $MPDLDIR/ports/unix/micropython /usr/local/bin/micropython 2>&1 | tee -a $LOGFILE
 
 echo "START micropython module intstall" 2>&1 | tee -a $LOGFILE
 for addonnodes in micropython-urequests micropython-socket micropython-machine micropython-os.path micropython-umqtt.robust micropython-pwd micropython-smtplib ; do
