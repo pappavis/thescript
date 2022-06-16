@@ -13,11 +13,15 @@ done
 
 MPDLDIR=~/Downloads/micropython
 cd ~/Downloads
-
 git clone https://github.com/micropython/micropython.git 2>&1 | tee -a $LOGFILE
+cd $MPDLDIR
+mkdir ./modules
+mkdir ./sqlite
+
 cd ./modules
 git clone https://github.com/spatialdude/usqlite.git 2>&1 | tee -a $LOGFILE
 git pull
+
 cd $MPDLDIR
 git pull
 cd ./mpy-cross
