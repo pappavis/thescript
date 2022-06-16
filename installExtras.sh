@@ -695,3 +695,20 @@ sudo mv  ./BIPES /var/www/html/apps
 echo "Einde $appTxt1 build install" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
+
+
+cd ~/Downloads
+appTxt1="Freeboard online data analyse omgeving"
+echo "" 2>&1 | tee -a $LOGFILE
+echo "Installeren: $appTxt1" 2>&1 | tee -a $LOGFILE
+sudo npm install -g grunt 2>&1 | tee -a $LOGFILE
+git clone https://github.com/BIPES/freeboard 2>&1 | tee -a $LOGFILE
+cd ./freeboard
+npm install 2>&1 | tee -a $LOGFILE
+grunt 2>&1 | tee -a $LOGFILE
+sudo mkdir /var/www/html/apps
+cd ~/Downloads
+sudo mv  ./freeboard /var/www/html/apps
+echo "Einde $appTxt1 build install" 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
