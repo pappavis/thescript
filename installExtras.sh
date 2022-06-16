@@ -4,6 +4,10 @@ _pwd=$(pwd)
 LOGFILE=$HOME/logs/installExtras-`date +%Y-%m-%d_%Hh%Mm`.log
 AQUIET=""
 
+echo "" 2>&1 | tee -a $LOGFILE
+echo "START installExtras.sh $(date)" 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
+
 mkdir ~/logs
 git pull
 cd ~/Downloads
@@ -713,3 +717,13 @@ echo "Einde $appTxt1 build install" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
 
+
+echo "install micropython Webrepl website" 2>&1 | tee -a $LOGFILE
+git clone https://github.com/micropython/webrepl 2>&1 | tee -a $LOGFILE
+sudo mkdir /var/www/html/apps
+sudo cp -r -v ./webrepl /var/www/html/apps 2>&1 | tee -a $LOGFILE
+sudo cp /var/www/html/apps/micropython_webrepl/webrepl.html /var/www/html/apps/micropython_webrepl/index.php 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
+
+echo "EINDE installExtras.sh $(date)" 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
