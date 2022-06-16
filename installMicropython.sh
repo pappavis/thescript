@@ -47,7 +47,7 @@ echo "" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
 
 echo "START micropython module install" 2>&1 | tee -a $LOGFILE
-for addonnodes in micropython-urequests micropython-socket micropython-machine micropython-os.path micropython-umqtt.robust micropython-pwd micropython-smtplib ; do
+for addonnodes in micropython-urequests micropython-socket micropython-machine micropython-os.path micropython-umqtt.robust micropython-pwd micropython-smtplib urequests  micropython-urequests  micropython-mqtt ; do
   echo " "
   echo " "
   echo "Installeren micropython bibliotheek: ${addonnodes}" 2>&1 | tee -a $LOGFILE
@@ -131,6 +131,31 @@ sudo chown www-data:www-data -R /var/www/html/ 2>&1 | tee -a $LOGFILE
 
 rm -rf $MPDLDIR 2>&1 | tee -a $LOGFILE
 
+echo "" 2>&1 | tee -a $LOGFILE
+echo "Installeer extra bibliotheken" 2>&1 | tee -a $LOGFILE
+mkdir ~/Downloads/micropython_libs
+mkdir ~/.micropython
+mkdir ~/.micropython/lib
+cd ~/Downloads/micropython_libs
+git clone https://github.com/jplattel/upymenu
+cp -r -v ./upymenu/upymenu ~/.micropython/lib 2>&1 | tee -a $LOGFILE
+cd ~/.micropython/lib
+echo "" 2>&1 | tee -a $LOGFILE
+
+
+git clone https://github.com/jordiprats/micropython-utelegram 2>&1 | tee -a $LOGFILE
+cp -r -v ./micropython-utelegram/utelegram.py  ~/.micropython/lib 2>&1 | tee -a $LOGFILE
+
+git clone https://github.com/gabrielebarola/telegram-upy.git
+cp -r -v ./telegram-upy/utelegram.py  ~/.micropython/lib 2>&1 | tee -a $LOGFILE
+
+git clone https://github.com/Carglglz/upyble 2>&1 | tee -a $LOGFILE
+
+git clone https://github.com/robert-hh/FTP-Server-for-ESP8266-ESP32-and-PYBD
+cp -r -v ./FTP-Server-for-ESP8266-ESP32-and-PYBD/uftp.py  ~/.micropython/lib 2>&1 | tee -a $LOGFILE
+
+git clone https://github.com/chrismoorhouse/micropython-mqtt
+cp -r -v ./micropython-mqtt  ~/.micropython/lib 2>&1 | tee -a $LOGFILE
 
 echo "" 2>&1 | tee -a $LOGFILE
 echo "EINDE micropython $(micropython -V) module install $(date)" 2>&1 | tee -a $LOGFILE
