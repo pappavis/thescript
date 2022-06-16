@@ -683,3 +683,15 @@ echo "" 2>&1 | tee -a $LOGFILE
 echo "* Install extras is afgerond. Je kunt nu herstarten." 2>&1 | tee -a $LOGFILE
 
 cd $_pwd
+
+
+cd ~/Downloads
+appTxt1="BIPES online Micropython blokken omgeving"
+echo "" 2>&1 | tee -a $LOGFILE
+echo "Installeren: $appTxt1" 2>&1 | tee -a $LOGFILE
+git clone https://github.com/BIPES/BIPES 2>&1 | tee -a $LOGFILE
+sudo mkdir /var/www/html/apps
+sudo mv  ./BIPES /var/www/html/apps
+echo "Einde $appTxt1 build install" 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
