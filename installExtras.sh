@@ -712,3 +712,4 @@ sudo mv  ./freeboard /var/www/html/apps
 echo "Einde $appTxt1 build install" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
+
