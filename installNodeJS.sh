@@ -48,9 +48,9 @@ else
 	echo "NodeJS  installeren op een Pi3,4" 2>&1 | tee -a $LOGFILE
 	## zie https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-16-04
 	#curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash 2>&1 | tee -a $LOGFILE
-	wget https://nodejs.org/dist/latest/node-v18.3.0-linux-armv7l.tar.gz | bash 2>&1 | tee -a $LOGFILE
-	tar -xzf ./node-v18.3.0-linux-armv7l.tar.gz | bash 2>&1 | tee -a $LOGFILE
-	sudo cp -R ./node-v18.3.0-linux-armv7l/* /usr/local | bash 2>&1 | tee -a $LOGFILE
+	wget https://nodejs.org/dist/latest/node-v18.4.0-linux-armv7l.tar.gz | bash 2>&1 | tee -a $LOGFILE
+	tar -xzf ./node-v18.4.0-linux-armv7l.tar.gz | bash 2>&1 | tee -a $LOGFILE
+	sudo cp -R ./node-v18.4.0-linux-armv7l/* /usr/local | tee -a $LOGFILE
 	sudo rm -rf node-* | bash 2>&1 | tee -a $LOGFILE
 	
 	source ~/.bashrc
