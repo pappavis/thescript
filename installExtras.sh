@@ -605,10 +605,27 @@ cd ~/Downloads
 sudo rm -rf ./x16*
 echo "" 2>&1 | tee -a $LOGFILE
 echo "Commander X-16 emulatie installeren" 2>&1 | tee -a $LOGFILE
-sudo apt-get install -y libsdl2-dev 2>&1 | tee -a $LOGFILE
+for addonnodes in  libsdl2-dev build-essential git cc65; do
+	sudo apt-get install -y  2>&1 | tee -a $LOGFILE
+done
+
+git clone https://github.com/emscripten-core/emsdk.git 2>&1 | tee -a $LOGFILE
+cd ./emsdk 2>&1 | tee -a $LOGFILE
+git pull 2>&1 | tee -a $LOGFILE
+./emsdk install latest 2>&1 | tee -a $LOGFILE
+./emsdk activate latest 2>&1 | tee -a $LOGFILE
+source ./emsdk_env.sh 2>&1 | tee -a $LOGFILE
+
+cd ~/Downloads
+git clone https://github.com/commanderx16/x16-rom 2>&1 | tee -a $LOGFILE
+git clone https://github.com/commanderx16/x16-emulator 2>&1 | tee -a $LOGFILE
+git clone https://github.com/cc65/cc65.git 2>&1 | tee -a $LOGFILE
+
+cd ./cc65
+make -j$(nproc) 2>&1 | tee -a $LOGFILE
+
 sudo mkdir  /var/www/html/apps/
 sudo mkdir  /var/www/html/apps/commander16
-git clone https://github.com/commanderx16/x16-emulator 2>&1 | tee -a $LOGFILE
 cd ./x16-emulator
 make  2>&1 | tee -a $LOGFILE
 sudo cp -r -v ./x16emu /usr/local/bin 2>&1 | tee -a $LOGFILE
@@ -616,13 +633,22 @@ sudo cp -r -v ./webassembly/ /var/www/html/x16-emulator  2>&1 | tee -a $LOGFILE
 sudo mkdir /var/www/html/commander16/webassembly
 sudo mv -v ./webassembly/* /var/www/html/commander16/webassembly 2>&1 | tee -a $LOGFILE
 cd  /var/www/html/apps/commander16
-sudo wget https://sebastianvog.github.io/x16-emulator/x16emu.html 2>&1 | tee -a $LOGFILE
-sudo wget https://sebastianvog.github.io/x16-emulator/x16emu.data 2>&1 | tee -a $LOGFILE
-sudo wget https://sebastianvog.github.io/x16-emulator/x16emu.js 2>&1 | tee -a $LOGFILE
-sudo wget https://sebastianvog.github.io/x16-emulator/x16emu.wasm 2>&1 | tee -a $LOGFILE
-sudo chown www-data:www-data -R /var/www/html/apps/commander16/
+wget https://www.commanderx16.com/emulator/x16emu.html 2>&1 | tee -a $LOGFILE
+wget https://www.commanderx16.com/emulator/x16emu.data 2>&1 | tee -a $LOGFILE
+wget https://www.commanderx16.com/emulator/ex16mu.data 2>&1 | tee -a $LOGFILE
+
+wget https://www.commanderx16.com/emulator/x16emu.js 2>&1 | tee -a $LOGFILE
+wget https://www.commanderx16.com/emulator/x16emu.wasm 2>&1 | tee -a $LOGFILE
+
+#sudo wget https://sebastianvog.github.io/x16-emulator/x16emu.html 2>&1 | tee -a $LOGFILE
+#sudo wget https://sebastianvog.github.io/x16-emulator/x16emu.data 2>&1 | tee -a $LOGFILE
+#sudo wget https://sebastianvog.github.io/x16-emulator/x16emu.js 2>&1 | tee -a $LOGFILE
+#sudo wget https://sebastianvog.github.io/x16-emulator/x16emu.wasm 2>&1 | tee -a $LOGFILE
+#sudo chown www-data:www-data -R /var/www/html/apps/commander16/
 cd ~/Downloads
-sudo rm -rf ./x16-emulator
+sudo rm -rf ./x16*
+sudo rm -rf ./cc65*
+sudo rm -rf ./cc65*
 echo "" 2>&1 | tee -a $LOGFILE
 echo "Commander X-16 emulatie installeren afgerond." 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
