@@ -62,8 +62,8 @@ else
 	echo "Node versie: $(node -v), NPM versie: $(npm -v)"  2>&1 | tee -a $LOGFILE	
 	
 	source ~/.bashrc
-	#nvm install v18.13.1 2>&1 | tee -a $LOGFILE	
-	#nvm use v17.13.1
+	nvm install node 2>&1 | tee -a $LOGFILE	
+	nvm use node
 fi
 
 printstatus "NodeJS $(node -v) en npm $(npm -v) is geïnstalleerd" 2>&1 | tee -a $LOGFILE
