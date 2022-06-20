@@ -603,9 +603,9 @@ echo "" 2>&1 | tee -a $LOGFILE
 
 cd ~/Downloads
 sudo rm -rf ./x16*
-sudo apt-get install -y libsdl2-dev
 echo "" 2>&1 | tee -a $LOGFILE
 echo "Commander X-16 emulatie installeren" 2>&1 | tee -a $LOGFILE
+sudo apt-get install -y libsdl2-dev 2>&1 | tee -a $LOGFILE
 sudo mkdir  /var/www/html/apps/
 sudo mkdir  /var/www/html/apps/commander16
 git clone https://github.com/commanderx16/x16-emulator 2>&1 | tee -a $LOGFILE
