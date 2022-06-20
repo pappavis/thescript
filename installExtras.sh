@@ -670,6 +670,9 @@ mkdir ./build
 cd ./build
 cmake .. 2>&1 | tee -a $LOGFILE
 make 2>&1 | tee -a $LOGFILE
+sudo make install 2>&1 | tee -a $LOGFILE
+cd ~/Downloads
+sudo rm -rf ./MilkyTracker
 echo "Einde $appTxt1 build install" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
 
@@ -702,11 +705,10 @@ for addonnodes in pyqt6  geos  spatialindex ; do
   pip install --upgrade  2>&1 | tee -a $LOGFILE
   echo " "
 done
-
 git clone https://bitbucket.org/jpcgt/flatcam.git 2>&1 | tee -a $LOGFILE
 sudo mkdir /usr/local/share/applications/ 2>&1 | tee -a $LOGFILE
-sudo mv ./flatcam /usr/local/applications
-sudo ln -s /usr/local/applications/flatcam/flatcam /usr/local/bin/flatcam
+sudo mv ./flatcam /usr/local/share/applications
+sudo ln -s /usr/local/share/applications/flatcam /usr/local/bin/flatcam
 echo "" 2>&1 | tee -a $LOGFILE
 echo "Einde $appTxt1 build install" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
