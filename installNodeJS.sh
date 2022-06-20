@@ -57,6 +57,9 @@ else
 	tar -xzf ./node-v18.4.0-linux-armv7l.tar.gz 2>&1 | tee -a $LOGFILE
 	sudo cp -R ./node-v18.4.0-linux-armv7l/* /usr/local 2>&1 | tee -a $LOGFILE
 	sudo rm -rf node-*  2>&1 | tee -a $LOGFILE
+	nvm install lts/gallium
+
+	echo "Node versie: $(node -v), NPM versie: $(npm -v)"  2>&1 | tee -a $LOGFILE	
 	
 	source ~/.bashrc
 	#nvm install v18.13.1 2>&1 | tee -a $LOGFILE	
