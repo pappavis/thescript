@@ -622,6 +622,7 @@ git clone https://github.com/commanderx16/x16-emulator 2>&1 | tee -a $LOGFILE
 git clone https://github.com/cc65/cc65.git 2>&1 | tee -a $LOGFILE
 
 cd ./cc65
+make deflater
 make -j$(nproc) 2>&1 | tee -a $LOGFILE
 
 sudo mkdir  /var/www/html/apps/
