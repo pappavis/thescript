@@ -56,7 +56,7 @@ done
 ## chmod +x update-nodejs-and-nodered
 ## echo y | ./update-nodejs-and-nodered
 
-##sudo npm install -g --unsafe-perm node-red
+sudo npm install -g --unsafe-perm node-red
 cd /home/pi/Downloads
 wget https://raw.githubusercontent.com/pappavis/thescript/master/settings.js 2>&1 | tee -a $LOGFILE
 wget https://raw.githubusercontent.com/pappavis/thescript/master/flows.json 2>&1 | tee -a $LOGFILE
