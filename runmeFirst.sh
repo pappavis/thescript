@@ -84,7 +84,7 @@ done
 
 echo "Instellen timezone naar Europe/Amsterdam" 2>&1 | tee -a $LOGFILE
 rm -f /etc/localtime
-echo "Europe/Amsterdam" >/etc/timezone
+echo "Europe/Amsterdam"  2>&1 | sudo tee -a /etc/timezone
 sudo dpkg-reconfigure -f noninteractive tzdata 2>&1 | tee -a $LOGFILE
 sudo cat >/etc/default/keyboard <<'KBEOF'
 XKBMODEL="pc105"
@@ -301,5 +301,6 @@ echo "" 2>&1 | tee -a $LOGFILE
 
 sudo apt install -y python-is-python3 2>&1 | tee -a $LOGFILE
 
+echo "" 2>&1 | tee -a $LOGFILE
 echo "runmefirst EINDE" 2>&1 | tee -a $LOGFILE
 echo "Je kunt nu HERSTART, daarna ./installVerzamelupdates.sh draaien" 2>&1 | tee -a $LOGFILE
