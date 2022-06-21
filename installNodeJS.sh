@@ -53,11 +53,14 @@ else
 	sudo rm -rf /usr/local/lib/node/ 2>&1 | tee -a $LOGFILE
 	sudo rm -rf /usr/local/bin/ 2>&1 | tee -a $LOGFILE
 	
-	wget https://nodejs.org/dist/latest/node-v18.4.0-linux-armv7l.tar.gz | bash 2>&1 | tee -a $LOGFILE	
-	tar -xzf ./node-v18.4.0-linux-armv7l.tar.gz 2>&1 | tee -a $LOGFILE
-	sudo cp -R ./node-v18.4.0-linux-armv7l/* /usr/local 2>&1 | tee -a $LOGFILE
-	sudo rm -rf node-*  2>&1 | tee -a $LOGFILE
-	nvm install lts/gallium
+	#wget https://nodejs.org/dist/latest/node-v18.4.0-linux-armv7l.tar.gz | bash 2>&1 | tee -a $LOGFILE	
+	#tar -xzf ./node-v18.4.0-linux-armv7l.tar.gz 2>&1 | tee -a $LOGFILE
+	#sudo cp -R ./node-v18.4.0-linux-armv7l/* /usr/local 2>&1 | tee -a $LOGFILE
+	#sudo rm -rf node-*  2>&1 | tee -a $LOGFILE
+	#nvm install lts/gallium
+	curl -sL https://deb.nodesource.com/setup_17.x | sudo -E bash -
+	sudo apt install -y nodejs
+	
 
 	echo "Node versie: $(node -v), NPM versie: $(npm -v)"  2>&1 | tee -a $LOGFILE	
 	
