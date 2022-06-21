@@ -52,6 +52,8 @@ else
 	sudo rm -rf /usr/local/lib/node_modules/ 2>&1 | tee -a $LOGFILE
 	sudo rm -rf /usr/local/lib/node/ 2>&1 | tee -a $LOGFILE
 	sudo rm -rf /usr/local/bin/ 2>&1 | tee -a $LOGFILE
+	sudo rm -rf /usr/local/LICENSE 2>&1 | tee -a $LOGFILE
+	sudo rm -rf /usr/local/README.md 2>&1 | tee -a $LOGFILE
 	
 	#wget https://nodejs.org/dist/latest/node-v18.4.0-linux-armv7l.tar.gz | bash 2>&1 | tee -a $LOGFILE	
 	#tar -xzf ./node-v18.4.0-linux-armv7l.tar.gz 2>&1 | tee -a $LOGFILE
