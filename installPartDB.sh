@@ -35,5 +35,6 @@ sudo mysql -u root -p < ~/tmp/create_userPartDb.sql
 echo "PartDB geïnstalleerd bij http://$_hn1.local/support/part-db" 2>&1 | tee -a $LOGFILE
 echo "   Frontend met gebruikersnaam: admin, wachtwoord: admin"
 echo "   Partdb setup aanmelden met gebruikersnaam: partdb, wachtwoord: partdb"
-sudo rm ~/Downloads/part-db.tar.gz
+sudo rm -rf ~/Downloads/part-db.tar.gz
+sudo rm -rf ~/Downloads/'vendor.zip?raw=true'
 cd $_pwd
