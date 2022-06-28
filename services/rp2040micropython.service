@@ -1,0 +1,19 @@
+[Unit]
+Description=Raspberry Pi Pico RP2040 emulatie
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+Environment='LC_ALL=NL.UTF-8'
+Environment='LANG=NL.UTF-8'
+WorkingDirectory=/var/local/share/rp2040js
+User=pi
+ExecStart=npm run start:micropython
+Restart=on-failure
+Restart=on-failure
+RestartSec=5
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
