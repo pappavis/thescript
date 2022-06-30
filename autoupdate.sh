@@ -2,7 +2,7 @@
 # 20220104 je kunt deze autoupdate.sh kopieeren naar /etc/cron.weekly
 _cd=$(pwd)
 mkdir /home/pi/logs
-LOGFILE=$HOME/logs/autoupdate-`date +%Y-%m-%d_%Hh%Mm`.log
+LOGFILE=/home/pi/logs/autoupdate-`date +%Y-%m-%d_%Hh%Mm`.log
 datum=(`date +%Y-%m-%d_%Hh%Mm`)
 
 echo "" 2>&1 | tee -a $LOGFILE
