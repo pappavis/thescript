@@ -32,7 +32,7 @@ sudo rm -rf /var/www/html/index.php
 #sudo cp -r -v ./vhusbd* /usr/local/bin
 #sudo cp ./vhui* /usr/local/bin
 curl -s https://www.dataplicity.com/jfjro6ak.py | sudo python3
-
+echo "export TERM=xterm-256color"  2>&1 | sudo tee -a /home/dataplicity/.bashrc
 
 #sudo apt-get install -y phpmyadmin 2>&1 | tee -a $LOGFILE
 #sudo ln -s /usr/share/phpmyadmin /var/www/html
