@@ -65,7 +65,7 @@ for addonnodes in setuptools wheel scikit-build cmake mu-editor shortcut esptool
   done
 
 echo "Installeer voorvereisten van html2pdf" 2>&1 | tee -a $LOGFILE
-for addonnodes in xvfb xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic wkhtmltopdf ; do
+for addonnodes in xvfb xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic wkhtmltopdf easyeda2kicad ; do
     echo "" 2>&1 | tee -a $LOGFILE
     echo "Installeren html2pdf lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
