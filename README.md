@@ -122,6 +122,9 @@ Installeer de volgende in crontab
 ```cron
 10 1 * * * sudo bash /home/pi/Downloads/thescript/autoupdate.sh
 0 */9 * * * sudo bash /home/pi/Downloads/thescript/swap_opruimen.sh
+                             [ 27 regels gelezen ]
+^G Hulp      ^O Opslaan   ^W Zoeken    ^K Knippen   ^T Opdracht  ^C Positie
+^X Afsluiten ^R Inlezen   ^\ Vervangen ^U Plakken   ^J Uitvullen ^_ Naar regel
 ```
 Afsluiten af met ctrl-x
 
