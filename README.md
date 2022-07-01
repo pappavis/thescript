@@ -111,6 +111,24 @@ pi@raspberrypi: $ sudo reboot
 ## Stap 7: Test website
 Surf naar http://jouwRaspberryPi.local/
 
+## Stap 8: Test website
+Installeer een Crontab om de pi regelmatig bij te werken en het swapfile op te schoon. Het swapfile loopt vol en de Pi wordt traag. 
+
+```bash
+(venv) pi@dietpi:~ $ crontab -e
+```
+
+Installeer de volgende in crontab
+```cron
+10 1 * * * sudo bash /home/pi/Downloads/thescript/autoupdate.sh
+0 */9 * * * sudo bash /home/pi/Downloads/thescript/swap_opruimen.sh
+```
+Afsluiten af met ctrl-x
+
+```bash
+crontab: installing new crontab
+(venv) pi@dietpi:~ $
+```
 
 # origineel
 Zie origineel <a href="https://bitbucket.org/api/2.0/snippets/scargill/kAR5qG/master/files/script.sh">hier</a> door Pete Scargill.
