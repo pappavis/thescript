@@ -111,7 +111,7 @@ pi@raspberrypi: $ sudo reboot
 ## Stap 7: Test website
 Surf naar http://jouwRaspberryPi.local/
 
-## Stap 8: Nieuwe crontab
+## Stap 8: Pi bijgewerkt houden
 Installeer een Crontab om de pi regelmatig bij te werken en het swapfile op te schoon. Het swapfile loopt vol en de Pi wordt traag. 
 
 ```bash
