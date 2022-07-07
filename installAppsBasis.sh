@@ -43,6 +43,11 @@ sudo apt upgrade -y 2>&1 | tee -a $LOGFILE
 sudo apt autoremove  -y 2>&1 | tee -a $LOGFILE
 sudo apt autoclean  -y 2>&1 | tee -a $LOGFILE
 
+# ref-- https://stackoverflow.com/questions/24556160/mosquitto-client-obtain-refused-connection
+echo "listener 1883" | sudo tee -a /etc/mosquitto/conf.d/standard.conf
+echo "protocol mqtt" | sudo tee -a /etc/mosquitto/conf.d/standard.conf
+echo "allow_anonymous true" | sudo tee -a /etc/mosquitto/conf.d/standard.conf
+
 echo ""  2>&1 | tee -a $LOGFILE
 echo "Einde installAppsBasis"  2>&1 | tee -a $LOGFILE
 echo ""  2>&1 | tee -a $LOGFILE
