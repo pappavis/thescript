@@ -1,3 +1,4 @@
+from distutils.log import debug
 import cv2
 from pathlib import PurePath
 import traceback
@@ -11,29 +12,31 @@ class clsMain:
         self.debug = False   
         self.vid = None
 
-    def main(self, debug=False):
+    def main(self):
         '''Primary start function'''
-        self.debug = debug        
-        
-    def maakEenFotoEnSave(self):
-      '''maak een foto en bewaar in dezelfde map'''
-      
+        pass       
+
+    def maakEenFotoEnSave(self:
+        '''maak een foto en bewaar in dezelfde map'''
+
         try:
             self.vid = cv2.VideoCapture(0)
-            outFileJPG = f'''{scriptPath}/maakEenFotoEnSave.jpg'''
+            outFileJPG = f'''{self.scriptPath}/maakEenFotoEnSave.jpg'''
+            print(f'''outFileJPG={outFileJPG}''')
 
-            ret, frame = vid.read()        
+            ret, frame = self.vid.read()        
             cv2.imwrite(frame, outFileJPG)
-            vid.release()
-        except Exception as ex1:
+            self.vid.release()
+         Exception except as ex1:
             print(traceback.print_exc())
-        
+
 
 if __name__ == "__main__":  
     print("App start")
     print(f"")
-    
+
     main1 = clsMain()
+    main1.debug = True  
     result1 = main1.maakEenFotoEnSave(debug=True)
 
     print(f"SYNOPIS:")
