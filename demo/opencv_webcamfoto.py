@@ -1,0 +1,42 @@
+import cv2
+from pathlib import PurePath
+import traceback
+
+class clsMain:
+    def __init__(self) -> None:
+        self.img = None
+        self.cap = None
+        self.scriptFull = PurePath(__file__)
+        self.scriptPath = str(PurePath(self.scriptFull.parent))     
+        self.debug = False   
+        self.vid = None
+
+    def main(self, debug=False):
+        '''Primary start function'''
+        self.debug = debug        
+        
+    def maakEenFotoEnSave(self):
+      '''maak een foto en bewaar in dezelfde map'''
+      
+        try:
+            self.vid = cv2.VideoCapture(0)
+            outFileJPG = f'''{scriptPath}/maakEenFotoEnSave.jpg'''
+
+            ret, frame = vid.read()        
+            cv2.imwrite(frame, outFileJPG)
+            vid.release()
+        except Exception as ex1:
+            print(traceback.print_exc())
+        
+
+if __name__ == "__main__":  
+    print("App start")
+    print(f"")
+    
+    main1 = clsMain()
+    result1 = main1.maakEenFotoEnSave(debug=True)
+
+    print(f"SYNOPIS:")
+    print(f"Maak een foto met OpenCV")
+    print(f"")
+    print("App eind")
