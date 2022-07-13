@@ -25,7 +25,7 @@ class clsMain:
             print(f'''outFileJPG={outFileJPG}''')
 
             ret, frame = self.vid.read()        
-            cv2.imwrite(frame, outFileJPG)
+            cv2.imwrite(filename=outFileJPG, img=frame)
             self.vid.release()
         except Exception as ex1:
             print(traceback.print_exc())
@@ -37,7 +37,7 @@ if __name__ == "__main__":
 
     main1 = clsMain()
     main1.debug = True  
-    result1 = main1.maakEenFotoEnSave(debug=True)
+    result1 = main1.maakEenFotoEnSave()
 
     print(f"SYNOPIS:")
     print(f"Maak een foto met OpenCV")
