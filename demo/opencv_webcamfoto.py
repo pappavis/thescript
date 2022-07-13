@@ -21,7 +21,7 @@ class clsMain:
 
         try:
             self.vid = cv2.VideoCapture(0)
-            outFileJPG = f'''{self.scriptPath}/maakEenFotoEnSave.jpg'''
+            outFileJPG = f'''{self.scriptPath}/opencv_webcamfoto.jpg'''
             print(f'''outFileJPG={outFileJPG}''')
 
             ret, frame = self.vid.read()        
