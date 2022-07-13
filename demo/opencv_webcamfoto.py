@@ -7,7 +7,7 @@ from pathlib import PurePath
 import traceback
 import paho.mqtt.client as mqtt
 import uuid
-from datetime import datetime
+from datetime import datetime, time
 
 class clsMain:
     def __init__(self) -> None:
@@ -60,7 +60,7 @@ class clsMain:
         mqqtClientID=f"mqqt_{uuid.uuid4()}"
 
         txtLog1 = f"Hallo wereld {datetime.now} van Python {mqqtClientID}"
-        mqqtClient.publish("picamStill/hallo_wereld", txtLog1);
+        mqqtClient.publish("OpenCVfoto/hallo_wereld", txtLog1);
         
         if(self.debug):
             txtLog1 = f"tekstje Hallo wereld gepubliceerd"
@@ -79,7 +79,8 @@ class clsMain:
         fotoBinData = fotoBinIn1.read()
         fotoBinIn1.close()
 
-        pubSubject = "picamStill/foto_in"
+        cv2.waitKey(3000)
+        pubSubject = "OpenCVfoto/foto_in"
         mqqtClient.publish(pubSubject, fotoBinData);
         
         if(self.debug):
@@ -94,7 +95,7 @@ class clsMain:
         mqqtClientID=f"mqqt_{uuid.uuid4()}"
         mqqtClient  = self.getMQQTClient()
         txtLog1 = f"Hallo wereld!"
-        mqqtClient.publish("picamStill/hallo_wereld", txtLog1);
+        mqqtClient.publish("OpenCVfoto/hallo_wereld", txtLog1);
         
         if(self.debug):
             txtLog1 = f"tekstje Hallo wereld gepubliceerd"
@@ -117,3 +118,4 @@ if __name__ == "__main__":
     main1.verstuurFotoMetMQQT(filename=result1)
 
     print("App eind")
+
