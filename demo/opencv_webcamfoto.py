@@ -16,7 +16,7 @@ class clsMain:
         '''Primary start function'''
         pass       
 
-    def maakEenFotoEnSave(self:
+    def maakEenFotoEnSave(self):
         '''maak een foto en bewaar in dezelfde map'''
 
         try:
@@ -27,7 +27,7 @@ class clsMain:
             ret, frame = self.vid.read()        
             cv2.imwrite(frame, outFileJPG)
             self.vid.release()
-         Exception except as ex1:
+        except Exception as ex1:
             print(traceback.print_exc())
 
 
