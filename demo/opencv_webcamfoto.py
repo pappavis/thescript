@@ -35,12 +35,10 @@ class clsMain:
 if __name__ == "__main__":  
     print("App start")
     print(f"")
-
-    main1 = clsMain()
-    main1.debug = True  
-    result1 = main1.maakEenFotoEnSave()
-
     print(f"SYNOPIS:")
     print(f"Maak een foto met OpenCV")
     print(f"")
+    main1 = clsMain()
+    main1.debug = True  
+    result1 = main1.maakEenFotoEnSave()
     print("App eind")
