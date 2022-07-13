@@ -25,8 +25,9 @@ class clsMain:
             print(f'''outFileJPG={outFileJPG}''')
 
             ret, frame = self.vid.read()        
-            cv2.imwrite(filename=outFileJPG, img=frame)
+            cv2.imwrite(filename=outFileJPG, img=frame)            
             self.vid.release()
+            print("Bestand is opgeslagen.")
         except Exception as ex1:
             print(traceback.print_exc())
 
