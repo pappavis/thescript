@@ -156,6 +156,8 @@ echo "exit 0" 2>&1 | sudo tee -a /etc/rc.local
 ssh-add /home/pi/.ssh/github_rsa 2>&1 | tee -a $LOGFILE
 
 printstatus "Toestaan remote root login en sneller SSH" 2>&1 | tee -a $LOGFILE
+sudo systemctl enable nmbd
+sudo systemctl enable smbd
 sudo sed -i -e 's/#PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config
 sudo sed -i -e 's/#PermitRootLogin without-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
 sudo sed -i -e 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
