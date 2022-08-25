@@ -93,7 +93,6 @@ Let op doorlooptijd:
 ```bash
 pi@raspberrypi: $ cd ~/Downloads/thescript
 pi@raspberrypi: $ nohup bash ./installVerzamelupdates.sh &
-pi@raspberrypi: $ reboot
 ```
 
 ## Stap 6: Python 3 en circuitpython bijwerken
