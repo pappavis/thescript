@@ -48,11 +48,11 @@ Na reboot. Bijwerken en gebruikersrechten instellen.
 Deze script is 95% autonoom, je moet op gegeven moment wel de phpMyadmin wachtwoord instellen.
 
 ```bash
-pi@raspberrypi: $ mkdir ~/Downloads
-pi@raspberrypi: $ sudo apt install -y git
-pi@raspberrypi: $ git clone https://github.com/pappavis/thescript/
-pi@raspberrypi: $ cd ~/Downloads/thescript
-pi@raspberrypi: $ nohup bash ./runmefirst.sh &
+pi@raspberrypi $ mkdir ~/Downloads
+pi@dietpi:~/Download $ sudo apt install -y git
+pi@dietpi:~/Downloads $ git clone https://github.com/pappavis/thescript/
+pi@dietpi:~/Downloads $ cd ~/Downloads/thescript
+pi@dietpi:~/Downloads/thescript $ nohup bash ./runmefirst.sh &
 ```
 Dit duurt circa <>45 minuten op een Pi 3.
 
@@ -60,8 +60,8 @@ Dit duurt circa <>45 minuten op een Pi 3.
 Bijwerken en gebruikersrechten instellen.
 
 ```
-pi@raspberrypi: $ sudo mysql_secure_installation
-pi@raspberrypi: $ sudo mysql -u root -p
+pi@raspberrypi $ sudo mysql_secure_installation
+pi@raspberrypi $ sudo mysql -u root -p
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
 Your MariaDB connection id is 40
 Server version: 10.3.31-MariaDB-0+deb10u1 Raspbian 10
@@ -92,19 +92,21 @@ Let op doorlooptijd:
 
 ```bash
 pi@raspberrypi: $ cd ~/Downloads/thescript
-pi@raspberrypi: $ nohup bash ./installVerzamelupdates.sh &
+pi@dietpi:~/Downloads/thescript $ nohup bash ./installVerzamelupdates.sh &
+pi@dietpi:~/Downloads/thescript $ tail -f ./nohupout
 ```
+
+Het draaien van installVerzamelupdates.sh duurt tot wel 4 uren!
 
 ## Stap 6: Python 3 en circuitpython bijwerken
 Super handig installeert virtualenvironment voor Python, CircuitPython, tesseractOCR en Micropython.
 
 ```bash
 pi@raspberrypi: $ cd ~/Downloads
-pi@raspberrypi: $ git clone https://github.com/pappavis/thescript/
-pi@raspberrypi: $ cd ~/Downloads/thescript/
-pi@raspberrypi: $ bash ./installVerzamelupdates.sh
-pi@raspberrypi: $ nohup bash ./installExtras.sh &
-pi@raspberrypi: $ sudo reboot
+pi@dietpi:~/Downloads $ git clone https://github.com/pappavis/thescript/
+pi@dietpi:~/Downloads $ cd ~/Downloads/thescript/
+pi@dietpi:~/Downloads/thescript $ bash ./installVerzamelupdates.sh
+pi@dietpi:~/Downloads/thescript $ nohup bash ./installExtras.sh &
 ```
 
 ## Stap 7: Test website
