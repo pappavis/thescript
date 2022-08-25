@@ -49,7 +49,7 @@ Deze script is 95% autonoom, je moet op gegeven moment wel de phpMyadmin wachtwo
 
 ```bash
 pi@raspberrypi $ mkdir ~/Downloads
-pi@dietpi:~/Download $ sudo apt install -y git
+pi@dietpi:~/Downloads $ sudo apt install -y git
 pi@dietpi:~/Downloads $ git clone https://github.com/pappavis/thescript/
 pi@dietpi:~/Downloads $ cd ~/Downloads/thescript
 pi@dietpi:~/Downloads/thescript $ nohup bash ./runmefirst.sh &
