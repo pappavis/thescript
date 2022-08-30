@@ -756,5 +756,19 @@ sudo cp -r -v ./webrepl /var/www/html/apps 2>&1 | tee -a $LOGFILE
 sudo cp /var/www/html/apps/micropython_webrepl/webrepl.html /var/www/html/apps/micropython_webrepl/index.php 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
 
+
+cd ~/Downloads
+appTxt1="Bitsy fantasy console"
+echo "" 2>&1 | tee -a $LOGFILE
+echo "Installeren: $appTxt1" 2>&1 | tee -a $LOGFILE
+git clone https://github.com/le-doux/bitsy 2>&1 | tee -a $LOGFILE
+mkdir /var/www/html/apps
+mkdir /var/www/html/apps/bitsy
+cp -r -v ./bitsy/editor /var/www/html/apps/bitsy
+echo "Einde $appTxt1 build install" 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
+
 echo "EINDE installExtras.sh $(date)" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
+
