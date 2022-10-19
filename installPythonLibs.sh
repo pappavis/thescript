@@ -45,7 +45,7 @@ for addonnodes in pip setuptools wheel scikit-build numpy ; do
   done
 
 for addonnodes in pip setuptools wheel openpyxl pylzma py7zr o365 ttn qrcode pillow sqlalchemy pymsteams qscintilla esptool adafruit-ampy firebirdsql   \
-                  pyserial pyparsing pyzmail redmail gpiozero pytube pipx serial jinja2 esptool mpfshell virtualenv ffmpeg conda jupyter-notebook \
+                  pyserial pyparsing pyzmail redmail gpiozero pytube pipx serial jinja2 esptool mpfshell virtualenv ffmpeg  jupyter-notebook \
                   scikit-build pygame pymongo psycopg2-binary mysql-connector-python guizero imutils scikit-image bokeh django flask pygrabber paho-mqtt \
                   msteamsconnector matplotlib numpy imutils pyodbc influxdb pysmb libopencv-dev opencv-python  git+https://github.com/pytube/pytube picamera djitellopy \
 		   osxphotos RPi.GPIO tox tflite tflite-runtime tflite_support PySimpleGUI libusb pyusb pdfkit python-dateutil pymysql python-vkontakte easyocr pygrabber \
@@ -54,7 +54,7 @@ for addonnodes in pip setuptools wheel openpyxl pylzma py7zr o365 ttn qrcode pil
     echo "" 2>&1 | tee -a $LOGFILE
     echo "Installeren python lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
-    conda install --upgrade --no-cache-dir  ${addonnodes} 2>&1 | tee -a $LOGFILE
+    #conda install --upgrade --no-cache-dir  ${addonnodes} 2>&1 | tee -a $LOGFILE
     echo "" 2>&1 | tee -a $LOGFILE
   done
 
@@ -74,13 +74,13 @@ for addonnodes in xvfb xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrilli
   done
 pip install html2pdf
 
-echo "Installeren Miniconda" 2>&1 | tee -a $LOGFILE
-cd ~/Downloads
-wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-armv7l.sh 2>&1 | tee -a $LOGFILE
-sudo bash ./Miniconda3-latest-Linux-armv7l.sh 2>&1 | tee -a $LOGFILE
-echo 'export PATH=/home/pi/miniconda3/bin:$PATH' | tee -a ~/.bashrc  2>&1 | tee -a $LOGFILE
-conda install python=3.11
-rm -rf ~/Downloads/Miniconda3*
+#echo "Installeren Miniconda" 2>&1 | tee -a $LOGFILE
+#cd ~/Downloads
+#wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-armv7l.sh 2>&1 | tee -a $LOGFILE
+#sudo bash ./Miniconda3-latest-Linux-armv7l.sh 2>&1 | tee -a $LOGFILE
+#echo 'export PATH=/home/pi/miniconda3/bin:$PATH' | tee -a ~/.bashrc  2>&1 | tee -a $LOGFILE
+#conda install python=3.11
+#rm -rf ~/Downloads/Miniconda3*
 
 echo "Installeren machine learning onderdelen." 2>&1 | tee -a $LOGFILE
 for addonnodes in  torch torchvision torchaudio cudatoolkit ; do
