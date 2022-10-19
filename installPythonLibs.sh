@@ -74,6 +74,7 @@ for addonnodes in xvfb xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrilli
   done
 pip install html2pdf
 
+# 20221019 conda moet je handmatig installeren, want het toont een input prompt.  Deze script is bedoeld om  headless uitgevoerd te worden. 
 #echo "Installeren Miniconda" 2>&1 | tee -a $LOGFILE
 #cd ~/Downloads
 #wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-armv7l.sh 2>&1 | tee -a $LOGFILE
