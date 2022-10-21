@@ -219,6 +219,45 @@ sudo make  2>&1 | tee -a $LOGFILE
 cd ~/Downloads/
 sudo rm -rf ./btop_install
 
+# enable I2C on Raspberry Pi
+echo '>>> Enable I2C'
+if grep -q 'i2c-bcm2708' /etc/modules; then
+  echo 'Seems i2c-bcm2708 module already exists, skip this step.'
+else
+  echo 'i2c-bcm2708' >> /etc/modules
+fi
+if grep -q 'i2c-dev' /etc/modules; then
+  echo 'Seems i2c-dev module already exists, skip this step.'
+else
+  echo 'i2c-dev' >> /etc/modules
+fi
+
+i2c1=$(grep 'dtparam=i2c1=on' /boot/config.txt)
+i2c1=$(echo -e "$i2c1" | sed -e 's/^[[:space:]]*//')
+if [[ -z "$i2c1" || "$i2c1" == "#"* ]]; then
+  echo 'dtparam=i2c1=on' >> /boot/config.txt
+else
+  echo 'Seems i2c1 parameter already set, skip this step.'
+fi
+
+i2c_arm=$(grep 'dtparam=i2c_arm=on' /boot/config.txt)
+i2c_arm=$(echo -e "$i2c_arm" | sed -e 's/^[[:space:]]*//')
+if [[ -z "$i2c_arm" || "$i2c_arm" == "#"* ]]; then
+  echo 'dtparam=i2c_arm=on' >> /boot/config.txt
+else
+  echo 'Seems i2c_arm parameter already set, skip this step.'
+fi
+
+# install i2c-tools
+echo '>>> Install i2c-tools'
+if hash i2cget 2>/dev/null; then
+  echo 'Seems i2c-tools is installed already, skip this step.'
+else
+  apt-get install -y i2c-tools || ((ERR++))
+fi
+
+## eind enable I2C on Raspberry Pi
+
 
 printstatus  "Instellen Samba windows bestanddelen"  2>&1 | tee -a $LOGFILE
 sudo sed -i -e '/workgroup = WORKGROUP/s/WORKGROUP/FRAMBOOS/' /etc/samba/smb.conf
