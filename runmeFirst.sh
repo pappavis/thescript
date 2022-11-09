@@ -216,6 +216,7 @@ wget https://github.com/aristocratos/btop/releases/download/v1.1.2/btop-1.1.2-ar
 sudo 7z x ./btop-1.1.2-armv5l-linux-musleabi.tbz  2>&1 | tee -a $LOGFILE
 sudo 7z x ./btop-1.1.2-armv5l-linux-musleabi.tar
 sudo chown pi:pi ~/Downloads -R
+sudo cp ./bin/btop /usr/local/bin -R
 sudo make  2>&1 | tee -a $LOGFILE
 cd ~/Downloads/
 sudo rm -rf ./btop_install
