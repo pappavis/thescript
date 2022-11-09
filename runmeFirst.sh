@@ -216,10 +216,12 @@ wget https://github.com/aristocratos/btop/releases/download/v1.1.2/btop-1.1.2-ar
 sudo 7z x ./btop-1.1.2-armv5l-linux-musleabi.tbz  2>&1 | tee -a $LOGFILE
 sudo 7z x ./btop-1.1.2-armv5l-linux-musleabi.tar
 sudo chown pi:pi ~/Downloads -R
-sudo cp ./bin/btop /usr/local/bin -R
+sudo mkdir /usr/local/bin | tee -a $LOGFILE
+sudo cp ./bin/btop /usr/local/bin -R | tee -a $LOGFILE
 sudo make  2>&1 | tee -a $LOGFILE
+sudo chmod +x /usr/local/bin/btop | tee -a $LOGFILE
 cd ~/Downloads/
-sudo rm -rf ./btop_install
+sudo rm -rf ./btop_install | tee -a $LOGFILE
 
 # enable I2C on Raspberry Pi
 echo '>>> Enable I2C'
