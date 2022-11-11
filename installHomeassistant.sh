@@ -4,12 +4,16 @@ LOGFILE=$HOME/logs/installHomeassistant-`date +%Y-%m-%d_%Hh%Mm`.log
 mkdir ~/logs
 
 source /home/pi/.bashrc
-echo "Installeren Homeassistant"
+echo "Installeren Homeassistant" 2>&1
 
 python3 -m ensurepip
 
 python3 -m virtualenv /home/pi/venv/homeassistant
 source /home/pi/venv/homeassistant/bin/activate
+
+cd ~/Downloads
+echo "1"  2>&1  | curl https://sh.rustup.rs -sSf | sh  2>&1 
+source $HOME/.cargo/env
 
 for addonnodes in  pip wheel ffmpeg homeassistant ; do
 	echo "Installeren Homeassistant vereisten:  \"${addonnodes}\""
