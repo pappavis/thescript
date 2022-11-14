@@ -39,6 +39,15 @@ sudo systemctl status grafana-server 2>&1 | tee -a $LOGFILE
 echo "grafana-server is geïnstalleerd op http://$(hostname).local:3000" 2>&1 | tee -a $LOGFILE
 sudo usermod -a -G video telegraf
 
+_tg_conf=$('[[outputs.influxdb]] \
+   urls = ["http://127.0.0.1:8086"] \
+   database = "telegraf" \
+   username = "telegrafuser" \
+   password = "Telegr@f" \
+  ')
+echo $_tg_conf | sudo tee -a /etc/telegraf/telegraf.conf 2>&1 | tee -a $LOGFILE
+sudo service telegraf restart
+sudo service telegraf status 2>&1 | tee -a $LOGFILE
 
 echo "* installTIGstack is afgerond." 2>&1 | tee -a $LOGFILE
 
