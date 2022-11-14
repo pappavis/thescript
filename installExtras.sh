@@ -4,35 +4,7 @@ _pwd=$(pwd)
 LOGFILE=$HOME/logs/installExtras-`date +%Y-%m-%d_%Hh%Mm`.log
 AQUIET=""
 
-echo "" 2>&1 | tee -a $LOGFILE
-echo "START installExtras.sh $(date)" 2>&1 | tee -a $LOGFILE
-echo "" 2>&1 | tee -a $LOGFILE
-
-mkdir ~/logs
-git pull
-cd ~/Downloads
-echo "Download en installeer virtualhere.com Pi 3 server & client" 2>&1 | tee -a $LOGFILE
-curl https://raw.githubusercontent.com/virtualhere/script/main/install_server | sudo sh 2>&1 | tee -a $LOGFILE
-echo "Virtualhere draadloos Wifi is geinstalleerd." 2>&1 | tee -a $LOGFILE
-
-cd ~/Downloads
-wget https://raw.githubusercontent.com/pappavis/thescript/master/index_apps.php 2>&1 | tee -a $LOGFILE
-sudo mv index_apps.php /var/www/html
-sudo rm -rf /var/www/html/index.html
-sudo rm -rf /var/www/html/index.php
-
-
-#wget https://www.virtualhere.com/sites/default/files/usbserver/vhusbdarmpi3
-#wget https://www.virtualhere.com/sites/default/files/usbclient/vhuitarm7
-#wget https://virtualhere.com/sites/default/files/usbserver/vhusbdx86_64
-#chmod +x ./vhusbdarmpi3
-#chmod +x ./vhuitarm7
-#chmod +x ./vhusbdarmpi
-#chmod +x ./vhusbdx86_64
-#sudo cp -r -v ./vhusbd* /usr/local/bin
-#sudo cp ./vhui* /usr/local/bin
-curl -s https://www.dataplicity.com/jfjro6ak.py | sudo python3
-echo "export TERM=xterm-256color"  2>&1 | sudo tee -a /home/dataplicity/.bashrc
+bash ./installExtrasLite.sh
 
 #sudo apt-get install -y phpmyadmin 2>&1 | tee -a $LOGFILE
 #sudo ln -s /usr/share/phpmyadmin /var/www/html
@@ -96,82 +68,6 @@ rm -rf ./amiberry
 echo "Amiberry install afgerond" 2>&1 | tee -a $LOGFILE
 
 
-cd ~/Downloads/
-echo "* Installeren chronograf" 2>&1 | tee -a $LOGFILE
-wget wget  https://dl.influxdata.com/chronograf/releases/chronograf-1.9.4_linux_armhf.tar.gz  2>&1 | tee -a $LOGFILE
-tar xf ./chronograf-1.9.4_linux_armhf.tar.gz
-sudo cp -R ./chronograf-1.9.4-1/* /  2>&1 | tee -a $LOGFILE
-wget https://raw.githubusercontent.com/pappavis/thescript/master/services/chronograf.service 2>&1 | tee -a $LOGFILE
-sudo mv ./chronograf.service /etc/systemd/system 2>&1 | tee -a $LOGFILE
-sudo systemctl enable chronograf
-sudo systemctl start chronograf
-sudo systemctl status chronograf 2>&1 | tee -a $LOGFILE
-sudo docker pull chronograf:1.9  2>&1 | tee -a $LOGFILE
-rm -rf ./chronograf-1.9.4*
-
-
-cd ~/Downloads/
-echo "* Installeer telegraf" 2>&1 | tee -a $LOGFILE
-wget wget https://dl.influxdata.com/telegraf/releases/telegraf-1.22.4_linux_armhf.tar.gz  2>&1 | tee -a $LOGFILE
-tar xf ./telegraf-1.22.4_linux_armhf.tar.gz
-sudo cp -R -v ./telegraf-1.22.4/* /  2>&1 | tee -a $LOGFILE
-wget https://raw.githubusercontent.com/pappavis/thescript/master/services/telegraf.service 2>&1 | tee -a $LOGFILE
-sudo mv ./telegraf.service /etc/systemd/system 2>&1 | tee -a $LOGFILE
-sudo systemctl enable telegraf
-sudo systemctl start telegraf
-sudo systemctl status telegraf 2>&1 | tee -a $LOGFILE
-rm -rf ./telegraf-1.22.4*
-
-_tg_conf=$('[[outputs.influxdb]] \
-   urls = ["http://127.0.0.1:8086"] \
-   database = "telegraf" \
-   username = "telegrafuser" \
-   password = "Telegr@f" \
-  ')
-echo $_tg_conf | sudo tee -a /etc/telegraf/telegraf.conf 2>&1 | tee -a $LOGFILE
-sudo service telegraf restart
-sudo service telegraf status 2>&1 | tee -a $LOGFILE
-
-
-cd ~/Downloads/
-echo "* Installeer influxdb" 2>&1 | tee -a $LOGFILE
-echo "deb [signed-by=/usr/share/keyrings/influxdb-archive-keyring.gpg] https://repos.influxdata.com/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
-sudo apt update -y 2>&1 | tee -a $LOGFILE
-sudo apt install influxdb -y 2>&1 | tee -a $LOGFILE
-sudo systemctl enable influxdb
-sudo systemctl start influxdb
-sudo service influxdb status 2>&1 | tee -a $LOGFILE
-## https://nwmichl.net/2020/07/14/telegraf-influxdb-grafana-on-raspberrypi-from-scratch/
-sudo usermod -a -G video telegraf
-
-echo "Setup telegraf database op InfluxDB"  2>&1 | tee -a $LOGFILE
-tg_db=$"create database telegraf; use telegraf;  create user telegrafuser with password 'Telegr@f' with all privileges; grant all privileges on telegraf to telegrafuser; create retention policy '4Weeks' on 'telegraf' duration 4w replication 1 default; exit;"
-influx -execute $tg_db   2>&1 | tee -a $LOGFILE
-echo "create database telegraf;" | influx 2>&1 | tee -a $LOGFILE
-echo "use telegraf" | influx 2>&1 | tee -a $LOGFILE
-echo "create user telegrafuser with password 'Telegr@f' with all privileges; " | influx 2>&1 | tee -a $LOGFILE
-echo "grant all privileges on telegraf to telegrafuser; " | influx
-echo "create retention policy '4Weeks' on 'telegraf' duration 4w replication 1 default; " | influx 2>&1 | tee -a $LOGFILE
-
-cd ~/Downloads/
-echo "* Installeer grafana" 2>&1 | tee -a $LOGFILE
-sudo wget https://dl.grafana.com/oss/release/grafana-rpi_6.6.1_armhf.deb 2>&1 | tee -a $LOGFILE
-sudo dpkg -i ./grafana-rpi_6.6.1_armhf.deb 2>&1 | tee -a $LOGFILE
-sudo systemctl enable grafana-server 2>&1 | tee -a $LOGFILE
-sudo systemctl status grafana-server 2>&1 | tee -a $LOGFILE
-echo "grafana-server is geïnstalleerd op http://$(hostname).local:3000" 2>&1 | tee -a $LOGFILE
-sudo usermod -a -G video telegraf
-
-
-echo " * Installeren RPI-Clone" 2>&1 | tee -a $LOGFILE
-cd ~/Downloads
-sudo git clone https://github.com/billw2/rpi-clone.git 2>&1 | tee -a $LOGFILE
-cd rpi-clone
-sudo cp rpi-clone /usr/local/sbin
-cd ~/Downloads
-sudo rm -r rpi-clone
-
-
 echo " * Installeren log2ram" 2>&1 | tee -a $LOGFILE
 echo "deb http://packages.azlux.fr/debian/ bullseye main" | sudo tee /etc/apt/sources.list.d/azlux.list
 wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
@@ -188,13 +84,6 @@ cd ./Easier68k
 pip install -r requirements.txt 2>&1 | tee -a $LOGFILE
 ehco "je kunt nu: python ./cli.py"
 
-echo "Installeren CommanderPi"  2>&1 | tee -a $LOGFILE
-cd ~/Downloads
-git clone https://github.com/jack477/CommanderPi 2>&1 | tee -a $LOGFILE
-cd ./CommanderPi
-echo "Y\n" | bash ./install.sh 2>&1 | tee -a $LOGFILE
-rm -rf ./CommanderPi
-
 
 cd ~/Downloads
 echo "Motorola 68000 emulatie in C, voor de lol." 2>&1 | tee -a $LOGFILE
@@ -208,13 +97,6 @@ curl -fsSL https://get.docker.com  -o get-docker.sh 2>&1 | tee -a $LOGFILE
 sudo sh get-docker.sh 2>&1 | tee -a $LOGFILE
 sudo usermod -aG docker $USER
 
-echo "* Installeren rpi-clone" 2>&1 | tee -a $LOGFILE
-cd ~/Downloads
-sudo apt install -y git 2>&1 | tee -a $LOGFILE
-wget https://github.com/billw2/rpi-clone/archive/master.zip 2>&1 | tee -a $LOGFILE
-unzip master.zip && mv rpi-clone-master rpi-clone 2>&1 | tee -a $LOGFILE
-sudo cp rpi-clone/rpi-clone* /usr/local/sbin
-rm -rf rpi-clone master.zip
 
 echo "* installeren Wireguard VPN" 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
@@ -229,24 +111,7 @@ sudo apt install wireguard -y 2>&1 | tee -a $LOGFILE
 sudo systemctl enable wg-quick@wg0
 
 
-cd ~/Downloads
-printstatus "Installeren box86 emulatie ref--> https://pimylifeup.com/raspberry-pi-x86/" 2>&1 | tee -a $LOGFILE
-for addonnodes in gcc-arm-linux-gnueabihf libc6:armhf libncurses5:armhf libstdc++6:armhf cmake ; do
-  echo " "
-  echo " "
-  echo "Installeren box86 vereisten: ${addonnodes}"
-  echo " "
-  sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
-done
-git clone https://github.com/ptitSeb/box86 2>&1 | tee -a $LOGFILE
-cd ./box86
-mkdir build
-cd build
-cmake .. -DRPI2=1 -DCMAKE_BUILD_TYPE=RelWithDebInfo  2>&1 | tee -a $LOGFILE
-make -j$(nproc)  2>&1 | tee -a $LOGFILE
-sudo make install   2>&1 | tee -a $LOGFILE
-sudo systemctl restart systemd-binfmt
-sudo rm -rf ~/Downloads/box86
+
 cd ~/Downloads
 wget https://raw.githubusercontent.com/pappavis/thescript/master/services/teamspeak.service
 sudo mv ./teamspeak.service /etc/systemd/system
@@ -273,31 +138,6 @@ cd /usr/local/bin
 sudo wget -O nukkit.jar https://go.pimylifeup.com/3xsPQA/nukkit 2>&1 | tee -a $LOGFILE
 sudo service nukkitminecraft restart
 
-echo "* Installeren steampowered.com zie https://pimylifeup.com/raspberry-pi-steam-client/" 2>&1 | tee -a $LOGFILE
-## java -jar nukkit.jar &
-sudo apt remove -y steam-devices -y 2>&1 | tee -a $LOGFILE
-for addonnodes in libappindicator1 libnm0 libtcmalloc-minimal4 steamlink ; do
-  echo " "
-  echo " "
-  echo "Installeren steampowered vereisten: ${addonnodes}"
-  echo " "
-  sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
-done
-#echo 'gpu_mem=128' | sudo tee -a /boot/config.txt | tee -a $LOGFILE
-sudo chmod +rw /dev/uinput
-sudo usermod -aG input pi 2>&1 | tee -a $LOGFILE
-cd ~/Downloads
-wget https://raw.githubusercontent.com/pappavis/thescript/master/steamlink.service 2>&1 | tee -a $LOGFILE
-sudo mv ./services/steamlink.service /etc/systemd/system
-sudo systemctl enable steamlink.service 2>&1 | tee -a $LOGFILE
-sudo systemctl disable steamlink.service 2>&1 | tee -a $LOGFILE
-wget https://steamcdn-a.akamaihd.net/client/installer/steam.deb 2>&1 | tee -a $LOGFILE
-sudo dpkg -i ./steam.deb 2>&1 | tee -a $LOGFILE
-sudo rm -rf ./steam.deb 2>&1 | tee -a $LOGFILE
-sudo touch  /etc/profile.d/steam.sh
-echo 'export STEAMOS=1' | sudo tee -a /etc/profile.d/steam.sh 2>&1 | tee -a $LOGFILE
-echo 'export STEAM_RUNTIME=1' | sudo tee -a /etc/profile.d/steam.sh
-sudo service steamlink status 2>&1 | tee -a $LOGFILE
 
 cd $_pwd
 
@@ -315,47 +155,6 @@ sudo service mumble-server status 2>&1 | tee -a $LOGFILE
 
 cd $_pwd
 
-echo "Instellen dagelijks NFS server mounts" 2>&1 | tee -a $LOGFILE
-cd ~/Downloads
-wget https://raw.githubusercontent.com/pappavis/thescript/master/installNFSserver.sh 2>&1 | tee -a $LOGFILE
-chmod +x ./installNFSserver.sh
-sudo mv ./installNFSserver.sh /etc/cron.daily/mountNFSservers.sh
-
-echo "Instellen wekelijks systeem bijgewerkt" 2>&1 | tee -a $LOGFILE
-cd ~/Downloads
-touch ./refresh.sh
-echo "#/bin/bash"  2>&1 | sudo tee -a ./refresh.sh
-echo "LOGFILE=/home/pi/logs/refreshBijwerken.log"  2>\&1 | sudo tee -a ./refresh.sh
-echo "echo '' | tee -a \$LOGFILE"  2>&1 | sudo tee -a $LOGFILE 
-echo "echo 'refresh bijwerken gestart' | tee -a \$LOGFILE &"  2>&1 | sudo tee -a $LOGFILE
-echo "mkdir /home/pi/Downloads | tee -a \$LOGFILE"  2>&1 | sudo tee -a ./refresh.sh
-echo "cd /home/pi/Downloads"  2>&1  | sudo tee -a ./refresh.sh
-echo "rm -rf ./autoupdate.sh"  2>&1 | sudo tee -a ./refresh.sh
-echo "wget https://raw.githubusercontent.com/pappavis/thescript/master/autoupdate.sh  2>&1 | tee -a \$LOGFILE"  | sudo tee -a ./refresh.sh
-echo "chmod +x ./autoupdate.sh | tee -a \$LOGFILE"  2>&1 | sudo tee -a ./refresh.sh
-echo "sudo mv ./autoupdate.sh /etc/cron.weekly | tee -a \$LOGFILE"  2>&1 | sudo tee -a ./refresh.sh
-echo "sudo service cron restart | tee -a \$LOGFILE"  2>&1 | sudo tee -a ./refresh.sh
-chmod +x ./refresh.sh 
-sudo mv ./refresh.sh /etc/cron.daily/refresh.sh
-sudo service cron restart
-
-cd ~/Downloads
-touch ./pythonBijwerken.sh
-echo "#/bin/bash"  2>&1 | sudo tee -a ./pythonBijwerken.sh
-echo "LOGFILE=/home/pi/logs/pythonBijwerken.log"  2>&1 | sudo tee -a ./pythonBijwerken.sh
-echo "echo '' | tee -a \$LOGFILE &"  2>&1 | sudo tee -a ./pythonBijwerken.sh
-echo "echo 'Python bijwerken gestart' | tee -a \$LOGFILE &"  2>&1 | sudo tee -a ./pythonBijwerken.sh
-echo "source /home/pi/.bashrc | tee -a \$LOGFILE"  2>&1 | sudo tee -a ./pythonBijwerken.sh
-echo "mkdir /home/pi/Downloads | tee -a \$LOGFILE"  2>&1 | sudo tee -a ./pythonBijwerken.sh
-echo "git clone https://github.com/pappavis/thescript | tee -a \$LOGFILE" 2>&1 | sudo tee -a ./pythonBijwerken.sh
-echo "cd /home/pi/Downloads/thescript | tee -a \$LOGFILE"  2>&1 | sudo tee -a ./pythonBijwerken.sh
-echo "git pull | tee -a \$LOGFILE"  2>&1 | sudo tee -a ./pythonBijwerken.sh
-echo "bash /home/pi/Downloads/thescript/installPythonLibs.sh | tee -a \$LOGFILE &"  2>&1 | sudo tee -a ./pythonBijwerken.sh
-echo "bash /home/pi/Downloads/thescript/installPythonCircuitpython.sh  | tee -a \$LOGFILE &"  2>&1 | sudo tee -a ./pythonBijwerken.sh
-echo "echo '' | tee -a \$LOGFILE &"  2>&1 | sudo tee -a ./pythonBijwerken.sh
-chmod +x ./pythonBijwerken.sh
-sudo mv ./pythonBijwerken.sh /etc/cron.monthly/pythonBijwerken.sh
-sudo service cron restart
 
 #echo "* Installeer auto update als crontab taak" 2>&1 | tee -a $LOGFILE
 #touch ~/logs/cronlog.txt
@@ -436,32 +235,6 @@ sudo virsh net-autostart default 2>&1 | tee -a $LOGFILE
 sudo virsh net-list --all 2>&1 | tee -a $LOGFILE
 echo "qemu install afgerond." 2>&1 | tee -a $LOGFILE
 
-echo "** installeer OBS Studio op pi" 2>&1 | tee -a $LOGFILE
-cd~/Downloads
-# https://raspberrytips.com/install-obs-studio-raspberry-pi/
-for addonnodes in build-essential checkinstall cmake git libmbedtls-dev libasound2-dev libavcodec-dev libavdevice-dev libavfilter-dev libavformat-dev libavutil-dev libcurl4-openssl-dev libfontconfig1-dev libfreetype6-dev libgl1-mesa-dev libjack-jackd2-dev libjansson-dev libluajit-5.1-dev libpulse-dev libqt5x11extras5-dev libspeexdsp-dev libswresample-dev libswscale-dev libudev-dev libv4l-dev libvlc-dev libx11-dev libx11-xcb1 libx11-xcb-dev libxcb-xinput0 libxcb-xinput-dev libxcb-randr0 libxcb-randr0-dev libxcb-xfixes0 libxcb-xfixes0-dev libx264-dev libxcb-shm0-dev libxcb-xinerama0-dev libxcomposite-dev libxinerama-dev pkg-config python3-dev qtbase5-dev libqt5svg5-dev swig libwayland-dev qtbase5-private-dev ; do
-  echo " "
-  echo " "
-  echo "Installeren OBS STudio vereisten: ${addonnodes}" 2>&1 | tee -a $LOGFILE
-  echo " "
-  sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
-done
-wget http://ftp.debian.org/debian/pool/non-free/f/fdk-aac/libfdk-aac2_2.0.1-1_armhf.deb 2>&1 | tee -a $LOGFILE
-wget http://ftp.debian.org/debian/pool/non-free/f/fdk-aac/libfdk-aac-dev_2.0.1-1_armhf.deb 2>&1 | tee -a $LOGFILE
-sudo dpkg -i libfdk-aac2_2.0.1-1_armhf.deb 2>&1 | tee -a $LOGFILE
-sudo dpkg -i libfdk-aac-dev_2.0.1-1_armhf.deb 2>&1 | tee -a $LOGFILE
-sudo git clone --recursive https://github.com/obsproject/obs-studio.git
-cd obs-studio
-sudo mkdir build
-cd build
-sudo cmake -DUNIX_STRUCTURE=1 -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_PIPEWIRE=OFF -DBUILD_BROWSER=OFF .. 2>&1 | tee -a $LOGFILE
-sudo make -j1 2>&1 | tee -a $LOGFILE
-sudo make install 2>&1 | tee -a $LOGFILE
-echo MESA_GL_VERSION_OVERRIDE="3.3 obs"| sudo tee -a /etc/bash.bashrc
-rm -rf ./libfdk-aac2_2.0.1-1_armhf.deb
-rm -rf ,.libfdk-aac-dev_2.0.1-1_armhf.deb
-echo "**  OBS Studio build afgerond" 2>&1 | tee -a $LOGFILE
-echo "---------" 2>&1 | tee -a $LOGFILE
 
 echo "" 2>&1 | tee -a $LOGFILE
 echo "Instellen Retropie" 2>&1 | tee -a $LOGFILE
@@ -497,6 +270,60 @@ sudo mv ./911001.bin /home/pi/.local/share/xemu-lgb/c65/default-files/mega65.bin
 
 rm -rf ~/Downloads/xemu 2>&1 | tee -a $LOGFILE
 
+cd ~/Downloads
+sudo rm -rf ./x16*
+echo "" 2>&1 | tee -a $LOGFILE
+echo "Commander X-16 emulatie installeren" 2>&1 | tee -a $LOGFILE
+for addonnodes in  libsdl2-dev build-essential git cc65; do
+	sudo apt-get install -y  2>&1 | tee -a $LOGFILE
+done
+
+git clone https://github.com/emscripten-core/emsdk.git 2>&1 | tee -a $LOGFILE
+cd ./emsdk 2>&1 | tee -a $LOGFILE
+git pull 2>&1 | tee -a $LOGFILE
+./emsdk install latest 2>&1 | tee -a $LOGFILE
+./emsdk activate latest 2>&1 | tee -a $LOGFILE
+source ./emsdk_env.sh 2>&1 | tee -a $LOGFILE
+
+cd ~/Downloads
+git clone https://github.com/commanderx16/x16-rom 2>&1 | tee -a $LOGFILE
+git clone https://github.com/commanderx16/x16-emulator 2>&1 | tee -a $LOGFILE
+git clone https://github.com/cc65/cc65.git 2>&1 | tee -a $LOGFILE
+
+cd ./cc65
+make deflater
+make -j$(nproc) 2>&1 | tee -a $LOGFILE
+
+sudo mkdir  /var/www/html/apps/
+sudo mkdir  /var/www/html/apps/commander16
+cd ./x16-emulator
+make  2>&1 | tee -a $LOGFILE
+sudo cp -r -v ./x16emu /usr/local/bin 2>&1 | tee -a $LOGFILE
+sudo cp -r -v ./webassembly/ /var/www/html/x16-emulator  2>&1 | tee -a $LOGFILE
+sudo mkdir /var/www/html/commander16/webassembly
+sudo mv -v ./webassembly/* /var/www/html/commander16/webassembly 2>&1 | tee -a $LOGFILE
+cd  /var/www/html/apps/commander16
+wget https://www.commanderx16.com/emulator/x16emu.html 2>&1 | tee -a $LOGFILE
+wget https://www.commanderx16.com/emulator/x16emu.data 2>&1 | tee -a $LOGFILE
+wget https://www.commanderx16.com/emulator/ex16mu.data 2>&1 | tee -a $LOGFILE
+
+wget https://www.commanderx16.com/emulator/x16emu.js 2>&1 | tee -a $LOGFILE
+wget https://www.commanderx16.com/emulator/x16emu.wasm 2>&1 | tee -a $LOGFILE
+
+#sudo wget https://sebastianvog.github.io/x16-emulator/x16emu.html 2>&1 | tee -a $LOGFILE
+#sudo wget https://sebastianvog.github.io/x16-emulator/x16emu.data 2>&1 | tee -a $LOGFILE
+#sudo wget https://sebastianvog.github.io/x16-emulator/x16emu.js 2>&1 | tee -a $LOGFILE
+#sudo wget https://sebastianvog.github.io/x16-emulator/x16emu.wasm 2>&1 | tee -a $LOGFILE
+#sudo chown www-data:www-data -R /var/www/html/apps/commander16/
+cd ~/Downloads
+sudo rm -rf ./x16*
+sudo rm -rf ./cc65*
+sudo rm -rf ./cc65*
+echo "" 2>&1 | tee -a $LOGFILE
+echo "Commander X-16 emulatie installeren afgerond." 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
+
 
 cd ~/Downloads
 echo "" 2>&1 | tee -a $LOGFILE
@@ -518,18 +345,6 @@ sudo make install 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
 rm -rf ./sqlitebrowser
 echo "" 2>&1 | tee -a $LOGFILE
-
-
-cd ~/Downloads
-echo "" 2>&1 | tee -a $LOGFILE
-echo "Instellen tailscale VPN" 2>&1 | tee -a $LOGFILE
-sudo apt install -y apt-transport-https 2>&1 | tee -a $LOGFILE
-curl -fsSL https://pkgs.tailscale.com/stable/raspbian/buster.gpg | sudo apt-key add -
-curl -fsSL https://pkgs.tailscale.com/stable/raspbian/buster.list | sudo tee /etc/apt/sources.list.d/tailscale.list
-sudo apt-get update -y 2>&1 | tee -a $LOGFILE
-sudo apt-get install tailscale -y 2>&1 | tee -a $LOGFILE
-sudo tailscale up 2>&1 | tee -a $LOGFILE
-tailscale ip -4
 
 
 cd ~/Downloads
@@ -589,82 +404,6 @@ echo "Instellen OpenMediaVault  ref--> https://www.wundertech.net/turn-a-raspber
 curl -sSL https://github.com/OpenMediaVault-Plugin-Developers/installScript/raw/ma
 
 cd ~/Downloads
-sudo rm -rf ./x16*
-echo "" 2>&1 | tee -a $LOGFILE
-echo "Commander X-16 emulatie installeren" 2>&1 | tee -a $LOGFILE
-for addonnodes in  libsdl2-dev build-essential git cc65; do
-	sudo apt-get install -y  2>&1 | tee -a $LOGFILE
-done
-
-git clone https://github.com/emscripten-core/emsdk.git 2>&1 | tee -a $LOGFILE
-cd ./emsdk 2>&1 | tee -a $LOGFILE
-git pull 2>&1 | tee -a $LOGFILE
-./emsdk install latest 2>&1 | tee -a $LOGFILE
-./emsdk activate latest 2>&1 | tee -a $LOGFILE
-source ./emsdk_env.sh 2>&1 | tee -a $LOGFILE
-
-cd ~/Downloads
-git clone https://github.com/commanderx16/x16-rom 2>&1 | tee -a $LOGFILE
-git clone https://github.com/commanderx16/x16-emulator 2>&1 | tee -a $LOGFILE
-git clone https://github.com/cc65/cc65.git 2>&1 | tee -a $LOGFILE
-
-cd ./cc65
-make deflater
-make -j$(nproc) 2>&1 | tee -a $LOGFILE
-
-sudo mkdir  /var/www/html/apps/
-sudo mkdir  /var/www/html/apps/commander16
-cd ./x16-emulator
-make  2>&1 | tee -a $LOGFILE
-sudo cp -r -v ./x16emu /usr/local/bin 2>&1 | tee -a $LOGFILE
-sudo cp -r -v ./webassembly/ /var/www/html/x16-emulator  2>&1 | tee -a $LOGFILE
-sudo mkdir /var/www/html/commander16/webassembly
-sudo mv -v ./webassembly/* /var/www/html/commander16/webassembly 2>&1 | tee -a $LOGFILE
-cd  /var/www/html/apps/commander16
-wget https://www.commanderx16.com/emulator/x16emu.html 2>&1 | tee -a $LOGFILE
-wget https://www.commanderx16.com/emulator/x16emu.data 2>&1 | tee -a $LOGFILE
-wget https://www.commanderx16.com/emulator/ex16mu.data 2>&1 | tee -a $LOGFILE
-
-wget https://www.commanderx16.com/emulator/x16emu.js 2>&1 | tee -a $LOGFILE
-wget https://www.commanderx16.com/emulator/x16emu.wasm 2>&1 | tee -a $LOGFILE
-
-#sudo wget https://sebastianvog.github.io/x16-emulator/x16emu.html 2>&1 | tee -a $LOGFILE
-#sudo wget https://sebastianvog.github.io/x16-emulator/x16emu.data 2>&1 | tee -a $LOGFILE
-#sudo wget https://sebastianvog.github.io/x16-emulator/x16emu.js 2>&1 | tee -a $LOGFILE
-#sudo wget https://sebastianvog.github.io/x16-emulator/x16emu.wasm 2>&1 | tee -a $LOGFILE
-#sudo chown www-data:www-data -R /var/www/html/apps/commander16/
-cd ~/Downloads
-sudo rm -rf ./x16*
-sudo rm -rf ./cc65*
-sudo rm -rf ./cc65*
-echo "" 2>&1 | tee -a $LOGFILE
-echo "Commander X-16 emulatie installeren afgerond." 2>&1 | tee -a $LOGFILE
-echo "" 2>&1 | tee -a $LOGFILE
-
-cd ~/Downloads
-appTxt1="Milkytracker"
-echo "" 2>&1 | tee -a $LOGFILE
-echo "Installeren: $appTxt1" 2>&1 | tee -a $LOGFILE
-for addonnodes in libjack-dev liblhasa-dev librtmidi-dev libsdl2-dev libzzip-dev ; do
-  echo " "
-  echo " "
-  echo "Installeren $appTxt1 vereisten: ${addonnodes}" 2>&1 | tee -a $LOGFILE
-  echo " "
-  sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
-done
-git clone https://github.com/milkytracker/MilkyTracker 2>&1 | tee -a $LOGFILE
-cd ./MilkyTracker
-mkdir ./build
-cd ./build
-cmake .. 2>&1 | tee -a $LOGFILE
-make 2>&1 | tee -a $LOGFILE
-sudo make install 2>&1 | tee -a $LOGFILE
-cd ~/Downloads
-sudo rm -rf ./MilkyTracker
-echo "Einde $appTxt1 build install" 2>&1 | tee -a $LOGFILE
-echo "" 2>&1 | tee -a $LOGFILE
-
-cd ~/Downloads
 appTxt1="wordpress"
 echo "" 2>&1 | tee -a $LOGFILE
 echo "Installeren: $appTxt1" 2>&1 | tee -a $LOGFILE
@@ -682,41 +421,10 @@ echo "Einde $appTxt1 build install" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
 
 
-cd ~/Downloads
-appTxt1="FlatCam PCB router voor KiCAD"
-echo "" 2>&1 | tee -a $LOGFILE
-echo "Installeren: $appTxt1" 2>&1 | tee -a $LOGFILE
-for addonnodes in pyqt6  geos  spatialindex ; do
-  echo " "
-  echo " "
-  echo "Installeren $appTxt1 vereisten: ${addonnodes}" 2>&1 | tee -a $LOGFILE
-  pip install --upgrade  2>&1 | tee -a $LOGFILE
-  echo " "
-done
-git clone https://bitbucket.org/jpcgt/flatcam.git 2>&1 | tee -a $LOGFILE
-sudo mkdir /usr/local/share/applications/ 2>&1 | tee -a $LOGFILE
-sudo mv ./flatcam /usr/local/share/applications
-sudo ln -s /usr/local/share/applications/flatcam/flatcam /usr/local/bin/flatcam
-echo "" 2>&1 | tee -a $LOGFILE
-echo "Einde $appTxt1 build install" 2>&1 | tee -a $LOGFILE
-echo "" 2>&1 | tee -a $LOGFILE
-echo "" 2>&1 | tee -a $LOGFILE
 
 echo "* Install extras is afgerond. Je kunt nu herstarten." 2>&1 | tee -a $LOGFILE
 
 cd $_pwd
-
-
-cd ~/Downloads
-appTxt1="BIPES online Micropython blokken omgeving"
-echo "" 2>&1 | tee -a $LOGFILE
-echo "Installeren: $appTxt1" 2>&1 | tee -a $LOGFILE
-git clone https://github.com/BIPES/BIPES 2>&1 | tee -a $LOGFILE
-sudo mkdir /var/www/html/apps
-sudo mv  ./BIPES /var/www/html/apps
-echo "Einde $appTxt1 build install" 2>&1 | tee -a $LOGFILE
-echo "" 2>&1 | tee -a $LOGFILE
-echo "" 2>&1 | tee -a $LOGFILE
 
 
 cd ~/Downloads
@@ -743,18 +451,6 @@ sudo cp -r -v ./webrepl /var/www/html/apps 2>&1 | tee -a $LOGFILE
 sudo cp /var/www/html/apps/micropython_webrepl/webrepl.html /var/www/html/apps/micropython_webrepl/index.php 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
 
-
-cd ~/Downloads
-appTxt1="Bitsy fantasy console"
-echo "" 2>&1 | tee -a $LOGFILE
-echo "Installeren: $appTxt1" 2>&1 | tee -a $LOGFILE
-git clone https://github.com/le-doux/bitsy 2>&1 | tee -a $LOGFILE
-mkdir /var/www/html/apps
-mkdir /var/www/html/apps/bitsy
-cp -r -v ./bitsy/editor /var/www/html/apps/bitsy
-echo "Einde $appTxt1 build install" 2>&1 | tee -a $LOGFILE
-echo "" 2>&1 | tee -a $LOGFILE
-echo "" 2>&1 | tee -a $LOGFILE
 
 echo "EINDE installExtras.sh $(date)" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
