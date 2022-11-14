@@ -154,6 +154,12 @@ sudo apt remove python2 -y  2>&1 | tee -a $LOGFILE
 sudo apt purge python2 -y  2>&1 | tee -a $LOGFILE
 #sudo apt install python-is-python3 -y  2>&1 | tee -a $LOGFILE
 
+echo " * Installeren log2ram" 2>&1 | tee -a $LOGFILE
+echo "deb http://packages.azlux.fr/debian/ bullseye main" | sudo tee /etc/apt/sources.list.d/azlux.list
+wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
+sudo apt update -y 2>&1 | tee -a $LOGFILE
+sudo apt install log2ram -y 2>&1 | tee -a $LOGFILE
+
 bash ./installPythonVirtualenv.sh
 source ~/.bashrc
 
