@@ -3,8 +3,6 @@ LOGFILE="/home/pi/logs/installDesktop.txt"
 
 echo "** installeer minimale Raspbian desktop." 2>&1 | tee -a $LOGFILE
 
-
-
 if [ "$(id -u)" != "0" ]
 then
   echo "Draai deze scriptje als gebruikter root" 2>&1
@@ -78,4 +76,69 @@ done
 
 sudo adduser xrdp ssl-cert  2>&1 | tee -a $LOGFILE
 systemctl show -p SubState --value xrdp 2>&1 | tee -a $LOGFILE
+
+echo " * Installeren RPI-Clone" 2>&1 | tee -a $LOGFILE
+cd ~/Downloads
+sudo git clone https://github.com/billw2/rpi-clone.git 2>&1 | tee -a $LOGFILE
+cd rpi-clone
+sudo cp rpi-clone /usr/local/sbin
+cd ~/Downloads
+sudo rm -r rpi-clone
+
+
+echo "Installeren CommanderPi"  2>&1 | tee -a $LOGFILE
+cd ~/Downloads
+git clone https://github.com/jack477/CommanderPi 2>&1 | tee -a $LOGFILE
+cd ./CommanderPi
+echo "Y\n" | bash ./install.sh 2>&1 | tee -a $LOGFILE
+rm -rf ./CommanderPi
+
+cd ~/Downloads
+printstatus "Installeren box86 emulatie ref--> https://pimylifeup.com/raspberry-pi-x86/" 2>&1 | tee -a $LOGFILE
+for addonnodes in gcc-arm-linux-gnueabihf libc6:armhf libncurses5:armhf libstdc++6:armhf cmake ; do
+  echo " "
+  echo " "
+  echo "Installeren box86 vereisten: ${addonnodes}"
+  echo " "
+  sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
+git clone https://github.com/ptitSeb/box86 2>&1 | tee -a $LOGFILE
+cd ./box86
+mkdir build
+cd build
+cmake .. -DRPI2=1 -DCMAKE_BUILD_TYPE=RelWithDebInfo  2>&1 | tee -a $LOGFILE
+make -j$(nproc)  2>&1 | tee -a $LOGFILE
+sudo make install   2>&1 | tee -a $LOGFILE
+sudo systemctl restart systemd-binfmt
+sudo rm -rf ~/Downloads/box86
+
+echo "* Installeren steampowered.com zie https://pimylifeup.com/raspberry-pi-steam-client/" 2>&1 | tee -a $LOGFILE
+## java -jar nukkit.jar &
+sudo apt remove -y steam-devices -y 2>&1 | tee -a $LOGFILE
+for addonnodes in libappindicator1 libnm0 libtcmalloc-minimal4 steamlink ; do
+  echo " "
+  echo " "
+  echo "Installeren steampowered vereisten: ${addonnodes}"
+  echo " "
+  sudo apt install -y  ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
+#echo 'gpu_mem=128' | sudo tee -a /boot/config.txt | tee -a $LOGFILE
+sudo chmod +rw /dev/uinput
+sudo usermod -aG input pi 2>&1 | tee -a $LOGFILE
+cd ~/Downloads
+wget https://raw.githubusercontent.com/pappavis/thescript/master/steamlink.service 2>&1 | tee -a $LOGFILE
+sudo mv ./services/steamlink.service /etc/systemd/system
+sudo systemctl enable steamlink.service 2>&1 | tee -a $LOGFILE
+sudo systemctl disable steamlink.service 2>&1 | tee -a $LOGFILE
+wget https://steamcdn-a.akamaihd.net/client/installer/steam.deb 2>&1 | tee -a $LOGFILE
+sudo dpkg -i ./steam.deb 2>&1 | tee -a $LOGFILE
+sudo rm -rf ./steam.deb 2>&1 | tee -a $LOGFILE
+sudo touch  /etc/profile.d/steam.sh
+echo 'export STEAMOS=1' | sudo tee -a /etc/profile.d/steam.sh 2>&1 | tee -a $LOGFILE
+echo 'export STEAM_RUNTIME=1' | sudo tee -a /etc/profile.d/steam.sh
+sudo service steamlink status 2>&1 | tee -a $LOGFILE
+
+
+
+
 echo "minimale Raspbian desktop installatie afgerond" 2>&1 | tee -a $LOGFILE
