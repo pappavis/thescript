@@ -131,6 +131,10 @@ mkdir ~/Programmering/python/python/voorbeeld
 #echo "Om OpenCV te gebruiken Deze commando op een pi4.." 2>&1 | tee -a $LOGFILE
 #echo "LD_PRELOAD=/usr/lib/arm-linux-gnueabihf/libatomic.so.1.2.0 python3 Object_detection_picamera.py  --usbcam"  2>&1 | sudo tee -a /home/pi/.bashrc
 
+# Homeassistant is afhanklijk van Rust
+echo "1" | curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+
 echo "" 2>&1 | tee -a $LOGFILE
 echo "installPythonLibs.sh is afgerond"  2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
