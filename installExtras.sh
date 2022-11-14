@@ -23,9 +23,6 @@ make -j$(nproc)
 sudo make install 2>&1 | tee -a $LOGFILE
 rm -rf ~/Downloads/x264
 
-cd $_pwd
-echo "* Installeer pi-apps app store" 2>&1 | tee -a $LOGFILE
-wget -qO- https://raw.githubusercontent.com/Botspot/pi-apps/master/install | bash 2>&1 | tee -a $LOGFILE
 
 
 echo "* Installeer webmin" 2>&1 | tee -a $LOGFILE
@@ -66,13 +63,6 @@ if [[ $(arch) -eq 'armv6l' ]]
  fi
 rm -rf ./amiberry
 echo "Amiberry install afgerond" 2>&1 | tee -a $LOGFILE
-
-
-echo " * Installeren log2ram" 2>&1 | tee -a $LOGFILE
-echo "deb http://packages.azlux.fr/debian/ bullseye main" | sudo tee /etc/apt/sources.list.d/azlux.list
-wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
-sudo apt update -y 2>&1 | tee -a $LOGFILE
-sudo apt install log2ram -y 2>&1 | tee -a $LOGFILE
 
 cd /var/www/html
 sudo wget -a $LOGFILE $AQUIET https://www.scargill.net/iot/reset.css -O /var/www/html/reset.css 2>&1 | tee -a $LOGFILE
