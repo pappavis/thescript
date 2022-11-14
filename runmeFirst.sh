@@ -137,6 +137,17 @@ cd /var/www/html/inc
 sudo wget https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css 2>&1 | tee -a $LOGFILE
 sudo chown www-data:www-data /var/www/html/ -R &
 
+cd ~/Downloads
+echo "" 2>&1 | tee -a $LOGFILE
+echo "Installeren Bootstrap.js bibliotheek" 2>&1 | tee -a $LOGFILE
+wget https://github.com/twbs/bootstrap/releases/download/v5.1.3/bootstrap-5.1.3-dist.zip 2>&1 | tee -a $LOGFILE
+7z x bootstrap-5.1.3-dist.zip 2>&1 | tee -a $LOGFILE
+sudo mkdir /var/www/html/support 2>&1 | tee -a $LOGFILE
+sudo mkdir /var/www/html/inc 2>&1 | tee -a $LOGFILE
+sudo mv -v bootstrap-5.1.3-dist /var/www/html/inc/ 2>&1 | tee -a $LOGFILE
+sudo mv -v /var/www/html/inc/bootstrap-5.1.3-dist /var/www/html/inc/bootstrap 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
+
 cd $_pwd
 
 sudo apt remove python2 -y  2>&1 | tee -a $LOGFILE
