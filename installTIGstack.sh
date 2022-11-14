@@ -9,42 +9,6 @@ git pull
 
 echo "********* Start installTIGstack -->  $LOGFILE" 2>&1 | tee -a $LOGFILE
 
-cd ~/Downloads/
-echo "* Installeren chronograf" 2>&1 | tee -a $LOGFILE
-wget wget  https://dl.influxdata.com/chronograf/releases/chronograf-1.9.4_linux_armhf.tar.gz  2>&1 | tee -a $LOGFILE
-tar xf ./chronograf-1.9.4_linux_armhf.tar.gz
-sudo cp -R ./chronograf-1.9.4-1/* /  2>&1 | tee -a $LOGFILE
-wget https://raw.githubusercontent.com/pappavis/thescript/master/services/chronograf.service 2>&1 | tee -a $LOGFILE
-sudo mv ./chronograf.service /etc/systemd/system 2>&1 | tee -a $LOGFILE
-sudo systemctl enable chronograf
-sudo systemctl start chronograf
-sudo systemctl status chronograf 2>&1 | tee -a $LOGFILE
-sudo docker pull chronograf:1.9  2>&1 | tee -a $LOGFILE
-rm -rf ./chronograf-1.9.4*
-
-
-cd ~/Downloads/
-echo "* Installeer telegraf" 2>&1 | tee -a $LOGFILE
-wget wget https://dl.influxdata.com/telegraf/releases/telegraf-1.22.4_linux_armhf.tar.gz  2>&1 | tee -a $LOGFILE
-tar xf ./telegraf-1.22.4_linux_armhf.tar.gz
-sudo cp -R -v ./telegraf-1.22.4/* /  2>&1 | tee -a $LOGFILE
-wget https://raw.githubusercontent.com/pappavis/thescript/master/services/telegraf.service 2>&1 | tee -a $LOGFILE
-sudo mv ./telegraf.service /etc/systemd/system 2>&1 | tee -a $LOGFILE
-sudo systemctl enable telegraf
-sudo systemctl start telegraf
-sudo systemctl status telegraf 2>&1 | tee -a $LOGFILE
-rm -rf ./telegraf-1.22.4*
-
-_tg_conf=$('[[outputs.influxdb]] \
-   urls = ["http://127.0.0.1:8086"] \
-   database = "telegraf" \
-   username = "telegrafuser" \
-   password = "Telegr@f" \
-  ')
-echo $_tg_conf | sudo tee -a /etc/telegraf/telegraf.conf 2>&1 | tee -a $LOGFILE
-sudo service telegraf restart
-sudo service telegraf status 2>&1 | tee -a $LOGFILE
-
 
 cd ~/Downloads/
 echo "* Installeer influxdb" 2>&1 | tee -a $LOGFILE
@@ -74,15 +38,6 @@ sudo systemctl enable grafana-server 2>&1 | tee -a $LOGFILE
 sudo systemctl status grafana-server 2>&1 | tee -a $LOGFILE
 echo "grafana-server is geïnstalleerd op http://$(hostname).local:3000" 2>&1 | tee -a $LOGFILE
 sudo usermod -a -G video telegraf
-
-cd $_pwd
-
-echo "" 2>&1 | tee -a $LOGFILE
-echo "" 2>&1 | tee -a $LOGFILE
-echo "* Grafana URL --> http://$(hostname).local:3000/" 2>&1 | tee -a $LOGFILE
-echo "* Chronograf URL --> http://$(hostname).local:8888/" 2>&1 | tee -a $LOGFILE
-echo "* Telegraf --> $(hostname).local/" 2>&1 | tee -a $LOGFILE
-echo "" 2>&1 | tee -a $LOGFILE
 
 
 echo "* installTIGstack is afgerond." 2>&1 | tee -a $LOGFILE
