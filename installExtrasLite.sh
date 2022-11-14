@@ -1,6 +1,6 @@
 _hn1=$(hostname)
 _pwd=$(pwd)
-LOGFILE=$HOME/logs/installExtras-`date +%Y-%m-%d_%Hh%Mm`.log
+LOGFILE=$HOME/logs/installExtrasLite-`date +%Y-%m-%d_%Hh%Mm`.log
 AQUIET=""
 
 echo "" 2>&1 | tee -a $LOGFILE
@@ -39,15 +39,9 @@ sudo apt-get $AQUIET -y update 2>&1 | tee -a $LOGFILE
 sudo apt-get $AQUIET -y install webmin 2>&1 | tee -a $LOGFILE
 sudo sed -i -e 's#ssl=1#ssl=0#g' /etc/webmin/miniserv.conf
 
-#wget https://www.virtualhere.com/sites/default/files/usbserver/vhusbdarmpi3
-wget https://www.virtualhere.com/sites/default/files/usbclient/vhuitarm7
-#wget https://virtualhere.com/sites/default/files/usbserver/vhusbdx86_64
-#chmod +x ./vhusbdarmpi3
-chmod +x ./vhuitarm7
-#chmod +x ./vhusbdarmpi
-#chmod +x ./vhusbdx86_64
-sudo cp -r -v ./vhusbd* /usr/local/bin
-#sudo cp ./vhui* /usr/local/bin
+echo "Instellen virtualehere.com USB via WiFi" 2>&1 | tee -a $LOGFILE
+curl https://raw.githubusercontent.com/virtualhere/script/main/install_server | sudo sh
+
 curl -s https://www.dataplicity.com/jfjro6ak.py | sudo python3
 echo "export TERM=xterm-256color"  2>&1 | sudo tee -a /home/dataplicity/.bashrc
 
