@@ -20,18 +20,21 @@ for addonnodes in  pip wheel ffmpeg homeassistant ; do
   	pip install --upgrade ${addonnodes}  2>&1 | tee -a $LOGFILE
 done
 
-sudo useradd -rm homeassistant -G dialout,gpio,i2c
-sudo mkdir /home/homeassistant
-sudo chown homeassistant:homeassistant /home/homeassistant
+sudo useradd -rm homeassistant -G dialout,gpio,i2c  2>&1 | tee -a $LOGFILE
+sudo mkdir /home/homeassistant  2>&1 | tee -a $LOGFILE
+sudo chown homeassistant:homeassistant /home/homeassistant  2>&1 | tee -a $LOGFILE
 
 mkdir ~/Downloads
 cd ~/Downloads
-wget https://raw.githubusercontent.com/pappavis/thescript/master/services/homeassistant.service
-sudo mv ./homeassistant.service /etc/systemd/system
-sudo systemctl enable homeassistant.service
-sudo service homeassistant restart
+wget https://raw.githubusercontent.com/pappavis/thescript/master/services/homeassistant.service  2>&1 | tee -a $LOGFILE
+sudo mv ./homeassistant.service /etc/systemd/system  2>&1 | tee -a $LOGFILE
+sudo systemctl enable homeassistant.service  2>&1 | tee -a $LOGFILE
+sudo service homeassistant restart  2>&1 | tee -a $LOGFILE
+cp -v ./configuration.yaml ~/.homeassistant  2>&1 | tee -a $LOGFILE
+sudo service homeassistant restart  2>&1 | tee -a $LOGFILE
+sudo service homeassistant status  2>&1 | tee -a $LOGFILE
 
 cd $_pwd
 
-printf "\nStart homeassitant op http://$_hn.local:8123\n"
+echo "\nStart homeassitant op http://$_hn.local:8123\n" 2>&1 | tee -a $LOGFILE
 source ~/.bashrc
