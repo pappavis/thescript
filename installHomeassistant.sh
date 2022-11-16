@@ -32,10 +32,9 @@ sudo service homeassistant restart  2>&1 | tee -a $LOGFILE
 
 # install Sonoff POW R3
 cp -v ./configuration.yaml ~/.homeassistant  2>&1 | tee -a $LOGFILE
-mkdir  ~/.homeassistant/custom_components/  2>&1 | tee -a $LOGFILE
 cd ~/Downloads  2>&1 | tee -a $LOGFILE
 git clone https://github.com/AlexxIT/SonoffLAN  2>&1 | tee -a $LOGFILE
-mv ./custom_components/ ~/.homeassistant/
+mv -v ~/.homeassistant/SonoffLAN/custom_components/ ~/.homeassistant/ 2>&1 | tee -a $LOGFILE
 
 sudo service homeassistant restart  2>&1 | tee -a $LOGFILE
 sudo service homeassistant status  2>&1 | tee -a $LOGFILE
