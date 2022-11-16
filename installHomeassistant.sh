@@ -11,6 +11,7 @@ python3 -m ensurepip
 python3 -m virtualenv /home/pi/venv/homeassistant
 source /home/pi/venv/homeassistant/bin/activate
 
+mkdir ~/Downloads
 cd ~/Downloads
 echo "1"  2>&1  | curl https://sh.rustup.rs -sSf | sh  2>&1 
 source $HOME/.cargo/env
@@ -24,13 +25,18 @@ sudo useradd -rm homeassistant -G dialout,gpio,i2c  2>&1 | tee -a $LOGFILE
 sudo mkdir /home/homeassistant  2>&1 | tee -a $LOGFILE
 sudo chown homeassistant:homeassistant /home/homeassistant  2>&1 | tee -a $LOGFILE
 
-mkdir ~/Downloads
-cd ~/Downloads
 wget https://raw.githubusercontent.com/pappavis/thescript/master/services/homeassistant.service  2>&1 | tee -a $LOGFILE
 sudo mv ./homeassistant.service /etc/systemd/system  2>&1 | tee -a $LOGFILE
 sudo systemctl enable homeassistant.service  2>&1 | tee -a $LOGFILE
 sudo service homeassistant restart  2>&1 | tee -a $LOGFILE
+
+# install Sonoff POW R3
 cp -v ./configuration.yaml ~/.homeassistant  2>&1 | tee -a $LOGFILE
+mkdir  ~/.homeassistant/custom_components/  2>&1 | tee -a $LOGFILE
+cd ~/Downloads  2>&1 | tee -a $LOGFILE
+git clone https://github.com/AlexxIT/SonoffLAN  2>&1 | tee -a $LOGFILE
+mv ./custom_components/ ~/.homeassistant/
+
 sudo service homeassistant restart  2>&1 | tee -a $LOGFILE
 sudo service homeassistant status  2>&1 | tee -a $LOGFILE
 
