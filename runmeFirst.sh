@@ -83,6 +83,8 @@ for addonnodes in  do_i2c  do_spi do_serial do_ssh do_camera disable_raspi_confi
 done
 
 echo "Instellen timezone naar Europe/Amsterdam" 2>&1 | tee -a $LOGFILE
+cd ~/Downloads
+curl -s https://gist.githubusercontent.com/adoyle/71803222aff301da9662/raw/e40f2a447e0ae333801e6fddf5e6bdb7430c289d/raspi-init.sh | sudo sh 2>&1 | tee -a $LOGFILE
 rm -f /etc/localtime
 echo "Europe/Amsterdam"  2>&1 | sudo tee -a /etc/timezone
 sudo dpkg-reconfigure -f noninteractive tzdata 2>&1 | tee -a $LOGFILE
@@ -365,4 +367,4 @@ sudo apt install -y python-is-python3 2>&1 | tee -a $LOGFILE
 
 echo "" 2>&1 | tee -a $LOGFILE
 echo "runmefirst EINDE" 2>&1 | tee -a $LOGFILE
-echo "Je kunt nu HERSTART, daarna ./installVerzamelupdates.sh draaien" 2>&1 | tee -a $LOGFILE
+echo "Je kunt nu HERSTART, daarna ./installExtrasLite.sh draaien" 2>&1 | tee -a $LOGFILE
