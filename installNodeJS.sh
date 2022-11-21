@@ -41,9 +41,9 @@ if [ $(arch) == 'armv6l' ]; then
 	else
 		echo "$tkst1 Pi 3,4" 2>&1 | tee -a $LOGFILE
 	fi
-	wget https://unofficial-builds.nodejs.org/download/release/v17.3.0/node-v17.3.0-linux-armv6l.tar.gz 2>&1 | tee -a $LOGFILE
-	tar xzf node-v17.3.0-linux-armv6l.tar.gz 2>&1 | tee -a $LOGFILE
-	sudo cp -R ./node-v17.3.0-linux-armv6l/* /usr/local 2>&1 | tee -a $LOGFILE
+	wget https://unofficial-builds.nodejs.org/download/release/v19.1.0/node-v19.1.0-linux-armv6l.tar.gz 2>&1 | tee -a $LOGFILE
+	tar xzf node-v19.1.0-linux-armv6l.tar.gz 2>&1 | tee -a $LOGFILE
+	sudo cp -R ./node-v19.1.0-linux-armv6l/* /usr/local 2>&1 | tee -a $LOGFILE
 else
 	echo "NodeJS  installeren op een Pi3,4" 2>&1 | tee -a $LOGFILE
 	## zie https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-16-04
