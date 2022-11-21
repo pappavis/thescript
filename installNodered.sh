@@ -35,6 +35,8 @@ for addonnodes in build-essential libnode72 yarn ; do
 	sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
+bash ./installNodered.sh 2>&1 | tee -a $LOGFILE
+
 sudo apt --fix-broken install -y 2>&1 | tee -a $LOGFILE
 sudo apt -fix-broken build-essential libnode72 -y 2>&1 | tee -a $LOGFILE
 sudo apt autoremove -y 2>&1 | tee -a $LOGFILE
@@ -81,7 +83,7 @@ sudo service nodered status 2>&1 | tee -a $LOGFILE
 cd && sudo cp /var/log/nodered-install.log . && sudo chown pi.pi ./nodered-install.log && cd ~/.node-red/
 
 cd $_pwd
-bash ./installNoderedNodes.sh
+bash ~/Downloads/thescript/installNoderedNodes.sh
 sudo service nodered restart
 
 npm $NQUIET install i2c-bus 2>&1 | tee -a $LOGFILE
