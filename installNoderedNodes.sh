@@ -188,7 +188,7 @@ for addonnodes in node-red-contrib-wled2 node-red-dashboard node-red-node-pi-mcp
 	echo "" 2>&1 | tee -a $LOGFILE
 done
  
-for addonnodes in node-red-contrib-google-sheets node-red-contrib-plate-detection node-red-contrib-norelite-homeassistant node-red-contrib-tasmota node-red-contrib-node-firebird node-red-contrib-re-postgres  node-red-contrib-chatbot  node-red-contrib-image-output ; do 
+for addonnodes in node-red-contrib-google-sheets node-red-contrib-plate-detection node-red-contrib-norelite-homeassistant node-red-contrib-tasmota node-red-contrib-node-firebird node-red-contrib-re-postgres  node-red-contrib-chatbot  node-red-contrib-image-output  node-red-contrib-tradfri ; do 
 	echo "" 2>&1 | tee -a $LOGFILE
 	echo "Installing node \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
 	npm $NQUIET install --save ${addonnodes} 2>&1 | tee -a $LOGFILE
