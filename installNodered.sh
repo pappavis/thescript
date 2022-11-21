@@ -40,6 +40,8 @@ sudo apt -fix-broken build-essential libnode72 -y 2>&1 | tee -a $LOGFILE
 sudo apt autoremove -y 2>&1 | tee -a $LOGFILE
 sudo apt autoclean -y 2>&1 | tee -a $LOGFILE
 
+bash ~/Downloads/thescript/installNodeJS.sh
+
 ##node-red admin init
 npm audit fix 2>&1 | tee -a $LOGFILE 2>&1 | tee -a $LOGFILE
 npm install johnny-five 2>&1 | tee -a $LOGFILE
