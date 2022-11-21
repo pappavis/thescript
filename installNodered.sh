@@ -40,6 +40,7 @@ sudo apt -fix-broken build-essential libnode72 -y 2>&1 | tee -a $LOGFILE
 sudo apt autoremove -y 2>&1 | tee -a $LOGFILE
 sudo apt autoclean -y 2>&1 | tee -a $LOGFILE
 
+bash ./installNodered.sh 2>&1 | tee -a $LOGFILE
 
 ##node-red admin init
 npm audit fix 2>&1 | tee -a $LOGFILE 2>&1 | tee -a $LOGFILE
