@@ -35,14 +35,10 @@ for addonnodes in build-essential libnode72 yarn ; do
 	sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
-bash ./installNodered.sh 2>&1 | tee -a $LOGFILE
-
 sudo apt --fix-broken install -y 2>&1 | tee -a $LOGFILE
 sudo apt -fix-broken build-essential libnode72 -y 2>&1 | tee -a $LOGFILE
 sudo apt autoremove -y 2>&1 | tee -a $LOGFILE
 sudo apt autoclean -y 2>&1 | tee -a $LOGFILE
-
-bash ./installNodered.sh 2>&1 | tee -a $LOGFILE
 
 ##node-red admin init
 npm audit fix 2>&1 | tee -a $LOGFILE 2>&1 | tee -a $LOGFILE
@@ -109,6 +105,7 @@ fi
 sudo sed -i -e 's#exit 0#chmod 777 /dev/ttyS*\nexit 0#g' /etc/rc.local
 fi
 
+bash ./installNodered.sh 2>&1 | tee -a $LOGFILE
 
 cd ~/.node-red/
 npm $NQUIET audit fix
