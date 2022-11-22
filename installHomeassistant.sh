@@ -43,6 +43,7 @@ mv -v ~/Downloads/SonoffLAN/custom_components/ ~/.homeassistant/ 2>&1 | tee -a $
 sudo rm -rf ~/Downloads/SonoffLAN/ 2>&1 | tee -a $LOGFILE
 
 echo "[]" |  2>&1 | tee -a  ~/.homeassistant/automations.yaml
+echo "" |  2>&1 | tee -a  ~/.homeassistant/scripts.yaml
  
 sudo service homeassistant restart  2>&1 | tee -a $LOGFILE
 sudo service homeassistant status  2>&1 | tee -a $LOGFILE
