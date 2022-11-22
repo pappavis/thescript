@@ -44,7 +44,8 @@ sudo rm -rf ~/Downloads/SonoffLAN/ 2>&1 | tee -a $LOGFILE
 
 echo "[]" |  2>&1 | tee -a  ~/.homeassistant/automations.yaml
 echo "" |  2>&1 | tee -a  ~/.homeassistant/scripts.yaml
- 
+echo "" |  2>&1 | tee -a  ~/.homeassistant/scenes.yaml
+
 sudo service homeassistant restart  2>&1 | tee -a $LOGFILE
 sudo service homeassistant status  2>&1 | tee -a $LOGFILE
 
