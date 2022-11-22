@@ -42,6 +42,8 @@ git clone https://github.com/AlexxIT/SonoffLAN  2>&1 | tee -a $LOGFILE
 mv -v ~/Downloads/SonoffLAN/custom_components/ ~/.homeassistant/ 2>&1 | tee -a $LOGFILE
 sudo rm -rf ~/Downloads/SonoffLAN/ 2>&1 | tee -a $LOGFILE
 
+echo "[]" |  2>&1 | tee -a  ~/.homeassistant/automations.yaml
+ 
 sudo service homeassistant restart  2>&1 | tee -a $LOGFILE
 sudo service homeassistant status  2>&1 | tee -a $LOGFILE
 
