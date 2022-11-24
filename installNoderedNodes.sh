@@ -174,7 +174,7 @@ for addonnodes in moment node-red-contrib-find-my-iphone node-red-contrib-apple-
 	echo "" 2>&1 | tee -a $LOGFILE
 done
  
-for addonnodes in node-red-contrib-homekit-bridged node-red-contrib-homebridge-automation write-excel-file node-red-contrib-web-worldmap node-red-contrib-oauth2   ; do 
+for addonnodes in node-red-contrib-homekit-bridged node-red-contrib-homebridge-automation write-excel-file  node-red-contrib-excelsheets  node-red-contrib-web-worldmap node-red-contrib-oauth2   ; do 
 	echo "" 2>&1 | tee -a $LOGFILE
 	echo "Installing node \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
 	npm $NQUIET install --save ${addonnodes} 2>&1 | tee -a $LOGFILE
