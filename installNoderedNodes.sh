@@ -76,7 +76,7 @@ for addonnodes in moment node-red-contrib-web-worldmap node-red-contrib-ramp-the
 done
 sudo service nodered restart 2>&1 | tee -a $LOGFILE
 
-for addonnodes in moment node-red-contrib-home-assistant-websocket node-red-contrib-ibm-watson-iot node-red-contrib-sun-position ; do
+for addonnodes in moment node-red-contrib-home-assistant-websocket  node-red-contrib-home-assistant-discovery  node-red-contrib-ibm-watson-iot node-red-contrib-sun-position  @mschaeffler/node-red-lora   ; do
 	echo "" 2>&1 | tee -a $LOGFILE
 	echo "Installing node \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
 	npm $NQUIET install --save ${addonnodes} 2>&1 | tee -a $LOGFILE
@@ -196,6 +196,14 @@ for addonnodes in node-red-contrib-google-sheets node-red-contrib-plate-detectio
 	echo "" 2>&1 | tee -a $LOGFILE
 done
 
+# 20221124 Sonoff automatisering
+for addonnodes in node-red-contrib-power-monitor  node-red-contrib-ewelink  node-red-contrib-sonoff-lan-mode   node-red-contrib-sonoff-tasmota-enhanced  node-red-contrib-sonoff-server  ; do
+	echo "" 2>&1 | tee -a $LOGFILE
+	echo "Installing node \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
+	npm $NQUIET install --save ${addonnodes} 2>&1 | tee -a $LOGFILE
+	echo "" 2>&1 | tee -a $LOGFILE
+done
+
 npm audit fix --force 2>&1 | tee -a $LOGFILE
 
 echo "Installeren global nodes" 2>&1 | tee -a $LOGFILE
@@ -205,6 +213,7 @@ for addonnodes in qrcode johnny-five ; do
 	npm $NQUIET install --save ${addonnodes} 2>&1 | tee -a $LOGFILE
 	echo "" 2>&1 | tee -a $LOGFILE
 done
+
 
 echo "Bijwerken lokale nodes" 2>&1 | tee -a $LOGFILE
 npm $NQUIET update 2>&1 | tee -a $LOGFILE
