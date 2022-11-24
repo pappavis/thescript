@@ -58,7 +58,7 @@ for addonnodes in pip setuptools wheel openpyxl pylzma py7zr o365 ttn qrcode pil
     echo "" 2>&1 | tee -a $LOGFILE
   done
 
-for addonnodes in setuptools wheel scikit-build cmake mu-editor shortcut esptool numpy ; do
+for addonnodes in setuptools wheel scikit-build cmake mu-editor shortcut esptool numpy  pygrabber ; do
     echo "" 2>&1 | tee -a $LOGFILE
     echo "PIPX.. alleen voor python apps: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     pipx install $NQUIET ${addonnodes} 2>&1 | tee -a $LOGFILE
