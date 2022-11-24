@@ -8,7 +8,7 @@ bash ./installNutsfuncties.sh 2>&1 | tee -a $LOGFILE
 
 echo "**Installing Nodes (could take some time)" 2>&1 | tee -a $LOGFILE
 mkdir ~/.node-red 2>&1 | tee -a $LOGFILE
-cd ~/.node-red 2>&1 | tee -a $LOGFILE
+cd ~/.node-red
 
 echo "bepalen laatste versies van lokale NPM packages in /home/pi/.node-red/" 2>&1 | tee -a $LOGFILE
 npm outdated 2>&1 | tee -a $LOGFILE
