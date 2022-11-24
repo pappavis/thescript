@@ -182,7 +182,7 @@ for addonnodes in node-red-contrib-homekit-bridged node-red-contrib-homebridge-a
 	echo "" 2>&1 | tee -a $LOGFILE
 done
  
-for addonnodes in node-red-contrib-wled2 node-red-dashboard node-red-node-pi-mcp3008 node-red-contrib-webservices node-red-node-mysql node-red-contrib-car-bmw  node-red-node-email   node-red-contrib-iiot-rpi-gpio  node-red-contrib-gpio   ; do 
+for addonnodes in node-red-contrib-wled2 node-red-dashboard node-red-node-pi-mcp3008 node-red-contrib-webservices node-red-node-mysql node-red-contrib-car-bmw  node-red-node-email   node-red-contrib-iiot-rpi-gpio  node-red-contrib-gpio node-red-node-pi-gpio   ; do 
 	echo "" 2>&1 | tee -a $LOGFILE
 	echo "Installing node \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
 	npm $NQUIET install --save ${addonnodes} 2>&1 | tee -a $LOGFILE
