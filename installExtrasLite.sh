@@ -142,5 +142,7 @@ git pull origin 2>&1 | tee -a $LOGFILE
 gpio -v 2>&1 | tee -a $LOGFILE
 gpio -g mode 18 output 2>&1 | tee -a $LOGFILE
 
+cd ~/Downloads/thescript
+bash ./installPHPliteadmin.sh 2>&1 | tee -a $LOGFILE
 
 echo "EIND installExtrasLite.sh $(date)" 2>&1 | tee -a $LOGFILE
