@@ -1,12 +1,15 @@
 #/usr/bin/sh
 LOGFILE=$HOME/logs/installPythonVirtualenv-`date +%Y-%m-%d_%Hh%Mm`.log
 echo "Installeer nieuwe python3 virtuale omgeving" 2>&1 | tee -a $LOGFILE
-sudo usermod -aG gpio pi &
-sudo usermod -aG dialout pi  &
-sudo usermod -aG i2c pi &
-sudo usermod -aG tty pi &
+
+for addonnodes in dialout tty gpio i2c docker ; do
+  echo "Gebruiker $gebr rechten toewijzen aan groep:  \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
+  sudo usermod $gebr -g ${addonnodes}  2>&1 | tee -a $LOGFILE
+done
+
 mkdir $HOME/logs/
 
+usermod 
 echo ""  2>&1 | tee -a $LOGFILE
 echo "Uitvoeren installPythonVirtualenv.sh begint."  2>&1 | tee -a $LOGFILE
 echo ""  2>&1 | tee -a $LOGFILE
