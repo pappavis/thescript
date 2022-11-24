@@ -22,7 +22,7 @@ done
 ##sudo npm install -g npm-check-updates 2>&1 | tee -a $LOGFILE
 ##sudo ncu -u 2>&1 | tee -a $LOGFILE
 ##sudo npm update -g 2>&1 | tee -a $LOGFILE
-
+npm config set python /home/pi/venv/venv/bin/python 2>&1 | tee -a $LOGFILE
 sudo npm install -g node-gyp 2>&1 | tee -a $LOGFILE
 
 echo "\nInstalling node \"node-red-node-sqlite\"\n"
