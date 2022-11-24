@@ -142,7 +142,5 @@ git pull origin 2>&1 | tee -a $LOGFILE
 gpio -v 2>&1 | tee -a $LOGFILE
 gpio -g mode 18 output 2>&1 | tee -a $LOGFILE
 
-7z x ./main.zip 2>&1 | tee -a $LOGFILE
-
 
 echo "EIND installExtrasLite.sh $(date)" 2>&1 | tee -a $LOGFILE
