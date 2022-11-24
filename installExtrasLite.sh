@@ -129,5 +129,20 @@ mkdir ~/Downloads/quadplay
 wget https://github.com/morgan3d/quadplay/archive/main.zip 2>&1 | tee -a $LOGFILE
 7z x ./main.zip 2>&1 | tee -a $LOGFILE
 
+cd ~/Downloads
+appTxt1="**WiringPi bibliotheek"
+echo "" 2>&1 | tee -a $LOGFILE
+echo "Installeren: $appTxt1" 2>&1 | tee -a $LOGFILE
+sudo apt-get purge wiringpi -y  2>&1 | tee -a $LOGFILE
+hash -r
+git clone https://github.com/WiringPi/WiringPi.git 2>&1 | tee -a $LOGFILE
+cd ./WiringPi
+git pull origin 2>&1 | tee -a $LOGFILE
+./build 2>&1 | tee -a $LOGFILE
+gpio -v 2>&1 | tee -a $LOGFILE
+gpio -g mode 18 output 2>&1 | tee -a $LOGFILE
+
+7z x ./main.zip 2>&1 | tee -a $LOGFILE
+
 
 echo "EIND installExtrasLite.sh $(date)" 2>&1 | tee -a $LOGFILE
