@@ -23,6 +23,7 @@ done
 ##sudo ncu -u 2>&1 | tee -a $LOGFILE
 ##sudo npm update -g 2>&1 | tee -a $LOGFILE
 
+sudo npm install -g node-gyp 2>&1 | tee -a $LOGFILE
 
 echo "\nInstalling node \"node-red-node-sqlite\"\n"
 npm $NQUIET install --save node-red-node-sqlite 2>&1 | tee -a $LOGFILE
