@@ -92,11 +92,11 @@ Let op doorlooptijd:
 
 ```bash
 pi@raspberrypi: $ cd ~/Downloads/thescript
-pi@dietpi:~/Downloads/thescript $ nohup bash ./installVerzamelupdates.sh &
+pi@dietpi:~/Downloads/thescript $ nohup bash ./installExtrasLite.sh &
 pi@dietpi:~/Downloads/thescript $ tail -f ./nohupout
 ```
 
-Het draaien van installVerzamelupdates.sh duurt tot wel 4 uren!
+Het draaien van installExtrasLite.sh duurt tot wel 1,5 uur!
 
 ## Stap 6: Python 3 en circuitpython bijwerken
 Super handig installeert virtualenvironment voor Python, CircuitPython, tesseractOCR en Micropython.
@@ -105,7 +105,7 @@ Super handig installeert virtualenvironment voor Python, CircuitPython, tesserac
 pi@raspberrypi: $ cd ~/Downloads
 pi@dietpi:~/Downloads $ git clone https://github.com/pappavis/thescript/
 pi@dietpi:~/Downloads $ cd ~/Downloads/thescript/
-pi@dietpi:~/Downloads/thescript $ bash ./installVerzamelupdates.sh
+pi@dietpi:~/Downloads/thescript $ bash ./installPythonCircuitpython.sh
 pi@dietpi:~/Downloads/thescript $ nohup bash ./installExtras.sh &
 ```
 
