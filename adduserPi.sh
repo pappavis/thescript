@@ -26,7 +26,7 @@ for gebr in michiele pi ; do
 done
 
 
-for addonnodes in dialout tty gpio i2c ; do
+for addonnodes in dialout tty gpio i2c docker ; do
   echo "Gebruiker $gebr rechten toewijzen aan groep:  \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
   sudo usermod $gebr -g ${addonnodes}  2>&1 | tee -a $LOGFILE
 done
