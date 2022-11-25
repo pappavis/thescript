@@ -15,25 +15,22 @@ MPDLDIR=~/Downloads/micropython
 cd ~/Downloads
 git clone https://github.com/micropython/micropython.git 2>&1 | tee -a $LOGFILE
 
-cd $MPDLDIR
-mkdir ./modules
-mkdir ./sqlite
-
 cd $MPDLDIR/mpy-cross
 make 2>&1 | tee -a $LOGFILE
 
-# basis Micropython voor UN*X
-mkdir $MPDLDIR/ports/unix/modules
-cd $MPDLDIR/ports/unix/modules
+# sqlite voor Micropython
+mkdir $MPDLDIR/modules
+mkdir $MPDLDIR/sqlite
+cd $MPDLDIR/modules
 git clone https://github.com/spatialdude/usqlite.git 2>&1 | tee -a $LOGFILE
-cd  $MPDLDIR/ports/unix/
+
+# basis Micropython voor UN*X
+cd $MPDLDIR/ports/unix/
+make submodules 2>&1 | tee -a $LOGFILE
 make clean 2>&1 | tee -a $LOGFILE
 make USER_C_MODULES=$MPDLDIR/modules 2>&1 | tee -a $LOGFILE
-#make submodules 2>&1 | tee -a $LOGFILE
-cd  $MPDLDIR/ports/unix/
 make 2>&1 | tee -a $LOGFILE
 make test 2>&1 | tee -a $LOGFILE
-
 #make axtls 2>&1 | tee -a $LOGFILE
 #make deplibs 2>&1 | tee -a $LOGFILE
 mkdir /usr/local/bin
@@ -61,15 +58,10 @@ done
 
 echo "Micropython bouwen port: windows" 2>&1 | tee -a $LOGFILE
 cd $MPDLDIR/ports/windows
-mkdir $MPDLDIR/ports/windows/modules
-cd $MPDLDIR/ports/windows/modules
-git clone https://github.com/spatialdude/usqlite.git 2>&1 | tee -a $LOGFILE
-cd  $MPDLDIR/ports/windows/
-make -C ../../mpy-cross 2>&1 | tee -a $LOGFILE
 make submodules 2>&1 | tee -a $LOGFILE
-make USER_C_MODULES=$MPDLDIR/windows/modules 2>&1 | tee -a $LOGFILE
+make USER_C_MODULES=$MPDLDIR/modules 2>&1 | tee -a $LOGFILE
 make CROSS_COMPILE=i686-w64-mingw32- 2>&1 | tee -a $LOGFILE
-cp -v ./micropython.exe ~/Downloads 2>&1 | tee -a $LOGFILE
+cp -v ./build-standard/micropython.exe ~/Downloads 2>&1 | tee -a $LOGFILE
 
 echo "Micropython bouwen port: esp32" 2>&1 | tee -a $LOGFILE
 cd $MPDLDIR/ports/esp32
@@ -84,10 +76,24 @@ echo "" 2>&1 | tee -a $LOGFILE
 echo "Micropython bouwen port: esp8266" 2>&1 | tee -a $LOGFILE
 cd $MPDLDIR/ports/esp8266
 make submodules 2>&1 | tee -a $LOGFILE
+cd ./modules 
+git clone https://github.com/spatialdude/usqlite.git 2>&1 | tee -a $LOGFILE
+cd $MPDLDIR/ports/esp8266
 make 2>&1 | tee -a $LOGFILE
 make erase 2>&1 | tee -a $LOGFILE
 make deploy 2>&1 | tee -a $LOGFILE
 echo "micropython esp8266 versie compile afgerond" 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
+
+echo "Micropython bouwen port: esp32" 2>&1 | tee -a $LOGFILE
+cd $MPDLDIR/ports/esp32
+make submodules 2>&1 | tee -a $LOGFILE
+make clean BOARD=UM_TINYPICO
+make BOARD=UM_TINYPICO USER_C_MODULES=$MPDLDIR/modules/micropython.cmake
+make 2>&1 | tee -a $LOGFILE
+make erase 2>&1 | tee -a $LOGFILE
+make deploy 2>&1 | tee -a $LOGFILE
+echo "micropython esp32 versie compile afgerond" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
 
 
