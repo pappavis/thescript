@@ -15,9 +15,19 @@ MPDLDIR=~/Downloads/micropython
 cd ~/Downloads
 git clone https://github.com/micropython/micropython.git 2>&1 | tee -a $LOGFILE
 cd $MPDLDIR
+
+# basis Micropython voor UN*X
+cd  $MPDLDIR/ports/unix/
+make clean 2>&1 | tee -a $LOGFILE
+make submodules 2>&1 | tee -a $LOGFILE
+make 2>&1 | tee -a $LOGFILE
+mkdir /usr/local/bin
+sudo rm /usr/local/bin/micropython
+sudo cp -v ./build-standard/micropython /usr/local/bin 2>&1 | tee -a $LOGFILE
+micropython -m mip install hmac 2>&1 | tee -a $LOGFILE
+
 mkdir ./modules
 mkdir ./sqlite
-
 cd ./modules
 git clone https://github.com/spatialdude/usqlite.git 2>&1 | tee -a $LOGFILE
 git pull
@@ -33,18 +43,16 @@ mkdir ./modules
 mkdir ./sqlite
 
 cd  $MPDLDIR/ports/unix/
-make clean 2>&1 | tee -a $LOGFILE
 make submodules 2>&1 | tee -a $LOGFILE
 make axtls 2>&1 | tee -a $LOGFILE
 make deplibs 2>&1 | tee -a $LOGFILE
 make USER_C_MODULES=$MPDLDIR/modules 2>&1 | tee -a $LOGFILE
-make 2>&1 | tee -a $LOGFILE
 #make   2>&1 | tee -a $LOGFILE
 #sudo ln -s $MPDLDIR/ports/unix/micropython /usr/local/bin/micropython
-sudo rm /usr/local/bin/micropython
 sudo cp -v $MPDLDIR/ports/unix/micropython /usr/local/bin/micropython 2>&1 | tee -a $LOGFILE
 make test 2>&1 | tee -a $LOGFILE
 micropython -m upip install micropython-pystone 2>&1 | tee -a $LOGFILE
+micropython -m mip install micropython-pystone 2>&1 | tee -a $LOGFILE
 micropython -m pystone 2>&1 | tee -a $LOGFILE
 echo "micropython UNIX versie compile afgerond" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
@@ -89,6 +97,7 @@ echo "Micropython bouwen port: stm32" 2>&1 | tee -a $LOGFILE
 cd $MPDLDIR/ports/stm32
 make submodules 2>&1 | tee -a $LOGFILE
 make deploy 2>&1 | tee -a $LOGFILE
+make  2>&1 | tee -a $LOGFILE
 echo "micropython stm32 versie compile afgerond" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
 
@@ -143,9 +152,9 @@ mkdir ~/.micropython/lib
 cd ~/Downloads/micropython_libs
 git clone https://github.com/jplattel/upymenu
 cp -r -v ./upymenu/upymenu ~/.micropython/lib 2>&1 | tee -a $LOGFILE
+
 cd ~/.micropython/lib
 echo "" 2>&1 | tee -a $LOGFILE
-
 
 git clone https://github.com/jordiprats/micropython-utelegram 2>&1 | tee -a $LOGFILE
 cp -r -v ./micropython-utelegram/utelegram.py  ~/.micropython/lib 2>&1 | tee -a $LOGFILE
