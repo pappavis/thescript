@@ -29,14 +29,14 @@ make 2>&1 | tee -a $LOGFILE
 
 mkdir $MPDLDIR
 cd $MPDLDIR
-mkdir modules
+mkdir ./modules
 mkdir ./sqlite
 
 cd  $MPDLDIR/ports/unix/
 make clean 2>&1 | tee -a $LOGFILE
 make submodules 2>&1 | tee -a $LOGFILE
 make axtls 2>&1 | tee -a $LOGFILE
-make deplibs
+make deplibs 2>&1 | tee -a $LOGFILE
 make USER_C_MODULES=$MPDLDIR/modules 2>&1 | tee -a $LOGFILE
 make 2>&1 | tee -a $LOGFILE
 #make   2>&1 | tee -a $LOGFILE
