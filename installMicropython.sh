@@ -14,11 +14,24 @@ done
 MPDLDIR=~/Downloads/micropython
 cd ~/Downloads
 git clone https://github.com/micropython/micropython.git 2>&1 | tee -a $LOGFILE
+
 cd $MPDLDIR
+mkdir ./modules
+mkdir ./sqlite
+
+cd $MPDLDIR/mpy-cross
+make 2>&1 | tee -a $LOGFILE
 
 # basis Micropython voor UN*X
 cd  $MPDLDIR/ports/unix/
 make clean 2>&1 | tee -a $LOGFILE
+#mkdir ./modules
+#mkdir ./sqlite
+#cd ./modules
+#git clone https://github.com/spatialdude/usqlite.git 2>&1 | tee -a $LOGFILE
+#make submodules 2>&1 | tee -a $LOGFILE
+
+cd  $MPDLDIR/ports/unix/
 make submodules 2>&1 | tee -a $LOGFILE
 make 2>&1 | tee -a $LOGFILE
 mkdir /usr/local/bin
@@ -26,28 +39,12 @@ sudo rm /usr/local/bin/micropython
 sudo cp -v ./build-standard/micropython /usr/local/bin 2>&1 | tee -a $LOGFILE
 micropython -m mip install hmac 2>&1 | tee -a $LOGFILE
 
-mkdir ./modules
-mkdir ./sqlite
-cd ./modules
-git clone https://github.com/spatialdude/usqlite.git 2>&1 | tee -a $LOGFILE
-git pull
-
-cd $MPDLDIR
-git pull
-cd ./mpy-cross
-make 2>&1 | tee -a $LOGFILE
-
-mkdir $MPDLDIR
-cd $MPDLDIR
-mkdir ./modules
-mkdir ./sqlite
-
 cd  $MPDLDIR/ports/unix/
 make submodules 2>&1 | tee -a $LOGFILE
 make axtls 2>&1 | tee -a $LOGFILE
 make deplibs 2>&1 | tee -a $LOGFILE
 make USER_C_MODULES=$MPDLDIR/modules 2>&1 | tee -a $LOGFILE
-#make   2>&1 | tee -a $LOGFILE
+make   2>&1 | tee -a $LOGFILE
 #sudo ln -s $MPDLDIR/ports/unix/micropython /usr/local/bin/micropython
 sudo cp -v $MPDLDIR/ports/unix/micropython /usr/local/bin/micropython 2>&1 | tee -a $LOGFILE
 make test 2>&1 | tee -a $LOGFILE
