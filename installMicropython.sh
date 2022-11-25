@@ -23,31 +23,26 @@ cd $MPDLDIR/mpy-cross
 make 2>&1 | tee -a $LOGFILE
 
 # basis Micropython voor UN*X
+mkdir $MPDLDIR/ports/unix/modules
+cd $MPDLDIR/ports/unix/modules
+git clone https://github.com/spatialdude/usqlite.git 2>&1 | tee -a $LOGFILE
 cd  $MPDLDIR/ports/unix/
 make clean 2>&1 | tee -a $LOGFILE
-#mkdir ./modules
-#mkdir ./sqlite
-#cd ./modules
-#git clone https://github.com/spatialdude/usqlite.git 2>&1 | tee -a $LOGFILE
+make USER_C_MODULES=$MPDLDIR/modules 2>&1 | tee -a $LOGFILE
 #make submodules 2>&1 | tee -a $LOGFILE
-
 cd  $MPDLDIR/ports/unix/
-make submodules 2>&1 | tee -a $LOGFILE
 make 2>&1 | tee -a $LOGFILE
+make test 2>&1 | tee -a $LOGFILE
+
+#make axtls 2>&1 | tee -a $LOGFILE
+#make deplibs 2>&1 | tee -a $LOGFILE
 mkdir /usr/local/bin
 sudo rm /usr/local/bin/micropython
 sudo cp -v ./build-standard/micropython /usr/local/bin 2>&1 | tee -a $LOGFILE
 micropython -m mip install hmac 2>&1 | tee -a $LOGFILE
 
-cd  $MPDLDIR/ports/unix/
-make submodules 2>&1 | tee -a $LOGFILE
-make axtls 2>&1 | tee -a $LOGFILE
-make deplibs 2>&1 | tee -a $LOGFILE
-make USER_C_MODULES=$MPDLDIR/modules 2>&1 | tee -a $LOGFILE
-make   2>&1 | tee -a $LOGFILE
 #sudo ln -s $MPDLDIR/ports/unix/micropython /usr/local/bin/micropython
-sudo cp -v $MPDLDIR/ports/unix/micropython /usr/local/bin/micropython 2>&1 | tee -a $LOGFILE
-make test 2>&1 | tee -a $LOGFILE
+
 micropython -m upip install micropython-pystone 2>&1 | tee -a $LOGFILE
 micropython -m mip install micropython-pystone 2>&1 | tee -a $LOGFILE
 micropython -m pystone 2>&1 | tee -a $LOGFILE
@@ -66,7 +61,13 @@ done
 
 echo "Micropython bouwen port: windows" 2>&1 | tee -a $LOGFILE
 cd $MPDLDIR/ports/windows
+mkdir $MPDLDIR/ports/windows/modules
+cd $MPDLDIR/ports/windows/modules
+git clone https://github.com/spatialdude/usqlite.git 2>&1 | tee -a $LOGFILE
+cd  $MPDLDIR/ports/windows/
 make -C ../../mpy-cross 2>&1 | tee -a $LOGFILE
+make submodules 2>&1 | tee -a $LOGFILE
+make USER_C_MODULES=$MPDLDIR/windows/modules 2>&1 | tee -a $LOGFILE
 make CROSS_COMPILE=i686-w64-mingw32- 2>&1 | tee -a $LOGFILE
 cp -v ./micropython.exe ~/Downloads 2>&1 | tee -a $LOGFILE
 
