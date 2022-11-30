@@ -19,16 +19,18 @@ cd $MPDLDIR/mpy-cross
 make 2>&1 | tee -a $LOGFILE
 
 # sqlite voor Micropython
-mkdir $MPDLDIR/modules
-mkdir $MPDLDIR/sqlite
-cd $MPDLDIR/modules
+mkdir ~/Downloads/modules
+mkdir ~/Downloads/sqlite
+cd ~/Downloads/modules
 git clone https://github.com/spatialdude/usqlite.git 2>&1 | tee -a $LOGFILE
+
 
 # basis Micropython voor UN*X
 cd $MPDLDIR/ports/unix/
 make submodules 2>&1 | tee -a $LOGFILE
 make clean 2>&1 | tee -a $LOGFILE
-make USER_C_MODULES=$MPDLDIR/modules 2>&1 | tee -a $LOGFILE
+make USER_C_MODULES=~/Downloads/modules 2>&1 | tee -a $LOGFILE
+
 make 2>&1 | tee -a $LOGFILE
 make test 2>&1 | tee -a $LOGFILE
 #make axtls 2>&1 | tee -a $LOGFILE
