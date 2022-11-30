@@ -58,6 +58,7 @@ pi@raspberrypi $ mkdir ~/Downloads
 pi@dietpi:~/Downloads $ sudo apt install -y git
 pi@dietpi:~/Downloads $ git clone https://github.com/pappavis/thescript/
 pi@dietpi:~/Downloads $ cd ~/Downloads/thescript
+pi@dietpi:~/Downloads/thescript $ bash ./adduserPi.sh
 pi@dietpi:~/Downloads/thescript $ nohup bash ./runmefirst.sh &
 ```
 Dit duurt circa <>45 minuten op een Pi 3.
@@ -103,6 +104,10 @@ pi@dietpi:~/Downloads/thescript $ tail -f ./nohupout
 ```
 
 Het draaien van installExtrasLite.sh duurt tot wel 1,5 uur!
+
+Na restart kunt u weer inloggen;
+login: pi
+password: raspberry
 
 ## Stap 6: Python 3 en circuitpython bijwerken
 Super handig installeert virtualenvironment voor Python, CircuitPython, tesseractOCR en Micropython.
