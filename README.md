@@ -109,8 +109,8 @@ Na restart kunt u weer inloggen;
 login: pi
 password: raspberry
 
-## Stap 6: Python 3 en circuitpython bijwerken
-Super handig installeert virtualenvironment voor Python, CircuitPython, tesseractOCR en Micropython.
+## Stap 6: Python 3 en CircuitPython bijwerken
+Super handig installeert Virtualenvironment voor Python, CircuitPython, tesseractOCR en Micropython.
 
 ```bash
 pi@raspberrypi: $ cd ~/Downloads
