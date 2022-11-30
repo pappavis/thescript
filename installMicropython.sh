@@ -16,8 +16,7 @@ cd ~/Downloads
 git clone https://github.com/micropython/micropython.git 2>&1 | tee -a $LOGFILE
 
 cd $MPDLDIR/mpy-cross
-make 2>&1 | tee -a $LOGFILE
-
+make  2>&1 | tee -a $LOGFILE
 # sqlite voor Micropython
 mkdir ~/Downloads/modules
 mkdir ~/Downloads/sqlite
@@ -61,16 +60,17 @@ done
 echo "Micropython bouwen port: windows" 2>&1 | tee -a $LOGFILE
 cd $MPDLDIR/ports/windows
 make submodules 2>&1 | tee -a $LOGFILE
-make USER_C_MODULES=$MPDLDIR/modules 2>&1 | tee -a $LOGFILE
 make CROSS_COMPILE=i686-w64-mingw32- 2>&1 | tee -a $LOGFILE
 cp -v ./build-standard/micropython.exe ~/Downloads 2>&1 | tee -a $LOGFILE
 
 echo "Micropython bouwen port: esp32" 2>&1 | tee -a $LOGFILE
+sudo apt install -y picocom
 cd $MPDLDIR/ports/esp32
 make submodules 2>&1 | tee -a $LOGFILE
 make 2>&1 | tee -a $LOGFILE
 make erase 2>&1 | tee -a $LOGFILE
 make deploy 2>&1 | tee -a $LOGFILE
+make test 2>&1 | tee -a $LOGFILE
 echo "micropython esp32 versie compile afgerond" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
@@ -88,10 +88,17 @@ echo "micropython esp8266 versie compile afgerond" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
 
 echo "Micropython bouwen port: esp32" 2>&1 | tee -a $LOGFILE
+cd ~/Downloads
+git clone -b v4.0.2 --recursive https://github.com/espressif/esp-idf.git
+cd ~/Downloads/esp-idf
+git checkout v4.2
+git submodule update --init --recursive
+bash ./install.sh
+source ./export.sh
 cd $MPDLDIR/ports/esp32
 make submodules 2>&1 | tee -a $LOGFILE
-make clean BOARD=UM_TINYPICO
-make BOARD=UM_TINYPICO USER_C_MODULES=$MPDLDIR/modules/micropython.cmake
+make clean
+make USER_C_MODULES=~/Downloads/modules/
 make 2>&1 | tee -a $LOGFILE
 make erase 2>&1 | tee -a $LOGFILE
 make deploy 2>&1 | tee -a $LOGFILE
