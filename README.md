@@ -36,10 +36,16 @@ Download <a href="https://www.raspberrypi.org/software/" target="_blank">Raspber
  - Kies optie Interfaces, kies SSH, kies YES om te activeren
  - Kies optie Exit
 
-2.4 Raspi-config afsluiten.
-
+2.4 Raspi-config opstarten.
+Je moet een gebruiker aanmaken
 ```bash
 pi@raspberrypi: $ sudo raspi-config
+```
+
+2.5 Pi gebruiker toevoegen.
+Voeg gebruiker pi toe met raspi-config, en herstart.
+
+```bash
 pi@raspberrypi: $ reboot
 ```
 
