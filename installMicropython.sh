@@ -29,16 +29,15 @@ cd $MPDLDIR/ports/unix/
 make submodules 2>&1 | tee -a $LOGFILE
 make clean 2>&1 | tee -a $LOGFILE
 make USER_C_MODULES=~/Downloads/modules 2>&1 | tee -a $LOGFILE
+make 2>&1 | tee -a $LOGFILE
 make test 2>&1 | tee -a $LOGFILE
 #make axtls 2>&1 | tee -a $LOGFILE
 #make deplibs 2>&1 | tee -a $LOGFILE
 mkdir /usr/local/bin
 sudo rm /usr/local/bin/micropython
-sudo cp -v ./build-standard/micropython /usr/local/bin 2>&1 | tee -a $LOGFILE
+sudo make install 2>&1 | tee -a $LOGFILE
+
 micropython -m mip install hmac 2>&1 | tee -a $LOGFILE
-
-#sudo ln -s $MPDLDIR/ports/unix/micropython /usr/local/bin/micropython
-
 micropython -m upip install micropython-pystone 2>&1 | tee -a $LOGFILE
 micropython -m mip install micropython-pystone 2>&1 | tee -a $LOGFILE
 micropython -m pystone 2>&1 | tee -a $LOGFILE
@@ -52,7 +51,7 @@ for addonnodes in micropython-urequests micropython-socket micropython-machine m
   echo " "
   echo "Installeren micropython bibliotheek: ${addonnodes}" 2>&1 | tee -a $LOGFILE
   echo " "
-  micropython -m upip install ${addonnodes} 2>&1 | tee -a $LOGFILE
+  micropython -m mip install ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 
 echo "Micropython bouwen port: windows" 2>&1 | tee -a $LOGFILE
