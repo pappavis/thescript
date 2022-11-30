@@ -28,9 +28,9 @@ git clone https://github.com/spatialdude/usqlite.git 2>&1 | tee -a $LOGFILE
 cd $MPDLDIR/ports/unix/
 make submodules 2>&1 | tee -a $LOGFILE
 make clean 2>&1 | tee -a $LOGFILE
-make USER_C_MODULES=~/Downloads/modules 2>&1 | tee -a $LOGFILE
 make 2>&1 | tee -a $LOGFILE
 make test 2>&1 | tee -a $LOGFILE
+make USER_C_MODULES=~/Downloads/modules 2>&1 | tee -a $LOGFILE
 #make axtls 2>&1 | tee -a $LOGFILE
 #make deplibs 2>&1 | tee -a $LOGFILE
 mkdir /usr/local/bin
