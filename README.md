@@ -24,25 +24,25 @@ Download <a href="https://www.raspberrypi.org/software/" target="_blank">Raspber
 <img src="https://assets.raspberrypi.com/static/md-bfd602be71b2c1099b91877aed3b41f0.png" width="30%" height="30%">
 
 # Stap 2:
-2.1 Als eerste:
+###2.1 Als eerste:
  - Login: pi
  - Password: raspberry
 
-2.2 en Wifi instellen via Raspi-config:
+###2.2 en Wifi instellen via Raspi-config:
 
 <img src="https://www.raspberrypi.org/documentation/computers/images/raspi-config.png" width="30%" height="30%">
 
-2.3 SSH activeren:
+###2.3 SSH activeren:
  - Kies optie Interfaces, kies SSH, kies YES om te activeren
  - Kies optie Exit
 
-2.4 Raspi-config opstarten.
+###2.4 Raspi-config opstarten.
 Je moet een gebruiker aanmaken
 ```bash
 pi@raspberrypi: $ sudo raspi-config
 ```
 
-2.5 Pi gebruiker toevoegen.
+###2.5 Pi gebruiker toevoegen.
 Voeg gebruiker pi toe met raspi-config, en herstart.
 
 ```bash
