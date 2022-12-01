@@ -30,7 +30,7 @@ cd $MPDLDIR/ports/unix/
 make submodules 2>&1 | tee -a $LOGFILE
 make clean 2>&1 | tee -a $LOGFILE
 make USER_C_MODULES=$MPModules 2>&1 | tee -a $LOGFILE
-make 2>&1 | tee -a $LOGFILE
+#make 2>&1 | tee -a $LOGFILE
 make test 2>&1 | tee -a $LOGFILE
 #make axtls 2>&1 | tee -a $LOGFILE
 #make deplibs 2>&1 | tee -a $LOGFILE
@@ -130,9 +130,9 @@ echo "micropython rp2 versie compile afgerond" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
 
 echo "Micropython bouwen port: Javascript" 2>&1 | tee -a $LOGFILE
-cd $MPDLDIR/ports/javascript
-make submodules 2>&1 | tee -a $LOGFILE
+cd $MPDLDIR/ports/webassembly
 make 2>&1 | tee -a $LOGFILE
+make min 2>&1 | tee -a $LOGFILE
 make test 2>&1 | tee -a $LOGFILE
 cp ./micropython.js ~/Downloads
 echo "micropython javascript versie compile afgerond" 2>&1 | tee -a $LOGFILE
