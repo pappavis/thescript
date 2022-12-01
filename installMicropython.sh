@@ -12,25 +12,26 @@ for addonnodes in git autoconf build-essential gperf bison flex texinfo libtool 
 done
 
 MPDLDIR=~/Downloads/micropython
+MPModules=~/Downloads/modules
 cd ~/Downloads
 git clone https://github.com/micropython/micropython.git 2>&1 | tee -a $LOGFILE
 
 cd $MPDLDIR/mpy-cross
 make  2>&1 | tee -a $LOGFILE
 # sqlite voor Micropython
-mkdir ~/Downloads/modules
+mkdir $MPModules
 mkdir ~/Downloads/sqlite
-cd ~/Downloads/modules
+cd $MPModules
 git clone https://github.com/spatialdude/usqlite.git 2>&1 | tee -a $LOGFILE
-
+#echo "include(${CMAKE_CURRENT_LIST_DIR}/usqlite/micropython.cmake)" 2>&1 | tee -a $MPModules/micropython.cmake
 
 # basis Micropython voor UN*X
 cd $MPDLDIR/ports/unix/
 make submodules 2>&1 | tee -a $LOGFILE
 make clean 2>&1 | tee -a $LOGFILE
+make USER_C_MODULES=$MPModules 2>&1 | tee -a $LOGFILE
 make 2>&1 | tee -a $LOGFILE
 make test 2>&1 | tee -a $LOGFILE
-make USER_C_MODULES=~/Downloads/modules 2>&1 | tee -a $LOGFILE
 #make axtls 2>&1 | tee -a $LOGFILE
 #make deplibs 2>&1 | tee -a $LOGFILE
 mkdir /usr/local/bin
@@ -75,9 +76,8 @@ echo "" 2>&1 | tee -a $LOGFILE
 echo "Micropython bouwen port: esp8266" 2>&1 | tee -a $LOGFILE
 cd $MPDLDIR/ports/esp8266
 make submodules 2>&1 | tee -a $LOGFILE
-cd ./modules 
-git clone https://github.com/spatialdude/usqlite.git 2>&1 | tee -a $LOGFILE
-cd $MPDLDIR/ports/esp8266
+make clean 2>&1 | tee -a $LOGFILE
+make USER_C_MODULES=$MPModules 2>&1 | tee -a $LOGFILE
 make 2>&1 | tee -a $LOGFILE
 make erase 2>&1 | tee -a $LOGFILE
 make deploy 2>&1 | tee -a $LOGFILE
