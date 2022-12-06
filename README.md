@@ -151,6 +151,9 @@ Kopieëren-plakken onderstaand
 ```
 Afsluiten af met ctrl-x
 
+<img src="https://github.com/pappavis/thescript/blob/master/plaatjes/autoupdate_crontab_instellen.jpg" alt="autoupdate_crontab_instellen.jpg">
+
+
 ```bash
 crontab: installing new crontab
 (venv) pi@dietpi:~ $
