@@ -66,8 +66,13 @@ Dit duurt circa <>45 minuten op een Pi 3.
 ## 5. Stap 4:
 Bijwerken en gebruikersrechten instellen.
 
-```
+Instellen mySQL wachtwoord.
+```bash
 pi@raspberrypi $ sudo mysql_secure_installation
+```
+
+Nu moeten wij een eigen gebruiker aanmaken
+```
 pi@raspberrypi $ sudo mysql -u root -p
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
 Your MariaDB connection id is 40
