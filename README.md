@@ -148,13 +148,14 @@ Kopieëren-plakken onderstaand
 ```
 Afsluiten af met ctrl-x
 
-<img src="https://github.com/pappavis/thescript/blob/master/plaatjes/autoupdate_crontab_instellen.jpg" alt="autoupdate_crontab_instellen.jpg">
-
-
 ```bash
 crontab: installing new crontab
 (venv) pi@dietpi:~ $
 ```
+
+Ter illustratie:
+<img src="https://github.com/pappavis/thescript/blob/master/plaatjes/autoupdate_crontab_instellen.jpg" alt="autoupdate_crontab_instellen.jpg">
+
 
 # origineel
 Zie origineel <a href="https://bitbucket.org/api/2.0/snippets/scargill/kAR5qG/master/files/script.sh">hier</a> door Pete Scargill.
