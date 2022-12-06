@@ -1,4 +1,4 @@
-# INTRO
+# 1. INTRO
 Clean install script for Raspberry Pi 1, 2,3,4  en x64_Ubuntu Linux semi-automtaing installing useful tools.
  - Uitgebreide swapfile naar 2Gb
  - Python 3.9 virtual environment
@@ -9,47 +9,47 @@ Clean install script for Raspberry Pi 1, 2,3,4  en x64_Ubuntu Linux semi-automta
  - Node-red + veel uitbreidingen
  - <a href="virtualhere.com" target="blank">Virtualhere</a> USB apparaten aansluiten via WiFi
 
-# Voorvereisten
+# 2. Voorvereisten
 - Je gebruikt RaspberryPi OS, MacOS of Ubuntu/Linux
 - SD Card van minimaal 32Gb
 - Je hebt minimaal >=Python 3.7 en virtualenv  alreeds geïnstalleerd
 - Je bent ingelogd als gebruiker pi
 
-# Stappenplan
+# 3. Stappenplan
 Dit vergemakkelijk jouw leven op een Pi.
 
-## Stap 1:
+## 3.1 Stap 1:
 Download <a href="https://www.raspberrypi.org/software/" target="_blank">Raspberry Pi Imager</a> en flash Raspian naar een SD-kaart.
 
 <img src="https://assets.raspberrypi.com/static/md-bfd602be71b2c1099b91877aed3b41f0.png" width="30%" height="30%">
 
-# Stap 2:
-### 2.1 Als eerste:
+# 3.1 Stap 2:
+### 3.2.1 Als eerste:
  - Login: pi
  - Password: raspberry
 
-### 2.2 en Wifi instellen via Raspi-config:
+### 3.2.2 en Wifi instellen via Raspi-config:
 
 <img src="https://www.raspberrypi.org/documentation/computers/images/raspi-config.png" width="30%" height="30%">
 
-### 2.3 SSH activeren:
+### 3.2.3 SSH activeren:
  - Kies optie Interfaces, kies SSH, kies YES om te activeren
  - Kies optie Exit
 
-### 2.4 Raspi-config opstarten.
+### 3.2.4 Raspi-config opstarten.
 Je moet een gebruiker aanmaken
 ```bash
 pi@raspberrypi: $ sudo raspi-config
 ```
 
-### 2.5 Pi gebruiker toevoegen.
+### 3.3 Pi gebruiker toevoegen.
 Voeg gebruiker pi toe met raspi-config, en herstart.
 
 ```bash
 pi@raspberrypi: $ reboot
 ```
 
-## Stap 3:
+## 4. Stap 3:
 Na reboot. Bijwerken en gebruikersrechten instellen.
 Deze script is 95% autonoom, je moet op gegeven moment wel de phpMyadmin wachtwoord instellen.
 
@@ -63,7 +63,7 @@ pi@dietpi:~/Downloads/thescript $ nohup bash ./runmefirst.sh &
 ```
 Dit duurt circa <>45 minuten op een Pi 3.
 
-## Stap 4:
+## 5. Stap 4:
 Bijwerken en gebruikersrechten instellen.
 
 ```
@@ -88,7 +88,7 @@ Bye
 pi@raspberrypi: $ reboot
 ```
 
-## Stap 5:
+## 5. Stap 5:
 Na reboot. Installeren Virtualhere en minimale Pi desktop
 
 Let op doorlooptijd: 
@@ -109,7 +109,7 @@ Na restart kunt u weer inloggen;
 login: pi
 password: raspberry
 
-## Stap 6: Python 3 en CircuitPython bijwerken
+## 6. Stap 6: Python 3 en CircuitPython bijwerken
 Super handig installeert Virtualenvironment voor Python, CircuitPython, tesseractOCR en Micropython.
 
 ```bash
@@ -120,10 +120,10 @@ pi@dietpi:~/Downloads/thescript $ bash ./installPythonCircuitpython.sh
 pi@dietpi:~/Downloads/thescript $ nohup bash ./installExtras.sh &
 ```
 
-## Stap 7: Test website
+## 7. Stap 7: Test website
 Surf naar http://jouwRaspberryPi.local/
 
-## Stap 8: Pi bijgewerkt houden
+## 8. Stap 8: Pi bijgewerkt houden
 Installeer een Crontab om de pi regelmatig bij te werken en het swapfile op te schoon. Het swapfile loopt vol en de Pi wordt traag. 
 
 ```bash
