@@ -116,7 +116,7 @@ pi@dietpi:~/Downloads/thescript $ tail -f ./nohupout
 
 Het draaien van installExtrasLite.sh duurt tot wel 1,5 uur!
 
-Na restart kunt u weer inloggen;
+Na restart kunt u weer inloggen:<br>
 login: pi
 password: raspberry
 
