@@ -141,7 +141,7 @@ Installeer een Crontab om de pi regelmatig bij te werken en het swapfile op te s
 (venv) pi@dietpi:~ $ crontab -e
 ```
 
-Installeer de volgende in crontab
+Kopieëren-plakken onderstaand
 ```cron
 10 1 * * * sudo bash /home/pi/Downloads/thescript/autoupdate.sh
 0 */9 * * * sudo bash /home/pi/Downloads/thescript/swap_opruimen.sh
