@@ -54,7 +54,7 @@ Na reboot. Bijwerken en gebruikersrechten instellen.
 Deze script is 95% autonoom, je moet op gegeven moment wel de phpMyadmin wachtwoord instellen.
 
 ```bash
-pi@raspberrypi $ mkdir ~/Downloads
+pi@dietpi $ mkdir ~/Downloads
 pi@dietpi:~/Downloads $ sudo apt install -y git
 pi@dietpi:~/Downloads $ git clone https://github.com/pappavis/thescript/
 pi@dietpi:~/Downloads $ cd ~/Downloads/thescript
@@ -74,12 +74,12 @@ Bijwerken en gebruikersrechten instellen.
 
 Instellen mySQL wachtwoord.
 ```bash
-pi@raspberrypi $ sudo mysql_secure_installation
+pi@dietpi $ sudo mysql_secure_installation
 ```
 
 Nu moeten wij een eigen gebruiker aanmaken
 ```
-pi@raspberrypi $ sudo mysql -u root -p
+pi@dietpi $ sudo mysql -u root -p
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
 Your MariaDB connection id is 40
 Server version: 10.3.31-MariaDB-0+deb10u1 Raspbian 10
@@ -96,7 +96,7 @@ MariaDB [(none)]> FLUSH PRIVILEGES;
 Query OK, 0 rows affected (0.006 sec)
 MariaDB [(none)]> exit;
 Bye
-pi@raspberrypi: $ reboot
+pi@dietpi: $ reboot
 ```
 
 ## 5. Stap 5:
@@ -109,7 +109,7 @@ Let op doorlooptijd:
  - x86 Ubuntu op een 2012-bouwjaar <a href="https://tweakers.net/pricewatch/281758/acer-aspire-one-722/specificaties/" target="_blank">Acer Aspire One</a> duurt <>20 minuten
 
 ```bash
-pi@raspberrypi: $ cd ~/Downloads/thescript
+pi@dietpi: $ cd ~/Downloads/thescript
 pi@dietpi:~/Downloads/thescript $ nohup bash ./installExtrasLite.sh &
 pi@dietpi:~/Downloads/thescript $ tail -f ./nohupout
 ```
@@ -124,7 +124,7 @@ password: raspberry
 Super handig installeert Virtualenvironment voor Python, CircuitPython, tesseractOCR en Micropython.
 
 ```bash
-pi@raspberrypi: $ cd ~/Downloads
+pi@dietpi: $ cd ~/Downloads
 pi@dietpi:~/Downloads $ git clone https://github.com/pappavis/thescript/
 pi@dietpi:~/Downloads $ cd ~/Downloads/thescript/
 pi@dietpi:~/Downloads/thescript $ bash ./installPythonCircuitpython.sh
