@@ -61,7 +61,13 @@ pi@dietpi:~/Downloads $ cd ~/Downloads/thescript
 pi@dietpi:~/Downloads/thescript $ bash ./adduserPi.sh
 pi@dietpi:~/Downloads/thescript $ nohup bash ./runmefirst.sh &
 ```
-Dit duurt circa <>45 minuten op een Pi 3.
+
+Optioneel: je kunt de voortgang bekijken met
+```bash
+pi@dietpi:~/Downloads/thescript $ tail -f ./nohup.out
+```
+
+Het uitvoeren van <i>runmefirst.sh</i> duurt circa <>45 minuten op een Pi 3.
 
 ## 5. Stap 4:
 Bijwerken en gebruikersrechten instellen.
