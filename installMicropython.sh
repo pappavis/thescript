@@ -26,19 +26,14 @@ git clone https://github.com/spatialdude/usqlite.git 2>&1 | tee -a $LOGFILE
 
 # basis Micropython voor UN*X
 cd $MPDLDIR/ports/unix/
-make submodules 2>&1 | tee -a $LOGFILE
 make clean 2>&1 | tee -a $LOGFILE
+make submodules 2>&1 | tee -a $LOGFILE
 make USER_C_MODULES=$MPModules 2>&1 | tee -a $LOGFILE
-#make 2>&1 | tee -a $LOGFILE
-make test 2>&1 | tee -a $LOGFILE
-#make axtls 2>&1 | tee -a $LOGFILE
-#make deplibs 2>&1 | tee -a $LOGFILE
 mkdir /usr/local/bin
-sudo rm /usr/local/bin/micropython
 sudo make install 2>&1 | tee -a $LOGFILE
+make test 2>&1 | tee -a $LOGFILE
 
 micropython -m mip install hmac 2>&1 | tee -a $LOGFILE
-micropython -m upip install micropython-pystone 2>&1 | tee -a $LOGFILE
 micropython -m mip install micropython-pystone 2>&1 | tee -a $LOGFILE
 micropython -m pystone 2>&1 | tee -a $LOGFILE
 echo "micropython UNIX versie compile afgerond" 2>&1 | tee -a $LOGFILE
