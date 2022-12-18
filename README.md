@@ -153,7 +153,7 @@ crontab: installing new crontab
 (venv) pi@dietpi:~ $
 ```
 
-Ter illustratie:
+Ter illustratie:<br>
 <img src="https://github.com/pappavis/thescript/blob/master/plaatjes/autoupdate_crontab_instellen.jpg" alt="autoupdate_crontab_instellen.jpg">
 
 
