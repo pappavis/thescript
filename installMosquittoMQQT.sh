@@ -2,7 +2,7 @@ MYMENU=$"nodenew"
 OPSYS=${ID^^}
 LOGFILE="~/pi_setup.log"
 adminname="admin"
-adminpass="rider506"
+adminpass="admin"
 
 if [ 1==1 ]; then
 	sudo apt install -y mosquitto mosquitto-clients 
