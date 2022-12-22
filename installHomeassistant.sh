@@ -6,14 +6,14 @@ mkdir ~/logs
 source /home/pi/.bashrc
 echo "Installeren Homeassistant" 2>&1
 
-python3 -m ensurepip
+python3 -m ensurepip  2>&1 | tee -a $LOGFILE
 
-python3 -m virtualenv /home/pi/venv/homeassistant
+python3 -m virtualenv /home/pi/venv/homeassistant  2>&1 | tee -a $LOGFILE
 source /home/pi/venv/homeassistant/bin/activate
 
 mkdir ~/Downloads
 cd ~/Downloads
-echo "1"  2>&1  | curl https://sh.rustup.rs -sSf | sh  2>&1 
+curl https://sh.rustup.rs -sSf | sh -s -- -y  2>&1 | tee -a $LOGFILE
 source $HOME/.cargo/env
 
 for addonnodes in  pip wheel ffmpeg homeassistant ; do
