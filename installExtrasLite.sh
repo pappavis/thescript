@@ -145,4 +145,14 @@ gpio -g mode 18 output 2>&1 | tee -a $LOGFILE
 cd ~/Downloads/thescript
 bash ./installPHPliteadmin.sh 2>&1 | tee -a $LOGFILE
 
+appTxt1="**https://retroshare.cc/"
+echo "" 2>&1 | tee -a $LOGFILE
+echo "Installeren: $appTxt1" 2>&1 | tee -a $LOGFILE
+export DEBIAN_VERSION="9.0"
+wget -qO - http://download.opensuse.org/repositories/network:retroshare/Raspbian_10/Release.key
+sudo sh -c "echo 'deb http://download.opensuse.org/repositories/network:/retroshare/Raspbian_10/ /' > /etc/apt/sources.list.d/retroshare.list"
+sudo apt-get -y update
+sudo apt-get install -y retroshare-gui
+
+
 echo "EIND installExtrasLite.sh $(date)" 2>&1 | tee -a $LOGFILE
