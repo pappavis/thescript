@@ -49,7 +49,7 @@ for addonnodes in pip setuptools wheel openpyxl pylzma py7zr o365 ttn qrcode pil
                   scikit-build pygame pymongo psycopg2-binary mysql-connector-python guizero imutils scikit-image bokeh django flask pygrabber paho-mqtt \
                   msteamsconnector matplotlib numpy imutils pyodbc influxdb pysmb libopencv-dev opencv-python  git+https://github.com/pytube/pytube picamera djitellopy \
 		   osxphotos RPi.GPIO tox tflite tflite-runtime tflite_support PySimpleGUI libusb pyusb pdfkit python-dateutil pymysql python-vkontakte easyocr pygrabber \
-		   imutils psycopg2 postgres firebirdsql html2pdf open3d face-recognition pyftdi psycopg2  ; do
+		   imutils psycopg2 postgres firebirdsql html2pdf open3d face-recognition pyftdi psycopg2 asyncio ; do
 
     echo "" 2>&1 | tee -a $LOGFILE
     echo "Installeren python lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
