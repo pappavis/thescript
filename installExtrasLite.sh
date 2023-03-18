@@ -161,8 +161,8 @@ echo "Installeren: $appTxt1" 2>&1 | tee -a $LOGFILE
 sudo mv /usr/bin/vcgencmd /usr/bin/vcgencmd-dist
 sudo touch /usr/bin/vcgencmd
 sudo chmod 755 /usr/bin/vcgencmd
-echo "#!/bin/bash" 2>&1 | tee /usr/bin/vcgencmd
-echo "throttled=0x0" | tee -a /usr/bin/vcgencmd
+echo "#!/bin/bash" 2>&1 | sudo tee /usr/bin/vcgencmd
+echo "throttled=0x0" | sudo tee -a /usr/bin/vcgencmd
 # restore the original script:
  #sudo rm /usr/bin/vcgencmd
  #sudo mv /usr/bin/vcgencmd-dist /usr/bin/vcgencmd
