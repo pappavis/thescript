@@ -154,5 +154,18 @@ sudo sh -c "echo 'deb http://download.opensuse.org/repositories/network:/retrosh
 sudo apt-get -y update
 sudo apt-get install -y retroshare-gui
 
+# Create own script that always reports that the Pi is not throttled --- https://community.octoprint.org/t/throttled-system/16422/20
+sudo mv /usr/bin/vcgencmd /usr/bin/vcgencmd-dist
+sudo touch /usr/bin/vcgencmd
+sudo chmod 755 /usr/bin/vcgencmd
+sudo nano 
+
+echo "#!/bin/bash" 2>&1 | tee /usr/bin/vcgencmd
+echo "throttled=0x0" | tee -a /usr/bin/vcgencmd
+# restore the original script:
+ #sudo rm /usr/bin/vcgencmd
+ #sudo mv /usr/bin/vcgencmd-dist /usr/bin/vcgencmd
+
+
 
 echo "EIND installExtrasLite.sh $(date)" 2>&1 | tee -a $LOGFILE
