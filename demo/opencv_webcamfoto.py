@@ -17,9 +17,9 @@ class clsMain:
         self.scriptPath = str(PurePath(self.scriptFull.parent))     
         self.debug = False   
         self.vid = None
-        self.mqqtBroker = None
+        self.mqqtBroker = "dietpi.local"
 
-    def main(self, mqqtBroker="100.112.69.77"):
+    def main(self, mqqtBroker=None):
         '''Primary start function'''
         pass
 
@@ -112,7 +112,7 @@ if __name__ == "__main__":
     print(f"")
     main1 = clsMain()
     main1.debug = True  
-    main1.mqqtBroker="100.112.69.77"
+    main1.mqqtBroker="dietpi.local"
     result1 = main1.maakEenFotoEnSave()
     main1.verstuurHalloWereldMetMQQT()
     main1.verstuurFotoMetMQQT(filename=result1)
