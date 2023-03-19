@@ -41,7 +41,7 @@ class clsMain:
         return outFileJPG
 
 
-    def getMQQTClient(self, mqqtBroker="100.112.69.77"):
+    def getMQQTClient(self, mqqtBroker="dietpi.local"):
         '''return een Verbinding maken met een MQQT server
             @param mqqtBroker IP-adres of hostname
         '''
