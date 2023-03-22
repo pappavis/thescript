@@ -145,6 +145,7 @@ Kopieëren-plakken onderstaand
 ```cron
 10 1 * * * sudo bash /home/pi/Downloads/thescript/autoupdate.sh
 0 */9 * * * sudo bash /home/pi/Downloads/thescript/swap_opruimen.sh
+15 23 * * * sudo bash /home/pi/Downloads/thescript/backupVanAlles.sh
 ```
 Afsluiten af met ctrl-x
 
