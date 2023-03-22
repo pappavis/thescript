@@ -1,6 +1,6 @@
-echo "start SQLite install"
+$LOGFILE="~/logs/installsqlite3_logs.log"
+echo "**start SQLite install" 2>&1 | tee -a $LOGFILE
 mkdir ~/tmp
-$LOGFILE="~/tmp"
 
 sudo apt update -y
 sudo apt install -y apache2 php php-mysql php-sqlite3 php-mbstring openssl libapache2-mod-php php-xml php-mbstring
