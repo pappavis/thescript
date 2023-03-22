@@ -52,6 +52,8 @@ echo "allow_anonymous true" | sudo tee -a /etc/mosquitto/conf.d/standard.conf
 
 sudo hdparm -t --direct /dev/mmcblk0  -y 2>&1 | tee -a $LOGFILE
 
+bash ~/Downloads/thescript/installsqlite3.sh -y 2>&1 | tee -a $LOGFILE
+
 echo ""  2>&1 | tee -a $LOGFILE
 echo "Einde installAppsBasis"  2>&1 | tee -a $LOGFILE
 echo ""  2>&1 | tee -a $LOGFILE
