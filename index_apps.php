@@ -143,7 +143,7 @@
 								<tr>
 									<td>
 										<script language="JavaScript">
-											document.write('SQLite<a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + '/sqliteadmin' +  '/" >admin</a>.<br/' );				
+											document.write('SQLite <a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + '/phpliteadmin' +  '/" >phpliteadmin</a>.<br/' );				
 										</script>
 									</td>
 								</tr>
