@@ -3,6 +3,8 @@ import digitalio
 import board
 import time
 
+# 20230326 Let op mijn PSU Controlpin is GPIO14!
+
 class clsMain:
     def __init__(self):
         self.ioPin = 14
@@ -11,19 +13,19 @@ class clsMain:
         self.led.direction =  digitalio.Direction.OUTPUT
 
     def main(self):
-        print(f'start, PSU Control.GPIO test op GPIO{ioPin}')
+        print(f'start, PSU Control.GPIO test op GPIO{self.ioPin}')
         time.sleep(1.5)
 
-        print(f'0, pin={ioPin} waarde={led.value}, direction={digitalio.Direction}')
+        print(f'0, pin={self.ioPin} waarde={led.value}, direction={digitalio.Direction}')
         time.sleep(1.5)
         led.value = False
-        print(f'1, pin={ioPin} waarde={led.value}, direction={digitalio.Direction}')
+        print(f'1, pin={self.ioPin} waarde={led.value}, direction={digitalio.Direction}')
         time.sleep(1.5)
         led.value = True
-        print(f'2, pin={ioPin} waarde={led.value}, direction={digitalio.Direction}')
+        print(f'2, pin={self.ioPin} waarde={led.value}, direction={digitalio.Direction}')
         time.sleep(1.5)
         #led.value = False
-        #print(f'3, pin={ioPin} waarde={led.value}, direction={digitalio.Direction}')
+        #print(f'3, pin={self.ioPin} waarde={led.value}, direction={digitalio.Direction}')
         #time.sleep(1.5)
 
 if __name__ == "__main__":
@@ -31,5 +33,3 @@ if __name__ == "__main__":
     main1 = clsMain()
     main1.main()
     print(f"app Eind ble_temperature.py")
-
-
