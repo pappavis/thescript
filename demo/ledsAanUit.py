@@ -18,13 +18,13 @@ class clsMain:
 
         print(f'0, pin={self.ioPin} waarde={self.led.value}, direction={digitalio.Direction}')
         time.sleep(1.5)
-        led.value = False
+        self.led.value = False
         print(f'1, pin={self.ioPin} waarde={self.led.value}, direction={digitalio.Direction}')
         time.sleep(1.5)
-        led.value = True
+        self.led.value = True
         print(f'2, pin={self.ioPin} waarde={self.led.value}, direction={digitalio.Direction}')
         time.sleep(1.5)
-        #led.value = False
+        #self.led.value = False
         #print(f'3, pin={self.ioPin} waarde={self.led.value}, direction={digitalio.Direction}')
         #time.sleep(1.5)
 
@@ -33,3 +33,4 @@ if __name__ == "__main__":
     main1 = clsMain()
     main1.main()
     print(f"app Eind ble_temperature.py")
+
