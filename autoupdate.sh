@@ -19,6 +19,9 @@ if [ -f /home/pi/pi-apps ]; then
     /home/pi/pi-apps/updater | tee -a $LOGFILE
 fi
 
+REBOOTJPG=/home/pi/logs/reobootPlaatje-`date +%Y-%m-%d_%Hh%Mm`.jpg
+fswebcam -r 1280x720 --no-banner $REBOOTJPG 2>&1 | tee -a $LOGFILE
+
 sudo apt-get update -y | tee -a $LOGFILE
 sudo apt-get upgrade -y  2>&1 | tee -a $LOGFILE
 sudo rpi-update -y 2>&1 | tee -a $LOGFILE
