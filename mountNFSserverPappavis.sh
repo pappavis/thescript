@@ -14,7 +14,7 @@ for addonnodes in ict-beheer acer01 pi0 pivhere dietpi pi04 pilamp spelen02 p1mo
   echo "Probeer netwerk share te mount op /mnt/nfs/${addonnodes}"  2>&1 | tee -a $LOGFILE
   sudo mkdir /mnt/nfs/${addonnodes}
   sudo mkdir /mnt/cifs/${addonnodes}
-  sudo mount -t auto -o rw ${addonnodes}:/home  /mnt/nfs/${addonnodes} 2>&1 | tee -a $LOGFILE &
+  sudo mount -t auto -o rw ${addonnodes}.local:/home  /mnt/nfs/${addonnodes} 2>&1 | tee -a $LOGFILE &
   sudo mount -t davfs -o rw,username=pi http://${addonnodes}.local/support/owncloud/remote.php/webdav  /mnt/davfs2/${addonnodes} 2>&1 | tee -a $LOGFILE &
   sudo mount -t cifs -o rw,username=pi /mnt/nfs/${addonnodes} 2>&1 | tee -a $LOGFILE &
   echo "" 2>&1 | tee -a $LOGFILE &
