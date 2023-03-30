@@ -21,7 +21,7 @@ done
 
 echo "Backup octopi" 2>&1 | tee -a $LOGFILE
 octopiDir=/mnt/nfs/octopi/pi
-for addonnodes in $octopiDir/dbs /mnt/nfs/octopi/pi/.octoprint 
+for addonnodes in $octopiDir/dbs /mnt/nfs/octopi/pi/.octoprint    ; do
   echo "Backup octopi map: $addonnodes" 2>&1 | tee -a $LOGFILE
   sudo 7z a /mnt/usb0/rugsteun/octopi_backup.7z -r  ${addonnodes}
 done
