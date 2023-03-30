@@ -19,4 +19,12 @@ for addonnodes in ~/dbs ~/.octoprint ~/.homeassistant  ~/.node-red/ ~.npm/ ~/sin
   sudo 7z a /mnt/usb0/rugsteun/$(hostname)_backup.7z -r   ${addonnodes}  2>&1 | tee -a $LOGFILE
 done
 
+echo "Backup octopi" 2>&1 | tee -a $LOGFILE
+octopiDir=/mnt/nfs/octopi/pi
+for addonnodes in $octopiDir/dbs /mnt/nfs/octopi/pi/.octoprint 
+  echo "Backup octopi map: $addonnodes" 2>&1 | tee -a $LOGFILE
+  sudo 7z a /mnt/usb0/rugsteun/octopi_backup.7z -r  ${addonnodes}
+done
+ 
+
 echo "backup afgerond"  2>&1 | tee -a $LOGFILE
