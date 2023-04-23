@@ -26,6 +26,8 @@ for addonnodes in $octopiDir/dbs /mnt/nfs/octopi/pi/.octoprint    ; do
   echo "Backup octopi map: $addonnodes" 2>&1 | tee -a $LOGFILE
   sudo 7z a /mnt/usb0/rugsteun/octopi_backup.7z -r  ${addonnodes}
 done
- 
 
-echo "backup afgerond"  2>&1 | tee -a $LOGFILE
+echo "Verwijderen tmp-bestanden" 2>&1 | tee -a $LOGFILE
+sudo rm -rf /mnt/usb0/rugsteun/*.tm*
+
+echo "backup afgerond."  2>&1 | tee -a $LOGFILE
