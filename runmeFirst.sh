@@ -139,6 +139,8 @@ cd /var/www/html/inc
 sudo wget https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css 2>&1 | tee -a $LOGFILE
 sudo chown www-data:www-data /var/www/html/ -R &
 
+ sudo mkdir /usr/local/apps 2>&1 | tee -a $LOGFILE
+
 cd ~/Downloads
 echo "" 2>&1 | tee -a $LOGFILE
 echo "Installeren Bootstrap.js bibliotheek" 2>&1 | tee -a $LOGFILE
