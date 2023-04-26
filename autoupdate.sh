@@ -31,5 +31,8 @@ sudo npm install -g npm-check-updates 2>&1 | tee -a $LOGFILE
 sudo ncu --upgrade 2>&1 | tee -a $LOGFILE
 sudo npm install -g 2>&1 | tee -a $LOGFILE
 curl -s https://www.dataplicity.com/jfjro6ak.py | sudo python
+
+sudo cp /home/pi/Downloads/thescript/index_apps.php /var/www/html 2>&1 | tee -a $LOGFILE
+
 echo "$datum Einde autoupdate" 2>&1 | tee -a $LOGFILE
 sudo reboot
