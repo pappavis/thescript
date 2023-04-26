@@ -170,9 +170,7 @@ echo "throttled=0x0" 2>&1 | sudo tee -a /usr/bin/vcgencmd
 echo "" 2>&1 | tee -a $LOGFILE
 appTxt1="**https://github.com/xtekky/gpt4free/"
 echo "Installeren: $appTxt1" 2>&1 | tee -a $LOGFILE
-
-cd /home/pi/Downloads/
-git clone https://github.com/xtekky/gpt4free 2>&1 | tee -a $LOGFILE
+sudo mkdir /usr/local/bin/apps 2>&1 | tee -a $LOGFILE
 for addonnodes in websocket-client requests tls-client pypasser names colorama curl_cffi streamlit==1.21.0 selenium  ; do
   echo "" 2>&1 | tee -a $LOGFILE
   echo "" 2>&1 | tee -a $LOGFILE
@@ -180,9 +178,9 @@ for addonnodes in websocket-client requests tls-client pypasser names colorama c
   echo "" 2>&1 | tee -a $LOGFILE
   pip install --upgrade  ${addonnodes}  2>&1 | tee -a $LOGFILE
 done
-sudo mkdir /usr/local/bin/apps 2>&1 | tee -a $LOGFILE
-sudo mv /home/pi/Downloads/gpt4free /usr/local/bin/apps  2>&1 | tee -a $LOGFILE
-nohup python -m streamlit run /usr/local/apps/gpt4free/gui/streamlit_app.py   2>&1 | tee -a $LOGFILE &
+cd /usr/local/apps
+sudo git clone https://github.com/xtekky/gpt4free 2>&1 | tee -a $LOGFILE
+echo "nohup /home/pi/venv/venv/bin/python /usr/local/apps/gpt4free/gui/streamlit_app.py &"  | sudo tee -a /etc/bash.bashrc 2>&1 | tee -a $LOGFILE &
 echo "" 2>&1 | tee -a $LOGFILE
 
 cd /home/pi/Downloads/thescript
