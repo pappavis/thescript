@@ -6,7 +6,6 @@ sudo mv ~/Downloads/AudioGPT /usr/local/apps 2>&1 | tee -a $LOGFILE
 #source ~/venv/audiogpt/bin/activate 2>&1 | tee -a $LOGFILE
 source ~/venv/venv/bin/activate 2>&1 | tee -a $LOGFILE
 
-
 for addonnodes in accelerate addict==2.4.0 aiofiles albumentations==1.3.0 appdirs==1.4.4 basicsr==1.4.2 beautifulsoup4==4.10.0 Cython==0.29.24 diffusers \
 	einops==0.3.0 espnet espnet_model_zoo ffmpeg-python  g2p-en==2.1.0 google==3.0.0 gradio  h5py imageio==2.9.0  imageio-ffmpeg==0.4.2  invisible-watermark=0.1.5  ; do
 
@@ -47,6 +46,9 @@ for addonnodes in websocket-client requests tls-client pypasser names  colorama 
     echo "Installeren: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     pip install --upgrade ${addonnodes}  2>&1 | tee -a $LOGFILE
 done
+
+rm -rf ~/Downloads/AudioGPT 2>&1 | tee -a $LOGFILE &
+rm -rf ~/Downloads/gpt4free 2>&1 | tee -a $LOGFILE &
 
 nohup python /usr/local/apps/AudioGPT/audio-chatgpt.py 2>&1 | tee -a $LOGFILE &
 
