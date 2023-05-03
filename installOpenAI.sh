@@ -2,8 +2,9 @@ echo "Installeren https://github.com/AIGC-Audio/AudioGPT" 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
 git clone https://github.com/AIGC-Audio/AudioGPT 2>&1 | tee -a $LOGFILE
 sudo mv ~/Downloads/AudioGPT /usr/local/apps 2>&1 | tee -a $LOGFILE
-/usr/bin/python3  -m virtualenv -p /usr/bin/python3 ~/venv/audiogpt 2>&1 | tee -a $LOGFILE
-source ~/venv/audiogpt/bin/activate 2>&1 | tee -a $LOGFILE
+#/usr/bin/python3  -m virtualenv -p /usr/bin/python3 ~/venv/audiogpt 2>&1 | tee -a $LOGFILE
+#source ~/venv/audiogpt/bin/activate 2>&1 | tee -a $LOGFILE
+source ~/.bashrc
 for addonnodes in accelerate addict==2.4.0 aiofiles albumentations==1.3.0 appdirs==1.4.4 basicsr==1.4.2 beautifulsoup4==4.10.0 Cython==0.29.24 diffusers \
 	einops==0.3.0 espnet espnet_model_zoo ffmpeg-python  g2p-en==2.1.0 google==3.0.0 gradio  h5py imageio==2.9.0  imageio-ffmpeg==0.4.2  invisible-watermark=0.1.5 \
 	jieba kornia==0.6  langchain==0.0.101 librosa loguru miditoolkit==0.1.7 mmcv==1.5.0 mmdet==2.23.0  mmengine==0.7.2 moviepy==1.0.3 numpy==1.23.1 omegaconf==2.1.1 \
@@ -14,21 +15,22 @@ for addonnodes in accelerate addict==2.4.0 aiofiles albumentations==1.3.0 appdir
 	yapf==0.32.0  git+https://github.com/openai/CLIP.git
 	
     echo "Installeren: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
-    pip install --user --upgrade ${addonnodes}  2>&1 | tee -a $LOGFILE
+    pip install --upgrade ${addonnodes}  2>&1 | tee -a $LOGFILE
 done
 
 nohup python /usr/local/apps/AudioGPT/audio-chatgpt.py 2>&1 | tee -a $LOGFILE &
 
 echo "Installeren https://github.com/xtekky/gpt4free" 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
-https://github.com/xtekky/gpt4free 2>&1 | tee -a $LOGFILE
+git clone https://github.com/xtekky/gpt4free 2>&1 | tee -a $LOGFILE
 sudo mv ~/Downloads/gpt4free /usr/local/apps 2>&1 | tee -a $LOGFILE
-/usr/bin/python3  -m virtualenv -p /usr/bin/python3 ~/venv/gpt4free 2>&1 | tee -a $LOGFILE
-source ~/venv/gpt4free/bin/activate 2>&1 | tee -a $LOGFILE
+#/usr/bin/python3  -m virtualenv -p /usr/bin/python3 ~/venv/gpt4free 2>&1 | tee -a $LOGFILE
+#source ~/venv/gpt4free/bin/activate 2>&1 | tee -a $LOGFILE
+source ~/.bashrc
 for addonnodes in websocket-client requests tls-client pypasser names  colorama  curl_cffi streamlit==1.21.0 \
   selenium  fake-useragent  twocaptcha  https://github.com/AI-Yash/st-chat/archive/refs/pull/24/head.zip  qpydantic  pymailtm	
     echo "Installeren: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
-    pip install --user --upgrade ${addonnodes}  2>&1 | tee -a $LOGFILE
+    pip install --upgrade ${addonnodes}  2>&1 | tee -a $LOGFILE
 done
 
 nohup python /usr/local/apps/AudioGPT/audio-chatgpt.py 2>&1 | tee -a $LOGFILE &
