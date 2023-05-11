@@ -51,6 +51,14 @@ wget -O - https://get.hacs.xyz | bash -  2>&1 | tee -a $LOGFILE
 sudo service homeassistant restart  2>&1 | tee -a $LOGFILE
 sudo service homeassistant status  2>&1 | tee -a $LOGFILE
 
+# 20230510 https://support.hoobs.org/docs/60e9f2ecdea381a881af7237
+wget -qO- https://dl.hoobs.org/stable 2>&1  | sudo bash -   | tee -a $LOGFILE
+for addonnodes in  hoobsd hoobs-cli hoobs-gui ; do
+	echo "Installeren HOOBs als Homeassistant  alternatief:  \"${addonnodes}\""
+  	sudo apt install -y ${addonnodes}  2>&1 | tee -a $LOGFILE
+done
+sudo hbs install  2>&1 | tee -a $LOGFILE &
+
 cd $_pwd
 
 echo "\nStart homeassitant op http://$_hn.local:8123\n" 2>&1 | tee -a $LOGFILE
