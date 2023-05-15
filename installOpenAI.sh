@@ -7,7 +7,7 @@ sudo mv ~/Downloads/AudioGPT /usr/local/apps 2>&1 | tee -a $LOGFILE
 source ~/venv/venv/bin/activate 2>&1 | tee -a $LOGFILE
 
 for addonnodes in accelerate addict==2.4.0 aiofiles albumentations==1.3.0 appdirs==1.4.4 basicsr==1.4.2 beautifulsoup4==4.10.0 Cython==0.29.24 diffusers \
-	einops==0.3.0 espnet espnet_model_zoo ffmpeg-python  g2p-en==2.1.0 google==3.0.0 gradio  h5py imageio==2.9.0  imageio-ffmpeg==0.4.2  invisible-watermark=0.1.5  ; do
+	einops==0.3.0 espnet espnet_model_zoo ffmpeg-python  g2p-en==2.1.0 google==3.0.0 gradio  h5py imageio==2.9.0  imageio-ffmpeg==0.4.2  invisible-watermark==0.1.5  ; do
 
     echo "" 2>&1 | tee -a $LOGFILE
     echo "Installeren python lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
