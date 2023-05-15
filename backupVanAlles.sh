@@ -10,7 +10,7 @@ sudo mount -t auto -o defaults  /dev/sda1 /mnt/usb0/  2>&1 | tee -a $LOGFILE
 sudo cp /mnt/usb0/rugsteun/$(hostname)_backup.7z /mnt/usb0/rugsteun/$(hostname)_backup_oud.7z  2>&1 | tee -a $LOGFILE
 echo "7z a /mnt/usb0/rugsteun/$(hostname)_backup.7z" 2>&1 | tee -a $LOGFILE
 
-for addonnodes in ~/dbs ~/.octoprint ~/.homeassistant  ~/.node-red/ ~.npm/ ~/single_chan_pkt_fwd/ ~/venv /~.local ~/Programmering/ /~.micropython  /var/www/html/support/nextcloud/data  ; do
+for addonnodes in ~/dbs ~/.octoprint ~/.homeassistant  ~/.node-red/ ~.npm/ ~/single_chan_pkt_fwd/ ~/venv /~.local ~/Programmering/ /~.micropython  /var/www/html/support/nextcloud/data /var/lib/mysql/   ; do
   echo "" 2>&1 | tee -a $LOGFILE
   echo "" 2>&1 | tee -a $LOGFILE
   echo "backupen van dir ${addonnodes}" 2>&1 | tee -a $LOGFILE
