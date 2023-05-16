@@ -1,17 +1,17 @@
 LOGFILE=/home/pi/PythonUpgradefile-`date +%Y-%m-%d_%Hh%Mm`.log
-PVERS="3.10"
+PVERS="3.11.2"
 echo "** Python upgrade installeren $PVERS\n" 2>&1 | tee -a $LOGFILE
 
 
 echo "Python cache leeggooien" 2>&1 | tee -a $LOGFILE
 rm -rf ~/.cache/pip 2>&1 | tee -a $LOGFILE
 
-wget -qO - https://raw.githubusercontent.com/tvdsluijs/sh-python-installer/main/python.sh | sudo bash -s 3.10.3 2>&1 | tee -a $LOGFILE
+wget -qO - https://raw.githubusercontent.com/tvdsluijs/sh-python-installer/main/python.sh | sudo bash -s $PVERS 2>&1 | tee -a $LOGFILE
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python$PVERS 1 2>&1 | tee -a $LOGFILE
 /usr/bin/python$PVERS -m pip install virtualenv 2>&1 | tee -a $LOGFILE
 /usr/bin/python$PVERS -m virtualenv ~/venv/venv$PVERS 2>&1 | tee -a $LOGFILE
 mv ~/venv/venv ~/venv/venv_oud
-ln -s ~/venv/venvPVERS ~/venv/venv
+ln -s ~/venv/venv$PVERS ~/venv/venv
 source ~/venv/venv$PVERS/bin/activate
 
 for addonnodes in git wget build-essential checkinstall build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev libbz2-dev  libncursesw5-dev libc6-dev openssl libffi-dev libbz2-dev liblzma-dev libsqlite3-dev libncurses5-dev libgdbm-dev zlib1g-dev libreadline-dev libssl-dev tk-dev build-essential libopencv-dev   ; do
