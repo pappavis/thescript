@@ -28,6 +28,7 @@ for addonnodes in $octopiDir/dbs /mnt/nfs/octopi/pi/.octoprint    ; do
 done
 
 echo "Verwijderen tmp-bestanden" 2>&1 | tee -a $LOGFILE
-sudo rm -rf /mnt/usb0/rugsteun/*.tm*
+sudo rm -rf "/mnt/usb0/rugsteun/*.tm"* 2>&1 | tee -a $LOGFILE
+sudo rm -rf "/mnt/usb0/rugsteun/*.tm*" 2>&1 | tee -a $LOGFILE
 
 echo "backup afgerond."  2>&1 | tee -a $LOGFILE
