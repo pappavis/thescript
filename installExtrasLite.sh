@@ -183,6 +183,12 @@ sudo git clone https://github.com/xtekky/gpt4free 2>&1 | tee -a $LOGFILE
 echo "nohup /home/pi/venv/venv/bin/python /usr/local/apps/gpt4free/gui/streamlit_app.py &"  | sudo tee -a /etc/bash.bashrc 2>&1 | tee -a $LOGFILE &
 echo "" 2>&1 | tee -a $LOGFILE
 
+echo "" 2>&1 | tee -a $LOGFILE
+appTxt1="**Zoom MS-50G gitaar pedal util -- zoom-ms-utility "
+echo "Installeren: $appTxt1" 2>&1 | tee -a $LOGFILE
+cd /var/www/html/apps/
+sudo git clone https://github.com/g200kg/zoom-ms-utility 2>&1 | tee -a $LOGFILE
+
 cd /home/pi/Downloads/thescript
 
 echo "EIND installExtrasLite.sh $(date)" 2>&1 | tee -a $LOGFILE
