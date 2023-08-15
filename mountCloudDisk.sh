@@ -19,3 +19,5 @@ echo "YANDEX_DISK_SOURCE_DIR=/home/pi/yandex.disk" 2>&1 | tee -a /home/pi/yandex
 echo "RSYNC_DESTINATION_DIR=/home/pi/yandex.disk" 2>&1 | tee -a /home/pi/yandex.disk/variables.sh
 echo "TELEGRAM_BOT_SECRET=your_telegram_bot_secret" 2>&1 | tee -a /home/pi/yandex.disk/variables.sh
 echo "TELEGRAM_CHAT_ID=your_telegram_chat_id" 2>&1 | tee -a /home/pi/yandex.disk/variables.sh
+echo "Einde mountCloudDisk.sh" 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
