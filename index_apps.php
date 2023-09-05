@@ -162,6 +162,14 @@
 							<div align="center" class-"author container-sm">Diverse utils en tekst bewerkings zijn geinstalleerd.</div>						
 						</td>
 					</tr>
+					<tr>
+						<td>
+							<div id="divSpelen">
+								Spelen 
+								<a href="https://c64online.com/c64-games/" target="_blank" rel="noopener">C64online.com – Speel C64 Games online</a>
+							</div>
+						</td>
+					</tr>
 				</tbdody>
 			</table>
 		</div>
