@@ -15,10 +15,25 @@ for addonnodes in ~/dbs ~/.octoprint ~/.homeassistant  ~/.node-red/ ~.npm/ ~/sin
   echo "" 2>&1 | tee -a $LOGFILE
   echo "backupen van dir ${addonnodes}" 2>&1 | tee -a $LOGFILE
   echo "" 2>&1 | tee -a $LOGFILE
-  sudo 7z a $BACKUPDIR/$BACKUPFILE -r   ${addonnodes}  2>&1 | tee -a $LOGFILE
+  sudo 7z a $BACKUPDIR/rugsteun_${hostname}_${addonnodes}.7z -r  ${addonnodes}  2>&1 | tee -a $LOGFILE
   echo "updaten van dir ${addonnodes}" 2>&1 | tee -a $LOGFILE
   sudo 7z u $BACKUPDIR/$BACKUPFILE -r   ${addonnodes}  2>&1 | tee -a $LOGFILE
 done
+
+7z a $BACKUPDIR/$(hostname)_dbs_backup.7z -r  ~/dbs  2>&1 | tee -a $LOGFILE
+7z a $BACKUPDIR/$(hostname)_octoprint_backup.7z -r  ~/.octoprint  2>&1 | tee -a $LOGFILE
+7z a $BACKUPDIR/$(hostname)_homeassistant_backup.7z -r  ~/.homeassistant  2>&1 | tee -a $LOGFILE
+7z a $BACKUPDIR/$(hostname)_red_backup.7z -r  ~/.node-red  2>&1 | tee -a $LOGFILE
+7z a $BACKUPDIR/$(hostname)_npm_backup.7z -r  ~/.npm  2>&1 | tee -a $LOGFILE
+7z a $BACKUPDIR/$(hostname)_single_chan_pkt_fwd_backup.7z -r  ~/single_chan_pkt_fwd  2>&1 | tee -a $LOGFILE
+7z a $BACKUPDIR/$(hostname)_venv_backup.7z -r  ~/venv  2>&1 | tee -a $LOGFILE
+7z a $BACKUPDIR/$(hostname)_local_backup.7z -r  ~/.local  2>&1 | tee -a $LOGFILE
+7z a $BACKUPDIR/$(hostname)_Programmering_backup.7z -r  ~/Programmering  2>&1 | tee -a $LOGFILE
+7z a $BACKUPDIR/$(hostname)_micropython_backup.7z -r  ~/.micropython  2>&1 | tee -a $LOGFILE
+sudo 7z a $BACKUPDIR/$(hostname)_nextcloud_backup.7z -r  /var/www/html/support/nextcloud/data  2>&1 | tee -a $LOGFILE
+sudo 7z a $BACKUPDIR/$(hostname)_mysql_backup.7z -r  /var/lib/mysql/   2>&1 | tee -a $LOGFILE
+
+~/.octoprint ~/.homeassistant  ~/.node-red/ ~/.npm/ ~/single_chan_pkt_fwd/ ~/venv /~.local ~/Programmering/ /~.micropython  /var/www/html/support/nextcloud/data /var/lib/mysql/   ; do
 
 echo "Backup octopi" 2>&1 | tee -a $LOGFILE
 octopiDir=/mnt/nfs/octopi/pi
