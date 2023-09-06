@@ -23,7 +23,7 @@ echo "7z a /mnt/usb0/rugsteun/$(hostname)_backup.7z" 2>&1 | tee -a $LOGFILE
 7z a $BACKUPDIR/$(hostname)_dbs_backup.7z -r  ~/dbs  2>&1 | tee -a $LOGFILE
 7z a $BACKUPDIR/$(hostname)_octoprint_backup.7z -r  ~/.octoprint  2>&1 | tee -a $LOGFILE
 7z a $BACKUPDIR/$(hostname)_homeassistant_backup.7z -r  ~/.homeassistant  2>&1 | tee -a $LOGFILE
-7z a $BACKUPDIR/$(hostname)_red_backup.7z -r  ~/.node-red  2>&1 | tee -a $LOGFILE
+7z a $BACKUPDIR/$(hostname)_node-red_backup.7z -r  ~/.node-red  2>&1 | tee -a $LOGFILE
 7z a $BACKUPDIR/$(hostname)_npm_backup.7z -r  ~/.npm  2>&1 | tee -a $LOGFILE
 7z a $BACKUPDIR/$(hostname)_single_chan_pkt_fwd_backup.7z -r  ~/single_chan_pkt_fwd  2>&1 | tee -a $LOGFILE
 7z a $BACKUPDIR/$(hostname)_venv_backup.7z -r  ~/venv  2>&1 | tee -a $LOGFILE
