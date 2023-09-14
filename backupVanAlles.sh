@@ -20,17 +20,17 @@ echo "7z a /mnt/usb0/rugsteun/$(hostname)_backup.7z" 2>&1 | tee -a $LOGFILE
 #   sudo 7z u $BACKUPDIR/$BACKUPFILE -r   ${addonnodes}  2>&1 | tee -a $LOGFILE
 # done
 
-7z a $BACKUPDIR/$(hostname)_dbs_backup.7z -r  ~/dbs  2>&1 | tee -a $LOGFILE
-7z a $BACKUPDIR/$(hostname)_.octoprint_backup.7z -r  ~/.octoprint  2>&1 | tee -a $LOGFILE
-7z a $BACKUPDIR/$(hostname)_.homeassistant_backup.7z -r  ~/.homeassistant  2>&1 | tee -a $LOGFILE
-7z a $BACKUPDIR/$(hostname)_.node-red_backup.7z -r  ~/.node-red  2>&1 | tee -a $LOGFILE
-7z a $BACKUPDIR/$(hostname)_.npm_backup.7z -r  ~/.npm  2>&1 | tee -a $LOGFILE
-7z a $BACKUPDIR/$(hostname)_single_chan_pkt_fwd_backup.7z -r  ~/single_chan_pkt_fwd  2>&1 | tee -a $LOGFILE
-7z a $BACKUPDIR/$(hostname)_.venv_backup.7z -r  ~/.venv  2>&1 | tee -a $LOGFILE
-7z a $BACKUPDIR/$(hostname)_.local_backup.7z -r  ~/.local  2>&1 | tee -a $LOGFILE
-7z a $BACKUPDIR/$(hostname)_Programmering_backup.7z -r  ~/Programmering  2>&1 | tee -a $LOGFILE
-7z a $BACKUPDIR/$(hostname)_micropython_backup.7z -r  ~/.micropython  2>&1 | tee -a $LOGFILE
-sudo 7z a $BACKUPDIR/$(hostname)_userLocal_backup.7z -r  ~/usr/local  2>&1 | tee -a $LOGFILE
+7z a $BACKUPDIR/$(hostname)_dbs_backup.7z -r  /home/pi/dbs  2>&1 | tee -a $LOGFILE
+7z a $BACKUPDIR/$(hostname)_.octoprint_backup.7z -r  /home/pi/.octoprint  2>&1 | tee -a $LOGFILE
+7z a $BACKUPDIR/$(hostname)_.homeassistant_backup.7z -r  /home/pi/.homeassistant  2>&1 | tee -a $LOGFILE
+7z a $BACKUPDIR/$(hostname)_.node-red_backup.7z -r  /home/pi/.node-red  2>&1 | tee -a $LOGFILE
+7z a $BACKUPDIR/$(hostname)_.npm_backup.7z -r  /home/pi/.npm  2>&1 | tee -a $LOGFILE
+7z a $BACKUPDIR/$(hostname)_single_chan_pkt_fwd_backup.7z -r  /home/pi/single_chan_pkt_fwd  2>&1 | tee -a $LOGFILE
+7z a $BACKUPDIR/$(hostname)_.venv_backup.7z -r  /home/pi/.venv  2>&1 | tee -a $LOGFILE
+7z a $BACKUPDIR/$(hostname)_.local_backup.7z -r  /home/pi/.local  2>&1 | tee -a $LOGFILE
+7z a $BACKUPDIR/$(hostname)_Programmering_backup.7z -r  /home/pi/Programmering  2>&1 | tee -a $LOGFILE
+7z a $BACKUPDIR/$(hostname)_micropython_backup.7z -r  /home/pi/.micropython  2>&1 | tee -a $LOGFILE
+sudo 7z a $BACKUPDIR/$(hostname)_userLocal_backup.7z -r  /usr/local  2>&1 | tee -a $LOGFILE
 sudo 7z a $BACKUPDIR/$(hostname)__var_www_html_support_nextcloud_data_backup.7z -r  /var/www/html/support/nextcloud/data  2>&1 | tee -a $LOGFILE
 sudo 7z a $BACKUPDIR/$(hostname)_var_lib_mysql_backup.7z -r  /var/lib/mysql/   2>&1 | tee -a $LOGFILE
 
