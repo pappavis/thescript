@@ -186,11 +186,14 @@ echo "" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
 appTxt1="**Zoom MS-50G gitaar pedal util -- zoom-ms-utility "
 echo "Installeren: $appTxt1" 2>&1 | tee -a $LOGFILE
-cd /var/www/html/apps/
+cd /var/www/html/apps/ 2>&1 | tee -a $LOGFILE
 sudo git clone https://github.com/g200kg/zoom-ms-utility 2>&1 | tee -a $LOGFILE
 
-cd /usr/local/bin/apps
+sudo mkdir /usr/local/bin/apps/ 2>&1 | tee -a $LOGFILE
+sudo mkdir /usr/local/bin/apps/spelen 2>&1 | tee -a $LOGFILE
+cd /usr/local/bin/apps/spelen 2>&1 | tee -a $LOGFILE
 sudo git clone https://github.com/mriale/PyDPainter 2>&1 | tee -a $LOGFILE
+sudo git clone https://github.com/lukasz1985/SREM 2>&1 | tee -a $LOGFILE
 
 cd /home/pi/Downloads/thescript
 
