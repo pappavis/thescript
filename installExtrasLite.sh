@@ -189,6 +189,9 @@ echo "Installeren: $appTxt1" 2>&1 | tee -a $LOGFILE
 cd /var/www/html/apps/
 sudo git clone https://github.com/g200kg/zoom-ms-utility 2>&1 | tee -a $LOGFILE
 
+cd /usr/local/bin/apps
+sudo git clone https://github.com/mriale/PyDPainter 2>&1 | tee -a $LOGFILE
+
 cd /home/pi/Downloads/thescript
 
 echo "EIND installExtrasLite.sh $(date)" 2>&1 | tee -a $LOGFILE
