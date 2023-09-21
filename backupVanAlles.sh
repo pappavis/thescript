@@ -4,10 +4,11 @@ BACKUPDIR=/mnt/usb0/rugsteun
 BACKUPFILE=$(hostname)_backup.7z
 sudo mkdir /mnt/usb0  2>&1 | tee -a $LOGFILE
 sudo mkdir /mnt/usb0/rugsteun  2>&1 | tee -a $LOGFILE
+sudo mkdir /mnt/usb0/rugsteun/oud  2>&1 | tee -a $LOGFILE
 lsblk -fp  2>&1 | tee -a $LOGFILE
 sudo blkid  2>&1 | tee -a $LOGFILE
 sudo mount -t auto -o defaults  /dev/sda1 /mnt/usb0/  2>&1 | tee -a $LOGFILE
-sudo cp -v /mnt/usb0/rugsteun/*_backup.7z /mnt/usb0/rugsteun/  2>&1 | tee -a $LOGFILE
+sudo cp -v /mnt/usb0/rugsteun/*_backup.7z /mnt/usb0/rugsteun/oud  2>&1 | tee -a $LOGFILE
 echo "7z a /mnt/usb0/rugsteun/$(hostname)_backup.7z" 2>&1 | tee -a $LOGFILE
 
 # for addonnodes in ~/dbs ~/.octoprint ~/.homeassistant  ~/.node-red/ ~.npm/ ~/single_chan_pkt_fwd/ ~/venv /~.local ~/Programmering/ /~.micropython  /var/www/html/support/nextcloud/data /var/lib/mysql/   ; do
