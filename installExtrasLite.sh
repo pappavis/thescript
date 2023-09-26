@@ -195,6 +195,14 @@ cd /usr/local/bin/apps/spelen 2>&1 | tee -a $LOGFILE
 sudo git clone https://github.com/mriale/PyDPainter 2>&1 | tee -a $LOGFILE
 sudo git clone https://github.com/lukasz1985/SREM 2>&1 | tee -a $LOGFILE
 
+cd /home/pi/Downloads/
+# ref https://github.com/rcmalli/keras-vggface
+echo "" 2>&1 | tee -a $LOGFILE
+appTxt1="**Gezichtsherkenning modellen"    
+echo "Installeren: $appTxt1" 2>&1 | tee -a $LOGFILE
+pip install git+https://github.com/rcmalli/keras-vggface.git
+pip install keras_vggface
+
 cd /home/pi/Downloads/thescript
 
 echo "EIND installExtrasLite.sh $(date)" 2>&1 | tee -a $LOGFILE
