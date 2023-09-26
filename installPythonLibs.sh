@@ -48,7 +48,7 @@ for addonnodes in pip setuptools wheel openpyxl pylzma py7zr o365 ttn qrcode pil
                   pyserial pyparsing pyzmail redmail gpiozero pytube pipx serial jinja2 esptool mpfshell virtualenv ffmpeg  jupyter-notebook \
                   scikit-build pygame pymongo psycopg2-binary mysql-connector-python guizero imutils scikit-image bokeh django flask pygrabber paho-mqtt \
                   msteamsconnector matplotlib numpy imutils pyodbc influxdb pysmb libopencv-dev opencv-python  git+https://github.com/pytube/pytube picamera djitellopy \
-		   osxphotos RPi.GPIO tox tflite tflite-runtime tflite_support seaborn PySimpleGUI libusb pyusb pdfkit python-dateutil pymysql python-vkontakte easyocr pygrabber \
+		   osxphotos RPi.GPIO tox PySimpleGUI libusb pyusb pdfkit python-dateutil pymysql python-vkontakte easyocr pygrabber \
 		   imutils psycopg2 postgres firebirdsql html2pdf open3d face-recognition pyftdi psycopg2 asyncio pyshorteners picamera  homekit  pyaudio \ 
 		   tk-tools pyqt5 aspose-words Office365-REST-Python-Client  pyresidfp soundcard  ; do
 
@@ -58,6 +58,16 @@ for addonnodes in pip setuptools wheel openpyxl pylzma py7zr o365 ttn qrcode pil
     #conda install --upgrade --no-cache-dir  ${addonnodes} 2>&1 | tee -a $LOGFILE
     echo "" 2>&1 | tee -a $LOGFILE
   done
+
+
+for addonnodes in tflite tflite-runtime tflite_support seaborn  git+https://github.com/rcmalli/keras-vggface.git  keras-utils keras_vggface mathplot  mtcnn; do
+    echo "" 2>&1 | tee -a $LOGFILE
+    echo "Installeren Tensorflow python lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
+    pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
+    #conda install --upgrade --no-cache-dir  ${addonnodes} 2>&1 | tee -a $LOGFILE
+    echo "" 2>&1 | tee -a $LOGFILE
+  done
+
 
 for addonnodes in setuptools wheel scikit-build cmake mu-editor shortcut esptool numpy  pygrabber ; do
     echo "" 2>&1 | tee -a $LOGFILE
