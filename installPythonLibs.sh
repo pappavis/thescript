@@ -50,7 +50,7 @@ for addonnodes in pip setuptools wheel openpyxl pylzma py7zr o365 ttn qrcode pil
                   msteamsconnector matplotlib numpy imutils pyodbc influxdb pysmb libopencv-dev opencv-python  git+https://github.com/pytube/pytube picamera djitellopy \
 		   osxphotos RPi.GPIO tox PySimpleGUI libusb pyusb pdfkit python-dateutil pymysql python-vkontakte easyocr pygrabber \
 		   imutils psycopg2 postgres firebirdsql html2pdf open3d face-recognition pyftdi psycopg2 asyncio pyshorteners picamera  homekit  pyaudio \ 
-		   tk-tools pyqt5 aspose-words Office365-REST-Python-Client  pyresidfp soundcard  ; do
+		   tk-tools pyqt5 aspose-words Office365-REST-Python-Client  pyresidfp soundcard pandas ; do
 
     echo "" 2>&1 | tee -a $LOGFILE
     echo "Installeren python lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
@@ -60,7 +60,7 @@ for addonnodes in pip setuptools wheel openpyxl pylzma py7zr o365 ttn qrcode pil
   done
 
 
-for addonnodes in tflite tflite-runtime tflite_support seaborn  git+https://github.com/rcmalli/keras-vggface.git  keras-utils keras_vggface mathplot  mtcnn; do
+for addonnodes in tflite tflite-runtime tflite_support seaborn  git+https://github.com/rcmalli/keras-vggface.git keras keras-utils keras_vggface  Keras-Applications  mathplot  mtcnn  scikit-learn  spyder  theano ; do
     echo "" 2>&1 | tee -a $LOGFILE
     echo "Installeren Tensorflow python lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
