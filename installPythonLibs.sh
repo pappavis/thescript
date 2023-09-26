@@ -48,7 +48,7 @@ for addonnodes in pip setuptools wheel openpyxl pylzma py7zr o365 ttn qrcode pil
                   pyserial pyparsing pyzmail redmail gpiozero pytube pipx serial jinja2 esptool mpfshell virtualenv ffmpeg  jupyter-notebook \
                   scikit-build pygame pymongo psycopg2-binary mysql-connector-python guizero imutils scikit-image bokeh django flask pygrabber paho-mqtt \
                   msteamsconnector matplotlib numpy imutils pyodbc influxdb pysmb libopencv-dev opencv-python  git+https://github.com/pytube/pytube picamera djitellopy \
-		   osxphotos RPi.GPIO tox tflite tflite-runtime tflite_support PySimpleGUI libusb pyusb pdfkit python-dateutil pymysql python-vkontakte easyocr pygrabber \
+		   osxphotos RPi.GPIO tox tflite tflite-runtime tflite_support seaborn PySimpleGUI libusb pyusb pdfkit python-dateutil pymysql python-vkontakte easyocr pygrabber \
 		   imutils psycopg2 postgres firebirdsql html2pdf open3d face-recognition pyftdi psycopg2 asyncio pyshorteners picamera  homekit  pyaudio \ 
 		   tk-tools pyqt5 aspose-words Office365-REST-Python-Client  pyresidfp soundcard  ; do
 
@@ -102,15 +102,30 @@ cd $_pwd
 pipx install conda  2>&1 | tee -a $LOGFILE
 pip install --upgrade RPi.GPIO  2>&1 | tee -a $LOGFILE &
 pip uninstall --no-input serial  2>&1 | tee -a $LOGFILE
-
-cd ~/Downloads
-echo "Installeren Tensorflow lite" 2>&1 | tee -a $LOGFILE
+  
 echo "deb [signed-by=/usr/share/keyrings/coral-edgetpu-archive-keyring.gpg] https://packages.cloud.google.com/apt coral-edgetpu-stable main" | sudo tee /etc/apt/sources.list.d/coral-edgetpu.list
 curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo tee /usr/share/keyrings/coral-edgetpu-archive-keyring.gpg >/dev/null 2>&1 | tee -a $LOGFILE
 sudo apt update -y  2>&1 | tee -a $LOGFILE
-# sudo apt install -y python3-tflite-runtime  2>&1 | tee -a $LOGFILE
+#sudo apt install -y python3-tflite-runtime  2>&1 | tee -a $LOGFILE
+echo "Installeren Tensorflow lite" 2>&1 | tee -a $LOGFILE
+for addonnodes in  tflite tflite-runtime tflite_support tensorflow_datasets seaborn   ; do
+    echo "" 2>&1 | tee -a $LOGFILE
+    echo "Installeren tensorflow python lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
+    pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
+    #conda install --upgrade --no-cache-dir  ${addonnodes} 2>&1 | tee -a $LOGFILE
+    echo "" 2>&1 | tee -a $LOGFILE
+ done
+mkdir ~/Downloads/tf_voorbeeld
+cd ~/Downloads/tf_voorbeeld
+git clone https://github.com/tensorflow/examples --depth 1
+cd ./examples/lite/examples/image_classification/raspberry_pi
+sudo chmod +x setup.sh
+./setup.sh
+python ./classify.py
 echo "Tensorflow lite install afgerond" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
+
+
 
 cd ~/Downloads
 echo "Installeren Miniconda" 2>&1 | tee -a $LOGFILE
