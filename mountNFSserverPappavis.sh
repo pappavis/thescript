@@ -8,7 +8,7 @@ sudo mkdir /mnt/nfs/ 2>&1 | tee -a $LOGFILE
 sudo mkdir /mnt/cifs/ 2>&1 | tee -a $LOGFILE
 
 
-for addonnodes in ict-beheer acer01 pi0 pivhere dietpi pi04 pilamp spelen02 p1mon retropie pi07 pi08 pi09 octopi asusrouter $(hostname) ; do
+for addonnodes in ict-beheer acer01 pi0 pivhere dietpi pi04 pilamp spelen02 p1mon retropie pi07 pi08 pi09 octopi asusrouter $(hostname) MacVanMichiel ; do
   echo "" 2>&1 | tee -a $LOGFILE &
   echo "" 2>&1 | tee -a $LOGFILE &
   echo "Probeer netwerk share te mount op /mnt/nfs/${addonnodes}"  2>&1 | tee -a $LOGFILE
