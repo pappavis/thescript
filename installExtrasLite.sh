@@ -205,14 +205,21 @@ appTxt1="**Zoom MS-50G gitaar pedal util -- zoom-ms-utility "
 echo "Installeren: $appTxt1" 2>&1 | tee -a $LOGFILE
 cd /var/www/html/apps/ 2>&1 | tee -a $LOGFILE
 sudo git clone https://github.com/g200kg/zoom-ms-utility 2>&1 | tee -a $LOGFILE
+for addonnodes in webmidi express ; do
+	echo "Updating node \"${addonnodes}\""
+	npm $NQUIET update --save ${addonnodes} 2>&1 | tee -a $LOGFILE
+	npm $NQUIET install --save ${addonnodes} 2>&1 | tee -a $LOGFILE
+done
+cd /var/www/html/apps/zoom-ms-utility
+sudo echo 'cd /var/www/html/apps/zoom-ms-utility'  | tee -a  /home/pi/.bashrc
+sudo echo 'npm start'  | tee -a  /home/pi/.bashrc
+sudo echo 'cd /home/pi'  | tee -a  /home/pi/.bashrc
 
 echo "" 2>&1 | tee -a $LOGFILE
 appTxt1="**Webmidi lib "
 cd /var/www/html/inc/ 2>&1 | tee -a $LOGFILE
 sudo wget https://cdn.jsdelivr.net/npm/webmidi@latest/dist/iife/webmidi.iife.min.js 2>&1 | tee -a $LOGFILE
 sudo chown www-data:www-data -R /var/www/html/inc 2>&1 | tee -a $LOGFILE
-npm install webmidi 2>&1 | tee -a $LOGFILE
-
 cd /home/pi/Downloads/
 
 sudo mkdir /usr/local/bin/apps/ 2>&1 | tee -a $LOGFILE
