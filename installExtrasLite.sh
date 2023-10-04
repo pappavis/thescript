@@ -206,6 +206,15 @@ echo "Installeren: $appTxt1" 2>&1 | tee -a $LOGFILE
 cd /var/www/html/apps/ 2>&1 | tee -a $LOGFILE
 sudo git clone https://github.com/g200kg/zoom-ms-utility 2>&1 | tee -a $LOGFILE
 
+echo "" 2>&1 | tee -a $LOGFILE
+appTxt1="**Webmidi lib "
+cd /var/www/html/inc/ 2>&1 | tee -a $LOGFILE
+sudo wget https://cdn.jsdelivr.net/npm/webmidi@latest/dist/iife/webmidi.iife.min.js 2>&1 | tee -a $LOGFILE
+sudo chown www-data:www-data -R /var/www/html/inc 2>&1 | tee -a $LOGFILE
+npm install webmidi 2>&1 | tee -a $LOGFILE
+
+cd /home/pi/Downloads/
+
 sudo mkdir /usr/local/bin/apps/ 2>&1 | tee -a $LOGFILE
 sudo mkdir /usr/local/bin/apps/spelen 2>&1 | tee -a $LOGFILE
 cd /usr/local/bin/apps/spelen 2>&1 | tee -a $LOGFILE
@@ -220,6 +229,8 @@ echo "Installeren: $appTxt1" 2>&1 | tee -a $LOGFILE
 pip install git+https://github.com/rcmalli/keras-vggface.git
 pip install keras_vggface
 
-cd /home/pi/Downloads/thescript
+https://cdn.jsdelivr.net/npm/webmidi@latest/dist/iife/webmidi.iife.min.js
+
+
 
 echo "EIND installExtrasLite.sh $(date)" 2>&1 | tee -a $LOGFILE
