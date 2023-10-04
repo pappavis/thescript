@@ -91,7 +91,7 @@ for addonnodes in moment node-red-contrib-tuya-local node-red-contrib-ui-led nod
 done
 sudo service nodered restart 2>&1 | tee -a $LOGFILE
 
-for addonnodes in moment node-red-dashboard node-red-contrib-config node-red-contrib-grove node-red-contrib-diode node-red-contrib-bigtimer  ; do
+for addonnodes in moment node-red-dashboard node-red-contrib-config node-red-contrib-grove node-red-contrib-diode node-red-contrib-bigtimer  express webmidi ; do
 	echo "" 2>&1 | tee -a $LOGFILE
 	echo "Installing node \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
 	npm $NQUIET install --save ${addonnodes} 2>&1 | tee -a $LOGFILE
