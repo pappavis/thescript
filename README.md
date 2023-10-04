@@ -110,11 +110,15 @@ Let op doorlooptijd:
 
 ```bash
 pi@dietpi: $ cd ~/Downloads/thescript
-pi@dietpi:~/Downloads/thescript $ nohup bash ./installExtrasLite.sh &
+pi@dietpi:~/Downloads/thescript $ nohup bash ./installAppsBasis.sh &
 pi@dietpi:~/Downloads/thescript $ tail -f ./nohupout
 ```
 
-Het draaien van installExtrasLite.sh duurt tot wel 1,5 uur!
+Het draaien van installAppsBasis.sh duurt tot wel 1,5 uur!
+Wanneer dat afgerond is kan je apps installeren.
+```bash
+pi@dietpi:~/Downloads/thescript $ nohup bash ./installExtrasLite.sh &
+```
 
 Na restart kunt u weer inloggen:<br>
 login: pi
