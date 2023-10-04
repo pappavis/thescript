@@ -111,6 +111,17 @@ echo "" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
 
 cd /home/pi/Downloads/
+appTxt1="**SuiteCRM online  blokken omgeving"
+echo "" 2>&1 | tee -a $LOGFILE
+echo "Installeren: $appTxt1" 2>&1 | tee -a $LOGFILE
+sudo git clone https://github.com/salesagility/SuiteCRM 2>&1 | tee -a $LOGFILE
+sudo mkdir /var/www/html/apps 2>&1 | tee -a $LOGFILE
+sudo mv  ./SuiteCRM /var/www/html/apps 2>&1 | tee -a $LOGFILE
+echo "Einde $appTxt1  install" 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
+echo "" 2>&1 | tee -a $LOGFILE
+
+cd /home/pi/Downloads/
 appTxt1="**Bitsy fantasy console"
 echo "" 2>&1 | tee -a $LOGFILE
 echo "Installeren: $appTxt1" 2>&1 | tee -a $LOGFILE
