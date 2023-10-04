@@ -56,6 +56,16 @@ sudo hdparm -t --direct /dev/mmcblk0  -y 2>&1 | tee -a $LOGFILE
 
 bash ~/Downloads/thescript/installsqlite3.sh -y 2>&1 | tee -a $LOGFILE
 
+# 20231003 https://getcomposer.org/download/
+cd /home/pi/Downloads
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" 2>&1 | tee -a $LOGFILE
+php -r "if (hash_file('sha384', 'composer-setup.php') === 'e21205b207c3ff031906575712edab6f13eb0b361f2085f1f1237b7126d785e826a450292b6cfd1d64d92e6563bbde02') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;" 2>&1 | tee -a $LOGFILE
+php composer-setup.php 2>&1 | tee -a $LOGFILE
+php -r "unlink('composer-setup.php');" 2>&1 | tee -a $LOGFILE
+sudo mv composer.phar /usr/local/bin/composer 2>&1 | tee -a $LOGFILE
+
+cd /home/pi/Downloads/thescript
+
 echo ""  2>&1 | tee -a $LOGFILE
 echo "Einde installAppsBasis"  2>&1 | tee -a $LOGFILE
 echo ""  2>&1 | tee -a $LOGFILE
