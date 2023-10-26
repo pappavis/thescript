@@ -51,6 +51,6 @@ echo "Verwijderen tmp-bestanden" 2>&1 | tee -a $LOGFILE
 sudo rm -rf "/mnt/usb0/rugsteun/*.tm"* 2>&1 | tee -a $LOGFILE
 sudo rm -rf "/mnt/usb0/rugsteun/*.tm*" 2>&1 | tee -a $LOGFILE
 
-sudo chown pi:pi -R /mnt/usb0/rugsteun/ 2>&1 | tee -a $LOGFILE
+sudo chown pi:pi /mnt/usb0/rugsteun/ -Rv 2>&1 | tee -a $LOGFILE
 
 echo "backup afgerond."  2>&1 | tee -a $LOGFILE
