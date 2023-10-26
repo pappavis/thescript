@@ -5,8 +5,6 @@ for($i = 1; $i < 255; $i++){
   array_push($local_ips, $base . $i);
 }
 
-
-
 $CONFIG = array (
   'activity_expire_days' => 365,
   'log.conditions' =>
