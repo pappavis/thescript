@@ -236,8 +236,9 @@ echo "Installeren: $appTxt1" 2>&1 | tee -a $LOGFILE
 pip install git+https://github.com/rcmalli/keras-vggface.git
 pip install keras_vggface
 
-https://cdn.jsdelivr.net/npm/webmidi@latest/dist/iife/webmidi.iife.min.js
-
+echo "#Pi als MIDI controller met alsa en alsa-utils"  | sudo tee -a /etc/bash.bashrc 2>&1 | tee -a $LOGFILE &
+echo "amidi -l"  | sudo tee -a /etc/bash.bashrc 2>&1 | tee -a $LOGFILE &
+echo "aconnect -i -o"  | sudo tee -a /etc/bash.bashrc 2>&1 | tee -a $LOGFILE & 
 
 
 echo "EIND installExtrasLite.sh $(date)" 2>&1 | tee -a $LOGFILE
