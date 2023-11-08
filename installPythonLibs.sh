@@ -77,6 +77,15 @@ for addonnodes in setuptools wheel scikit-build cmake mu-editor shortcut esptool
     echo "" 2>&1 | tee -a $LOGFILE
   done
 
+# muziek en Midi
+for addonnodes in fluidsynth upiano midisynth ; do
+    echo "" 2>&1 | tee -a $LOGFILE
+    echo "Install muziek python apps: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
+    pip install $NQUIET ${addonnodes} 2>&1 | tee -a $LOGFILE
+    echo "" 2>&1 | tee -a $LOGFILE
+  done
+
+
 echo "Installeer voorvereisten van html2pdf" 2>&1 | tee -a $LOGFILE
 for addonnodes in xvfb xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic wkhtmltopdf easyeda2kicad ; do
     echo "" 2>&1 | tee -a $LOGFILE
