@@ -12,6 +12,7 @@ source ~/venv/venv/bin/activate
 
 sudo apt --fix-broken install -y
 sudo apt install -y unixodbc-dev 2>&1 | tee -a $LOGFILE
+sudo apt install -y python3-full 2>&1 | tee -a $LOGFILE
 
 echo "PIP cache leeggooien." 2>&1 | tee -a $LOGFILE
 rm -rf ~/.cache/pip 2>&1 | tee -a $LOGFILE
