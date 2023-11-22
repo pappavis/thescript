@@ -81,6 +81,8 @@ mkdir /home/pi/.config/pip
 echo "[global]" | tee -a /home/pi/.config/pip.conf 2>&1 | tee -a $LOGFILE
 echo "break-system-packages = true" | tee -a /home/pi/.config/pip.conf 2>&1 | tee -a $LOGFILE
 
+pip install virtualenv --break-system-packages
+
 pip3 install ensurepip  2>&1 | tee -a $LOGFILE
 python3 -m pip install ensurepip 2>&1 | tee -a $LOGFILE
 
