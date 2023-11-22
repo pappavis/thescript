@@ -73,7 +73,7 @@ echo "export VISUAL=/usr/bin/nano"  2>&1 | sudo tee -a /etc/bash.bashrc
 [ ! -x /usr/bin/sudo ] && apt-get $AQUIET -y update > /dev/null 2>&1 && apt-get $AQUIET -y install sudo 2>&1 | tee -a $LOGFILE
 
 sudo apt install -y git nano  2>&1 | tee -a $LOGFILE
-sudo apt install -y python3 python3-pip  2>&1 | tee -a $LOGFILE
+sudo apt install -y python-is-python3  python3-pip  2>&1 | tee -a $LOGFILE
 pip3 install ensurepip  2>&1 | tee -a $LOGFILE
 python3 -m pip install ensurepip 2>&1 | tee -a $LOGFILE
 
