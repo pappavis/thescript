@@ -75,7 +75,7 @@ echo "export VISUAL=/usr/bin/nano"  2>&1 | sudo tee -a /etc/bash.bashrc
 sudo dpkg --configure -a 2>&1 | tee -a $LOGFILE
 
 sudo apt install -y git nano  2>&1 | tee -a $LOGFILE
-sudo apt install -y python-is-python3  python3-pip python3-virtualenv 2>&1 | tee -a $LOGFILE
+sudo apt install -y python-is-python3 python3-full  python3-pip python3-virtualenv 2>&1 | tee -a $LOGFILE
 mkdir /home/pi/.config
 mkdir /home/pi/.config/pip
 echo "[global]" | tee -a /home/pi/.config/pip.conf 2>&1 | tee -a $LOGFILE
