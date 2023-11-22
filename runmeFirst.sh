@@ -72,13 +72,20 @@ echo "export VISUAL=/usr/bin/nano"  2>&1 | sudo tee -a /etc/bash.bashrc
 # install sudo on devices without it
 [ ! -x /usr/bin/sudo ] && apt-get $AQUIET -y update > /dev/null 2>&1 && apt-get $AQUIET -y install sudo 2>&1 | tee -a $LOGFILE
 
+sudo dpkg --configure -a 2>&1 | tee -a $LOGFILE
+
 sudo apt install -y git nano  2>&1 | tee -a $LOGFILE
-sudo apt install -y python-is-python3  python3-pip  2>&1 | tee -a $LOGFILE
+sudo apt install -y python-is-python3  python3-pip python3-virtualenv 2>&1 | tee -a $LOGFILE
+mkdir /home/pi/.config
+mkdir /home/pi/.config/pip
+echo "[global]" | tee -a /home/pi/.config/pip.conf 2>&1 | tee -a $LOGFILE
+echo "break-system-packages = true" | tee -a /home/pi/.config/pip.conf 2>&1 | tee -a $LOGFILE
+
 pip3 install ensurepip  2>&1 | tee -a $LOGFILE
 python3 -m pip install ensurepip 2>&1 | tee -a $LOGFILE
 
-for addonnodes in  do_i2c  do_spi do_serial do_ssh do_camera disable_raspi_config_at_boot  ; do
-    printstatus "Raspi-config instellingen activeren  : \"${addonnodes}\""
+for addonnodes in  do_i2c  do_spi  do_ssh do_camera disable_raspi_config_at_boot  ; do
+    echo "Raspi-config instellingen activeren  : \"${addonnodes}\""
     sudo raspi-config nonint ${addonnodes} 0 2>&1 | tee -a $LOGFILE
 done
 
