@@ -1,0 +1,15 @@
+[Unit]
+Description=haxophone https://github.com/cardonabits/haxo-rs
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Environment="LC_ALL=C.UTF-8"
+Environment="LANG=C.UTF-8"
+WorkingDirectory=/home/pi
+Type=exec
+User=pi
+ExecStart=/usr/local/apps/haxo001
+
+[Install]
+WantedBy=multi-user.target
