@@ -13,7 +13,7 @@ done
 
 sudo modprobe snd-bcm2835 2>&1 | tee -a $LOGFILE
 sudo lsmod | grep 2835 2>&1 | tee -a $LOGFILE
-i2cdetect -l | tee -a $LOGFILE
+i2cdetect 2>&1 | tee -a $LOGFILE
 sudo amixer cset numid=2 2>&1 | tee -a $LOGFILE
 aplay /usr/share/sounds/alsa/Front_Center.wav 2>&1 | tee -a $LOGFILE
 echo "$datum Einde installGeluid" 2>&1 | tee -a $LOGFILE
