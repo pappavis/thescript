@@ -16,5 +16,12 @@ sudo lsmod | grep 2835 2>&1 | tee -a $LOGFILE
 i2cdetect 2>&1 | tee -a $LOGFILE
 sudo amixer cset numid=2 2>&1 | tee -a $LOGFILE
 aplay /usr/share/sounds/alsa/Front_Center.wav 2>&1 | tee -a $LOGFILE
+
+echo "$datum installGeluid Haxopohne service installeren" 2>&1 | tee -a $LOGFILE
+wget https://raw.githubusercontent.com/pappavis/thescript/master/services/haxophone.service  2>&1 | tee -a $LOGFILE
+sudo mv ./haxophone.service /etc/systemd/system  2>&1 | tee -a $LOGFILE
+sudo systemctl enable homeassistant.service  2>&1 | tee -a $LOGFILE
+sudo service haxophone restart  2>&1 | tee -a $LOGFILE
+
 echo "$datum Einde installGeluid" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
