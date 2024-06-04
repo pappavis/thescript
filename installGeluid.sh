@@ -25,12 +25,13 @@ cd /home/pi/haxo-rs
 cargo run
 sudo cp -v ./target/debug/haxo001 /usr/local/bin
 
+cd /home/pi/Downloads/thescript
 echo "$datum installGeluid Haxophone service installeren" 2>&1 | tee -a $LOGFILE
-wget https://raw.githubusercontent.com/pappavis/thescript/master/services/haxophone.service  2>&1 | tee -a $LOGFILE
+#wget https://raw.githubusercontent.com/pappavis/thescript/master/services/haxophone.service  2>&1 | tee -a $LOGFILE
 sudo cp -v ./services/haxophone.service /etc/systemd/system  2>&1 | tee -a $LOGFILE
 sudo systemctl enable haxophone.service  2>&1 | tee -a $LOGFILE
 sudo service haxophone restart  2>&1 | tee -a $LOGFILE
+sudo service haxophone status  2>&1 | tee -a $LOGFILE
 
 echo "$datum Einde installGeluid" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
-cd /home/pi/Downloads/thescript
