@@ -6,7 +6,7 @@ pwd1=(pwd)
 echo "" 2>&1 | tee -a $LOGFILE
 echo "$datum Start installGeluid" 2>&1 | tee -a $LOGFILE
 
-for addonnodes in alsa-utils mpg321 lame libi2c-dev libgpiod-dev libasound2-dev libevent-dev ; do 
+for addonnodes in cargo alsa-utils mpg321 lame libi2c-dev libgpiod-dev libasound2-dev libevent-dev ; do 
 	echo ""  2>&1 | tee -a $LOGFILE
 	echo "--Installeren geluid:  \"${addonnodes}\""  2>&1 | tee -a $LOGFILE
 	sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
@@ -20,10 +20,10 @@ aplay /usr/share/sounds/alsa/Front_Center.wav 2>&1 | tee -a $LOGFILE
 
 echo "$datum installGeluid Haxophone Rust installeren installeren" 2>&1 | tee -a $LOGFILE
 cd /home/pi
-git clone https://github.com/cardonabits/haxo-rs
+git clone https://github.com/cardonabits/haxo-rs 2>&1 | tee -a $LOGFILE
 cd /home/pi/haxo-rs
-cargo run
-sudo cp -v ./target/debug/haxo001 /usr/local/bin
+cargo run 2>&1 | tee -a $LOGFILE
+sudo cp -v ./target/debug/haxo001 /usr/local/bin 2>&1 | tee -a $LOGFILE
 
 cd /home/pi/Downloads/thescript
 echo "$datum installGeluid Haxophone service installeren" 2>&1 | tee -a $LOGFILE
