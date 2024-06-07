@@ -6,7 +6,7 @@ pwd1=(pwd)
 echo "" 2>&1 | tee -a $LOGFILE
 echo "$datum Start installGeluid" 2>&1 | tee -a $LOGFILE
 
-for addonnodes in cargo alsa-utils mpg321 lame libi2c-dev libgpiod-dev libasound2-dev libevent-dev ; do 
+for addonnodes in  alsa-utils mpg321 lame libi2c-dev libgpiod-dev libasound2-dev libevent-dev ; do 
 	echo ""  2>&1 | tee -a $LOGFILE
 	echo "--Installeren geluid:  \"${addonnodes}\""  2>&1 | tee -a $LOGFILE
 	sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
@@ -17,6 +17,8 @@ sudo lsmod | grep 2835 2>&1 | tee -a $LOGFILE
 i2cdetect 2>&1 | tee -a $LOGFILE
 sudo amixer cset numid=2 2>&1 | tee -a $LOGFILE
 aplay /usr/share/sounds/alsa/Front_Center.wav 2>&1 | tee -a $LOGFILE
+
+echo "1\n" | curl https://sh.rustup.rs -sSf | sh 2>&1 | tee -a $LOGFILE
 
 echo "$datum installGeluid Haxophone Rust installeren installeren" 2>&1 | tee -a $LOGFILE
 cd /home/pi
