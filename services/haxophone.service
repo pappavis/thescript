@@ -9,7 +9,7 @@ Environment="LANG=C.UTF-8"
 WorkingDirectory=/home/pi
 Type=exec
 User=pi
-ExecStart=/usr/local/apps/haxo001
+ExecStart=/usr/local/bin/haxo001
 
 [Install]
 WantedBy=multi-user.target
