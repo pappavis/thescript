@@ -72,6 +72,13 @@ sudo mv ./composer.phar /usr/local/bin/ 2>&1 | tee -a $LOGFILE
 
 cd /home/pi/Downloads/thescript
 
+sudo mkdir /usr/local/bin 2>&1 | tee -a $LOGFILE
+cd /usr/local/bin 2>&1 | tee -a $LOGFILE
+git clone https://github.com/AndrewClaes/midi-recorder 2>&1 | tee -a $LOGFILE
+cd /usr/local/bin/midi-recorder 2>&1 | tee -a $LOGFILE
+npm i
+nohup npm start 2>&1 | tee -a $LOGFILE &
+
 echo ""  2>&1 | tee -a $LOGFILE
 echo "Einde installAppsBasis"  2>&1 | tee -a $LOGFILE
 echo ""  2>&1 | tee -a $LOGFILE
