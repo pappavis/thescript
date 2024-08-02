@@ -76,8 +76,12 @@ sudo mkdir /usr/local/bin 2>&1 | tee -a $LOGFILE
 cd /usr/local/bin
 git clone https://github.com/AndrewClaes/midi-recorder 2>&1 | tee -a $LOGFILE
 cd /usr/local/bin/midi-recorder
-npm i
+npm i 2>&1 | tee -a $LOGFILE
 nohup sudo npm start 2>&1 | tee -a $LOGFILE &
+cd /home/pi/Downloads/thescript
+sudo cp -v ./services/midi-recorder.service /etc/systemd/system  2>&1 | tee -a $LOGFILE
+sudo systemctl enable midi-recorder.service  2>&1 | tee -a $LOGFILE
+sudo service haxophone restart  2>&1 | tee -a $LOGFILE
 
 echo ""  2>&1 | tee -a $LOGFILE
 echo "Einde installAppsBasis"  2>&1 | tee -a $LOGFILE
