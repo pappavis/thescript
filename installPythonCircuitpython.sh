@@ -16,7 +16,8 @@ time python -m ensurepip  2>&1 | tee -a $LOGFILE
 cd ~/Downloads
 sudo raspi-config nonint do_i2c 0  2>&1 | tee -a $LOGFILE
 
-for addonnodes in  do_i2c  do_spi do_serial do_ssh do_camera disable_raspi_config_at_boot  ; do
+# do_serial --verwijderd
+for addonnodes in  do_i2c  do_spi  do_ssh do_camera disable_raspi_config_at_boot  ; do
     printstatus "CircuitPython activeren  : \"${addonnodes}\""
     sudo raspi-config nonint ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
