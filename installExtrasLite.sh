@@ -7,6 +7,8 @@ echo "" 2>&1 | tee -a $LOGFILE
 echo "START installExtrasLite.sh $(date)" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
 
+sudo dpkg --configure -a | tee -a $LOGFILE
+
 mkdir ~/logs
 git pull
 cd /home/pi/Downloads/
