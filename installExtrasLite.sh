@@ -235,8 +235,8 @@ cd /home/pi/Downloads/
 echo "" 2>&1 | tee -a $LOGFILE
 appTxt1="**Gezichtsherkenning modellen"    
 echo "Installeren: $appTxt1" 2>&1 | tee -a $LOGFILE
-pip install git+https://github.com/rcmalli/keras-vggface.git
-pip install keras_vggface
+pip install git+https://github.com/rcmalli/keras-vggface.git 2>&1 | tee -a $LOGFILE
+pip install keras_vggface 2>&1 | tee -a $LOGFILE
 
 echo "#Pi als MIDI controller met alsa en alsa-utils  ref -- https://youtu.be/N4yUduOqR3M?t=223"  | sudo tee -a /etc/bash.bashrc 2>&1 | tee -a $LOGFILE &
 echo "amidi -l"  | sudo tee -a /etc/bash.bashrc 2>&1 | tee -a $LOGFILE &
