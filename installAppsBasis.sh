@@ -2,6 +2,7 @@
 LOGFILE=$HOME/logs/installAppsBasis-`date +%Y-%m-%d_%Hh%Mm`.log
 
 #installeren basis apps, tools, utils voor een Raspbian minimale install.
+sudo dpkg --configure -a
 
 sudo apt-add-repository "deb http://ppa.launchpad.net/ubuntu-mozilla-security/ppa/ubuntu focal main" 2>&1 | tee -a $LOGFILE
 sudo apt update -y 2>&1 | tee -a $LOGFILE
@@ -52,6 +53,8 @@ sudo apt update -y 2>&1 | tee -a $LOGFILE
 sudo apt upgrade -y 2>&1 | tee -a $LOGFILE
 sudo apt autoremove  -y 2>&1 | tee -a $LOGFILE
 sudo apt autoclean  -y 2>&1 | tee -a $LOGFILE
+
+sudo dpkg --configure -a
 
 # ref-- https://stackoverflow.com/questions/24556160/mosquitto-client-obtain-refused-connection
 echo "listener 1883" | sudo tee -a /etc/mosquitto/conf.d/standard.conf
