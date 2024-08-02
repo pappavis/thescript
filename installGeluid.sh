@@ -21,6 +21,7 @@ aplay /usr/share/sounds/alsa/Front_Center.wav 2>&1 | tee -a $LOGFILE
 echo "1\n" | curl https://sh.rustup.rs -sSf | sh 2>&1 | tee -a $LOGFILE
 
 echo "$datum installGeluid Haxophone Rust installeren installeren" 2>&1 | tee -a $LOGFILE
+curl https://sh.rustup.rs -sSf | sh -s -- -y | tee -a $LOGFILE
 cd /home/pi
 git clone https://github.com/cardonabits/haxo-rs 2>&1 | tee -a $LOGFILE
 cd /home/pi/haxo-rs
