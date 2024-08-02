@@ -6,10 +6,10 @@ Wants=network-online.target
 [Service]
 Environment="LC_ALL=C.UTF-8"
 Environment="LANG=C.UTF-8"
+Type=simple
 Restart=always
-WorkingDirectory=/usr/local/bin/midi-recorder
-Type=exec
 User=pi
+Group=pi
 ExecStart=/usr/bin/npm start
 
 [Install]
