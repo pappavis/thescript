@@ -3,7 +3,7 @@ LOGFILE=$HOME/logs/installPythonCircuitpython-`date +%Y-%m-%d`.log
 mkdir $HOME/logs/
 pwd=$(pwd)
 
-bash ./installNutsfuncties.sh 2>&1 | tee -a $LOGFILE
+# bash ./installNutsfuncties.sh 2>&1 | tee -a $LOGFILE
 
 for addonnodes in gpio dialout i2c tty ; do
     sudo adduser pi  ${addonnodes} 2>&1 | tee -a $LOGFILE
