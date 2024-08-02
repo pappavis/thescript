@@ -77,7 +77,7 @@ cd /usr/local/bin
 git clone https://github.com/AndrewClaes/midi-recorder 2>&1 | tee -a $LOGFILE
 cd /usr/local/bin/midi-recorder
 npm i
-nohup npm start 2>&1 | tee -a $LOGFILE &
+nohup sudo npm start 2>&1 | tee -a $LOGFILE &
 
 echo ""  2>&1 | tee -a $LOGFILE
 echo "Einde installAppsBasis"  2>&1 | tee -a $LOGFILE
