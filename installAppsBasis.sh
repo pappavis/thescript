@@ -81,7 +81,8 @@ nohup sudo npm start 2>&1 | tee -a $LOGFILE &
 cd /home/pi/Downloads/thescript
 sudo cp -v ./services/midi-recorder.service /etc/systemd/system  2>&1 | tee -a $LOGFILE
 sudo systemctl enable midi-recorder.service  2>&1 | tee -a $LOGFILE
-sudo service haxophone restart  2>&1 | tee -a $LOGFILE
+sudo service midi-recorder restart  2>&1 | tee -a $LOGFILE
+sudo service midi-recorder status  2>&1 | tee -a $LOGFILE
 
 echo ""  2>&1 | tee -a $LOGFILE
 echo "Einde installAppsBasis"  2>&1 | tee -a $LOGFILE
