@@ -52,7 +52,7 @@ for addonnodes in pip setuptools wheel openpyxl pylzma py7zr o365 ttn qrcode pil
 		   osxphotos RPi.GPIO tox PySimpleGUI libusb pyusb pdfkit python-dateutil pymysql python-vkontakte easyocr pygrabber \
 		   imutils psycopg2 postgres firebirdsql html2pdf open3d face-recognition pyftdi psycopg2 asyncio pyshorteners picamera  homekit  pyaudio \ 
 		   tk-tools pyqt5 aspose-words Office365-REST-Python-Client  pyresidfp googlemaps discotool  \
-     		   soundcard pandas streamlit PyPDF2 ; do
+     		   soundcard pandas streamlit PyPDF2 g4f ; do
 
     echo "" 2>&1 | tee -a $LOGFILE
     echo "Installeren python lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
