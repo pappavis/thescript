@@ -77,7 +77,7 @@ cd /usr/local/bin
 git clone https://github.com/AndrewClaes/midi-recorder 2>&1 | tee -a $LOGFILE
 echo "cd /usr/local/bin/midi-recorder"  | sudo tee -a /etc/rc.local 2>&1 | tee -a $LOGFILE &
 echo "sudo npm i" 2>&1 | tee -a $LOGFILE  | sudo tee -a /etc/rc.local 2>&1 | tee -a $LOGFILE &
-ehco "nohup sudo npm start" 2>&1   | sudo tee -a /etc/rc.local 2>&1 | tee -a $LOGFILE &
+echo "nohup sudo npm start &" 2>&1   | sudo tee -a /etc/rc.local 2>&1 | tee -a $LOGFILE &
 echo "cd /home/pi/Downloads"  | sudo tee -a /etc/rc.local 2>&1 | tee -a $LOGFILE &
 sudo cp -v ./services/midi-recorder.service /etc/systemd/system  2>&1 | tee -a $LOGFILE
 sudo systemctl enable midi-recorder.service  2>&1 | tee -a $LOGFILE
