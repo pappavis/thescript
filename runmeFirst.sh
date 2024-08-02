@@ -352,6 +352,7 @@ echo "Instellen herstartmelding" 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
 wget https://raw.githubusercontent.com/pappavis/thescript/master/demo/herstartmelding.py 2>&1 | tee -a $LOGFILE
 chmod +x ./herstartmelding.py
+sudo mkdir /usr/local/bin 2>&1 | tee -a $LOGFILE
 sudo mv ./herstartmelding.py /usr/local/bin
 sudo ln -s /etc/cron.weekly/herstartmelding.py /usr/local/bin/herstartmelding.py 
 sudo sed -i -e '/exit 0/s/exit 0/nohup herstartmelding.py \&/' /etc/rc.local
