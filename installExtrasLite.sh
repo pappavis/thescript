@@ -97,8 +97,8 @@ curl -fsSL https://pkgs.tailscale.com/stable/raspbian/buster.gpg | sudo apt-key 
 curl -fsSL https://pkgs.tailscale.com/stable/raspbian/buster.list | sudo tee /etc/apt/sources.list.d/tailscale.list
 sudo apt-get update -y 2>&1 | tee -a $LOGFILE
 sudo apt-get install tailscale -y 2>&1 | tee -a $LOGFILE
-sudo tailscale up 2>&1 | tee -a $LOGFILE
-tailscale ip -4
+sudo tailscale up 2>&1 | tee -a $LOGFILE &
+tailscale ip -4   | tee -a $LOGFILE &
 
 
 cd /home/pi/Downloads/
