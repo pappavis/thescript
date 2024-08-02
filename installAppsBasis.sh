@@ -75,14 +75,15 @@ cd /home/pi/Downloads/thescript
 sudo mkdir /usr/local/bin 2>&1 | tee -a $LOGFILE
 cd /usr/local/bin
 git clone https://github.com/AndrewClaes/midi-recorder 2>&1 | tee -a $LOGFILE
-cd /usr/local/bin/midi-recorder
-npm i 2>&1 | tee -a $LOGFILE
-nohup sudo npm start 2>&1 | tee -a $LOGFILE &
-cd /home/pi/Downloads/thescript
+echo "cd /usr/local/bin/midi-recorder"  | sudo tee -a /etc/rc.local 2>&1 | tee -a $LOGFILE &
+echo "sudo npm i" 2>&1 | tee -a $LOGFILE  | sudo tee -a /etc/rc.local 2>&1 | tee -a $LOGFILE &
+ehco "nohup sudo npm start" 2>&1   | sudo tee -a /etc/rc.local 2>&1 | tee -a $LOGFILE &
+echo "cd /home/pi/Downloads"  | sudo tee -a /etc/rc.local 2>&1 | tee -a $LOGFILE &
 sudo cp -v ./services/midi-recorder.service /etc/systemd/system  2>&1 | tee -a $LOGFILE
 sudo systemctl enable midi-recorder.service  2>&1 | tee -a $LOGFILE
 sudo service midi-recorder restart  2>&1 | tee -a $LOGFILE
 sudo service midi-recorder status  2>&1 | tee -a $LOGFILE
+cd /home/pi/Downloads/thescript
 
 echo ""  2>&1 | tee -a $LOGFILE
 echo "Einde installAppsBasis"  2>&1 | tee -a $LOGFILE
