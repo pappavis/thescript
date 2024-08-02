@@ -205,17 +205,19 @@ echo "" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
 appTxt1="**Zoom MS-50G gitaar pedal util -- zoom-ms-utility "
 echo "Installeren: $appTxt1" 2>&1 | tee -a $LOGFILE
-cd /var/www/html/apps/ 2>&1 | tee -a $LOGFILE
+sudo mkdir /var/www/html/apps/ 2>&1 | tee -a $LOGFILE
+cd /var/www/html/apps/
 sudo git clone https://github.com/g200kg/zoom-ms-utility 2>&1 | tee -a $LOGFILE
+cd /var/www/html/apps/zoom-ms-utility
 for addonnodes in webmidi express ; do
 	echo "Updating node \"${addonnodes}\""
-	npm $NQUIET update --save ${addonnodes} 2>&1 | tee -a $LOGFILE
-	npm $NQUIET install --save ${addonnodes} 2>&1 | tee -a $LOGFILE
+	sudo npm $NQUIET update --save ${addonnodes} 2>&1 | tee -a $LOGFILE
+	sudo npm $NQUIET install --save ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 cd /var/www/html/apps/zoom-ms-utility
-sudo echo 'cd /var/www/html/apps/zoom-ms-utility'  | tee -a  /home/pi/.bashrc
-sudo echo 'npm start'  | tee -a  /home/pi/.bashrc
-sudo echo 'cd /home/pi'  | tee -a  /home/pi/.bashrc
+echo 'cd /var/www/html/apps/zoom-ms-utility'  | sudo tee -a  /home/pi/.bashrc
+echo 'npm start'  |sudo  tee -a  /home/pi/.bashrc
+echo 'cd /home/pi'  | sudo tee -a  /home/pi/.bashrc
 
 echo "" 2>&1 | tee -a $LOGFILE
 appTxt1="**Webmidi lib "
