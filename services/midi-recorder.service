@@ -10,6 +10,7 @@ Type=simple
 Restart=always
 User=pi
 Group=pi
+WorkingDirectory=/usr/local/apps/midi-recorder
 ExecStart=/usr/bin/npm start
 
 [Install]
