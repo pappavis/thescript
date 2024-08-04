@@ -27,7 +27,7 @@ for addonnodes in adafruit-blinka wiringpi adafruit-python-shell  adafruit-micro
                   Adafruit_Libraries Adafruit-PCA9685 Adafruit-GPIO  raspiSensors  oled-text  pi-ina219 adafruit-ads1x15 adafruit-pureio  OctoPyClient tentacle ledDriver  ampy micropython-uploader adafruit-circuitpython-ht16k33 \
                   msteamsconnector matplotlib numpy imutils pyodbc  Adafruit-GPIO SQLAlchemy aniso8601 croniter flask-restful flask-sqlalchemy natsort pih2o python-dateutil pytz  ; do
     printstatus "Installeren CircuitPython bibliotheek: \"${addonnodes}\""
-    pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
+    pip install $NQUIET --upgrade ${addonnodes}  --break-system-packages 2>&1 | tee -a $LOGFILE
 done
 
 python ~/Downloads/thescript/demo/blinkatest.py  2>&1 | tee -a $LOGFILE &
