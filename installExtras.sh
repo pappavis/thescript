@@ -252,6 +252,10 @@ cd ~/Downloads
 echo "" 2>&1 | tee -a $LOGFILE
 echo "Instellen USB over IP   ref--> https://usbip.sourceforge.net" 2>&1 | tee -a $LOGFILE
 sudo apt install -y usbip 2>&1 | tee -a $LOGFILE
+lsusb 2>&1 | tee -a $LOGFILE
+sudo usbip bind --busid=YYYY:ZZZZ
+sudo usbipd -D
+
 sudo modprobe usbip-core 2>&1 | tee -a $LOGFILE
 sudo modprobe usbip-host 2>&1 | tee -a $LOGFILE
 sudo usbip -D 2>&1 | tee -a $LOGFILE
