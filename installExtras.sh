@@ -248,8 +248,10 @@ sudo systemctl enable resilio-sync 2>&1 | tee -a $LOGFILE
 sudo service resilio-sync status 2>&1 | tee -a $LOGFILE
 echo "Open nu de website http://$(hostname):8888/gui" 2>&1 | tee -a $LOGFILE
 
+echo "" 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
 echo "" 2>&1 | tee -a $LOGFILE
+echo "https://fleetstack.io/blog/how-to-setup-a-raspberry-pi-as-a-usb-over-ip-server-a-comprehensive-guide"
 echo "Instellen USB over IP   ref--> https://usbip.sourceforge.net" 2>&1 | tee -a $LOGFILE
 sudo apt install -y usbip 2>&1 | tee -a $LOGFILE
 lsusb 2>&1 | tee -a $LOGFILE
