@@ -52,7 +52,7 @@ for addonnodes in pip setuptools wheel openpyxl pylzma py7zr o365 ttn qrcode pil
 		   osxphotos RPi.GPIO tox PySimpleGUI libusb pyusb pdfkit python-dateutil pymysql python-vkontakte easyocr pygrabber \
 		   imutils psycopg2 postgres firebirdsql html2pdf open3d face-recognition pyftdi psycopg2 asyncio pyshorteners picamera  homekit  pyaudio \ 
 		   tk-tools pyqt5 aspose-words Office365-REST-Python-Client  pyresidfp googlemaps discotool  \
-     		   soundcard pandas streamlit PyPDF2 g4f g4f[webview] langgraph langchain-openai langchain duckduckgo-search langchain-community langchain-experimental langchain-ollama langgraph-prebuilt tavily-python
+     		   soundcard pandas streamlit PyPDF2 g4f g4f[webview] langgraph langchain-openai langchain duckduckgo-search langchain-community langchain-experimental langchain-ollama langgraph-prebuilt tavily-python tinydb 
 
  ; do
 
