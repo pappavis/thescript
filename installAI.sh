@@ -11,9 +11,18 @@ echo "START installAI.sh" 2>&1 | tee -a $LOGFILE
 echo '** Installeer Kunstmatige intilligentie. Je moet eerst een virtualenv activeer!!'  2>&1 | tee -a $LOGFILE
 source ~/venv/venv/bin/activate
 
+for addonnodes in curl ; do
+    echo "" 2>&1 | tee -a $LOGFILE
+    echo "Installeren Kunstmatige Intilligentie hulp: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
+    sudo apt install $NQUIET -y ${addonnodes} 2>&1 | tee -a $LOGFILE
+    #conda install --upgrade --no-cache-dir  ${addonnodes} 2>&1 | tee -a $LOGFILE
+    echo "" 2>&1 | tee -a $LOGFILE
+  done
+
+
 for addonnodes in langgraph langchain-openai langchain duckduckgo-search langchain-community langchain-experimental langchain-ollama langgraph-prebuilt tavily-python tinydb  lanceDB open-webui ; do
     echo "" 2>&1 | tee -a $LOGFILE
-    echo "Installeren Kunstmatige Intilligentie python lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
+    echo "Installeren Kunstmatige  python lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
     #conda install --upgrade --no-cache-dir  ${addonnodes} 2>&1 | tee -a $LOGFILE
     echo "" 2>&1 | tee -a $LOGFILE
@@ -21,8 +30,26 @@ for addonnodes in langgraph langchain-openai langchain duckduckgo-search langcha
 
 echo "" 2>&1 | tee -a $LOGFILE
 curl -fsSL https://ollama.com/install.sh | sh 2>&1 | tee -a $LOGFILE
+
+ollama --version 2>&1 | tee -a $LOGFILE
 ollama serve 2>&1 | tee -a $LOGFILE
-ollama pull dolphin3 2>&1 | tee -a $LOGFILE
-ollama run dolphin-llama3:latest
+
+for addonnodes in tinyllama dolphin3 phi3  ; do
+    echo "" 2>&1 | tee -a $LOGFILE
+    echo "Installeren Kunstmatige Intilligentie LLM: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
+    sudo apt install $NQUIET -y ${addonnodes} 2>&1 | tee -a $LOGFILE
+    #conda install --upgrade --no-cache-dir  ${addonnodes} 2>&1 | tee -a $LOGFILE
+    echo "" 2>&1 | tee -a $LOGFILE
+  done
+
+ollama run tinyllama 2>&1 | tee -a $LOGFILE
+#ollama run dolphin-llama3:latest
+
+curl http://localhost:11434/api/generate -d '{
+  "model": "tinyllama",
+  "prompt": "Why is the capital of Australia?",
+  "stream": false
+}' 
+
 echo "EINDE installAI.sh" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
