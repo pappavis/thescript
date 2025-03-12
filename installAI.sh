@@ -37,7 +37,7 @@ ollama serve 2>&1 | tee -a $LOGFILE
 for addonnodes in tinyllama dolphin3 phi3  ; do
     echo "" 2>&1 | tee -a $LOGFILE
     echo "Installeren Kunstmatige Intilligentie LLM: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
-    ollama pull $NQUIET -y ${addonnodes} 2>&1 | tee -a $LOGFILE
+    ollama pull $NQUIET ${addonnodes} 2>&1 | tee -a $LOGFILE
     #conda install --upgrade --no-cache-dir  ${addonnodes} 2>&1 | tee -a $LOGFILE
     echo "" 2>&1 | tee -a $LOGFILE
   done
