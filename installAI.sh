@@ -2,6 +2,7 @@
 #ref https://nodeshift.com/blog/how-to-install-dolphin-3-0-llama-3-1-8b-locally
 #20250303 0.01 eerste versie
 LOGFILE=$HOME/logs/installAI-`date +%Y-%m-%d_%Hh%Mm`.log
+HOSTNAME=$'hostname'
 sudo mkdir /usr/local/bin  2>&1 | tee -a $LOGFILE
 BINDIR=/usr/local/bin
 export BINDIR=/usr/local/bin
