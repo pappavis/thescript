@@ -23,7 +23,7 @@ for addonnodes in curl ; do
 for addonnodes in langgraph langchain-openai langchain duckduckgo-search langchain-community langchain-experimental langchain-ollama langgraph-prebuilt tavily-python tinydb  lanceDB open-webui ; do
     echo "" 2>&1 | tee -a $LOGFILE
     echo "Installeren Kunstmatige  python lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
-    pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
+    pip install $NQUIET --upgrade --break-system-packages ${addonnodes} 2>&1 | tee -a $LOGFILE
     #conda install --upgrade --no-cache-dir  ${addonnodes} 2>&1 | tee -a $LOGFILE
     echo "" 2>&1 | tee -a $LOGFILE
   done
