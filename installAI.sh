@@ -56,7 +56,7 @@ sudo mv ./open-webui.service /etc/systemd/system  2>&1 | tee -a $LOGFILE
 sudo systemctl enable open-webui.service  2>&1 | tee -a $LOGFILE
 sudo service open-webui restart  2>&1 | tee -a $LOGFILE
 
-nohup open-webui serve  2>&1 | tee -a $LOGFILE &
+echo "nohup open-webui serve &"  2>&1 | tee -a $LOGFILE | sudo tee -a /etc/bash.bashrc &
 
 echo "EINDE installAI.sh" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
