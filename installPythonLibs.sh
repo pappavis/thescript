@@ -56,7 +56,7 @@ for addonnodes in pip setuptools wheel openpyxl pylzma py7zr o365 ttn qrcode pil
  ; do
     echo "" 2>&1 | tee -a $LOGFILE
     echo "Installeren python lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
-    pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
+    pip install $NQUIET --upgrade --break-system-packages ${addonnodes} 2>&1 | tee -a $LOGFILE
     #conda install --upgrade --no-cache-dir  ${addonnodes} 2>&1 | tee -a $LOGFILE
     echo "" 2>&1 | tee -a $LOGFILE
   done
