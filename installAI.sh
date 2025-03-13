@@ -42,7 +42,7 @@ for addonnodes in tinyllama dolphin3 phi3  ; do
     echo "" 2>&1 | tee -a $LOGFILE
   done
 
-ollama run tinyllama 2>&1 | tee -a $LOGFILE
+nohup ollama run tinyllama 2>&1 | tee -a $LOGFILE &
 #ollama run dolphin-llama3:latest
 
 curl http://localhost:11434/api/generate -d '{
@@ -50,6 +50,11 @@ curl http://localhost:11434/api/generate -d '{
   "prompt": "Why is the capital of Australia?",
   "stream": false
 }' 
+
+wget https://raw.githubusercontent.com/pappavis/thescript/master/services/open-webui.service  2>&1 | tee -a $LOGFILE
+sudo mv ./open-webui.service /etc/systemd/system  2>&1 | tee -a $LOGFILE
+sudo systemctl enable open-webui.service  2>&1 | tee -a $LOGFILE
+sudo service open-webui restart  2>&1 | tee -a $LOGFILE
 
 nohup open-webui serve  2>&1 | tee -a $LOGFILE &
 
