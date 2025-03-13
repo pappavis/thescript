@@ -154,6 +154,13 @@
 										</script>
 									</td>
 								</tr>
+								<tr>
+									<td>
+										<script language="JavaScript">
+											document.write('Kletsbot <a target="_blank" href="' + window.location.protocol + '//' + window.location.hostname + ':8501' +  '/" >OpenWebUI AI groot taalmocdel</a>, zie ook <a href=https://github.com/xtekky/openwebui</a><br/' );				
+										</script>
+									</td>
+								</tr>								
 							</tbody>
 						</table>						
 					</tr>
