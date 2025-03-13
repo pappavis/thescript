@@ -9,7 +9,7 @@ Environment="LANG=C.UTF-8"
 WorkingDirectory=/home/pi
 Type=exec
 User=pi
-ExecStart=/home/pi/.local/bin/open-webui start
+ExecStart=/home/pi/.local/bin/open-webui serve
 
 [Install]
 WantedBy=multi-user.target
