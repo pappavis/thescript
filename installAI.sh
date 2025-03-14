@@ -62,5 +62,25 @@ echo "nohup open-webui serve &"  2>&1 | tee -a $LOGFILE | sudo tee -a /etc/bash.
 
 nohup lynx http://'cat /proc/sys/kernel/hostname'.local:8080  2>&1 | tee -a $LOGFILE
 
+echo "install n8n AI Agents--> https://mathias.rocks/blog/2024-09-19-how-to-install-n8n-on-raspberry-pi"  2>&1 | tee -a $LOGFILE
+for addonnodes in n8n pm2 ; do
+    echo "" 2>&1 | tee -a $LOGFILE
+    echo "Installeren Kunstmatige Intilligentie LLM: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
+    npm install -g $NQUIET ${addonnodes} 2>&1 | tee -a $LOGFILE
+    #conda install --upgrade --no-cache-dir  ${addonnodes} 2>&1 | tee -a $LOGFILE
+    echo "" 2>&1 | tee -a $LOGFILE
+  done
+
+wget https://raw.githubusercontent.com/pappavis/thescript/refs/heads/master/services/n8n.service  2>&1 | tee -a $LOGFILE
+sudo mv -v ./n8n.service /etc/systemd/system/n8n.service 2>&1 | tee -a $LOGFILE
+sudo systemctl enable n8n
+#sudo systemctl start n8n
+sudo systemctl status n8n 2>&1 | tee -a $LOGFILE
+pm2 start n8n 2>&1 | tee -a $LOGFILE
+pm2 list  2>&1 | tee -a $LOGFILE
+# to autostart n8n:
+pm2 save
+pm2 startup
+
 echo "EINDE installAI.sh" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
