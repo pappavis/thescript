@@ -3,12 +3,13 @@ Description=n8n Automation Tool
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/n8n
+ExecStart=/usr/local/bin/n8n
 Restart=always
 User=pi
 Environment=PATH=/usr/bin:/usr/local/bin
 Environment=NODE_ENV=production
 WorkingDirectory=/home/pi/
+Environment=N8N_BASIC_AUTH_ACTIVE=false
 Environment=N8N_BASIC_AUTH_ACTIVE=false
 
 [Install]
