@@ -1,0 +1,14 @@
+[Unit]
+Description=n8n Automation Tool
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/n8n
+Restart=always
+User=pi
+Environment=PATH=/usr/bin:/usr/local/bin
+Environment=NODE_ENV=production
+WorkingDirectory=/home/pi/
+
+[Install]
+WantedBy=multi-user.target
