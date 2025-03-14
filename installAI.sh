@@ -1,4 +1,4 @@
-#±/bin/bash
+    #±/bin/bash
 #ref https://nodeshift.com/blog/how-to-install-dolphin-3-0-llama-3-1-8b-locally
 #20250303 0.01 eerste versie
 LOGFILE=$HOME/logs/installAI-`date +%Y-%m-%d_%Hh%Mm`.log
@@ -80,17 +80,20 @@ wget https://gist.githubusercontent.com/Sclafus/9823cc863ad4d007d0ccfef048fa4942
 #docker run -it --rm --name n8n -p 5678:5678 -v ~/.n8n:/root/.n8n n8nio/n8n:0.78.0-rpi
 
 # n8n auto install methode 3
+sudo systemctl disable n8n
 wget https://raw.githubusercontent.com/pappavis/thescript/refs/heads/master/services/n8n.service  2>&1 | tee -a $LOGFILE
 sudo mv -v ./n8n.service /etc/systemd/system/n8n.service 2>&1 | tee -a $LOGFILE
 sudo systemctl enable n8n
-sudo systemctl reload n8n
+sudo systemctl daemon-reload
 sudo systemctl start n8n
 sudo systemctl status n8n 2>&1 | tee -a $LOGFILE
-pm2 start n8n 2>&1 | tee -a $LOGFILE
-pm2 list  2>&1 | tee -a $LOGFILE
+
+#auto isntall methode 3
+#pm2 start n8n 2>&1 | tee -a $LOGFILE
+#pm2 list  2>&1 | tee -a $LOGFILE
 # to autostart n8n:
-pm2 save
-pm2 startup
+#pm2 save
+#pm2 startup
 
 echo "EINDE installAI.sh" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
