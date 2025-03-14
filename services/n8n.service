@@ -9,6 +9,7 @@ User=pi
 Environment=PATH=/usr/bin:/usr/local/bin
 Environment=NODE_ENV=production
 WorkingDirectory=/home/pi/
+Environment=N8N_BASIC_AUTH_ACTIVE=false
 
 [Install]
 WantedBy=multi-user.target
