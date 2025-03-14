@@ -12,7 +12,7 @@ echo "START installAI.sh" 2>&1 | tee -a $LOGFILE
 echo '** Installeer Kunstmatige intilligentie. Je moet eerst een virtualenv activeer!!'  2>&1 | tee -a $LOGFILE
 source ~/venv/venv/bin/activate
 
-for addonnodes in curl ollama ; do
+for addonnodes in curl ollama exim4 ; do
     echo "" 2>&1 | tee -a $LOGFILE
     echo "Installeren Kunstmatige Intilligentie hulp: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     sudo apt install $NQUIET -y ${addonnodes} 2>&1 | tee -a $LOGFILE
@@ -71,10 +71,20 @@ for addonnodes in n8n pm2 ; do
     echo "" 2>&1 | tee -a $LOGFILE
   done
 
+# n8n auto install methode 1
+# wget --no-cache -O - https://raw.githubusercontent.com/TephlonDude/n8n-pi/master/scripts/build-n8n-pi-1.sh | bash
+wget https://gist.githubusercontent.com/Sclafus/9823cc863ad4d007d0ccfef048fa4942/raw/e66f8664967c8d9035cf12f19a2c36d4fb550dc6/n8n-install-pi.sh 2>&1 | sudo bash | tee -a $LOGFILE
+
+# n8n auto install methode 2
+# sudo apt install -y docker
+#docker run -it --rm --name n8n -p 5678:5678 -v ~/.n8n:/root/.n8n n8nio/n8n:0.78.0-rpi
+
+# n8n auto install methode 3
 wget https://raw.githubusercontent.com/pappavis/thescript/refs/heads/master/services/n8n.service  2>&1 | tee -a $LOGFILE
 sudo mv -v ./n8n.service /etc/systemd/system/n8n.service 2>&1 | tee -a $LOGFILE
 sudo systemctl enable n8n
-#sudo systemctl start n8n
+sudo systemctl reload n8n
+sudo systemctl start n8n
 sudo systemctl status n8n 2>&1 | tee -a $LOGFILE
 pm2 start n8n 2>&1 | tee -a $LOGFILE
 pm2 list  2>&1 | tee -a $LOGFILE
