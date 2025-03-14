@@ -88,6 +88,8 @@ sudo systemctl daemon-reload
 sudo systemctl start n8n
 sudo systemctl status n8n 2>&1 | tee -a $LOGFILE
 
+echo "export N8N_SECURE_COOKIE=false"  2>&1 | sudo tee -a /etc/bash.bashrc | tee -a $LOGFILE
+
 #auto isntall methode 3
 #pm2 start n8n 2>&1 | tee -a $LOGFILE
 #pm2 list  2>&1 | tee -a $LOGFILE
