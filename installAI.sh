@@ -66,7 +66,15 @@ echo "install n8n AI Agents--> https://mathias.rocks/blog/2024-09-19-how-to-inst
 for addonnodes in n8n pm2 ; do
     echo "" 2>&1 | tee -a $LOGFILE
     echo "Installeren Kunstmatige Intilligentie LLM: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
-    npm install -g $NQUIET ${addonnodes} 2>&1 | tee -a $LOGFILE
+    sudo npm install -g $NQUIET ${addonnodes} 2>&1 | tee -a $LOGFILE
+    #conda install --upgrade --no-cache-dir  ${addonnodes} 2>&1 | tee -a $LOGFILE
+    echo "" 2>&1 | tee -a $LOGFILE
+  done
+
+for addonnodes in n8n-nodes-deepseek n8n-nodes-docx-converter n8n-nodes-firebird n8n-nodes-deepseek-llm  ; do
+    echo "" 2>&1 | tee -a $LOGFILE
+    echo "Installeren Kunstmatige Intilligentie LLM: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
+    npm install  $NQUIET ${addonnodes} 2>&1 | tee -a $LOGFILE
     #conda install --upgrade --no-cache-dir  ${addonnodes} 2>&1 | tee -a $LOGFILE
     echo "" 2>&1 | tee -a $LOGFILE
   done
