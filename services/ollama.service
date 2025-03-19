@@ -1,0 +1,15 @@
+Unit]
+Description=Ollama Service
+After=network-online.target
+OLLAMA_HOST=0.0.0.0:11434
+
+[Service]
+ExecStart=/usr/local/bin/ollama serve
+User=ollama
+Group=ollama
+Restart=always
+RestartSec=3
+Environment="PATH=/home/pi/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games:/home/pi/.local/>
+
+[Install]
+WantedBy=default.target
