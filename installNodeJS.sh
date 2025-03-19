@@ -71,15 +71,13 @@ else
 	nvm use node
 fi
  # https://xavier.arnaus.net/blog/install-nodejs-20-into-a-raspberry-pi-4
-sudo apt install -y ca-certificates curl gnupg  2>&1 | tee -a $LOGFILE	
-curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /usr/share/keyrings/nodesource.gpg  2>&1 | tee -a $LOGFILE	
-NODE_MAJOR=22
-nohup echo "deb [signed-by=/usr/share/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list  2>&1 | tee -a $LOGFILE	
-sudo apt update -y  2>&1 | tee -a $LOGFILE	
-sudo apt install nodejs -y  2>&1 | tee -a $LOGFILE	
-nodejs -v  2>&1 | tee -a $LOGFILE	
-
-
+#sudo apt install -y ca-certificates curl gnupg  2>&1 | tee -a $LOGFILE	
+#curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /usr/share/keyrings/nodesource.gpg  2>&1 | tee -a $LOGFILE	
+#NODE_MAJOR=22
+#nohup echo "deb [signed-by=/usr/share/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list  2>&1 | tee -a $LOGFILE	
+#sudo apt update -y  2>&1 | tee -a $LOGFILE	
+#sudo apt install nodejs -y  2>&1 | tee -a $LOGFILE	
+#nodejs -v  2>&1 | tee -a $LOGFILE	
 
 printstatus "NodeJS $(node -v) en npm $(npm -v) is geïnstalleerd" 2>&1 | tee -a $LOGFILE
 
