@@ -41,7 +41,7 @@ if [ $(arch) == 'armv6l' ]; then
 	else
 		echo "$tkst1 Pi 3,4" 2>&1 | tee -a $LOGFILE
 	fi
-	wget https://unofficial-builds.nodejs.org/download/release/v19.1.0/node-v19.1.0-linux-armv6l.tar.gz 2>&1 | tee -a $LOGFILE
+	wget https://unofficial-builds.nodejs.org/download/release/v20.0.0/node-v20.0.0-linux-armv6l.tar.gz 2>&1 | tee -a $LOGFILE
 	tar xzf node-v19.1.0-linux-armv6l.tar.gz 2>&1 | tee -a $LOGFILE
 	sudo cp -R ./node-v19.1.0-linux-armv6l/* /usr/local 2>&1 | tee -a $LOGFILE
 else
@@ -60,7 +60,7 @@ else
 	#sudo cp -R ./node-v18.4.0-linux-armv7l/* /usr/local 2>&1 | tee -a $LOGFILE
 	#sudo rm -rf node-*  2>&1 | tee -a $LOGFILE
 	#nvm install lts/gallium
-	curl -sL https://deb.nodesource.com/setup_17.x | sudo -E bash -
+	curl -sL https://deb.nodesource.com/setup_20.x | sudo -E bash -
 	sudo apt install -y nodejs
 	
 
