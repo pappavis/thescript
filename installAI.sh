@@ -6,6 +6,8 @@ HOSTNAME=$'hostname'
 sudo mkdir /usr/local/bin  2>&1 | tee -a $LOGFILE
 BINDIR=/usr/local/bin
 export BINDIR=/usr/local/bin
+OLLAMA_HOST=0.0.0.0:11434
+export OLLAMA_HOST=0.0.0.0:11434
 
 echo "" 2>&1 | tee -a $LOGFILE
 echo "START installAI.sh" 2>&1 | tee -a $LOGFILE
