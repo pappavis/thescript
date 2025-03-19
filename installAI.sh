@@ -97,7 +97,7 @@ sudo systemctl daemon-reload
 sudo systemctl start n8n
 sudo systemctl status n8n 2>&1 | tee -a $LOGFILE
 
-echo "export N8N_SECURE_COOKIE=false"  2>&1 | sudo tee -a /etc/bash.bashrc | tee -a $LOGFILE
+echo "export N8N_SECURE_COOKIE=false" 2>&1 | sudo tee -a /etc/profile | tee -a $LOGFILE
 
 #auto isntall methode 3
 #pm2 start n8n 2>&1 | tee -a $LOGFILE
@@ -105,6 +105,9 @@ echo "export N8N_SECURE_COOKIE=false"  2>&1 | sudo tee -a /etc/bash.bashrc | tee
 # to autostart n8n:
 #pm2 save
 #pm2 startup
+
+echo "OLLAMA_HOST=0.0.0.0:11434" 2>&1 | sudo tee -a /etc/profile | tee -a $LOGFILE
+echo "export OLLAMA_HOST" 2>&1 | sudo tee -a /etc/profile | tee -a $LOGFILE
 
 echo "EINDE installAI.sh" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
