@@ -33,10 +33,13 @@ for addonnodes in langgraph langchain-openai langchain duckduckgo-search langcha
 echo "" 2>&1 | tee -a $LOGFILE
 curl -fsSL https://ollama.com/install.sh | sh 2>&1 | tee -a $LOGFILE
 
+
+# tutorial https://www.youtube.com/watch?v=qqjzohCle48
+
 ollama --version 2>&1 | tee -a $LOGFILE
 ollama serve 2>&1 | tee -a $LOGFILE
 
-for addonnodes in tinyllama dolphin3 phi3  ; do
+for addonnodes in tinyllama dolphin3 phi3 nomic-embed-text:latest  ; do
     echo "" 2>&1 | tee -a $LOGFILE
     echo "Installeren Kunstmatige Intilligentie LLM: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     ollama pull $NQUIET ${addonnodes} 2>&1 | tee -a $LOGFILE
