@@ -39,7 +39,7 @@ curl -fsSL https://ollama.com/install.sh | sh 2>&1 | tee -a $LOGFILE
 ollama --version 2>&1 | tee -a $LOGFILE
 ollama serve 2>&1 | tee -a $LOGFILE
 
-for addonnodes in tinyllama dolphin3 phi3 nomic-embed-text:latest  ; do
+for addonnodes in tinyllama dolphin3 phi3 nomic-embed-text:latest llama3.2  ; do
     echo "" 2>&1 | tee -a $LOGFILE
     echo "Installeren Kunstmatige Intilligentie LLM: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     ollama pull $NQUIET ${addonnodes} 2>&1 | tee -a $LOGFILE
