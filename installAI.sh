@@ -14,7 +14,7 @@ echo "START installAI.sh" 2>&1 | tee -a $LOGFILE
 echo '** Installeer Kunstmatige intilligentie. Je moet eerst een virtualenv activeer!!'  2>&1 | tee -a $LOGFILE
 source ~/venv/venv/bin/activate
 
-for addonnodes in curl ollama exim4 postgresql ; do
+for addonnodes in curl ollama exim4 postgresql postgresql-contrib ; do
     echo "" 2>&1 | tee -a $LOGFILE
     echo "Installeren Kunstmatige Intilligentie hulp: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     sudo apt install $NQUIET -y ${addonnodes} 2>&1 | tee -a $LOGFILE
