@@ -1,0 +1,13 @@
+[Unit]
+Description=PostgreSQL Docker Container
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+User=root
+ExecStart=/usr/bin/docker start -a pgvector-container
+ExecStop=/usr/bin/docker stop pgvector-container
+
+[Install]
+WantedBy=multi-user.target
