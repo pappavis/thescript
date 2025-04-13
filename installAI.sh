@@ -8,13 +8,26 @@ BINDIR=/usr/local/bin
 export BINDIR=/usr/local/bin
 OLLAMA_HOST=0.0.0.0:11434
 export OLLAMA_HOST=0.0.0.0:11434
+export OLLAMA_MODELS=/home/pi/.ollama/models/blobs/
 
 echo "" 2>&1 | tee -a $LOGFILE
 echo "START installAI.sh" 2>&1 | tee -a $LOGFILE
 echo '** Installeer Kunstmatige intilligentie. Je moet eerst een virtualenv activeer!!'  2>&1 | tee -a $LOGFILE
 source ~/venv/venv/bin/activate
 
-for addonnodes in curl ollama exim4 postgresql postgresql-contrib ; do
+mkdir /home/pi/.postgresql/
+mkdir /home/pi/.postgresql/data
+
+curl -sSL https://get.docker.com | sh 2>&1 | tee -a $LOGFILE
+sudo usermod -aG docker $USER
+docker run hello-world 2>&1 | tee -a $LOGFILE
+docker run --name pgvector-container -e POSTGRES_USER=myuser -e POSTGRES_PASSWORD=mypassword -e POSTGRES_DB=mydatabase -p 5432:5432 -d ankane/pgvector  -v postgres_data:/home/pi/.postgresql/data 2>&1 | tee -a $LOGFILE
+docker start pgvector-container 
+docker restart postgres-service
+
+# sudo apt install -y postgresql postgresql-contrib  2>&1 | tee -a $LOGFILE
+
+for addonnodes in docker-compose curl ollama exim4 ; do
     echo "" 2>&1 | tee -a $LOGFILE
     echo "Installeren Kunstmatige Intilligentie hulp: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     sudo apt install $NQUIET -y ${addonnodes} 2>&1 | tee -a $LOGFILE
