@@ -1,0 +1,18 @@
+# postgresql.service is the meta unit for managing all PostgreSQL clusters on
+# the system at once. Conceptually, this unit is more like a systemd target,
+# but we are using a service since targets cannot be reloaded.
+#
+# The unit actually managing PostgreSQL clusters is postgresql@.service,
+# instantiated as postgresql@15-main.service for individual clusters.
+
+[Unit]
+Description=PostgreSQL RDBMS
+
+[Service]
+Type=oneshot
+ExecStart=/bin/true
+ExecReload=/bin/true
+RemainAfterExit=on
+
+[Install]
+WantedBy=multi-user.target
