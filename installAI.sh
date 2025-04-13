@@ -25,6 +25,11 @@ docker run --name pgvector-container -e POSTGRES_USER=myuser -e POSTGRES_PASSWOR
 docker start pgvector-container 
 docker restart postgres-service
 
+sudo cp ./services/postgres-dockerservice.service /etc/systemd/system/postgres-dockerservice.service 2>&1 | tee -a $LOGFILE
+sudo systemctl enable postgres-dockerservice.service
+sudo systemctl start postgres-dockerservice.service
+sudo systemctl status postgres-dockerservice.service
+
 # sudo apt install -y postgresql postgresql-contrib  2>&1 | tee -a $LOGFILE
 
 for addonnodes in docker-compose curl ollama exim4 ; do
