@@ -15,8 +15,8 @@ echo "START installAI.sh" 2>&1 | tee -a $LOGFILE
 echo '** Installeer Kunstmatige intilligentie. Je moet eerst een virtualenv activeer!!'  2>&1 | tee -a $LOGFILE
 source ~/venv/venv/bin/activate
 
-mkdir /home/pi/.postgresql/
-mkdir /home/pi/.postgresql/data
+mkdir $USER/.postgresql/
+mkdir $USER/.postgresql/data
 
 curl -sSL https://get.docker.com | sh 2>&1 | tee -a $LOGFILE
 sudo usermod -aG docker $USER
