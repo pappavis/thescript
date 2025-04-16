@@ -21,7 +21,7 @@ mkdir $USER/.postgresql/data
 curl -sSL https://get.docker.com | sh 2>&1 | tee -a $LOGFILE
 sudo usermod -aG docker $USER
 docker run hello-world 2>&1 | tee -a $LOGFILE
-docker run --name pgvector-container -e POSTGRES_USER=myuser -e POSTGRES_PASSWORD=mypassword -e POSTGRES_DB=mydatabase -p 5432:5432 -d ankane/pgvector  -v postgres_data:/home/pi/.postgresql/data 2>&1 | tee -a $LOGFILE
+docker run --name pgvector-container -e POSTGRES_USER=pi -e POSTGRES_PASSWORD=password -e POSTGRES_DB=mydatabase -p 5432:5432 -d ankane/pgvector  -v postgres_data:/home/pi/.postgresql/data 2>&1 | tee -a $LOGFILE
 docker start pgvector-container 
 docker restart postgres-service
 
