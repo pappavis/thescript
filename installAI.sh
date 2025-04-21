@@ -22,6 +22,7 @@ curl -sSL https://get.docker.com | sh 2>&1 | tee -a $LOGFILE
 sudo usermod -aG docker $USER
 docker run hello-world 2>&1 | tee -a $LOGFILE
 docker run --name pgvector-container -e POSTGRES_USER=pi -e POSTGRES_PASSWORD=password -e POSTGRES_DB=mydatabase -p 5432:5432 -d ankane/pgvector  -v postgres_data:/home/pi/.postgresql/data 2>&1 | tee -a $LOGFILE
+docker pull supabase/postgres:17.0.1.067-orioledb | sh 2>&1 | tee -a $LOGFILE
 docker start pgvector-container 
 docker restart postgres-service
 
