@@ -147,5 +147,8 @@ docker compose up -d
 
 echo "Supbase bereikbaar op http://$HOSTNAME:8000" 2>&1 | tee -a $LOGFILE
 
+docker run --name pgadmin4 -e PGADMIN_DEFAULT_EMAIL=jaap@mijnemail.com PGADMIN_DEFAULT_PASSWORD=mypassword -d  dpage/pgadmin4a 2>&1 | tee -a $LOGFILE
+
+
 echo "EINDE installAI.sh" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
