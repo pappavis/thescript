@@ -40,7 +40,7 @@ for addonnodes in docker-compose curl ollama exim4 ; do
   done
 
 
-for addonnodes in langgraph langchain-openai langchain duckduckgo-search langchain-community langchain-experimental langchain-ollama langgraph-prebuilt tavily-python tinydb  lanceDB open-webui ; do
+for addonnodes in langgraph langchain-openai langchain duckduckgo-search langchain-community langchain-experimental langchain-ollama langgraph-prebuilt tavily-python tinydb  lanceDB open-webui torch torchaudio torchvideo diffusers gradio accelerate  ; do
     echo "" 2>&1 | tee -a $LOGFILE
     echo "Installeren Kunstmatige  python lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     pip install $NQUIET --upgrade --break-system-packages ${addonnodes} 2>&1 | tee -a $LOGFILE
