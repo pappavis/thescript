@@ -154,7 +154,7 @@ git clone https://github.com/lllyasviel/FramePack 2>&1 | tee -a $LOGFILE
 
 cd ~/Dowloads/thescript
 docker run --name pgadmin4 -e PGADMIN_DEFAULT_EMAIL=jaap@mijnemail.com PGADMIN_DEFAULT_PASSWORD=mypassword -d  dpage/pgadmin4a 2>&1 | tee -a $LOGFILE
-
+nohup open-webui serve  2>&1 | tee -a $LOGFILE &
 
 echo "EINDE installAI.sh" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
