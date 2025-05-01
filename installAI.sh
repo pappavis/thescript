@@ -160,6 +160,7 @@ python -m venv ./env 2>&1 | tee -a $LOGFILE
 source ./env/bin/activate 2>&1 | tee -a $LOGFILE
 python -m pip install -e .\[inference-script\] 2>&1 | tee -a $LOGFILE
 cd ~/Downloads
+git clone https://github.com/elevenlabs/elevenlabs-python
 git clone https://github.com/comfyanonymous/ComfyUI 2>&1 | tee -a $LOGFILE
 cd ~/Downloads/ComfyUI
 pip install -r ./requirements 2>&1 | tee -a $LOGFILE
