@@ -154,13 +154,17 @@ git clone https://github.com/lllyasviel/FramePack 2>&1 | tee -a $LOGFILE
 git clone https://github.com/nari-labs/dia 2>&1 | tee -a $LOGFILE   #text naar spraak
 git clone https://github.com/SandAI-org/Magi-1 2>&1 | tee -a $LOGFILE    #plaatjes en vids
 
-git clone https://github.com/comfyanonymous/ComfyUI
-git clone https://github.com/Lightricks/LTX-Video
+git clone https://github.com/Lightricks/LTX-Video 2>&1 | tee -a $LOGFILE
 # create env LTX-Video
-python -m venv ./env
-source ./env/bin/activate
-python -m pip install -e .\[inference-script\]
-## LTX-Video
+python -m venv ./env 2>&1 | tee -a $LOGFILE
+source ./env/bin/activate 2>&1 | tee -a $LOGFILE
+python -m pip install -e .\[inference-script\] 2>&1 | tee -a $LOGFILE
+cd ~/Dowloads
+git clone https://github.com/comfyanonymous/ComfyUI 2>&1 | tee -a $LOGFILE
+cd ./ComfyUI
+pip install -r ./requirements 2>&1 | tee -a $LOGFILE
+python ./main.py  2>&1 | tee -a $LOGFILE
+## LTX-Video eind
 
 source ~/.bashrc
 
