@@ -159,11 +159,16 @@ git clone https://github.com/Lightricks/LTX-Video 2>&1 | tee -a $LOGFILE
 python -m venv ./env 2>&1 | tee -a $LOGFILE
 source ./env/bin/activate 2>&1 | tee -a $LOGFILE
 python -m pip install -e .\[inference-script\] 2>&1 | tee -a $LOGFILE
-cd ~/Dowloads
+cd ~/Downloads
 git clone https://github.com/comfyanonymous/ComfyUI 2>&1 | tee -a $LOGFILE
-cd ./ComfyUI
+cd ~/Downloads/ComfyUI
 pip install -r ./requirements 2>&1 | tee -a $LOGFILE
-python ./main.py  2>&1 | tee -a $LOGFILE
+echo "lees mbt LTX Video --> https://comfyanonymous.github.io/ComfyUI_examples/ltxv/"  2>&1 | tee -a $LOGFILE
+cd ~/Downloads/ComfyUI/models/checkpoints
+wget https://huggingface.co/Lightricks/LTX-Video/resolve/main/ltx-video-2b-v0.9.5.safetensors 2>&1 | tee -a $LOGFILE
+cd ~/Downloads/ComfyUI/models/text_encoders
+wget https://huggingface.co/Comfy-Org/mochi_preview_repackaged/resolve/main/split_files/text_encoders/t5xxl_fp16.safetensors 2>&1 | tee -a $LOGFILE
+nohup python ./main.py & 2>&1 | tee -a $LOGFILE
 ## LTX-Video eind
 
 source ~/.bashrc
