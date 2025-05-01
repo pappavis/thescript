@@ -181,3 +181,4 @@ nohup open-webui serve  2>&1 | tee -a $LOGFILE &
 
 echo "EINDE installAI.sh" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
+# 20250501 zie ook https://fal.ai/models?categories=text-to-audio en zoek hun github pages op !!!!!!!
