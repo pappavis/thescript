@@ -154,6 +154,7 @@ git clone https://github.com/lllyasviel/FramePack 2>&1 | tee -a $LOGFILE
 git clone https://github.com/nari-labs/dia 2>&1 | tee -a $LOGFILE   #text naar spraak
 git clone https://github.com/SandAI-org/Magi-1 2>&1 | tee -a $LOGFILE    #plaatjes en vids
 
+git clone https://github.com/comfyanonymous/ComfyUI
 git clone https://github.com/Lightricks/LTX-Video
 # create env LTX-Video
 python -m venv ./env
