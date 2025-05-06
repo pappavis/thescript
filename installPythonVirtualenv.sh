@@ -24,7 +24,7 @@ for addonnodes in  virtualenv python3-virtualenv python3-pip python3-wheel pytho
 	sudo apt install -y ${addonnodes} 2>&1 | tee -a $LOGFILE
 done
 /usr/bin/python3  -m pip install virtualenv 2>&1 | tee -a $LOGFILE
-/usr/bin/python3  -m virtualenv -p /usr/bin/python3 ~/venv/venv 2>&1 | tee -a $LOGFILE
+/usr/bin/python3  -m virtualenv --system-site-packages -p /usr/bin/python3 ~/venv/venv 2>&1 | tee -a $LOGFILE
 #/usr/python/python3.11 -m pip install virtualenv 2>&1 | tee -a $LOGFILE
 #~/.local/bin/virtualenv3.11 ~/venv/venv3.11
 echo "source ~/venv/$VENV/bin/activate" >> ~/.bashrc
