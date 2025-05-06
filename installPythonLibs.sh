@@ -46,14 +46,24 @@ for addonnodes in pip setuptools wheel scikit-build numpy ; do
   done
 
 for addonnodes in pip setuptools wheel openpyxl pylzma py7zr o365 ttn qrcode pillow sqlalchemy sqlalchemy-access pymsteams qscintilla esptool adafruit-ampy firebirdsql pyresidfp  \
-                  pyserial pyparsing pyzmail redmail gpiozero pytube pipx serial jinja2 esptool mpfshell virtualenv ffmpeg  jupyter-notebook \
-                  scikit-build pygame pymongo psycopg2-binary mysql-connector-python guizero imutils scikit-image bokeh django flask pygrabber paho-mqtt \
-                  msteamsconnector matplotlib numpy imutils pyodbc influxdb pysmb libopencv-dev opencv-python  git+https://github.com/pytube/pytube picamera djitellopy \
-		   osxphotos RPi.GPIO tox PySimpleGUI libusb pyusb pdfkit python-dateutil pymysql python-vkontakte easyocr pygrabber \
-		   imutils psycopg2 postgres firebirdsql html2pdf open3d face-recognition pyftdi psycopg2 asyncio pyshorteners picamera  homekit  pyaudio \ 
-		   tk-tools pyqt5 aspose-words Office365-REST-Python-Client  pyresidfp googlemaps discotool midiutil rtmidi \
-     		   soundcard pandas streamlit PyPDF2 g4f g4f[webview] langgraph langchain-openai langchain duckduckgo-search langchain-community langchain-experimental langchain-ollama langgraph-prebuilt tavily-python tinydb 
- ; do
+	  pyserial pyparsing pyzmail redmail gpiozero pytube pipx serial jinja2 esptool mpfshell virtualenv ffmpeg  jupyter-notebook \
+	  scikit-build pygame pymongo psycopg2-binary mysql-connector-python guizero imutils scikit-image bokeh django flask pygrabber paho-mqtt 
+    echo "" 2>&1 | tee -a $LOGFILE
+    echo "Installeren python lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
+    pip install $NQUIET --upgrade  ${addonnodes} 2>&1 | tee -a $LOGFILE
+    #conda install --upgrade --no-cache-dir  ${addonnodes} 2>&1 | tee -a $LOGFILE
+    echo "" 2>&1 | tee -a $LOGFILE
+  done
+
+
+
+    
+for addonnodes in   msteamsconnector matplotlib numpy imutils pyodbc influxdb pysmb libopencv-dev opencv-python  git+https://github.com/pytube/pytube picamera djitellopy \
+	   osxphotos RPi.GPIO tox PySimpleGUI libusb pyusb pdfkit python-dateutil pymysql python-vkontakte easyocr pygrabber \
+	   imutils psycopg2 postgres firebirdsql html2pdf open3d face-recognition pyftdi psycopg2 asyncio pyshorteners picamera  homekit  pyaudio \ 
+	   tk-tools pyqt5 aspose-words Office365-REST-Python-Client  pyresidfp googlemaps discotool midiutil rtmidi \
+	   soundcard pandas streamlit PyPDF2 g4f g4f[webview] \ 
+	  langgraph langchain-openai langchain duckduckgo-search langchain-community langchain-experimental langchain-ollama langgraph-prebuilt tavily-python tinydb  whisper-openai  qrcode     ; do
     echo "" 2>&1 | tee -a $LOGFILE
     echo "Installeren python lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     pip install $NQUIET --upgrade  ${addonnodes} 2>&1 | tee -a $LOGFILE
