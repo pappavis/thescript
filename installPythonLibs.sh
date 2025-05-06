@@ -51,6 +51,7 @@ for addonnodes in pip setuptools wheel openpyxl pylzma py7zr o365 ttn qrcode pil
     echo "" 2>&1 | tee -a $LOGFILE
     echo "Installeren python lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     pip install $NQUIET --upgrade  ${addonnodes} 2>&1 | tee -a $LOGFILE
+    pipx install $NQUIET --upgrade  ${addonnodes} 2>&1 | tee -a $LOGFILE
     #conda install --upgrade --no-cache-dir  ${addonnodes} 2>&1 | tee -a $LOGFILE
     echo "" 2>&1 | tee -a $LOGFILE
   done
@@ -67,6 +68,7 @@ for addonnodes in   msteamsconnector matplotlib numpy imutils pyodbc influxdb py
     echo "" 2>&1 | tee -a $LOGFILE
     echo "Installeren python lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     pip install $NQUIET --upgrade  ${addonnodes} 2>&1 | tee -a $LOGFILE
+    pipx install $NQUIET --upgrade  ${addonnodes} 2>&1 | tee -a $LOGFILE
     #conda install --upgrade --no-cache-dir  ${addonnodes} 2>&1 | tee -a $LOGFILE
     echo "" 2>&1 | tee -a $LOGFILE
   done
@@ -76,6 +78,7 @@ for addonnodes in tflite tflite-runtime tflite_support seaborn  git+https://gith
     echo "" 2>&1 | tee -a $LOGFILE
     echo "Installeren Tensorflow python lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
+    pipx install $NQUIET --upgrade  ${addonnodes} 2>&1 | tee -a $LOGFILE
     #conda install --upgrade --no-cache-dir  ${addonnodes} 2>&1 | tee -a $LOGFILE
     echo "" 2>&1 | tee -a $LOGFILE
   done
@@ -85,6 +88,7 @@ for addonnodes in setuptools wheel scikit-build cmake mu-editor shortcut esptool
     echo "" 2>&1 | tee -a $LOGFILE
     echo "PIPX.. alleen voor python apps: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     pip install $NQUIET ${addonnodes} 2>&1 | tee -a $LOGFILE
+    pipx install $NQUIET --upgrade  ${addonnodes} 2>&1 | tee -a $LOGFILE
     echo "" 2>&1 | tee -a $LOGFILE
   done
 
@@ -93,6 +97,7 @@ for addonnodes in fluidsynth upiano midisynth ; do
     echo "" 2>&1 | tee -a $LOGFILE
     echo "Install muziek python apps: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     pip install $NQUIET ${addonnodes} 2>&1 | tee -a $LOGFILE
+    pipx install $NQUIET --upgrade  ${addonnodes} 2>&1 | tee -a $LOGFILE
     echo "" 2>&1 | tee -a $LOGFILE
   done
 
@@ -120,6 +125,7 @@ for addonnodes in  torch torchvision torchaudio cudatoolkit ; do
     echo "" 2>&1 | tee -a $LOGFILE
     echo "Installeren ML python lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
+    pipx install $NQUIET --upgrade  ${addonnodes} 2>&1 | tee -a $LOGFILE
     echo "" 2>&1 | tee -a $LOGFILE
 done
 
@@ -143,6 +149,7 @@ for addonnodes in  tflite tflite-runtime tflite_support tensorflow_datasets seab
     echo "" 2>&1 | tee -a $LOGFILE
     echo "Installeren tensorflow python lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     pip install $NQUIET --upgrade ${addonnodes} 2>&1 | tee -a $LOGFILE
+    pipx install $NQUIET --upgrade  ${addonnodes} 2>&1 | tee -a $LOGFILE
     #conda install --upgrade --no-cache-dir  ${addonnodes} 2>&1 | tee -a $LOGFILE
     echo "" 2>&1 | tee -a $LOGFILE
  done
