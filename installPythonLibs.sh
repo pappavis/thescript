@@ -10,6 +10,9 @@ echo '** Installeer pythonlibs. je moet eerst een virtualenv activeer!!'  2>&1 |
 #python3 -m virtualenv ~/venv/venv
 source ~/venv/venv/bin/activate
 
+export PIP_BREAK_SYSTEM_PACKAGES=1
+echo "PIP_BREAK_SYSTEM_PACKAGES=1"  2>&1 | tee -a ±/.bashrc
+
 sudo apt --fix-broken install -y
 sudo apt install -y unixodbc-dev 2>&1 | tee -a $LOGFILE
 sudo apt install -y python3-full 2>&1 | tee -a $LOGFILE
