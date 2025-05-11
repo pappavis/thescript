@@ -93,7 +93,7 @@ for addonnodes in n8n pm2 ; do
     echo "" 2>&1 | tee -a $LOGFILE
   done
 
-for addonnodes in n8n-nodes-deepseek n8n-nodes-docx-converter n8n-nodes-firebird n8n-nodes-deepseek-llm  ; do
+for addonnodes in n8n-nodes-deepseek n8n-nodes-docx-converter n8n-nodes-firebird n8n-nodes-deepseek-llm n8n-nodes-custom n8n-nodes-openpix n8n-nodes-qrcode @fresent/n8n-nodes-tiktok n8n-nodes-docker  n8n-nodes-gemini-search@igabm/n8n-nodes-tiktok n8n-nodes-sqlite3 n8n-nodes-pdf-excel @skriptfabrik/n8n-nodes-barcode n8n-nodes-aistudio-updated n8n-nodes-langchain n8n-nodes-base n8n-nodes-notion-markdown n8n-nodes-mcp n8n-nodes-aistudio  n8n-nodes-globals n8n-nodes-unstract @digital-boss/n8n-nodes-mollie n8n-nodes-deepseek-llm n8n-nodes-pdfkit       ; do
     echo "" 2>&1 | tee -a $LOGFILE
     echo "Installeren Kunstmatige Intilligentie LLM: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     npm install  $NQUIET ${addonnodes} 2>&1 | tee -a $LOGFILE
