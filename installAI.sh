@@ -172,7 +172,25 @@ wget https://huggingface.co/Comfy-Org/mochi_preview_repackaged/resolve/main/spli
 nohup python ./main.py & 2>&1 | tee -a $LOGFILE
 ## LTX-Video eind
 
-source ~/.bashrc
+source ~/.bashrc 2>&1 | tee -a $LOGFILE
+
+cd ~/Downloads
+
+echo "\nACE-Step gratis muziek genereren  https://youtu.be/PO_u7xEaL5I?t=719"  2>&1 | tee -a $LOGFILE
+git clone https://github.com/ace-step/ACE-Step 2>&1 | tee -a $LOGFILE
+cd ./ACE-Step
+for addonnodes in torch torchvision torchaudio  ; do
+    echo "" 2>&1 | tee -a $LOGFILE
+    echo "Installeren Kunstmatige Intilligentie Ace-step muziek: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
+    pip install $NQUIET ${addonnodes} 2>&1 | tee -a $LOGFILE
+    #conda install --upgrade --no-cache-dir  ${addonnodes} 2>&1 | tee -a $LOGFILE
+    echo "" 2>&1 | tee -a $LOGFILE
+  done
+
+pip install -e . 2>&1 | tee -a $LOGFILE
+mkdir ./outputs
+acestep --checkpoint_path /path/to/checkpoint --port 7865 --device_id 0 --share true --bf16 true  2>&1 | tee -a $LOGFILE &
+
 
 cd ~/Dowloads/thescript
 docker run --name pgadmin4 -e PGADMIN_DEFAULT_EMAIL=jaap@mijnemail.com PGADMIN_DEFAULT_PASSWORD=mypassword -d  dpage/pgadmin4a 2>&1 | tee -a $LOGFILE
