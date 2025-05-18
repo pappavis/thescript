@@ -192,6 +192,15 @@ mkdir ./outputs
 acestep --checkpoint_path /path/to/checkpoint --port 7865 --device_id 0 --share true --bf16 true  2>&1 | tee -a $LOGFILE &
 
 
+## installeer supabase lokaal  -- DOCKER is nodig.
+brew install node  # op macOS met Homebrew
+npm install -g npx
+cd ~/Downloads
+npx create-next-app@latest my-app
+cd ./my-app
+npx supabase init
+## Ga naar http://127.0.0.1:54323 om de webinterface van Supabase te openen.
+
 cd ~/Dowloads/thescript
 docker run --name pgadmin4 -e PGADMIN_DEFAULT_EMAIL=jaap@mijnemail.com PGADMIN_DEFAULT_PASSWORD=mypassword -d  dpage/pgadmin4a 2>&1 | tee -a $LOGFILE
 nohup open-webui serve  2>&1 | tee -a $LOGFILE &
