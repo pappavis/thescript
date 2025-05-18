@@ -130,24 +130,6 @@ echo "export N8N_SECURE_COOKIE=false" 2>&1 | sudo tee -a /etc/profile | tee -a $
 echo "OLLAMA_HOST=0.0.0.0:11434" 2>&1 | sudo tee -a /etc/profile | tee -a $LOGFILE
 echo "export OLLAMA_HOST" 2>&1 | sudo tee -a /etc/profile | tee -a $LOGFILE
 
-
-# https://supabase.com/docs/guides/self-hosting/docker
-cd ~/Downloads
-git clone --depth 1 https://github.com/supabase/supabase
-mkdir supabase-project
-cp -rf supabase/docker/* supabase-project
-# Copy the fake env vars
-cp supabase/docker/.env.example supabase-project/.env
-# Switch to your project directory
-cd supabase-project
-# Pull the latest images
-docker compose pull
-# Start the services (in detached mode)
-docker compose up -d
-
-echo "Supbase bereikbaar op http://$HOSTNAME:8000" 2>&1 | tee -a $LOGFILE
-
-
 # gratis ongecensureerd vids!!
 cd ~/Dowloads
 git clone https://github.com/lllyasviel/FramePack 2>&1 | tee -a $LOGFILE
