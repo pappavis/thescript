@@ -175,12 +175,14 @@ acestep --checkpoint_path /path/to/checkpoint --port 7865 --device_id 0 --share 
 
 
 ## installeer supabase lokaal  -- DOCKER is nodig.
-brew install node  # op macOS met Homebrew
-npm install -g npx
+brew install node 2>&1 | tee -a $LOGFILE  # op macOS met Homebrew
+npm install -g npx 2>&1 | tee -a $LOGFILE  
 cd ~/Downloads
 npx create-next-app@latest my-app
 cd ./my-app
-npx supabase init
+npx supabase init 2>&1 | tee -a $LOGFILE  
+npx supabase migration new example_migration 2>&1 | tee -a $LOGFILE  
+npx supabase migration up  2>&1 | tee -a $LOGFILE  
 ## Ga naar http://127.0.0.1:54323 om de webinterface van Supabase te openen.
 
 cd ~/Dowloads/thescript
