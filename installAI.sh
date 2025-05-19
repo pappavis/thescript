@@ -190,6 +190,12 @@ docker run --name pgadmin4 -e PGADMIN_DEFAULT_EMAIL=jaap@mijnemail.com PGADMIN_D
 nohup open-webui serve  2>&1 | tee -a $LOGFILE &
 
 
+# WINDOWS-alleen voor windows Powershell, een soort brew.sh, maar dan  https://https://scoop.sh/ is het windows-versie !
+# Open powershell:
+# PS> Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+# PS> Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+# PS> scoop install git gedit
+
 echo "EINDE installAI.sh" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
 # 20250501 zie ook https://fal.ai/models?categories=text-to-audio en zoek hun github pages op !!!!!!!
