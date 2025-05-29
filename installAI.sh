@@ -40,7 +40,7 @@ for addonnodes in docker-compose curl ollama exim4 ; do
   done
 
 
-for addonnodes in langgraph langchain-openai langchain duckduckgo-search langchain-community langchain-experimental langchain-ollama langgraph-prebuilt tavily-python tinydb  lanceDB open-webui torch torchaudio torchvideo diffusers gradio datasets soundfile speechbrain accelerate uv scipy torchsde aiohttp   ; do
+for addonnodes in langgraph langchain-openai langchain duckduckgo-search langchain-community langchain-experimental langchain-ollama langgraph-prebuilt tavily-python tinydb  lanceDB open-webui torch torchaudio torchvideo diffusers gradio datasets soundfile speechbrain accelerate uv scipy torchsde aiohttp litellm  "litellm[proxy]==1.14.5"   ; do
     echo "" 2>&1 | tee -a $LOGFILE
     echo "Installeren Kunstmatige  python lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
     pip install $NQUIET --upgrade --break-system-packages ${addonnodes} 2>&1 | tee -a $LOGFILE
@@ -188,7 +188,6 @@ npx supabase migration up  2>&1 | tee -a $LOGFILE
 cd ~/Dowloads/thescript
 docker run --name pgadmin4 -e PGADMIN_DEFAULT_EMAIL=jaap@mijnemail.com PGADMIN_DEFAULT_PASSWORD=mypassword -d  dpage/pgadmin4a 2>&1 | tee -a $LOGFILE
 nohup open-webui serve  2>&1 | tee -a $LOGFILE &
-
 
 # WINDOWS-alleen voor windows Powershell, een soort brew.sh, maar dan  https://https://scoop.sh/ is het windows-versie !
 # Open powershell:
