@@ -68,7 +68,7 @@ for addonnodes in   msteamsconnector matplotlib numpy imutils pyodbc influxdb py
 	   tk-tools pyqt5 aspose-words Office365-REST-Python-Client  pyresidfp googlemaps discotool midiutil rtmidi \
 	   soundcard pandas streamlit PyPDF2 g4f g4f[webview] \ 
 	  langgraph langchain-openai langchain duckduckgo-search langchain-community langchain-experimental langchain-ollama langgraph-prebuilt tavily-python tinydb  whisper-openai  qrcode   \
-   	grandalf pygraphviz pip install "psycopg[binary,pool]" psycopg ollama supabase_auth
+   	grandalf pygraphviz pip install "psycopg[binary,pool]" psycopg ollama supabase_auth kokoro pyaudio 
    ; do
     echo "" 2>&1 | tee -a $LOGFILE
     echo "Installeren python lib: \"${addonnodes}\"" 2>&1 | tee -a $LOGFILE
