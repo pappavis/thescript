@@ -5,7 +5,7 @@ After=network.target sound.target
 [Service]
 Type=simple
 User=pi
-WorkingDirectory=/usr/local/pi/apps/Midi-Connector
+WorkingDirectory=/home/pi/apps/Midi-Connector
 ExecStart=/usr/bin/npm start
 Restart=always
 RestartSec=5
