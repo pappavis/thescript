@@ -244,5 +244,17 @@ echo "#Pi als MIDI controller met alsa en alsa-utils  ref -- https://youtu.be/N4
 echo "amidi -l"  | sudo tee -a /etc/bash.bashrc 2>&1 | tee -a $LOGFILE &
 echo "aconnect -i -o"  | sudo tee -a /etc/bash.bashrc 2>&1 | tee -a $LOGFILE & 
 
+appTxt1="**Midi-Connector"    
+echo "Installeren: $appTxt1" 2>&1 | tee -a $LOGFILE
+mkdir /home/pi/apps 2>&1 | tee -a $LOGFILE
+cd /home/pi/apps 2>&1 | tee -a $LOGFILE
+git clone https://github.com/nuc/Midi-Connector 2>&1 | tee -a $LOGFILE
+cd /home/pi/apps/Midi-Connector  2>&1 | tee -a $LOGFILE
+npm install 2>&1 | tee -a $LOGFILE
+nohup npm start  2>&1 | tee -a $LOGFILE &
+echo "Start midi usb http://$(hostname).local:3000/app" 2>&1 | tee -a $LOGFILE
+
+
+cd /home/pi/Downloads 2>&1 | tee -a $LOGFILE
 
 echo "EIND installExtrasLite.sh $(date)" 2>&1 | tee -a $LOGFILE
