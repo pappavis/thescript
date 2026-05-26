@@ -345,6 +345,22 @@ sudo cp -r -v ./webrepl /var/www/html/apps 2>&1 | tee -a $LOGFILE
 sudo cp /var/www/html/apps/micropython_webrepl/webrepl.html /var/www/html/apps/micropython_webrepl/index.php 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
 
+echo "install Midi-Connector --> USB Midi host" 2>&1 | tee -a $LOGFILE
+mkdir /home/pi/apps 2>&1 | tee -a $LOGFILE
+cd /home/pi/apps
+git clone https://github.com/nuc/Midi-Connector 2>&1 | tee -a $LOGFILE
+cd /home/pi/apps/Midi-Connector
+npm install 2>&1 | tee -a $LOGFILE
+npm start 2>&1 | tee -a $LOGFILE
+
+echo "install Midi-Connector --> USB Midi host" 2>&1 | tee -a $LOGFILE
+cd /home/pi/apps/
+git clone https://github.com/wamdam/raspimidihub 2>&1 | tee -a $LOGFILE
+cd /home/pi/apps/raspimidihub
+
+cd ~/Downloads
+
+
 
 echo "EINDE installExtras.sh $(date)" 2>&1 | tee -a $LOGFILE
 echo "" 2>&1 | tee -a $LOGFILE
